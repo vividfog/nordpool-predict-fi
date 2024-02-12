@@ -224,7 +224,7 @@ features_df = preprocess_data(weather_data)
 predictions_df = predict_prices(features_df, model_path)
 
 # Plot and save daily price predictions with consistent scales
-plot_hourly_prices(predictions_df)
+# plot_hourly_prices(predictions_df)
 
 # Prepare the CSV file for gist update
 predictions_df = predictions_df.drop(['day_of_week', 'month', 'hour'], axis=1)
@@ -233,7 +233,7 @@ predictions_df.to_csv(csv_file_path, index=False)
 
 # Convert the CSV to JSON and update the gist
 json_data = convert_csv_to_json(csv_file_path)
-update_gist(json_data, gist_id, token)
+# update_gist(json_data, gist_id, token)
 save_json_to_deploy_folder(json_data, deploy_folder_path)
 push_updates_to_github(repo_path, file_path, commit_message)
 
