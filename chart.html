@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nordpool Spot Predictions Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
+    <div id="chart"></div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('https://raw.githubusercontent.com/vividfog/np-prediction/main/prediction.json')
+        .then(response => response.json())
+        .then(data => {
+            // Sort the data by timestamp to ensure correct order
+            data.sort((a, b) => a[0] - b[0]);
+
+            // Process your data here to match the expected format
+            var seriesData = data.map(entry => {
+                return {
+                    x: new Date(entry[0]), // Assuming entry[0] is a timestamp
+                    y: entry[1] // Assuming entry[1] is the value
+                };
+            });
+
+            // Initialize the chart
+            var options = {
+                chart: {
+                    type: 'bar',
+                    height: 512
+                },
+                series: [{
+                    name: 'Nordpool ¢/kWh',
+                    data: seriesData
+                }],
+                plotOptions: {
+                    bar: {
+                        borderRadius: 0
+                    }
+                },
+                xaxis: {
+                    type: 'datetime',
+                    labels: {
+                        formatter: function(val) {
+                            // Only show the date part
+                            return new Date(val).toLocaleDateString();
+                        }
+                    },
+                    tickAmount: 6, // Adjust to the number of days to show
+                },
+                yaxis: {
+                    decimalsInFloat: 1,
+                    forceNiceScale: true,
+                    min: 0
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                tooltip: {
+                    x: {
+                        format: 'dd MMM yyyy HH:mm' // Change to your preferred date format
+                    }
+                },
+            };
+
+            var chart = new ApexCharts(document.querySelector("#chart"), options);
+            chart.render();
+        });
+    });
+    </script>
+
+</body>
+</html>
