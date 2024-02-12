@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import pytz  # Make sure to install pytz if you haven't already
 import json
 from datetime import datetime
+import git
+import os
 
 # Configuration and Secrets
 location = "pirkkala airport"
@@ -13,6 +15,10 @@ model_path = 'electricity_price_rf_model.joblib'
 csv_file_path = '5_day_price_predictions.csv'
 gist_id = '18970d60ce47a98d6323137c3c581eea'  # Gist ID to update
 token = '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'  # GitHub token
+deploy_folder_path = '/Users/ph/work.local/autogen-projects/electricity-price/deploy'
+repo_path = '/Users/ph/work.local/autogen-projects/electricity-price/deploy'
+file_path = 'prediction.json'  # This is relative to the repo_path
+commit_message = 'Update prediction.json with new data'
 
 # Define functions here
 
@@ -165,6 +171,52 @@ def update_gist(json_data, gist_id, token):
     else:
         print(f"Failed to update gist. Status code: {response.status_code}")
 
+def save_json_to_deploy_folder(json_data, deploy_folder_path, file_name='prediction.json'):
+    """
+    Saves the given JSON data to a file in the specified deploy folder path.
+
+    Parameters:
+    - json_data: JSON data to save.
+    - deploy_folder_path: Path to the deploy folder where the file will be saved.
+    - file_name: Name of the file to save the JSON data in. Defaults to 'prediction.json'.
+    """
+    full_path = f"{deploy_folder_path}/{file_name}"
+    with open(full_path, 'w') as f:
+        f.write(json_data)
+    print(f"File saved to Deploy folder: {full_path}")
+    
+def push_updates_to_github(repo_path, file_path, commit_message):
+    """
+    Pushes updates to GitHub for a specified file.
+
+    Parameters:
+    - repo_path: Path to the local git repository.
+    - file_path: Path to the file within the repository to update.
+    - commit_message: Commit message for the update.
+    """
+    try:
+        # Initialize the repository object
+        repo = git.Repo(repo_path)
+        
+        # Check if the file_path is relative, convert it to absolute
+        if not os.path.isabs(file_path):
+            file_path = os.path.join(repo_path, file_path)
+        
+        # Relative path of the file from the repo root
+        file_path_relative = os.path.relpath(file_path, repo_path)
+        
+        # Stage the file for commit
+        repo.git.add(file_path_relative)
+        
+        # Commit the changes
+        repo.git.commit('-m', commit_message)
+        
+        # Push the changes
+        repo.git.push()
+        print("Update pushed to GitHub.")
+    except Exception as e:
+        print(f"Error pushing updates to GitHub: {e}")
+
 # Main execution starts here
 
 weather_data = fetch_weather_data(location, api_key)
@@ -182,5 +234,7 @@ predictions_df.to_csv(csv_file_path, index=False)
 # Convert the CSV to JSON and update the gist
 json_data = convert_csv_to_json(csv_file_path)
 update_gist(json_data, gist_id, token)
+save_json_to_deploy_folder(json_data, deploy_folder_path)
+push_updates_to_github(repo_path, file_path, commit_message)
 
 print("Script execution completed.")

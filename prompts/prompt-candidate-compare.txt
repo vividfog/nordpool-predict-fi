@@ -1,0 +1,25 @@
+The goal of this project is to develop a machine learning model that can predict future electricity prices using historical data. This dataset includes information on electricity prices, wind speed, and outdoor temperature, focusing particularly on weather conditions in Finland. The model will provide hourly price predictions and assess the impact of both typical and extreme weather scenarios on electricity prices. You can download the data set from here: https://filebin.net/an4ah85smc5rqjl7/a04e9cd96b9557edf877b5e54fab529472e1928db7cd869833516cf92248aabe.csv
+
+Here's how the data set begins:
+
+"Date Time","Temp [°C]","Wind [m/s]","Price [c/kWh]"
+"2023-02-28 22:00:00","0.2","3.8","2.507"
+"2023-02-28 23:00:00","-0.1","3.7","2.691"
+"2023-03-01 00:00:00","-1.1","3.1","2.547"
+"2023-03-01 01:00:00","-1.4","3.3","2.554"
+"2023-03-01 02:00:00","-1.6","3.5","2.601"
+"2023-03-01 03:00:00","-2","3","2.804"
+
+Temperature and electricity price may be negative. Negative prices happen when demand is lower than supply. Our goal is to develop a machine learning model that can predict the electricity price based on the inputs of date, time, temperature, and wind speed for a given hour without requiring a sequence of past data points. This model should be capable of making predictions using only the current conditions without the need for historical sequences.
+
+To achieve this, we are considering the use of a Long Short-Term Memory (LSTM) network. However, given the nature of our prediction task, where predictions are based on a single point in time rather than sequences of historical data, alternative models such as Gradient Boosting Machines (GBM) or even simpler regression models might be more appropriate. The LSTM approach is typically more suited for scenarios where the prediction is based on sequences of past data points. Therefore, we should evaluate if a sequence-based model like LSTM is necessary or if a model that considers current conditions independently for each prediction could suffice.
+
+The project will involve the following steps:
+
+1. Data Preparation: Process the dataset to structure it appropriately for the model. This includes parsing date and time information and handling missing values.
+2. Feature Engineering: Create relevant features from the date and time information, such as hour of the day, day of the week, etc., that could influence electricity prices.
+3. Model Selection: Based on the task's nature, decide on the most suitable model type. If a sequence-based prediction is not required, consider models that can utilize single time point data effectively.
+4. Model Training and Evaluation: Train the selected model on the training dataset and evaluate its performance on a test set.
+5. Prediction: Use the trained model to predict electricity prices for new data points based on the current temperature, wind speed, and date/time information.
+
+By focusing on the requirement for the model to predict prices based on current conditions, we aim to clarify the project's scope and ensure the model developed aligns closely with our predictive goals.

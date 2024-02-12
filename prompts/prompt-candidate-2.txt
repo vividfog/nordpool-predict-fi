@@ -1,0 +1,27 @@
+The goal of this project is to develop a machine learning model that can predict future electricity prices using historical data. This dataset includes information on electricity prices, wind speed, and outdoor temperature, focusing particularly on weather conditions in Finland. The model will provide hourly price predictions and assess the impact of both typical and extreme weather scenarios on electricity prices.
+
+You can download the data set from here: https://filebin.net/an4ah85smc5rqjl7/a04e9cd96b9557edf877b5e54fab529472e1928db7cd869833516cf92248aabe.csv
+
+Here's how the data set begins:
+
+"Date Time","Temp [°C]","Wind [m/s]","Price [c/kWh]"
+"2023-02-28 22:00:00","0.2","3.8","2.507"
+"2023-02-28 23:00:00","-0.1","3.7","2.691"
+"2023-03-01 00:00:00","-1.1","3.1","2.547"
+"2023-03-01 01:00:00","-1.4","3.3","2.554"
+"2023-03-01 02:00:00","-1.6","3.5","2.601"
+"2023-03-01 03:00:00","-2","3","2.804"
+
+Temperature and electricity price may be negative, indicating scenarios where demand is lower than supply. The project's objective is to develop a machine learning model capable of predicting the electricity price for any given day and hour, using as inputs the temperature, wind speed, and the specific date and time.
+
+To accurately predict electricity prices, the model should consider the intricate relationships between weather conditions and electricity demand and supply dynamics. While the initial suggestion might lean towards using advanced time-series models such as LSTM (Long Short-Term Memory) networks due to their proficiency in handling sequence data, it's essential to evaluate if the complexity of such models aligns with the project's needs. Given the goal to predict prices based on immediate conditions without necessarily relying on historical sequences, simpler models like Random Forests might offer a more straightforward and equally effective solution.
+
+The task involves the following steps:
+
+1. **Data Preprocessing**: Clean the dataset and engineer features that could influence electricity prices, such as time of day, day of the week, and seasonality indicators from the "Date Time" column.
+   
+2. **Model Selection**: Considering the project's scope, evaluate the suitability of various models, starting with simpler ones like Random Forests. These models are capable of capturing non-linear relationships without the need for sequence-based inputs, making them potentially ideal for this task.
+
+3. **Model Training and Validation**: Train the selected model on the dataset and validate its performance using appropriate metrics such as Mean Absolute Error (MAE), Mean Squared Error (MSE), and R-squared values. This step will involve splitting the dataset into training and testing sets to ensure the model can generalize well to unseen data.
+
+4. **Prediction and Evaluation**: Use the trained model to predict electricity prices for specified conditions and evaluate the predictions against actual prices. This evaluation will help determine the model's accuracy and reliability. Use 10 random samples from the original data file to to predict the electricity price based on date, time, temperature and wind speed. The output should include the predicted answer and the reference answer.
