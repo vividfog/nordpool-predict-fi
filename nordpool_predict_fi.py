@@ -18,7 +18,7 @@ gist_id = '18970d60ce47a98d6323137c3c581eea'  # Gist ID to update
 token = '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'  # GitHub token
 deploy_folder_path = '/Users/ph/work.local/autogen-projects/electricity-price/deploy'
 repo_path = '/Users/ph/work.local/autogen-projects/electricity-price/deploy'
-file_path = 'prediction.json'  # This is relative to the repo_path
+predictions_path = 'prediction.json'  # This is relative to the repo_path
 commit_message = 'Update prediction.json with new data'
 
 # Define functions here
@@ -187,37 +187,65 @@ def save_json_to_deploy_folder(json_data, deploy_folder_path, file_name='predict
         f.write(json_data)
     print(f"File saved to Deploy folder: {full_path}")
     
-def push_updates_to_github(repo_path, file_path, commit_message):
+def push_updates_to_github(repo_path, file_paths, commit_message):
     """
-    Pushes updates to GitHub for a specified file.
-
+    Pushes updates to GitHub for specified files.
+    
     Parameters:
     - repo_path: Path to the local git repository.
-    - file_path: Path to the file within the repository to update.
+    - file_paths: List of paths to the files within the repository to update.
     - commit_message: Commit message for the update.
     """
     try:
-        # Initialize the repository object
         repo = git.Repo(repo_path)
         
-        # Check if the file_path is relative, convert it to absolute
-        if not os.path.isabs(file_path):
-            file_path = os.path.join(repo_path, file_path)
-        
-        # Relative path of the file from the repo root
-        file_path_relative = os.path.relpath(file_path, repo_path)
-        
-        # Stage the file for commit
-        repo.git.add(file_path_relative)
+        for file_path in file_paths:
+            # Check if the file_path is relative, convert it to absolute
+            absolute_file_path = os.path.join(repo_path, file_path) if not os.path.isabs(file_path) else file_path
+            
+            # Stage the file for commit
+            repo.index.add([absolute_file_path])
         
         # Commit the changes
-        repo.git.commit('-m', commit_message)
+        repo.index.commit(commit_message)
         
         # Push the changes
-        repo.git.push()
-        print("Update pushed to GitHub.")
+        repo.remotes.origin.push()
+        print("Updates pushed to GitHub.")
     except Exception as e:
         print(f"Error pushing updates to GitHub: {e}")
+
+def save_daily_averages_to_json(df, deploy_folder_path, file_name='averages.json'):
+    """
+    Calculates daily averages of the electricity prices, formats them for Apex Charts,
+    and saves them to a JSON file.
+
+    Parameters:
+    - df: DataFrame containing the electricity price predictions.
+    - deploy_folder_path: Path to the deploy folder where the file will be saved.
+    - file_name: Name of the file to save the daily averages. Defaults to 'averages.json'.
+    """
+    # Ensure 'Date' column is in datetime format and normalize to remove time
+    df['Date'] = pd.to_datetime(df['Date']).dt.normalize()
+    
+    # Calculate daily averages
+    daily_averages = df.groupby('Date')['PricePredict [c/kWh]'].mean().reset_index()
+    
+    # Convert 'Date' to the timestamp format required by Apex Charts (milliseconds since epoch)
+    daily_averages['timestamp'] = daily_averages['Date'].apply(lambda x: x.timestamp() * 1000)
+    
+    # Create the list of lists for JSON output
+    json_data_list = daily_averages[['timestamp', 'PricePredict [c/kWh]']].values.tolist()
+
+    # Convert data to JSON format
+    json_data = json.dumps(json_data_list, ensure_ascii=False)
+
+    # Save to JSON in the deploy folder
+    json_path = os.path.join(deploy_folder_path, file_name)
+    with open(json_path, 'w') as f:
+        f.write(json_data)
+    print(f"Daily averages saved to {json_path}")
+
 
 # Main execution starts here
 
@@ -237,6 +265,11 @@ predictions_df.to_csv(csv_file_path, index=False)
 json_data = convert_csv_to_json(csv_file_path)
 # update_gist(json_data, gist_id, token)
 save_json_to_deploy_folder(json_data, deploy_folder_path)
-push_updates_to_github(repo_path, file_path, commit_message)
+
+save_daily_averages_to_json(predictions_df, deploy_folder_path)
+averages_json_path = 'averages.json'  # The relative path within the repository
+files_to_push = [predictions_path, averages_json_path]
+
+push_updates_to_github(repo_path, files_to_push, commit_message)
 
 print("Script execution completed.")
