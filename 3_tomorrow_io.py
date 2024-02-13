@@ -46,13 +46,18 @@ def preprocess_data(weather_data):
 
     return pd.DataFrame(processed_data)
 
-def predict_prices(df, model_path='electricity_price_rf_model.joblib'):
-    model = joblib.load(model_path)
+def predict_prices(df, rf_model_path='electricity_price_rf_model.joblib', lr_model_path='linear_regression_scaling_model.joblib'):
+    # Load and apply the Random Forest model
+    rf_model = joblib.load(rf_model_path)
     features = df[['Temp [°C]', 'Wind [m/s]', 'hour', 'day_of_week', 'month']]
-    predictions = model.predict(features)
-    df['PricePredict [c/kWh]'] = predictions
+    initial_predictions = rf_model.predict(features)
+    df['PricePredict [c/kWh]'] = initial_predictions
+    
+    # Load and apply the Linear Regression model for scaling adjustments
+    lr_model = joblib.load(lr_model_path)
+    scaled_predictions = lr_model.predict(df[['PricePredict [c/kWh]']].values)
+    df['ScaledPricePredict [c/kWh]'] = scaled_predictions
     return df
-
 
 def get_bar_color(value, color_threshold):
     """Return the color for the bar based on the specified value."""

@@ -11,7 +11,8 @@ import os
 # Configuration and Secrets
 location = "pirkkala airport"
 api_key = "77MKszgZQMSzl81qSbEfE2gqdqK1PTTZ"
-model_path = 'electricity_price_rf_model.joblib'
+rf_model_path = 'electricity_price_rf_model.joblib'
+lr_model_path = 'linear_regression_scaling_model.joblib'
 csv_file_path = '5_day_price_predictions.csv'
 gist_id = '18970d60ce47a98d6323137c3c581eea'  # Gist ID to update
 token = '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'  # GitHub token
@@ -61,11 +62,17 @@ def preprocess_data(weather_data):
         })
     return pd.DataFrame(processed_data)
 
-def predict_prices(df, model_path):
-    model = joblib.load(model_path)
+def predict_prices(df, rf_model_path, lr_model_path):
+    # Load and apply the Random Forest model for initial predictions
+    rf_model = joblib.load(rf_model_path)
     features = df[['Temp [°C]', 'Wind [m/s]', 'hour', 'day_of_week', 'month']]
-    predictions = model.predict(features)
-    df['PricePredict [c/kWh]'] = predictions
+    initial_predictions = rf_model.predict(features)
+    df['PricePredict [c/kWh]'] = initial_predictions
+    
+    # Load and apply the Linear Regression model for scaling predictions
+    lr_model = joblib.load(lr_model_path)
+    scaled_predictions = lr_model.predict(df[['PricePredict [c/kWh]']].values)
+    df['ScaledPricePredict [c/kWh]'] = scaled_predictions
     return df
 
 # Other functions (plot_hourly_prices, get_bar_color, convert_csv_to_json, update_gist) remain unchanged
@@ -221,7 +228,7 @@ def push_updates_to_github(repo_path, file_path, commit_message):
 
 weather_data = fetch_weather_data(location, api_key)
 features_df = preprocess_data(weather_data)
-predictions_df = predict_prices(features_df, model_path)
+predictions_df = predict_prices(features_df, rf_model_path, lr_model_path)
 
 # Plot and save daily price predictions with consistent scales
 # plot_hourly_prices(predictions_df)
