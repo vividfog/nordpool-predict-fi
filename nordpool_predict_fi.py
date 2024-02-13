@@ -62,17 +62,12 @@ def preprocess_data(weather_data):
         })
     return pd.DataFrame(processed_data)
 
-def predict_prices(df, rf_model_path, lr_model_path):
+def predict_prices(df, rf_model_path):
     # Load and apply the Random Forest model for initial predictions
     rf_model = joblib.load(rf_model_path)
     features = df[['Temp [°C]', 'Wind [m/s]', 'hour', 'day_of_week', 'month']]
     initial_predictions = rf_model.predict(features)
     df['PricePredict [c/kWh]'] = initial_predictions
-    
-    # Load and apply the Linear Regression model for scaling predictions
-    lr_model = joblib.load(lr_model_path)
-    scaled_predictions = lr_model.predict(df[['PricePredict [c/kWh]']].values)
-    df['ScaledPricePredict [c/kWh]'] = scaled_predictions
     return df
 
 # Other functions (plot_hourly_prices, get_bar_color, convert_csv_to_json, update_gist) remain unchanged
@@ -228,10 +223,10 @@ def push_updates_to_github(repo_path, file_path, commit_message):
 
 weather_data = fetch_weather_data(location, api_key)
 features_df = preprocess_data(weather_data)
-predictions_df = predict_prices(features_df, rf_model_path, lr_model_path)
+predictions_df = predict_prices(features_df, rf_model_path)
 
 # Plot and save daily price predictions with consistent scales
-# plot_hourly_prices(predictions_df)
+plot_hourly_prices(predictions_df)
 
 # Prepare the CSV file for gist update
 predictions_df = predictions_df.drop(['day_of_week', 'month', 'hour'], axis=1)

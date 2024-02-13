@@ -1,1 +1,0 @@
-1 * * * * cd /Users/ph/work.local/autogen-projects/electricity-price/nordpool-predict-fi && /Users/ph/work.local/autogen-projects/electricity-price/nordpool-predict-fi/venv/bin/python nordpool_predict_fi.py > /Users/ph/work.local/autogen-projects/electricity-price/logs/cron.log 2>&1
