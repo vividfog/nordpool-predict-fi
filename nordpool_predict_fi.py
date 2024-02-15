@@ -11,7 +11,7 @@ import os
 # Configuration and Secrets
 location = "pirkkala airport"
 api_key = "77MKszgZQMSzl81qSbEfE2gqdqK1PTTZ"
-rf_model_path = 'electricity_price_rf_model.joblib'
+rf_model_path = 'electricity_price_rf_model_windpower.joblib'
 lr_model_path = 'linear_regression_scaling_model.joblib'
 csv_file_path = '5_day_price_predictions.csv'
 gist_id = '18970d60ce47a98d6323137c3c581eea'  # Gist ID to update
@@ -20,8 +20,15 @@ deploy_folder_path = '/Users/ph/work.local/autogen-projects/electricity-price/de
 repo_path = '/Users/ph/work.local/autogen-projects/electricity-price/deploy'
 predictions_path = 'prediction.json'  # This is relative to the repo_path
 commit_message = 'Update prediction.json with new data'
+wind_power_prediction_path = './wind_power/foreca_wind_power_prediction.json'
+wind_power_max_capacity = 6932  # MW
 
 # Define functions here
+
+def read_wind_power_data(filepath):
+    with open(filepath, 'r') as file:
+        wind_power_data = json.load(file)
+    return wind_power_data
 
 def fetch_weather_data(location, api_key):
     base_url = "https://api.tomorrow.io/v4/weather/forecast"
@@ -38,14 +45,34 @@ def fetch_weather_data(location, api_key):
     else:
         raise Exception("API request failed with status code " + str(response.status_code))
 
-def preprocess_data(weather_data):
+def preprocess_data(weather_data, wind_power_data, wind_power_max_capacity):
     processed_data = []
     hourly_forecast_data = weather_data['timelines']['hourly']
+    
+    # print("Weather Data Timestamps Sample:", [item['time'] for item in hourly_forecast_data[:5]])  # Debugging line
+    # print("Wind Power Data Timestamps Sample:", [item['datetime'] for item in wind_power_data[:5]])  # Debugging line
+
+    for hourly_forecast in hourly_forecast_data:
+        time = hourly_forecast['time']
+        values = hourly_forecast['values']
+        
+        # Find matching wind power data
+        wind_power = next((item['wind_prediction_MWh'] for item in wind_power_data if item['datetime'] == time), None)
+        
+        # # Debugging line to check if wind power values are found
+        # if wind_power is not None:
+        #     print(f"Match found for {time}: {wind_power} MWh")
+        # else:
+        #     print(f"No match found for {time}")
+        
     for hourly_forecast in hourly_forecast_data:
         time = hourly_forecast['time']
         values = hourly_forecast['values']
         temp = values.get('temperature', 0)
         wind_speed = values.get('windSpeed', 0)
+        
+        # Find matching wind power data
+        wind_power = next((item['wind_prediction_MWh'] for item in wind_power_data if item['datetime'] == time), 0)
         
         time_parsed = pd.to_datetime(time)
         hour = time_parsed.hour
@@ -56,6 +83,8 @@ def preprocess_data(weather_data):
             'Date': time,
             'Temp [°C]': temp,
             'Wind [m/s]': wind_speed,
+            'Wind Power [MWh]': wind_power,
+            'Wind Power Capacity [MWh]': wind_power_max_capacity,
             'hour': hour,
             'day_of_week': day_of_week,
             'month': month
@@ -65,14 +94,14 @@ def preprocess_data(weather_data):
 def predict_prices(df, rf_model_path):
     # Load and apply the Random Forest model for initial predictions
     rf_model = joblib.load(rf_model_path)
-    features = df[['Temp [°C]', 'Wind [m/s]', 'hour', 'day_of_week', 'month']]
+    # Ensure all features expected by the model are included
+    features = df[['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'hour', 'day_of_week', 'month']]
     initial_predictions = rf_model.predict(features)
     df['PricePredict [c/kWh]'] = initial_predictions
     return df
 
-# Other functions (plot_hourly_prices, get_bar_color, convert_csv_to_json, update_gist) remain unchanged
 def plot_hourly_prices(df):
-    # Define color thresholds
+    # Define color thresholds for price predictions
     color_threshold = [
         {'value': -1000, 'color': 'lime'},
         {'value': 5, 'color': 'green'},
@@ -82,7 +111,7 @@ def plot_hourly_prices(df):
         {'value': 30, 'color': 'black'},
     ]
 
-    # Ensure 'Date' is in datetime format
+    # Ensure 'Date' is in datetime format and set as index
     df['Date'] = pd.to_datetime(df['Date'])
     df.set_index('Date', inplace=True)
 
@@ -104,22 +133,30 @@ def plot_hourly_prices(df):
         # Calculate the average price for the day
         daily_avg_price = group['PricePredict [c/kWh]'].mean()
         
+        # Plot primary axis (prices)
+        ax1 = plt.gca()  # Get current axis for price
         for idx, row in group.iterrows():
             bar_color = get_bar_color(row['PricePredict [c/kWh]'], color_threshold)
-            plt.bar(idx.hour, row['PricePredict [c/kWh]'], color=bar_color, width=0.8)
-        
-        # Add the average price line with the specified color #488FC2
-        plt.axhline(y=daily_avg_price, color='#488FC2', linestyle='--', label=f'Avg Price: {daily_avg_price:.2f} c/kWh')
-        
-        plt.title(f"Hourly Electricity Price Prediction for {date} (Helsinki Time)")
-        plt.xlabel("Hour of the Day")
-        plt.ylabel("Price [c/kWh]")
+            ax1.bar(idx.hour, row['PricePredict [c/kWh]'], color=bar_color, width=0.8, zorder=2)
+
+        ax1.set_xlabel("Hour of the Day")
+        ax1.set_ylabel("Price [c/kWh]")
         plt.xticks(range(24))  # Ensure x-axis labels show every hour
-        plt.ylim(y_axis_start, global_max_price)  # Ensure y-axis starts at 0 if applicable
-        plt.legend()  # Show legend to identify the average price line
-        
+        ax1.set_ylim(y_axis_start, global_max_price)  # Y-axis for price
+        ax1.axhline(y=daily_avg_price, color='gray', linestyle='--', label=f'Avg Price: {daily_avg_price:.2f} c/kWh', zorder=3)
+
+        # Plot secondary axis (wind power)
+        ax2 = ax1.twinx()  # Create a second y-axis sharing the same x-axis
+        ax2.plot(group.index.hour, group['Wind Power [MWh]'], color='blue', marker='o', linestyle='-', linewidth=2, label='Wind Power [MWh]', zorder=4)
+        ax2.set_ylim(0, 7000)  # Fixed y-axis for wind power
+        ax2.set_ylabel('Wind Power [MWh]')
+
+        plt.title(f"Hourly Electricity Price and Wind Power Prediction for {date} (Helsinki Time)")
+        ax1.legend(loc='upper left')
+        ax2.legend(loc='upper right')
+
         # Save the plot as a PNG file named after the date
-        plt.savefig(f"hourly_price_prediction_{date}.png")
+        plt.savefig(f"{date}.png")
         plt.close()
         
 def get_bar_color(value, color_threshold):
@@ -146,56 +183,13 @@ def convert_csv_to_json(csv_file_path):
     json_data = json.dumps(apex_data)
     return json_data
 
-def update_gist(json_data, gist_id, token):
-    # Prepare the GitHub API URL for the gist
-    url = f'https://api.github.com/gists/{gist_id}'
-
-    # Prepare the data payload for the gist update
-    files = {
-        '5_day_price_predictions_for_apex.json': {
-            'content': json_data
-        }
-    }
-    data = {
-        'files': files
-    }
-
-    # Prepare the headers for authentication
-    headers = {
-        'Authorization': f'token {token}',
-        'Accept': 'application/vnd.github.v3+json',
-    }
-
-    # Make the request to update the gist
-    response = requests.patch(url, headers=headers, data=json.dumps(data))
-    if response.status_code == 200:
-        print("Gist updated successfully.")
-    else:
-        print(f"Failed to update gist. Status code: {response.status_code}")
-
 def save_json_to_deploy_folder(json_data, deploy_folder_path, file_name='prediction.json'):
-    """
-    Saves the given JSON data to a file in the specified deploy folder path.
-
-    Parameters:
-    - json_data: JSON data to save.
-    - deploy_folder_path: Path to the deploy folder where the file will be saved.
-    - file_name: Name of the file to save the JSON data in. Defaults to 'prediction.json'.
-    """
     full_path = f"{deploy_folder_path}/{file_name}"
     with open(full_path, 'w') as f:
         f.write(json_data)
     print(f"File saved to Deploy folder: {full_path}")
     
 def push_updates_to_github(repo_path, file_paths, commit_message):
-    """
-    Pushes updates to GitHub for specified files.
-    
-    Parameters:
-    - repo_path: Path to the local git repository.
-    - file_paths: List of paths to the files within the repository to update.
-    - commit_message: Commit message for the update.
-    """
     try:
         repo = git.Repo(repo_path)
         
@@ -216,15 +210,6 @@ def push_updates_to_github(repo_path, file_paths, commit_message):
         print(f"Error pushing updates to GitHub: {e}")
 
 def save_daily_averages_to_json(df, deploy_folder_path, file_name='averages.json'):
-    """
-    Calculates daily averages of the electricity prices, formats them for Apex Charts,
-    and saves them to a JSON file.
-
-    Parameters:
-    - df: DataFrame containing the electricity price predictions.
-    - deploy_folder_path: Path to the deploy folder where the file will be saved.
-    - file_name: Name of the file to save the daily averages. Defaults to 'averages.json'.
-    """
     # Ensure 'Date' column is in datetime format and normalize to remove time
     df['Date'] = pd.to_datetime(df['Date']).dt.normalize()
     
@@ -249,8 +234,9 @@ def save_daily_averages_to_json(df, deploy_folder_path, file_name='averages.json
 
 # Main execution starts here
 
+wind_power_data = read_wind_power_data(wind_power_prediction_path)
 weather_data = fetch_weather_data(location, api_key)
-features_df = preprocess_data(weather_data)
+features_df = preprocess_data(weather_data, wind_power_data, wind_power_max_capacity)
 predictions_df = predict_prices(features_df, rf_model_path)
 
 # Plot and save daily price predictions with consistent scales
@@ -263,7 +249,6 @@ predictions_df.to_csv(csv_file_path, index=False)
 
 # Convert the CSV to JSON and update the gist
 json_data = convert_csv_to_json(csv_file_path)
-# update_gist(json_data, gist_id, token)
 save_json_to_deploy_folder(json_data, deploy_folder_path)
 
 save_daily_averages_to_json(predictions_df, deploy_folder_path)

@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="36" height="310">
+	<g fill="#555" font-size="12">
+		<text x="34" y="305" text-anchor="end">MW</text>
+		<text x="34" y="283.92857142857144" text-anchor="end">500</text>
+		<text x="34" y="262.8571428571429" text-anchor="end">1000</text>
+		<text x="34" y="241.78571428571428" text-anchor="end">1500</text>
+		<text x="34" y="220.71428571428572" text-anchor="end">2000</text>
+		<text x="34" y="199.64285714285714" text-anchor="end">2500</text>
+		<text x="34" y="178.57142857142858" text-anchor="end">3000</text>
+		<text x="34" y="157.5" text-anchor="end">3500</text>
+		<text x="34" y="136.42857142857144" text-anchor="end">4000</text>
+		<text x="34" y="115.35714285714283" text-anchor="end">4500</text>
+		<text x="34" y="94.28571428571428" text-anchor="end">5000</text>
+		<text x="34" y="73.21428571428572" text-anchor="end">5500</text>
+		<text x="34" y="52.14285714285717" text-anchor="end">6000</text>
+		<text x="34" y="31.071428571428555" text-anchor="end">6500</text>
+		<text x="34" y="10" text-anchor="end">7000</text>
+	</g>
+</svg>
