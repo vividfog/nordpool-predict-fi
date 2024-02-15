@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from xml.etree import ElementTree as ET
 from xml.dom.minidom import parseString
@@ -19,10 +20,15 @@ def beautify_svg_content(svg_content):
     return pretty_xml_as_string
 
 # Set up Safari options
-options = webdriver.SafariOptions()
+# options = webdriver.SafariOptions()
+
+chrome_options = Options()
+chrome_options.add_argument("--headless")  # Run Chrome in headless mode
+
+driver = webdriver.Chrome(options=chrome_options)
 
 # Set up driver
-driver = webdriver.Safari(options=options)
+# driver = webdriver.Safari(options=options)
 
 # Open the web page
 driver.get("https://www.foreca.fi/sahkon-hinta")
