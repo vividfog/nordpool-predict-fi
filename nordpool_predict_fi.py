@@ -156,7 +156,7 @@ def plot_hourly_prices(df):
         ax2.legend(loc='upper right')
 
         # Save the plot as a PNG file named after the date
-        plt.savefig(f"{date}.png")
+        plt.savefig(f"./png/{date}.png")
         plt.close()
         
 def get_bar_color(value, color_threshold):
