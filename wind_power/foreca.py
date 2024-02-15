@@ -123,14 +123,14 @@ for group in root.findall('.//{http://www.w3.org/2000/svg}g'):
         else:  # Hour labels
             hour_labels = texts
 
-print("Lines and lablews extracted from the SVG file")
-print(len(vertical_minor_lines), len(vertical_major_lines), len(horizontal_lines), len(date_labels), len(hour_labels), len(date_texts))
-print("Vertical Minor Lines:", vertical_minor_lines)  # Display the minor vertical gridlines to verify the result
-print("Vertical Major Lines:", vertical_major_lines)  # Display the major vertical gridlines to verify the result
-print("Horizontal Lines:", horizontal_lines)  # Display the horizontal gridlines to verify the result
-print("Date Labels:", date_labels)  # Display the date labels to verify the result
-print("Hour Labels:", hour_labels)  # Display the hour labels to verify the result
-print("Date Texts:", date_texts)  # Display the date texts to verify the result
+# print("Lines and lablews extracted from the SVG file")
+# print(len(vertical_minor_lines), len(vertical_major_lines), len(horizontal_lines), len(date_labels), len(hour_labels), len(date_texts))
+# print("Vertical Minor Lines:", vertical_minor_lines)  # Display the minor vertical gridlines to verify the result
+# print("Vertical Major Lines:", vertical_major_lines)  # Display the major vertical gridlines to verify the result
+# print("Horizontal Lines:", horizontal_lines)  # Display the horizontal gridlines to verify the result
+# print("Date Labels:", date_labels)  # Display the date labels to verify the result
+# print("Hour Labels:", hour_labels)  # Display the hour labels to verify the result
+# print("Date Texts:", date_texts)  # Display the date texts to verify the result
 
 # Sort the hour labels by their X coordinates
 hour_labels_sorted = sorted(hour_labels, key=lambda x: x['x'])
@@ -178,8 +178,8 @@ def pair_dates_with_hours(date_texts, hour_labels, current_year, current_month):
 # Pair the hour labels with date texts to create datetime objects
 paired_datetime_x = pair_dates_with_hours(date_texts, hour_labels, current_year, current_month)
 
-for x in paired_datetime_x:
-    print(f"DateTime: {x['datetime']}, X: {x['x']}")  # Display the paired datetime and X values to verify the result
+# for x in paired_datetime_x:
+#     print(f"DateTime: {x['datetime']}, X: {x['x']}")  # Display the paired datetime and X values to verify the result
 
 def find_x_for_datetime(target_datetime, paired_datetime_x):
     # First, ensure the paired_datetime_x is sorted by datetime
@@ -209,11 +209,11 @@ def find_x_for_datetime(target_datetime, paired_datetime_x):
     # If no entries are found (which should not happen due to the range check), return None
     return None
 
-# Example usage:
-target_datetimes = datetime(2024, 2, 20, 13, 0), datetime(2024, 2, 15, 9, 0), datetime(2024, 2, 25, 2, 0)
-for target_datetime in target_datetimes:
-    x_value = find_x_for_datetime(target_datetime, paired_datetime_x)
-    print(f"The X value for {target_datetime} is: {x_value}")
+# # Example usage:
+# target_datetimes = datetime(2024, 2, 20, 13, 0), datetime(2024, 2, 15, 9, 0), datetime(2024, 2, 25, 2, 0)
+# for target_datetime in target_datetimes:
+#     x_value = find_x_for_datetime(target_datetime, paired_datetime_x)
+#     print(f"The X value for {target_datetime} is: {x_value}")
 
 def interpolate_hours(hours):
     interpolated_hours = []
@@ -246,10 +246,10 @@ def interpolate_hours(hours):
     return interpolated_hours_sorted
 
 # Perform interpolation
-interpolated_hours = interpolate_hours(hour_labels_sorted)
+# interpolated_hours = interpolate_hours(hour_labels_sorted)
 
-print("Interpolated Hours:", interpolated_hours)  # Display the interpolated hours to verify the result
-print("Length of Interpolated Hours:", len(interpolated_hours))  # Display the length to verify the result
+# print("Interpolated Hours:", interpolated_hours)  # Display the interpolated hours to verify the result
+# print("Length of Interpolated Hours:", len(interpolated_hours))  # Display the length to verify the result
 
 # Function to extract Bezier paths and their starting points
 def extract_bezier_paths(root):
@@ -309,10 +309,10 @@ for point in xy_matrix:
         unique_xy_matrix.append(point)
         last_x = point['x']
 
-print("-------------------------------------------------------------------------------------------------------------")
+# print("-------------------------------------------------------------------------------------------------------------")
 
-print("Length of unique X-Y matrix:", len(unique_xy_matrix))  # Display the length for verification
-print("Unique X-Y matrix:", unique_xy_matrix)  # Display the unique X-Y matrix for verification
+# print("Length of unique X-Y matrix:", len(unique_xy_matrix))  # Display the length for verification
+# print("Unique X-Y matrix:", unique_xy_matrix)  # Display the unique X-Y matrix for verification
 
 # Plot the unique X-Y matrix to visualize the Bezier path
 # Extract X and Y values
@@ -367,13 +367,13 @@ def interpolate_y(x, unique_xy_matrix):
 
 # Example usage
 # Let's find the y value for an x value of 1000 (which is within the range of x values in unique_xy_matrix)
-x_value = 0, 100, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000
-for x in x_value:
-    y_value = interpolate_y(x, unique_xy_matrix)
-    print(f"The interpolated Y value for X={x} is: {y_value}")
+# x_value = 0, 100, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000
+# for x in x_value:
+#     y_value = interpolate_y(x, unique_xy_matrix)
+#     print(f"The interpolated Y value for X={x} is: {y_value}")
 
-for line in horizontal_lines:
-    print(f"Line: {line}") 
+# for line in horizontal_lines:
+#     print(f"Line: {line}") 
 
 paired_datetime_x_y = []
 
@@ -387,9 +387,9 @@ for entry in paired_datetime_x:
             'y': y_value
         })
 
-for entry in paired_datetime_x_y:
-    print(f"DateTime: {entry['datetime']}, X: {entry['x']}, Y: {entry['y']}")  # Display the paired datetime, X, and Y values to verify the result
-print("Total number of entries:", len(paired_datetime_x_y))  # Display the length to verify the result
+# for entry in paired_datetime_x_y:
+#     print(f"DateTime: {entry['datetime']}, X: {entry['x']}, Y: {entry['y']}")  # Display the paired datetime, X, and Y values to verify the result
+# print("Total number of entries:", len(paired_datetime_x_y))  # Display the length to verify the result
 
 # # Extract Time (datetime) and Y values from paired_datetime_x_y
 # times = [entry['datetime'] for entry in paired_datetime_x_y]
@@ -416,14 +416,14 @@ print("Total number of entries:", len(paired_datetime_x_y))  # Display the lengt
 # plt.show()
 
 y_coords = [int(line.split('M')[1].split('H')[0].split(',')[1]) for line in horizontal_lines]
-print("Y Coordinates:", y_coords)  # Display the Y coordinates to verify the result
+# print("Y Coordinates:", y_coords)  # Display the Y coordinates to verify the result
 
 # Calculate MW per pixel based on the first (top) and last (bottom) Y coordinates
 max_value = y_coords[-1]  # Top line (7000 MW)
 min_value = y_coords[0]  # Bottom line (0 MW)
 
-print("Max MW Value Y axis equivalent:", max_value)  # Display the max value to verify the result
-print("Min MW value Y axis equivalent:", min_value)  # Display the min value to verify the result
+# print("Max MW Value Y axis equivalent:", max_value)  # Display the max value to verify the result
+# print("Min MW value Y axis equivalent:", min_value)  # Display the min value to verify the result
 
 # Define the function to calculate MW from Y, as previously discussed
 def calculate_mw_from_y(y, max_value, min_value, y_top, y_bottom):
@@ -444,8 +444,8 @@ min_value = 0    # MW value at the bottom line
 for entry in paired_datetime_x_y:
     entry['MW'] = max_value-calculate_mw_from_y(entry['y'], max_value, min_value, y_top, y_bottom)
     
-for entry in paired_datetime_x_y:
-    print(f"DateTime: {entry['datetime']}, X: {entry['x']}, Y: {entry['y']}, MW: {entry['MW']}")  # Display the paired datetime, X, Y, and MW values to verify the result
+# for entry in paired_datetime_x_y:
+#     print(f"DateTime: {entry['datetime']}, X: {entry['x']}, Y: {entry['y']}, MW: {entry['MW']}")  # Display the paired datetime, X, Y, and MW values to verify the result
     
 # Extract datetime and MW values for plotting
 datetimes = [entry['datetime'] for entry in paired_datetime_x_y]
