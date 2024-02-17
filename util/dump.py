@@ -3,24 +3,17 @@ import pandas as pd
 import sys
 import os
 
-def dump_sqlite_db(cache_folder_path):
-
+def dump_sqlite_db(data_folder_path):
     # Connect to the SQLite database
-    conn = sqlite3.connect(f'{cache_folder_path}/prediction.db')
-
-    # Read the table into a DataFrame
-    df = pd.read_sql_query(f'SELECT timestamp, "Price [c/kWh]" FROM prediction', conn)
-
+    conn = sqlite3.connect(f'{data_folder_path}/prediction.db')
+    # Read the entire table into a DataFrame
+    df = pd.read_sql_query('SELECT * FROM prediction', conn)
     # Close the connection
     conn.close()
-
-    # Convert the timestamp to datetime and format it
-    df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms')
-    df['timestamp'] = df['timestamp'].dt.strftime('%Y-%m-%dT%H:%M:%SZ')
-
-    # Group the DataFrame by timestamp and calculate the mean price prediction for each timestamp
-    df = df.groupby('timestamp')['Price [c/kWh]'].mean().reset_index()
-
+    # Convert the timestamp to datetime
+    df['timestamp'] = pd.to_datetime(df['timestamp'], format='mixed')
+    # Replace NULL values with empty string
+    df = df.fillna('')
     # Print the DataFrame in CSV format
     print(df.to_csv(index=False))
 

@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import os
 
-def foreca_wind_power_prediction(wind_power_prediction_path, cache_folder_path):
+def foreca_wind_power_prediction(wind_power_prediction, data_folder_path):
 
     def beautify_svg_content(svg_content):
         """
@@ -53,7 +53,7 @@ def foreca_wind_power_prediction(wind_power_prediction_path, cache_folder_path):
             
             # Save the beautified SVG content to a file
             filename = f"foreca_{i}.html"
-            filepath = os.path.join(cache_folder_path, filename)
+            filepath = os.path.join(data_folder_path, filename)
             with open(filepath, "w") as file:
                 file.write(beautified_svg_content)
 
@@ -68,7 +68,7 @@ def foreca_wind_power_prediction(wind_power_prediction_path, cache_folder_path):
             
             # Save the beautified SVG content to a file with .svg extension
             filename = f"foreca_{i}.svg"
-            filepath = os.path.join(cache_folder_path, filename)
+            filepath = os.path.join(data_folder_path, filename)
             print(f"Saving the beautified SVG content to {filepath}")
             with open(filepath, "w") as file:
                 file.write(beautified_svg_content)
@@ -79,7 +79,7 @@ def foreca_wind_power_prediction(wind_power_prediction_path, cache_folder_path):
 
     # Load and parse the SVG file
     filename = 'foreca_1.svg'
-    svg_path = os.path.join(cache_folder_path, filename)
+    svg_path = os.path.join(data_folder_path, filename)
 
     tree = ET.parse(svg_path)
     root = tree.getroot()
@@ -524,7 +524,7 @@ def foreca_wind_power_prediction(wind_power_prediction_path, cache_folder_path):
         })
 
     # Specify the file path where you want to save the JSON data
-    file_path = wind_power_prediction_path
+    file_path = os.path.join(data_folder_path, wind_power_prediction)
 
     # Write the JSON output to a file
     with open(file_path, 'w') as json_file:

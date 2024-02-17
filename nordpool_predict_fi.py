@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 import joblib
 import matplotlib.pyplot as plt
-import pytz  # Make sure to install pytz if you haven't already
+import pytz
 import json
 from datetime import datetime
 import git
@@ -10,6 +10,7 @@ import os
 from dotenv import load_dotenv
 import sqlite3
 import argparse
+from util.sql import db_update, db_query, db_test
 
 load_dotenv('.env.local')  # take environment variables from .env.local.
 
@@ -22,11 +23,12 @@ csv_file_path = os.getenv('CSV_FILE_PATH') or "CSV_FILE_PATH not set in environm
 gist_id = os.getenv('GIST_ID') or "GIST_ID not set in environment"
 token = os.getenv('TOKEN') or "TOKEN not set in environment"
 deploy_folder_path = os.getenv('DEPLOY_FOLDER_PATH') or "DEPLOY_FOLDER_PATH not set in environment"
-cache_folder_path = os.getenv('CACHE_FOLDER_PATH') or "CACHE_FOLDER_PATH not set in environment"
+data_folder_path = os.getenv('DATA_FOLDER_PATH') or "DATA_FOLDER_PATH not set in environment"
+db_path = os.getenv('DB_PATH') or "DB_PATH not set in environment"
 repo_path = os.getenv('REPO_PATH') or "REPO_PATH not set in environment"
 predictions_path = os.getenv('PREDICTIONS_PATH') or "PREDICTIONS_PATH not set in environment"
 commit_message = os.getenv('COMMIT_MESSAGE') or "COMMIT_MESSAGE not set in environment"
-wind_power_prediction_path = os.getenv('WIND_POWER_PREDICTION_PATH') or "WIND_POWER_PREDICTION_PATH not set in environment"
+wind_power_prediction = os.getenv('WIND_POWER_PREDICTION') or "WIND_POWER_PREDICTION not set in environment"
 try:
     wind_power_max_capacity = int(os.getenv('WIND_POWER_MAX_CAPACITY'))
 except TypeError:
@@ -36,36 +38,31 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--foreca', action='store_true', help='Update the Foreca wind power prediction file')
 parser.add_argument('--spot', action='store_true', help='Update the spot prices to database')
 parser.add_argument('--dump', action='store_true', help='Dump the SQLite database to CSV format')
+parser.add_argument('--dbtest', action='store_true', help='Test the SQLite database functions')
 args = parser.parse_args()
 
 if args.foreca:
     from util.foreca import foreca_wind_power_prediction
-    print("Updating Foreca wind power prediction:", wind_power_prediction_path)
+    print("Updating Foreca wind power prediction:", wind_power_prediction)
     foreca_wind_power_prediction(
-        wind_power_prediction_path=wind_power_prediction_path,
-        cache_folder_path=cache_folder_path
+        wind_power_prediction=wind_power_prediction,
+        data_folder_path=data_folder_path
         )
     exit()
 
 if args.spot:
     from util.spot import update_spot_prices_to_db
-    print("Updating spot prices to database")
-    update_spot_prices_to_db(cache_folder_path)
+    update_spot_prices_to_db(data_folder_path)
     exit()
 
 if args.dump:
     from util.dump import dump_sqlite_db
-    print("Dumping SQLite database to CSV format")
-    dump_sqlite_db(cache_folder_path)
+    dump_sqlite_db(data_folder_path)
     exit()
-
-def save_to_sqlite_db(df, db_name):
-    try:
-        with sqlite3.connect(f'{cache_folder_path}/{db_name}.db') as conn:
-            df.to_sql(db_name, conn, if_exists='append')
-        print(f"Data saved to {db_name} database.")
-    except Exception as e:
-        print(f"Error occurred while saving data to {db_name} database: ", str(e))
+    
+if args.dbtest:
+    db_test(db_path=db_path)
+    exit()
 
 def read_wind_power_data(filepath):
     with open(filepath, 'r') as file:
@@ -232,7 +229,41 @@ def save_json_to_deploy_folder(json_data, deploy_folder_path, file_name='predict
     with open(full_path, 'w') as f:
         f.write(json_data)
     print(f"File saved to Deploy folder: {full_path}")
-    
+
+# def save_to_sqlite_db(df, db_name):
+#     try:
+#         with sqlite3.connect(f'{data_folder_path}/{db_name}.db') as conn:
+#             df.to_sql(db_name, conn, if_exists='append')
+#         print(f"Data saved to {db_name} database.")
+#     except Exception as e:
+#         print(f"Error occurred while saving data to {db_name} database: ", str(e))
+
+def save_to_sqlite_db(df, db_path):
+    # Connect to the SQLite database
+    conn = sqlite3.connect(db_path)
+    cur = conn.cursor()
+
+    for _, row in df.iterrows():
+        # Convert timestamp to string in 'YYYY-MM-DD HH:MM:SS.SSS' format
+        timestamp = row['timestamp'].strftime('%Y-%m-%d %H:%M:%S.%f')
+        price = row['PricePredict [c/kWh]']
+
+        # Check if a record with the same timestamp already exists
+        cur.execute("SELECT COUNT(*) FROM prediction WHERE timestamp=?", (timestamp,))
+        record_exists = cur.fetchone()[0] > 0
+
+        if record_exists:
+            # Update the record with the new price
+            cur.execute("UPDATE prediction SET 'PricePredict [c/kWh]'=? WHERE timestamp=?", (price, timestamp))
+        else:
+            # Insert a new record with the timestamp and price, and default values for all other fields
+            cur.execute("INSERT INTO prediction (timestamp, 'PricePredict [c/kWh]') VALUES (?, ?)", (timestamp, price))
+
+    # Commit the changes and close the connection
+    conn.commit()
+    conn.close()
+
+
 def push_updates_to_github(repo_path, file_paths, commit_message):
     try:
         repo = git.Repo(repo_path)
@@ -281,7 +312,7 @@ def save_daily_averages_to_json(df, deploy_folder_path, file_name='averages.json
 
 # Main execution starts here
 
-wind_power_data = read_wind_power_data(wind_power_prediction_path)
+wind_power_data = read_wind_power_data(os.path.join(data_folder_path, wind_power_prediction))
 weather_data = fetch_weather_data(location, api_key)
 features_df = preprocess_data(weather_data, wind_power_data, wind_power_max_capacity)
 predictions_df = predict_prices(features_df, rf_model_path)
@@ -302,24 +333,5 @@ daily_averages = save_daily_averages_to_json(predictions_df, deploy_folder_path)
 
 averages_json_path = 'averages.json'  # The relative path within the repository
 files_to_push = [predictions_path, averages_json_path]
-
-try:
-    # Check if 'timestamp' column exists
-    if 'timestamp' in predictions_df.columns and 'timestamp' in daily_averages.columns:
-        # Save new unique time stamps and values to SQLite databases
-        save_to_sqlite_db(predictions_df[['timestamp', 'PricePredict [c/kWh]']], 'prediction')
-        save_to_sqlite_db(daily_averages[['timestamp', 'PricePredict [c/kWh]']], 'averages')
-        print("Data saved to SQLite databases.")
-    else:
-        print("'timestamp' column not found in the DataFrames.")
-except Exception as e:
-    print("Error occurred while saving data to SQLite databases: ", str(e))
-
-try:
-    push_updates_to_github(repo_path, files_to_push, commit_message)
-    print("Data pushed to GitHub.")
-except Exception as e:
-    print("Error occurred while pushing data to GitHub: ", str(e))
-
 
 print("Script execution completed.")
