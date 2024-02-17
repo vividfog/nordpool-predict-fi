@@ -21,6 +21,7 @@ csv_file_path = os.getenv('CSV_FILE_PATH') or "CSV_FILE_PATH not set in environm
 gist_id = os.getenv('GIST_ID') or "GIST_ID not set in environment"
 token = os.getenv('TOKEN') or "TOKEN not set in environment"
 deploy_folder_path = os.getenv('DEPLOY_FOLDER_PATH') or "DEPLOY_FOLDER_PATH not set in environment"
+cache_folder_path = os.getenv('CACHE_FOLDER_PATH') or "CACHE_FOLDER_PATH not set in environment"
 repo_path = os.getenv('REPO_PATH') or "REPO_PATH not set in environment"
 predictions_path = os.getenv('PREDICTIONS_PATH') or "PREDICTIONS_PATH not set in environment"
 commit_message = os.getenv('COMMIT_MESSAGE') or "COMMIT_MESSAGE not set in environment"
@@ -32,7 +33,7 @@ except TypeError:
 
 def save_to_sqlite_db(df, db_name):
     try:
-        with sqlite3.connect(f'cache/{db_name}.db') as conn:
+        with sqlite3.connect(f'{cache_folder_path}/{db_name}.db') as conn:
             df.to_sql(db_name, conn, if_exists='append')
         print(f"Data saved to {db_name} database.")
     except Exception as e:
