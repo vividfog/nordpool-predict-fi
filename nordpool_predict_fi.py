@@ -7,23 +7,36 @@ import json
 from datetime import datetime
 import git
 import os
+from dotenv import load_dotenv
+import sqlite3
 
-# Configuration and Secrets
-location = "pirkkala airport"
-api_key = "77MKszgZQMSzl81qSbEfE2gqdqK1PTTZ"
-rf_model_path = 'electricity_price_rf_model_windpower.joblib'
-lr_model_path = 'linear_regression_scaling_model.joblib'
-csv_file_path = '5_day_price_predictions.csv'
-gist_id = '18970d60ce47a98d6323137c3c581eea'  # Gist ID to update
-token = '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'  # GitHub token
-deploy_folder_path = '/Users/ph/work.local/autogen-projects/electricity-price/deploy'
-repo_path = '/Users/ph/work.local/autogen-projects/electricity-price/deploy'
-predictions_path = 'prediction.json'  # This is relative to the repo_path
-commit_message = 'Update prediction.json with new data'
-wind_power_prediction_path = './wind_power/foreca_wind_power_prediction.json'
-wind_power_max_capacity = 6932  # MW
+load_dotenv('.env.local')  # take environment variables from .env.local.
 
-# Define functions here
+# Configuration and secrets
+location = os.getenv('LOCATION') or "LOCATION not set in environment"
+api_key = os.getenv('API_KEY') or "API_KEY not set in environment"
+rf_model_path = os.getenv('RF_MODEL_PATH') or "RF_MODEL_PATH not set in environment"
+lr_model_path = os.getenv('LR_MODEL_PATH') or "LR_MODEL_PATH not set in environment"
+csv_file_path = os.getenv('CSV_FILE_PATH') or "CSV_FILE_PATH not set in environment"
+gist_id = os.getenv('GIST_ID') or "GIST_ID not set in environment"
+token = os.getenv('TOKEN') or "TOKEN not set in environment"
+deploy_folder_path = os.getenv('DEPLOY_FOLDER_PATH') or "DEPLOY_FOLDER_PATH not set in environment"
+repo_path = os.getenv('REPO_PATH') or "REPO_PATH not set in environment"
+predictions_path = os.getenv('PREDICTIONS_PATH') or "PREDICTIONS_PATH not set in environment"
+commit_message = os.getenv('COMMIT_MESSAGE') or "COMMIT_MESSAGE not set in environment"
+wind_power_prediction_path = os.getenv('WIND_POWER_PREDICTION_PATH') or "WIND_POWER_PREDICTION_PATH not set in environment"
+try:
+    wind_power_max_capacity = int(os.getenv('WIND_POWER_MAX_CAPACITY'))
+except TypeError:
+    wind_power_max_capacity = "WIND_POWER_MAX_CAPACITY not set or not a number in environment"
+
+def save_to_sqlite_db(df, db_name):
+    try:
+        with sqlite3.connect(f'cache/{db_name}.db') as conn:
+            df.to_sql(db_name, conn, if_exists='append')
+        print(f"Data saved to {db_name} database.")
+    except Exception as e:
+        print(f"Error occurred while saving data to {db_name} database: ", str(e))
 
 def read_wind_power_data(filepath):
     with open(filepath, 'r') as file:
@@ -181,7 +194,9 @@ def convert_csv_to_json(csv_file_path):
 
     # Convert data to JSON format
     json_data = json.dumps(apex_data)
-    return json_data
+    
+    # Return both the JSON data and the modified dataframe
+    return json_data, df
 
 def save_json_to_deploy_folder(json_data, deploy_folder_path, file_name='prediction.json'):
     full_path = f"{deploy_folder_path}/{file_name}"
@@ -231,6 +246,9 @@ def save_daily_averages_to_json(df, deploy_folder_path, file_name='averages.json
         f.write(json_data)
     print(f"Daily averages saved to {json_path}")
 
+    # Return the daily_averages dataframe
+    return daily_averages
+
 
 # Main execution starts here
 
@@ -248,13 +266,31 @@ predictions_df.reset_index(inplace=True)
 predictions_df.to_csv(csv_file_path, index=False)
 
 # Convert the CSV to JSON and update the gist
-json_data = convert_csv_to_json(csv_file_path)
+json_data, predictions_df = convert_csv_to_json(csv_file_path)
 save_json_to_deploy_folder(json_data, deploy_folder_path)
 
-save_daily_averages_to_json(predictions_df, deploy_folder_path)
+daily_averages = save_daily_averages_to_json(predictions_df, deploy_folder_path)
+
 averages_json_path = 'averages.json'  # The relative path within the repository
 files_to_push = [predictions_path, averages_json_path]
 
-push_updates_to_github(repo_path, files_to_push, commit_message)
+try:
+    # Check if 'timestamp' column exists
+    if 'timestamp' in predictions_df.columns and 'timestamp' in daily_averages.columns:
+        # Save new unique time stamps and values to SQLite databases
+        save_to_sqlite_db(predictions_df[['timestamp', 'PricePredict [c/kWh]']], 'prediction')
+        save_to_sqlite_db(daily_averages[['timestamp', 'PricePredict [c/kWh]']], 'averages')
+        print("Data saved to SQLite databases.")
+    else:
+        print("'timestamp' column not found in the DataFrames.")
+except Exception as e:
+    print("Error occurred while saving data to SQLite databases: ", str(e))
+
+try:
+    push_updates_to_github(repo_path, files_to_push, commit_message)
+    print("Data pushed to GitHub.")
+except Exception as e:
+    print("Error occurred while pushing data to GitHub: ", str(e))
+
 
 print("Script execution completed.")
