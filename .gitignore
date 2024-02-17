@@ -1,5 +1,7 @@
 venv/
-.DS_Store
+**/.DS_Store
 archive/
 wind_power/archive/
 .env.local
+**/__pycache__/
+png/
