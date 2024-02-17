@@ -9,6 +9,7 @@ import git
 import os
 from dotenv import load_dotenv
 import sqlite3
+import argparse
 
 load_dotenv('.env.local')  # take environment variables from .env.local.
 
@@ -30,6 +31,33 @@ try:
     wind_power_max_capacity = int(os.getenv('WIND_POWER_MAX_CAPACITY'))
 except TypeError:
     wind_power_max_capacity = "WIND_POWER_MAX_CAPACITY not set or not a number in environment"
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--foreca', action='store_true', help='Update the Foreca wind power prediction file')
+parser.add_argument('--spot', action='store_true', help='Update the spot prices to database')
+parser.add_argument('--dump', action='store_true', help='Dump the SQLite database to CSV format')
+args = parser.parse_args()
+
+if args.foreca:
+    from util.foreca import foreca_wind_power_prediction
+    print("Updating Foreca wind power prediction:", wind_power_prediction_path)
+    foreca_wind_power_prediction(
+        wind_power_prediction_path=wind_power_prediction_path,
+        cache_folder_path=cache_folder_path
+        )
+    exit()
+
+if args.spot:
+    from util.spot import update_spot_prices_to_db
+    print("Updating spot prices to database")
+    update_spot_prices_to_db(cache_folder_path)
+    exit()
+
+if args.dump:
+    from util.dump import dump_sqlite_db
+    print("Dumping SQLite database to CSV format")
+    dump_sqlite_db(cache_folder_path)
+    exit()
 
 def save_to_sqlite_db(df, db_name):
     try:
