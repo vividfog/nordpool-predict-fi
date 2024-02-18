@@ -27,7 +27,7 @@ def foreca_wind_power_prediction(wind_power_prediction, data_folder_path):
 
     chrome_options = Options()
     chrome_options.add_argument("--headless=new")  # Run Chrome in headless mode
-
+      
     print("Setting up the browser driver")
     driver = webdriver.Chrome(options=chrome_options)
 

@@ -1,87 +1,15 @@
 [
     {
-        "datetime": "2024-02-17T13:00:00Z",
-        "wind_prediction_MWh": 5410.169491525424
-    },
-    {
-        "datetime": "2024-02-17T14:00:00Z",
-        "wind_prediction_MWh": 5600.0
-    },
-    {
-        "datetime": "2024-02-17T15:00:00Z",
-        "wind_prediction_MWh": 5789.830508474576
-    },
-    {
-        "datetime": "2024-02-17T16:00:00Z",
-        "wind_prediction_MWh": 5908.474576271186
-    },
-    {
-        "datetime": "2024-02-17T17:00:00Z",
-        "wind_prediction_MWh": 5789.830508474576
-    },
-    {
-        "datetime": "2024-02-17T18:00:00Z",
-        "wind_prediction_MWh": 5789.830508474576
-    },
-    {
-        "datetime": "2024-02-17T19:00:00Z",
-        "wind_prediction_MWh": 5789.830508474576
-    },
-    {
-        "datetime": "2024-02-17T20:00:00Z",
-        "wind_prediction_MWh": 5908.474576271186
-    },
-    {
-        "datetime": "2024-02-17T21:00:00Z",
-        "wind_prediction_MWh": 5908.474576271186
-    },
-    {
-        "datetime": "2024-02-17T22:00:00Z",
-        "wind_prediction_MWh": 5694.9152542372885
-    },
-    {
-        "datetime": "2024-02-17T23:00:00Z",
-        "wind_prediction_MWh": 5505.0847457627115
-    },
-    {
-        "datetime": "2024-02-18T00:00:00Z",
-        "wind_prediction_MWh": 5291.525423728814
-    },
-    {
-        "datetime": "2024-02-18T01:00:00Z",
-        "wind_prediction_MWh": 5101.6949152542375
-    },
-    {
-        "datetime": "2024-02-18T02:00:00Z",
-        "wind_prediction_MWh": 4793.22033898305
-    },
-    {
-        "datetime": "2024-02-18T03:00:00Z",
-        "wind_prediction_MWh": 4508.474576271186
-    },
-    {
-        "datetime": "2024-02-18T04:00:00Z",
-        "wind_prediction_MWh": 4200.0
-    },
-    {
-        "datetime": "2024-02-18T05:00:00Z",
-        "wind_prediction_MWh": 4010.169491525424
-    },
-    {
-        "datetime": "2024-02-18T06:00:00Z",
-        "wind_prediction_MWh": 3796.6101694915255
-    },
-    {
         "datetime": "2024-02-18T07:00:00Z",
-        "wind_prediction_MWh": 3298.3050847457625
+        "wind_prediction_MWh": 2800.0
     },
     {
         "datetime": "2024-02-18T08:00:00Z",
-        "wind_prediction_MWh": 2491.5254237288136
+        "wind_prediction_MWh": 2301.6949152542375
     },
     {
         "datetime": "2024-02-18T09:00:00Z",
-        "wind_prediction_MWh": 2396.610169491525
+        "wind_prediction_MWh": 2206.779661016949
     },
     {
         "datetime": "2024-02-18T10:00:00Z",
@@ -89,15 +17,15 @@
     },
     {
         "datetime": "2024-02-18T11:00:00Z",
-        "wind_prediction_MWh": 593.2203389830511
+        "wind_prediction_MWh": 688.1355932203387
     },
     {
         "datetime": "2024-02-18T12:00:00Z",
-        "wind_prediction_MWh": 593.2203389830511
+        "wind_prediction_MWh": 688.1355932203387
     },
     {
         "datetime": "2024-02-18T13:00:00Z",
-        "wind_prediction_MWh": 806.7796610169489
+        "wind_prediction_MWh": 901.6949152542375
     },
     {
         "datetime": "2024-02-18T14:00:00Z",
@@ -105,95 +33,95 @@
     },
     {
         "datetime": "2024-02-18T15:00:00Z",
-        "wind_prediction_MWh": 2610.169491525424
-    },
-    {
-        "datetime": "2024-02-18T16:00:00Z",
-        "wind_prediction_MWh": 2989.830508474576
-    },
-    {
-        "datetime": "2024-02-18T17:00:00Z",
-        "wind_prediction_MWh": 3108.4745762711864
-    },
-    {
-        "datetime": "2024-02-18T18:00:00Z",
-        "wind_prediction_MWh": 2989.830508474576
-    },
-    {
-        "datetime": "2024-02-18T19:00:00Z",
-        "wind_prediction_MWh": 2989.830508474576
-    },
-    {
-        "datetime": "2024-02-18T20:00:00Z",
-        "wind_prediction_MWh": 2989.830508474576
-    },
-    {
-        "datetime": "2024-02-18T21:00:00Z",
-        "wind_prediction_MWh": 2989.830508474576
-    },
-    {
-        "datetime": "2024-02-18T22:00:00Z",
-        "wind_prediction_MWh": 2989.830508474576
-    },
-    {
-        "datetime": "2024-02-18T23:00:00Z",
-        "wind_prediction_MWh": 2989.830508474576
-    },
-    {
-        "datetime": "2024-02-19T00:00:00Z",
-        "wind_prediction_MWh": 2800.0
-    },
-    {
-        "datetime": "2024-02-19T01:00:00Z",
-        "wind_prediction_MWh": 2610.169491525424
-    },
-    {
-        "datetime": "2024-02-19T02:00:00Z",
-        "wind_prediction_MWh": 2610.169491525424
-    },
-    {
-        "datetime": "2024-02-19T03:00:00Z",
         "wind_prediction_MWh": 2396.610169491525
     },
     {
-        "datetime": "2024-02-19T04:00:00Z",
+        "datetime": "2024-02-18T16:00:00Z",
+        "wind_prediction_MWh": 2705.0847457627115
+    },
+    {
+        "datetime": "2024-02-18T17:00:00Z",
+        "wind_prediction_MWh": 2894.9152542372876
+    },
+    {
+        "datetime": "2024-02-18T18:00:00Z",
+        "wind_prediction_MWh": 2894.9152542372876
+    },
+    {
+        "datetime": "2024-02-18T19:00:00Z",
+        "wind_prediction_MWh": 2800.0
+    },
+    {
+        "datetime": "2024-02-18T20:00:00Z",
+        "wind_prediction_MWh": 2800.0
+    },
+    {
+        "datetime": "2024-02-18T21:00:00Z",
+        "wind_prediction_MWh": 2705.0847457627115
+    },
+    {
+        "datetime": "2024-02-18T22:00:00Z",
+        "wind_prediction_MWh": 2610.169491525424
+    },
+    {
+        "datetime": "2024-02-18T23:00:00Z",
+        "wind_prediction_MWh": 2396.610169491525
+    },
+    {
+        "datetime": "2024-02-19T00:00:00Z",
+        "wind_prediction_MWh": 2301.6949152542375
+    },
+    {
+        "datetime": "2024-02-19T01:00:00Z",
         "wind_prediction_MWh": 2206.779661016949
     },
     {
-        "datetime": "2024-02-19T05:00:00Z",
+        "datetime": "2024-02-19T02:00:00Z",
         "wind_prediction_MWh": 2088.1355932203387
     },
     {
-        "datetime": "2024-02-19T06:00:00Z",
+        "datetime": "2024-02-19T03:00:00Z",
         "wind_prediction_MWh": 1803.389830508474
     },
     {
+        "datetime": "2024-02-19T04:00:00Z",
+        "wind_prediction_MWh": 1589.8305084745762
+    },
+    {
+        "datetime": "2024-02-19T05:00:00Z",
+        "wind_prediction_MWh": 1494.9152542372876
+    },
+    {
+        "datetime": "2024-02-19T06:00:00Z",
+        "wind_prediction_MWh": 1305.0847457627115
+    },
+    {
         "datetime": "2024-02-19T07:00:00Z",
-        "wind_prediction_MWh": 1708.4745762711864
+        "wind_prediction_MWh": 1210.1694915254238
     },
     {
         "datetime": "2024-02-19T08:00:00Z",
-        "wind_prediction_MWh": 1400.0
+        "wind_prediction_MWh": 901.6949152542375
     },
     {
         "datetime": "2024-02-19T09:00:00Z",
-        "wind_prediction_MWh": 806.7796610169489
+        "wind_prediction_MWh": 593.2203389830511
     },
     {
         "datetime": "2024-02-19T10:00:00Z",
-        "wind_prediction_MWh": 688.1355932203387
+        "wind_prediction_MWh": 498.30508474576254
     },
     {
         "datetime": "2024-02-19T11:00:00Z",
-        "wind_prediction_MWh": 593.2203389830511
+        "wind_prediction_MWh": 498.30508474576254
     },
     {
         "datetime": "2024-02-19T12:00:00Z",
-        "wind_prediction_MWh": 593.2203389830511
+        "wind_prediction_MWh": 403.389830508474
     },
     {
         "datetime": "2024-02-19T13:00:00Z",
-        "wind_prediction_MWh": 593.2203389830511
+        "wind_prediction_MWh": 498.30508474576254
     },
     {
         "datetime": "2024-02-19T14:00:00Z",
@@ -205,7 +133,7 @@
     },
     {
         "datetime": "2024-02-19T16:00:00Z",
-        "wind_prediction_MWh": 996.6101694915251
+        "wind_prediction_MWh": 1091.5254237288136
     },
     {
         "datetime": "2024-02-19T17:00:00Z",
@@ -217,47 +145,47 @@
     },
     {
         "datetime": "2024-02-19T19:00:00Z",
-        "wind_prediction_MWh": 1494.9152542372876
+        "wind_prediction_MWh": 1708.4745762711864
     },
     {
         "datetime": "2024-02-19T20:00:00Z",
-        "wind_prediction_MWh": 1708.4745762711864
+        "wind_prediction_MWh": 1898.3050847457625
     },
     {
         "datetime": "2024-02-19T21:00:00Z",
-        "wind_prediction_MWh": 1803.389830508474
+        "wind_prediction_MWh": 2088.1355932203387
     },
     {
         "datetime": "2024-02-19T22:00:00Z",
-        "wind_prediction_MWh": 1898.3050847457625
+        "wind_prediction_MWh": 2206.779661016949
     },
     {
         "datetime": "2024-02-19T23:00:00Z",
-        "wind_prediction_MWh": 1898.3050847457625
+        "wind_prediction_MWh": 2206.779661016949
     },
     {
         "datetime": "2024-02-20T00:00:00Z",
-        "wind_prediction_MWh": 1898.3050847457625
+        "wind_prediction_MWh": 2088.1355932203387
     },
     {
         "datetime": "2024-02-20T01:00:00Z",
-        "wind_prediction_MWh": 1803.389830508474
+        "wind_prediction_MWh": 1993.220338983051
     },
     {
         "datetime": "2024-02-20T02:00:00Z",
-        "wind_prediction_MWh": 1803.389830508474
+        "wind_prediction_MWh": 1898.3050847457625
     },
     {
         "datetime": "2024-02-20T03:00:00Z",
-        "wind_prediction_MWh": 1708.4745762711864
-    },
-    {
-        "datetime": "2024-02-20T04:00:00Z",
         "wind_prediction_MWh": 1589.8305084745762
     },
     {
-        "datetime": "2024-02-20T05:00:00Z",
+        "datetime": "2024-02-20T04:00:00Z",
         "wind_prediction_MWh": 1400.0
+    },
+    {
+        "datetime": "2024-02-20T05:00:00Z",
+        "wind_prediction_MWh": 1305.0847457627115
     },
     {
         "datetime": "2024-02-20T06:00:00Z",
@@ -265,19 +193,19 @@
     },
     {
         "datetime": "2024-02-20T07:00:00Z",
-        "wind_prediction_MWh": 1091.5254237288136
+        "wind_prediction_MWh": 901.6949152542375
     },
     {
         "datetime": "2024-02-20T08:00:00Z",
-        "wind_prediction_MWh": 806.7796610169489
+        "wind_prediction_MWh": 593.2203389830511
     },
     {
         "datetime": "2024-02-20T09:00:00Z",
-        "wind_prediction_MWh": 498.30508474576254
+        "wind_prediction_MWh": 308.4745762711864
     },
     {
         "datetime": "2024-02-20T10:00:00Z",
-        "wind_prediction_MWh": 308.4745762711864
+        "wind_prediction_MWh": 189.83050847457616
     },
     {
         "datetime": "2024-02-20T11:00:00Z",
@@ -285,11 +213,11 @@
     },
     {
         "datetime": "2024-02-20T12:00:00Z",
-        "wind_prediction_MWh": 189.83050847457616
+        "wind_prediction_MWh": 94.91525423728763
     },
     {
         "datetime": "2024-02-20T13:00:00Z",
-        "wind_prediction_MWh": 189.83050847457616
+        "wind_prediction_MWh": 94.91525423728763
     },
     {
         "datetime": "2024-02-20T14:00:00Z",
@@ -305,11 +233,11 @@
     },
     {
         "datetime": "2024-02-20T17:00:00Z",
-        "wind_prediction_MWh": 308.4745762711864
+        "wind_prediction_MWh": 403.389830508474
     },
     {
         "datetime": "2024-02-20T18:00:00Z",
-        "wind_prediction_MWh": 403.389830508474
+        "wind_prediction_MWh": 498.30508474576254
     },
     {
         "datetime": "2024-02-20T19:00:00Z",
@@ -317,31 +245,31 @@
     },
     {
         "datetime": "2024-02-20T20:00:00Z",
-        "wind_prediction_MWh": 593.2203389830511
+        "wind_prediction_MWh": 688.1355932203387
     },
     {
         "datetime": "2024-02-20T21:00:00Z",
-        "wind_prediction_MWh": 593.2203389830511
-    },
-    {
-        "datetime": "2024-02-20T22:00:00Z",
         "wind_prediction_MWh": 806.7796610169489
     },
     {
-        "datetime": "2024-02-20T23:00:00Z",
-        "wind_prediction_MWh": 901.6949152542375
-    },
-    {
-        "datetime": "2024-02-21T00:00:00Z",
+        "datetime": "2024-02-20T22:00:00Z",
         "wind_prediction_MWh": 996.6101694915251
     },
     {
+        "datetime": "2024-02-20T23:00:00Z",
+        "wind_prediction_MWh": 1091.5254237288136
+    },
+    {
+        "datetime": "2024-02-21T00:00:00Z",
+        "wind_prediction_MWh": 1305.0847457627115
+    },
+    {
         "datetime": "2024-02-21T01:00:00Z",
-        "wind_prediction_MWh": 1210.1694915254238
+        "wind_prediction_MWh": 1400.0
     },
     {
         "datetime": "2024-02-21T02:00:00Z",
-        "wind_prediction_MWh": 1494.9152542372876
+        "wind_prediction_MWh": 1589.8305084745762
     },
     {
         "datetime": "2024-02-21T03:00:00Z",
@@ -349,614 +277,662 @@
     },
     {
         "datetime": "2024-02-21T04:00:00Z",
-        "wind_prediction_MWh": 1993.220338983051
+        "wind_prediction_MWh": 1898.3050847457625
     },
     {
         "datetime": "2024-02-21T05:00:00Z",
-        "wind_prediction_MWh": 1993.220338983051
+        "wind_prediction_MWh": 2206.779661016949
     },
     {
         "datetime": "2024-02-21T06:00:00Z",
-        "wind_prediction_MWh": 2088.1355932203387
-    },
-    {
-        "datetime": "2024-02-21T07:00:00Z",
-        "wind_prediction_MWh": 1961.5819209039555
-    },
-    {
-        "datetime": "2024-02-21T08:00:00Z",
-        "wind_prediction_MWh": 1835.0282485875696
-    },
-    {
-        "datetime": "2024-02-21T09:00:00Z",
-        "wind_prediction_MWh": 1708.4745762711864
-    },
-    {
-        "datetime": "2024-02-21T10:00:00Z",
-        "wind_prediction_MWh": 1605.6497175141249
-    },
-    {
-        "datetime": "2024-02-21T11:00:00Z",
-        "wind_prediction_MWh": 1502.8248587570615
-    },
-    {
-        "datetime": "2024-02-21T12:00:00Z",
-        "wind_prediction_MWh": 1400.0
-    },
-    {
-        "datetime": "2024-02-21T13:00:00Z",
-        "wind_prediction_MWh": 1431.6384180790956
-    },
-    {
-        "datetime": "2024-02-21T14:00:00Z",
-        "wind_prediction_MWh": 1463.276836158192
-    },
-    {
-        "datetime": "2024-02-21T15:00:00Z",
-        "wind_prediction_MWh": 1494.9152542372876
-    },
-    {
-        "datetime": "2024-02-21T16:00:00Z",
-        "wind_prediction_MWh": 1827.1186440677966
-    },
-    {
-        "datetime": "2024-02-21T17:00:00Z",
-        "wind_prediction_MWh": 2159.3220338983047
-    },
-    {
-        "datetime": "2024-02-21T18:00:00Z",
-        "wind_prediction_MWh": 2491.5254237288136
-    },
-    {
-        "datetime": "2024-02-21T19:00:00Z",
-        "wind_prediction_MWh": 2531.073446327683
-    },
-    {
-        "datetime": "2024-02-21T20:00:00Z",
-        "wind_prediction_MWh": 2570.6214689265535
-    },
-    {
-        "datetime": "2024-02-21T21:00:00Z",
-        "wind_prediction_MWh": 2610.169491525424
-    },
-    {
-        "datetime": "2024-02-21T22:00:00Z",
-        "wind_prediction_MWh": 2610.169491525424
-    },
-    {
-        "datetime": "2024-02-21T23:00:00Z",
-        "wind_prediction_MWh": 2610.169491525424
-    },
-    {
-        "datetime": "2024-02-22T00:00:00Z",
-        "wind_prediction_MWh": 2610.169491525424
-    },
-    {
-        "datetime": "2024-02-22T01:00:00Z",
-        "wind_prediction_MWh": 2570.6214689265535
-    },
-    {
-        "datetime": "2024-02-22T02:00:00Z",
-        "wind_prediction_MWh": 2531.073446327683
-    },
-    {
-        "datetime": "2024-02-22T03:00:00Z",
-        "wind_prediction_MWh": 2491.5254237288136
-    },
-    {
-        "datetime": "2024-02-22T04:00:00Z",
-        "wind_prediction_MWh": 2491.5254237288136
-    },
-    {
-        "datetime": "2024-02-22T05:00:00Z",
-        "wind_prediction_MWh": 2491.5254237288136
-    },
-    {
-        "datetime": "2024-02-22T06:00:00Z",
-        "wind_prediction_MWh": 2491.5254237288136
-    },
-    {
-        "datetime": "2024-02-22T07:00:00Z",
-        "wind_prediction_MWh": 2396.610169491525
-    },
-    {
-        "datetime": "2024-02-22T08:00:00Z",
         "wind_prediction_MWh": 2301.6949152542375
     },
     {
-        "datetime": "2024-02-22T09:00:00Z",
-        "wind_prediction_MWh": 2206.779661016949
+        "datetime": "2024-02-21T07:00:00Z",
+        "wind_prediction_MWh": 2301.6949152542375
     },
     {
-        "datetime": "2024-02-22T10:00:00Z",
-        "wind_prediction_MWh": 2404.519774011299
+        "datetime": "2024-02-21T08:00:00Z",
+        "wind_prediction_MWh": 2088.1355932203387
     },
     {
-        "datetime": "2024-02-22T11:00:00Z",
-        "wind_prediction_MWh": 2602.259887005649
+        "datetime": "2024-02-21T09:00:00Z",
+        "wind_prediction_MWh": 1803.389830508474
     },
     {
-        "datetime": "2024-02-22T12:00:00Z",
-        "wind_prediction_MWh": 2800.0
+        "datetime": "2024-02-21T10:00:00Z",
+        "wind_prediction_MWh": 1589.8305084745762
     },
     {
-        "datetime": "2024-02-22T13:00:00Z",
-        "wind_prediction_MWh": 3068.9265536723165
+        "datetime": "2024-02-21T11:00:00Z",
+        "wind_prediction_MWh": 1589.8305084745762
     },
     {
-        "datetime": "2024-02-22T14:00:00Z",
-        "wind_prediction_MWh": 3337.8531073446325
+        "datetime": "2024-02-21T12:00:00Z",
+        "wind_prediction_MWh": 1708.4745762711864
     },
     {
-        "datetime": "2024-02-22T15:00:00Z",
-        "wind_prediction_MWh": 3606.779661016949
+        "datetime": "2024-02-21T13:00:00Z",
+        "wind_prediction_MWh": 1898.3050847457625
     },
     {
-        "datetime": "2024-02-22T16:00:00Z",
-        "wind_prediction_MWh": 3970.621468926554
+        "datetime": "2024-02-21T14:00:00Z",
+        "wind_prediction_MWh": 1803.389830508474
     },
     {
-        "datetime": "2024-02-22T17:00:00Z",
-        "wind_prediction_MWh": 4334.463276836158
+        "datetime": "2024-02-21T15:00:00Z",
+        "wind_prediction_MWh": 2396.610169491525
     },
     {
-        "datetime": "2024-02-22T18:00:00Z",
-        "wind_prediction_MWh": 4698.3050847457625
-    },
-    {
-        "datetime": "2024-02-22T19:00:00Z",
-        "wind_prediction_MWh": 4896.0451977401135
-    },
-    {
-        "datetime": "2024-02-22T20:00:00Z",
-        "wind_prediction_MWh": 5093.785310734463
-    },
-    {
-        "datetime": "2024-02-22T21:00:00Z",
-        "wind_prediction_MWh": 5291.525423728814
-    },
-    {
-        "datetime": "2024-02-22T22:00:00Z",
-        "wind_prediction_MWh": 5425.988700564972
-    },
-    {
-        "datetime": "2024-02-22T23:00:00Z",
-        "wind_prediction_MWh": 5560.45197740113
-    },
-    {
-        "datetime": "2024-02-23T00:00:00Z",
-        "wind_prediction_MWh": 5694.9152542372885
-    },
-    {
-        "datetime": "2024-02-23T01:00:00Z",
-        "wind_prediction_MWh": 5797.74011299435
-    },
-    {
-        "datetime": "2024-02-23T02:00:00Z",
-        "wind_prediction_MWh": 5900.5649717514125
-    },
-    {
-        "datetime": "2024-02-23T03:00:00Z",
-        "wind_prediction_MWh": 6003.389830508475
-    },
-    {
-        "datetime": "2024-02-23T04:00:00Z",
-        "wind_prediction_MWh": 6035.0282485875705
-    },
-    {
-        "datetime": "2024-02-23T05:00:00Z",
-        "wind_prediction_MWh": 6066.666666666667
-    },
-    {
-        "datetime": "2024-02-23T06:00:00Z",
-        "wind_prediction_MWh": 6098.3050847457625
-    },
-    {
-        "datetime": "2024-02-23T07:00:00Z",
-        "wind_prediction_MWh": 6066.666666666667
-    },
-    {
-        "datetime": "2024-02-23T08:00:00Z",
-        "wind_prediction_MWh": 6035.0282485875705
-    },
-    {
-        "datetime": "2024-02-23T09:00:00Z",
-        "wind_prediction_MWh": 6003.389830508475
-    },
-    {
-        "datetime": "2024-02-23T10:00:00Z",
-        "wind_prediction_MWh": 5932.203389830509
-    },
-    {
-        "datetime": "2024-02-23T11:00:00Z",
-        "wind_prediction_MWh": 5861.016949152542
-    },
-    {
-        "datetime": "2024-02-23T12:00:00Z",
-        "wind_prediction_MWh": 5789.830508474576
-    },
-    {
-        "datetime": "2024-02-23T13:00:00Z",
-        "wind_prediction_MWh": 5857.062146892655
-    },
-    {
-        "datetime": "2024-02-23T14:00:00Z",
-        "wind_prediction_MWh": 5924.293785310734
-    },
-    {
-        "datetime": "2024-02-23T15:00:00Z",
-        "wind_prediction_MWh": 5991.525423728814
-    },
-    {
-        "datetime": "2024-02-23T16:00:00Z",
-        "wind_prediction_MWh": 6058.757062146892
-    },
-    {
-        "datetime": "2024-02-23T17:00:00Z",
-        "wind_prediction_MWh": 6125.988700564972
-    },
-    {
-        "datetime": "2024-02-23T18:00:00Z",
-        "wind_prediction_MWh": 6193.220338983051
-    },
-    {
-        "datetime": "2024-02-23T19:00:00Z",
-        "wind_prediction_MWh": 6193.220338983051
-    },
-    {
-        "datetime": "2024-02-23T20:00:00Z",
-        "wind_prediction_MWh": 6193.220338983051
-    },
-    {
-        "datetime": "2024-02-23T21:00:00Z",
-        "wind_prediction_MWh": 6193.220338983051
-    },
-    {
-        "datetime": "2024-02-23T22:00:00Z",
-        "wind_prediction_MWh": 6193.220338983051
-    },
-    {
-        "datetime": "2024-02-23T23:00:00Z",
-        "wind_prediction_MWh": 6193.220338983051
-    },
-    {
-        "datetime": "2024-02-24T00:00:00Z",
-        "wind_prediction_MWh": 6193.220338983051
-    },
-    {
-        "datetime": "2024-02-24T01:00:00Z",
-        "wind_prediction_MWh": 6145.762711864407
-    },
-    {
-        "datetime": "2024-02-24T02:00:00Z",
-        "wind_prediction_MWh": 6098.3050847457625
-    },
-    {
-        "datetime": "2024-02-24T03:00:00Z",
-        "wind_prediction_MWh": 6050.847457627118
-    },
-    {
-        "datetime": "2024-02-24T04:00:00Z",
-        "wind_prediction_MWh": 6003.389830508475
-    },
-    {
-        "datetime": "2024-02-24T05:00:00Z",
-        "wind_prediction_MWh": 5955.932203389831
-    },
-    {
-        "datetime": "2024-02-24T06:00:00Z",
-        "wind_prediction_MWh": 5908.474576271186
-    },
-    {
-        "datetime": "2024-02-24T07:00:00Z",
-        "wind_prediction_MWh": 5872.881355932203
-    },
-    {
-        "datetime": "2024-02-24T08:00:00Z",
-        "wind_prediction_MWh": 5837.28813559322
-    },
-    {
-        "datetime": "2024-02-24T09:00:00Z",
-        "wind_prediction_MWh": 5801.6949152542375
-    },
-    {
-        "datetime": "2024-02-24T10:00:00Z",
-        "wind_prediction_MWh": 5766.1016949152545
-    },
-    {
-        "datetime": "2024-02-24T11:00:00Z",
-        "wind_prediction_MWh": 5730.508474576271
-    },
-    {
-        "datetime": "2024-02-24T12:00:00Z",
-        "wind_prediction_MWh": 5694.9152542372885
-    },
-    {
-        "datetime": "2024-02-24T13:00:00Z",
-        "wind_prediction_MWh": 5461.581920903955
-    },
-    {
-        "datetime": "2024-02-24T14:00:00Z",
-        "wind_prediction_MWh": 5228.248587570622
-    },
-    {
-        "datetime": "2024-02-24T15:00:00Z",
-        "wind_prediction_MWh": 4994.9152542372885
-    },
-    {
-        "datetime": "2024-02-24T16:00:00Z",
-        "wind_prediction_MWh": 4761.581920903955
-    },
-    {
-        "datetime": "2024-02-24T17:00:00Z",
-        "wind_prediction_MWh": 4528.248587570622
-    },
-    {
-        "datetime": "2024-02-24T18:00:00Z",
-        "wind_prediction_MWh": 4294.9152542372885
-    },
-    {
-        "datetime": "2024-02-24T19:00:00Z",
-        "wind_prediction_MWh": 4160.45197740113
-    },
-    {
-        "datetime": "2024-02-24T20:00:00Z",
-        "wind_prediction_MWh": 4025.9887005649716
-    },
-    {
-        "datetime": "2024-02-24T21:00:00Z",
-        "wind_prediction_MWh": 3891.5254237288136
-    },
-    {
-        "datetime": "2024-02-24T22:00:00Z",
-        "wind_prediction_MWh": 3757.0621468926556
-    },
-    {
-        "datetime": "2024-02-24T23:00:00Z",
-        "wind_prediction_MWh": 3622.5988700564967
-    },
-    {
-        "datetime": "2024-02-25T00:00:00Z",
-        "wind_prediction_MWh": 3488.1355932203387
-    },
-    {
-        "datetime": "2024-02-25T01:00:00Z",
-        "wind_prediction_MWh": 3575.141242937853
-    },
-    {
-        "datetime": "2024-02-25T02:00:00Z",
-        "wind_prediction_MWh": 3662.1468926553675
-    },
-    {
-        "datetime": "2024-02-25T03:00:00Z",
-        "wind_prediction_MWh": 3749.1525423728813
-    },
-    {
-        "datetime": "2024-02-25T04:00:00Z",
-        "wind_prediction_MWh": 3836.158192090395
-    },
-    {
-        "datetime": "2024-02-25T05:00:00Z",
-        "wind_prediction_MWh": 3923.1638418079096
-    },
-    {
-        "datetime": "2024-02-25T06:00:00Z",
-        "wind_prediction_MWh": 4010.169491525424
-    },
-    {
-        "datetime": "2024-02-25T07:00:00Z",
-        "wind_prediction_MWh": 4010.169491525424
-    },
-    {
-        "datetime": "2024-02-25T08:00:00Z",
-        "wind_prediction_MWh": 4010.169491525424
-    },
-    {
-        "datetime": "2024-02-25T09:00:00Z",
-        "wind_prediction_MWh": 4010.169491525424
-    },
-    {
-        "datetime": "2024-02-25T10:00:00Z",
-        "wind_prediction_MWh": 4010.169491525424
-    },
-    {
-        "datetime": "2024-02-25T11:00:00Z",
-        "wind_prediction_MWh": 4010.169491525424
-    },
-    {
-        "datetime": "2024-02-25T12:00:00Z",
-        "wind_prediction_MWh": 4010.169491525424
-    },
-    {
-        "datetime": "2024-02-25T13:00:00Z",
-        "wind_prediction_MWh": 3859.887005649717
-    },
-    {
-        "datetime": "2024-02-25T14:00:00Z",
-        "wind_prediction_MWh": 3709.6045197740114
-    },
-    {
-        "datetime": "2024-02-25T15:00:00Z",
-        "wind_prediction_MWh": 3559.322033898305
-    },
-    {
-        "datetime": "2024-02-25T16:00:00Z",
-        "wind_prediction_MWh": 3409.0395480225984
-    },
-    {
-        "datetime": "2024-02-25T17:00:00Z",
-        "wind_prediction_MWh": 3258.7570621468926
-    },
-    {
-        "datetime": "2024-02-25T18:00:00Z",
+        "datetime": "2024-02-21T16:00:00Z",
         "wind_prediction_MWh": 3108.4745762711864
     },
     {
-        "datetime": "2024-02-25T19:00:00Z",
-        "wind_prediction_MWh": 2772.316384180791
-    },
-    {
-        "datetime": "2024-02-25T20:00:00Z",
-        "wind_prediction_MWh": 2436.1581920903955
-    },
-    {
-        "datetime": "2024-02-25T21:00:00Z",
-        "wind_prediction_MWh": 2100.0
-    },
-    {
-        "datetime": "2024-02-25T22:00:00Z",
-        "wind_prediction_MWh": 1763.8418079096036
-    },
-    {
-        "datetime": "2024-02-25T23:00:00Z",
-        "wind_prediction_MWh": 1427.683615819209
-    },
-    {
-        "datetime": "2024-02-26T00:00:00Z",
-        "wind_prediction_MWh": 1091.5254237288136
-    },
-    {
-        "datetime": "2024-02-26T01:00:00Z",
-        "wind_prediction_MWh": 1044.0677966101694
-    },
-    {
-        "datetime": "2024-02-26T02:00:00Z",
-        "wind_prediction_MWh": 996.6101694915251
-    },
-    {
-        "datetime": "2024-02-26T03:00:00Z",
-        "wind_prediction_MWh": 949.1525423728808
-    },
-    {
-        "datetime": "2024-02-26T04:00:00Z",
-        "wind_prediction_MWh": 901.6949152542375
-    },
-    {
-        "datetime": "2024-02-26T05:00:00Z",
-        "wind_prediction_MWh": 854.2372881355932
-    },
-    {
-        "datetime": "2024-02-26T06:00:00Z",
-        "wind_prediction_MWh": 806.7796610169489
-    },
-    {
-        "datetime": "2024-02-26T07:00:00Z",
-        "wind_prediction_MWh": 806.7796610169489
-    },
-    {
-        "datetime": "2024-02-26T08:00:00Z",
-        "wind_prediction_MWh": 806.7796610169489
-    },
-    {
-        "datetime": "2024-02-26T09:00:00Z",
-        "wind_prediction_MWh": 806.7796610169489
-    },
-    {
-        "datetime": "2024-02-26T10:00:00Z",
-        "wind_prediction_MWh": 806.7796610169489
-    },
-    {
-        "datetime": "2024-02-26T11:00:00Z",
-        "wind_prediction_MWh": 806.7796610169489
-    },
-    {
-        "datetime": "2024-02-26T12:00:00Z",
-        "wind_prediction_MWh": 806.7796610169489
-    },
-    {
-        "datetime": "2024-02-26T13:00:00Z",
-        "wind_prediction_MWh": 1273.446327683616
-    },
-    {
-        "datetime": "2024-02-26T14:00:00Z",
-        "wind_prediction_MWh": 1740.112994350282
-    },
-    {
-        "datetime": "2024-02-26T15:00:00Z",
-        "wind_prediction_MWh": 2206.779661016949
-    },
-    {
-        "datetime": "2024-02-26T16:00:00Z",
-        "wind_prediction_MWh": 2673.446327683616
-    },
-    {
-        "datetime": "2024-02-26T17:00:00Z",
-        "wind_prediction_MWh": 3140.112994350282
-    },
-    {
-        "datetime": "2024-02-26T18:00:00Z",
+        "datetime": "2024-02-21T17:00:00Z",
         "wind_prediction_MWh": 3606.779661016949
     },
     {
-        "datetime": "2024-02-26T19:00:00Z",
-        "wind_prediction_MWh": 3855.93220338983
+        "datetime": "2024-02-21T18:00:00Z",
+        "wind_prediction_MWh": 3891.5254237288136
     },
     {
-        "datetime": "2024-02-26T20:00:00Z",
+        "datetime": "2024-02-21T19:00:00Z",
         "wind_prediction_MWh": 4105.0847457627115
     },
     {
-        "datetime": "2024-02-26T21:00:00Z",
-        "wind_prediction_MWh": 4354.237288135593
+        "datetime": "2024-02-21T20:00:00Z",
+        "wind_prediction_MWh": 4200.0
     },
     {
-        "datetime": "2024-02-26T22:00:00Z",
-        "wind_prediction_MWh": 4603.389830508475
+        "datetime": "2024-02-21T21:00:00Z",
+        "wind_prediction_MWh": 4294.9152542372885
     },
     {
-        "datetime": "2024-02-26T23:00:00Z",
-        "wind_prediction_MWh": 4852.542372881356
+        "datetime": "2024-02-21T22:00:00Z",
+        "wind_prediction_MWh": 4200.0
     },
     {
-        "datetime": "2024-02-27T00:00:00Z",
-        "wind_prediction_MWh": 5101.6949152542375
+        "datetime": "2024-02-21T23:00:00Z",
+        "wind_prediction_MWh": 4010.169491525424
     },
     {
-        "datetime": "2024-02-27T01:00:00Z",
-        "wind_prediction_MWh": 5216.384180790961
+        "datetime": "2024-02-22T00:00:00Z",
+        "wind_prediction_MWh": 3891.5254237288136
     },
     {
-        "datetime": "2024-02-27T02:00:00Z",
+        "datetime": "2024-02-22T01:00:00Z",
+        "wind_prediction_MWh": 3828.2485875706216
+    },
+    {
+        "datetime": "2024-02-22T02:00:00Z",
+        "wind_prediction_MWh": 3764.971751412429
+    },
+    {
+        "datetime": "2024-02-22T03:00:00Z",
+        "wind_prediction_MWh": 3701.694915254237
+    },
+    {
+        "datetime": "2024-02-22T04:00:00Z",
+        "wind_prediction_MWh": 3535.593220338983
+    },
+    {
+        "datetime": "2024-02-22T05:00:00Z",
+        "wind_prediction_MWh": 3369.4915254237285
+    },
+    {
+        "datetime": "2024-02-22T06:00:00Z",
+        "wind_prediction_MWh": 3203.3898305084745
+    },
+    {
+        "datetime": "2024-02-22T07:00:00Z",
+        "wind_prediction_MWh": 2902.8248587570624
+    },
+    {
+        "datetime": "2024-02-22T08:00:00Z",
+        "wind_prediction_MWh": 2602.259887005649
+    },
+    {
+        "datetime": "2024-02-22T09:00:00Z",
+        "wind_prediction_MWh": 2301.6949152542375
+    },
+    {
+        "datetime": "2024-02-22T10:00:00Z",
+        "wind_prediction_MWh": 2230.5084745762706
+    },
+    {
+        "datetime": "2024-02-22T11:00:00Z",
+        "wind_prediction_MWh": 2159.3220338983047
+    },
+    {
+        "datetime": "2024-02-22T12:00:00Z",
+        "wind_prediction_MWh": 2088.1355932203387
+    },
+    {
+        "datetime": "2024-02-22T13:00:00Z",
+        "wind_prediction_MWh": 2293.7853107344636
+    },
+    {
+        "datetime": "2024-02-22T14:00:00Z",
+        "wind_prediction_MWh": 2499.4350282485866
+    },
+    {
+        "datetime": "2024-02-22T15:00:00Z",
+        "wind_prediction_MWh": 2705.0847457627115
+    },
+    {
+        "datetime": "2024-02-22T16:00:00Z",
+        "wind_prediction_MWh": 3005.649717514124
+    },
+    {
+        "datetime": "2024-02-22T17:00:00Z",
+        "wind_prediction_MWh": 3306.214689265537
+    },
+    {
+        "datetime": "2024-02-22T18:00:00Z",
+        "wind_prediction_MWh": 3606.779661016949
+    },
+    {
+        "datetime": "2024-02-22T19:00:00Z",
+        "wind_prediction_MWh": 3670.056497175141
+    },
+    {
+        "datetime": "2024-02-22T20:00:00Z",
+        "wind_prediction_MWh": 3733.3333333333335
+    },
+    {
+        "datetime": "2024-02-22T21:00:00Z",
+        "wind_prediction_MWh": 3796.6101694915255
+    },
+    {
+        "datetime": "2024-02-22T22:00:00Z",
+        "wind_prediction_MWh": 3867.7966101694915
+    },
+    {
+        "datetime": "2024-02-22T23:00:00Z",
+        "wind_prediction_MWh": 3938.9830508474574
+    },
+    {
+        "datetime": "2024-02-23T00:00:00Z",
+        "wind_prediction_MWh": 4010.169491525424
+    },
+    {
+        "datetime": "2024-02-23T01:00:00Z",
+        "wind_prediction_MWh": 4010.169491525424
+    },
+    {
+        "datetime": "2024-02-23T02:00:00Z",
+        "wind_prediction_MWh": 4010.169491525424
+    },
+    {
+        "datetime": "2024-02-23T03:00:00Z",
+        "wind_prediction_MWh": 4010.169491525424
+    },
+    {
+        "datetime": "2024-02-23T04:00:00Z",
+        "wind_prediction_MWh": 4176.271186440677
+    },
+    {
+        "datetime": "2024-02-23T05:00:00Z",
+        "wind_prediction_MWh": 4342.372881355932
+    },
+    {
+        "datetime": "2024-02-23T06:00:00Z",
+        "wind_prediction_MWh": 4508.474576271186
+    },
+    {
+        "datetime": "2024-02-23T07:00:00Z",
+        "wind_prediction_MWh": 4769.491525423729
+    },
+    {
+        "datetime": "2024-02-23T08:00:00Z",
+        "wind_prediction_MWh": 5030.508474576271
+    },
+    {
+        "datetime": "2024-02-23T09:00:00Z",
+        "wind_prediction_MWh": 5291.525423728814
+    },
+    {
+        "datetime": "2024-02-23T10:00:00Z",
         "wind_prediction_MWh": 5331.073446327683
     },
     {
-        "datetime": "2024-02-27T03:00:00Z",
-        "wind_prediction_MWh": 5445.762711864407
+        "datetime": "2024-02-23T11:00:00Z",
+        "wind_prediction_MWh": 5370.621468926554
     },
     {
-        "datetime": "2024-02-27T04:00:00Z",
-        "wind_prediction_MWh": 5560.45197740113
+        "datetime": "2024-02-23T12:00:00Z",
+        "wind_prediction_MWh": 5410.169491525424
     },
     {
-        "datetime": "2024-02-27T05:00:00Z",
-        "wind_prediction_MWh": 5675.141242937852
+        "datetime": "2024-02-23T13:00:00Z",
+        "wind_prediction_MWh": 5576.271186440677
     },
     {
-        "datetime": "2024-02-27T06:00:00Z",
+        "datetime": "2024-02-23T14:00:00Z",
+        "wind_prediction_MWh": 5742.372881355932
+    },
+    {
+        "datetime": "2024-02-23T15:00:00Z",
+        "wind_prediction_MWh": 5908.474576271186
+    },
+    {
+        "datetime": "2024-02-23T16:00:00Z",
+        "wind_prediction_MWh": 5868.926553672316
+    },
+    {
+        "datetime": "2024-02-23T17:00:00Z",
+        "wind_prediction_MWh": 5829.3785310734465
+    },
+    {
+        "datetime": "2024-02-23T18:00:00Z",
         "wind_prediction_MWh": 5789.830508474576
     },
     {
+        "datetime": "2024-02-23T19:00:00Z",
+        "wind_prediction_MWh": 5489.265536723164
+    },
+    {
+        "datetime": "2024-02-23T20:00:00Z",
+        "wind_prediction_MWh": 5188.700564971751
+    },
+    {
+        "datetime": "2024-02-23T21:00:00Z",
+        "wind_prediction_MWh": 4888.135593220339
+    },
+    {
+        "datetime": "2024-02-23T22:00:00Z",
+        "wind_prediction_MWh": 4492.655367231639
+    },
+    {
+        "datetime": "2024-02-23T23:00:00Z",
+        "wind_prediction_MWh": 4097.1751412429385
+    },
+    {
+        "datetime": "2024-02-24T00:00:00Z",
+        "wind_prediction_MWh": 3701.694915254237
+    },
+    {
+        "datetime": "2024-02-24T01:00:00Z",
+        "wind_prediction_MWh": 3583.0508474576272
+    },
+    {
+        "datetime": "2024-02-24T02:00:00Z",
+        "wind_prediction_MWh": 3464.406779661017
+    },
+    {
+        "datetime": "2024-02-24T03:00:00Z",
+        "wind_prediction_MWh": 3345.762711864407
+    },
+    {
+        "datetime": "2024-02-24T04:00:00Z",
+        "wind_prediction_MWh": 3227.1186440677966
+    },
+    {
+        "datetime": "2024-02-24T05:00:00Z",
+        "wind_prediction_MWh": 3108.4745762711864
+    },
+    {
+        "datetime": "2024-02-24T06:00:00Z",
+        "wind_prediction_MWh": 2989.830508474576
+    },
+    {
+        "datetime": "2024-02-24T07:00:00Z",
+        "wind_prediction_MWh": 2625.9887005649716
+    },
+    {
+        "datetime": "2024-02-24T08:00:00Z",
+        "wind_prediction_MWh": 2262.146892655367
+    },
+    {
+        "datetime": "2024-02-24T09:00:00Z",
+        "wind_prediction_MWh": 1898.3050847457625
+    },
+    {
+        "datetime": "2024-02-24T10:00:00Z",
+        "wind_prediction_MWh": 1534.463276836159
+    },
+    {
+        "datetime": "2024-02-24T11:00:00Z",
+        "wind_prediction_MWh": 1170.6214689265535
+    },
+    {
+        "datetime": "2024-02-24T12:00:00Z",
+        "wind_prediction_MWh": 806.7796610169489
+    },
+    {
+        "datetime": "2024-02-24T13:00:00Z",
+        "wind_prediction_MWh": 1170.6214689265535
+    },
+    {
+        "datetime": "2024-02-24T14:00:00Z",
+        "wind_prediction_MWh": 1534.463276836159
+    },
+    {
+        "datetime": "2024-02-24T15:00:00Z",
+        "wind_prediction_MWh": 1898.3050847457625
+    },
+    {
+        "datetime": "2024-02-24T16:00:00Z",
+        "wind_prediction_MWh": 2262.146892655367
+    },
+    {
+        "datetime": "2024-02-24T17:00:00Z",
+        "wind_prediction_MWh": 2625.9887005649716
+    },
+    {
+        "datetime": "2024-02-24T18:00:00Z",
+        "wind_prediction_MWh": 2989.830508474576
+    },
+    {
+        "datetime": "2024-02-24T19:00:00Z",
+        "wind_prediction_MWh": 3025.423728813559
+    },
+    {
+        "datetime": "2024-02-24T20:00:00Z",
+        "wind_prediction_MWh": 3061.016949152542
+    },
+    {
+        "datetime": "2024-02-24T21:00:00Z",
+        "wind_prediction_MWh": 3096.610169491525
+    },
+    {
+        "datetime": "2024-02-24T22:00:00Z",
+        "wind_prediction_MWh": 3132.2033898305085
+    },
+    {
+        "datetime": "2024-02-24T23:00:00Z",
+        "wind_prediction_MWh": 3167.7966101694915
+    },
+    {
+        "datetime": "2024-02-25T00:00:00Z",
+        "wind_prediction_MWh": 3203.3898305084745
+    },
+    {
+        "datetime": "2024-02-25T01:00:00Z",
+        "wind_prediction_MWh": 3136.158192090395
+    },
+    {
+        "datetime": "2024-02-25T02:00:00Z",
+        "wind_prediction_MWh": 3068.9265536723165
+    },
+    {
+        "datetime": "2024-02-25T03:00:00Z",
+        "wind_prediction_MWh": 3001.694915254237
+    },
+    {
+        "datetime": "2024-02-25T04:00:00Z",
+        "wind_prediction_MWh": 2934.463276836158
+    },
+    {
+        "datetime": "2024-02-25T05:00:00Z",
+        "wind_prediction_MWh": 2867.2316384180795
+    },
+    {
+        "datetime": "2024-02-25T06:00:00Z",
+        "wind_prediction_MWh": 2800.0
+    },
+    {
+        "datetime": "2024-02-25T07:00:00Z",
+        "wind_prediction_MWh": 2732.7683615819205
+    },
+    {
+        "datetime": "2024-02-25T08:00:00Z",
+        "wind_prediction_MWh": 2665.536723163842
+    },
+    {
+        "datetime": "2024-02-25T09:00:00Z",
+        "wind_prediction_MWh": 2598.3050847457625
+    },
+    {
+        "datetime": "2024-02-25T10:00:00Z",
+        "wind_prediction_MWh": 2531.073446327683
+    },
+    {
+        "datetime": "2024-02-25T11:00:00Z",
+        "wind_prediction_MWh": 2463.8418079096036
+    },
+    {
+        "datetime": "2024-02-25T12:00:00Z",
+        "wind_prediction_MWh": 2396.610169491525
+    },
+    {
+        "datetime": "2024-02-25T13:00:00Z",
+        "wind_prediction_MWh": 2681.35593220339
+    },
+    {
+        "datetime": "2024-02-25T14:00:00Z",
+        "wind_prediction_MWh": 2966.101694915254
+    },
+    {
+        "datetime": "2024-02-25T15:00:00Z",
+        "wind_prediction_MWh": 3250.8474576271187
+    },
+    {
+        "datetime": "2024-02-25T16:00:00Z",
+        "wind_prediction_MWh": 3535.593220338983
+    },
+    {
+        "datetime": "2024-02-25T17:00:00Z",
+        "wind_prediction_MWh": 3820.338983050847
+    },
+    {
+        "datetime": "2024-02-25T18:00:00Z",
+        "wind_prediction_MWh": 4105.0847457627115
+    },
+    {
+        "datetime": "2024-02-25T19:00:00Z",
+        "wind_prediction_MWh": 3903.3898305084745
+    },
+    {
+        "datetime": "2024-02-25T20:00:00Z",
+        "wind_prediction_MWh": 3701.694915254237
+    },
+    {
+        "datetime": "2024-02-25T21:00:00Z",
+        "wind_prediction_MWh": 3500.0
+    },
+    {
+        "datetime": "2024-02-25T22:00:00Z",
+        "wind_prediction_MWh": 3298.3050847457625
+    },
+    {
+        "datetime": "2024-02-25T23:00:00Z",
+        "wind_prediction_MWh": 3096.610169491525
+    },
+    {
+        "datetime": "2024-02-26T00:00:00Z",
+        "wind_prediction_MWh": 2894.9152542372876
+    },
+    {
+        "datetime": "2024-02-26T01:00:00Z",
+        "wind_prediction_MWh": 2645.762711864407
+    },
+    {
+        "datetime": "2024-02-26T02:00:00Z",
+        "wind_prediction_MWh": 2396.610169491525
+    },
+    {
+        "datetime": "2024-02-26T03:00:00Z",
+        "wind_prediction_MWh": 2147.4576271186443
+    },
+    {
+        "datetime": "2024-02-26T04:00:00Z",
+        "wind_prediction_MWh": 1898.3050847457625
+    },
+    {
+        "datetime": "2024-02-26T05:00:00Z",
+        "wind_prediction_MWh": 1649.1525423728808
+    },
+    {
+        "datetime": "2024-02-26T06:00:00Z",
+        "wind_prediction_MWh": 1400.0
+    },
+    {
+        "datetime": "2024-02-26T07:00:00Z",
+        "wind_prediction_MWh": 1233.8983050847455
+    },
+    {
+        "datetime": "2024-02-26T08:00:00Z",
+        "wind_prediction_MWh": 1067.796610169491
+    },
+    {
+        "datetime": "2024-02-26T09:00:00Z",
+        "wind_prediction_MWh": 901.6949152542375
+    },
+    {
+        "datetime": "2024-02-26T10:00:00Z",
+        "wind_prediction_MWh": 735.593220338983
+    },
+    {
+        "datetime": "2024-02-26T11:00:00Z",
+        "wind_prediction_MWh": 569.4915254237285
+    },
+    {
+        "datetime": "2024-02-26T12:00:00Z",
+        "wind_prediction_MWh": 403.389830508474
+    },
+    {
+        "datetime": "2024-02-26T13:00:00Z",
+        "wind_prediction_MWh": 518.0790960451968
+    },
+    {
+        "datetime": "2024-02-26T14:00:00Z",
+        "wind_prediction_MWh": 632.7683615819215
+    },
+    {
+        "datetime": "2024-02-26T15:00:00Z",
+        "wind_prediction_MWh": 747.4576271186443
+    },
+    {
+        "datetime": "2024-02-26T16:00:00Z",
+        "wind_prediction_MWh": 862.1468926553662
+    },
+    {
+        "datetime": "2024-02-26T17:00:00Z",
+        "wind_prediction_MWh": 976.8361581920908
+    },
+    {
+        "datetime": "2024-02-26T18:00:00Z",
+        "wind_prediction_MWh": 1091.5254237288136
+    },
+    {
+        "datetime": "2024-02-26T19:00:00Z",
+        "wind_prediction_MWh": 1309.0395480225989
+    },
+    {
+        "datetime": "2024-02-26T20:00:00Z",
+        "wind_prediction_MWh": 1526.5536723163832
+    },
+    {
+        "datetime": "2024-02-26T21:00:00Z",
+        "wind_prediction_MWh": 1744.0677966101694
+    },
+    {
+        "datetime": "2024-02-26T22:00:00Z",
+        "wind_prediction_MWh": 1961.5819209039555
+    },
+    {
+        "datetime": "2024-02-26T23:00:00Z",
+        "wind_prediction_MWh": 2179.09604519774
+    },
+    {
+        "datetime": "2024-02-27T00:00:00Z",
+        "wind_prediction_MWh": 2396.610169491525
+    },
+    {
+        "datetime": "2024-02-27T01:00:00Z",
+        "wind_prediction_MWh": 2463.8418079096036
+    },
+    {
+        "datetime": "2024-02-27T02:00:00Z",
+        "wind_prediction_MWh": 2531.073446327683
+    },
+    {
+        "datetime": "2024-02-27T03:00:00Z",
+        "wind_prediction_MWh": 2598.3050847457625
+    },
+    {
+        "datetime": "2024-02-27T04:00:00Z",
+        "wind_prediction_MWh": 2665.536723163842
+    },
+    {
+        "datetime": "2024-02-27T05:00:00Z",
+        "wind_prediction_MWh": 2732.7683615819205
+    },
+    {
+        "datetime": "2024-02-27T06:00:00Z",
+        "wind_prediction_MWh": 2800.0
+    },
+    {
         "datetime": "2024-02-27T07:00:00Z",
-        "wind_prediction_MWh": 5726.553672316384
+        "wind_prediction_MWh": 2649.7175141242933
     },
     {
         "datetime": "2024-02-27T08:00:00Z",
-        "wind_prediction_MWh": 5663.276836158192
+        "wind_prediction_MWh": 2499.4350282485866
     },
     {
         "datetime": "2024-02-27T09:00:00Z",
-        "wind_prediction_MWh": 5600.0
+        "wind_prediction_MWh": 2349.152542372881
     },
     {
         "datetime": "2024-02-27T10:00:00Z",
-        "wind_prediction_MWh": 5536.723163841808
+        "wind_prediction_MWh": 2198.870056497175
     },
     {
         "datetime": "2024-02-27T11:00:00Z",
-        "wind_prediction_MWh": 5473.446327683616
+        "wind_prediction_MWh": 2048.5875706214683
     },
     {
         "datetime": "2024-02-27T12:00:00Z",
-        "wind_prediction_MWh": 5410.169491525424
+        "wind_prediction_MWh": 1898.3050847457625
+    },
+    {
+        "datetime": "2024-02-27T13:00:00Z",
+        "wind_prediction_MWh": 1815.2542372881353
+    },
+    {
+        "datetime": "2024-02-27T14:00:00Z",
+        "wind_prediction_MWh": 1732.203389830508
+    },
+    {
+        "datetime": "2024-02-27T15:00:00Z",
+        "wind_prediction_MWh": 1649.1525423728808
+    },
+    {
+        "datetime": "2024-02-27T16:00:00Z",
+        "wind_prediction_MWh": 1566.1016949152545
+    },
+    {
+        "datetime": "2024-02-27T17:00:00Z",
+        "wind_prediction_MWh": 1483.0508474576272
+    },
+    {
+        "datetime": "2024-02-27T18:00:00Z",
+        "wind_prediction_MWh": 1400.0
+    },
+    {
+        "datetime": "2024-02-27T19:00:00Z",
+        "wind_prediction_MWh": 1301.129943502824
+    },
+    {
+        "datetime": "2024-02-27T20:00:00Z",
+        "wind_prediction_MWh": 1202.25988700565
+    },
+    {
+        "datetime": "2024-02-27T21:00:00Z",
+        "wind_prediction_MWh": 1103.389830508474
+    },
+    {
+        "datetime": "2024-02-27T22:00:00Z",
+        "wind_prediction_MWh": 1004.519774011299
+    },
+    {
+        "datetime": "2024-02-27T23:00:00Z",
+        "wind_prediction_MWh": 905.6497175141249
+    },
+    {
+        "datetime": "2024-02-28T00:00:00Z",
+        "wind_prediction_MWh": 806.7796610169489
     }
 ]

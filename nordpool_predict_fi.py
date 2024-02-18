@@ -4,15 +4,20 @@ import joblib
 import matplotlib.pyplot as plt
 import pytz
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 import git
 import os
 from dotenv import load_dotenv
 import sqlite3
 import argparse
-from util.sql import db_update, db_query, db_test
+from util.sql import db_update, db_query, db_test, db_query_all
+from util.weather import weather_get
+from util.weekdays import weekdays_get
+from util.spot import add_spot_prices_to_df
+from util.foreca import foreca_wind_power_prediction
+from util.dump import dump_sqlite_db
 
-load_dotenv('.env.local')  # take environment variables from .env.local.
+load_dotenv('.env.local')  # take environment variables from .env.local
 
 # Configuration and secrets
 location = os.getenv('LOCATION') or "LOCATION not set in environment"
@@ -26,7 +31,8 @@ deploy_folder_path = os.getenv('DEPLOY_FOLDER_PATH') or "DEPLOY_FOLDER_PATH not 
 data_folder_path = os.getenv('DATA_FOLDER_PATH') or "DATA_FOLDER_PATH not set in environment"
 db_path = os.getenv('DB_PATH') or "DB_PATH not set in environment"
 repo_path = os.getenv('REPO_PATH') or "REPO_PATH not set in environment"
-predictions_path = os.getenv('PREDICTIONS_PATH') or "PREDICTIONS_PATH not set in environment"
+predictions_file = os.getenv('PREDICTIONS_FILE') or "PREDICTIONS_FILE not set in environment"
+averages_file = os.getenv('AVERAGES_FILE') or "AVERAGES_FILE not set in environment"
 commit_message = os.getenv('COMMIT_MESSAGE') or "COMMIT_MESSAGE not set in environment"
 wind_power_prediction = os.getenv('WIND_POWER_PREDICTION') or "WIND_POWER_PREDICTION not set in environment"
 try:
@@ -34,104 +40,17 @@ try:
 except TypeError:
     wind_power_max_capacity = "WIND_POWER_MAX_CAPACITY not set or not a number in environment"
 
+# Argument parsing
 parser = argparse.ArgumentParser()
-parser.add_argument('--foreca', action='store_true', help='Update the Foreca wind power prediction file')
-parser.add_argument('--spot', action='store_true', help='Update the spot prices to database')
 parser.add_argument('--dump', action='store_true', help='Dump the SQLite database to CSV format')
-parser.add_argument('--dbtest', action='store_true', help='Test the SQLite database functions')
+parser.add_argument('--foreca', action='store_true', help='Update the Foreca wind power prediction file')
+parser.add_argument('--predict', action='store_true', help='Run the full prediction process')
+parser.add_argument('--commit', action='store_true', help='Commit to DB and push updates to GitHub, use with --predict')
+parser.add_argument('--publish', action='store_true', help='Publish the predictions to the GitHub repo')
 args = parser.parse_args()
 
-if args.foreca:
-    from util.foreca import foreca_wind_power_prediction
-    print("Updating Foreca wind power prediction:", wind_power_prediction)
-    foreca_wind_power_prediction(
-        wind_power_prediction=wind_power_prediction,
-        data_folder_path=data_folder_path
-        )
-    exit()
-
-if args.spot:
-    from util.spot import update_spot_prices_to_db
-    update_spot_prices_to_db(data_folder_path)
-    exit()
-
-if args.dump:
-    from util.dump import dump_sqlite_db
-    dump_sqlite_db(data_folder_path)
-    exit()
-    
-if args.dbtest:
-    db_test(db_path=db_path)
-    exit()
-
-def read_wind_power_data(filepath):
-    with open(filepath, 'r') as file:
-        wind_power_data = json.load(file)
-    return wind_power_data
-
-def fetch_weather_data(location, api_key):
-    base_url = "https://api.tomorrow.io/v4/weather/forecast"
-    query_params = {
-        'location': location,
-        'timesteps': '1h',
-        'units': 'metric',
-        'apikey': api_key
-    }
-    headers = {'accept': 'application/json'}
-    response = requests.get(base_url, params=query_params, headers=headers)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        raise Exception("API request failed with status code " + str(response.status_code))
-
-def preprocess_data(weather_data, wind_power_data, wind_power_max_capacity):
-    processed_data = []
-    hourly_forecast_data = weather_data['timelines']['hourly']
-    
-    # print("Weather Data Timestamps Sample:", [item['time'] for item in hourly_forecast_data[:5]])  # Debugging line
-    # print("Wind Power Data Timestamps Sample:", [item['datetime'] for item in wind_power_data[:5]])  # Debugging line
-
-    for hourly_forecast in hourly_forecast_data:
-        time = hourly_forecast['time']
-        values = hourly_forecast['values']
-        
-        # Find matching wind power data
-        wind_power = next((item['wind_prediction_MWh'] for item in wind_power_data if item['datetime'] == time), None)
-        
-        # # Debugging line to check if wind power values are found
-        # if wind_power is not None:
-        #     print(f"Match found for {time}: {wind_power} MWh")
-        # else:
-        #     print(f"No match found for {time}")
-        
-    for hourly_forecast in hourly_forecast_data:
-        time = hourly_forecast['time']
-        values = hourly_forecast['values']
-        temp = values.get('temperature', 0)
-        wind_speed = values.get('windSpeed', 0)
-        
-        # Find matching wind power data
-        wind_power = next((item['wind_prediction_MWh'] for item in wind_power_data if item['datetime'] == time), 0)
-        
-        time_parsed = pd.to_datetime(time)
-        hour = time_parsed.hour
-        day_of_week = time_parsed.dayofweek + 1
-        month = time_parsed.month
-        
-        processed_data.append({
-            'Date': time,
-            'Temp [°C]': temp,
-            'Wind [m/s]': wind_speed,
-            'Wind Power [MWh]': wind_power,
-            'Wind Power Capacity [MWh]': wind_power_max_capacity,
-            'hour': hour,
-            'day_of_week': day_of_week,
-            'month': month
-        })
-    return pd.DataFrame(processed_data)
-
+# Predict prices for a data frame
 def predict_prices(df, rf_model_path):
-    # Load and apply the Random Forest model for initial predictions
     rf_model = joblib.load(rf_model_path)
     # Ensure all features expected by the model are included
     features = df[['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'hour', 'day_of_week', 'month']]
@@ -139,138 +58,14 @@ def predict_prices(df, rf_model_path):
     df['PricePredict [c/kWh]'] = initial_predictions
     return df
 
-def plot_hourly_prices(df):
-    # Define color thresholds for price predictions
-    color_threshold = [
-        {'value': -1000, 'color': 'lime'},
-        {'value': 5, 'color': 'green'},
-        {'value': 10, 'color': 'orange'},
-        {'value': 15, 'color': 'red'},
-        {'value': 20, 'color': 'darkred'},
-        {'value': 30, 'color': 'black'},
-    ]
-
-    # Ensure 'Date' is in datetime format and set as index
-    df['Date'] = pd.to_datetime(df['Date'])
-    df.set_index('Date', inplace=True)
-
-    # Convert to Helsinki timezone
-    df.index = df.index.tz_localize('UTC').tz_convert('Europe/Helsinki') if df.index.tz is None else df.index.tz_convert('Europe/Helsinki')
-
-    # Determine global minimum and maximum prices for consistent y-axis scaling
-    global_min_price = df['PricePredict [c/kWh]'].min()
-    global_max_price = df['PricePredict [c/kWh]'].max()
-
-    # Ensure y-axis starts at 0 if all prices are above zero
-    y_axis_start = 0 if global_min_price > 0 else global_min_price
-
-    # Group by each day considering the timezone
-    grouped = df.groupby(df.index.date)
-
-    for date, group in grouped:
-        plt.figure(figsize=(10, 6))
-        # Calculate the average price for the day
-        daily_avg_price = group['PricePredict [c/kWh]'].mean()
-        
-        # Plot primary axis (prices)
-        ax1 = plt.gca()  # Get current axis for price
-        for idx, row in group.iterrows():
-            bar_color = get_bar_color(row['PricePredict [c/kWh]'], color_threshold)
-            ax1.bar(idx.hour, row['PricePredict [c/kWh]'], color=bar_color, width=0.8, zorder=2)
-
-        ax1.set_xlabel("Hour of the Day")
-        ax1.set_ylabel("Price [c/kWh]")
-        plt.xticks(range(24))  # Ensure x-axis labels show every hour
-        ax1.set_ylim(y_axis_start, global_max_price)  # Y-axis for price
-        ax1.axhline(y=daily_avg_price, color='gray', linestyle='--', label=f'Avg Price: {daily_avg_price:.2f} c/kWh', zorder=3)
-
-        # Plot secondary axis (wind power)
-        ax2 = ax1.twinx()  # Create a second y-axis sharing the same x-axis
-        ax2.plot(group.index.hour, group['Wind Power [MWh]'], color='blue', marker='o', linestyle='-', linewidth=2, label='Wind Power [MWh]', zorder=4)
-        ax2.set_ylim(0, 7000)  # Fixed y-axis for wind power
-        ax2.set_ylabel('Wind Power [MWh]')
-
-        plt.title(f"Hourly Electricity Price and Wind Power Prediction for {date} (Helsinki Time)")
-        ax1.legend(loc='upper left')
-        ax2.legend(loc='upper right')
-
-        # Save the plot as a PNG file named after the date
-        plt.savefig(f"./png/{date}.png")
-        plt.close()
-        
-def get_bar_color(value, color_threshold):
-    """Return the color for the bar based on the specified value."""
-    for threshold in color_threshold:
-        if value >= threshold['value']:
-            color = threshold['color']
-        else:
-            break
-    return color
-
-def convert_csv_to_json(csv_file_path):
-    # Load CSV file
-    df = pd.read_csv(csv_file_path)
-
-    # Convert 'Date' to a datetime format and then to a timestamp (milliseconds)
-    df['Date'] = pd.to_datetime(df['Date'])
-    df['timestamp'] = df['Date'].apply(lambda x: int(x.timestamp()) * 1000)  # Convert to milliseconds
-
-    # Select only the columns needed
-    apex_data = df[['timestamp', 'PricePredict [c/kWh]']].values.tolist()
-
-    # Convert data to JSON format
-    json_data = json.dumps(apex_data)
-    
-    # Return both the JSON data and the modified dataframe
-    return json_data, df
-
-def save_json_to_deploy_folder(json_data, deploy_folder_path, file_name='prediction.json'):
-    full_path = f"{deploy_folder_path}/{file_name}"
-    with open(full_path, 'w') as f:
-        f.write(json_data)
-    print(f"File saved to Deploy folder: {full_path}")
-
-# def save_to_sqlite_db(df, db_name):
-#     try:
-#         with sqlite3.connect(f'{data_folder_path}/{db_name}.db') as conn:
-#             df.to_sql(db_name, conn, if_exists='append')
-#         print(f"Data saved to {db_name} database.")
-#     except Exception as e:
-#         print(f"Error occurred while saving data to {db_name} database: ", str(e))
-
-def save_to_sqlite_db(df, db_path):
-    # Connect to the SQLite database
-    conn = sqlite3.connect(db_path)
-    cur = conn.cursor()
-
-    for _, row in df.iterrows():
-        # Convert timestamp to string in 'YYYY-MM-DD HH:MM:SS.SSS' format
-        timestamp = row['timestamp'].strftime('%Y-%m-%d %H:%M:%S.%f')
-        price = row['PricePredict [c/kWh]']
-
-        # Check if a record with the same timestamp already exists
-        cur.execute("SELECT COUNT(*) FROM prediction WHERE timestamp=?", (timestamp,))
-        record_exists = cur.fetchone()[0] > 0
-
-        if record_exists:
-            # Update the record with the new price
-            cur.execute("UPDATE prediction SET 'PricePredict [c/kWh]'=? WHERE timestamp=?", (price, timestamp))
-        else:
-            # Insert a new record with the timestamp and price, and default values for all other fields
-            cur.execute("INSERT INTO prediction (timestamp, 'PricePredict [c/kWh]') VALUES (?, ?)", (timestamp, price))
-
-    # Commit the changes and close the connection
-    conn.commit()
-    conn.close()
-
-
-def push_updates_to_github(repo_path, file_paths, commit_message):
+# Push updates to GitHub from the deployment repo
+def push_updates_to_github(repo_path, files, commit_message):    
     try:
         repo = git.Repo(repo_path)
         
-        for file_path in file_paths:
+        for file in files:
             # Check if the file_path is relative, convert it to absolute
-            absolute_file_path = os.path.join(repo_path, file_path) if not os.path.isabs(file_path) else file_path
+            absolute_file_path = os.path.join(repo_path, file) if not os.path.isabs(file) else file
             
             # Stage the file for commit
             repo.index.add([absolute_file_path])
@@ -284,16 +79,131 @@ def push_updates_to_github(repo_path, file_paths, commit_message):
     except Exception as e:
         print(f"Error pushing updates to GitHub: {e}")
 
-def save_daily_averages_to_json(df, deploy_folder_path, file_name='averages.json'):
-    # Ensure 'Date' column is in datetime format and normalize to remove time
-    df['Date'] = pd.to_datetime(df['Date']).dt.normalize()
+# Update the wind power prediction file
+if args.foreca:  
+    print(datetime.now().strftime("%Y-%m-%d %H:%M:%S:\nStarting the process to fetch and parse the SVG data from Foreca..."))
     
+    foreca_wind_power_prediction(
+        wind_power_prediction=wind_power_prediction,
+        data_folder_path=data_folder_path
+        )
+    exit()
+
+if args.dump: 
+    dump_sqlite_db(data_folder_path)
+    exit()
+    
+if args.predict:
+    print(datetime.now().strftime("%Y-%m-%d %H:%M:%S:\nRunning predictions..."))
+
+    # Load the wind power prediction and weather data
+    with open(os.path.join(data_folder_path, wind_power_prediction), 'r') as file:
+        wind_power_prediction_data = json.load(file)
+    wind_power_df = pd.DataFrame(wind_power_prediction_data)
+    wind_power_df.rename(columns={'datetime': 'timestamp', 'wind_prediction_MWh': 'Wind Power [MWh]'}, inplace=True)
+    wind_power_df['timestamp'] = pd.to_datetime(wind_power_df['timestamp'])
+    # print("Wind Power Data Sample:\n", wind_power_df.head())
+
+    weather_df = weather_get(pd.DataFrame({'timestamp': [datetime.now()]}), location, api_key)
+    weather_df['timestamp'] = pd.to_datetime(weather_df['timestamp'])
+    # print("Weather Data Sample:\n", weather_df.head())
+
+    features_df = pd.merge(weather_df, wind_power_df, on='timestamp', how='inner')
+    # print("Weather and wind power:\n", features_df.head())
+
+    # # We only use this when we want to compute the predictions to the database post-hoc! It's a complicated merge.
+    # if args.add_predict_to_db:
+    #     history_df = db_query_all(db_path)
+    #     history_df['timestamp'] = pd.to_datetime(history_df['timestamp']).dt.tz_localize('UTC')
+    #     print("History Sample:\n", history_df.head())
+    #     features_df = pd.merge(features_df, history_df, on='timestamp', how='right')
+
+    #     features_df['Wind Power [MWh]'] = features_df['Wind Power [MWh]_y']
+    #     features_df = features_df.drop(['Wind Power [MWh]_x', 'Wind Power [MWh]_y'], axis=1)
+
+    #     features_df['Temp [°C]'] = features_df['Temp [°C]_y']
+    #     features_df = features_df.drop(['Temp [°C]_x', 'Temp [°C]_y'], axis=1)
+        
+    #     features_df['Wind [m/s]'] = features_df['Wind [m/s]_y']
+    #     features_df = features_df.drop(['Wind [m/s]_x', 'Wind [m/s]_y'], axis=1)
+        
+    #     required_columns = ['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'hour', 'day_of_week', 'month']
+    #     features_df = features_df.dropna(subset=required_columns)
+        
+    #     for col in features_df.columns:
+    #         features_df[col] = pd.to_numeric(features_df[col], errors='coerce')
+        
+    #     # print("Merged:\n", features_df)
+
+    # Fill in the 'hour', 'day_of_week', and 'month' columns for the model
+    features_df = weekdays_get(features_df)
+    # print("With weekdays:\n", features_df.head())
+
+    # Add the wind power capacity for the model
+    features_df['Wind Power Capacity [MWh]'] = wind_power_max_capacity
+      
+    # Load and apply the Random Forest model for predictions
+    rf_model = joblib.load(rf_model_path)
+    price_df = rf_model.predict(features_df[['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'hour', 'day_of_week', 'month']])
+    features_df['PricePredict [c/kWh]'] = price_df
+    # print("Predictions:\n", features_df)
+    
+    # Add spot prices to the DataFrame, to the degree available
+    spot_df = add_spot_prices_to_df(features_df)
+    # print("Spot Prices:\n", spot_df)
+    
+    # Update the database with the final data
+    if args.commit:
+        print("Will add/update", len(spot_df), "predictions to the database... ", end="")
+        if db_update(db_path, spot_df):
+            print("Done.")
+    
+    exit()
+
+if args.publish:
+    print(datetime.now().strftime("%Y-%m-%d %H:%M:%S:\nStarting publishing..."))
+    
+    publish_df = db_query_all(db_path)
+
+    # Ensure 'timestamp' column is in datetime format
+    publish_df['timestamp'] = pd.to_datetime(publish_df['timestamp'])
+
+    # Filter out rows where 'timestamp' is earlier than the current datetime
+    now = pd.to_datetime('now')
+    publish_df = publish_df[publish_df['timestamp'] >= now]
+
+    # Adjust timestamps as if in Helsinki time, accounting for DST
+    publish_df['timestamp'] = publish_df['timestamp'].apply(lambda x: x.tz_localize(pytz.utc).tz_convert('Europe/Helsinki').tz_localize(None))
+   
+    # Create a copy of the slice to avoid SettingWithCopyWarning
+    hourly_predictions = publish_df[['timestamp', 'PricePredict [c/kWh]']].copy()
+
+    # Now apply the conversion safely
+    hourly_predictions['timestamp'] = hourly_predictions['timestamp'].apply(
+    lambda x: (x - pd.Timestamp("1970-01-01")) // pd.Timedelta('1ms')
+    )
+
+    # Create the list of lists for JSON output
+    json_data_list = hourly_predictions.values.tolist()
+
+    # Convert data to JSON format
+    json_data = json.dumps(json_data_list, ensure_ascii=False)
+
+    # Save to JSON in the deploy folder
+    json_path = os.path.join(deploy_folder_path, "prediction.json")
+    with open(json_path, 'w') as f:
+        f.write(json_data)
+    print(f"Hourly predictions saved to {json_path}")
+
+    # Normalize 'timestamp' to remove time for daily averages
+    publish_df['timestamp'] = publish_df['timestamp'].dt.normalize()
+
     # Calculate daily averages
-    daily_averages = df.groupby('Date')['PricePredict [c/kWh]'].mean().reset_index()
-    
-    # Convert 'Date' to the timestamp format required by Apex Charts (milliseconds since epoch)
-    daily_averages['timestamp'] = daily_averages['Date'].apply(lambda x: x.timestamp() * 1000)
-    
+    daily_averages = publish_df.groupby('timestamp')['PricePredict [c/kWh]'].mean().reset_index()
+
+    # Convert 'timestamp' to the format required by Apex Charts (milliseconds since epoch)
+    daily_averages['timestamp'] = daily_averages['timestamp'].apply(lambda x: (x - pd.Timestamp("1970-01-01")) // pd.Timedelta('1ms'))
+
     # Create the list of lists for JSON output
     json_data_list = daily_averages[['timestamp', 'PricePredict [c/kWh]']].values.tolist()
 
@@ -301,37 +211,22 @@ def save_daily_averages_to_json(df, deploy_folder_path, file_name='averages.json
     json_data = json.dumps(json_data_list, ensure_ascii=False)
 
     # Save to JSON in the deploy folder
-    json_path = os.path.join(deploy_folder_path, file_name)
+    json_path = os.path.join(deploy_folder_path, "averages.json")
     with open(json_path, 'w') as f:
         f.write(json_data)
     print(f"Daily averages saved to {json_path}")
 
-    # Return the daily_averages dataframe
-    return daily_averages
+    # Commit and push the updates to GitHub
+    files_to_push = [predictions_file, averages_file]
 
+    try:
+        push_updates_to_github(repo_path, files_to_push, commit_message)
+        print("Data pushed to GitHub.")
+    except Exception as e:
+        print("Error occurred while pushing data to GitHub: ", str(e))
 
-# Main execution starts here
+    print("Script execution completed.")
+    exit()
 
-wind_power_data = read_wind_power_data(os.path.join(data_folder_path, wind_power_prediction))
-weather_data = fetch_weather_data(location, api_key)
-features_df = preprocess_data(weather_data, wind_power_data, wind_power_max_capacity)
-predictions_df = predict_prices(features_df, rf_model_path)
-
-# Plot and save daily price predictions with consistent scales
-plot_hourly_prices(predictions_df)
-
-# Prepare the CSV file for gist update
-predictions_df = predictions_df.drop(['day_of_week', 'month', 'hour'], axis=1)
-predictions_df.reset_index(inplace=True)
-predictions_df.to_csv(csv_file_path, index=False)
-
-# Convert the CSV to JSON and update the gist
-json_data, predictions_df = convert_csv_to_json(csv_file_path)
-save_json_to_deploy_folder(json_data, deploy_folder_path)
-
-daily_averages = save_daily_averages_to_json(predictions_df, deploy_folder_path)
-
-averages_json_path = 'averages.json'  # The relative path within the repository
-files_to_push = [predictions_path, averages_json_path]
-
-print("Script execution completed.")
+if __name__ == "__main__":
+    print("No arguments given. Use --help for more information.")
