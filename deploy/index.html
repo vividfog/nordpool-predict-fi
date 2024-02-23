@@ -336,7 +336,7 @@
             .then(json => {
                 const offsetDays = new Date();
                 offsetDays.setHours(0, 0, 0, 0);
-                offsetDays.setDate(offsetDays.getDate() - 7);
+                offsetDays.setDate(offsetDays.getDate() - 14);
 
                 const pastDays = point => {
                     const pointDate = new Date(point[0]);
