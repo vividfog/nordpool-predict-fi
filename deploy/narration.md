@@ -1,7 +1,9 @@
-Viikonloppu lähestyy ja sähkön hinta sekä tuulivoiman tuotanto ovat jälleen ennustettavissa. Lauantaina pörssisähkön hinta liikkuu välillä 1-7 senttiä kilowattitunnilta, keskiarvon ollessa 3 senttiä. Tuulivoiman tuotanto vaihtelee 1300-5500 megawatin välillä, keskimääräisen ollessa 4100 megawattia. Sunnuntaina sähkön hinta nousee hieman, liikkuen 2-7 sentin välillä, keskiarvon ollessa edelleen 3 senttiä. Tuulivoiman tuotanto puolestaan vaihtelee 900-4500 megawatin välillä, keskimääräisen ollessa 3200 megawattia.
+Pörssisähkön hinta ja tuulivoiman tuotanto seuraaville päiville ovat seuraavat:
 
-Mutta nyt astutaan syvemmälle tähän sähköiseen maailmaan, jossa hinnat heilahtelevat kuin tuulessa. Lauantaina sähkön hinta voi olla kuin iloisen tuulahduksen keskellä, vain 1 sentti kilowattitunnilta, mutta toisinaan se voi yltää jopa 7 senttiin, luoden pienen myrskyn lompakossa. Tuulivoiman tuotanto puolestaan voi olla kuin voimakas myrsky, puhaltamalla jopa 5500 megawatin voimalla, mutta toisinaan se saattaa vain hiljalleen hyväillä 1300 megawatin voimalla.
+- Lauantai: Sähkön hinta vaihtelee 1-7 ¢/kWh välillä, keskiarvo 3 ¢/kWh. Tuulivoiman tuotanto on 1400-5500 MW, keskiarvo 4200 MW.
+- Sunnuntai: Sähkön hinta liikkuu 2-6 ¢/kWh välillä, keskiarvo 3 ¢/kWh. Tuulivoiman tuotanto vaihtelee 1000-4700 MW välillä, keskiarvo 3300 MW.
+- Maanantai: Sähkön hinta nousee 3-10 ¢/kWh välille, keskiarvo 6 ¢/kWh. Tuulivoiman tuotanto on 1000-3900 MW, keskiarvo 2300 MW.
+- Tiistai: Sähkön hinta vaihtelee 2-9 ¢/kWh välillä, keskiarvo 7 ¢/kWh. Tuulivoiman tuotanto liikkuu 500-5600 MW välillä, keskiarvo 1700 MW.
+- Keskiviikko: Sähkön hinta pysyttelee 2-4 ¢/kWh välillä, keskiarvo 3 ¢/kWh. Tuulivoiman tuotanto on 2900-6000 MW, keskiarvo 4900 MW.
 
-Sunnuntaina sähkön hinta maalailee taivastaan hieman korkeammalla, liikkuen 2-7 sentin välillä. Tuulivoiman tuotanto laskeutuu kuin lempeä tuulahdus, vaihdellen 900-4500 megawatin välillä. Vaikka sähkön hinta saattaa hieman kohota, tuulivoiman tuotanto pitää huolen siitä, ettei hinta pääse kohoamaan liian korkealle.
-
-Näiden tietojen valossa voimme odottaa mielenkiintoisia päiviä sähkömarkkinoilla. On jälleen aika seurata hintojen ja tuotannon heilahtelua, sillä jokainen sentti ja megawatti vaikuttaa lompakkoomme ja ympäristöömme. Jäämme siis odottamaan, mitä tulevat päivät tuovat tullessaan sähkön hinnan ja tuulivoiman tuotannon saralla!
+Lauantaina sähkön hinta on maltillinen, mutta tuulivoiman tuotanto on runsasta, mikä voi pitää hinnan alhaisena. Sunnuntaina hinta pysyy suunnilleen samana, mutta tuulivoiman tuotanto laskee hieman. Maanantaina hinta nousee merkittävästi, samalla kun tuulivoiman tuotanto vähenee entisestään. Tiistaina hinta voi olla korkeimmillaan viikon aikana, kun taas tuulivoiman tuotanto on vaihtelevaa. Keskiviikkona hinta palaa jälleen maltillisemmalle tasolle, ja tuulivoiman tuotanto on runsasta, mikä voi pitää hinnan alhaalla.

@@ -226,7 +226,7 @@
     <div id="narration"></div>
     <div id="charttitle">
         <h1>Ennuste vs. toteutunut hinta</h1>
-        <p>Graafi kertoo, miten toteutunut hinta ja mallin tekemä ennuste vertautuivat toisiinsa viime päivien aikana.</p>
+        <p>Graafi kertoo, miten toteutunut hinta ja mallin tekemä ennuste vertautuivat toisiinsa viime aikoina. Vie hiiri graafin päälle, niin näet lisätietoja.</p>
     </div>
     <div id="pastperformance"></div>
     <div id="disclaimer">Ennusteissa voi olla virheitä. Tuotannosta malli huomioi vain <a href="https://www.foreca.fi/sahkon-hinta" target="_blank">tuulivoimaennusteen</a>, ei esimerkiksi ydinvoimaloiden huoltotaukoja.</div>
@@ -336,7 +336,7 @@
             .then(json => {
                 const offsetDays = new Date();
                 offsetDays.setHours(0, 0, 0, 0);
-                offsetDays.setDate(offsetDays.getDate() - 14);
+                offsetDays.setDate(offsetDays.getDate() - 30);
 
                 const pastDays = point => {
                     const pointDate = new Date(point[0]);
@@ -415,7 +415,7 @@
                     },
                     stroke: {
                         curve: 'stepline',
-                        width: 2
+                        width: 1
                     },
                     dataLabels: {
                         enabled: false

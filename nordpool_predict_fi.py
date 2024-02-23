@@ -259,11 +259,30 @@ if args.past_performance:
 
     # Fetch the last 30 days of data from the database
     past_df = db_query_all(db_path)
+    past_df = past_df.sort_values(by='timestamp')
+
+    print("Fetched Data:", past_df)  # Debug print to see initial data
+
     past_df['timestamp'] = pd.to_datetime(past_df['timestamp'])
-    past_df = past_df[past_df['timestamp'] >= datetime.now() - timedelta(days=30)]
-    
+    before_filtering_length = len(past_df)
+
+    # Filter out rows where 'timestamp' is earlier than 30 days ago or later than now
+    now = datetime.now()
+    past_df = past_df[(past_df['timestamp'] >= now - timedelta(days=30)) & (past_df['timestamp'] <= now)]
+
+    print("Data after filtering:", past_df)
+
+    print(f"Data length before filtering: {before_filtering_length}, after filtering: {len(past_df)}")
+
+    nan_rows = past_df[past_df['Price [c/kWh]'].isna() | past_df['PricePredict [c/kWh]'].isna()]
+    print("Rows with NaN values before dropping:")
+    print(nan_rows)
+
     # Drop empty or NaN rows
     past_df = past_df.dropna(subset=['Price [c/kWh]', 'PricePredict [c/kWh]'])
+
+    print("Data after dropping NaNs:", past_df)
+    print(f"Data length after dropping NaNs: {len(past_df)}")
 
     # Calculate the metrics
     past_df = past_df.dropna(subset=['Price [c/kWh]', 'PricePredict [c/kWh]'])
@@ -282,16 +301,16 @@ if args.past_performance:
     if args.commit:
         # Prepare data for Apex Charts
         past_performance_data = {
+            "data": [
+                {"name": "Actual Price", "data": []},
+                {"name": "Predicted Price", "data": []}
+            ],
             "metrics": {
                 "mae": mae,
                 "mse": mse,
                 "rmse": rmse,
                 "r2": r2
-            },
-            "data": [
-                {"name": "Actual Price", "data": []},
-                {"name": "Predicted Price", "data": []}
-            ]
+            }
         }
 
         # Convert timestamps to milliseconds since epoch and pair with values
@@ -300,6 +319,9 @@ if args.past_performance:
             past_performance_data["data"][0]["data"].append([timestamp_ms, row['Price [c/kWh]']])
             past_performance_data["data"][1]["data"].append([timestamp_ms, row['PricePredict [c/kWh]']])
 
+        print("Final Actual Price Data Points:", past_performance_data["data"][0]["data"][:5])  # Debug print
+        print("Final Predicted Price Data Points:", past_performance_data["data"][1]["data"][:5])  # Debug print
+        
         # Save to JSON file
         past_performance_json_path = os.path.join(deploy_folder_path, past_performance_file)
         with open(past_performance_json_path, 'w') as f:
