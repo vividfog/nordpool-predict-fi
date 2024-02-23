@@ -1,0 +1,224 @@
+# Nordpool FI Spot Price Prediction
+
+**This is a Python script that predicts electricity prices for the Nordpool FI market. The script fetches a 5-day weather forecast and a wind power forecast, and uses these to predict future Nordpool FI electricity prices, using a trained Random Forest model.**
+
+Live version: [https://nordpool-predict-fi.web.app](https://nordpool-predict-fi.web.app)
+
+If you need the predictions, you'll find them in the [deploy](deploy) folder. See [below](#home-assistant-chart) for Home Assistant instructions. Alternatively, download [index.html](deploy/index.html) from this repository, save it, and open it locally to see the current prediction.
+
+This repository contains all the original data and code to re-train the model, generate predictions, express a quantitative model analysis and plot the results.
+
+[TOC]
+
+<img src="data/home_assistant_sample_plot.png" alt="Predictions shown inside Home Assistant using ApexCharts" style="zoom:50%;" />
+
+## Model performance
+
+You can get an idea of the model's performance from the chart below (click and zoom in). The gap in the timeline is by design: a full data series was not available at a time for a gapless prediction. A more complete evaluation is at the bottom of this file.
+
+This data represents Nordpool FI in VAT 24% Euro-cents per kilowatt-hour (c/kWh) from early 2023 to early 2024. The blue line is the actual price, orange line is the prediction.
+
+<img src="data/plot-2024-02-18.png" alt="2023-2024" style="zoom: 25%;" />
+
+## Quantitative metrics
+
+To explain the model's performance in statistical terms, this is what the model predicts, when sampling 500 random hours from the whole data set (train + test set) and does that 10 times. Measuring vs. test-set-only produces results in the same ballpark.
+
+> - **Mean Absolute Error (MAE) of 1.07:** On average, the model's predictions are about 1.07 units (cents) off from the actual values. This means if you were guessing the price of something, you'd typically be about 1.07 units wrong — a small error, indicating the model is quite accurate.
+> - **Mean Squared Error (MSE) of 6.75:** This number is a bit more technical but essentially measures the average of the squared differences between predicted and actual values. The "squared" part puts more weight on larger errors. A value of 6.75 suggests that, while there are some errors in prediction, they are generally not too large.
+> - **R² score of 0.856:** This score ranges from 0 to 1, where 1 means the model predicts perfectly. An R² of 0.856 means the model can explain about 86% of the variability in the actual values with its predictions. This is quite high, indicating the model does a very good job at forecasting.
+
+In short, this model is quite good at making predictions, with small average errors and a high ability to account for changes in what it's predicting, though it may need retraining if the underlying hidden patterns behind price formulation change over time.
+
+It remains to be seen, how well the model copes over the full year of 2024. See the [model](model) folder for when the model was last trained.
+
+## Co-authors
+
+The original RF model was initially co-trained with [Autogen](https://github.com/microsoft/autogen). GPT-4 was used a lot during coding, but a real human has re-written most of the code and comments by hand, including this README. The project was a personal Autogen + AI pair programming evaluation/trial and a hobby project written over 2 weekends.
+
+In addition to Random Forest, we (human and AI) also tried Linear Regression, GBM and LSTM, and a Random Forest with Linear Regression scaling. Out of these, the RF model performed the best, so that's what's used here.
+
+[Continue.dev](https://github.com/continuedev/continue) was the tool of choice for AI pair programming.
+
+## Usage
+
+Clone the repository, `pip install -r requirements` in a new environment.
+
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+The script uses environment variables for configuration. These can be set in a file called `.env.local`. Check  `.env.local.template` [and the comments](.env.local.template) on what the variables are. Most of the defaults should be OK.
+
+How to use:
+
+```bash
+python nordpool_predict_fi.py --predict --commit  # predicts the latest spot prices, then commits to DB file
+python nordpool_predict_fi.py --narrate --commit # creates an LLM narration of the prediction, commits as .md to deploy folder
+python nordpool_predict_fi.py --publish # pushes the prediction JSON file to a Github repo for sharing
+python nordpool_predict_fi.py --predict --narrate --commit --publish  # executes all of the above
+python nordpool_predict_fi.py --foreca  # fetches (updates) the latest wind power forecast
+python nordpool_predict_fi.py --dump    # outputs all of the database to STDOUT in .csv format
+python nordpool_predict_fi.py --plot    # creates a png plot of all actuals/predictions to deploy folder
+python nordpool_predict_pi.py --train   # re-runs the initial training and produces a new model candidate
+python nordpool_predict_fi.py --predict --add-history # retroactive price prediction if you're starting over; add --commit to update the DB
+```
+
+See the data folder for a DB initialization script if you need it. This repo includes a pre-populated database.
+
+## How does this model work?
+
+Surpisingly, this model (or problem) is **not** a time series prediction. Price now doesn't tell much about price in 2 hours before or after. Just look at the shape of the chart above.
+
+Following intuition and observing past price fluctuations, outdoor temperature can hedge much of the price-impacting demand and wind can hedge much of the price-impacting supply, if the supply side is *otherwise* working as-usual on any given day. What if we ignore all the other variables and see what happens if we just follow the wind?
+
+The idea here was to formalize that intuition through a data set and a model.
+
+- Foreca produces a [public wind power forecast](https://www.foreca.fi/sahkon-hinta) for 10 days ahead. This data is part of the training and predictions.
+
+- Temperature affects household energy consumption. I selected Tampere/Pirkkala Airport as a representative metropolitan location for temperature/wind measurements. If it's very cold and windy there, perhaps it's also very cold and windy in Oulu, Turku, Helsinki etc., which would balloon country-wide household energy consumption, and this should show up in correlations, if not offset by the available wind.
+
+- Max available wind power capacity was included, because the capacity is constantly growing, and including this information made the past pricing data explain more about the price at the time.
+
+- Since the day of the week (Sunday vs. Monday) makes a difference, as does the time of the day (3 AM vs. 7 PM), and a month (January vs. July), those too were included as variables. But the day-of-the-month was not, because all it says is likely already captured by the weather, the time and the weekday.
+
+Data schema used for training and inference is this:
+
+```
+sqlite> .schema
+CREATE TABLE prediction (
+    timestamp TIMESTAMP PRIMARY KEY,
+    "Price [c/kWh]" FLOAT,
+    "Temp [°C]" FLOAT,
+    "Wind [m/s]" FLOAT,
+    "Wind Power [MWh]" FLOAT,
+    "Wind Power Capacity [MWh]" FLOAT,
+    "PricePredict [c/kWh]" FLOAT
+);
+```
+
+> [!NOTE]
+>
+> Yes, we should have used **MW** when talking about wind **power** (vs. accumulated wind energy in megawatt-hours). We may fix this terminology oversight in a future update. However, the model doesn't read those units or do physics with these numbers, so it won't change the results. We could have called them volts and it would still produce the same results.
+
+### Hidden patterns in weather/price data
+
+As code, the price information is learned from, or is a function of, patterns and correlations between these factors, as learned by the model:
+
+```
+['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'hour', 'day_of_week', 'month']
+```
+
+> **Example scenarios to illustrate the correlations:**
+>
+> - Early Spring Morning: 3°C at 5 AM with 2 m/s wind speed - Expected Price: 6 to 10 cents/kWh due to moderate heating demand and low wind energy contribution.
+> - Chilly Fall Evening: 8°C at 6 PM with 1 m/s wind speed - Expected Price: 5 to 8 cents/kWh, increased demand for heating with minimal wind energy supply.
+> - Cold Winter Night: -12°C at 2 AM with 4 m/s wind speed - Expected Price: 12 to 18 cents/kWh due to high heating demand, partially offset by moderate wind generation.
+> - Mild Spring Afternoon: 16°C at 3 PM with 5 m/s wind speed - Expected Price: 3 to 5 cents/kWh, a balance of mild demand and good wind supply.
+> - Cool Autumn Midnight: 6°C at 11 PM with 6 m/s wind speed - Expected Price: 1 to 3 cents/kWh, low demand and high wind energy generation.
+
+### What's a Random Forest?
+
+How can a Random Forest model learn these patterns to predict future prices based on future weather? That's a good question. We could ask GPT-4 to see what it says:
+
+> A Random Forest model learns to predict outcomes, such as electricity prices based on weather and other conditions, through a combination of decision trees. Here's how it typically works for understanding and predicting patterns like those in your examples:
+>
+> 1. **Decision Trees**: At the heart of a Random Forest are decision trees. Each decision tree in the forest is built from a random subset of the data features ('Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', etc.) and instances. These trees are grown to their maximum size without pruning, which makes them highly sensitive to the specific data they're trained on, capturing complex patterns including nonlinear relationships and interactions between variables.
+>
+> 2. **Randomness**: Two levels of randomness are introduced in a Random Forest: 
+>    - **Feature Sampling**: When splitting a node, the model randomly selects a subset of the features to consider for the split. This ensures that the trees in the forest are diverse, which reduces the model's variance and helps to avoid overfitting.
+>    - **Bootstrap Sampling**: Each tree is trained on a different bootstrap sample of the data (i.e., a sample drawn with replacement), which adds to the diversity among the trees.
+>
+> 3. **Aggregation (Bagging)**: The predictions from all the trees are aggregated (usually by averaging) to make a final prediction. This process of combining multiple models to improve the overall performance is known as bootstrap aggregating, or bagging. The aggregation reduces the variance without increasing the bias, making the model robust against overfitting and capable of capturing complex patterns in the data.
+>
+> 4. **Learning Correlations**: In the context of your examples, the Random Forest model would learn the intricate relationships between temperature, wind speed, time of day, and other factors with the electricity prices. Each tree in the forest would capture different aspects of these relationships based on the subset of data and features it's trained on. For instance, one tree might learn the importance of wind power capacity during high-demand periods, while another might focus on the impact of temperature during different seasons.
+>
+> 5. **Feature Importance**: An additional benefit of using Random Forests is that they can provide insights into the importance of each feature in predicting the outcome. In your case, this could help identify which factors (e.g., temperature, wind speed, time of day) are most influential in determining electricity prices.
+>
+> The Random Forest algorithm is particularly well-suited for this kind of prediction task because it can handle complex, nonlinear relationships between variables and is robust against overfitting. It achieves this by learning from the collective insights of multiple decision trees, each of which may capture different underlying patterns and correlations in the data.
+
+That's a lot of hidden complexity that happens during the about 2 seconds it takes to re-train the model with the data. [It doesn't need a lot of code though.](util/train.py#L49)
+
+## How long will this repository/data be updated?
+
+**I don't know yet. This is a hobby project, and there is zero guarantee to keep the code or data up to date in the long haul. That's why all the code and data is free and public. Feel free to fork the project and make it your own, or submit a pull request. I'm using these predictions myself and plan to keep this code working as a hobby project, until there's a new and more important hobby project.**
+
+> [!WARNING]
+>
+> **The one part of the project which is definitely NOT robust, is the Foreca wind power forecast parser.** There is no API for multi-day predictions, so the script uses SVG path parsing 🤓 to re-create the data. While this is an *incredibly* fragile way of fetching the data, it works for now, and I have a pretty good idea of *why* it works, so I can fix it later if it breaks.
+
+```
+python nordpool_predict_fi.py --foreca
+Starting the process to fetch and parse the SVG data from Foreca...
+Setting up the browser driver
+Opening the web page
+Finding the SVG elements
+Saving the beautified SVG content to data/foreca_0.svg
+Saving the beautified SVG content to data/foreca_1.svg
+SVG files have been saved. Closing the web page.
+Extracting Bezier paths from the SVG
+Interpolating Y values for each X value
+Calculating MW values for each Y entry
+Extracting datetime for each MW value for plotting
+Interpolating the original data to include all hours in the range
+Converting to JSON format and UTC time
+JSON data has been written to: data/foreca_wind_power_prediction.json
+```
+
+### What if the Foreca wind power forecast option goes down?
+
+We also tried the prediction with the naive method of only including Tampere Airport wind speed and temperature history data, because that's available for many days ahead.
+
+- While this didn't result in quite as accurate a model, it was more accurate than most people's guesswork, and perhaps even surprisingly good.
+
+- A surprise was that Tampere/Pirkkala Airport wind situation and wind power production/history don't actually correlate that closely. That's why both are included during training.
+
+- The airport weather data is included to nudge the model to learn the effects of suburban wind/temperature to household electricity (= heating) consumption, with the airport getting the honor of representing "an average suburban spot" in Finland. Perhaps about as many Finnish households are situated to the North of Tampere, as to the South? And also East/West?
+
+- We suspect that the "day of the week" input captures a lot of the price fluctuations caused by business/industry energy consumption.
+
+Feel free to propose a better "average" Finland temp/wind position, region, or (preferred) API!
+
+### "Plan B" performance: if no access to wind power forecast directly
+
+This is the Random Forest performance in such a scenario, aka the initial version of the model:
+
+> - **Mean Absolute Error (MAE)** of **2.30 cents** indicates how close the model's predictions are to the actual prices, with a lower number indicating better accuracy. Essentially, this model's predictions are, on average, 2.30 cents off from the real prices. This is the "normal day" performance.
+> - **Mean Squared Error (MSE)** of **22.07 cents** highlights the average squared difference between predicted and actual prices. A high MSE suggests that there are instances where the model's predictions significantly deviate from the actual values, indicating potential outliers or periods of high volatility that the model handles poorly. This is the "very unusual day" performance.
+> - **R-squared (R2)** value of **0.77** tells us that 77% of the price variance is explained by the model's inputs. This means the model is relatively good at predicting price changes based on the data it analyzes, though it's not perfect. If the model says that "it's going to be expensive in 3 days", it probably will be.
+
+If the wind power forecast data becomes unavailable in the future, that's plan B.
+
+# How to use the data in your apps
+
+## Python sample script
+
+Pending an API, there's a sample script [deploy/npf.py](deploy/npf.py) to demonstrate how to fetch [prediction.json](deploy/prediction.json), convert it into a Pandas dataframe and save it to a CSV file.
+
+## Home Assistant
+
+You can show the Nordpool prices with predictions on your dashboard. The code uses official Nordpool prices for today and tomorrow (when available) and fills the rest of the chart with prediction data, as seen at the top of this README.
+
+> [!NOTE]
+>
+> After 14:00, the "tomorrow" prices may show up empty for a while, until Nordpool publishes tomorrow's pricing and your Home Assistant gets a note of them now being available. Feel free to propose a more intelligent logic for the chart and submit a PR.
+
+### Requirements
+
+- [HACS](https://hacs.xyz), Home Assistant Community Store, which you can get from the [Add-On store](https://www.home-assistant.io/addons/), or follow the [docs](https://hacs.xyz/docs/setup/download/)
+
+- [custom:apexcharts-card](https://github.com/RomRider/apexcharts-card) (available through HACS)
+- [Nordpool integration](https://github.com/custom-components/nordpool), set to EUR VAT0 prices (available through HACS)
+    - Adjust the sensor names to match yours: `sensor.nordpool_kwh_fi_eur_3_10_0`
+    - Remove the "124" multiplication from your code, if your sensor already produces cent values with VAT
+
+### Add the card to your dashboard
+
+Add the contents of [deploy/npf.yaml](deploy/npf.yaml) as a "Manual" chart to your Lovelace dashboard.
+
+## License
+
+This project is licensed under the MIT License.
+
