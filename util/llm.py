@@ -67,15 +67,15 @@ def send_to_gpt(df):
         prompt += (f"{date.strftime('%A %d.%m.%Y')}: Pörssisähkön hinta min {row[('PricePredict [c/kWh]', 'min')]:.0f} ¢/kWh, max {row[('PricePredict [c/kWh]', 'max')]:.0f} ¢/kWh, keskihinta {row[('PricePredict [c/kWh]', 'mean')]:.0f} ¢/kWh. Tuulivoiman tuotanto min {wind_min:.0f} MW, max {wind_max:.0f} MW, keskiarvo {wind_mean:.0f} MW.\n\n")
       
     prompt += """
-// Tiedoksi itsellesi: alle 7 ¢ on halpa hinta, 10 senttiä on kohtuullinen hinta ja yli 15 senttiä on kallis hinta. Mutta kun viittaat hintoihin, kirjoita niistä numeroilla eikä adjektiiveilla.
+// Kirjoita viihdyttävä ja rikasta suomen kieltä käyttävä UUTISARTIKKELI viihteellisen aikakauslehden kolumniin näiden tietojen pohjalta. Aloita kuvailemalla sähkön hinnan ja tuulivoimaennusteen kehitystä lähipäiville, ja kommentoi sitten lähipäiviä kokonaisuutena. Tavoitepituus on noin 150-250 sanaa.
+// Tiedoksi itsellesi: alle 7 ¢ on halpa hinta, 10 senttiä on kohtuullinen hinta ja yli 15-20 senttiä on lukijoille kallis hinta. Mutta kun viittaat hintoihin, kirjoita niistä numeroilla eikä adjektiiveilla.
 // Tiedoksi itsellesi: maksimimäärä tuulivoimalle Suomessa on noin 7000 megawattia ja suuri tuotanto laskee sähkön hintaa. 
 // Tuulivoiman vaikutus hintaan oli vain tiedoksi sinulle, lukijat tietävät sen jo! 
 // Älä mainitse päivämääriä, koska viikonpäivät riittävät. 
 // Vältä turhaa toistoa ja älä anna mitään neuvoja! Tehtäväsi on puhua vain hinnoista ja tuulivoiman tuotannosta! Ole perinpohjainen. 
-// Käytä Markdown-muotoilua tekstin rakenteen tuottamiseksi. 
-// Kirjoita pitkä ja viihdyttävä uutisartikkeli näiden tietojen pohjalta. Aloita kuvailemalla sähkön hinnan ja tuulivoimaennusteen kehitystä lähipäiville, ja sitten tuota tiedot uudelleen, mutta värikkäämmin ja kappalemuodossa. Tavoitepituus on noin 200 sanaa.
-// **Vahvenna** viikonpäivät, kuten '**maanantai**' tai '**torstaina**', mutta vain kun mainitset ne ensi kertaa. 
-// Kiitos!"""
+// Käytä Markdown-muotoilua tekstin rakenteen tuottamiseksi. **Vahvenna** viikonpäivät, kuten '**maanantai**' tai '**torstaina**', mutta vain kun mainitset ne ensi kertaa. 
+// Nyt voit kirjoittaa valmiin tekstin. Kiitos!
+"""
     
     # To view the output in English, add the following to the prompt:
     # prompt += "\nFor the English readers, please write your final response in English. Thank you!"
