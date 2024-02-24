@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pörssisähkön hintaennuste</title>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;600;800&display=swap" rel="stylesheet">
 
     <style>
@@ -27,71 +27,59 @@
             line-height: 1.6;
             box-sizing: border-box;
         }
+        #predictionChart {
+            height: 40vh;
+            width: 100%;
+            max-width: 920px;
+            margin: auto;
+            box-sizing: border-box;
+            padding-top: 32px;
+        }
         #chart {
             max-width: 920px;
             margin: auto;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            background-color: #fff;
-            padding-left: 60px;
-            padding-right: 72px;
-            padding-top: 16px;
-            padding-bottom: 8px;
             box-sizing: border-box;
         }
 
-        #charttitle, #dateRangeHeader {
+        #predictionText {
             max-width: 920px;
             line-height: 1.6;
             box-sizing: border-box;
             margin: auto;
+            margin-top: 16px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             background-color: #fff;
             padding-left: 60px;
             padding-right: 60px;
             padding-top: 24px;
-            padding-bottom: 1px;
+            padding-bottom: 24px;
         }        
         #narration {
             max-width: 920px;
             margin: auto;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            padding-left: 60px;
-            padding-right: 60px;
-            padding-top: 1px;
-            padding-bottom: 4px;
-
             line-height: 1.6;
+            padding-bottom: 24px;
             box-sizing: border-box;
         }
         #llm {
             max-width: 920px;
             margin: auto;
             text-align: left;
-            background-color: #fff;
             color: rgba(102, 102, 102, 0.7);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            padding-left: 60px;
-            padding-right: 60px;
-            padding-top: 1px;
-            padding-bottom: 8px;
             margin-top: 0;
             line-height: 1.5;
             box-sizing: border-box;
             font-size: 0.9em;
 
         }
-        #pastperformance {
+        #pastPredictions {
+            height: 40vh;
+            width: 100%;
             max-width: 920px;
             margin: auto;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            background-color: #fff;
-            padding-left: 60px;
-            padding-right: 72px;
-            padding-top: 16px;
-            padding-bottom: 24px;
-
             box-sizing: border-box;
+            padding-bottom: 24px;
+            padding-top: 24px;
         }
         #disclaimer {
             position: relative;
@@ -188,26 +176,21 @@
             #body {
                 margin: 4px;
             }
-            #charttitle, #title, #pastperformance, #chart, #dateRangeHeader, #narration  {
+            #predictionText, #title {
                 padding-left: 24px;
                 padding-right: 24px;
                 padding-top: 16px;
             }
-            #chart, #pastperformance {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-            #llm {
-                padding-left: 24px;
-                padding-right: 24px;
+            #predictionChart {
+                height: 30vh;
             }
             #disclaimer {
                 max-width: 320px;
             }
             #topdisclaimer {
-            max-width: 320px;
-            padding: 8px;
-            padding-bottom: 16px;
+                max-width: 320px;
+                padding: 8px;
+                padding-bottom: 16px;
             }
         }        
 
@@ -215,27 +198,24 @@
 </head>
 <body>
     <div id="topdisclaimer"><a href="privacy-policy.html">Palvelukuvaus ja tietosuojaseloste</a></div>
-    <div id="charttitle">
+    <div id="predictionText">
         <h1>Pörssisähkön hintaennuste</h1>
-        <p>Tämä kokeellinen Random Forest -koneoppimismalli ennustaa pörssisähkön hintaa viiden päivän päähän. Malli vertaa nykyisiä sääolosuhteita, tuulivoiman tuotantoa, vuodenaikaa ja viikonpäivää aiempiin, samankaltaisiin ajanjaksoihin, joissa viikonpäivä, tuulivoiman tilanne, sää ja kuukausi olivat samat.</p>
-    </div>
-    <div id="llm">Koneen tuottamaan ennusteeseen tulee suhtautua viihteenä. Se ei ota huomioon sähkömarkkinoiden poikkeustilanteita, kuten ydinvoimaloiden huoltokatkoja, muutoksia siirtoyhteyksissä ja paljon muuta. Sääennusteet voivat myös olla väärin, mikä vaikuttaa suoraan tämän mallin tuottamiin tuloksiin.</div>
-    <div id="chart"></div>
-    <div id="charttitle"><h1>Lähipäivien tuulivoima- ja hintakehitys</h1></div>
-    <div id="llm">Teksti on luotu koneellisesti kielimallin avulla.</div>
-    <div id="narration"></div>
-    <div id="charttitle">
+        <p>Tämä kokeellinen Random Forest -koneoppimismalli ennustaa pörssisähkön verollista hintaa viiden päivän päähän. Malli vertaa nykyisiä sääolosuhteita, tuulivoiman tuotantoa, vuodenaikaa ja viikonpäivää aiempiin, samankaltaisiin ajanjaksoihin, joissa viikonpäivä, tuulivoiman tilanne, sää ja kuukausi olivat samat.</p>
+        <p id="llm">Koneen tuottamaan ennusteeseen tulee suhtautua viihteenä. Se ei ota huomioon sähkömarkkinoiden poikkeustilanteita, kuten ydinvoimaloiden huoltokatkoja, muutoksia siirtoyhteyksissä ja paljon muuta. Sääennusteet voivat myös olla väärin, mikä vaikuttaa suoraan tämän mallin tuottamiin tuloksiin.</p>
+        <p id="predictionChart"></p>
+        <h1>Lähipäivien tuulivoima- ja hintakehitys</h1>
+        <p id="llm">Teksti on luotu koneellisesti kielimallin avulla.</p>
+        <p id="narration"></p>
         <h1>Ennuste vs. toteutunut hinta</h1>
-        <p>Graafi kertoo, miten toteutunut hinta ja mallin tekemä ennuste vertautuivat toisiinsa viimeisen 90 pv aikana. Vie hiiri graafin päälle, niin näet lisätietoja. Zoomaa, niin voit katsoa tunti kerrallaan.</p>
-    </div>
-    <div id="pastperformance"></div>
-    <div id="charttitle" style="padding-bottom: 48px";>
+        <p>Graafi kertoo, miten toteutunut hinta ja mallin tekemä ennuste vertautuivat toisiinsa viime kuukausina. Vie hiiri graafin päälle, tai zoomaa tai siirrä aikajanaa, niin näet yksityiskohdat.</p>
+        <p id="pastPredictions"></p>
         <h1>Tunnusluvut pidemmältä ajalta</h1>
         <p><strong>Aikaväli:</strong> 13.2.2023 - 24.2.2024 (377 päivää)</p>
-        <p><strong>Mean Absolute Error (MAE): 1.2 ¢/kWh.</strong> Ilmaisee keskimääräisen virheen ennusteissa. Mitä pienempi tämä arvo on, sitä tarkemmin malli ennustaa todellisia hintoja.</p>
-        <p><strong>Mean Squared Error (MSE): 9.9 ¢/kWh.</strong> Mittaa virheiden keskimääräistä suuruutta neliöitynä, jolloin suuret virheet saavat enemmän painoarvoa. Tämä valaisee suurempia heittoja ennusteessa.</p>
-        <p><strong>R-squared (R<sup>2</sup>): 0.84.</strong>Osoittaa, kuinka suuren osan todellisten hintojen vaihteluista malli kykenee selittämään. Mitä lähempänä lukua 1, sitä tarkemmin malli ennustaa hinnan muutoksia.</p>
-        <p>Malli päivittyy aika ajoin, jolloin nämä tunnusluvut saattavat muuttua.</p>
+        <p><strong>Mean Absolute Error (MAE): 1,2 ¢/kWh.</strong> Ilmaisee keskimääräisen virheen ennusteissa. Mitä pienempi tämä arvo on, sitä tarkemmin malli ennustaa todellisia hintoja.</p>
+        <p><strong>Mean Squared Error (MSE): 9,9 ¢/kWh.</strong> Mittaa virheiden keskimääräistä suuruutta neliöitynä, jolloin suuret virheet saavat enemmän painoarvoa. Tämä valaisee suurempia heittoja ennusteessa.</p>
+        <p><strong>R-squared (R<sup>2</sup>): 0,84.</strong>Osoittaa, kuinka suuren osan todellisten hintojen vaihteluista malli kykenee selittämään. Mitä lähempänä lukua 1, sitä tarkemmin malli ennustaa hinnan muutoksia.</p>
+        <p style="padding-bottom: 24px;">Malli päivittyy aika ajoin, jolloin nämä tunnusluvut saattavat muuttua.</p>
+    </div>
     </div>
     <div id="disclaimer">Ennusteissa voi olla virheitä. Tuotannosta malli huomioi vain <a href="https://www.foreca.fi/sahkon-hinta" target="_blank">tuulivoimaennusteen</a>, ei esimerkiksi ydinvoimaloiden huoltotaukoja.</div>
     <div id="github-logo-container"><a href="https://github.com/vividfog/nordpool-predict-fi" target="_blank"><img src="https://nordpool-predict-fi.web.app/github-mark.png" alt="GitHub Repo" id="github-logo"></a></div>
@@ -243,201 +223,327 @@
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6065830160125618" crossorigin="anonymous"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var baseUrl = window.location.hostname === "" ? "https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/main/deploy" : "https://nordpool-predict-fi.web.app";
 
-            function getFinnishWeekday(date) {
-                const weekdays = ['sunnuntai', 'maanantai', 'tiistai', 'keskiviikko', 'torstai', 'perjantai', 'lauantai'];
-                return weekdays[date.getDay()];
+        // Hosted on GitHub Pages or Firebase Hosting?
+        var baseUrl = window.location.hostname === "" ? "https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/main/deploy" : "https://nordpool-predict-fi.web.app";
+
+        //////////////////////////////////////////////////////////////////////////
+        // Fetch the narration text from the Markdown file
+        fetch(`${baseUrl}/narration.md`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
+            return response.text();
+        })
+        .then(text => {
+            // LLM generated text in quotes
+            document.getElementById('narration').innerHTML = marked.parse(text);
+        })
+        .catch(error => console.error('Fetching Markdown failed:', error));  
 
-            fetch(`${baseUrl}/prediction.json`)
-            .then(response => response.json())
-            .then(data => {
-                const now = new Date();
-                const tomorrowStart = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-                // const futureData = data.filter(entry => new Date(entry[0]) >= tomorrowStart);
-                const futureData = data;
+        //////////////////////////////////////////////////////////////////////////
+        // eCharts code for PREDICTION chart
+        var nfpChart = echarts.init(document.getElementById('predictionChart'));
 
-                futureData.sort((a, b) => new Date(a[0]) - new Date(b[0]));
-                
-                var seriesData = futureData.map(entry => ({
-                    x: new Date(entry[0]),
-                    y: entry[1]
-                }));
+        // Calculate start and end dates for Sähkötin
+        var startDate = addDays(new Date(), -1).toISOString();
+        var endDate = addDays(new Date(), 2).toISOString();
+    
+        // URLs for the datasets
+        var npfUrl = `${baseUrl}/prediction.json`; // Using your existing baseUrl for NPF data
+        var sahkotinUrl = 'https://sahkotin.fi/prices.csv';
+        var sahkotinParams = new URLSearchParams({
+            fix: 'true',
+            vat: 'true',
+            start: startDate,
+            end: endDate,
+        });
 
-                // Initialize the prediction chart with your ApexCharts configuration...
-                var maxValue = Math.max(...seriesData.map(data => data.y));
-                var minValue = Math.min(...seriesData.map(data => data.y));
-                var adjustedMaxValue = Math.ceil(maxValue / 5) * 5;
-                var adjustedMinValue = Math.floor(minValue / 5) * 5;
+        // Helper function to calculate date ranges
+        function addDays(date, days) {
+            var result = new Date(date);
+            result.setHours(0, 0, 0, 0);
+            result.setDate(result.getDate() + days);
+            return result;
+        }
+    
+        // Fetch the data and display the chart
+        Promise.all([
+            fetch(npfUrl).then(r => r.json()), // Fetch NPF data
+            fetch(`${sahkotinUrl}?${sahkotinParams}`).then(r => r.text()) // Fetch Sähkötin data
+        ])
+        .then(([npfData, sahkotinCsv]) => {
+            // Prepare NPF series data
+            var npfSeriesData = npfData.map(item => [item[0], item[1]]);
+    
+            // Prepare Sähkötin series data
+            var sahkotinSeriesData = sahkotinCsv.split('\n').slice(1).map(line => {
+                var [timestamp, price] = line.split(',');
+                return [new Date(timestamp).getTime(), parseFloat(price)];
+            });
+    
+            // Define the chart option with both series
+            nfpChart.setOption({
+                title: {
+                    text: ' '
+                },
+                legend: {
+                    data: ['Toteutunut', 'Mallin ennuste']
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    formatter: function (params) {
+                        var result = params[0].axisValueLabel + '<br/>';
+                        params.forEach(function (item) {
+                            // Round the value to one decimal place
+                            var valueRounded = item.value[1].toFixed(1);
+                            result += item.marker + " " + item.seriesName + ': ' + valueRounded + ' ¢/kWh ALV 24%<br/>';
+                        });
+                        return result;
+                    }
+                },
+                xAxis: {
+                    type: 'time',
+                    boundaryGap: false,
+                    axisLabel: {
+                        formatter: function (value) {
+                            var date = new Date(value);
+                            var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
+                            var year = date.getFullYear();
+                            var day = ("0" + date.getDate()).slice(-2);
+                            var month = date.getMonth() + 1;  // add 1 since getMonth() starts from 0
+                            var weekday = weekdays[date.getDay()];
 
-                var options = {
-                    chart: {
+                            return weekday + ' ' + day + '.' + month + '.';
+                        }
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    name: '¢/kWh ALV24',
+                    nameLocation: 'end',
+                    nameGap: 20,
+                    max: value => Math.floor(value.max + 5),
+                    nameTextStyle: {
+                        fontWeight: 'regular'
+                    },
+                    axisLabel: {
+                        formatter: function (value) {
+                            // Round the cents to one decimal place
+                            return value.toFixed(0);
+                        }
+                    }
+                },
+
+                // Set gradient colors for the realized price
+                visualMap: {
+                    seriesIndex: [1],
+                    top: 50,
+                    right: 10,
+                    pieces: [
+                        {gt: 0, lte: 5, color: 'lime'},
+                        {gt: 5, lte: 10, color: 'limegreen'},
+                        {gt: 10, lte: 15, color: 'gold'},
+                        {gt: 15, lte: 20, color: 'darkorange'},
+                        {gt: 20, lte: 30, color: 'red'},
+                        {gt: 30, color: 'darkred'}
+                    ],
+                    outOfRange: {
+                        color: '#999'
+                    }
+                },
+
+                // Data series
+                series: [
+                    {
+                        // Prediction
+                        name: 'Mallin ennuste',
                         type: 'line',
-                        height: 384
-                    },
-                    series: [{
-                        name: '¢/kWh',
-                        data: seriesData
-                    }],
-                    plotOptions: {
-                        bar: {
-                            borderRadius: 4,
-                        }
-                    },
-                    colors: ['#1E90FF'],
-                    xaxis: {
-                        type: 'datetime',
-                        labels: {
-                            formatter: function(value, timestamp) {
-                                return new Date(timestamp).toLocaleDateString('fi-FI', {
-                                    weekday: 'short',
-                                    day: 'numeric',
-                                    month: 'numeric',
-                                    hour: '2-digit',
-                                    minute: '2-digit'
-                                });
-                            }
+                        data: npfSeriesData,
+                        symbol: 'none',
+                        lineStyle: {
+                                    type: 'dotted',
+                                    color: 'skyblue',
+                                    width: 3
                         },
-                        tickAmount: 6
-                    },
-                    yaxis: {
-                        decimalsInFloat: 1,
-                        forceNiceScale: true,
-                        min: adjustedMinValue,
-                        max: adjustedMaxValue
-                    },
-                    dataLabels: {
-                        enabled: false
-                    },
-                    tooltip: {
-                        x: {
-                            format: 'dd MMM yyyy HH:mm'
-                        }
-                    },
-                    stroke: {
-                        curve: 'stepline',
-                        width: 2
-                    }
-                };
+                    }, 
+                    {
+                        // Realized
+                        name: 'Toteutunut',
+                        type: 'line',
+                        data: sahkotinSeriesData,
+                        symbol: 'none',
+                        step: 'middle',
+                    }, 
+                    {
+                        // MarkLine for current time
+                        type: 'line',
+                        markLine: {
+                            // Hides the symbol at the end of the line
+                            symbol: 'none', 
+                            label: {
+                                formatter: function() {
+                                    let currentTime = new Date();
+                                    let hours = currentTime.getHours();
+                                    let minutes = currentTime.getMinutes();
 
-                var chart = new ApexCharts(document.querySelector("#chart"), options);
-                chart.render();
-        
-                fetch(`${baseUrl}/narration.md`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
+                                    hours = hours < 10 ? '0' + hours : hours;
+                                    minutes = minutes < 10 ? '0' + minutes : minutes;
+                                    // This will be local time 24 hour formatted string
+                                    return 'klo ' + hours + ':' + minutes; 
+                                },                                
+                                position: 'end'
+                            },
+                            lineStyle: {
+                                type: 'dotted',
+                                color: 'skyblue',
+                                width: 1.5
+                            },
+                            data: [
+                                {
+                                    // Current time as the position for the line
+                                    xAxis: new Date().getTime()
+                                }
+                            ]
+                        }
                     }
-                    return response.text();
-                })
-                .then(text => {
-                    // LLM generated text in quotes
-                    document.getElementById('narration').innerHTML = marked.parse(text);
-                })
-                .catch(error => console.error('Fetching Markdown failed:', error));                
+                ]  
             });
 
-            // Past performance chart
-            fetch(`${baseUrl}/past_performance.json`)
-            .then(response => response.json())
-            .then(json => {
-                const offsetDays = new Date();
-                offsetDays.setHours(0, 0, 0, 0);
-                offsetDays.setDate(offsetDays.getDate() - 90);
+            // Match the time axis of the two series
+            var npfSeriesData = npfData.map(item => [item[0] * 1000, item[1]]);
 
-                const pastDays = point => {
-                    const pointDate = new Date(point[0]);
-                    pointDate.setHours(0, 0, 0, 0);
-                    const isPastDay = pointDate >= offsetDays;
-                    return isPastDay;
-                };
+            var sahkotinSeriesData = sahkotinCsv.split('\n').slice(1).map(line => {
+                var [timestamp, price] = line.split(',');
+                return [new Date(timestamp).getTime(), parseFloat(price)];
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching or processing data:', error);
+        });
+        // END: ECharts code
 
-                const actualData = json.data.find(series => series.name === "Actual Price").data
-                    .filter(pastDays)
-                    .map(point => ({
-                        x: new Date(point[0]),
-                        y: point[1]
-                    }));
-                const predictedData = json.data.find(series => series.name === "Predicted Price").data
-                    .filter(pastDays)
-                    .map(point => ({
-                        x: new Date(point[0]),
-                        y: point[1]
-                    }));
+        //////////////////////////////////////////////////////////////////////////
+        // eCharts code for PAST PREDICTIONS chart
+        var pastPredictions = echarts.init(document.getElementById('pastPredictions'));
+    
+        // Fetch the data and display the chart
+        Promise.all([
+            fetch(`${baseUrl}/past_performance.json`).then(r => r.json()) // Fetching past performance data
+        ])
+        .then(([jsonData]) => {
+            var actualPriceData = jsonData.data.find(series => series.name === "Actual Price").data
+                .map(item => [new Date(item[0]).getTime(), item[1]]);
+            var predictedPriceData = jsonData.data.find(series => series.name === "Predicted Price").data
+                .map(item => [new Date(item[0]).getTime(), item[1]]);
 
-                var maxActualValue = Math.max(...actualData.map(actualData => actualData.y));
-                var minActualValue = Math.min(...actualData.map(actualData => actualData.y));
-                var maxPredictedValue = Math.max(...predictedData.map(predictedData => predictedData.y));
-                var minPredictedValue = Math.min(...predictedData.map(predictedData => predictedData.y));
-
-                var maxHistoryValue = Math.max(maxActualValue, maxPredictedValue);
-                var minHistoryValue = Math.min(minActualValue, minPredictedValue);
-
-                var adjustedMaxHistoryValue = Math.max(15, Math.ceil(maxHistoryValue / 5) * 5);
-                var adjustedMinHistoryValue = Math.min(0, Math.floor(minHistoryValue / 5) * 5);
-
-                var pastPerformanceOptions = {
-                    chart: {
-                        type: 'line',
-                        height: 384
-                    },
-                    series: [{
-                        data: actualData,
-                        name: 'Toteutunut ¢/kWh ALV 24%',
-                        unit: '¢/kWh ALV 24%',
-                    }, {
-                        data: predictedData,
-                        name: 'Ennustettu ¢/kWh ALV 24%',
-                        unit: '¢/kWh ALV 24%',
-                    }],
-                    colors: ['#1E90FF', '#FF6347'],
-                    xaxis: {
-                        type: 'datetime',
-                        labels: {
-                            formatter: function(value, timestamp) {
-                                const date = new Date(timestamp);
-                                return date.toLocaleDateString('fi-FI', {
-                                    weekday: 'short',
-                                    day: 'numeric',
-                                    month: 'numeric'
-                                }) + ' ' + date.toLocaleTimeString('fi-FI', {
-                                    hour: '2-digit',
-                                    minute: '2-digit'
-                                });
-                            }
+            pastPredictions.setOption({
+                title: {
+                    text: ' '
+                },
+                legend: {
+                    data: ['Toteutunut hinta', 'Mallin ennuste (post hoc)'],
+                },
+                toolbox: {
+                    feature: {
+                        dataZoom: {
+                            yAxisIndex: 'none'
                         },
-                        tickAmount: 7
+                        restore: {},
+                        saveAsImage: {}
+                    }
+                },
+                dataZoom: [
+                    {
+                        type: 'inside',
+                        start: 75,
+                        end: 100
                     },
-                    yaxis: {
-                        decimalsInFloat: 1,
-                        forceNiceScale: true,
-                        min: adjustedMinHistoryValue,
-                        max: adjustedMaxHistoryValue
-                    },
-                    tooltip: {
-                        x: {
-                            show: true,
-                            format: 'dd MMM yyyy HH:mm'
+                    {
+                        type: 'slider', // Additional slider for zooming at the bottom
+                        start: 75,
+                        end: 100
+                    }
+                ],
+                tooltip: {
+                    trigger: 'axis',
+                    formatter: function (params) {
+                        var result = params[0].axisValueLabel + '<br/>';
+                        params.forEach(function (item) {
+                            var valueRounded = item.value[1].toFixed(1);
+                            result += item.marker + " " + item.seriesName + ': ' + valueRounded + ' ¢/kWh ALV 24%<br/>';
+                        });
+                        return result;
+                    }
+                },
+                xAxis: {
+                    type: 'time',
+                    boundaryGap: false,
+                    axisLabel: {
+                        formatter: function (value) {
+                            var date = new Date(value);
+                            return date.toLocaleDateString('fi-FI');
+                        },
+                        rotate: 45,
+
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    name: '¢/kWh ALV24',
+                    nameLocation: 'end',
+                    nameGap: 20,
+                    axisLabel: {
+                        formatter: '{value}'
+                    }
+                },
+                series: [
+                    {
+                        name: 'Toteutunut hinta',
+                        type: 'line',
+                        data: actualPriceData,
+                        symbol: 'none', // Change this to 'circle' or another shape if you want dots on the line
+                        symbolSize: 6, // You can adjust the size of the symbol (dot)
+                        smooth: true,
+                        lineStyle: {
+                            color: 'skyblue',
+                            width: 1
+                        },
+                        itemStyle: { // Add this to adjust the dot color
+                            color: 'skyblue'
                         }
                     },
-                    stroke: {
-                        curve: 'stepline',
-                        width: 1
-                    },
-                    dataLabels: {
-                        enabled: false
+                    {
+                        name: 'Mallin ennuste (post hoc)',
+                        type: 'line',
+                        data: predictedPriceData,
+                        symbol: 'none', // Change this to 'circle' or another shape if you want dots on the line
+                        symbolSize: 6, // You can adjust the size of the symbol (dot)
+                        smooth: true,
+                        lineStyle: {
+                            color: 'darkorange',
+                            width: 1
+                        },
+                        itemStyle: { // Add this to adjust the dot color
+                            color: 'darkorange'
+                        },
+
                     }
-                };
-
-                // console.log('Actual Data:', actualData);
-                var pastperformance = new ApexCharts(document.querySelector("#pastperformance"), pastPerformanceOptions);
-                pastperformance.render();
-            })
-            .catch(error => console.error('Error loading the past performance data:', error));
-
+                ]
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching or processing data:', error);
         });
+        // END: eCharts code
+
+        // Resize the chart when the window is resized
+        window.onresize = function() {
+            nfpChart.resize();
+            pastPredictions.resize();
+        }
+
         </script>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6065830160125618" crossorigin="anonymous"></script>
     </body>
