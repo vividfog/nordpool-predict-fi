@@ -21,4 +21,4 @@ firebase.json
 deploy/filtered_predictions.csv
 deploy/privacy-policy.html
 deploy/ads.txt
-data/models.db
+model/models.db
