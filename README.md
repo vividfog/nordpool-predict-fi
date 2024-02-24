@@ -52,7 +52,7 @@ The script uses environment variables for configuration. These can be set in a f
 
 How to use:
 
-```bash
+```
 options:
   -h, --help          show this help message and exit
   --dump              Dump the SQLite database to CSV format
