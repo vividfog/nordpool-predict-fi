@@ -227,7 +227,24 @@
     <script>
 
         // Hosted on GitHub Pages or Firebase Hosting?
-        var baseUrl = window.location.hostname === "" ? "https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/main/deploy" : "https://nordpool-predict-fi.web.app";
+        // var baseUrl = window.location.hostname === "" ? "https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/main/deploy" : "https://nordpool-predict-fi.web.app";
+
+        var baseUrl;
+
+        switch (window.location.hostname) {
+            case "":
+                baseUrl = "https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/main/deploy";
+                break;
+            case "nordpool-predict-fi.web.app":
+                baseUrl = "https://nordpool-predict-fi.web.app";
+                break;
+            case "sahkovatkain.web.app":
+                baseUrl = "https://sahkovatkain.web.app";
+                break;
+            default:
+                baseUrl = "https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/main/deploy";
+        }
+
 
         //////////////////////////////////////////////////////////////////////////
         // Fetch the narration text from the Markdown file
