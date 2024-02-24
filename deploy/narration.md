@@ -1,11 +1,5 @@
-**Sunnuntaina** sähkön hinta pysyy maltillisena, liikkuen kahden ja viiden sentin välillä. Tuulivoiman tuotanto on vakaalla tasolla, vaihdellen tuhannen ja neljän tuhannen megawatin välillä. 
+**Sunnuntaina** sähkön hinta liikkuu maltillisissa lukemissa, 2-5 sentin välillä, kun tuulivoiman tuotanto pyörii keskimäärin 3500 megawatin tuntumassa. **Maanantaina** hinta kohoaa hieman, 2-9 sentin haarukkaan, samalla kun tuulivoiman tuotanto laskee 2300 megawattiin. **Tiistaina** sähkön hinta nousee edelleen, liikkuen 2-11 sentin välillä, kun taas tuulivoiman tuotanto vaihtelee 500-5600 megawatin välillä.
 
-**Maanantaina** sähkön hinta nousee hieman, kohoamatta kuitenkaan yli yhdeksän sentin. Tuulivoiman tuotanto laskee edellispäivästä, mutta pysyttelee silti tuhannen ja kolmen tuhannen megawatin välillä.
+**Keskiviikkona** sähkön hinta palaa takaisin alhaisemmalle tasolle, 2-5 sentin haarukkaan, ja tuulivoiman tuotanto yltää jopa 6000 megawattiin. **Torstaina** hinta kipuaa korkeimmilleen viikon aikana, 5-12 senttiin, samalla kun tuulivoiman tuotanto laskee 800 megawattiin.
 
-**Tiistaina** sähkön hinta jatkaa nousuaan, liikkuen kahden ja yhdentoista sentin välillä. Tuulivoiman tuotanto vaihtelee viiden sadan ja viiden tuhannen kuuden sadan megawatin välillä.
-
-**Keskiviikkona** sähkön hinta laskee jälleen, pysyen kolmessa sentissä. Tuulivoiman tuotanto saavuttaa viikon korkeimman tason, lähestyen seitsemää tuhatta megawattia.
-
-Viikon päätteeksi **torstaina** sähkön hinta kohoaa korkeimmilleen, yltäen jopa kahdentoista sentin hintaan. Tuulivoiman tuotanto laskee merkittävästi, liikkuen nollan ja kahden tuhannen viiden sadan megawatin välillä.
-
-Viikon aikana sähkön hinta heittelee maltillisista hinnoista aina korkeampiin lukemiin, kun taas tuulivoiman tuotanto vaihtelee runsaasti päivästä toiseen. On mielenkiintoista nähdä, miten nämä tekijät vaikuttavat sähkön hintaan ja energiantuotantoon tulevina päivinä.
+Viikon aikana sähkön hinta heittelehtii melkoisesti, mutta pysyttelee pääosin kohtuullisissa lukemissa. Tuulivoiman tuotanto vaikuttaa merkittävästi hintaan, ja suurempi tuotanto laskee hintaa. On mielenkiintoista nähdä, miten sähkön hinta ja tuulivoiman tuotanto kehittyvät jatkossa, ja miten nämä tekijät vaikuttavat kuluttajiin ja energiamarkkinoihin.
