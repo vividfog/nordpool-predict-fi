@@ -74,10 +74,13 @@ def train_model(df, output_path):
 
     # Evaluate the model using the filtered dataset
     y_pred_filtered = rf.predict(X_test)
-    print("Results for the model (Random Forest):")
-    print(f"Initial Mean Absolute Error (MAE): {mean_absolute_error(y_test, y_pred_filtered)}")
-    print(f"Initial Mean Squared Error (MSE): {mean_squared_error(y_test, y_pred_filtered)}")
-    print(f"Initial Coefficient of Determination (R² score): {r2_score(y_test, y_pred_filtered)}")
+    # print("\nResults for the model (Random Forest):")
+    mae = mean_absolute_error(y_test, y_pred_filtered)
+    mse = mean_squared_error(y_test, y_pred_filtered)
+    r2 = r2_score(y_test, y_pred_filtered)
+    # print(f"Mean Absolute Error (MAE): {mae}")
+    # print(f"Mean Squared Error (MSE): {mse}")
+    # print(f"Coefficient of Determination (R² score): {r2}")
 
     # Initialize lists to store metrics for each iteration
     mae_list = []
@@ -85,7 +88,7 @@ def train_model(df, output_path):
     r2_list = []
 
     # Perform the random sampling and evaluation 10 times
-    print("Results for 10 batches of 500 random samples:")
+    # print("\nResults for 10 batches of 500 random samples:")
     for _ in range(10):
         # Select 500 truly random points from the original dataset that includes outliers
         random_sample = df.sample(n=500, random_state=None)  # 'None' for truly random behavior
@@ -103,11 +106,14 @@ def train_model(df, output_path):
         r2_list.append(r2_score(y_random_sample_true, y_random_sample_pred))
 
     # Calculate and print the mean of the evaluation metrics across all iterations
-    print(f"Mean Random Sample MAE: {np.mean(mae_list)}")
-    print(f"Mean Random Sample MSE: {np.mean(mse_list)}")
-    print(f"Mean Random Sample R² score: {np.mean(r2_list)}")
-
-    return
+    samples_mae = np.mean(mae_list)
+    samples_mse = np.mean(mse_list)
+    samples_r2 = np.mean(r2_list)
+    # print(f"Mean Random Batch MAE: {samples_mae}")
+    # print(f"Mean Random Batch MSE: {samples_mse}")
+    # print(f"Mean Random Batch R² score: {samples_r2}")
+    
+    return mae, mse, r2, samples_mae, samples_mse, samples_r2
 
 if __name__ == "__main__":
     print("This is not meant to be executed directly.")

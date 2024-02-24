@@ -1,25 +1,26 @@
-import requests
-import pandas as pd
+import os
+import json
+import pytz
 import joblib
+import sqlite3
+import requests
+import argparse
+import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
-import pytz
-import json
-from datetime import datetime, timedelta
-import os
 from dotenv import load_dotenv
-import sqlite3
-import argparse
-from util.sql import db_update, db_query, db_test, db_query_all
 from util.weather import weather_get
-from util.spot import add_spot_prices_to_df
-from util.foreca import foreca_wind_power_prediction
+from datetime import datetime, timedelta
 from util.dump import dump_sqlite_db
-from util.github import push_updates_to_github
-from util.train import csv_to_df, train_model
 from util.llm import narrate_prediction
+from util.spot import add_spot_prices_to_df
+from util.train import csv_to_df, train_model
+from util.github import push_updates_to_github
+from util.foreca import foreca_wind_power_prediction
+from util.sql import db_update, db_query, db_test, db_query_all
+from util.models import write_model_stats, stats_json, stats, list_models
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-import numpy as np
 
 load_dotenv('.env.local')  # take environment variables from .env.local
 
@@ -52,32 +53,81 @@ parser.add_argument('--plot', action='store_true', help='Plot all predictions an
 parser.add_argument('--foreca', action='store_true', help='Update the Foreca wind power prediction file')
 parser.add_argument('--predict', action='store_true', help='Generate price predictions from now onwards')
 parser.add_argument('--add-history', action='store_true', help='Add all missing predictions to the database post-hoc; use with --predict')
-# TODO parser.add_argument('--re-write', action='store_true', help='Overwrite all past predictions based on the current data in the database; use with --predict')
 parser.add_argument('--narrate', action='store_true', help='Narrate the predictions into text using an LLM')
 parser.add_argument('--past-performance', action='store_true', help='Generate past performance stats for 30 days')
 parser.add_argument('--commit', action='store_true', help='Commit the results to DB and deploy folder; use with --predict, --narrate, --past-performance')
 parser.add_argument('--publish', action='store_true', help='Publish the deployed files to a GitHub repo')
-parser.add_argument('--train', action='store_true', help='Train a model candidate from a CSV file')
-# TODO parser.add_argument('--re-train', action='store_true', help='Re-train a model candidate with all the data from the database
+parser.add_argument('--train', action='store_true', help='Train a new model candidate using the data in the database')
+parser.add_argument('--training-stats', action='store_true', help='Show training stats for candidate models in the database as a CSV')
 
 args = parser.parse_args()
 
 # Train a model with new data
 if args.train:
-    # This is a one-time operation to train the model with new data in a CSV file
-    df = csv_to_df('data/train/nordpool-spot-with-wind-power-train.csv')
-    print(df.head())
+    # This is a one-time operation to train the model with new data in a CSV file, commented out until needed
+    # df = csv_to_df('data/train/nordpool-spot-with-wind-power-train.csv')
+
+    # Continuous training: Get all the data from the database
+    df = db_query_all(db_path)
+
+    # Ensure 'timestamp' column is in datetime format
+    df['timestamp'] = pd.to_datetime(df['timestamp'])
+    # print(df)
+
+    # If Wind Power Capacity [MWh] is null, fill it with the maximum capacity
+    df['Wind Power Capacity [MWh]'] = df['Wind Power Capacity [MWh]'].fillna(wind_power_max_capacity)
+    # print(df)
     
-    # Update the database with the new data, if any
+    # Drop rows with missing values in the required columns
+    required_columns = ['timestamp', 'Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'Price [c/kWh]']
+    df = df.dropna(subset=required_columns)
+    # print(df)
+    
+    # Update the database with the new data, if any (only for the first time)
     # db_update(db_path, df)
     
     # This will produce a "candidate.joblib" file in the model folder
     # You can rename it to "rf_model.joblib" if you want to use it in the prediction process
-
+    
+    # Re-training of a model, and save it to the model folder
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-    train_model(df, output_path=f'model/candidate_{timestamp}.joblib')
+    model_path = f'model/candidate_{timestamp}.joblib'
+
+    # Train a model and fetch the stats for it
+    mae, mse, r2, samples_mae, samples_mse, samples_r2 = train_model(df, output_path=model_path)
+    
+    print(f"Model trained with MAE: {mae}, MSE: {mse}, r2: {r2}, samples MAE: {samples_mae}, samples MSE: {samples_mse}, samples R2: {samples_r2}, saved to {model_path}")
+    
+    # Add the training stats to the database
+    write_model_stats(timestamp, mae, mse, r2, samples_mae, samples_mse, samples_r2, model_path)
+    print("Model stats added to the database: ", stats(timestamp))
     
     exit()
+
+# Show training stats for all models in the database as CSV
+if args.training_stats:
+    print("Training stats for all models in the database:")
+
+    model_timestamps = list_models()
+    # Sort the timestamps in ascending order
+    model_timestamps.sort()
+    print("Model Timestamps:", model_timestamps)
+
+    # Define the header
+    header = ['training_id', 'training_timestamp', 'MAE', 'MSE', 'R2', 'samples_MAE', 'samples_MSE', 'samples_R2', 'model_path']
+
+    # Print the header, joined by commas
+    print(','.join(header))
+
+    # Iterate through each model and print its stats
+    for model in model_timestamps:
+        model_stats = stats(model)
+
+        # Create a list of the model's stats, converted to strings
+        row = [str(model_stats.get(field, '')) for field in header]
+
+        # Print the row, joined by commas
+        print(','.join(row))
 
 # Update the wind power prediction file
 if args.foreca:  
