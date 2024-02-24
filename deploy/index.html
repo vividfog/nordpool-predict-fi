@@ -214,19 +214,19 @@
     </style>
 </head>
 <body>
-    <div id="topdisclaimer"><a href="privacy-policy.html">Palvelun kuvaus ja tietosuojaseloste</a></div>
+    <div id="topdisclaimer"><a href="privacy-policy.html">Palvelukuvaus ja tietosuojaseloste</a></div>
     <div id="charttitle">
         <h1>Pörssisähkön hintaennuste</h1>
-        <p>Tämä kokeellinen tekoälypohjainen malli arvioi pörssisähkön tulevaa hintaa noin viiden päivän päähän. Se käyttää laskennassa tietoja säästä, tuulesta, vuodenajasta, viikonpäivistä ja aiempien vastaavien ajankohtien hinnoista.</p>
+        <p>Tämä kokeellinen Random Forest -koneoppimismalli ennustaa pörssisähkön hintaa viiden päivän päähän. Malli vertaa nykyisiä sääolosuhteita, tuulivoiman tuotantoa, vuodenaikaa ja viikonpäivää aiempiin, samankaltaisiin ajanjaksoihin, joissa viikonpäivä, tuulivoiman tilanne, sää ja kuukausi olivat samat.</p>
     </div>
-    <div id="llm">Hintaennusteet ja niiden pohjalta koneellisesti luodut tekstit voivat olla väärin ja niihin tulee suhtautua viihteenä. Malli ei ota huomioon sähkömarkkinoiden poikkeustilanteita, kuten ydinvoimaloiden huoltokatkoja, muutoksia siirtoyhteyksissä ja paljon muuta. Myös sääennusteet voivat olla väärin, mikä vaikuttaa tämän mallin tuottamiin tuloksiin.</div>
+    <div id="llm">Koneen tuottamaan ennusteeseen tulee suhtautua viihteenä. Se ei ota huomioon sähkömarkkinoiden poikkeustilanteita, kuten ydinvoimaloiden huoltokatkoja, muutoksia siirtoyhteyksissä ja paljon muuta. Sääennusteet voivat myös olla väärin, mikä vaikuttaa suoraan tämän mallin tuottamiin tuloksiin.</div>
     <div id="chart"></div>
     <div id="charttitle"><h1>Lähipäivien tuulivoima- ja hintakehitys</h1></div>
     <div id="llm">Teksti on luotu koneellisesti kielimallin avulla.</div>
     <div id="narration"></div>
     <div id="charttitle">
         <h1>Ennuste vs. toteutunut hinta</h1>
-        <p>Graafi kertoo, miten toteutunut hinta ja mallin tekemä ennuste vertautuivat toisiinsa viimeisen 90 pv aikana. Vie hiiri graafin päälle, niin näet lisätietoja.</p>
+        <p>Graafi kertoo, miten toteutunut hinta ja mallin tekemä ennuste vertautuivat toisiinsa viimeisen 90 pv aikana. Vie hiiri graafin päälle, niin näet lisätietoja. Zoomaa, niin voit katsoa tunti kerrallaan.</p>
     </div>
     <div id="pastperformance"></div>
     <div id="charttitle" style="padding-bottom: 48px";>

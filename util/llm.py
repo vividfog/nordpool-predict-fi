@@ -64,10 +64,18 @@ def send_to_gpt(df):
         wind_min = round(row[('Wind Power [MWh]', 'min')] / 100) * 100
         wind_max = round(row[('Wind Power [MWh]', 'max')] / 100) * 100
         wind_mean = round(row[('Wind Power [MWh]', 'mean')] / 100) * 100
-        prompt += (f"// - {date.strftime('%A %d.%m.%Y')}: Pörssisähkön hinta min {row[('PricePredict [c/kWh]', 'min')]:.0f} ¢/kWh, max {row[('PricePredict [c/kWh]', 'max')]:.0f} ¢/kWh, keskihinta {row[('PricePredict [c/kWh]', 'mean')]:.0f} ¢/kWh. Tuulivoiman tuotanto min {wind_min:.0f} MW, max {wind_max:.0f} MW, keskiarvo {wind_mean:.0f} MW.\n")
-
-        
-    prompt += "\n// Tiedoksi itsellesi: alle 7 ¢ on halpa hinta, 10 senttiä on kohtuullinen hinta ja yli 15 senttiä on kallis hinta. Mutta kun viittaat hintoihin, kirjoita niistä numeroilla eikä adjektiiveilla. Tiedoksi itsellesi: maksimimäärä tuulivoimalle Suomessa on noin 7000 megawattia ja suuri tuotanto laskee sähkön hintaa. Tuulivoiman vaikutus hintaan oli vain tiedoksi sinulle, lukijat tietävät sen jo! Älä mainitse päivämääriä, koska viikonpäivät riittävät. Vältä turhaa toistoa ja älä anna mitään neuvoja! Tehtäväsi on puhua vain hinnoista ja tuulivoiman tuotannosta! Ole perinpohjainen. Käytä Markdown-muotoilua tekstin rakenteen tuottamiseksi. Kirjoita pitkä ja viihdyttävä uutisartikkeli näiden tietojen pohjalta. Aloita kuvailemalla sähkön hinnan ja tuulivoimaennusteen kehitystä lähipäiville, ja sitten tuota tiedot uudelleen, mutta värikkäämmin ja kappalemuodossa. Kiitos!"
+        prompt += (f"{date.strftime('%A %d.%m.%Y')}: Pörssisähkön hinta min {row[('PricePredict [c/kWh]', 'min')]:.0f} ¢/kWh, max {row[('PricePredict [c/kWh]', 'max')]:.0f} ¢/kWh, keskihinta {row[('PricePredict [c/kWh]', 'mean')]:.0f} ¢/kWh. Tuulivoiman tuotanto min {wind_min:.0f} MW, max {wind_max:.0f} MW, keskiarvo {wind_mean:.0f} MW.\n\n")
+      
+    prompt += """
+// Tiedoksi itsellesi: alle 7 ¢ on halpa hinta, 10 senttiä on kohtuullinen hinta ja yli 15 senttiä on kallis hinta. Mutta kun viittaat hintoihin, kirjoita niistä numeroilla eikä adjektiiveilla.
+// Tiedoksi itsellesi: maksimimäärä tuulivoimalle Suomessa on noin 7000 megawattia ja suuri tuotanto laskee sähkön hintaa. 
+// Tuulivoiman vaikutus hintaan oli vain tiedoksi sinulle, lukijat tietävät sen jo! 
+// Älä mainitse päivämääriä, koska viikonpäivät riittävät. 
+// Vältä turhaa toistoa ja älä anna mitään neuvoja! Tehtäväsi on puhua vain hinnoista ja tuulivoiman tuotannosta! Ole perinpohjainen. 
+// Käytä Markdown-muotoilua tekstin rakenteen tuottamiseksi. 
+// Kirjoita pitkä ja viihdyttävä uutisartikkeli näiden tietojen pohjalta. Aloita kuvailemalla sähkön hinnan ja tuulivoimaennusteen kehitystä lähipäiville, ja sitten tuota tiedot uudelleen, mutta värikkäämmin ja kappalemuodossa. Tavoitepituus on noin 400 sanaa.
+// **Vahvenna** viikonpäivät, kuten '**maanantai**' tai '**torstaina**', mutta vain kun mainitset ne ensi kertaa. 
+// Kiitos!"""
     
     # To view the output in English, add the following to the prompt:
     # prompt += "\nFor the English readers, please write your final response in English. Thank you!"
