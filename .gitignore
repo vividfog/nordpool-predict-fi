@@ -8,6 +8,7 @@ wind_power/archive/
 **/__pycache__/
 png/
 **/candidate*.joblib
+models/models.db
 node_modules/
 .firebase/
 firebase-debug.log*
