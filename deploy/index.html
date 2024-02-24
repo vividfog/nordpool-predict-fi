@@ -202,8 +202,8 @@
     <div id="topdisclaimer"><a href="privacy-policy.html">Palvelukuvaus ja tietosuojaseloste</a></div>
     <div id="predictionText">
         <h1>Pörssisähkön hintaennuste</h1>
-        <p>Tämä kokeellinen Random Forest -koneoppimismalli ennustaa pörssisähkön verollista hintaa viiden päivän päähän. Malli vertaa nykyisiä sääolosuhteita, tuulivoiman tuotantoa, vuodenaikaa ja viikonpäivää aiempiin, samankaltaisiin ajanjaksoihin, joissa viikonpäivä, tuulivoiman tilanne, sää ja kuukausi olivat samat.</p>
-        <p id="llm">Koneen tuottamaan ennusteeseen tulee suhtautua viihteenä. Se ei ota huomioon sähkömarkkinoiden poikkeustilanteita, kuten ydinvoimaloiden huoltokatkoja, muutoksia siirtoyhteyksissä ja paljon muuta. Sääennusteet voivat myös olla väärin, mikä vaikuttaa suoraan tämän mallin tuottamiin tuloksiin.</p>
+        <p><strong>Tämä kokeellinen koneoppimismalli ennustaa pörssisähkön verollista hintaa viiden päivän päähän. Malli peilaa sääolosuhteita, tuulivoiman tuotantoa, vuodenaikaa ja viikonpäivää aiempiin ajanjaksoihin, joissa nämä olosuhteet olivat samankaltaiset.</strong></p>
+        <p>Koneen tuottamaan ennusteeseen tulee suhtautua viihteenä. Se ei ota huomioon poikkeustilanteita, kuten mm. ydinvoimaloiden tai siirtoyhteyksien huoltokatkoja. Sääennusteet voivat muuttua, mikä vaikuttaa myös tulevaan hintaan.</p>
         <p id="predictionChart"></p>
         <h1>Lähipäivien tuulivoima- ja hintakehitys</h1>
         <p id="llm">Teksti on luotu koneellisesti kielimallin avulla.</p>
@@ -216,10 +216,10 @@
         <p><strong>Mean Absolute Error (MAE): 1,2 ¢/kWh.</strong> Ilmaisee keskimääräisen virheen ennusteissa. Mitä pienempi tämä arvo on, sitä tarkemmin malli ennustaa todellisia hintoja.</p>
         <p><strong>Mean Squared Error (MSE): 9,9 ¢/kWh.</strong> Mittaa virheiden keskimääräistä suuruutta neliöitynä, jolloin suuret virheet saavat enemmän painoarvoa. Tämä valaisee suurempia heittoja ennusteessa.</p>
         <p><strong>R-squared (R<sup>2</sup>): 0,84.</strong>Osoittaa, kuinka suuren osan todellisten hintojen vaihteluista malli kykenee selittämään. Mitä lähempänä lukua 1, sitä tarkemmin malli ennustaa hinnan muutoksia.</p>
-        <p style="padding-bottom: 24px;">Malli päivittyy aika ajoin, jolloin nämä tunnusluvut saattavat muuttua.</p>
+        <p style="padding-bottom: 24px;">Malli päivittyy aika ajoin, jolloin nämä tunnusluvut saattavat muuttua. Hintaennusteet automaatio päivittää muutaman kerran vuorokaudessa.</p>
     </div>
     </div>
-    <div id="disclaimer">Ennusteissa voi olla virheitä. Tuotannosta malli huomioi vain <a href="https://www.foreca.fi/sahkon-hinta" target="_blank">tuulivoimaennusteen</a>, ei esimerkiksi ydinvoimaloiden huoltotaukoja.</div>
+    <div id="disclaimer">Lähteet: <a href="https://www.ilmatieteenlaitos.fi/havaintojen-lataus" target="_blank">Ilmatieteen laitos</a>, <a href="https://www.foreca.fi/sahkon-hinta" target="_blank">Foreca</a>, <a href="https://www.tomorrow.io" target="_blank">Tomorrow.io</a>, <a href="https://data.fingrid.fi" target="_blank">Fingrid</a>, <a href="https://spot-hinta.fi" target="_blank">spot-hinta.fi</a>.</div>
     <div id="github-logo-container"><a href="https://github.com/vividfog/nordpool-predict-fi" target="_blank"><img src="https://nordpool-predict-fi.web.app/github-mark.png" alt="GitHub Repo" id="github-logo"></a></div>
     <div id="source-code-text"><a id="source-code-link" href="https://github.com/vividfog/nordpool-predict-fi" target="_blank">vividfog/nordpool-predict-fi</a></div>
 
