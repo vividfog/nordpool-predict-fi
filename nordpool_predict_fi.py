@@ -255,7 +255,7 @@ if args.narrate:
 # Past performance can be used with the previous arguments
 if args.past_performance:
     print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-    print("Calculating past performance for 30 days...")
+    print("Calculating past performance for 90 days...")
 
     # Fetch the last 30 days of data from the database
     past_df = db_query_all(db_path)
@@ -266,9 +266,9 @@ if args.past_performance:
     past_df['timestamp'] = pd.to_datetime(past_df['timestamp'])
     before_filtering_length = len(past_df)
 
-    # Filter out rows where 'timestamp' is earlier than 30 days ago or later than now
+    # Filter out rows where 'timestamp' is earlier than 90 days ago or later than now
     now = datetime.now()
-    past_df = past_df[(past_df['timestamp'] >= now - timedelta(days=30)) & (past_df['timestamp'] <= now)]
+    past_df = past_df[(past_df['timestamp'] >= now - timedelta(days=90)) & (past_df['timestamp'] <= now)]
 
     print("Data after filtering:", past_df)
 
@@ -339,52 +339,50 @@ if args.publish:
     # Ensure 'timestamp' column is in datetime format
     publish_df['timestamp'] = pd.to_datetime(publish_df['timestamp'])
 
-    # Filter out rows where 'timestamp' is earlier than now
-    # The database timestamp is in UTC time, so no need to convert before filtering
-    now = pd.to_datetime('now')
-    publish_df = publish_df[publish_df['timestamp'] >= now]
+    # Helsinki time zone setup
+    helsinki_tz = pytz.timezone('Europe/Helsinki')
 
-    # Adjust timestamps as if in Helsinki time, accounting for DST
-    # ... ACTUALLY, we should not do this, as Apex Charts will convert the timestamps to the user's local time
-    # publish_df['timestamp'] = publish_df['timestamp'].apply(lambda x: x.tz_localize(pytz.utc).tz_convert('Europe/Helsinki').tz_localize(None))
-   
-    # Create a copy of the slice to avoid SettingWithCopyWarning
+    # Get the current time in Helsinki time zone
+    now_helsinki = datetime.now(helsinki_tz)
+
+    # Normalize to the start of the current day in Helsinki time zone
+    start_of_today_helsinki = now_helsinki.replace(hour=0, minute=0, second=0, microsecond=0)
+
+    # Convert the start of the current day in Helsinki back to UTC
+    start_of_today_utc = start_of_today_helsinki.astimezone(pytz.utc)
+
+    # Ensure 'timestamp' column is in datetime format and UTC for comparison
+    publish_df['timestamp'] = pd.to_datetime(publish_df['timestamp']).dt.tz_localize(None).dt.tz_localize(pytz.utc)
+
+    # Filter out rows where 'timestamp' is earlier than the start of today in Helsinki, adjusted to UTC
+    publish_df = publish_df[publish_df['timestamp'] >= start_of_today_utc]
+
     hourly_predictions = publish_df[['timestamp', 'PricePredict [c/kWh]']].copy()
-
-    # Now apply the conversion to UNIX timestamp for Apex Charts in Home Assistant
+    hourly_predictions['timestamp'] = hourly_predictions['timestamp'].dt.tz_localize(None) if hourly_predictions['timestamp'].dt.tz is not None else hourly_predictions['timestamp']
     hourly_predictions['timestamp'] = hourly_predictions['timestamp'].apply(
-    lambda x: (x - pd.Timestamp("1970-01-01")) // pd.Timedelta('1ms')
+        lambda x: (x - pd.Timestamp("1970-01-01")) // pd.Timedelta('1ms')
     )
 
-    # Create the list of lists for JSON output
     json_data_list = hourly_predictions.values.tolist()
-
-    # Convert the hourly prediction data to JSON format
     json_data = json.dumps(json_data_list, ensure_ascii=False)
-
-    # Save to JSON in the deploy folder
     json_path = os.path.join(deploy_folder_path, predictions_file)
     with open(json_path, 'w') as f:
         f.write(json_data)
     print(f"Hourly predictions saved to {json_path}")
 
-    # Daily averages: group by day and calculate the mean
     # Normalize 'timestamp' to set the time to 00:00:00 for daily average grouping
+    publish_df['timestamp'] = publish_df['timestamp'].dt.tz_localize(None) if publish_df['timestamp'].dt.tz is not None else publish_df['timestamp']
     publish_df['timestamp'] = publish_df['timestamp'].dt.normalize()
 
-    # Calculate the mean
     daily_averages = publish_df.groupby('timestamp')['PricePredict [c/kWh]'].mean().reset_index()
 
-    # Convert 'timestamp' to the format required by Apex Charts (milliseconds since epoch)
-    daily_averages['timestamp'] = daily_averages['timestamp'].apply(lambda x: (x - pd.Timestamp("1970-01-01")) // pd.Timedelta('1ms'))
+    # Before applying lambda, ensure 'timestamp' is timezone-naive for consistency
+    daily_averages['timestamp'] = daily_averages['timestamp'].apply(
+        lambda x: (x - pd.Timestamp("1970-01-01")) // pd.Timedelta('1ms')
+    )
 
-    # Create the list of lists for JSON output of daily averages
     json_data_list = daily_averages[['timestamp', 'PricePredict [c/kWh]']].values.tolist()
-
-    # Convert data to JSON format
     json_data = json.dumps(json_data_list, ensure_ascii=False)
-
-    # Save averages to JSON in the deploy folder
     json_path = os.path.join(deploy_folder_path, averages_file)
     with open(json_path, 'w') as f:
         f.write(json_data)
