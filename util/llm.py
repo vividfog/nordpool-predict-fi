@@ -73,7 +73,7 @@ def send_to_gpt(df):
 // Älä mainitse päivämääriä, koska viikonpäivät riittävät. 
 // Vältä turhaa toistoa ja älä anna mitään neuvoja! Tehtäväsi on puhua vain hinnoista ja tuulivoiman tuotannosta! Ole perinpohjainen. 
 // Käytä Markdown-muotoilua tekstin rakenteen tuottamiseksi. 
-// Kirjoita pitkä ja viihdyttävä uutisartikkeli näiden tietojen pohjalta. Aloita kuvailemalla sähkön hinnan ja tuulivoimaennusteen kehitystä lähipäiville, ja sitten tuota tiedot uudelleen, mutta värikkäämmin ja kappalemuodossa. Tavoitepituus on noin 400 sanaa.
+// Kirjoita pitkä ja viihdyttävä uutisartikkeli näiden tietojen pohjalta. Aloita kuvailemalla sähkön hinnan ja tuulivoimaennusteen kehitystä lähipäiville, ja sitten tuota tiedot uudelleen, mutta värikkäämmin ja kappalemuodossa. Tavoitepituus on noin 200 sanaa.
 // **Vahvenna** viikonpäivät, kuten '**maanantai**' tai '**torstaina**', mutta vain kun mainitset ne ensi kertaa. 
 // Kiitos!"""
     
