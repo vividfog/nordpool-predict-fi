@@ -1,5 +1,11 @@
-**Sunnuntaina** sähkön hinta liikkuu maltillisissa lukemissa, 2-5 sentin välillä, kun tuulivoiman tuotanto pyörii keskimäärin 3500 megawatin tuntumassa. **Maanantaina** hinta kohoaa hieman, 2-9 sentin haarukkaan, samalla kun tuulivoiman tuotanto laskee 2300 megawattiin. **Tiistaina** sähkön hinta nousee edelleen, liikkuen 2-11 sentin välillä, kun taas tuulivoiman tuotanto vaihtelee 500-5600 megawatin välillä.
+**Sunnuntaina** sähkön hinta pysyy maltillisena, liikkuen vain 2-5 sentin välillä. Tuulivoiman tuotanto on vakaalla tasolla, keskimäärin 3500 megawattia. 
 
-**Keskiviikkona** sähkön hinta palaa takaisin alhaisemmalle tasolle, 2-5 sentin haarukkaan, ja tuulivoiman tuotanto yltää jopa 6000 megawattiin. **Torstaina** hinta kipuaa korkeimmilleen viikon aikana, 5-12 senttiin, samalla kun tuulivoiman tuotanto laskee 800 megawattiin.
+**Maanantaina** sähkön hinta kohoaa hieman, liikkuen 2-9 sentin välillä. Tuulivoiman tuotanto laskee hieman, keskimäärin 2300 megawattia.
 
-Viikon aikana sähkön hinta heittelehtii melkoisesti, mutta pysyttelee pääosin kohtuullisissa lukemissa. Tuulivoiman tuotanto vaikuttaa merkittävästi hintaan, ja suurempi tuotanto laskee hintaa. On mielenkiintoista nähdä, miten sähkön hinta ja tuulivoiman tuotanto kehittyvät jatkossa, ja miten nämä tekijät vaikuttavat kuluttajiin ja energiamarkkinoihin.
+**Tiistaina** sähkön hinta nousee edelleen, liikkuen 2-10 sentin välillä. Tuulivoiman tuotanto on alhaisimmillaan viikon aikana, keskimäärin 1700 megawattia.
+
+**Keskiviikkona** sähkön hinta laskee jälleen, pysytellen 2-5 sentin tuntumassa. Tuulivoiman tuotanto on korkeimmillaan, keskimäärin 4900 megawattia.
+
+**Torstaina** sähkön hinta kohoaa merkittävästi, liikkuen 5-12 sentin välillä. Tuulivoiman tuotanto on pienimmillään, keskimäärin 700 megawattia.
+
+Viikon aikana sähkön hinta vaihtelee melkoisesti, mutta pysyy pääosin kohtuullisella tasolla. Tuulivoiman tuotanto vaikuttaa hintaan merkittävästi, ja suurempi tuotanto laskee hintaa. Kannattaa siis pitää silmällä tuulivoiman tuotantomääriä, jos haluaa löytää edullisimman sähkösopimuksen.
