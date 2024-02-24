@@ -80,7 +80,7 @@ def send_to_gpt(df):
     # To view the output in English, add the following to the prompt:
     # prompt += "\nFor the English readers, please write your final response in English. Thank you!"
     
-    print(prompt)
+    # print(prompt)
     
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
