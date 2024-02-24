@@ -8,7 +8,10 @@ def push_updates_to_github(repo_path, deploy_folder_path, files, commit_message)
         
         for file in files:
             # Check if the file_path is relative, convert it to absolute
-            absolute_file_path = os.path.join(repo_path, deploy_folder_path, file) if not os.path.isabs(file) else file
+            if not os.path.isabs(file):
+                absolute_file_path = os.path.join(repo_path, deploy_folder_path, file)
+            else:
+                absolute_file_path = file
             
             # Stage the file for commit
             print(f"Staging {absolute_file_path} for commit...")
