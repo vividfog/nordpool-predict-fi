@@ -14,27 +14,25 @@ This repository contains all the original data and code to re-train the model, g
 
 ## Model performance
 
-You can get an idea of the model's performance from the chart below (click and zoom in). The gap in the timeline is by design: a full data series was not available at a time for a gapless prediction. A more complete evaluation is at the bottom of this file.
+You can get a general idea of the model's performance from the chart below. **TLDR:** The model is generally aware of the general price levels and patterns for a given day and hour — but it doesn't catch every spike in every detail.
 
-This data represents Nordpool FI in VAT 24% Euro-cents per kilowatt-hour (c/kWh) from early 2023 to early 2024. The blue line is the actual price, orange line is the prediction.
+**Legend:** Realized market price is blue. Model-generated prediction is orange. Y axis represents Nordpool FI marker price with VAT 24%, cents per kilowatt-hour (c/kWh). 
 
-<img src="data/plot-2024-02-18.png" alt="2023-2024" style="zoom: 25%;" />
+<img src="data/plot.jpg" alt="Sample output" style="zoom: 50%;" />
 
 ## Quantitative metrics
 
-To explain the model's performance in statistical terms, this is what the model predicts, when sampling 500 random hours from the whole data set (train + test set) and does that 10 times. Measuring vs. test-set-only produces results in the same ballpark.
+To explain the model's performance in statistical terms, this is what the model predicts, when sampling 500 random hours from the whole data set (train + test set) and does that 10 times. Measuring vs. test-set-only produces results in the same ballpark, with R² around ~0.8.
 
 > - **Mean Absolute Error (MAE) of 1.07:** On average, the model's predictions are about 1.07 units (cents) off from the actual values. This means if you were guessing the price of something, you'd typically be about 1.07 units wrong — a small error, indicating the model is quite accurate.
 > - **Mean Squared Error (MSE) of 6.75:** This number is a bit more technical but essentially measures the average of the squared differences between predicted and actual values. The "squared" part puts more weight on larger errors. A value of 6.75 suggests that, while there are some errors in prediction, they are generally not too large.
 > - **R² score of 0.856:** This score ranges from 0 to 1, where 1 means the model predicts perfectly. An R² of 0.856 means the model can explain about 86% of the variability in the actual values with its predictions. This is quite high, indicating the model does a very good job at forecasting.
 
-In short, this model is quite good at making predictions, with small average errors and a high ability to account for changes in what it's predicting, though it may need retraining if the underlying hidden patterns behind price formulation change over time.
-
 It remains to be seen, how well the model copes over the full year of 2024. See the [model](model) folder for when the model was last trained.
 
 ## Co-authors
 
-The original RF model was initially co-trained with [Autogen](https://github.com/microsoft/autogen). GPT-4 was used a lot during coding, but a real human has re-written most of the code and comments by hand, including this README. The project was a personal Autogen + AI pair programming evaluation/trial and a hobby project written over 2 weekends.
+The original RF model was initially co-trained with [Autogen](https://github.com/microsoft/autogen). GPT-4 was used a lot during coding, but a real human has re-written most of the code and comments by hand, including this README. Originally the project was a personal Autogen + AI pair programming evaluation/trial and a hobby project written over 2 weekends.
 
 In addition to Random Forest, we (human and AI) also tried Linear Regression, GBM and LSTM, and a Random Forest with Linear Regression scaling. Out of these, the RF model performed the best, so that's what's used here.
 
@@ -55,15 +53,19 @@ The script uses environment variables for configuration. These can be set in a f
 How to use:
 
 ```bash
-python nordpool_predict_fi.py --predict --commit  # predicts the latest spot prices, then commits to DB file
-python nordpool_predict_fi.py --narrate --commit # creates an LLM narration of the prediction, commits as .md to deploy folder
-python nordpool_predict_fi.py --publish # pushes the prediction JSON file to a Github repo for sharing
-python nordpool_predict_fi.py --predict --narrate --commit --publish  # executes all of the above
-python nordpool_predict_fi.py --foreca  # fetches (updates) the latest wind power forecast
-python nordpool_predict_fi.py --dump    # outputs all of the database to STDOUT in .csv format
-python nordpool_predict_fi.py --plot    # creates a png plot of all actuals/predictions to deploy folder
-python nordpool_predict_pi.py --train   # re-runs the initial training and produces a new model candidate
-python nordpool_predict_fi.py --predict --add-history # retroactive price prediction if you're starting over; add --commit to update the DB
+options:
+  -h, --help          show this help message and exit
+  --dump              Dump the SQLite database to CSV format
+  --plot              Plot all predictions and actual prices to a PNG file in the data folder
+  --foreca            Update the Foreca wind power prediction file
+  --predict           Generate price predictions from now onwards
+  --add-history       Add all missing predictions to the database post-hoc; use with --predict
+  --narrate           Narrate the predictions into text using an LLM
+  --past-performance  Generate past performance stats for 30 days
+  --commit            Commit the results to DB and deploy folder; use with --predict, --narrate, --past-performance
+  --publish           Publish the deployed files to a GitHub repo
+  --train             Train a new model candidate using the data in the prediction database
+  --training-stats    Show training stats for candidate models in the model database as CSV
 ```
 
 See the data folder for a DB initialization script if you need it. This repo includes a pre-populated database.
@@ -143,7 +145,7 @@ That's a lot of hidden complexity that happens during the about 2 seconds it tak
 
 ## How long will this repository/data be updated?
 
-**I don't know yet. This is a hobby project, and there is zero guarantee to keep the code or data up to date in the long haul. That's why all the code and data is free and public. Feel free to fork the project and make it your own, or submit a pull request. I'm using these predictions myself and plan to keep this code working as a hobby project, until there's a new and more important hobby project.**
+**This is a hobby project, there is no guarantee to keep the code or data up to date in the long haul. That's why all the code and data is free and public.** Feel free to fork the project and make it your own, or submit a pull request. I'm using these predictions myself and plan to keep this code working as a hobby project, until there's a new and more important hobby project.
 
 > [!WARNING]
 >
@@ -192,6 +194,10 @@ This is the Random Forest performance in such a scenario, aka the initial versio
 If the wind power forecast data becomes unavailable in the future, that's plan B.
 
 # How to use the data in your apps
+
+## Local web page
+
+If you download [index.html](deploy/index.html) and open it locally, it will draw the latest data in a nice format at runtime using eCharts. This is the same page which can be found at https://nordpool-predict-fi.web.app.
 
 ## Python sample script
 

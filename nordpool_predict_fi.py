@@ -145,11 +145,14 @@ if args.dump:
     exit()
 
 if args.plot:
-    fig, ax = plt.subplots(figsize=(30, 20))  # Huge
+    fig, ax = plt.subplots(figsize=(15, 10))  # Huge
 
     # Convert 'timestamp' to datetime for plotting
     df = db_query_all(db_path)
     df['timestamp'] = pd.to_datetime(df['timestamp'])
+    
+    # Drop rows with missing values
+    df = df.dropna()
 
     ax.plot(df['timestamp'], df['Price [c/kWh]'], label='Actual Price', linewidth=0.33)
     ax.plot(df['timestamp'], df['PricePredict [c/kWh]'], label='Predicted Price', linewidth=0.33)
