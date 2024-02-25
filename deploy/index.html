@@ -8,14 +8,17 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;600;800&display=swap" rel="stylesheet">
-
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
     <style>
         body {
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #666;
             margin: 20px;
             background-color: #f0f2f5;
-            color: rgba(51, 51, 51, 0.9); /* 0.5 is the opacity */
+            color: rgba(51, 51, 51, 0.9);
         }
         #title {
             max-width: 920px;
@@ -104,7 +107,7 @@
             opacity: 0.6;
             width: 100%;
             padding: 16px;
-            padding-bottom: 24px;
+            padding-bottom: 8px;
             text-align: center;
         }
         #github-logo-container {
@@ -201,22 +204,24 @@
 <body>
     <div id="topdisclaimer"><a href="privacy-policy.html">Palvelukuvaus ja tietosuojaseloste</a></div>
     <div id="predictionText">
-        <h1>Pörssisähkön hintaennuste</h1>
-        <p><strong>Tämä kokeellinen koneoppimismalli ennustaa pörssisähkön verollista hintaa viiden päivän päähän. Malli peilaa sääolosuhteita, tuulivoiman tuotantoa, vuodenaikaa ja viikonpäivää aiempiin ajanjaksoihin, joissa nämä olosuhteet olivat samankaltaiset.</strong></p>
-        <p>Koneen tuottamaan ennusteeseen tulee suhtautua viihteenä. Se ei ota huomioon poikkeustilanteita, kuten mm. ydinvoimaloiden tai siirtoyhteyksien huoltokatkoja. Sääennusteet voivat muuttua, mikä vaikuttaa myös tulevaan hintaan.</p>
+        <h1 style="padding-top: 32px">Pörssisähkön hintaennuste</h1>
+        <p><strong>Tämä kokeellinen koneoppimismalli haarukoi pörssisähkön kuluttajahintaa noin 5 pv eteenpäin. Malli peilaa mm. ennustettua säätä, tuulivoiman tuotantoa ja nykyistä kuukautta/viikonpäivää aiempiin ajanjaksoihin, joissa nämä seikat olivat samankaltaiset.</strong></p>
+        <p>Vaikka malli on toisinaan yllättävänkin tarkka, sen tuottamaan ennusteeseen tulee suhtautua varauksella. Se ei huomioi tulevia poikkeuspäiviä, kuten esim. ydinvoimaloiden tai siirtoyhteyksien huoltokatkoja. Sääennuste voi vielä muuttua, ja tämä vaikuttaa lähipäivien hintaan. Ennuste päivittyy muutaman kerran päivässä.</p>
         <p id="predictionChart"></p>
         <h1>Lähipäivien tuulivoima- ja hintakehitys</h1>
         <p id="llm">Teksti on luotu koneellisesti kielimallin avulla.</p>
         <p id="narration"></p>
         <h1>Toteutunut hinta vs. ennuste</h1>
-        <p>Graafi kertoo, miten toteutunut hinta ja mallin tekemä ennuste vertautuivat toisiinsa viime kuukausina. Vie hiiri graafin päälle, tai zoomaa tai siirrä aikajanaa, niin näet yksityiskohdat.</p>
+        <p>Graafi kertoo, miten toteutunut hinta ja mallin tekemä ennuste vertautuivat toisiinsa viime kuukausina. Vie hiiri graafin päälle tai siirrä/tiivistä/laajenna aikajanaa, niin näet lisää.</p>
         <p id="pastPredictions"></p>
         <h1>Tunnusluvut pidemmältä ajalta</h1>
         <p><strong>Aikaväli:</strong> 13.2.2023 - 24.2.2024 (377 päivää)</p>
         <p><strong>Mean Absolute Error (MAE): 1,2 ¢/kWh.</strong> Ilmaisee keskimääräisen virheen ennusteissa. Mitä pienempi tämä arvo on, sitä tarkemmin malli ennustaa todellisia hintoja.</p>
         <p><strong>Mean Squared Error (MSE): 9,9 ¢/kWh.</strong> Mittaa virheiden keskimääräistä suuruutta neliöitynä, jolloin suuret virheet saavat enemmän painoarvoa. Tämä valaisee suurempia heittoja ennusteessa.</p>
         <p><strong>R-squared (R<sup>2</sup>): 0,84.</strong>Osoittaa, kuinka suuren osan todellisten hintojen vaihteluista malli kykenee selittämään. Mitä lähempänä lukua 1, sitä tarkemmin malli ennustaa hinnan muutoksia.</p>
-        <p style="padding-bottom: 24px;">Malli päivittyy aika ajoin, jolloin nämä tunnusluvut saattavat muuttua. Hintaennusteet automaatio päivittää muutaman kerran vuorokaudessa.</p>
+        <p style="padding-bottom: 24px;">Malli päivittyy aika ajoin, jolloin nämä tunnusluvut saattavat muuttua.</p>
+        <div id="disclaimer" style="padding-bottom: 24px;"><a id="source-code-link" href="mailto:judo.farming0u@icloud.com" target="_blank">email</a></div>
+
     </div>
     </div>
     <div id="disclaimer">Lähteet: <a href="https://www.ilmatieteenlaitos.fi/havaintojen-lataus" target="_blank">Ilmatieteen laitos</a>, <a href="https://www.foreca.fi/sahkon-hinta" target="_blank">Foreca</a>, <a href="https://www.tomorrow.io" target="_blank">Tomorrow.io</a>, <a href="https://data.fingrid.fi" target="_blank">Fingrid</a>, <a href="https://spot-hinta.fi" target="_blank">spot-hinta.fi</a>.</div>
@@ -225,6 +230,10 @@
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6065830160125618" crossorigin="anonymous"></script>
     <script>
+
+        if (window.location.hostname === "nordpool-predict-fi.web.app") {
+            window.location.href = "https://sahkovatkain.web.app" + window.location.pathname + window.location.search;
+        }
 
         // Hosted on GitHub Pages or Firebase Hosting?
         // var baseUrl = window.location.hostname === "" ? "https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/main/deploy" : "https://nordpool-predict-fi.web.app";
@@ -257,7 +266,7 @@
         })
         .then(text => {
             // LLM generated text in quotes
-            document.getElementById('narration').innerHTML = marked.parse(text);
+            document.getElementById('narration').innerHTML = marked.parse("\"" + text + "\"");
         })
         .catch(error => console.error('Fetching Markdown failed:', error));  
 
