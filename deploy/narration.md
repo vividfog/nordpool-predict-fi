@@ -1,11 +1,7 @@
-**Maanantaina** sähkön hinta liikkuu välillä 2-10 senttiä kilowattitunnilta, keskimääräisenä hintana pysytellen 7 sentissä. Tuulivoiman tuotanto vaihtelee 800 ja 3300 megawatin välillä, keskimäärin tuottaen 1800 megawattia.
+**Maanantaina** sähkön hinta vaihtelee maltillisesti, liikkuen 2-9 sentin välillä. Tuulivoiman tuotanto on vakaalla tasolla, keskimäärin 2500 megawattia. **Tiistaina** hinta nousee hieman, liikkuen 4-10 sentin välillä, kun taas tuulivoiman tuotanto laskee 900 megawattiin. 
 
-**Tiistaina** sähkön hinta pysyy samana kuin edellisenä päivänä, eli 4-10 sentissä kilowattitunnilta, keskiarvon ollessa 7 senttiä. Tuulivoiman tuotanto vaihtelee 600 ja 3800 megawatin välillä, keskimäärin tuottaen 1500 megawattia.
+**Keskiviikkona** sähkön hinta on jälleen edullisempi, vaihdellen 2-6 sentin välillä. Tuulivoiman tuotanto on tuolloin huipussaan, keskimäärin 3100 megawattia. **Torstaina** hinta kohoaa korkeimmilleen, liikkuen 5-10 sentin välillä, kun tuulivoiman tuotanto on alhaisimmillaan 200 megawatissa.
 
-**Keskiviikkona** sähkön hinta laskee merkittävästi, liikkuen vain 2-3 sentissä kilowattitunnilta, keskiarvon ollessa 3 senttiä. Tuulivoiman tuotanto on runsasta, vaihdellen 3900 ja 5800 megawatin välillä, keskimäärin tuottaen 4800 megawattia.
+Viikko päättyy **perjantaihin**, jolloin sähkön hinta on jälleen kohtuullinen, 4-7 sentin välillä. Tuulivoiman tuotanto on vahvaa, keskimäärin 2800 megawattia. 
 
-**Torstaina** sähkön hinta nousee hieman, liikkuen 2-8 sentissä kilowattitunnilta, keskiarvon ollessa 6 senttiä. Tuulivoiman tuotanto vaihtelee 900 ja 3800 megawatin välillä, keskimäärin tuottaen 2000 megawattia.
-
-**Perjantaina** sähkön hinta pysyy alhaisena, liikkuen 2-4 sentissä kilowattitunnilta, keskiarvon ollessa 3 senttiä. Tuulivoiman tuotanto vaihtelee 3000 ja 4100 megawatin välillä, keskimäärin tuottaen 3400 megawattia.
-
-Viikon aikana sähkön hinta vaihtelee melko laajasti, mutta keskimäärin pysyttelee kohtuullisella tasolla. Tuulivoiman tuotanto on runsasta läpi viikon, mikä vaikuttaa positiivisesti sähkön hintaan. **Keskiviikko** erottuu edukseen alhaisella sähkön hinnallaan, kun taas **torstaina** hinta kohoaa hieman. **Perjantaina** hinta laskee jälleen, tarjoten edullista sähköä kuluttajille.
+Lähipäivien ennusteissa näkyy selvästi sähkön hinnan vaihtelu eri viikonpäivinä. Tuulivoiman tuotanto vaikuttaa hintaan merkittävästi, ja sen vaihtelut heijastuvat suoraan sähkön hintaan. Kannattaa siis seurata tuulivoiman tuotantoa, jos haluaa tehdä fiksuja päätöksiä sähkönkulutuksen suhteen.
