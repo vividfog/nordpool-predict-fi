@@ -195,7 +195,7 @@
 <body>
     <div id="topdisclaimer"><a href="privacy-policy.html">Palvelukuvaus ja tietosuojaseloste</a></div>
     <div id="predictionText">
-        <h1 style="padding-top: 32px">Pörssisähkön hintaennuste</h1>
+        <h1 style="padding-top: 16px">Pörssisähkön hintaennuste</h1>
         <p><strong>Tämä kokeellinen koneoppimismalli haarukoi pörssisähkön kuluttajahintaa noin 5 pv eteenpäin. Malli peilaa mm. ennustettua säätä, tuulivoiman tuotantoa ja nykyistä kuukautta/viikonpäivää aiempiin ajanjaksoihin, joissa nämä seikat olivat samankaltaiset.</strong></p>
         <p>Vaikka malli on toisinaan yllättävänkin tarkka, sen tuottamaan ennusteeseen tulee suhtautua varauksella. Se ei huomioi tulevia poikkeuspäiviä, kuten esim. ydinvoimaloiden tai siirtoyhteyksien huoltokatkoja. Sääennuste voi vielä muuttua, ja tämä vaikuttaa lähipäivien hintaan. Ennuste päivittyy muutaman kerran päivässä.</p>
         <p id="predictionChart"></p>
@@ -461,6 +461,31 @@
         .catch(error => {
             console.error('Error fetching or processing data:', error);
         });
+
+        // Function to update the vertical marker position
+        function updateMarkerPosition() {
+            console.log('A new minute, a new marker position!');
+            var currentTime = new Date().getTime(); // Get current time in milliseconds
+
+            // Update the markLine data for the current time marker
+            var option = nfpChart.getOption(); // Get the current chart options to overwrite
+            option.series.forEach((series) => {
+                if (series.markLine) {
+                    series.markLine.data = [
+                        {
+                            xAxis: currentTime
+                        }
+                    ];
+                }
+            });
+
+            // Set the updated option to the chart without not merging
+            nfpChart.setOption(option, false, false);
+        }
+
+        // Call the updateMarkerPosition function every minute to update the marker
+        setInterval(updateMarkerPosition, 60000); // 60000 milliseconds = 1 minute
+
         // END: ECharts code
 
         //////////////////////////////////////////////////////////////////////////
