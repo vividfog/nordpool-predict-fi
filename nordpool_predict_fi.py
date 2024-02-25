@@ -395,20 +395,17 @@ if args.publish:
     # Helsinki time zone setup
     helsinki_tz = pytz.timezone('Europe/Helsinki')
 
-    # Get the current time in Helsinki time zone
-    now_helsinki = datetime.now(helsinki_tz)
+    # Get the current time in Helsinki time zone and adjust to the start of yesterday
+    start_of_yesterday_helsinki = datetime.now(helsinki_tz).replace(hour=0, minute=0, second=0, microsecond=0) - pd.Timedelta(days=1)
 
-    # Normalize to the start of the current day in Helsinki time zone
-    start_of_today_helsinki = now_helsinki.replace(hour=0, minute=0, second=0, microsecond=0)
-
-    # Convert the start of the current day in Helsinki back to UTC
-    start_of_today_utc = start_of_today_helsinki.astimezone(pytz.utc)
+    # Convert the start of yesterday in Helsinki back to UTC
+    start_of_yesterday_utc = start_of_yesterday_helsinki.astimezone(pytz.utc)
 
     # Ensure 'timestamp' column is in datetime format and UTC for comparison
     publish_df['timestamp'] = pd.to_datetime(publish_df['timestamp']).dt.tz_localize(None).dt.tz_localize(pytz.utc)
 
-    # Filter out rows where 'timestamp' is earlier than the start of today in Helsinki, adjusted to UTC
-    publish_df = publish_df[publish_df['timestamp'] >= start_of_today_utc]
+    # Filter out rows where 'timestamp' is earlier than the start of yesterday in Helsinki, adjusted to UTC
+    publish_df = publish_df[publish_df['timestamp'] >= start_of_yesterday_utc]
 
     hourly_predictions = publish_df[['timestamp', 'PricePredict [c/kWh]']].copy()
     hourly_predictions['timestamp'] = hourly_predictions['timestamp'].dt.tz_localize(None) if hourly_predictions['timestamp'].dt.tz is not None else hourly_predictions['timestamp']
