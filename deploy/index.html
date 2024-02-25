@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="max-age=3600, must-revalidate">
-    <title>Pörssisähkön hintaennuste</title>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#f0f2f5" />
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;600;800&display=swap" rel="stylesheet">
@@ -12,6 +13,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
+    <title>Pörssisähkön hintaennuste</title>
     <style>
         body {
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -19,17 +21,6 @@
             margin: 20px;
             background-color: #f0f2f5;
             color: rgba(51, 51, 51, 0.9);
-        }
-        #title {
-            max-width: 920px;
-            margin: 0px auto;
-            padding-left: 60px;
-            padding-right: 60px;
-            padding-top: 8px;
-            padding-bottom: 32px;
-            color: #666;
-            line-height: 1.6;
-            box-sizing: border-box;
         }
         #predictionChart {
             height: 40vh;
@@ -178,7 +169,7 @@
             #body {
                 margin: 4px;
             }
-            #predictionText, #title {
+            #predictionText {
                 padding-left: 20px;
                 padding-right: 20px;
                 padding-top: 16px;
@@ -195,7 +186,7 @@
             #topdisclaimer {
                 max-width: 320px;
                 padding: 8px;
-                padding-bottom: 16px;
+                padding-bottom: 4px;
             }
         }        
 
