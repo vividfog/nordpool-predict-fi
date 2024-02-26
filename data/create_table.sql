@@ -5,6 +5,6 @@ CREATE TABLE prediction (
     "Wind [m/s]" FLOAT,
     "Wind Power [MWh]" FLOAT,
     "Wind Power Capacity [MWh]" FLOAT,
-    "PricePredict [c/kWh]" FLOAT
+    "PricePredict [c/kWh]" FLOAT,
+    "NuclearPowerMW" FLOAT
 );
-
