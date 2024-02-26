@@ -19,34 +19,40 @@ import sqlite3
 from datetime import datetime
 import pytz
 
-def csv_to_df(csv_path):
-    # Read the CSV file into a DataFrame
-    df = pd.read_csv(csv_path, na_values='-')
+# def csv_to_df(csv_path):
+#     # Deprecated until there's a source CSV that also includes nuclear power data
+#     # Read the CSV file into a DataFrame
+#     df = pd.read_csv(csv_path, na_values='-')
 
-    # Convert the timestamp to datetime
-    df['timestamp_UTC'] = pd.to_datetime(df['timestamp_UTC'], unit='s')
+#     # Convert the timestamp to datetime
+#     df['timestamp_UTC'] = pd.to_datetime(df['timestamp_UTC'], unit='s')
 
-    # Rename the columns to match the database schema
-    df = df.rename(columns={
-        'timestamp_UTC': 'timestamp',
-        'price_cents_per_kWh': 'Price [c/kWh]',
-        'temp_celsius': 'Temp [°C]',
-        'wind_m/s': 'Wind [m/s]',
-        'wind_power_MWh': 'Wind Power [MWh]',
-        'wind_power_capacity_MWh': 'Wind Power Capacity [MWh]'
-    })
+#     # Rename the columns to match the database schema
+#     df = df.rename(columns={
+#         'timestamp_UTC': 'timestamp',
+#         'price_cents_per_kWh': 'Price [c/kWh]',
+#         'temp_celsius': 'Temp [°C]',
+#         'wind_m/s': 'Wind [m/s]',
+#         'wind_power_MWh': 'Wind Power [MWh]',
+#         'wind_power_capacity_MWh': 'Wind Power Capacity [MWh]'
+#     })
 
-    df = df.drop(columns=['helsinki'])
+#     df = df.drop(columns=['helsinki'])
 
-    imputer = SimpleImputer(strategy='mean')
-    df[['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'Price [c/kWh]']] = imputer.fit_transform(df[['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'Price [c/kWh]']])
+#     imputer = SimpleImputer(strategy='mean')
+#     df[['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'Price [c/kWh]']] = imputer.fit_transform(df[['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'Price [c/kWh]']])
 
-    # Add the additional columns with NULL values
-    df['PricePredict [c/kWh]'] = None
+#     # Add the additional columns with NULL values
+#     df['PricePredict [c/kWh]'] = None
 
-    return df
+#     return df
 
 def train_model(df, output_path):
+    
+    # Sort the data frame by timestamp
+    df = df.sort_values(by='timestamp')
+    
+    print("Training the model with data frame:\n", df)
 
     df['timestamp'] = pd.to_datetime(df['timestamp'])
     df['day_of_week'] = df['timestamp'].dt.dayofweek + 1
@@ -63,7 +69,7 @@ def train_model(df, output_path):
     df_filtered = df[(df['Price [c/kWh]'] >= min_threshold) & (df['Price [c/kWh]'] <= max_threshold)]
 
     # Define features and target for the first model after outlier removal
-    X_filtered = df_filtered[['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'hour', 'day_of_week', 'month']]
+    X_filtered = df_filtered[['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'hour', 'day_of_week', 'month', 'NuclearPowerMW']]
     y_filtered = df_filtered['Price [c/kWh]']
 
     # Train the first model (Random Forest) on the filtered data
@@ -94,7 +100,7 @@ def train_model(df, output_path):
         random_sample = df.sample(n=500, random_state=None)  # 'None' for truly random behavior
 
         # Pick input/output features for the random sample
-        X_random_sample = random_sample[['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'hour', 'day_of_week', 'month']]
+        X_random_sample = random_sample[['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'hour', 'day_of_week', 'month', 'NuclearPowerMW']]
         y_random_sample_true = random_sample['Price [c/kWh]']
 
         # Predict the prices for the randomly selected samples
@@ -115,6 +121,5 @@ def train_model(df, output_path):
     
     return mae, mse, r2, samples_mae, samples_mse, samples_r2
 
-if __name__ == "__main__":
-    print("This is not meant to be executed directly.")
-    exit()
+# If trying to execute this script directly, print a message and exit
+"This is not meant to be executed directly."

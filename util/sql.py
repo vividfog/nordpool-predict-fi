@@ -1,49 +1,7 @@
-"""
-from util.sql import db_update, db_query, db_query_all, db_test
-
-A Python package for interacting with SQLite databases, specifically designed for managing and querying timestamped prediction data. This package offers a set of functions to normalize timestamps, insert or update rows in a database, query data based on specific conditions, and run predefined test cases.
-
-Functions:
-- normalize_timestamp(ts): Converts a timestamp string into a datetime object and formats it as an ISO8601 string. This function is crucial for ensuring timestamp consistency across database operations.
-
-- db_update(db_path, df): Takes a path to a SQLite database and a pandas DataFrame as inputs. It updates existing rows or inserts new rows into the 'prediction' table based on the 'timestamp' column. The function returns two DataFrames: one containing inserted rows and another containing updated rows.
-
-- db_query(db_path, df): Queries the 'prediction' table in the given SQLite database based on timestamps specified in a pandas DataFrame. It normalizes timestamps in the query DataFrame before executing the query and returns a DataFrame with the query results, sorted by timestamp.
-
-- db_query_all(db_path): Fetches all rows from the 'prediction' table in the specified SQLite database without any filtering conditions. This function is useful for bulk data operations or when all records are needed for analysis.
-
-- db_test(db_path): Runs a series of predefined test cases to demonstrate the functionality of the `db_update` and `db_query` functions. It provides an example of how to use these functions for inserting data, updating existing records, and querying the database.
-
-This package requires pandas for DataFrame operations and sqlite3 for database interaction, making it suitable for data analysis and database management tasks involving time-series prediction data.
-
-Example Usage:
-To use these functions, ensure you have a SQLite database with a 'prediction' table that matches the schema expected by the DataFrame operations in the functions.
-
-Schema:
-CREATE TABLE prediction (
-    timestamp TIMESTAMP PRIMARY KEY,
-    "Price [c/kWh]" FLOAT,
-    "Temp [°C]" FLOAT,
-    "Wind [m/s]" FLOAT,
-    "Wind Power [MWh]" FLOAT,
-    "Wind Power Capacity [MWh]" FLOAT,
-    "hour" INT,
-    "day_of_week" INT,
-    "month" INT,
-    "PricePredict [c/kWh]" FLOAT
-);
-
-Sample Data:
-timestamp,Price [c/kWh],Temp [°C],Wind [m/s],Wind Power [MWh],Wind Power Capacity [MWh],hour,day_of_week,month,PricePredict [c/kWh]
-2023-02-14 00:00:00,5.569,1.6,3.3,2263.3,5451.0,0,2,2,1.9
-2023-02-14 01:00:00,8.506,0.8,2.9,1738.8,5451.0,1,2,2,0.9
-2023-02-14 02:00:00,10.494,0.0,2.9,1306.4,5451.0,2,2,2,0.1
-2023-02-14 03:00:00,10.633,-0.7,2.2,905.89999,5451.0,3,2,2,-0.9
-
-"""
-
 import sqlite3
 import pandas as pd
+
+# A set of functions to work with the predictions SQLite database
 
 # Suppress FutureWarning messages from pandas for now
 import warnings
@@ -129,56 +87,5 @@ def db_query_all(db_path):
     data = pd.read_sql_query(query, conn)
     conn.close()
     return data
-
-def db_test(db_path):
-    '''
-    Run a series of predefined test cases to demonstrate the functionality of the `db_update` and `db_query` functions.
-    WARNING: This function modifies the database by inserting and updating records to the 80's. Not to be used in production.
-    To fix: DELETE from prediction WHERE timestamp LIKE '1980%';
-    '''
-    print("Running test cases for db_update and db_query, db_path:", db_path)
-
-    # Test case 1: Update existing data
-    df1 = pd.DataFrame({
-        'timestamp': ['1980-02-13 23:00:00'],
-        'Price [c/kWh]': [3.171],
-        'Temp [°C]': [2.4],
-        'Wind [m/s]': [4.2],
-        'Wind Power [MWh]': [3463.8],
-        'Wind Power Capacity [MWh]': [5451.0],
-        'hour': [22.0],
-        'day_of_week': [1.0],
-        'month': [2.0],
-        'PricePredict [c/kWh]': [None]
-    })
-    inserted, updated = db_update(db_path, df1)
-    print(f"Test case 1: {len(inserted)} rows inserted, {len(updated)} rows updated")
-
-    # Test case 2: Insert new data
-    df2 = pd.DataFrame({
-        'timestamp': ['1980-01-20 05:00:00'],
-        'Price [c/kWh]': [7.429],
-        'Temp [°C]': [-11.2],
-        'Wind [m/s]': [1.6],
-        'Wind Power [MWh]': [1086.775],
-        'Wind Power Capacity [MWh]': [6828.8],
-        'hour': [5.0],
-        'day_of_week': [6.0],
-        'month': [1.0],
-        'PricePredict [c/kWh]': [None]
-    })
-    inserted, updated = db_update(db_path, df2)
-    print(f"Test case 2: {len(inserted)} rows inserted, {len(updated)} rows updated")
-
-    # Test case 3: Query data
-    df3 = pd.DataFrame({
-        'timestamp': ['1980-02-13 23:00:00', '1980-01-20 05:00:00']
-    })        
-   
-    result = db_query(db_path, df3)
-    print(f"Test case 3: {len(result)} rows returned")
-    print(result)
     
-if __name__ == "__main__":
-    print("This is not meant to be executed directly.")
-    exit()
+"This script is not meant to be executed directly."
