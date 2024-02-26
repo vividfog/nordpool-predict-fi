@@ -95,26 +95,22 @@ Data schema used for training and inference is this:
 sqlite> .schema
 CREATE TABLE prediction (
     timestamp TIMESTAMP PRIMARY KEY,
-    "Price [c/kWh]" FLOAT,
-    "Temp [°C]" FLOAT,
-    "Wind [m/s]" FLOAT,
-    "Wind Power [MWh]" FLOAT,
-    "Wind Power Capacity [MWh]" FLOAT,
-    "PricePredict [c/kWh]" FLOAT,
+    "Price_cpkWh" FLOAT,
+    "Temp_dC" FLOAT,
+    "Wind_mps" FLOAT,
+    "WindPowerMW" FLOAT,
+    "WindPowerCapacityMW" FLOAT,
+    "PricePredict_cpkWh" FLOAT,
     "NuclearPowerMW" FLOAT
 );
 ```
-
-> [!NOTE]
->
-> Yes, we should have used **MW** when talking about wind **power** (vs. accumulated wind energy in megawatt-hours). We may fix this terminology oversight in a future update. However, the model doesn't read those units or do physics with these numbers, so it won't change the results. We could have called them volts and it would still produce the same results.
 
 ### Hidden patterns in weather/price data
 
 As code, the price information is learned from, or is a function of, patterns and correlations between these factors, as learned by the model:
 
 ```
-['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'hour', 'day_of_week', 'month', 'NuclearPowerMW']
+['Temp_dC', 'Wind_mps', 'WindPowerMW', 'WindPowerCapacityMW', 'hour', 'day_of_week', 'month', 'NuclearPowerMW']
 ```
 
 > **Example scenarios to illustrate the correlations:**
@@ -131,7 +127,7 @@ How can a Random Forest model learn these patterns to predict future prices base
 
 > A Random Forest model learns to predict outcomes, such as electricity prices based on weather and other conditions, through a combination of decision trees. Here's how it typically works for understanding and predicting patterns like those in your examples:
 >
-> 1. **Decision Trees**: At the heart of a Random Forest are decision trees. Each decision tree in the forest is built from a random subset of the data features ('Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', etc.) and instances. These trees are grown to their maximum size without pruning, which makes them highly sensitive to the specific data they're trained on, capturing complex patterns including nonlinear relationships and interactions between variables.
+> 1. **Decision Trees**: At the heart of a Random Forest are decision trees. Each decision tree in the forest is built from a random subset of the data features ('Temp_dC', 'Wind_mps', 'WindPowerMW', etc.) and instances. These trees are grown to their maximum size without pruning, which makes them highly sensitive to the specific data they're trained on, capturing complex patterns including nonlinear relationships and interactions between variables.
 >
 > 2. **Randomness**: Two levels of randomness are introduced in a Random Forest: 
 >    - **Feature Sampling**: When splitting a node, the model randomly selects a subset of the features to consider for the split. This ensures that the trees in the forest are diverse, which reduces the model's variance and helps to avoid overfitting.
