@@ -28,7 +28,7 @@ def create_spot_prices_df(data):
         if df['timestamp'].dt.tz is None:
             df['timestamp'] = df['timestamp'].dt.tz_localize('UTC')
         # Convert prices from euros to cents
-        df['Price [c/kWh]'] = df['Price [€/kWh]'] * 100
+        df['Price_cpkWh'] = df['Price [€/kWh]'] * 100
         # Drop the original euros column as it's no longer needed
         df.drop(columns=['Price [€/kWh]'], inplace=True)
         return df
@@ -53,15 +53,15 @@ def add_spot_prices_to_df(input_df):
         input_df['timestamp'] = input_df['timestamp'].dt.tz_localize('UTC')
 
     # Merge the input DataFrame with the spot prices DataFrame based on the 'timestamp'
-    # If 'Price [c/kWh]_new' does not exist, it means there were no conflicts and no action is needed
+    # If 'Price_cpkWh_new' does not exist, it means there were no conflicts and no action is needed
     merged_df = pd.merge(input_df, spot_prices_df, on='timestamp', how='left', suffixes=('', '_new'))
     
-    # Check if 'Price [c/kWh]_new' column exists in the merged DataFrame
-    if 'Price [c/kWh]_new' in merged_df.columns:
-        # Only update 'Price [c/kWh]' where it's NaN in the input_df
-        merged_df['Price [c/kWh]'] = np.where(merged_df['Price [c/kWh]'].isna(), merged_df['Price [c/kWh]_new'], merged_df['Price [c/kWh]'])
+    # Check if 'Price_cpkWh_new' column exists in the merged DataFrame
+    if 'Price_cpkWh_new' in merged_df.columns:
+        # Only update 'Price_cpkWh' where it's NaN in the input_df
+        merged_df['Price_cpkWh'] = np.where(merged_df['Price_cpkWh'].isna(), merged_df['Price_cpkWh_new'], merged_df['Price_cpkWh'])
         # Drop the temporary '_new' column after updating
-        merged_df.drop(columns=['Price [c/kWh]_new'], inplace=True)
+        merged_df.drop(columns=['Price_cpkWh_new'], inplace=True)
     
     return merged_df
 

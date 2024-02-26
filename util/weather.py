@@ -60,8 +60,8 @@ def parse_weather_data(weather_data):
         
         parsed_data.append({
             'timestamp': time,
-            'Temp [°C]': temp,
-            'Wind [m/s]': wind_speed,
+            'Temp_dC': temp,
+            'Wind_mps': wind_speed,
         })
     
     return pd.DataFrame(parsed_data)

@@ -78,12 +78,12 @@ if args.train:
     df['timestamp'] = pd.to_datetime(df['timestamp'])
     # print(df)
 
-    # If Wind Power Capacity [MWh] is null, fill it with the maximum capacity
-    df['Wind Power Capacity [MWh]'] = df['Wind Power Capacity [MWh]'].fillna(wind_power_max_capacity)
+    # If WindPowerCapacityMW is null, fill it with the maximum capacity
+    df['WindPowerCapacityMW'] = df['WindPowerCapacityMW'].fillna(wind_power_max_capacity)
     # print(df)
     
     # Drop rows with missing values in the required columns
-    required_columns = ['timestamp', 'Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'Price [c/kWh]', 'NuclearPowerMW']
+    required_columns = ['timestamp', 'Temp_dC', 'Wind_mps', 'WindPowerMW', 'WindPowerCapacityMW', 'Price_cpkWh', 'NuclearPowerMW']
     df = df.dropna(subset=required_columns)
     # print(df)
     
@@ -184,8 +184,8 @@ if args.plot:
     # Drop rows with missing values
     df = df.dropna()
 
-    ax.plot(df['timestamp'], df['Price [c/kWh]'], label='Actual Price', linewidth=0.33)
-    ax.plot(df['timestamp'], df['PricePredict [c/kWh]'], label='Predicted Price', linewidth=0.33)
+    ax.plot(df['timestamp'], df['Price_cpkWh'], label='Actual Price', linewidth=0.33)
+    ax.plot(df['timestamp'], df['PricePredict_cpkWh'], label='Predicted Price', linewidth=0.33)
 
     # Format the x-axis to display dates
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
@@ -193,7 +193,7 @@ if args.plot:
 
     # Add labels and title
     ax.set_xlabel('Timestamp')
-    ax.set_ylabel('Price [c/kWh]')
+    ax.set_ylabel('Price_cpkWh')
     ax.set_title('Predicted and Actual Prices')
     ax.legend()
 
@@ -216,7 +216,7 @@ if args.predict:
     wind_power_df = pd.DataFrame(wind_power_prediction_data)
     
     # In the next DB refactoring, we should use MW and not MWh as a unit for wind power production...
-    wind_power_df.rename(columns={'datetime': 'timestamp', 'wind_prediction_MWh': 'Wind Power [MWh]'}, inplace=True)
+    wind_power_df.rename(columns={'datetime': 'timestamp', 'wind_prediction_MWh': 'WindPowerMW'}, inplace=True)
     wind_power_df['timestamp'] = pd.to_datetime(wind_power_df['timestamp'])
     # print("Wind Power Data Sample:\n", wind_power_df.head())
 
@@ -238,19 +238,19 @@ if args.predict:
         # print("History Sample:\n", history_df.sample(50))
         features_df = pd.merge(features_df, history_df, on='timestamp', how='right')
 
-        features_df['Wind Power [MWh]'] = features_df['Wind Power [MWh]_y']
-        features_df = features_df.drop(['Wind Power [MWh]_x', 'Wind Power [MWh]_y'], axis=1)
+        features_df['WindPowerMW'] = features_df['WindPowerMW_y']
+        features_df = features_df.drop(['WindPowerMW_x', 'WindPowerMW_y'], axis=1)
 
-        features_df['Temp [°C]'] = features_df['Temp [°C]_y']
-        features_df = features_df.drop(['Temp [°C]_x', 'Temp [°C]_y'], axis=1)
+        features_df['Temp_dC'] = features_df['Temp_dC_y']
+        features_df = features_df.drop(['Temp_dC_x', 'Temp_dC_y'], axis=1)
        
-        features_df['Wind [m/s]'] = features_df['Wind [m/s]_y']
-        features_df = features_df.drop(['Wind [m/s]_x', 'Wind [m/s]_y'], axis=1)
+        features_df['Wind_mps'] = features_df['Wind_mps_y']
+        features_df = features_df.drop(['Wind_mps_x', 'Wind_mps_y'], axis=1)
         
         features_df['NuclearPowerMW'] = features_df['NuclearPowerMW_y']
         features_df = features_df.drop(['NuclearPowerMW_x', 'NuclearPowerMW_y'], axis=1)
        
-        required_columns = ['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'NuclearPowerMW']
+        required_columns = ['Temp_dC', 'Wind_mps', 'WindPowerMW', 'WindPowerCapacityMW', 'NuclearPowerMW']
         features_df = features_df.dropna(subset=required_columns)
         
         for col in features_df.columns:
@@ -265,17 +265,17 @@ if args.predict:
     features_df['hour'] = features_df['timestamp'].dt.hour
     features_df['month'] = features_df['timestamp'].dt.month
 
-    # Check if 'Wind Power Capacity [MWh]' column exists in features_df, create it filled with NaN if not
-    if 'Wind Power Capacity [MWh]' not in features_df.columns:
-        features_df['Wind Power Capacity [MWh]'] = np.nan
+    # Check if 'WindPowerCapacityMW' column exists in features_df, create it filled with NaN if not
+    if 'WindPowerCapacityMW' not in features_df.columns:
+        features_df['WindPowerCapacityMW'] = np.nan
 
     # Add or update the wind power capacity for the model only where it's missing
-    features_df['Wind Power Capacity [MWh]'] = features_df['Wind Power Capacity [MWh]'].fillna(wind_power_max_capacity)
+    features_df['WindPowerCapacityMW'] = features_df['WindPowerCapacityMW'].fillna(wind_power_max_capacity)
          
     # Load and apply the Random Forest model for predictions
     rf_model = joblib.load(rf_model_path)
-    price_df = rf_model.predict(features_df[['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'hour', 'day_of_week', 'month', 'NuclearPowerMW']])
-    features_df['PricePredict [c/kWh]'] = price_df
+    price_df = rf_model.predict(features_df[['Temp_dC', 'Wind_mps', 'WindPowerMW', 'WindPowerCapacityMW', 'hour', 'day_of_week', 'month', 'NuclearPowerMW']])
+    features_df['PricePredict_cpkWh'] = price_df
     # print("Predictions:\n", features_df)
     
     # Add spot prices to the DataFrame, to the degree available
@@ -290,14 +290,14 @@ if args.predict:
         print("Spot Prices random sample of 20:\n", spot_df.sample(20))
         
         # Create a new DataFrame for calculating the metrics
-        metrics_df = spot_df[['Price [c/kWh]', 'PricePredict [c/kWh]']].copy()
+        metrics_df = spot_df[['Price_cpkWh', 'PricePredict_cpkWh']].copy()
         
-        # Drop the rows with NaN values in 'Price [c/kWh]' or 'PricePredict [c/kWh]'
-        metrics_df = metrics_df.dropna(subset=['Price [c/kWh]', 'PricePredict [c/kWh]'])
+        # Drop the rows with NaN values in 'Price_cpkWh' or 'PricePredict_cpkWh'
+        metrics_df = metrics_df.dropna(subset=['Price_cpkWh', 'PricePredict_cpkWh'])
         
         # Calculate the metrics
-        y_true = metrics_df['Price [c/kWh]']
-        y_pred = metrics_df['PricePredict [c/kWh]']
+        y_true = metrics_df['Price_cpkWh']
+        y_pred = metrics_df['PricePredict_cpkWh']
         
         mae = mean_absolute_error(y_true, y_pred)
         mse = mean_squared_error(y_true, y_pred)
@@ -364,20 +364,20 @@ if args.past_performance:
 
     # print(f"Data length before filtering: {before_filtering_length}, after filtering: {len(past_df)}")
 
-    nan_rows = past_df[past_df['Price [c/kWh]'].isna() | past_df['PricePredict [c/kWh]'].isna()]
+    nan_rows = past_df[past_df['Price_cpkWh'].isna() | past_df['PricePredict_cpkWh'].isna()]
     # print("Rows with NaN values before dropping:")
     # print(nan_rows)
 
     # Drop empty or NaN rows
-    past_df = past_df.dropna(subset=['Price [c/kWh]', 'PricePredict [c/kWh]'])
+    past_df = past_df.dropna(subset=['Price_cpkWh', 'PricePredict_cpkWh'])
 
     # print("Data after dropping NaNs:", past_df)
     # print(f"Data length after dropping NaNs: {len(past_df)}")
 
     # Calculate the metrics
-    past_df = past_df.dropna(subset=['Price [c/kWh]', 'PricePredict [c/kWh]'])
-    y_true = past_df['Price [c/kWh]']
-    y_pred = past_df['PricePredict [c/kWh]']
+    past_df = past_df.dropna(subset=['Price_cpkWh', 'PricePredict_cpkWh'])
+    y_true = past_df['Price_cpkWh']
+    y_pred = past_df['PricePredict_cpkWh']
     mae = mean_absolute_error(y_true, y_pred)
     mse = mean_squared_error(y_true, y_pred)
     rmse = np.sqrt(mse)
@@ -406,8 +406,8 @@ if args.past_performance:
         # Convert timestamps to milliseconds since epoch and pair with values
         for _, row in past_df.iterrows():
             timestamp_ms = int(row['timestamp'].timestamp() * 1000)
-            past_performance_data["data"][0]["data"].append([timestamp_ms, row['Price [c/kWh]']])
-            past_performance_data["data"][1]["data"].append([timestamp_ms, row['PricePredict [c/kWh]']])
+            past_performance_data["data"][0]["data"].append([timestamp_ms, row['Price_cpkWh']])
+            past_performance_data["data"][1]["data"].append([timestamp_ms, row['PricePredict_cpkWh']])
 
         # print("Final Actual Price Data Points:", past_performance_data["data"][0]["data"][:5])  # Debug print
         # print("Final Predicted Price Data Points:", past_performance_data["data"][1]["data"][:5])  # Debug print
@@ -444,7 +444,7 @@ if args.publish:
     # Filter out rows where 'timestamp' is earlier than the start of yesterday in Helsinki, adjusted to UTC
     publish_df = publish_df[publish_df['timestamp'] >= start_of_yesterday_utc]
 
-    hourly_predictions = publish_df[['timestamp', 'PricePredict [c/kWh]']].copy()
+    hourly_predictions = publish_df[['timestamp', 'PricePredict_cpkWh']].copy()
     hourly_predictions['timestamp'] = hourly_predictions['timestamp'].dt.tz_localize(None) if hourly_predictions['timestamp'].dt.tz is not None else hourly_predictions['timestamp']
     hourly_predictions['timestamp'] = hourly_predictions['timestamp'].apply(
         lambda x: (x - pd.Timestamp("1970-01-01")) // pd.Timedelta('1ms')
@@ -461,14 +461,14 @@ if args.publish:
     publish_df['timestamp'] = publish_df['timestamp'].dt.tz_localize(None) if publish_df['timestamp'].dt.tz is not None else publish_df['timestamp']
     publish_df['timestamp'] = publish_df['timestamp'].dt.normalize()
 
-    daily_averages = publish_df.groupby('timestamp')['PricePredict [c/kWh]'].mean().reset_index()
+    daily_averages = publish_df.groupby('timestamp')['PricePredict_cpkWh'].mean().reset_index()
 
     # Before applying lambda, ensure 'timestamp' is timezone-naive for consistency
     daily_averages['timestamp'] = daily_averages['timestamp'].apply(
         lambda x: (x - pd.Timestamp("1970-01-01")) // pd.Timedelta('1ms')
     )
 
-    json_data_list = daily_averages[['timestamp', 'PricePredict [c/kWh]']].values.tolist()
+    json_data_list = daily_averages[['timestamp', 'PricePredict_cpkWh']].values.tolist()
     json_data = json.dumps(json_data_list, ensure_ascii=False)
     json_path = os.path.join(deploy_folder_path, averages_file)
     with open(json_path, 'w') as f:

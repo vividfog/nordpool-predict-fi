@@ -1,10 +1,10 @@
 CREATE TABLE prediction (
     timestamp TIMESTAMP PRIMARY KEY,
-    "Price [c/kWh]" FLOAT,
-    "Temp [°C]" FLOAT,
-    "Wind [m/s]" FLOAT,
-    "Wind Power [MWh]" FLOAT,
-    "Wind Power Capacity [MWh]" FLOAT,
-    "PricePredict [c/kWh]" FLOAT,
+    "Price_cpkWh" FLOAT,
+    "Temp_dC" FLOAT,
+    "Wind_mps" FLOAT,
+    "WindPowerMW" FLOAT,
+    "WindPowerCapacityMW" FLOAT,
+    "PricePredict_cpkWh" FLOAT,
     "NuclearPowerMW" FLOAT
 );

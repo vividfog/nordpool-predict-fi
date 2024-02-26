@@ -1,9 +1,9 @@
-    "Price [c/kWh]" FLOAT,
-    "PricePredict [c/kWh]" FLOAT
-    "Temp [°C]" FLOAT,
-    "Wind Power Capacity [MWh]" FLOAT,
-    "Wind Power [MWh]" FLOAT,
-    "Wind [m/s]" FLOAT,
+    "Price_cpkWh" FLOAT,
+    "PricePredict_cpkWh" FLOAT
+    "Temp_dC" FLOAT,
+    "WindPowerCapacityMW" FLOAT,
+    "WindPowerMW" FLOAT,
+    "Wind_mps" FLOAT,
     timestamp TIMESTAMP PRIMARY KEY,
 , NuclearPowerMW FLOAT);
 BEGIN TRANSACTION;

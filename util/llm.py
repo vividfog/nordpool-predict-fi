@@ -18,7 +18,7 @@ def narrate_prediction(timestamp):
     df_result = db_query('data/prediction.db', df)
 
     # Keep timestamp, wind power, and predicted price
-    df_result = df_result[['timestamp', 'Wind Power [MWh]', 'PricePredict [c/kWh]']]
+    df_result = df_result[['timestamp', 'WindPowerMW', 'PricePredict_cpkWh']]
 
     # Drop rows with missing values
     # df_result = df_result.dropna()
@@ -32,7 +32,7 @@ def narrate_prediction(timestamp):
     # Group by date and calculate min, max, and average price and wind power
     df_result['date'] = df_result['timestamp'].dt.date
     # print(df_result)
-    df_result = df_result.groupby('date').agg({'PricePredict [c/kWh]': ['min', 'max', 'mean'], 'Wind Power [MWh]': ['min', 'max', 'mean']})
+    df_result = df_result.groupby('date').agg({'PricePredict_cpkWh': ['min', 'max', 'mean'], 'WindPowerMW': ['min', 'max', 'mean']})
     # print(df_result)
 
     narrative = send_to_gpt(df_result)
@@ -61,10 +61,10 @@ def send_to_gpt(df):
     prompt = (f"// Tänään on {weekday_today.lower()} {date_today} ja ennusteet lähipäiville ovat seuraavat. Ole tarkkana että käytät näitä numeroita oikein:\n\n")
 
     for date, row in df.iterrows():
-        wind_min = round(row[('Wind Power [MWh]', 'min')] / 100) * 100
-        wind_max = round(row[('Wind Power [MWh]', 'max')] / 100) * 100
-        wind_mean = round(row[('Wind Power [MWh]', 'mean')] / 100) * 100
-        prompt += (f"{date.strftime('%A %d.%m.%Y')}: Pörssisähkön hinta min {row[('PricePredict [c/kWh]', 'min')]:.0f} ¢/kWh, max {row[('PricePredict [c/kWh]', 'max')]:.0f} ¢/kWh, keskihinta {row[('PricePredict [c/kWh]', 'mean')]:.0f} ¢/kWh. Tuulivoiman tuotanto min {wind_min:.0f} MW, max {wind_max:.0f} MW, keskiarvo {wind_mean:.0f} MW.\n\n")
+        wind_min = round(row[('WindPowerMW', 'min')] / 100) * 100
+        wind_max = round(row[('WindPowerMW', 'max')] / 100) * 100
+        wind_mean = round(row[('WindPowerMW', 'mean')] / 100) * 100
+        prompt += (f"{date.strftime('%A %d.%m.%Y')}: Pörssisähkön hinta min {row[('PricePredict_cpkWh', 'min')]:.0f} ¢/kWh, max {row[('PricePredict_cpkWh', 'max')]:.0f} ¢/kWh, keskihinta {row[('PricePredict_cpkWh', 'mean')]:.0f} ¢/kWh. Tuulivoiman tuotanto min {wind_min:.0f} MW, max {wind_max:.0f} MW, keskiarvo {wind_mean:.0f} MW.\n\n")
       
     prompt += """
 // Kirjoita viihdyttävä ja rikasta suomen kieltä käyttävä UUTISARTIKKELI viihteellisen aikakauslehden kolumniin näiden tietojen pohjalta. Aloita kuvailemalla sähkön hinnan ja tuulivoimaennusteen kehitystä lähipäiville, ja kommentoi sitten lähipäiviä kokonaisuutena. Tavoitepituus on noin 150-250 sanaa.

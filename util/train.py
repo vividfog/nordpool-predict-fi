@@ -30,20 +30,20 @@ import pytz
 #     # Rename the columns to match the database schema
 #     df = df.rename(columns={
 #         'timestamp_UTC': 'timestamp',
-#         'price_cents_per_kWh': 'Price [c/kWh]',
-#         'temp_celsius': 'Temp [°C]',
-#         'wind_m/s': 'Wind [m/s]',
-#         'wind_power_MWh': 'Wind Power [MWh]',
-#         'wind_power_capacity_MWh': 'Wind Power Capacity [MWh]'
+#         'price_cents_per_kWh': 'Price_cpkWh',
+#         'temp_celsius': 'Temp_dC',
+#         'wind_m/s': 'Wind_mps',
+#         'wind_power_MWh': 'WindPowerMW',
+#         'wind_power_capacity_MWh': 'WindPowerCapacityMW'
 #     })
 
 #     df = df.drop(columns=['helsinki'])
 
 #     imputer = SimpleImputer(strategy='mean')
-#     df[['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'Price [c/kWh]']] = imputer.fit_transform(df[['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'Price [c/kWh]']])
+#     df[['Temp_dC', 'Wind_mps', 'WindPowerMW', 'WindPowerCapacityMW', 'Price_cpkWh']] = imputer.fit_transform(df[['Temp_dC', 'Wind_mps', 'WindPowerMW', 'WindPowerCapacityMW', 'Price_cpkWh']])
 
 #     # Add the additional columns with NULL values
-#     df['PricePredict [c/kWh]'] = None
+#     df['PricePredict_cpkWh'] = None
 
 #     return df
 
@@ -60,17 +60,17 @@ def train_model(df, output_path):
     df['month'] = df['timestamp'].dt.month
 
     # Remove outliers using the IQR method
-    Q1 = df['Price [c/kWh]'].quantile(0.25)
-    Q3 = df['Price [c/kWh]'].quantile(0.75)
+    Q1 = df['Price_cpkWh'].quantile(0.25)
+    Q3 = df['Price_cpkWh'].quantile(0.75)
     IQR = Q3 - Q1
 
     min_threshold = Q1 - 3 * IQR
     max_threshold = Q3 + 100 * IQR
-    df_filtered = df[(df['Price [c/kWh]'] >= min_threshold) & (df['Price [c/kWh]'] <= max_threshold)]
+    df_filtered = df[(df['Price_cpkWh'] >= min_threshold) & (df['Price_cpkWh'] <= max_threshold)]
 
     # Define features and target for the first model after outlier removal
-    X_filtered = df_filtered[['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'hour', 'day_of_week', 'month', 'NuclearPowerMW']]
-    y_filtered = df_filtered['Price [c/kWh]']
+    X_filtered = df_filtered[['Temp_dC', 'Wind_mps', 'WindPowerMW', 'WindPowerCapacityMW', 'hour', 'day_of_week', 'month', 'NuclearPowerMW']]
+    y_filtered = df_filtered['Price_cpkWh']
 
     # Train the first model (Random Forest) on the filtered data
     X_train, X_test, y_train, y_test = train_test_split(X_filtered, y_filtered, test_size=0.2, random_state=42)
@@ -100,8 +100,8 @@ def train_model(df, output_path):
         random_sample = df.sample(n=500, random_state=None)  # 'None' for truly random behavior
 
         # Pick input/output features for the random sample
-        X_random_sample = random_sample[['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'hour', 'day_of_week', 'month', 'NuclearPowerMW']]
-        y_random_sample_true = random_sample['Price [c/kWh]']
+        X_random_sample = random_sample[['Temp_dC', 'Wind_mps', 'WindPowerMW', 'WindPowerCapacityMW', 'hour', 'day_of_week', 'month', 'NuclearPowerMW']]
+        y_random_sample_true = random_sample['Price_cpkWh']
 
         # Predict the prices for the randomly selected samples
         y_random_sample_pred = rf.predict(X_random_sample)
