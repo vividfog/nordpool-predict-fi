@@ -25,3 +25,4 @@ deploy/ads.txt
 model/models.db
 .envrc
 .mailmap
+.pre-commit-config.yaml

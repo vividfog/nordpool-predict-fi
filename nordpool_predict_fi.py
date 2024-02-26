@@ -10,15 +10,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from dotenv import load_dotenv
+from util.train import train_model
+from util.dump import dump_sqlite_db
 from util.weather import weather_get
 from datetime import datetime, timedelta
-from util.dump import dump_sqlite_db
 from util.llm import narrate_prediction
 from util.spot import add_spot_prices_to_df
-from util.train import csv_to_df, train_model
 from util.github import push_updates_to_github
+from util.fingrid import add_nuclear_power_to_df
 from util.foreca import foreca_wind_power_prediction
-from util.sql import db_update, db_query, db_test, db_query_all
+from util.sql import db_update, db_query, db_query_all
 from util.models import write_model_stats, stats_json, stats, list_models
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
@@ -35,6 +36,7 @@ averages_file = os.getenv('AVERAGES_FILE') or "AVERAGES_FILE not set in environm
 past_performance_file = os.getenv('PAST_PERFORMANCE_FILE') or "PAST_PERFORMANCE_FILE not set in environment"
 wind_power_prediction = os.getenv('WIND_POWER_PREDICTION') or "WIND_POWER_PREDICTION not set in environment"
 api_key = os.getenv('API_KEY') or "Tomorrow.io API_KEY not set in environment"
+fingrid_api_key = os.getenv('FINGRID_API_KEY') or "FINGRID_API_KEY not set in environment"
 token = os.getenv('TOKEN') # GitHub token, used by --publish, optional
 commit_message = os.getenv('COMMIT_MESSAGE') # Optional, used by --publish
 deploy_folder_path = os.getenv('DEPLOY_FOLDER_PATH') # Optional, used by --publish
@@ -51,6 +53,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--dump', action='store_true', help='Dump the SQLite database to CSV format')
 parser.add_argument('--plot', action='store_true', help='Plot all predictions and actual prices to a PNG file in the data folder')
 parser.add_argument('--foreca', action='store_true', help='Update the Foreca wind power prediction file')
+parser.add_argument('--fingrid', action='store_true', help='Update missing nuclear power data')
 parser.add_argument('--predict', action='store_true', help='Generate price predictions from now onwards')
 parser.add_argument('--add-history', action='store_true', help='Add all missing predictions to the database post-hoc; use with --predict')
 parser.add_argument('--narrate', action='store_true', help='Narrate the predictions into text using an LLM')
@@ -69,6 +72,7 @@ if args.train:
 
     # Continuous training: Get all the data from the database
     df = db_query_all(db_path)
+    print("Training data input:\n", df)
 
     # Ensure 'timestamp' column is in datetime format
     df['timestamp'] = pd.to_datetime(df['timestamp'])
@@ -79,7 +83,7 @@ if args.train:
     # print(df)
     
     # Drop rows with missing values in the required columns
-    required_columns = ['timestamp', 'Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'Price [c/kWh]']
+    required_columns = ['timestamp', 'Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'Price [c/kWh]', 'NuclearPowerMW']
     df = df.dropna(subset=required_columns)
     # print(df)
     
@@ -140,6 +144,32 @@ if args.foreca:
         )
     exit()
 
+if args.fingrid:
+
+    # Update the predictions database with missing nuclear power data
+    df = db_query_all(db_path)
+    
+    # Ensure 'timestamp' column is in datetime format
+    df['timestamp'] = pd.to_datetime(df['timestamp'])
+    
+    
+    # Find all the rows where 'NuclearPowerMW' is null
+    missing_nuclear_power = df[df['NuclearPowerMW'].isnull()]
+    print("Missing Nuclear Power Data:\n", missing_nuclear_power)
+    
+    nuclear_power_df = add_nuclear_power_to_df(missing_nuclear_power, fingrid_api_key=fingrid_api_key)
+    print("Updated Nuclear Power Data:\n", nuclear_power_df)
+    
+    # Remove all but "timestamp" and "NuclearPowerMW" columns
+    nuclear_power_df = nuclear_power_df[['timestamp', 'NuclearPowerMW']]
+    print("Data to be added to the database:\n", nuclear_power_df)
+    
+    # Update the DB with the new data
+    db_update(db_path, nuclear_power_df)
+    print("Nuclear power data added to the database.")
+    
+    exit()
+
 if args.dump: 
     dump_sqlite_db(data_folder_path)
     exit()
@@ -196,6 +226,10 @@ if args.predict:
 
     features_df = pd.merge(weather_df, wind_power_df, on='timestamp', how='inner')
     # print("Weather and wind power:\n", features_df.head())
+    
+    # Add nuclear power data to the DataFrame
+    features_df = add_nuclear_power_to_df(features_df, fingrid_api_key=fingrid_api_key)
+    # print("Weather, wind power, and nuclear power:\n", features_df)
 
     # We should only use this when we want to compute the predictions to the database post-hoc! It's a complicated merge.
     if args.add_history:
@@ -212,8 +246,11 @@ if args.predict:
        
         features_df['Wind [m/s]'] = features_df['Wind [m/s]_y']
         features_df = features_df.drop(['Wind [m/s]_x', 'Wind [m/s]_y'], axis=1)
+        
+        features_df['NuclearPowerMW'] = features_df['NuclearPowerMW_y']
+        features_df = features_df.drop(['NuclearPowerMW_x', 'NuclearPowerMW_y'], axis=1)
        
-        required_columns = ['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]']
+        required_columns = ['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'NuclearPowerMW']
         features_df = features_df.dropna(subset=required_columns)
         
         for col in features_df.columns:
@@ -234,10 +271,10 @@ if args.predict:
 
     # Add or update the wind power capacity for the model only where it's missing
     features_df['Wind Power Capacity [MWh]'] = features_df['Wind Power Capacity [MWh]'].fillna(wind_power_max_capacity)
-      
+         
     # Load and apply the Random Forest model for predictions
     rf_model = joblib.load(rf_model_path)
-    price_df = rf_model.predict(features_df[['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'hour', 'day_of_week', 'month']])
+    price_df = rf_model.predict(features_df[['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'hour', 'day_of_week', 'month', 'NuclearPowerMW']])
     features_df['PricePredict [c/kWh]'] = price_df
     # print("Predictions:\n", features_df)
     
