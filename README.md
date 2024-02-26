@@ -22,11 +22,11 @@ You can get a general idea of the model's performance from the chart below. **TL
 
 ## Quantitative metrics
 
-To explain the model's performance in statistical terms, this is what the model predicts, when sampling 500 random hours from the whole data set (train + test set) and does that 10 times. Measuring vs. test-set-only produces results in the same ballpark, with R² around ~0.8.
+To explain the model's performance in statistical terms, this is what the model predicts, when sampling 500 random hours from the whole data set (train + test set) and then doing that 10 times. Measuring vs. test-set-only produces results in the same ballpark, with R² around ~0.8.
 
-> - **Mean Absolute Error (MAE) of 1.07:** On average, the model's predictions are about 1.07 units (cents) off from the actual values. This means if you were guessing the price of something, you'd typically be about 1.07 units wrong — a small error, indicating the model is quite accurate.
-> - **Mean Squared Error (MSE) of 6.75:** This number is a bit more technical but essentially measures the average of the squared differences between predicted and actual values. The "squared" part puts more weight on larger errors. A value of 6.75 suggests that, while there are some errors in prediction, they are generally not too large.
-> - **R² score of 0.856:** This score ranges from 0 to 1, where 1 means the model predicts perfectly. An R² of 0.856 means the model can explain about 86% of the variability in the actual values with its predictions. This is quite high, indicating the model does a very good job at forecasting.
+> - **Mean Absolute Error (MAE) of 0.997:** This measurement tells us that, on average, the model's price predictions are off by just under one unit (cents). This level of accuracy implies that if you use this model to estimate prices, your predictions would typically be less than one cent away from the actual price. 
+> - **Mean Squared Error (MSE) of 6.08:** MSE provides insight into the average squared difference between the predicted and actual values, emphasizing larger errors more significantly.
+> - **R² Score of 0.888:** The R² value, which can range from 0 to 1, measures the model's ability to predict future outcomes based on past data. An R² score close to 0.888 means the model successfully captures about 89% of the variability in the actual prices with its predictions.
 
 It remains to be seen, how well the model copes over the full year of 2024. See the [model](model) folder for when the model was last trained.
 
@@ -57,7 +57,8 @@ options:
   -h, --help          show this help message and exit
   --dump              Dump the SQLite database to CSV format
   --plot              Plot all predictions and actual prices to a PNG file in the data folder
-  --foreca            Update the Foreca wind power prediction file
+  --foreca            Fetch and update the Foreca wind power prediction data
+  --fingrid						Fetch and update the Fingrid nuclear power production data
   --predict           Generate price predictions from now onwards
   --add-history       Add all missing predictions to the database post-hoc; use with --predict
   --narrate           Narrate the predictions into text using an LLM
@@ -86,6 +87,8 @@ The idea here was to formalize that intuition through a data set and a model.
 
 - Since the day of the week (Sunday vs. Monday) makes a difference, as does the time of the day (3 AM vs. 7 PM), and a month (January vs. July), those too were included as variables. But the day-of-the-month was not, because all it says is likely already captured by the weather, the time and the weekday.
 
+- In a later commit, nuclear power production data was included. Planned or unplanned maintenance break can offset a large amount of supply that wind power then needs to replace.
+
 Data schema used for training and inference is this:
 
 ```
@@ -97,7 +100,8 @@ CREATE TABLE prediction (
     "Wind [m/s]" FLOAT,
     "Wind Power [MWh]" FLOAT,
     "Wind Power Capacity [MWh]" FLOAT,
-    "PricePredict [c/kWh]" FLOAT
+    "PricePredict [c/kWh]" FLOAT,
+    "NuclearPowerMW" FLOAT
 );
 ```
 
@@ -110,7 +114,7 @@ CREATE TABLE prediction (
 As code, the price information is learned from, or is a function of, patterns and correlations between these factors, as learned by the model:
 
 ```
-['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'hour', 'day_of_week', 'month']
+['Temp [°C]', 'Wind [m/s]', 'Wind Power [MWh]', 'Wind Power Capacity [MWh]', 'hour', 'day_of_week', 'month', 'NuclearPowerMW']
 ```
 
 > **Example scenarios to illustrate the correlations:**
