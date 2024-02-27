@@ -30,7 +30,7 @@ To explain the model's performance in statistical terms, this is what the model 
 > - **Pearson Correlation Coefficient: 0.955:** This measures the linear correlation between the actual and predicted prices. A coefficient of 1 indicates a perfect positive linear correlation.
 > - **Spearman Rank Correlation Coefficient: 0.973:** This assesses how well the relationship between the model's predictions and the actual prices can be described using a monotonic function. It does not assume a linear relationship but rather that the rankings of actual and predicted prices match.
 
-It remains to be seen, how well the model copes over the full year of 2024. See the [model](model) folder for when the model was last trained.
+The model might be overfit to historical data. Yet its primary function is to predict short-term outcomes, where it has been useful in practice, determining the near-term direction and range quite accurately.  It remains to be seen, how well the model copes over the full year of 2024. See the [model](model) folder for when the model was last trained.
 
 ## Co-authors
 
