@@ -76,6 +76,14 @@ options:
 
 See the data folder for a DB initialization script if you need it. This repo includes a pre-populated database.
 
+### How to run locally
+
+First make sure you've installed the requirements from requirements.txt.
+
+1. Update the wind power production forecast: `python nordpool_predict_fi.py --foreca`
+2. Update the price forecast, narrate it, update the SQLite database and json/md outputs: `python nordpool_predict_fi.py --predict --narrate --commit`. At this point you have a new set of files in your `deploy` folder
+3. Open `index.html` from the `deploy` folder locally in a browser
+
 ## How does this model work?
 
 Surpisingly, this model (or problem) is **not** a time series prediction. Price now doesn't tell much about price in 2 hours before or after. Just look at the shape of the chart above.
