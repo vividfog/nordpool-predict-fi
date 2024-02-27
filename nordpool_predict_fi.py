@@ -9,6 +9,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+
+from util.eval import eval
 from dotenv import load_dotenv
 from util.train import train_model
 from util.dump import dump_sqlite_db
@@ -22,6 +24,7 @@ from util.foreca import foreca_wind_power_prediction
 from util.sql import db_update, db_query, db_query_all
 from util.models import write_model_stats, stats_json, stats, list_models
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+print("Nordpool Predict FI")
 
 load_dotenv('.env.local')  # take environment variables from .env.local
 
@@ -61,6 +64,7 @@ parser.add_argument('--past-performance', action='store_true', help='Generate pa
 parser.add_argument('--commit', action='store_true', help='Commit the results to DB and deploy folder; use with --predict, --narrate, --past-performance')
 parser.add_argument('--publish', action='store_true', help='Publish the deployed files to a GitHub repo')
 parser.add_argument('--train', action='store_true', help='Train a new model candidate using the data in the database')
+parser.add_argument('--eval', action='store_true', help='Show evaluation metrics for the current database')
 parser.add_argument('--training-stats', action='store_true', help='Show training stats for candidate models in the database as a CSV')
 
 args = parser.parse_args()
@@ -108,6 +112,11 @@ if args.train:
     
     exit()
 
+# Show evals based on the current database
+if args.eval:
+    print(eval(db_path))
+    exit()
+
 # Show training stats for all models in the database as CSV
 if args.training_stats:
     print("Training stats for all models in the database:")
@@ -132,6 +141,8 @@ if args.training_stats:
 
         # Print the row, joined by commas
         print(','.join(row))
+        
+    exit()
 
 # Update the wind power prediction file
 if args.foreca:  
