@@ -4,6 +4,7 @@ venv/
 archive/
 data/private/
 data/foreca*
+data/models.db
 util/private/
 logs/
 wind_power/archive/
