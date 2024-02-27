@@ -238,7 +238,7 @@ You can show the Nordpool prices with predictions on your dashboard. The code us
 
 ### Add the card to your dashboard
 
-Add the contents of [deploy/npf.yaml](deploy/npf.yaml) as a "Manual" chart to your Lovelace dashboard.
+Add the contents of [deploy/npf.yaml](deploy/npf.yaml) as a "Manual" chart to your Lovelace dashboard. An alternative [deploy/npf2.yaml](deploy/npf2.yaml) shows the Nordpool vs prediction series in a different way. Choose the visual variation you prefer.
 
 ## License
 
