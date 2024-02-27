@@ -27,6 +27,8 @@ To explain the model's performance in statistical terms, this is what the model 
 > - **Mean Absolute Error (MAE) of 0.997:** This measurement tells us that, on average, the model's price predictions are off by just under one unit (cents). This level of accuracy implies that if you use this model to estimate prices, your predictions would typically be less than one cent away from the actual price. 
 > - **Mean Squared Error (MSE) of 6.08:** MSE provides insight into the average squared difference between the predicted and actual values, emphasizing larger errors more significantly.
 > - **R² Score of 0.888:** The R² value, which can range from 0 to 1, measures the model's ability to predict future outcomes based on past data. An R² score close to 0.888 means the model successfully captures about 89% of the variability in the actual prices with its predictions.
+> - **Pearson Correlation Coefficient: 0.955:** This measures the linear correlation between the actual and predicted prices. A coefficient of 1 indicates a perfect positive linear correlation.
+> - **Spearman Rank Correlation Coefficient: 0.973:** This assesses how well the relationship between the model's predictions and the actual prices can be described using a monotonic function. It does not assume a linear relationship but rather that the rankings of actual and predicted prices match.
 
 It remains to be seen, how well the model copes over the full year of 2024. See the [model](model) folder for when the model was last trained.
 
