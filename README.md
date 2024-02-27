@@ -165,7 +165,7 @@ That's a lot of hidden complexity that happens during the about 2 seconds it tak
 
 > [!WARNING]
 >
-> **The one part of the project which is definitely NOT robust, is the Foreca wind power forecast parser.** There is no API for multi-day predictions, so the script uses SVG path parsing 🤓 to re-create the data. While this is an *incredibly* fragile way of fetching the data, it works for now, and I have a pretty good idea of *why* it works, so I can fix it later if it breaks.
+> **The one part of the project which is definitely NOT robust at the moment, is the wind power forecast parser.** The script uses SVG path parsing 🤓 to re-create the Foreca forecast. While this is an *incredibly* fragile way of fetching the data, it works for now, and I have a pretty good idea of *why* it works, so I can fix it later if it breaks.
 
 ```
 python nordpool_predict_fi.py --foreca
