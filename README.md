@@ -82,7 +82,9 @@ First make sure you've installed the requirements from requirements.txt.
 
 1. Update the wind power production forecast json file: `python nordpool_predict_fi.py --foreca`
 2. Update the price forecast, narrate it, update the SQLite database and json/md outputs: `python nordpool_predict_fi.py --predict --narrate --commit`. 
-  At this point you should have an updated set of files in your `deploy` folder
+
+   At this point you should have an updated set of files in your `deploy` folder
+
 3. Open `index.html` from the `deploy` folder locally in a browser
 
 ## How does this model work?
