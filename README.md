@@ -32,6 +32,8 @@ To explain the model's performance in statistical terms, this is what the model 
 
 The model might be overfit to historical data. Yet its primary function is to predict short-term outcomes, where it has been useful in practice, determining the near-term direction and range quite accurately.  It remains to be seen, how well the model copes over the full year of 2024. See the [model](model) folder for when the model was last trained.
 
+To recalculate these numbers, use the command `python nordpool_predict_fi.py --eval`.
+
 ## Co-authors
 
 The original RF model was initially co-trained with [Autogen](https://github.com/microsoft/autogen). GPT-4 was used a lot during coding, but a real human has re-written most of the code and comments by hand, including this README. Originally the project was a personal Autogen + AI pair programming evaluation/trial and a hobby project written over 2 weekends.
