@@ -3,6 +3,7 @@ venv/
 **/.DS_Store
 archive/
 data/private/
+util/private/
 logs/
 wind_power/archive/
 .env.local
