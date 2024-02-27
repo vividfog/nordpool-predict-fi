@@ -61,16 +61,17 @@ options:
   -h, --help          show this help message and exit
   --dump              Dump the SQLite database to CSV format
   --plot              Plot all predictions and actual prices to a PNG file in the data folder
-  --foreca            Fetch and update the Foreca wind power prediction data
-  --fingrid						Fetch and update the Fingrid nuclear power production data
+  --foreca            Update the Foreca wind power prediction file
+  --fingrid           Update missing nuclear power data
   --predict           Generate price predictions from now onwards
   --add-history       Add all missing predictions to the database post-hoc; use with --predict
   --narrate           Narrate the predictions into text using an LLM
   --past-performance  Generate past performance stats for 30 days
   --commit            Commit the results to DB and deploy folder; use with --predict, --narrate, --past-performance
   --publish           Publish the deployed files to a GitHub repo
-  --train             Train a new model candidate using the data in the prediction database
-  --training-stats    Show training stats for candidate models in the model database as CSV
+  --train             Train a new model candidate using the data in the database
+  --eval              Show evaluation metrics for the current database
+  --training-stats    Show training stats for candidate models in the database as a CSV
 ```
 
 See the data folder for a DB initialization script if you need it. This repo includes a pre-populated database.
