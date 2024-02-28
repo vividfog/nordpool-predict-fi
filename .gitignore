@@ -4,6 +4,8 @@ venv/
 archive/
 data/private/
 data/foreca*
+data/dump*
+data/prediction*
 data/models.db
 util/private/
 logs/

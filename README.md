@@ -2,9 +2,13 @@
 
 **This is a Python script that predicts electricity prices for the Nordpool FI market. The script fetches a 5-day weather forecast and a wind power forecast, and uses these to predict future Nordpool FI electricity prices, using a trained Random Forest model.**
 
-Live version: [https://nordpool-predict-fi.web.app](https://nordpool-predict-fi.web.app)
+> [!NOTE]
+>
+> **2024-02-28**: The 10-day wind power forecast is not available as a free/open data source for public predictions (terms & conditions accommodate for private consumption only), so the live version is down until a useful plan B is implemented.
 
-If you need the predictions, you'll find them in the [deploy](deploy) folder. See [below](#home-assistant-chart) for Home Assistant instructions. Alternatively, download [index.html](deploy/index.html) from this repository, save it, and open it locally to see the current prediction.
+~~Live version: [https://nordpool-predict-fi.web.app](https://nordpool-predict-fi.web.app)~~
+
+~~If you need the predictions, you'll find them in the [deploy](deploy) folder. See [below](#home-assistant-chart) for Home Assistant instructions. Alternatively, download [index.html](deploy/index.html) from this repository, save it, and open it locally to see the current prediction.~~
 
 This repository contains all the original data and code to re-train the model, generate predictions, express a quantitative model analysis and plot the results.
 
@@ -74,7 +78,7 @@ options:
   --training-stats    Show training stats for candidate models in the database as a CSV
 ```
 
-See the data folder for a DB initialization script if you need it. This repo includes a pre-populated database.
+See the data folder for a DB initialization script if you need it. ~~This repo includes a pre-populated database.~~
 
 ### How to run locally
 
