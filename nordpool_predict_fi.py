@@ -45,6 +45,8 @@ commit_message = os.getenv('COMMIT_MESSAGE') # Optional, used by --publish
 deploy_folder_path = os.getenv('DEPLOY_FOLDER_PATH') # Optional, used by --publish
 openai_api_key = os.getenv('OPENAI_API_KEY') # OpenAI API key, used by --narrate, optional
 narration_file = os.getenv('NARRATION_FILE') # Optional, used by --narrate
+fmisid_ws = ['ws_' + id for id in os.getenv('FMISID_WS', '').split(',')] if os.getenv('FMISID_WS') else ["FMISID_WS not set in environment"]
+fmisid_t = ['t_' + id for id in os.getenv('FMISID_T', '').split(',')] if os.getenv('FMISID_T') else ["FMISID_T not set in environment"]
 
 try:
     wind_power_max_capacity = int(os.getenv('WIND_POWER_MAX_CAPACITY'))
@@ -71,29 +73,28 @@ args = parser.parse_args()
 
 # Train a model with new data
 if args.train:
-    # This is a one-time operation to train the model with new data in a CSV file, commented out until needed
-    # df = csv_to_df('data/train/nordpool-spot-with-wind-power-train.csv')
-
+    
+    print("FMI Weather Stations for Wind:", fmisid_ws)
+    print("FMI Weather Stations for Temperature:", fmisid_t)
+    
     # Continuous training: Get all the data from the database
     df = db_query_all(db_path)
-    print("Training data input:\n", df)
 
     # Ensure 'timestamp' column is in datetime format
     df['timestamp'] = pd.to_datetime(df['timestamp'])
-    # print(df)
 
-    # If WindPowerCapacityMW is null, fill it with the maximum capacity
-    df['WindPowerCapacityMW'] = df['WindPowerCapacityMW'].fillna(wind_power_max_capacity)
-    # print(df)
+    # If WindPowerCapacityMW is null, fill it with the last known value
+    df['WindPowerCapacityMW'] = df['WindPowerCapacityMW'].fillna(method='ffill')
     
-    # Drop rows with missing values in the required columns
-    required_columns = ['timestamp', 'Temp_dC', 'Wind_mps', 'WindPowerMW', 'WindPowerCapacityMW', 'Price_cpkWh', 'NuclearPowerMW']
+    # If NuclearPowerMW is null, fill it with the last known value
+    df['NuclearPowerMW'] = df['NuclearPowerMW'].fillna(method='ffill')
+    
+    # Define other required columns
+    required_columns = ['timestamp', 'NuclearPowerMW', 'Price_cpkWh'] + fmisid_ws + fmisid_t
+
+    # Drop rows with missing values in the cleaned required columns list
     df = df.dropna(subset=required_columns)
-    # print(df)
-    
-    # Update the database with the new data, if any (only for the first time)
-    # db_update(db_path, df)
-    
+      
     # This will produce a "candidate.joblib" file in the model folder
     # You can rename it to "rf_model.joblib" if you want to use it in the prediction process
     
@@ -102,7 +103,7 @@ if args.train:
     model_path = f'model/candidate_{timestamp}.joblib'
 
     # Train a model and fetch the stats for it
-    mae, mse, r2, samples_mae, samples_mse, samples_r2 = train_model(df, output_path=model_path)
+    mae, mse, r2, samples_mae, samples_mse, samples_r2 = train_model(df, output_path=model_path, fmisid_ws=fmisid_ws, fmisid_t=fmisid_t)
     
     print(f"Model trained with MAE: {mae}, MSE: {mse}, r2: {r2}, samples MAE: {samples_mae}, samples MSE: {samples_mse}, samples R2: {samples_r2}, saved to {model_path}")
     

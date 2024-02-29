@@ -96,24 +96,26 @@ def get_history(fmisid, date, parameters):
     df_pivot = df.pivot(index='Timestamp', columns='Parameter', values='Value').reset_index()
     return df_pivot
 
-# Comparing hourly forecast, same-day-history and ability to fetch data from way past
+if __name__ == "__main__":
 
-# Get forecast for a specific day and place
-date = "2024-02-28"
-fmisid = 101846 # Kemi Ajos
-parameters_forecast = ['temperature', 'windspeedms']
-forecast = get_forecast(fmisid, date, parameters_forecast)
-print("Forecast:")
-print(forecast)
+    # Comparing hourly forecast, same-day-history and ability to fetch data from way past
 
-# Get history for the same day, do they correlate?
-parameters_history = ['TA_PT1H_AVG', 'WS_PT1H_AVG']
-history = get_history(fmisid, date, parameters_history)
-print("\nHistory:")
-print(history)
+    # Get forecast for a specific day and place
+    date = "2024-02-28"
+    fmisid = 101846 # Kemi Ajos
+    parameters_forecast = ['temperature', 'windspeedms']
+    forecast = get_forecast(fmisid, date, parameters_forecast)
+    print("Forecast:")
+    print(forecast)
 
-# Get history from way past
-date = "2023-01-01"
-history = get_history(fmisid, date, parameters_history)
-print("\nFrom way past:")
-print(history)
+    # Get history for the same day, do they correlate?
+    parameters_history = ['TA_PT1H_AVG', 'WS_PT1H_AVG']
+    history = get_history(fmisid, date, parameters_history)
+    print("\nHistory:")
+    print(history)
+
+    # Get history from way past
+    date = "2023-01-01"
+    history = get_history(fmisid, date, parameters_history)
+    print("\nFrom way past:")
+    print(history)
