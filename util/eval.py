@@ -10,12 +10,20 @@ from .sql import db_query_all
 def eval(db_path, plot=False):
     # Load the data
     data = db_query_all(db_path)
+    print(data.head())
 
     data_clean = data.dropna(subset=['Price_cpkWh', 'PricePredict_cpkWh']).copy()
 
-    # Localize timestamp to UTC and convert to Helsinki timezone
+    # Ensure timestamp is a datetime object
     data_clean['timestamp'] = pd.to_datetime(data_clean['timestamp'])
-    data_clean['timestamp'] = data_clean['timestamp'].dt.tz_localize('UTC').dt.tz_convert('Europe/Helsinki')
+
+    # Check if 'timestamp' is timezone-aware, and convert timezone if it is
+    if data_clean['timestamp'].dt.tz is not None:
+        # If already timezone-aware, convert to Helsinki timezone
+        data_clean['timestamp'] = data_clean['timestamp'].dt.tz_convert('Europe/Helsinki')
+    else:
+        # If timezone-naive, localize to UTC and then convert to Helsinki timezone
+        data_clean['timestamp'] = data_clean['timestamp'].dt.tz_localize('UTC').dt.tz_convert('Europe/Helsinki')
 
     # Get minimum and maximum timestamp
     min_timestamp = data_clean['timestamp'].min()

@@ -15,13 +15,14 @@ from dotenv import load_dotenv
 from util.train import train_model
 from util.dump import dump_sqlite_db
 from util.weather import weather_get
+from util.sahkotin import update_spot
+from util.fingrid import update_nuclear
 from datetime import datetime, timedelta
 from util.llm import narrate_prediction
 from util.spot import add_spot_prices_to_df
 from util.github import push_updates_to_github
-from util.fingrid import add_nuclear_power_to_df
-from util.foreca import foreca_wind_power_prediction
 from util.sql import db_update, db_query, db_query_all
+from util.fmi import update_wind_speed, update_temperature
 from util.models import write_model_stats, stats_json, stats, list_models
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 print("Nordpool Predict FI")
@@ -145,17 +146,6 @@ if args.training_stats:
         
     exit()
 
-# Update the wind power prediction file
-if args.foreca:  
-    print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-    print("Starting the process to fetch and parse the SVG data from Foreca...")
-    
-    foreca_wind_power_prediction(
-        wind_power_prediction=wind_power_prediction,
-        data_folder_path=data_folder_path
-        )
-    exit()
-
 if args.fingrid:
 
     # Update the predictions database with missing nuclear power data
@@ -163,7 +153,6 @@ if args.fingrid:
     
     # Ensure 'timestamp' column is in datetime format
     df['timestamp'] = pd.to_datetime(df['timestamp'])
-    
     
     # Find all the rows where 'NuclearPowerMW' is null
     missing_nuclear_power = df[df['NuclearPowerMW'].isnull()]
@@ -217,92 +206,79 @@ if args.plot:
     plt.savefig(output_file)
 
     exit()
-    
+
 if args.predict:
     print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     print("Running predictions...")
 
-    # Load the wind power prediction and weather data
-    with open(os.path.join(data_folder_path, wind_power_prediction), 'r') as file:
-        wind_power_prediction_data = json.load(file)
-    wind_power_df = pd.DataFrame(wind_power_prediction_data)
+    df = db_query_all(db_path)
     
-    # In the next DB refactoring, we should use MW and not MWh as a unit for wind power production...
-    wind_power_df.rename(columns={'datetime': 'timestamp', 'wind_prediction_MWh': 'WindPowerMW'}, inplace=True)
-    wind_power_df['timestamp'] = pd.to_datetime(wind_power_df['timestamp'])
-    # print("Wind Power Data Sample:\n", wind_power_df.head())
-
-    weather_df = weather_get(pd.DataFrame({'timestamp': [datetime.now()]}), location, api_key)
-    weather_df['timestamp'] = pd.to_datetime(weather_df['timestamp'])
-    # print("Weather Data Sample:\n", weather_df.head())
-
-    features_df = pd.merge(weather_df, wind_power_df, on='timestamp', how='inner')
-    # print("Weather and wind power:\n", features_df.head())
+    # Ensure 'timestamp' column is in datetime format
+    df['timestamp'] = pd.to_datetime(df['timestamp'])
+    df.set_index('timestamp', inplace=True)
     
-    # Add nuclear power data to the DataFrame
-    features_df = add_nuclear_power_to_df(features_df, fingrid_api_key=fingrid_api_key)
-    # print("Weather, wind power, and nuclear power:\n", features_df)
+    # Drop rows that are older than a week, unless we're rewriting historical predictions after model update
+    if not args.add_history:
+        utc_now = datetime.now(pytz.utc)
+        df = df[df.index > utc_now - timedelta(days=7)]
+    
+    # Forward-fill the timestamp column for 5*24 = 120 hours ahead
+    start_time = df.index.max() + pd.Timedelta(hours=1)
+    end_time = df.index.max() + pd.Timedelta(hours=120)
+    new_index = pd.date_range(start=start_time, end=end_time, freq='h')
+    df = df.reindex(df.index.union(new_index))
 
-    # We should only use this when we want to compute the predictions to the database post-hoc! It's a complicated merge.
-    if args.add_history:
-        history_df = db_query_all(db_path)
-        history_df['timestamp'] = pd.to_datetime(history_df['timestamp']).dt.tz_localize("UTC")
-        # print("History Sample:\n", history_df.sample(50))
-        features_df = pd.merge(features_df, history_df, on='timestamp', how='right')
+    # Reset the index to turn 'timestamp' back into a column before the update functions
+    df.reset_index(inplace=True)
+    df.rename(columns={'index': 'Timestamp'}, inplace=True)
 
-        features_df['WindPowerMW'] = features_df['WindPowerMW_y']
-        features_df = features_df.drop(['WindPowerMW_x', 'WindPowerMW_y'], axis=1)
-
-        features_df['Temp_dC'] = features_df['Temp_dC_y']
-        features_df = features_df.drop(['Temp_dC_x', 'Temp_dC_y'], axis=1)
+    # Get the latest FMI wind speed values for the data frame, past and future
+    # NOTE: To save on FMI API calls, we don't fill in weather history beyond 7 days
+    df = update_wind_speed(df)
        
-        features_df['Wind_mps'] = features_df['Wind_mps_y']
-        features_df = features_df.drop(['Wind_mps_x', 'Wind_mps_y'], axis=1)
-        
-        features_df['NuclearPowerMW'] = features_df['NuclearPowerMW_y']
-        features_df = features_df.drop(['NuclearPowerMW_x', 'NuclearPowerMW_y'], axis=1)
+    # Get the latest FMI temperature values for the data frame, past and future
+    # NOTE: To save on FMI API calls, we don't fill in weather history beyond 7 days
+    df = update_temperature(df)
        
-        required_columns = ['Temp_dC', 'Wind_mps', 'WindPowerMW', 'WindPowerCapacityMW', 'NuclearPowerMW']
-        features_df = features_df.dropna(subset=required_columns)
-        
-        for col in features_df.columns:
-            features_df[col] = pd.to_numeric(features_df[col], errors='coerce')
-        
-        features_df['timestamp'] = pd.to_datetime(features_df['timestamp'])
-        # print("Merged:\n", features_df.sample(50))
+    # Get the latest nuclear power data for the data frame, and infer the future
+    df = update_nuclear(df, fingrid_api_key=fingrid_api_key)
+    
+    # Get the latest spot prices for the data frame, past and future if any
+    # Again not asking for history beyond 7 days
+    # So keep your DB up to date
+    df = update_spot(df)
+    
+    # TODO: Decide if including wind power capacity is necessary; it seems to worsen the MSE and R2
+    # For now we'll drop it
+    df = df.drop(columns=['WindPowerCapacityMW'])
+
+    print("Filled-in dataframe before predict:\n", df)
+    print("Days covered: ", len(df)/24)
+
+    # Save a copy of the df to a CSV file for inspection
+    df.to_csv(os.path.join(data_folder_path + "/private", "debug_df.csv"), index=False)
 
     # Fill in the 'hour', 'day_of_week', and 'month' columns for the model
-    features_df['timestamp'] = pd.to_datetime(features_df['timestamp'])
-    features_df['day_of_week'] = features_df['timestamp'].dt.dayofweek + 1
-    features_df['hour'] = features_df['timestamp'].dt.hour
-    features_df['month'] = features_df['timestamp'].dt.month
-
-    # Check if 'WindPowerCapacityMW' column exists in features_df, create it filled with NaN if not
-    if 'WindPowerCapacityMW' not in features_df.columns:
-        features_df['WindPowerCapacityMW'] = np.nan
-
-    # Add or update the wind power capacity for the model only where it's missing
-    features_df['WindPowerCapacityMW'] = features_df['WindPowerCapacityMW'].fillna(wind_power_max_capacity)
+    df['Timestamp'] = pd.to_datetime(df['Timestamp'])
+    df['day_of_week'] = df['Timestamp'].dt.dayofweek + 1
+    df['hour'] = df['Timestamp'].dt.hour
+    df['month'] = df['Timestamp'].dt.month
          
     # Load and apply the Random Forest model for predictions
     rf_model = joblib.load(rf_model_path)
-    price_df = rf_model.predict(features_df[['Temp_dC', 'Wind_mps', 'WindPowerMW', 'WindPowerCapacityMW', 'hour', 'day_of_week', 'month', 'NuclearPowerMW']])
-    features_df['PricePredict_cpkWh'] = price_df
-    # print("Predictions:\n", features_df)
+    price_df = rf_model.predict(df[['day_of_week', 'hour', 'month', 'NuclearPowerMW'] + fmisid_ws + fmisid_t])
+    df['PricePredict_cpkWh'] = price_df
     
-    # Add spot prices to the DataFrame, to the degree available
-    spot_df = add_spot_prices_to_df(features_df)
-
     # We drop these columns before commit/display, as we can later compute them from the timestamp
-    spot_df = spot_df.drop(columns=['day_of_week', 'hour', 'month'])
+    df = df.drop(columns=['day_of_week', 'hour', 'month'])
 
     # We are going to be verbose and ask before committing a lot of data to the database    
     if args.add_history:
         pd.set_option('display.max_columns', None)
-        print("Spot Prices random sample of 20:\n", spot_df.sample(20))
+        print("Spot Prices random sample of 20:\n", df.sample(20))
         
         # Create a new DataFrame for calculating the metrics
-        metrics_df = spot_df[['Price_cpkWh', 'PricePredict_cpkWh']].copy()
+        metrics_df = df[['Price_cpkWh', 'PricePredict_cpkWh']].copy()
         
         # Drop the rows with NaN values in 'Price_cpkWh' or 'PricePredict_cpkWh'
         metrics_df = metrics_df.dropna(subset=['Price_cpkWh', 'PricePredict_cpkWh'])
@@ -329,13 +305,17 @@ if args.predict:
                 print("Aborting.")
                 exit()          
         
-        print("Will add/update", len(spot_df), "predictions to the database... ", end="")
+        print("Will add/update", len(df), "predictions to the database... ", end="")
         
-        if db_update(db_path, spot_df):
+        if db_update(db_path, df):
             print("Done.")
     else:
-        print(spot_df)
+        print(df)
         print("Predictions not committed to the database.")
+        
+    # Save to CSV for inspection
+    df.to_csv(os.path.join(data_folder_path + "/private", "predictions_df.csv"), index=False)    
+    exit()
 
 # Narrate can be used with the previous arguments
 if args.narrate:
@@ -357,9 +337,8 @@ if args.narrate:
 # Past performance can be used with the previous arguments
 if args.past_performance:
     print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-    # print("Calculating past performance for 90 days...")
+    # print("Calculating past performance for X days...")
 
-    # Fetch the last 30 days of data from the database
     past_df = db_query_all(db_path)
     past_df = past_df.sort_values(by='timestamp')
 
@@ -369,7 +348,7 @@ if args.past_performance:
     before_filtering_length = len(past_df)
 
     # Filter out rows where 'timestamp' is earlier than 90 days ago or later than now
-    now = datetime.now()
+    now = datetime.now(pytz.utc)
     past_df = past_df[(past_df['timestamp'] >= now - timedelta(days=90)) & (past_df['timestamp'] <= now)]
 
     # print("Data after filtering:", past_df)
@@ -490,11 +469,11 @@ if args.publish:
     # Commit and push the updates to GitHub
     files_to_push = [predictions_file, averages_file, narration_file]
 
-    try:
-        if push_updates_to_github(repo_path, deploy_folder_path, files_to_push, commit_message):
-            print("Data pushed to GitHub.")
-    except Exception as e:
-        print("Error occurred while pushing data to GitHub: ", str(e))
+    # try:
+    #     if push_updates_to_github(repo_path, deploy_folder_path, files_to_push, commit_message):
+    #         print("Data pushed to GitHub.")
+    # except Exception as e:
+    #     print("Error occurred while pushing data to GitHub: ", str(e))
 
     print("Script execution completed.")
     exit()

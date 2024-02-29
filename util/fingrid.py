@@ -37,62 +37,83 @@ def fetch_nuclear_power_data(fingrid_api_key, start_date, end_date):
 
     return pd.DataFrame(columns=['startTime', 'NuclearPowerMW'])
 
-def fetch_recent_nuclear_data(fingrid_api_key, base_date, max_hours_back=240):
-    search_windows = [6, 12, 24, 48, 96]
-    for hours_back in search_windows:
-        if hours_back > max_hours_back:
-            break
-        start_date = (base_date - timedelta(hours=hours_back)).strftime("%Y-%m-%d")
-        end_date = base_date.strftime("%Y-%m-%d")
-        recent_df = fetch_nuclear_power_data(fingrid_api_key, start_date, end_date)
-        if not recent_df.empty:
-            final_start_date = base_date - timedelta(hours=6)
-            return recent_df[recent_df['startTime'] >= final_start_date]
-    return pd.DataFrame(columns=['startTime', 'NuclearPowerMW'])
+def clean_up_df_after_merge(df):
+    """
+    This function removes duplicate columns resulting from a merge operation,
+    and fills the NaN values in the original columns with the values from the
+    duplicated columns. Assumes duplicated columns have suffixes '_x' and '_y',
+    with '_y' being the most recent values to retain.
+    """
+    # Identify duplicated columns by their suffixes
+    cols_to_remove = []
+    for col in df.columns:
+        if col.endswith('_x'):
+            original_col = col[:-2]  # Remove the suffix to get the original column name
+            duplicate_col = original_col + '_y'
+            
+            # Check if the duplicate column exists
+            if duplicate_col in df.columns:
+                # Fill NaN values in the original column with values from the duplicate
+                df[original_col] = df[col].fillna(df[duplicate_col])
+                
+                # Mark the duplicate column for removal
+                cols_to_remove.append(duplicate_col)
+                
+            # Also mark the original '_x' column for removal as it's now redundant
+            cols_to_remove.append(col)
+    
+    # Drop the marked columns
+    df.drop(columns=cols_to_remove, inplace=True)
+    
+    return df
 
-def add_nuclear_power_to_df(input_df, fingrid_api_key):
-    if input_df.empty or 'timestamp' not in input_df.columns:
-        raise ValueError("Input DataFrame must have a 'timestamp' column and cannot be empty.")
+def update_nuclear(df, fingrid_api_key):
+    """
+    Updates the input DataFrame with nuclear power production data for a specified range.
+
+    This function fetches nuclear power production data for the past 7 days and up to 120 hours into the future, aggregates the data from 3-minute intervals to hourly averages, and updates the original DataFrame with the aggregated nuclear power data.
+
+    Parameters:
+    - df (pd.DataFrame): The input DataFrame containing a 'Timestamp' column.
+    - fingrid_api_key (str): The API key for accessing Fingrid data.
+
+    Returns:
+    - pd.DataFrame: The updated DataFrame with nuclear power production data.
+    """
+    # Define the current date and adjust the start date to look 7 days into the past
+    current_date = datetime.now(pytz.UTC).strftime("%Y-%m-%d")
+    history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
+    end_date = (datetime.now(pytz.UTC) + timedelta(hours=120)).strftime("%Y-%m-%d")
     
-    # Create a copy of the input DataFrame to avoid modifying the original
-    input_df = input_df.copy()
+    print(f"* Fetching nuclear power production data between {history_date} and {end_date} and inferring missing values")
     
-    # Check if 'timestamp' is already timezone-aware
-    if input_df['timestamp'].dt.tz is not None:
-        # If it's already timezone-aware but not in UTC, convert to UTC
-        if str(input_df['timestamp'].dt.tz) != 'UTC':
-            input_df['timestamp'] = input_df['timestamp'].dt.tz_convert('UTC')
+    # Fetch nuclear power production data
+    nuclear_df = fetch_nuclear_power_data(fingrid_api_key, history_date, end_date)
+    
+    if not nuclear_df.empty:
+        nuclear_df['startTime'] = pd.to_datetime(nuclear_df['startTime'], utc=True)
+        nuclear_df.set_index('startTime', inplace=True)
+        hourly_nuclear_df = nuclear_df.resample('H').mean().reset_index()
+        
+        # print(f"Fetched {len(nuclear_df)} hours, aggregated to {len(hourly_nuclear_df)} hourly averages spanning from {hourly_nuclear_df['startTime'].min()} to {hourly_nuclear_df['startTime'].max()}.")
+        
+        df['Timestamp'] = pd.to_datetime(df['Timestamp'], utc=True)
+        merged_df = pd.merge(df, hourly_nuclear_df, left_on='Timestamp', right_on='startTime', how='left')
+        merged_df.drop(columns=['startTime'], inplace=True)
+        
+        # Combine the _x and _y columns after the merge operation back to the original column
+        merged_df = clean_up_df_after_merge(merged_df)
+        
+        # Ensure 'NuclearPowerMW' column is filled at the end with the last known value
+        if 'NuclearPowerMW' in merged_df.columns:
+            merged_df['NuclearPowerMW'] = merged_df['NuclearPowerMW'].fillna(method='ffill')
+        else:
+            print("Warning: 'NuclearPowerMW' column not found after merge. Check data integration logic.")
+        
+        return merged_df
     else:
-        # If it's not timezone-aware, localize to UTC
-        input_df['timestamp'] = input_df['timestamp'].dt.tz_localize('UTC', ambiguous='infer', nonexistent='shift_forward')
-    
-    start_date = input_df['timestamp'].min().strftime("%Y-%m-%d")
-    end_date = input_df['timestamp'].max().strftime("%Y-%m-%d")
-    
-    nuclear_df = fetch_nuclear_power_data(fingrid_api_key, start_date, end_date)
-    
-    # Initialize recent_df to ensure it's defined even if not used
-    recent_df = pd.DataFrame()
-    
-    # Fetch recent data if necessary
-    if nuclear_df.empty or nuclear_df['startTime'].max() < input_df['timestamp'].max():
-        print("Some nuclear power data missing from Fingrid. Inferring from the last available hours.")
-        base_date = pd.to_datetime(input_df['timestamp'].max(), utc=True)
-        recent_df = fetch_recent_nuclear_data(fingrid_api_key, base_date)
-        nuclear_df = pd.concat([nuclear_df, recent_df]).drop_duplicates(subset=['startTime']).reset_index(drop=True)
-    
-    # Merge and handle 'NuclearPowerMW' column
-    merged_df = pd.merge(input_df, nuclear_df, how='left', left_on='timestamp', right_on='startTime', suffixes=('', '_y'))
-    merged_df.drop('startTime', axis=1, inplace=True)
-    
-    # Consolidate 'NuclearPowerMW' columns
-    if 'NuclearPowerMW_y' in merged_df.columns:
-        merged_df['NuclearPowerMW'] = merged_df['NuclearPowerMW_y'].combine_first(merged_df['NuclearPowerMW'])
-        merged_df.drop('NuclearPowerMW_y', axis=1, inplace=True)
-    
-    return merged_df
+        print("Warning: No data fetched for nuclear power production; unable to update DataFrame.")
+        return df
 
-# Sample usage:
-# output_df = add_nuclear_power_to_df(input_df, fingrid_api_key)
 
 "This script is meant to be used as a module, not independently"

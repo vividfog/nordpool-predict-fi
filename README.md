@@ -4,7 +4,7 @@
 
 > [!NOTE]
 >
-> **2024-02-28**: The 10-day wind power forecast is not available as a free/open data source for public predictions (terms & conditions accommodate for private consumption only), so the live version is down until a useful plan B is implemented.
+> **2024-02-28**: The 10-day wind power forecast is not available as a free/open data source for public predictions (terms & conditions accommodate for private consumption only), so the live version is down until a useful plan B is implemented. Work is in progress. Much of this README could be outdated until then.
 
 ~~Live version: [https://nordpool-predict-fi.web.app](https://nordpool-predict-fi.web.app)~~
 
