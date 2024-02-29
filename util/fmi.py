@@ -2,12 +2,13 @@ import requests
 import pandas as pd
 from lxml import etree
 
-def get_forecast(place, start_date, parameters):
+def get_forecast(fmisid, start_date, parameters):
     """
-    Fetch weather forecast data for a specified place and date.
+    Fetch weather forecast data for a specified fmisid and date.
+    FMISID list: https://www.ilmatieteenlaitos.fi/havaintoasemat?filterKey=groups&filterQuery=sää
 
     Parameters:
-    - place (str): The location for which to fetch the weather forecast.
+    - fmisid (int): The location for which to fetch the weather forecast.
     - start_date (str): The date for which to fetch the forecast, in "YYYY-MM-DD" format.
     - parameters (list of str): A list of strings representing the weather parameters to fetch.
 
@@ -21,7 +22,7 @@ def get_forecast(place, start_date, parameters):
         'version': '2.0.0',
         'request': 'getFeature',
         'storedquery_id': 'fmi::forecast::edited::weather::scandinavia::point::simple',
-        'place': place,
+        'fmisid': fmisid,
         'starttime': f"{start_date}T00:00:00Z",
         'endtime': f"{start_date}T23:00:00Z",
         'parameters': ",".join(parameters),
@@ -44,12 +45,13 @@ def get_forecast(place, start_date, parameters):
     df_pivot = df.pivot(index='Timestamp', columns='Parameter', values='Value').reset_index()
     return df_pivot
 
-def get_history(place, date, parameters):
+def get_history(fmisid, date, parameters):
     """
-    Fetch historical weather data for a specified place and date.
+    Fetch historical weather data for a specified fmisid and date.
+    FMISID list: https://www.ilmatieteenlaitos.fi/havaintoasemat?filterKey=groups&filterQuery=sää
 
     Parameters:
-    - place (str): The location for which to fetch the historical weather data.
+    - fmisid (int): The location for which to fetch the historical weather data.
     - date (str): The date for which to fetch the data, in "YYYY-MM-DD" format.
     - parameters (list of str): A list of strings representing the weather parameters to fetch.
 
@@ -68,7 +70,7 @@ def get_history(place, date, parameters):
         'version': '2.0.0',
         'request': 'getFeature',
         'storedquery_id': 'fmi::observations::weather::hourly::simple',
-        'place': place,
+        'fmisid': fmisid,
         'starttime': starttime,
         'endtime': endtime,
         'parameters': ",".join(parameters),
@@ -94,18 +96,24 @@ def get_history(place, date, parameters):
     df_pivot = df.pivot(index='Timestamp', columns='Parameter', values='Value').reset_index()
     return df_pivot
 
-# Example usage
-date = "2024-02-28"
-place = "Helsinki"
+# Comparing hourly forecast, same-day-history and ability to fetch data from way past
 
-# Get forecast for a specific day
+# Get forecast for a specific day and place
+date = "2024-02-28"
+fmisid = 101846 # Kemi Ajos
 parameters_forecast = ['temperature', 'windspeedms']
-forecast = get_forecast(place, date, parameters_forecast)
+forecast = get_forecast(fmisid, date, parameters_forecast)
 print("Forecast:")
 print(forecast)
 
-# Get history for a specific day
+# Get history for the same day, do they correlate?
 parameters_history = ['TA_PT1H_AVG', 'WS_PT1H_AVG']
-history = get_history(place, date, parameters_history)
+history = get_history(fmisid, date, parameters_history)
 print("\nHistory:")
+print(history)
+
+# Get history from way past
+date = "2023-01-01"
+history = get_history(fmisid, date, parameters_history)
+print("\nFrom way past:")
 print(history)
