@@ -4,7 +4,7 @@
 
 > [!NOTE]
 >
-> **2024-02-29**: The code base went through some significant changes due to an issue with data access (license). Sorry about any inconvenience caused by that. The new code should be a bit more readable too, as the [prediction code]() now needs fewer quicks to work and the helper functions are cleaner. Still some clean-up to do.
+> **2024-02-29**: The code base went through some significant changes due to an issue with data access (license). Sorry about any inconvenience caused by that. The new code should be a bit more readable too, as the [prediction code](nordpool_predict_fi.py#L175) now needs fewer quicks to work and the helper functions are cleaner. Still some clean-up to do.
 
 - Live version: https://sahkovatkain.web.app (soon)
 
@@ -108,7 +108,7 @@ First make sure you've installed the requirements from requirements.txt.
 
    This sequence fetches the last known history and forecasts for wind power, temperature, nuclear power and spot prices and constructs a data frame out of them, ready to be committed to the database, again extending it by a few days.
 
-   At this point your database (data/prediction.db) will get written with a new set of data for the past few days. You will get a preview of what's going to be written.
+   At this point your database (data/prediction.db) will get written with a new set of data. Take a copy of prediction.db just to be sure.
 
 2. `python nordpool_predict_fi.py --publish` fetches the latest data from the DB and creates a set of files in the deploy folder. It also tries to update this Github repo, but that will probably fail by design, given that you don't have the keys for that.
 
