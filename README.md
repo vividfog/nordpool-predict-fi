@@ -6,7 +6,9 @@
 >
 > **2024-02-29**: The code base went through some significant changes due to an issue with data access (license). Sorry about any inconvenience caused by that. The new code should be a bit more readable too, as the [prediction code]() now needs fewer quicks to work and the helper functions are cleaner. Still some clean-up to do.
 
-Live version: https://sahkovatkain.web.app
+- Live version: https://sahkovatkain.web.app (soon)
+
+- You can view "Plan B" predictions here: https://nordpool-predict-fi.web.app
 
 If you need the predictions, you'll find them in the [deploy](deploy) folder. See [below](#home-assistant-chart) for Home Assistant instructions. Alternatively, download [index.html](deploy/index.html) from this repository, save it, and open it locally to see the current prediction.
 
