@@ -221,7 +221,7 @@
         <li><strong>Viikonpäivä:</strong> ma-su</li>
         <li><strong>Kellonaika:</strong> 0-23</li>
         <li><strong>Kuukausi:</strong> vuodenajan vaikutus, jos sellainen vaikutus on</li>
-        <p>Nämä muuttujat on valittu intuitiolla ja kokeilemalla. Jokin toinen yhdistelmä voisi toimia paremmin tai huonommin. Lähdekoodi ja data on avointa (data vain ei-kaupalliseen käyttöön), joten olet tervetullut kokeilemaan erilaisia vaihtoehtoja näiden lisäksi tai sijaan.<p>
+        <p>Nämä muuttujat on valittu intuitiolla ja kokeilemalla. Jokin toinen yhdistelmä voisi toimia paremmin tai huonommin. Lähdekoodi on avointa, joten olet tervetullut kokeilemaan erilaisia vaihtoehtoja näiden lisäksi tai sijaan.<p>
         <h1 style="padding-top: 32px">Tunnusluvut pidemmältä ajalta</h1>
         <p><strong>Aikaväli:</strong> 1.1.2023 - 29.2.2024.</p>
         <p><strong>Mean Absolute Error (MAE): 1,31 ¢/kWh.</strong> Ilmaisee keskimääräisen virheen ennusteissa. Mitä pienempi tämä arvo on, sitä tarkemmin malli ennustaa todellisia hintoja.</p>
@@ -327,7 +327,7 @@
                     text: ' '
                 },
                 legend: {
-                    data: ['Toteutunut', 'Ennuste'],
+                    data: ['Nordpool', 'Ennuste'],
                     right: 16
                 },
                 tooltip: {
@@ -428,7 +428,7 @@
                     }, 
                     {
                         // Realized
-                        name: 'Toteutunut',
+                        name: 'Nordpool',
                         type: 'line',
                         data: sahkotinSeriesData,
                         symbol: 'none',
@@ -526,7 +526,7 @@
                     text: ' '
                 },
                 legend: {
-                    data: ['Toteutunut', 'Ennuste'],
+                    data: ['Nordpool', 'Ennuste'],
                     right: 16
                 },
                 toolbox: {
@@ -585,7 +585,7 @@
                 },
                 series: [
                     {
-                        name: 'Toteutunut',
+                        name: 'Nordpool',
                         type: 'line',
                         data: actualPriceData,
                         symbol: 'none',
