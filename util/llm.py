@@ -79,8 +79,9 @@ def send_to_gpt(df):
 // Tiedoksi itsellesi: alle 7 ¢ on halpa hinta, 10 senttiä on kohtuullinen hinta ja yli 15-20 senttiä on lukijoille kallis hinta. Mutta kun viittaat hintoihin, kirjoita niistä numeroilla eikä adjektiiveilla.
 // Älä mainitse päivämääriä, koska viikonpäivät riittävät. 
 // Vältä turhaa toistoa ja älä anna mitään neuvoja! Tehtäväsi on puhua vain hinnoista! Ole perinpohjainen. 
-// Käytä Markdown-muotoilua tekstin rakenteen tuottamiseksi. **Vahvenna** viikonpäivät, kuten '**maanantai**' tai '**torstaina**', mutta vain kun mainitset ne ensi kertaa.
-// Koska tämä on ennustus, puhu aina tulevassa aikamuodossa!
+// Käytä Markdown-muotoilua näin: **Vahvenna** viikonpäivät, kuten '**maanantai**' tai '**torstaina**', mutta vain kun mainitset ne ensi kertaa, ja vain viikonpäivät, ei muuta.
+// Koska tämä on ennustus, puhu aina tulevassa aikamuodossa.
+// Ole positiivinen vaikka hinta nousisi.
 // Nyt voit kirjoittaa valmiin tekstin. Kiitos!
 """
     
