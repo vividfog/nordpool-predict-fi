@@ -1,5 +1,6 @@
 bs4==0.0.2
 GitPython==3.1.41
+lxml==5.1.0
 matplotlib==3.8.2
 pandas==2.2.0
 pip==24.0
