@@ -190,8 +190,7 @@ if args.predict:
     if now.minute > 0 or now.second > 0 or now.microsecond > 0:
         now = now.ceil('h')  # Rounds up to the nearest hour
         
-    # Drop rows that are older than a week, unless we're rewriting historical predictions after a model update
-    # Not dropping will backfill the prediction column, which what we want for retrospective predictions
+    # Drop rows that are older than a week, unless we intend to do a retrospective prediction update after a model update
     if not args.add_history:
         # Use the now for filtering
         df = df[df.index > now - pd.Timedelta(days=7)]
