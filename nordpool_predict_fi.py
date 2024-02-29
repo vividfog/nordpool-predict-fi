@@ -14,12 +14,10 @@ from util.eval import eval
 from dotenv import load_dotenv
 from util.train import train_model
 from util.dump import dump_sqlite_db
-from util.weather import weather_get
 from util.sahkotin import update_spot
 from util.fingrid import update_nuclear
 from datetime import datetime, timedelta
 from util.llm import narrate_prediction
-from util.spot import add_spot_prices_to_df
 from util.github import push_updates_to_github
 from util.sql import db_update, db_query, db_query_all
 from util.fmi import update_wind_speed, update_temperature
@@ -30,7 +28,6 @@ print("Nordpool Predict FI")
 load_dotenv('.env.local')  # take environment variables from .env.local
 
 # Configuration and secrets
-location = os.getenv('LOCATION') or "pirkkala airport"
 rf_model_path = os.getenv('RF_MODEL_PATH') or "RF_MODEL_PATH not set in environment"
 data_folder_path = os.getenv('DATA_FOLDER_PATH') or "DATA_FOLDER_PATH not set in environment"
 db_path = os.getenv('DB_PATH') or "DB_PATH not set in environment"
@@ -39,7 +36,6 @@ predictions_file = os.getenv('PREDICTIONS_FILE') or "PREDICTIONS_FILE not set in
 averages_file = os.getenv('AVERAGES_FILE') or "AVERAGES_FILE not set in environment"
 past_performance_file = os.getenv('PAST_PERFORMANCE_FILE') or "PAST_PERFORMANCE_FILE not set in environment"
 wind_power_prediction = os.getenv('WIND_POWER_PREDICTION') or "WIND_POWER_PREDICTION not set in environment"
-api_key = os.getenv('API_KEY') or "Tomorrow.io API_KEY not set in environment"
 fingrid_api_key = os.getenv('FINGRID_API_KEY') or "FINGRID_API_KEY not set in environment"
 token = os.getenv('TOKEN') # GitHub token, used by --publish, optional
 commit_message = os.getenv('COMMIT_MESSAGE') # Optional, used by --publish
@@ -58,8 +54,6 @@ except TypeError:
 parser = argparse.ArgumentParser()
 parser.add_argument('--dump', action='store_true', help='Dump the SQLite database to CSV format')
 parser.add_argument('--plot', action='store_true', help='Plot all predictions and actual prices to a PNG file in the data folder')
-parser.add_argument('--foreca', action='store_true', help='Update the Foreca wind power prediction file')
-parser.add_argument('--fingrid', action='store_true', help='Update missing nuclear power data')
 parser.add_argument('--predict', action='store_true', help='Generate price predictions from now onwards')
 parser.add_argument('--add-history', action='store_true', help='Add all missing predictions to the database post-hoc; use with --predict')
 parser.add_argument('--narrate', action='store_true', help='Narrate the predictions into text using an LLM')
@@ -144,35 +138,6 @@ if args.training_stats:
         # Print the row, joined by commas
         print(','.join(row))
         
-    exit()
-
-if args.fingrid:
-
-    # Update the predictions database with missing nuclear power data
-    df = db_query_all(db_path)
-    
-    # Ensure 'timestamp' column is in datetime format
-    df['timestamp'] = pd.to_datetime(df['timestamp'])
-    
-    # Find all the rows where 'NuclearPowerMW' is null
-    missing_nuclear_power = df[df['NuclearPowerMW'].isnull()]
-    print("Missing Nuclear Power Data:\n", missing_nuclear_power)
-    
-    nuclear_power_df = add_nuclear_power_to_df(missing_nuclear_power, fingrid_api_key=fingrid_api_key)
-    print("Updated Nuclear Power Data:\n", nuclear_power_df)
-    
-    # Remove all but "timestamp" and "NuclearPowerMW" columns
-    nuclear_power_df = nuclear_power_df[['timestamp', 'NuclearPowerMW']]
-    print("Data to be added to the database:\n", nuclear_power_df)
-    
-    # Update the DB with the new data
-    db_update(db_path, nuclear_power_df)
-    print("Nuclear power data added to the database.")
-    
-    exit()
-
-if args.dump: 
-    dump_sqlite_db(data_folder_path)
     exit()
 
 if args.plot:
@@ -314,8 +279,8 @@ if args.predict:
         print("Predictions not committed to the database.")
         
     # Save to CSV for inspection
-    df.to_csv(os.path.join(data_folder_path + "/private", "predictions_df.csv"), index=False)    
-    exit()
+    # df.to_csv(os.path.join(data_folder_path + "/private", "predictions_df.csv"), index=False)    
+    # exit()
 
 # Narrate can be used with the previous arguments
 if args.narrate:
@@ -469,11 +434,11 @@ if args.publish:
     # Commit and push the updates to GitHub
     files_to_push = [predictions_file, averages_file, narration_file]
 
-    # try:
-    #     if push_updates_to_github(repo_path, deploy_folder_path, files_to_push, commit_message):
-    #         print("Data pushed to GitHub.")
-    # except Exception as e:
-    #     print("Error occurred while pushing data to GitHub: ", str(e))
+    try:
+        if push_updates_to_github(repo_path, deploy_folder_path, files_to_push, commit_message):
+            print("Data pushed to GitHub.")
+    except Exception as e:
+        print("Error occurred while pushing data to GitHub: ", str(e))
 
     print("Script execution completed.")
     exit()

@@ -26,6 +26,7 @@ def train_model(df, output_path, fmisid_ws, fmisid_t):
     
     print("Training the model with data frame:\n", df)
 
+    # Infer some missing, required time-related features from the timestamp
     df['timestamp'] = pd.to_datetime(df['timestamp'])
     df['day_of_week'] = df['timestamp'].dt.dayofweek + 1
     df['hour'] = df['timestamp'].dt.hour
@@ -36,6 +37,7 @@ def train_model(df, output_path, fmisid_ws, fmisid_t):
     Q3 = df['Price_cpkWh'].quantile(0.75)
     IQR = Q3 - Q1
 
+    # This leaves a lot of "outliers" into the data, but that was necessary to retain the exteme price spikes that are the most interesting to predict.
     min_threshold = Q1 - 3 * IQR
     max_threshold = Q3 + 100 * IQR
     df_filtered = df[(df['Price_cpkWh'] >= min_threshold) & (df['Price_cpkWh'] <= max_threshold)]
@@ -43,12 +45,28 @@ def train_model(df, output_path, fmisid_ws, fmisid_t):
     # TODO: Training without WindPowerCapacityMW results in a marginally better model, so for now we are not including it. Perhaps it had more importance when we had a direct WindPowerMW feature. We use the wind speed and temperature from the FMI data as proxies for wind power generation. This is something to be studied further, given time. Does increasing the nr of weather stations for wind park wind speeds and urban area temperatures improve the model? Make it worse? Or no difference?
 
     # Define features and target for the first model after outlier removal
+    # If you defined a different set of FMI stations in your .env.local, they should automatically be reflected here
+    # You may need to manually add those ws_ and t_ columns to your SQLite database first though; TODO: Automate this process
     X_filtered = df_filtered[['day_of_week', 'hour', 'month', 'NuclearPowerMW'] + fmisid_ws + fmisid_t]
     y_filtered = df_filtered['Price_cpkWh']
 
     # Train the first model (Random Forest) on the filtered data
-    X_train, X_test, y_train, y_test = train_test_split(X_filtered, y_filtered, test_size=0.2, random_state=42)
-    rf = RandomForestRegressor(n_estimators=150, max_depth=15, min_samples_split=4, min_samples_leaf=2, max_features='sqrt', random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X_filtered, 
+        y_filtered, 
+        test_size=0.2, 
+        random_state=42
+        )
+    # These do make a difference. Current set of parameters is the best we have found so far.
+    # TODO: A routine that self-optimizes these values to find the best combination of parameters would be a good addition to the project.
+    rf = RandomForestRegressor(
+        n_estimators=150, 
+        max_depth=15, 
+        min_samples_split=4, 
+        min_samples_leaf=2, 
+        max_features='sqrt', 
+        random_state=42
+        )
     rf.fit(X_train, y_train)
     joblib.dump(rf, output_path)
 
@@ -90,6 +108,7 @@ def train_model(df, output_path, fmisid_ws, fmisid_t):
     samples_mae = np.mean(mae_list)
     samples_mse = np.mean(mse_list)
     samples_r2 = np.mean(r2_list)
+    
     # print(f"Mean Random Batch MAE: {samples_mae}")
     # print(f"Mean Random Batch MSE: {samples_mse}")
     # print(f"Mean Random Batch R² score: {samples_r2}")

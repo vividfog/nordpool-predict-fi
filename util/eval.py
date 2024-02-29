@@ -42,10 +42,10 @@ def eval(db_path, plot=False):
     markdown = f"""Evaluation Metrics and Explanations (For the time period from {min_timestamp} to {max_timestamp} Helsinki Time):
 
 - **MAE (Mean Absolute Error): {mae:.2f} cents/kWh**
-  This measures the average magnitude of errors in the model's predictions, without considering their direction. In simple terms, it shows how much, on average, the model's price predictions are off from the actual prices. Ideally, we want this number to be as low as possible. A low MAE indicates that the model's predictions are generally close to the actual prices.
+  This measures the average magnitude of errors in the model's predictions, without considering their direction. In simple terms, it shows how much, on average, the model's price predictions are off from the actual prices. Ideally, we want this number to be as low as possible.
 
 - **MSE (Mean Squared Error): {mse:.2f} (cents/kWh)^2**
-  This squares the errors before averaging, which means it gives more weight to larger errors. This metric is useful for identifying whether the model is making any significantly large errors, though its units are squared, making it less intuitive. Lower values indicate that the model is making fewer and less severe mistakes in its predictions.
+  This squares the errors before averaging, which means it gives more weight to larger errors. This metric is useful for identifying whether the model is making any significantly large errors, though its units are squared, making it less intuitive.
 
 - **RMSE (Root Mean Squared Error): {rmse:.2f} cents/kWh**
   This is the square root of MSE, bringing the error units back to the same units as the prices (cents per kWh). It's useful for understanding the magnitude of error in the same units as the target variable. Like MAE, a lower RMSE indicates better fit to the data, but it gives a sense of the average size of the errors.

@@ -20,3 +20,6 @@ def dump_sqlite_db(data_folder_path):
 if __name__ == "__main__":
     print("This is not meant to be executed directly.")
     exit()
+
+# Usage:
+# python nordpool_predict_fi.py --dump | sort > data/dump.csv
