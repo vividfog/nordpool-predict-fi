@@ -1,0 +1,157 @@
+type: custom:apexcharts-card
+now:
+  show: true
+  label: now
+graph_span: 5d
+experimental:
+  color_threshold: true
+apex_config:
+  grid:
+    show: true
+    borderColor: dimgray
+    strokeDashArray: 4
+  chart:
+    height: 192px
+  legend:
+    showForSingleSeries: false
+    show: false
+  plotOptions:
+    bar:
+      borderRadius: 0
+  yaxis:
+    decimalsInFloat: 1
+    forceNiceScale: true
+    min: 0
+  xaxis:
+    labels:
+      datetimeFormatter:
+        minute: HH:mm
+        day: ddd
+all_series_config:
+  show:
+    offset_in_name: true
+header:
+  title: Nordpool spot FI ¢/kWh, VAT24
+  show: true
+  show_states: true
+  colorize_states: true
+span:
+  start: day
+series:
+  - entity: sensor.nordpool_kwh_fi_eur_3_10_0
+    name: Today ¢/kWh
+    type: column
+    float_precision: 1
+    stroke_width: 0
+    opacity: 1
+    show:
+      in_header: false
+      legend_value: false
+      extremas: true
+    data_generator: |
+      return entity.attributes.raw_today.map((start, index) => {
+        return [new Date(start["start"]).getTime(), entity.attributes.raw_today[index]["value"]*124];
+      });
+    color: '#aaaaaa'
+    color_threshold:
+      - value: 0
+        color: lime
+      - value: 5
+        color: green
+      - value: 10
+        color: orange
+      - value: 15
+        color: red
+      - value: 20
+        color: darkred
+      - value: 30
+        color: black
+  - entity: sensor.nordpool_kwh_fi_eur_3_10_0
+    name: Tomorrow ¢/kWh
+    type: column
+    float_precision: 1
+    opacity: 1
+    unit: ¢/kWh
+    stroke_width: 0
+    data_generator: |
+      return entity.attributes.raw_tomorrow.map((entry) => {
+        return [new Date(entry.start), entry.value*124];
+      });
+    color_threshold:
+      - value: 0
+        color: lime
+      - value: 5
+        color: green
+      - value: 10
+        color: orange
+      - value: 15
+        color: red
+      - value: 20
+        color: darkred
+      - value: 30
+        color: black
+    show:
+      legend_value: false
+      in_header: false
+      extremas: true
+  - entity: sensor.nordpool_kwh_fi_eur_3_10_0
+    name: Prediction ¢/kWh
+    type: column
+    float_precision: 1
+    stroke_width: 0
+    opacity: 1
+    unit: ¢/kWh
+    show:
+      in_header: false
+      legend_value: false
+      extremas: false
+    color_threshold:
+      - value: 0
+        color: lime
+      - value: 5
+        color: green
+      - value: 10
+        color: orange
+      - value: 15
+        color: red
+      - value: 20
+        color: darkred
+      - value: 30
+        color: black
+    data_generator: |
+      const processData = async () => {
+        const now = new Date();
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const todayTimestamp = today.getTime();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const tomorrowTimestamp = tomorrow.getTime();
+        const dayAfterTomorrow = new Date(tomorrow);
+        dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 1);
+        const dayAfterTomorrowTimestamp = dayAfterTomorrow.getTime();
+
+        // Fetch prediction data
+        const response = await fetch('https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/main/deploy/prediction.json');
+        const predictionData = await response.json();
+
+        // Filter prediction data based on the logic
+        const filteredPredictionData = predictionData.filter(([timestamp, value]) => {
+          const dateTimestamp = new Date(timestamp).getTime();
+          // Exclude today's data
+          if (dateTimestamp >= todayTimestamp && dateTimestamp < tomorrowTimestamp) {
+            return false;
+          }
+          // Conditionally include tomorrow's data based on current time
+          if (dateTimestamp >= tomorrowTimestamp && dateTimestamp < dayAfterTomorrowTimestamp) {
+            return now.getHours() < 14;
+          }
+          // Always include data from day after tomorrow onwards
+          return dateTimestamp >= dayAfterTomorrowTimestamp;
+        });
+
+        // Sort by timestamp just in case
+        filteredPredictionData.sort((a, b) => a[0] - b[0]);
+
+        return filteredPredictionData.map(([timestamp, value]) => [parseInt(timestamp), value]);
+      };
+      return processData();

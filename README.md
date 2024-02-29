@@ -4,13 +4,13 @@
 
 > [!NOTE]
 >
-> **2024-02-28**: The 10-day wind power forecast is not available as a free/open data source for public predictions (terms & conditions accommodate for private consumption only), so the live version is down until a useful plan B is implemented.
+> **2024-02-29**: The code base went through some significant changes due to an issue with data access (license). Sorry about any inconvenience caused by that. The new code should be a bit more readable too, as the [prediction code]() now needs fewer quicks to work and the helper functions are cleaner. Still some clean-up to do.
 
-~~Live version: [https://nordpool-predict-fi.web.app](https://nordpool-predict-fi.web.app)~~
+Live version: https://sahkovatkain.web.app
 
-~~If you need the predictions, you'll find them in the [deploy](deploy) folder. See [below](#home-assistant-chart) for Home Assistant instructions. Alternatively, download [index.html](deploy/index.html) from this repository, save it, and open it locally to see the current prediction.~~
+If you need the predictions, you'll find them in the [deploy](deploy) folder. See [below](#home-assistant-chart) for Home Assistant instructions. Alternatively, download [index.html](deploy/index.html) from this repository, save it, and open it locally to see the current prediction.
 
-This repository contains all the original data and code to re-train the model, generate predictions, express a quantitative model analysis and plot the results.
+This repository contains all the code and much of the data to re-train the model, generate predictions, express a quantitative model analysis and plot the results.
 
 [TOC]
 
@@ -20,19 +20,36 @@ This repository contains all the original data and code to re-train the model, g
 
 You can get a general idea of the model's performance from the chart below. **TLDR:** The model is generally aware of the general price levels and patterns for a given day and hour — but it doesn't catch every spike in every detail.
 
-**Legend:** Realized market price is blue. Model-generated prediction is orange. Y axis represents Nordpool FI marker price with VAT 24%, cents per kilowatt-hour (c/kWh). 
+**Legend:** Realized Nordpool price is blue. Model-generated prediction is orange. The Y axis represents market price with VAT 24%, cents per kilowatt-hour (c/kWh). 
 
-<img src="data/plot.jpg" alt="Sample output" style="zoom: 50%;" />
+<img src="data/plot.png" alt="Sample output" style="zoom: 50%;" />
 
 ## Quantitative metrics
 
-To explain the model's performance in statistical terms, this is what the model predicts, when sampling 500 random hours from the whole data set (train + test set) and then doing that 10 times. Measuring vs. test-set-only produces results in the same ballpark, with R² around ~0.8.
+To explain the model's performance in statistical terms, this is what the model predicts, when sampling all of the predictions vs their known Nordpool values. There is currently no "rolling evaluation" that measures the model against its past versions. There is a semi-frequent re-training though, to always include the latest available data.
 
-> - **Mean Absolute Error (MAE) of 0.997:** This measurement tells us that, on average, the model's price predictions are off by just under one unit (cents). This level of accuracy implies that if you use this model to estimate prices, your predictions would typically be less than one cent away from the actual price. 
-> - **Mean Squared Error (MSE) of 6.08:** MSE provides insight into the average squared difference between the predicted and actual values, emphasizing larger errors more significantly.
-> - **R² Score of 0.888:** The R² value, which can range from 0 to 1, measures the model's ability to predict future outcomes based on past data. An R² score close to 0.888 means the model successfully captures about 89% of the variability in the actual prices with its predictions.
-> - **Pearson Correlation Coefficient: 0.955:** This measures the linear correlation between the actual and predicted prices. A coefficient of 1 indicates a perfect positive linear correlation.
-> - **Spearman Rank Correlation Coefficient: 0.973:** This assesses how well the relationship between the model's predictions and the actual prices can be described using a monotonic function. It does not assume a linear relationship but rather that the rankings of actual and predicted prices match.
+> - **MAE (Mean Absolute Error): 1.31 cents/kWh**
+>   This measures the average magnitude of errors in the model's predictions, without considering their direction. In simple terms, it shows how much, on average, the model's price predictions are off from the actual prices.
+>
+> - **MSE (Mean Squared Error): 12.01 (cents/kWh)^2**
+>   This squares the errors before averaging, which means it gives more weight to larger errors. This metric is useful for identifying whether the model is making any significantly large errors.
+>
+> - **RMSE (Root Mean Squared Error): 3.47 cents/kWh**
+>   This is the square root of MSE, bringing the error units back to the same units as the prices (cents per kWh). It's useful for understanding the magnitude of error in the same units as the target variable.
+>
+> - **R^2 (Coefficient of Determination): 0.856**
+>   This indicates how much of the variance in the actual prices is explained by the model. A score of 1 means the model perfectly predicts the prices, while a score closer to 0 means the model fails to accurately predict the prices.
+>
+> - **sMAPE (Symmetric Mean Absolute Percentage Error): 36.1%**
+>   This provides an intuitive understanding of the average error in percentage terms. It treats overpredictions and underpredictions equally. A value closer to 0% indicates more accurate predictions.
+>
+> - **Pearson Correlation Coefficient: 0.935**
+>   This measures the linear correlation between the actual and predicted prices. A coefficient of 1 indicates a perfect positive linear correlation, meaning the model's predictions perfectly align with the actual prices in a linear fashion.
+>
+> - **Spearman Rank Correlation Coefficient: 0.964**
+>   This assesses how well the relationship between the model's predictions and the actual prices can be described using a monotonic function. It does not assume a linear relationship but rather that the rankings of actual and predicted prices match.
+>   
+>   (Last updated: 2024-02-29, could be outdated)
 
 The model might be overfit to historical data. Yet its primary function is to predict short-term outcomes, where it has been useful in practice, determining the near-term direction and range quite accurately.  It remains to be seen, how well the model copes over the full year of 2024. See the [model](model) folder for when the model was last trained.
 
@@ -65,7 +82,6 @@ options:
   -h, --help          show this help message and exit
   --dump              Dump the SQLite database to CSV format
   --plot              Plot all predictions and actual prices to a PNG file in the data folder
-  --foreca            Update the Foreca wind power prediction file
   --fingrid           Update missing nuclear power data
   --predict           Generate price predictions from now onwards
   --add-history       Add all missing predictions to the database post-hoc; use with --predict
@@ -78,16 +94,23 @@ options:
   --training-stats    Show training stats for candidate models in the database as a CSV
 ```
 
-See the data folder for a DB initialization script if you need it. ~~This repo includes a pre-populated database.~~
+See the data/create folder for a set of DB initialization scripts if you need them. You may need to fetch some of the data sets from their original sources.
 
 ### How to run locally
 
 First make sure you've installed the requirements from requirements.txt.
 
-1. Update the wind power production forecast json file: `python nordpool_predict_fi.py --foreca`
-2. Update the price forecast, narrate it, update the SQLite database and json/md outputs: `python nordpool_predict_fi.py --predict --narrate --commit`
+1. Update the price forecast, narrate it, update the SQLite database and json/md outputs: `python nordpool_predict_fi.py --predict --narrate --commit`
 
-   At this point you should have an updated set of files in your `deploy` folder
+   Optionally, you can do a retrospective update to the PricePredict field for the whole DB by including `--add-history` into the command line above.
+
+   This sequence fetches the last known history and forecasts for wind power, temperature, nuclear power and spot prices and constructs a data frame out of them, ready to be committed to the database, again extending it by a few days.
+
+   At this point your database (data/prediction.db) will get written with a new set of data for the past few days. You will get a preview of what's going to be written.
+
+2. `python nordpool_predict_fi.py --publish` fetches the latest data from the DB and creates a set of files in the deploy folder. It also tries to update this Github repo, but that will probably fail by design, given that you don't have the keys for that.
+
+   At this point you should have an updated set of .json files in your `deploy` folder. To know what they are, read up on [deploy/README.md](deploy/README.md).
 
 3. Open `index.html` from the `deploy` folder locally in your browser
 
@@ -99,39 +122,38 @@ Following intuition and observing past price fluctuations, outdoor temperature c
 
 The idea here was to formalize that intuition through a data set and a model.
 
-- Foreca produces a [public wind power forecast](https://www.foreca.fi/sahkon-hinta) for 10 days ahead. This data is part of the training and predictions.
-
-- Temperature affects household energy consumption. I selected Tampere/Pirkkala Airport as a representative metropolitan location for temperature/wind measurements. If it's very cold and windy there, perhaps it's also very cold and windy in Oulu, Turku, Helsinki etc., which would balloon country-wide household energy consumption, and this should show up in correlations, if not offset by the available wind.
-
-- Max available wind power capacity was included, because the capacity is constantly growing, and including this information made the past pricing data explain more about the price at the time.
+* A set of FMI weather stations near wind power clusters to measure wind speed, a predictor for wind power
+* Another set near urban centers to measure wind speed, a predictor for consumption due to heating 
 
 - Since the day of the week (Sunday vs. Monday) makes a difference, as does the time of the day (3 AM vs. 7 PM), and a month (January vs. July), those too were included as variables. But the day-of-the-month was not, because all it says is likely already captured by the weather, the time and the weekday.
 
-- In a later commit, nuclear power production data was included. Planned or unplanned maintenance break can offset a large amount of supply that wind power then needs to replace.
+- Nuclear power production data is included post-hoc and near future is inferred from last known values. Planned or unplanned maintenance break can offset a large amount of supply that wind power then needs to replace. The model reacts to these with a few hours a delay, as the drop becomes apparent in the input data.
 
 Data schema used for training and inference is this:
 
 ```
-sqlite> .schema
 CREATE TABLE prediction (
     timestamp TIMESTAMP PRIMARY KEY,
-    "Price_cpkWh" FLOAT,
-    "Temp_dC" FLOAT,
-    "Wind_mps" FLOAT,
-    "WindPowerMW" FLOAT,
+    "ws_101256" FLOAT,
+    "ws_101267" FLOAT,
+    "ws_101673" FLOAT,
+    "ws_101846" FLOAT,
+    "t_101118" FLOAT,
+    "t_101339" FLOAT,
+    "t_101786" FLOAT,
+    "t_100968" FLOAT,
     "WindPowerCapacityMW" FLOAT,
-    "PricePredict_cpkWh" FLOAT,
-    "NuclearPowerMW" FLOAT
+    "NuclearPowerMW" FLOAT,
+    "Price_cpkWh" FLOAT,
+    "PricePredict_cpkWh" FLOAT
 );
 ```
 
+The columns starting with `t_` and `ws_` are [FMSIDs](https://www.ilmatieteenlaitos.fi/havaintoasemat?filterKey=groups&filterQuery=sää) of the FMI weather stations nearest to the locations of interest. They offer both observations and forecasts that have a high correlation with each other post-hoc. As a side effect of this approach, the repository also contains [functions](util/fmi.py) for working with FMI history/forecast queries.
+
 ### Hidden patterns in weather/price data
 
-As code, the price information is learned from, or is a function of, patterns and correlations between these factors, as learned by the model:
-
-```
-['Temp_dC', 'Wind_mps', 'WindPowerMW', 'WindPowerCapacityMW', 'hour', 'day_of_week', 'month', 'NuclearPowerMW']
-```
+As code, the price information is learned from, or is a function of, patterns and correlations between the above factors, as learned by the model.
 
 > **Example scenarios to illustrate the correlations:**
 >
@@ -165,59 +187,13 @@ That's a lot of hidden complexity that happens during the about 2 seconds it tak
 
 ## How long will this repository/data be updated?
 
-**This is a hobby project, there is no guarantee to keep the code or data up to date in the long haul. That's why all the code and data is free and public.** Feel free to fork the project and make it your own, or submit a pull request. I'm using these predictions myself and plan to keep this code working as a hobby project, until there's a new and more important hobby project.
-
-> [!WARNING]
->
-> **The one part of the project which is definitely NOT robust at the moment, is the wind power forecast parser.** The script uses SVG path parsing 🤓 to re-create the Foreca forecast. While this is an *incredibly* fragile way of fetching the data, it works for now, and I have a pretty good idea of *why* it works, so I can fix it later if it breaks.
-
-```
-python nordpool_predict_fi.py --foreca
-Starting the process to fetch and parse the SVG data from Foreca...
-Setting up the browser driver
-Opening the web page
-Finding the SVG elements
-Saving the beautified SVG content to data/foreca_0.svg
-Saving the beautified SVG content to data/foreca_1.svg
-SVG files have been saved. Closing the web page.
-Extracting Bezier paths from the SVG
-Interpolating Y values for each X value
-Calculating MW values for each Y entry
-Extracting datetime for each MW value for plotting
-Interpolating the original data to include all hours in the range
-Converting to JSON format and UTC time
-JSON data has been written to: data/foreca_wind_power_prediction.json
-```
-
-### What if the Foreca wind power forecast option goes down?
-
-We also tried the prediction with the naive method of only including Tampere Airport wind speed and temperature history data, because that's available for many days ahead.
-
-- While this didn't result in quite as accurate a model, it was more accurate than most people's guesswork, and perhaps even surprisingly good.
-
-- A surprise was that Tampere/Pirkkala Airport wind situation and wind power production/history don't actually correlate that closely. That's why both are included during training.
-
-- The airport weather data is included to nudge the model to learn the effects of suburban wind/temperature to household electricity (= heating) consumption, with the airport getting the honor of representing "an average suburban spot" in Finland. Perhaps about as many Finnish households are situated to the North of Tampere, as to the South? And also East/West?
-
-- We suspect that the "day of the week" input captures a lot of the price fluctuations caused by business/industry energy consumption.
-
-Feel free to propose a better "average" Finland temp/wind position, region, or (preferred) API!
-
-### "Plan B" performance: if no access to wind power forecast directly
-
-This is the Random Forest performance in such a scenario, aka the initial version of the model:
-
-> - **Mean Absolute Error (MAE)** of **2.30 cents** indicates how close the model's predictions are to the actual prices, with a lower number indicating better accuracy. Essentially, this model's predictions are, on average, 2.30 cents off from the real prices. This is the "normal day" performance.
-> - **Mean Squared Error (MSE)** of **22.07 cents** highlights the average squared difference between predicted and actual prices. A high MSE suggests that there are instances where the model's predictions significantly deviate from the actual values, indicating potential outliers or periods of high volatility that the model handles poorly. This is the "very unusual day" performance.
-> - **R-squared (R2)** value of **0.77** tells us that 77% of the price variance is explained by the model's inputs. This means the model is relatively good at predicting price changes based on the data it analyzes, though it's not perfect. If the model says that "it's going to be expensive in 3 days", it probably will be.
-
-If the wind power forecast data becomes unavailable in the future, that's plan B.
+**This is a hobby project, there is no guarantee to keep the code or data up to date in the long haul. That's why all the code is free and public.** All the data is free and public too, but the Nordpool spot data used by this repo can't be used for commercial purposes. Feel free to fork the project and make it your own, or submit a pull request. I'm using these predictions myself and plan to keep this code working as a hobby project, until there's a new and more important hobby project.
 
 # How to use the data in your apps
 
 ## Local web page
 
-If you download [index.html](deploy/index.html) and open it locally, it will draw the latest data in a nice format at runtime using eCharts. This is the same page which can be found at https://nordpool-predict-fi.web.app.
+If you download [index.html](deploy/index.html) and open it locally, it will draw the latest data in a nice format at runtime using eCharts. This is the same page which can be found at https://sahkovatkain.web.app.
 
 ## Python sample script
 

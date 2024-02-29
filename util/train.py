@@ -19,35 +19,7 @@ import sqlite3
 from datetime import datetime
 import pytz
 
-# def csv_to_df(csv_path):
-#     # Deprecated until there's a source CSV that also includes nuclear power data
-#     # Read the CSV file into a DataFrame
-#     df = pd.read_csv(csv_path, na_values='-')
-
-#     # Convert the timestamp to datetime
-#     df['timestamp_UTC'] = pd.to_datetime(df['timestamp_UTC'], unit='s')
-
-#     # Rename the columns to match the database schema
-#     df = df.rename(columns={
-#         'timestamp_UTC': 'timestamp',
-#         'price_cents_per_kWh': 'Price_cpkWh',
-#         'temp_celsius': 'Temp_dC',
-#         'wind_m/s': 'Wind_mps',
-#         'wind_power_MWh': 'WindPowerMW',
-#         'wind_power_capacity_MWh': 'WindPowerCapacityMW'
-#     })
-
-#     df = df.drop(columns=['helsinki'])
-
-#     imputer = SimpleImputer(strategy='mean')
-#     df[['Temp_dC', 'Wind_mps', 'WindPowerMW', 'WindPowerCapacityMW', 'Price_cpkWh']] = imputer.fit_transform(df[['Temp_dC', 'Wind_mps', 'WindPowerMW', 'WindPowerCapacityMW', 'Price_cpkWh']])
-
-#     # Add the additional columns with NULL values
-#     df['PricePredict_cpkWh'] = None
-
-#     return df
-
-def train_model(df, output_path):
+def train_model(df, output_path, fmisid_ws, fmisid_t):
     
     # Sort the data frame by timestamp
     df = df.sort_values(by='timestamp')
@@ -68,8 +40,10 @@ def train_model(df, output_path):
     max_threshold = Q3 + 100 * IQR
     df_filtered = df[(df['Price_cpkWh'] >= min_threshold) & (df['Price_cpkWh'] <= max_threshold)]
 
+    # TODO: Training without WindPowerCapacityMW results in a marginally better model, so for now we are not including it. Perhaps it had more importance when we had a direct WindPowerMW feature. We use the wind speed and temperature from the FMI data as proxies for wind power generation. This is something to be studied further, given time. Does increasing the nr of weather stations for wind park wind speeds and urban area temperatures improve the model? Make it worse? Or no difference?
+
     # Define features and target for the first model after outlier removal
-    X_filtered = df_filtered[['Temp_dC', 'Wind_mps', 'WindPowerMW', 'WindPowerCapacityMW', 'hour', 'day_of_week', 'month', 'NuclearPowerMW']]
+    X_filtered = df_filtered[['day_of_week', 'hour', 'month', 'NuclearPowerMW'] + fmisid_ws + fmisid_t]
     y_filtered = df_filtered['Price_cpkWh']
 
     # Train the first model (Random Forest) on the filtered data
@@ -100,7 +74,8 @@ def train_model(df, output_path):
         random_sample = df.sample(n=500, random_state=None)  # 'None' for truly random behavior
 
         # Pick input/output features for the random sample
-        X_random_sample = random_sample[['Temp_dC', 'Wind_mps', 'WindPowerMW', 'WindPowerCapacityMW', 'hour', 'day_of_week', 'month', 'NuclearPowerMW']]
+        X_random_sample = random_sample[['day_of_week', 'hour', 'month', 'NuclearPowerMW'] + fmisid_ws + fmisid_t]
+        y_filtered = df_filtered['Price_cpkWh']
         y_random_sample_true = random_sample['Price_cpkWh']
 
         # Predict the prices for the randomly selected samples

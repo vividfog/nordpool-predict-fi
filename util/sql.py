@@ -7,15 +7,30 @@ import pandas as pd
 import warnings
 warnings.filterwarnings('ignore', category=FutureWarning)
 
-# "FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation."
-# Reason: We are already excluding empty or all-NA entries before the concat operation to retain the old behavior. No need to log this warning.
-
 def normalize_timestamp(ts):
     '''
-    Internal function to convert a timestamp string into a datetime object and format it as an ISO8601 string. This function is crucial for ensuring timestamp consistency across database operations.
+    Converts a timestamp string into a datetime object, ensuring it is timezone-aware (UTC),
+    and formats it as an ISO8601 string. This standardized format is crucial for consistency 
+    across database operations, especially when dealing with the TIMESTAMP type in the schema.
+    
+    Parameters:
+    - ts: A timestamp string that may or may not include timezone information.
+    
+    Returns:
+    - A string representing the timestamp in ISO8601 format with UTC timezone information.
     '''
-    # Convert to datetime object using pandas, then format as ISO8601 string
-    return pd.to_datetime(ts).strftime('%Y-%m-%d %H:%M:%S')
+    # Convert to datetime object using pandas
+    dt = pd.to_datetime(ts)
+    
+    # If the datetime object is naive (no timezone), localize it to UTC
+    if dt.tzinfo is None:
+        dt = dt.tz_localize('UTC')
+    else:
+        # If it already has a timezone, convert it to UTC
+        dt = dt.tz_convert('UTC')
+    
+    # Format as ISO8601 string with timezone information
+    return dt.isoformat()
 
 def db_update(db_path, df):
     '''
@@ -28,17 +43,17 @@ def db_update(db_path, df):
     inserted_rows = pd.DataFrame()
 
     # Normalize timestamp in the dataframe before processing
-    df['timestamp'] = df['timestamp'].apply(normalize_timestamp)
+    df['Timestamp'] = df['Timestamp'].apply(normalize_timestamp)
 
     for index, row in df.iterrows():
         # Timestamp is already normalized
-        cur.execute("SELECT * FROM prediction WHERE timestamp=?", (row['timestamp'],))
+        cur.execute("SELECT * FROM prediction WHERE Timestamp=?", (row['Timestamp'],))
         data = cur.fetchone()
         if data is not None:
             # Update existing row
             for col in df.columns:
                 if pd.notnull(row[col]):
-                    cur.execute(f"UPDATE prediction SET \"{col}\"=? WHERE timestamp=?", (row[col], row['timestamp']))
+                    cur.execute(f"UPDATE prediction SET \"{col}\"=? WHERE timestamp=?", (row[col], row['Timestamp']))
             updated_rows = pd.concat([updated_rows, df.loc[[index]]], ignore_index=True)
         else:
             # Insert new row
@@ -57,21 +72,22 @@ def db_query(db_path, df):
     Query the 'prediction' table in the specified SQLite database based on timestamps specified in the input DataFrame. Returns a DataFrame with the query results, sorted by timestamp.
     '''
     # Normalize timestamps in query dataframe
-    if 'timestamp' not in df.columns:
-        print("timestamp is not a column in the DataFrame")
+    if 'Timestamp' not in df.columns:
+        print("Timestamp is not a column in the DataFrame")
     else:
-        df['timestamp'] = df['timestamp'].apply(normalize_timestamp)
+        df['Timestamp'] = df['Timestamp'].apply(normalize_timestamp)
 
     conn = sqlite3.connect(db_path)
 
     result_frames = []  # List to store each chunk of dataframes
-    for timestamp in df['timestamp']:
+    for timestamp in df['Timestamp']:
         # Timestamp is already normalized
         data = pd.read_sql_query(f"SELECT * FROM prediction WHERE timestamp='{timestamp}'", conn)
         if not data.empty and not data.isna().all().all():  # Exclude empty dataframes and dataframes with all-NA entries
             result_frames.append(data)
 
     result = pd.concat(result_frames, ignore_index=True) if result_frames else pd.DataFrame()
+    # print(result)
     result = result.sort_values(by='timestamp', ascending=True)
 
     conn.close()
