@@ -176,20 +176,29 @@ if args.predict:
     print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     print("Running predictions...")
 
+    # Fetch all the data, as we have more memory than time and it's not that large
     df = db_query_all(db_path)
     
     # Ensure 'timestamp' column is in datetime format
     df['timestamp'] = pd.to_datetime(df['timestamp'])
     df.set_index('timestamp', inplace=True)
-    
-    # Drop rows that are older than a week, unless we're rewriting historical predictions after model update
+        
+    # We operate from this moment back and forward
+    now = pd.Timestamp.utcnow()
+
+    # Round up to the next full hour if not already on a full hour
+    if now.minute > 0 or now.second > 0 or now.microsecond > 0:
+        now = now.ceil('h')  # Rounds up to the nearest hour
+        
+    # Drop rows that are older than a week, unless we're rewriting historical predictions after a model update
+    # Not dropping will backfill the prediction column, which what we want for retrospective predictions
     if not args.add_history:
-        utc_now = datetime.now(pytz.utc)
-        df = df[df.index > utc_now - timedelta(days=7)]
-    
+        # Use the now for filtering
+        df = df[df.index > now - pd.Timedelta(days=7)]
+
     # Forward-fill the timestamp column for 5*24 = 120 hours ahead
-    start_time = df.index.max() + pd.Timedelta(hours=1)
-    end_time = df.index.max() + pd.Timedelta(hours=120)
+    start_time = now + pd.Timedelta(hours=1)  # Start from the next hour
+    end_time = now + pd.Timedelta(hours=120)  # 5 days ahead
     new_index = pd.date_range(start=start_time, end=end_time, freq='h')
     df = df.reindex(df.index.union(new_index))
 
@@ -198,30 +207,30 @@ if args.predict:
     df.rename(columns={'index': 'Timestamp'}, inplace=True)
 
     # Get the latest FMI wind speed values for the data frame, past and future
-    # NOTE: To save on FMI API calls, we don't fill in weather history beyond 7 days
+    # NOTE: To save on API calls, we don't fill in weather history beyond 7 days even if asked
     df = update_wind_speed(df)
-       
+           
     # Get the latest FMI temperature values for the data frame, past and future
-    # NOTE: To save on FMI API calls, we don't fill in weather history beyond 7 days
+    # NOTE: To save on API calls, we don't fill in weather history beyond 7 days even if asked
     df = update_temperature(df)
        
     # Get the latest nuclear power data for the data frame, and infer the future
+    # NOTE: To save on API calls, we don't fill in weather history beyond 7 days even if asked
     df = update_nuclear(df, fingrid_api_key=fingrid_api_key)
-    
+        
     # Get the latest spot prices for the data frame, past and future if any
-    # Again not asking for history beyond 7 days
-    # So keep your DB up to date
+    # NOTE: To save on API calls, we don't fill in weather history beyond 7 days even if asked
     df = update_spot(df)
     
     # TODO: Decide if including wind power capacity is necessary; it seems to worsen the MSE and R2
     # For now we'll drop it
     df = df.drop(columns=['WindPowerCapacityMW'])
 
-    print("Filled-in dataframe before predict:\n", df)
-    print("Days covered: ", len(df)/24)
+    # print("Filled-in dataframe before predict:\n", df)
+    print("Days of data coverage (should be 7 back, 5 forward for now): ", int(len(df)/24))
 
-    # Save a copy of the df to a CSV file for inspection
-    df.to_csv(os.path.join(data_folder_path + "/private", "debug_df.csv"), index=False)
+    # DEBUG: Save a copy of the df to a CSV file for inspection
+    # df.to_csv(os.path.join(data_folder_path + "/private", "debug_df.csv"), index=False)
 
     # Fill in the 'hour', 'day_of_week', and 'month' columns for the model
     df['Timestamp'] = pd.to_datetime(df['Timestamp'])
@@ -278,7 +287,7 @@ if args.predict:
         print(df)
         print("Predictions not committed to the database.")
         
-    # Save to CSV for inspection
+    # DEBUG: save to CSV for inspection
     # df.to_csv(os.path.join(data_folder_path + "/private", "predictions_df.csv"), index=False)    
     # exit()
 

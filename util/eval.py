@@ -10,7 +10,7 @@ from .sql import db_query_all
 def eval(db_path, plot=False):
     # Load the data
     data = db_query_all(db_path)
-    print(data.head())
+    print(data)
 
     data_clean = data.dropna(subset=['Price_cpkWh', 'PricePredict_cpkWh']).copy()
 
