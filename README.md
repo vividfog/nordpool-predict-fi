@@ -307,7 +307,7 @@ You need to update the database to have a complete time series of your new train
 
 3. Call that function as part of the chain that builds the data frame for the predictions. Again, your function can either add a column, or edit the existing columns.
 
-   If you need to debug: 7+5 days is 12 days, and that is 288 hours. That should be the number of data frames given back by your function. For example:
+   If you need to debug: 7+5 days is 12 days, and that is 288 hours. That should be the number of rows given back by your function. For example:
 
    ```shell
    python nordpool_predict_fi.py --predict
