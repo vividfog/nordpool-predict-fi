@@ -2,9 +2,7 @@
 
 **This is a Python script that predicts electricity prices for the Nordpool FI market. The script fetches a 5-day weather forecast and more, and uses these to predict future Nordpool FI electricity prices, using a trained Random Forest model.**
 
-- Live version: https://sahkovatkain.web.app (soon)
-
-- You can view "Plan B" predictions here: https://nordpool-predict-fi.web.app
+- Live version: https://sahkovatkain.web.app
 
 If you need the predictions, you'll find them in the [deploy](deploy) folder. See [below](#home-assistant-chart) for Home Assistant instructions. Alternatively, download [index.html](deploy/index.html) from this repository, save it, and open it locally to see the current prediction.
 
