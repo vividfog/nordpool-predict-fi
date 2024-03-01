@@ -1,6 +1,6 @@
 # Nordpool FI Spot Price Prediction
 
-**This is a Python script that predicts electricity prices for the Nordpool FI market. The script fetches a 5-day weather forecast and a wind power forecast, and uses these to predict future Nordpool FI electricity prices, using a trained Random Forest model.**
+**This is a Python script that predicts electricity prices for the Nordpool FI market. The script fetches a 5-day weather forecast and more, and uses these to predict future Nordpool FI electricity prices, using a trained Random Forest model.**
 
 - Live version: https://sahkovatkain.web.app (soon)
 
