@@ -1,7 +1,5 @@
 import sqlite3
 import pandas as pd
-import sys
-import os
 
 def dump_sqlite_db(data_folder_path):
     # Connect to the SQLite database
@@ -14,6 +12,8 @@ def dump_sqlite_db(data_folder_path):
     df['timestamp'] = pd.to_datetime(df['timestamp'], format='mixed')
     # Replace NULL values with empty string
     df = df.fillna('')
+    # Sort the dataframe by timestamp
+    df = df.sort_values(by='timestamp')
     # Print the DataFrame in CSV format
     print(df.to_csv(index=False))
 
@@ -22,4 +22,4 @@ if __name__ == "__main__":
     exit()
 
 # Usage:
-# python nordpool_predict_fi.py --dump | sort > data/dump.csv
+# python nordpool_predict_fi.py --dump > data/dump.csv

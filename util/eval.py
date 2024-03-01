@@ -10,9 +10,8 @@ from .sql import db_query_all
 def eval(db_path, plot=False):
     # Load the data
     data = db_query_all(db_path)
-    print(data)
-
     data_clean = data.dropna(subset=['Price_cpkWh', 'PricePredict_cpkWh']).copy()
+    print(data_clean)
 
     # Ensure timestamp is a datetime object
     data_clean['timestamp'] = pd.to_datetime(data_clean['timestamp'])
@@ -39,16 +38,16 @@ def eval(db_path, plot=False):
     spearman_corr = data_clean['Price_cpkWh'].corr(data_clean['PricePredict_cpkWh'], method='spearman')
 
     # Evaluation metrics formatted as markdown text, including units and interpretative guidance
-    markdown = f"""Evaluation Metrics and Explanations (For the time period from {min_timestamp} to {max_timestamp} Helsinki Time):
+    markdown = f"""Full DB eval: ({min_timestamp} to {max_timestamp}):
 
 - **MAE (Mean Absolute Error): {mae:.2f} cents/kWh**
-  This measures the average magnitude of errors in the model's predictions, without considering their direction. In simple terms, it shows how much, on average, the model's price predictions are off from the actual prices. Ideally, we want this number to be as low as possible.
+  This measures the average magnitude of errors in the model's predictions, without considering their direction. In simple terms, it shows how much, on average, the model's price predictions are off from the actual prices.
 
 - **MSE (Mean Squared Error): {mse:.2f} (cents/kWh)^2**
-  This squares the errors before averaging, which means it gives more weight to larger errors. This metric is useful for identifying whether the model is making any significantly large errors, though its units are squared, making it less intuitive.
+  This squares the errors before averaging, which means it gives more weight to larger errors. This metric is useful for identifying whether the model is making any significantly large errors.
 
 - **RMSE (Root Mean Squared Error): {rmse:.2f} cents/kWh**
-  This is the square root of MSE, bringing the error units back to the same units as the prices (cents per kWh). It's useful for understanding the magnitude of error in the same units as the target variable. Like MAE, a lower RMSE indicates better fit to the data, but it gives a sense of the average size of the errors.
+  This is the square root of MSE, bringing the error units back to the same units as the prices (cents per kWh). It's useful for understanding the magnitude of error in the same units as the target variable.
 
 - **R^2 (Coefficient of Determination): {r2:.3f} (unitless)**
   This indicates how much of the variance in the actual prices is explained by the model. A score of 1 means the model perfectly predicts the prices, while a score closer to 0 means the model fails to accurately predict the prices.

@@ -2,6 +2,7 @@ import pandas as pd
 import requests
 from datetime import datetime, timedelta
 import pytz
+import sys
 
 def fetch_electricity_price_data(start_date, end_date):
     """
@@ -20,19 +21,31 @@ def fetch_electricity_price_data(start_date, end_date):
         'end': end_date
     }
     
-    response = requests.get(api_url, params=params)
-    print(response.url)
+    try:
+        response = requests.get(api_url, params=params)
+        response.raise_for_status() 
+    except requests.exceptions.HTTPError as e:
+        print(f"HTTP error occurred while fetching data from Sähkötin API: {e}")
+        sys.exit(1)
+    except requests.exceptions.RequestException as e:
+        print(f"Error occurred during request to Sähkötin API: {e}")
+        sys.exit(1)
 
     if response.status_code == 200:
-        data = response.json().get('prices', [])
+        try:
+            data = response.json().get('prices', [])
+        except ValueError as e:  # Includes simplejson.decoder.JSONDecodeError
+            print(f"Error decoding JSON from Sähkötin API response: {e}")
+            sys.exit(1)
         df = pd.DataFrame(data)
         if not df.empty:
-            # Convert 'date' to datetime and ensure it's in UTC
-            df['date'] = pd.to_datetime(df['date'], utc=True)
-            # Make it cents per kWh instead of euros per MWh
-            df['value'] = df['value'] / 10
-            # Rename columns to match expected format
-            df.rename(columns={'date': 'Timestamp', 'value': 'Price_cpkWh'}, inplace=True)
+            try:
+                df['date'] = pd.to_datetime(df['date'], utc=True)
+                df['value'] = df['value'] / 10
+                df.rename(columns={'date': 'Timestamp', 'value': 'Price_cpkWh'}, inplace=True)
+            except Exception as e:
+                print(f"Error processing data from Sähkötin API: {e}")
+                sys.exit(1)
             return df
         else:
             print("No data returned from the API.")

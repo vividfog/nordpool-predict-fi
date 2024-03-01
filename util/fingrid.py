@@ -19,9 +19,20 @@ def fetch_nuclear_power_data(fingrid_api_key, start_date, end_date):
     }
     
     for attempt in range(3):  # max_retries = 3
-        response = requests.get(api_url, headers=headers, params=params)
+        try:
+            response = requests.get(api_url, headers=headers, params=params)
+            response.raise_for_status()  # Raises an HTTPError for bad responses
+        except requests.exceptions.RequestException as e:
+            print(f"Error occurred while requesting Fingrid data: {e}")
+            exit(1)
+
         if response.status_code == 200:
-            data = response.json().get('data', [])
+            try:
+                data = response.json().get('data', [])
+            except ValueError:
+                print("Failed to decode JSON from response from Fingrid")
+                exit(1)
+
             df = pd.DataFrame(data)
             if not df.empty:
                 df['startTime'] = pd.to_datetime(df['startTime'], utc=True)
@@ -88,7 +99,11 @@ def update_nuclear(df, fingrid_api_key):
     print(f"* Fetching nuclear power production data between {history_date} and {end_date} and inferring missing values")
     
     # Fetch nuclear power production data
-    nuclear_df = fetch_nuclear_power_data(fingrid_api_key, history_date, end_date)
+    try:
+        nuclear_df = fetch_nuclear_power_data(fingrid_api_key, history_date, end_date)
+    except Exception as e:
+        print(f"Failed to fetch or process nuclear power data from Fingrid: {e}")
+        exit(1)
     
     if not nuclear_df.empty:
         nuclear_df['startTime'] = pd.to_datetime(nuclear_df['startTime'], utc=True)

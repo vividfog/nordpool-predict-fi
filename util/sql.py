@@ -1,5 +1,6 @@
 import sqlite3
 import pandas as pd
+import sys
 
 # A set of functions to work with the predictions SQLite database
 
@@ -36,8 +37,12 @@ def db_update(db_path, df):
     '''
     Update existing rows or insert new rows into the 'prediction' table in the specified SQLite database based on the input DataFrame. Returns two DataFrames: one containing inserted rows and another containing updated rows. Does not handle duplicate timestamps. Does not delete rows or columns, always inserts (with defaults) or updates (with new values given).
     '''
-    conn = sqlite3.connect(db_path)
-    cur = conn.cursor()
+    try:
+        conn = sqlite3.connect(db_path)
+        cur = conn.cursor()
+    except sqlite3.Error as e:
+        print(f"SQLite connection error: {e}")
+        sys.exit(1)
 
     updated_rows = pd.DataFrame()
     inserted_rows = pd.DataFrame()
@@ -77,8 +82,12 @@ def db_query(db_path, df):
     else:
         df['Timestamp'] = df['Timestamp'].apply(normalize_timestamp)
 
-    conn = sqlite3.connect(db_path)
-
+    try:
+        conn = sqlite3.connect(db_path)
+    except Exception as e:
+        print(f"Error preparing for SQLite query: {e}")
+        sys.exit(1)
+        
     result_frames = []  # List to store each chunk of dataframes
     for timestamp in df['Timestamp']:
         # Timestamp is already normalized
