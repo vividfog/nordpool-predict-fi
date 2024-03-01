@@ -218,6 +218,125 @@ You can show the Nordpool prices with predictions on your dashboard. The code us
 
 Add the contents of [deploy/npf.yaml](deploy/npf.yaml) as a "Manual" chart to your Lovelace dashboard. An alternative [deploy/npf2.yaml](deploy/npf2.yaml) shows the Nordpool vs prediction series in a different way. Choose the visual variation you prefer.
 
+# Adding a new data source
+
+The current process of adding a new data source to the model is somewhat manual. Here's the gist of it.
+
+The main requirement is that you need to be able to predict your own input variable.
+
+- Example: If you input wind power production in MW for the past year, you need to be able to predict the values for wind power production for the next 5 days as well. Otherwise, this leads to a recursive situation where we must predict our inputs before predicting our price, which can become a complex issue.
+
+The existing data sources either use publicly available forecast data sources (e.g. weather), infer the data from existing data (e.g. weekday), or assume the last known number is next assumed number too (e.g. nuclear power production).
+
+- An example of a smarter *existing* column: Create a function that has the ability to fill in nuclear power production into the respective column for 5 days into the future, perhaps by reading market messages.
+
+- An example of a *new* column: Transmission_FI_SE3, which either predicts or makes assumptions about the transfer lines between Finland and Northern Sweden.
+
+In both cases, your predictor function needs to return a data frame with 7 days to the past, and 5 days to the future, using the best assumptions (or sub-model) it can work with.
+
+## 1. Prepare new data to learn from
+
+You need to update the database to have a complete time series of your new training variable, so that you can refer to it during training.
+
+1. Ensure you have the latest predictions.db from this repo to have baseline data in the `data` folder:
+
+   ```shell
+   git pull
+   ```
+
+2. Dump the whole database to a baseline CSV file you can work with: 
+
+   ```shell
+   python nordpool_predict_fi.py --dump > my_baseline.csv
+   ```
+
+3. Open the CSV to understand its structure. Your task is to add a new column and populate it with data. Ensure completeness for every hourly timestamp, avoiding NaN/NULL values.
+
+4. Let's say your new column is called `Transmission_FI_SE3`, you need to add that to the SQLite3 prediction.db schema.
+
+   ```sqlite
+   ALTER TABLE prediction ADD COLUMN Transmission_FI_SE3 FLOAT;
+   ```
+
+5. Convert the new column in your CSV to a set of SQL update statements that set or update the values for that column for every time stamp. Now you have a baseline prediction.db to work with.
+
+   One approach is to use an AI model, such as ChatGPT-4, to generate SQL update statements from the CSV. Here's how you might phrase your request to the model:
+
+   > Take a look at this CSV file. Read the first few lines to learn its structure. Pay attention to the Transmission_FI_SE3 column. I want you to create SQLite3 statements that update the whole database with those values, matching the timestamps you find in the CSV. Focus only on timestamp and Transmission_FI_SE3. Use Python to create a conversion script, then run it, and I'd like to download the final .sql file with the update statements.
+
+   Then run those update to the database, for example:
+
+   ```shell
+   sqlite3 data/prediction.db < my_update_statements.sql
+   ```
+
+6. Verify that your new column is now part of the database:
+
+   ```shell
+   python nordpool_predict_fi.py --dump > my_new_column.csv
+   ```
+
+## 2. Update the training code to include your new column
+
+1. Review how database columns are included in the util/train module before being passed to the training function.
+
+2. Add yours to the list(s).
+
+3. Try the training results, pay attention to the eval results. Compare them with and without your column:
+
+   ```shell
+   python nordpool_predict_fi.py --train --eval
+   ```
+
+​	Once you're satisified with the results, you can include this new column during the predict process too. 
+
+## 3. Create a new predictor function as a utility
+
+1. See the source code for how the util/FMI, Fingrid and Sahkotin functions work and how the main script calls them inside the `--train` and `--predict` arguments. These are in the util folder.
+
+2. Create a function that accepts a data frame and returns a data frame. Add this to the util folder and import it. Use it after or in between the existing function calls.
+
+   ```
+   df = update_wind_speed(df)
+   df = update_nuclear(df, fingrid_api_key=fingrid_api_key)
+   df = update_spot(df)
+   df = update_se3(df) # this could be your new function
+   ```
+
+   The returned data frame should be the exact same DF passed to it, but now filled with data 7 days into the past and 5 days into the future. Merging data frames and working with time stamps can be a bit tricky, but there's sample code in the FMI/Fingrid/Sahkotin functions.
+
+3. Call that function as part of the chain that builds the data frame for the predictions. Again, your function can either add a column, or edit the existing columns.
+
+   If you need to debug: 7+5 days is 12 days, and that is 288 hours. That should be the number of data frames given back by your function. For example:
+
+   ```shell
+   python nordpool_predict_fi.py --predict
+   ...
+   My_function_debug_output:
+   ...
+   [288 rows x 12 columns] # do we have +1 in the columns and 288 rows after df update by your function?
+   ```
+
+   If all goes well, you're ready to test.
+
+## 4. Test your new model and function in apps
+
+You've already verified earlier that the results are better than without this new/updated column, so we don't need to test that again.
+
+1. Commit a new set of predictions to the database and deploy them to the JSON files in the deploy folder:
+
+   ```shell
+   python nordpool_predict_fi.py --predict --commit --deploy
+   ```
+
+2. Now you can test the JSON files with the index.html page, or with Home Assistant, or your preferred method. See how you like the results.
+
+3. After confirming improvements with the new or updated column, please thoroughly test your model using the provided methods and submit a pull request.
+
+Good luck!
+
+If you run into trouble or have a suggestion on how to make this process easier, more modular, or more shareable, please write to the issue board.
+
 ## License
 
 This project is licensed under the MIT License.
