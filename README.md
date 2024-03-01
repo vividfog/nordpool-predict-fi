@@ -260,7 +260,7 @@ You need to update the database to have a complete time series of your new train
 
 5. Convert the new column in your CSV to a set of SQL update statements that set or update the values for that column for every time stamp. Now you have a baseline prediction.db to work with.
 
-   One approach is to use an AI model, such as ChatGPT-4, to generate SQL update statements from the CSV. Here's how you might phrase your request to the model:
+   One approach is to use (Chat)GPT-4 or one of the open-license LLMs to generate SQL update statements from the CSV. Here's how you might phrase your prompt to the model. ChatGPT has a built-in Python interpreter which can do this for a dropped CSV file:
 
    > Take a look at this CSV file. Read the first few lines to learn its structure. Pay attention to the Transmission_FI_SE3 column. I want you to create SQLite3 statements that update the whole database with those values, matching the timestamps you find in the CSV. Focus only on timestamp and Transmission_FI_SE3. Use Python to create a conversion script, then run it, and I'd like to download the final .sql file with the update statements.
 
