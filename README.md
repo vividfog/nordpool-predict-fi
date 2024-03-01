@@ -264,7 +264,7 @@ You need to update the database to have a complete time series of your new train
 
    > Take a look at this CSV file. Read the first few lines to learn its structure. Pay attention to the Transmission_FI_SE3 column. I want you to create SQLite3 statements that update the whole database with those values, matching the timestamps you find in the CSV. Focus only on timestamp and Transmission_FI_SE3. Use Python to create a conversion script, then run it, and I'd like to download the final .sql file with the update statements.
 
-   Then run those update to the database, for example:
+   Then review and commit those updates to the database, for example:
 
    ```shell
    sqlite3 data/prediction.db < my_update_statements.sql
