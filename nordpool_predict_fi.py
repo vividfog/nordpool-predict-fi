@@ -22,8 +22,6 @@ from util.fmi import update_wind_speed, update_temperature
 from util.models import write_model_stats, stats, list_models
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-print(datetime.now().strftime("[%Y-%m-%d %H:%M:%S]"), "Nordpool Predict FI")
-
 try:
     load_dotenv('.env.local')  # take environment variables from .env.local
 except Exception as e:
@@ -81,8 +79,13 @@ parser.add_argument('--github', action='store_true', help='Push the deployed fil
 
 args = parser.parse_args()
 
-# Train a model with new data
+# Start with a timestamp intro to STDOUT, but not if we're here to dump the database as CSV
+if not args.dump:
+    print(datetime.now().strftime("[%Y-%m-%d %H:%M:%S]"), "Nordpool Predict FI")
+
+# Train a model with new data and make it available for the rest of the script
 rf_trained = None
+
 if args.train:
     
     print("Training a new model candidate using the data in the database...")
