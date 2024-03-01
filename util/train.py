@@ -1,30 +1,23 @@
-###
-### TODO: Convert to a routine rather than a script
-###
-
 import pandas as pd
 import numpy as np
-import joblib  # Import joblib for model persistence
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.impute import SimpleImputer
 from datetime import datetime, timedelta
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
 
 import pandas as pd
-import sqlite3
 from datetime import datetime
 import pytz
 
-def train_model(df, output_path, fmisid_ws, fmisid_t):
+def train_model(df, fmisid_ws, fmisid_t):
     
     # Sort the data frame by timestamp
     df = df.sort_values(by='timestamp')
     
-    print("Training the model with data frame:\n", df)
+    # We don't need what we are trying to predict in the training data
+    df = df.drop(columns=['PricePredict_cpkWh'])
 
     # Infer some missing, required time-related features from the timestamp
     df['timestamp'] = pd.to_datetime(df['timestamp'])
@@ -68,7 +61,6 @@ def train_model(df, output_path, fmisid_ws, fmisid_t):
         random_state=42
         )
     rf.fit(X_train, y_train)
-    joblib.dump(rf, output_path)
 
     # Evaluate the model using the filtered dataset
     y_pred_filtered = rf.predict(X_test)
@@ -113,7 +105,7 @@ def train_model(df, output_path, fmisid_ws, fmisid_t):
     # print(f"Mean Random Batch MSE: {samples_mse}")
     # print(f"Mean Random Batch R² score: {samples_r2}")
     
-    return mae, mse, r2, samples_mae, samples_mse, samples_r2
+    return mae, mse, r2, samples_mae, samples_mse, samples_r2, rf
 
 # If trying to execute this script directly, print a message and exit
 "This is not meant to be executed directly."

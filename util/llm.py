@@ -1,6 +1,5 @@
 import datetime
-import requests
-import json
+import sys
 import locale
 import pandas as pd
 import os
@@ -18,7 +17,11 @@ def narrate_prediction(timestamp):
     # print(df)
 
     # Fetch data from the database
-    df_result = db_query('data/prediction.db', df)
+    try:
+        df_result = db_query('data/prediction.db', df)
+    except Exception as e:
+        print(f"Database query failed for OpenAI narration: {e}")
+        sys.exit(1)
 
     # Keep timestamp and predicted price
     df_result = df_result[['timestamp', 'PricePredict_cpkWh']]
@@ -90,18 +93,19 @@ def send_to_gpt(df):
     
     # print(prompt)
     
-    response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {
-                "role": "system",
-                "content": f"{prompt}"
-            },
-        ],
-        temperature=0.3,
-        max_tokens=1024,
-        stream=False,
-    )
+    try:
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": f"{prompt}"},
+            ],
+            temperature=0.3,
+            max_tokens=1024,
+            stream=False,
+        )
+    except Exception as e:
+        print(f"OpenAI API call failed: {e}")
+        sys.exit(1)
 
     return response.choices[0].message.content
 

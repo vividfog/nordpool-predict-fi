@@ -3,6 +3,7 @@ import pandas as pd
 from lxml import etree
 from datetime import datetime, timedelta
 import pytz
+import sys
 
 def get_forecast(fmisid, start_date, parameters, end_date=None):
     """
@@ -35,10 +36,22 @@ def get_forecast(fmisid, start_date, parameters, end_date=None):
         'parameters': ",".join(parameters),
         'timestep': '60'  # Hourly intervals
     }
-    response = requests.get(base_url, params=common_params)
+    
+    try:
+        response = requests.get(base_url, params=common_params)
+        response.raise_for_status()
+    except requests.RequestException as e:
+        print(f"Error fetching data from FMI: {e}")
+        sys.exit(1)
     if response.status_code != 200:
         raise Exception("Failed to fetch data")
-    root = etree.fromstring(response.content)
+    
+    try:
+        root = etree.fromstring(response.content)
+    except etree.XMLSyntaxError as e:
+        print(f"Error parsing XML from FMI response: {e}")
+        sys.exit(1)
+
     data = []
     for member in root.findall('.//BsWfs:BsWfsElement', namespaces=root.nsmap):
         timestamp = member.find('.//BsWfs:Time', namespaces=root.nsmap).text
@@ -48,8 +61,14 @@ def get_forecast(fmisid, start_date, parameters, end_date=None):
 
     # Convert list of dictionaries to DataFrame
     df = pd.DataFrame(data)
-    df['Value'] = pd.to_numeric(df['Value'], errors='coerce')
-    df_pivot = df.pivot(index='Timestamp', columns='Parameter', values='Value').reset_index()
+    
+    try:
+        df['Value'] = pd.to_numeric(df['Value'], errors='coerce')
+        df_pivot = df.pivot(index='Timestamp', columns='Parameter', values='Value').reset_index()
+    except Exception as e:
+        print(f"DataFrame operation failed with FMI data: {e}")
+        sys.exit(1)
+
     return df_pivot
 
 def get_history(fmisid, start_date, parameters, end_date=None):
