@@ -2,10 +2,6 @@
 
 **This is a Python script that predicts electricity prices for the Nordpool FI market. The script fetches a 5-day weather forecast and a wind power forecast, and uses these to predict future Nordpool FI electricity prices, using a trained Random Forest model.**
 
-> [!NOTE]
->
-> **2024-02-29**: The code base went through some significant changes due to an issue with data access (license). Sorry about any inconvenience caused by that. The new code should be a bit more readable too, as the [prediction code](nordpool_predict_fi.py#L175) now needs fewer quicks to work and the helper functions are cleaner. Still some clean-up to do.
-
 - Live version: https://sahkovatkain.web.app (soon)
 
 - You can view "Plan B" predictions here: https://nordpool-predict-fi.web.app
@@ -80,20 +76,22 @@ The script uses environment variables for configuration. These can be set in a f
 How to use:
 
 ```
+usage: nordpool_predict_fi.py [-h] [--train] [--eval] [--training-stats] [--dump] [--past-performance] [--plot] [--predict] [--add-history] [--narrate] [--commit] [--deploy] [--publish] [--github]
+
 options:
   -h, --help          show this help message and exit
-  --dump              Dump the SQLite database to CSV format
-  --plot              Plot all predictions and actual prices to a PNG file in the data folder
-  --fingrid           Update missing nuclear power data
-  --predict           Generate price predictions from now onwards
-  --add-history       Add all missing predictions to the database post-hoc; use with --predict
-  --narrate           Narrate the predictions into text using an LLM
-  --past-performance  Generate past performance stats for 30 days
-  --commit            Commit the results to DB and deploy folder; use with --predict, --narrate, --past-performance
-  --publish           Publish the deployed files to a GitHub repo
   --train             Train a new model candidate using the data in the database
   --eval              Show evaluation metrics for the current database
   --training-stats    Show training stats for candidate models in the database as a CSV
+  --dump              Dump the SQLite database to CSV format
+  --past-performance  Generate past performance stats for recent months
+  --plot              Plot all predictions and actual prices to a PNG file in the data folder
+  --predict           Generate price predictions from now onwards
+  --add-history       Add all missing predictions to the database post-hoc; use with --predict
+  --narrate           Narrate the predictions into text using an LLM
+  --commit            Commit the results to DB and deploy folder; use with --predict, --narrate, --past-performance
+  --deploy            Deploy the output files to the deploy folder but not GitHub
+  --github            Push the deployed files to a GitHub repo; use with --deploy
 ```
 
 See the data/create folder for a set of DB initialization scripts if you need them. You may need to fetch some of the data sets from their original sources.
