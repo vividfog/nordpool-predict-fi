@@ -100,7 +100,7 @@ First make sure you've installed the requirements from requirements.txt. The mai
 
 Examples:
 
-- Start with: `python nordpool_predict_fi.py --predict` to create a set of price predictions for 7 days into the past and 5 days into the future with not commit to DB
+- Start with: `python nordpool_predict_fi.py --predict` to create a set of price predictions for 7 days into the past and 5 days into the future with NO commit to DB
 
 - Longer end to end pipeline: Train a new model, show eval stats for it, update a price forecast data frame with it, narrate the forecast, commit it to your SQLite database and deploy the json/md outputs with that data: `python nordpool_predict_fi.py --train --eval --predict --narrate --commit --deploy`
 
