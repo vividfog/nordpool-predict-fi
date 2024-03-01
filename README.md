@@ -98,21 +98,19 @@ See the data/create folder for a set of DB initialization scripts if you need th
 
 ### How to run locally
 
-First make sure you've installed the requirements from requirements.txt.
+First make sure you've installed the requirements from requirements.txt. The main script is one flow with multiple optional stops, and you can choose one or many of them in almost any combination.
 
-1. Update the price forecast, narrate it, update the SQLite database and json/md outputs: `python nordpool_predict_fi.py --predict --narrate --commit`
+Examples:
 
-   Optionally, you can do a retrospective update to the PricePredict field for the whole DB by including `--add-history` into the command line above.
+- Start with: `python nordpool_predict_fi.py --predict` to create a set of price predictions for 7 days into the past and 5 days into the future with not commit to DB
 
-   This sequence fetches the last known history and forecasts for wind power, temperature, nuclear power and spot prices and constructs a data frame out of them, ready to be committed to the database, again extending it by a few days.
+- Longer end to end pipeline: Train a new model, show eval stats for it, update a price forecast data frame with it, narrate the forecast, commit it to your SQLite database and deploy the json/md outputs with that data: `python nordpool_predict_fi.py --train --eval --predict --narrate --commit --deploy`
 
-   At this point your database (data/prediction.db) will get written with a new set of data. Take a copy of prediction.db just to be sure.
+  Optionally, you can do a retrospective update to the PricePredict field for the whole DB by including `--add-history` into the command line above
 
-2. `python nordpool_predict_fi.py --publish` fetches the latest data from the DB and creates a set of files in the deploy folder. It also tries to update this Github repo, but that will probably fail by design, given that you don't have the keys for that.
+  There is plenty of STDOUT info, it's a good idea to read it to see what's going on
 
-   At this point you should have an updated set of .json files in your `deploy` folder. To know what they are, read up on [deploy/README.md](deploy/README.md).
-
-3. Open `index.html` from the `deploy` folder locally in your browser
+- Open `index.html` from the `deploy` folder locally in your browser to see what you did; also see what's changed in the data and deploy folders
 
 ## How does this model work?
 
