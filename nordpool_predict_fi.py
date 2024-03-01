@@ -440,7 +440,7 @@ if args.publish:
     print(f"Daily averages saved to {json_path}")
 
     # Commit and push the updates to GitHub
-    files_to_push = [predictions_file, averages_file, narration_file]
+    files_to_push = [predictions_file, averages_file, narration_file, past_performance_file]
 
     try:
         if push_updates_to_github(repo_path, deploy_folder_path, files_to_push, commit_message):
