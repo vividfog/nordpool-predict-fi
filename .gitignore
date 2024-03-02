@@ -25,6 +25,7 @@ firebase.json
 deploy/filtered_predictions.csv
 deploy/privacy-policy.html
 deploy/ads.txt
+deploy/prediction_snapshot*
 model/models.db
 .envrc
 .mailmap
