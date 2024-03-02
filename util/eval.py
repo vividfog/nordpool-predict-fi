@@ -6,6 +6,10 @@ import scipy.stats as stats
 from pytz import timezone
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score, mean_absolute_percentage_error
 from .sql import db_query_all
+from datetime import datetime
+import os
+import json
+import fnmatch
 
 def eval(db_path, plot=False):
     # Load the data
@@ -100,3 +104,39 @@ Correlation Coefficients:
     plt.show()
 
     return markdown
+
+def create_prediction_snapshot(folder_path, data, file_prefix, file_extension=".json"):
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    file_name = f"{file_prefix}_{today_str}{file_extension}"
+    file_path = os.path.join(folder_path, file_name)
+
+    # We don't check if the file exists. Today's last prediction is today's final word. We time-stamp the file for the day.
+    try:
+        with open(file_path, 'w') as f:
+            json.dump(data, f, ensure_ascii=False)
+    except Exception as e:
+        print(f"Exception: Eval: Failed to write a snapshot file: {str(e)}")
+        return None
+    else:
+        print(f"→ Eval: Past-prediction-file for today saved to {file_path}")
+        return file_path
+      
+def rotate_snapshots(folder_path, pattern, max_files):
+    try:
+        # List all files that match the pattern
+        files = [os.path.join(folder_path, f) for f in os.listdir(folder_path) if fnmatch.fnmatch(f, pattern)]
+        
+        # Extract dates from filenames and sort files by these dates
+        files.sort(key=lambda x: datetime.strptime(x.split('_')[-1].split('.')[0], "%Y-%m-%d"))
+
+        # Keep only the latest max_files based on these dates
+        files_to_remove = files[:-max_files]
+       
+        for file in files_to_remove:
+            os.remove(file)
+            print(f"→ Eval: Removed old past-prediction-file: {file}")
+        
+    except OSError as e:
+        print("Exception: Eval: %s : %s" % (file, e.strerror))
+    except Exception as e:
+        print("Exception: Eval: An unexpected error occurred: ", e)

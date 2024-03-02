@@ -20,6 +20,7 @@ from util.sql import db_update, db_query_all
 from util.github import push_updates_to_github
 from util.fmi import update_wind_speed, update_temperature
 from util.models import write_model_stats, stats, list_models
+from util.eval import create_prediction_snapshot, rotate_snapshots
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 try:
@@ -407,8 +408,7 @@ if args.past_performance:
 # This argument was previously called --publish but for now they both point here
 # Note that we have a dedicated --github argument to push to GitHub (not many need to use this step)
 if args.deploy:
-    print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-    print("Deploing the latest prediction data to", deploy_folder_path, "...")
+    print("Deploing the latest prediction data:", deploy_folder_path, "...")
     
     publish_df = db_query_all(db_path)
 
@@ -429,24 +429,31 @@ if args.deploy:
 
     # Filter out rows where 'timestamp' is earlier than the start of yesterday in Helsinki, adjusted to UTC
     publish_df = publish_df[publish_df['timestamp'] >= start_of_yesterday_utc]
-
     hourly_predictions = publish_df[['timestamp', 'PricePredict_cpkWh']].copy()
     hourly_predictions['timestamp'] = hourly_predictions['timestamp'].dt.tz_localize(None) if hourly_predictions['timestamp'].dt.tz is not None else hourly_predictions['timestamp']
     hourly_predictions['timestamp'] = hourly_predictions['timestamp'].apply(
         lambda x: (x - pd.Timestamp("1970-01-01")) // pd.Timedelta('1ms')
     )
 
+    # Write prediction.json to the deploy folder
     json_data_list = hourly_predictions.values.tolist()
     json_data = json.dumps(json_data_list, ensure_ascii=False)
     json_path = os.path.join(deploy_folder_path, predictions_file)
     with open(json_path, 'w') as f:
         f.write(json_data)
-    print(f"Hourly predictions saved to {json_path}")
+    print(f"→ Hourly predictions saved to {json_path}")
+
+    # Create/update the snapshot JSON file for today's predictions
+    # TODO: Remove fixed file name, derive from .env.local
+    create_prediction_snapshot(deploy_folder_path, json_data_list, "prediction_snapshot")
+
+    # Rotate snapshots to maintain only the latest 6 (+today=7)
+    # TODO: Remove fixed file name, derive from .env.local
+    rotate_snapshots(deploy_folder_path, pattern="prediction_snapshot*", max_files=6)
 
     # Normalize 'timestamp' to set the time to 00:00:00 for daily average grouping
     publish_df['timestamp'] = publish_df['timestamp'].dt.tz_localize(None) if publish_df['timestamp'].dt.tz is not None else publish_df['timestamp']
     publish_df['timestamp'] = publish_df['timestamp'].dt.normalize()
-
     daily_averages = publish_df.groupby('timestamp')['PricePredict_cpkWh'].mean().reset_index()
 
     # Before applying lambda, ensure 'timestamp' is timezone-naive for consistency
@@ -454,12 +461,13 @@ if args.deploy:
         lambda x: (x - pd.Timestamp("1970-01-01")) // pd.Timedelta('1ms')
     )
 
+    # Save the daily averages to a JSON file in the deploy folder
     json_data_list = daily_averages[['timestamp', 'PricePredict_cpkWh']].values.tolist()
     json_data = json.dumps(json_data_list, ensure_ascii=False)
     json_path = os.path.join(deploy_folder_path, averages_file)
     with open(json_path, 'w') as f:
         f.write(json_data)
-    print(f"Daily averages saved to {json_path}")
+    print(f"→ Daily averages saved to {json_path}")
 
     # Commit and push the updates to GitHub
     if args.github:
