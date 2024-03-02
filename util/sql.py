@@ -112,5 +112,72 @@ def db_query_all(db_path):
     data = pd.read_sql_query(query, conn)
     conn.close()
     return data
+
+def add_prediction_snapshot(db_path, predictions):
+    """
+    Insert a new prediction snapshot and its details into the database.
+    
+    Parameters:
+    - db_path: Path to the SQLite database file.
+    - predictions: List of dictionaries, where each dictionary contains the timestamp and the predicted price.
+    """
+    try:
+        conn = sqlite3.connect(db_path)
+        cur = conn.cursor()
+
+        # Insert into prediction_snapshot table
+        cur.execute("INSERT INTO prediction_snapshot (snapshot_date) VALUES (CURRENT_TIMESTAMP)")
+        snapshot_id = cur.lastrowid
+
+        # Insert each prediction detail
+        for prediction in predictions:
+            cur.execute("INSERT INTO snapshot_details (snapshot_id, timestamp, PricePredict_cpkWh) VALUES (?, ?, ?)",
+                        (snapshot_id, prediction['timestamp'], prediction['PricePredict_cpkWh']))
+
+        conn.commit()
+    except sqlite3.Error as e:
+        print(f"SQL: Error while adding a prediction snapshot: {e}")
+    finally:
+        conn.close()
+        
+def fetch_prediction_snapshots(db_path, limit=4):
+    """
+    Fetch the last N prediction snapshots from the database.
+    
+    Parameters:
+    - db_path: Path to the SQLite database file.
+    - limit: Number of recent snapshots to retrieve.
+    
+    Returns:
+    - A list of dictionaries, each representing a snapshot with its details.
+    """
+    snapshots = []
+    try:
+        conn = sqlite3.connect(db_path)
+        cur = conn.cursor()
+
+        # Fetch the last N snapshots
+        cur.execute("""
+            SELECT ps.snapshot_id, ps.snapshot_date, sd.timestamp, sd.PricePredict_cpkWh
+            FROM prediction_snapshot ps
+            JOIN snapshot_details sd ON ps.snapshot_id = sd.snapshot_id
+            ORDER BY ps.snapshot_date DESC, sd.timestamp
+            LIMIT ?
+        """, (limit,))
+
+        rows = cur.fetchall()
+        for row in rows:
+            snapshots.append({
+                'snapshot_id': row[0],
+                'snapshot_date': row[1],
+                'timestamp': row[2],
+                'PricePredict_cpkWh': row[3],
+            })
+    except sqlite3.Error as e:
+        print(f"SQL: Error while fetching snapshots: {e}")
+    finally:
+        conn.close()
+
+    return snapshots
     
 "This script is not meant to be executed directly."
