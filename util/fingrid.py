@@ -109,8 +109,19 @@ def update_nuclear(df, fingrid_api_key):
         nuclear_df['startTime'] = pd.to_datetime(nuclear_df['startTime'], utc=True)
         nuclear_df.set_index('startTime', inplace=True)
         hourly_nuclear_df = nuclear_df.resample('H').mean().reset_index()
+
+        # Log the Fingrid data fetch and aggregation results        
+        print(f"* Fingrid: Fetched {len(nuclear_df)} hours, aggregated to {len(hourly_nuclear_df)} hourly averages spanning from {hourly_nuclear_df['startTime'].min().strftime('%Y-%m-%d')} to {hourly_nuclear_df['startTime'].max().strftime('%Y-%m-%d')}")
         
-        # print(f"Fetched {len(nuclear_df)} hours, aggregated to {len(hourly_nuclear_df)} hourly averages spanning from {hourly_nuclear_df['startTime'].min()} to {hourly_nuclear_df['startTime'].max()}.")
+        # print("* Fingrid: DEBUG: Last few rows of nuclear power production data:\n", hourly_nuclear_df.tail())
+        
+        # Log the last known nuclear power production value
+        last_known = hourly_nuclear_df['NuclearPowerMW'].dropna().iloc[-1]
+        print(f"→ Fingrid: Using last known nuclear power production value: {round(last_known)} MW")
+        
+        # Drop the past NuclearPowerMW column from the original DataFrame
+        if 'NuclearPowerMW' in df.columns:
+            df.drop(columns=['NuclearPowerMW'], inplace=True)
         
         df['Timestamp'] = pd.to_datetime(df['Timestamp'], utc=True)
         merged_df = pd.merge(df, hourly_nuclear_df, left_on='Timestamp', right_on='startTime', how='left')
