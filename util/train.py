@@ -102,7 +102,7 @@ def train_model(df, fmisid_ws, fmisid_t):
     #     n_jobs=1, # One for this hardware, try -1 for yours 
     #     random_state=42
     # )
-    # print(f"  Baseline MSE: {-score:.4f}")  # Negating score because we used neg_mean_squared_error
+    # print(f"  Permutations Baseline MSE: {-score:.4f}")  # Negating score because we used neg_mean_squared_error
     # print(f"  Permutation Scores Mean MSE: {-permutation_scores.mean():.4f}")
     # print(f"  p-value: {pvalue:.4f}")
     
