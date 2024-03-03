@@ -27,7 +27,7 @@ NuclearPowerMW    0.087611
   Lag 5: 0.0133
   Lag 6: -0.0285
 → Permutation Test Results (will take LONG while):
-  Baseline MSE: 17.3964
+  Permutations Baseline MSE: 17.3964
   Permutation Scores Mean MSE: 90.6635
   p-value: 0.0099
 → Model trained:
