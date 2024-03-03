@@ -14,42 +14,7 @@ This repository contains all the code and much of the data to re-train the model
 
 ## Model performance
 
-You can get a general idea of the model's performance from the chart below. **TLDR:** The model is generally aware of the general price levels and patterns for a given day and hour — but it doesn't catch every spike in every detail.
-
-**Legend:** Realized Nordpool price is blue. Model-generated prediction is orange. The Y axis represents market price with VAT 24%, cents per kilowatt-hour (c/kWh). 
-
-<img src="data/plot.png" alt="Sample output" style="zoom: 50%;" />
-
-## Quantitative metrics
-
-To explain the model's performance in statistical terms, this is what the model predicts, when sampling all of the predictions vs their known Nordpool values. There is currently no "rolling evaluation" that measures the model against its past versions. There is a semi-frequent re-training though, to always include the latest available data.
-
-> - **MAE (Mean Absolute Error): 1.31 cents/kWh**
->   This measures the average magnitude of errors in the model's predictions, without considering their direction. In simple terms, it shows how much, on average, the model's price predictions are off from the actual prices.
->
-> - **MSE (Mean Squared Error): 12.01 (cents/kWh)^2**
->   This squares the errors before averaging, which means it gives more weight to larger errors. This metric is useful for identifying whether the model is making any significantly large errors.
->
-> - **RMSE (Root Mean Squared Error): 3.47 cents/kWh**
->   This is the square root of MSE, bringing the error units back to the same units as the prices (cents per kWh). It's useful for understanding the magnitude of error in the same units as the target variable.
->
-> - **R^2 (Coefficient of Determination): 0.856**
->   This indicates how much of the variance in the actual prices is explained by the model. A score of 1 means the model perfectly predicts the prices, while a score closer to 0 means the model fails to accurately predict the prices.
->
-> - **sMAPE (Symmetric Mean Absolute Percentage Error): 36.1%**
->   This provides an intuitive understanding of the average error in percentage terms. It treats overpredictions and underpredictions equally. A value closer to 0% indicates more accurate predictions.
->
-> - **Pearson Correlation Coefficient: 0.935**
->   This measures the linear correlation between the actual and predicted prices. A coefficient of 1 indicates a perfect positive linear correlation, meaning the model's predictions perfectly align with the actual prices in a linear fashion.
->
-> - **Spearman Rank Correlation Coefficient: 0.964**
->   This assesses how well the relationship between the model's predictions and the actual prices can be described using a monotonic function. It does not assume a linear relationship but rather that the rankings of actual and predicted prices match.
->   
->   (Last updated: 2024-02-29, could be outdated)
-
-The model might be overfit to historical data. Yet its primary function is to predict short-term outcomes, where it has been useful in practice, determining the near-term direction and range quite accurately.  It remains to be seen, how well the model copes over the full year of 2024. See the [model](model) folder for when the model was last trained.
-
-To recalculate these numbers, use the command `python nordpool_predict_fi.py --eval`.
+TODO
 
 ## Co-authors
 

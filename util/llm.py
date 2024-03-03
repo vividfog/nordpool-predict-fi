@@ -47,8 +47,7 @@ def narrate_prediction(timestamp):
     df_result['date'] = df_result['timestamp'].dt.date
     # print(df_result)
     df_result = df_result.groupby('date').agg({'PricePredict_cpkWh': ['min', 'max', 'mean']})
-    # print(df_result)
-
+    print("→ Narration stats:\n", df_result)
     narrative = send_to_gpt(df_result)
     
     # Return the prediction as text
