@@ -83,7 +83,6 @@ def train_model(df, fmisid_ws, fmisid_t):
     print(f"→ Durbin-Watson Statistic: {dw_stat:.2f}")
     
     # Autocorrelation Function for the first 5 lags
-    # Note: Adjust the number of lags as needed
     acf_values = acf(residuals, nlags=5, fft=False)
     print("→ ACF values for the first 5 lags:")
     for lag, value in enumerate(acf_values, start=1):
