@@ -121,7 +121,7 @@ if args.train:
     # Train a model and fetch the stats for it
     mae, mse, r2, samples_mae, samples_mse, samples_r2, rf_trained = train_model(df, fmisid_ws=fmisid_ws, fmisid_t=fmisid_t)
     
-    print(f"→ Model trained:\n  MAE (vs test set): {mae}\n  MSE (vs test set): {mse}\n  R² (vs test set): {r2}\n  MAE (random samples): {samples_mae}\n  MSE (random samples): {samples_mse}\n  R² (random samples): {samples_r2})")
+    print(f"→ Model trained:\n  MAE (vs test set): {mae}\n  MSE (vs test set): {mse}\n  R² (vs test set): {r2}\n  MAE (vs 10x500 randoms): {samples_mae}\n  MSE (vs 10x500 randoms): {samples_mse}\n  R² (vs 10x500 randoms): {samples_r2})")
 
     if args.commit:
         joblib.dump(rf_trained, model_path)

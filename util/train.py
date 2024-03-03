@@ -6,6 +6,8 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.impute import SimpleImputer
 from datetime import datetime, timedelta
+from statsmodels.stats.stattools import durbin_watson
+from statsmodels.tsa.stattools import acf
 
 import pandas as pd
 from datetime import datetime
@@ -61,9 +63,32 @@ def train_model(df, fmisid_ws, fmisid_t):
         random_state=42
         )
     rf.fit(X_train, y_train)
+    
+    # After training the model, extract feature importances
+    feature_importances = rf.feature_importances_
+    features = X_train.columns
+    importance_df = pd.DataFrame({'Feature': features, 'Importance': feature_importances}).sort_values(by='Importance', ascending=False)
+
+    # Display the feature importances
+    print("→ Feature Importance:")
+    print(importance_df.to_string(index=False))
 
     # Evaluate the model using the filtered dataset
     y_pred_filtered = rf.predict(X_test)
+    
+    residuals = y_test - y_pred_filtered
+    
+    # Durbin-Watson Statistic
+    dw_stat = durbin_watson(residuals)
+    print(f"→ Durbin-Watson Statistic: {dw_stat:.2f}")
+    
+    # Autocorrelation Function for the first 5 lags
+    # Note: Adjust the number of lags as needed
+    acf_values = acf(residuals, nlags=5, fft=False)
+    print("→ ACF values for the first 5 lags:")
+    for lag, value in enumerate(acf_values, start=1):
+        print(f"  Lag {lag}: {value:.4f}")
+    
     # print("\nResults for the model (Random Forest):")
     mae = mean_absolute_error(y_test, y_pred_filtered)
     mse = mean_squared_error(y_test, y_pred_filtered)
