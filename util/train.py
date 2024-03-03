@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
+from sklearn.model_selection import permutation_test_score
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
@@ -8,6 +9,7 @@ from sklearn.impute import SimpleImputer
 from datetime import datetime, timedelta
 from statsmodels.stats.stattools import durbin_watson
 from statsmodels.tsa.stattools import acf
+from sklearn.utils import shuffle
 
 import pandas as pd
 from datetime import datetime
@@ -17,6 +19,9 @@ def train_model(df, fmisid_ws, fmisid_t):
     
     # Sort the data frame by timestamp
     df = df.sort_values(by='timestamp')
+    
+    # Or we can shuffle to get a bit less accurate but more generalized model
+    # df = shuffle(df, random_state=42)
     
     # We don't need what we are trying to predict in the training data
     df = df.drop(columns=['PricePredict_cpkWh'])
@@ -52,6 +57,7 @@ def train_model(df, fmisid_ws, fmisid_t):
         test_size=0.2, 
         random_state=42
         )
+    
     # These do make a difference. Current set of parameters is the best we have found so far.
     # TODO: A routine that self-optimizes these values to find the best combination of parameters would be a good addition to the project.
     rf = RandomForestRegressor(
@@ -64,29 +70,41 @@ def train_model(df, fmisid_ws, fmisid_t):
         )
     rf.fit(X_train, y_train)
     
-    # After training the model, extract feature importances
+    # Feature importances
     feature_importances = rf.feature_importances_
     features = X_train.columns
     importance_df = pd.DataFrame({'Feature': features, 'Importance': feature_importances}).sort_values(by='Importance', ascending=False)
-
-    # Display the feature importances
     print("→ Feature Importance:")
     print(importance_df.to_string(index=False))
 
     # Evaluate the model using the filtered dataset
     y_pred_filtered = rf.predict(X_test)
-    
     residuals = y_test - y_pred_filtered
     
-    # Durbin-Watson Statistic
+    # Durbin-Watson test for autocorrelation
     dw_stat = durbin_watson(residuals)
-    print(f"→ Durbin-Watson Statistic: {dw_stat:.2f}")
+    print(f"→ Durbin-Watson autocorrelation test: {dw_stat:.2f}")
     
     # Autocorrelation Function for the first 5 lags
     acf_values = acf(residuals, nlags=5, fft=False)
     print("→ ACF values for the first 5 lags:")
     for lag, value in enumerate(acf_values, start=1):
         print(f"  Lag {lag}: {value:.4f}")
+        
+    # # Permutation Test
+    # # This will take long; uncomment if you want to run it
+    # print(f"→ Permutation Test Results (will take LONG while):")
+    # score, permutation_scores, pvalue = permutation_test_score(
+    #     rf, X_train, y_train, 
+    #     scoring="neg_mean_squared_error", 
+    #     cv=5, 
+    #     n_permutations=100, 
+    #     n_jobs=1, # One for this hardware, try -1 for yours 
+    #     random_state=42
+    # )
+    # print(f"  Baseline MSE: {-score:.4f}")  # Negating score because we used neg_mean_squared_error
+    # print(f"  Permutation Scores Mean MSE: {-permutation_scores.mean():.4f}")
+    # print(f"  p-value: {pvalue:.4f}")
     
     # print("\nResults for the model (Random Forest):")
     mae = mean_absolute_error(y_test, y_pred_filtered)
@@ -131,5 +149,4 @@ def train_model(df, fmisid_ws, fmisid_t):
     
     return mae, mse, r2, samples_mae, samples_mse, samples_r2, rf
 
-# If trying to execute this script directly, print a message and exit
 "This is not meant to be executed directly."
