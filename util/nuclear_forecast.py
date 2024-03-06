@@ -17,7 +17,9 @@ Forecast is based on market messages available from Entso-E
     - pd.DataFrame: A pandas DataFrame with a row for each hour of the specified date range and column for forecasted Nuclear production
     """
 
-def fetch_nuclear_power_forecast_data(api_key):
+def fetch_nuclear_power_forecast_data(ensto-e_api_key):
+  
+client = EntsoePandasClient(api_key=ensto-e_api_key)
 
 # Total nuclear capacity in Finland is 4372 MW (2 x 890 MW, 1 x 1600 MW and 2 x 496 MW)
 total_capacity = 4372
