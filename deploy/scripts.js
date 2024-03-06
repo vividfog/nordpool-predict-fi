@@ -40,7 +40,7 @@ fetch(`${baseUrl}/narration.md`)
 var nfpChart = echarts.init(document.getElementById('predictionChart'));
 
 // Calculate start and end dates for Sähkötin
-var startDate = addDays(new Date(), -1).toISOString();
+var startDate = addDays(new Date(), -2).toISOString();
 var endDate = addDays(new Date(), 2).toISOString();
 
 // URLs for the datasets
@@ -258,128 +258,203 @@ function updateMarkerPosition() {
 }
 
 // Call the updateMarkerPosition function to update the marker
-setInterval(updateMarkerPosition, 3000); // 3000 milliseconds = check every 3 seconds
+setInterval(updateMarkerPosition, 10000); // 10000 milliseconds = check every 10 seconds
 
 // END: eCharts code predictions
 
 //////////////////////////////////////////////////////////////////////////
-// eCharts code for HISTORY chart
-var pastPredictions = echarts.init(document.getElementById('pastPredictions'));
+// START: eCharts code for historyChart
 
-// Fetch the data and display the chart
-Promise.all([
-    fetch(`${baseUrl}/past_performance.json`).then(r => r.json()) // Fetching past performance data
-])
-    .then(([jsonData]) => {
-        var actualPriceData = jsonData.data.find(series => series.name === "Actual Price").data
-            .map(item => [new Date(item[0]).getTime(), item[1]]);
-        var predictedPriceData = jsonData.data.find(series => series.name === "Predicted Price").data
-            .map(item => [new Date(item[0]).getTime(), item[1]]);
+// Make sure ECharts is loaded and the DOM element exists
+var historyChart = echarts.init(document.getElementById('historyChart'));
 
-        pastPredictions.setOption({
-            title: {
-                text: ' '
+// Utility function to generate date strings for the past 14 days
+function getPastDateStrings(count) {
+    const dates = [];
+    for (let i = 0; i < count; i++) {
+        const d = new Date();
+        d.setDate(d.getDate() - i);
+        dates.push(d.toISOString().split('T')[0]); // Format YYYY-MM-DD
+    }
+    return dates;
+}
+
+// Construct URLs for fetching historical data
+const dateStrings = getPastDateStrings(14);
+const historicalUrls = dateStrings.map(date => `${baseUrl}/prediction_snapshot_${date}.json`);
+console.log("Datestrings: ", historicalUrls);
+
+// Fetch and process historical data from the constructed URLs
+function fetchHistoricalData(urls) {
+    console.log("fetchHistoricalData trying: ", urls);
+    return Promise.all(urls.map(url =>
+        fetch(url).then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+            }
+            return response.json();
+        }).catch(error => {
+            console.error("Fetching error for URL:", url, error);
+            return null; // Returning null for failed requests to filter them out later
+        })
+    ));
+}
+
+// Function to set up the history chart with fetched data
+function setupHistoryChart(data) {
+    const cleanedData = data.filter(item => item !== null).slice(1);
+    console.log("setupHistoryChart with: ", cleanedData);
+
+    const series = cleanedData.map((seriesData, index) => ({
+        name: index === 0 ? "Uusin" : `${0 - index} pv sitten`,
+        type: 'line',
+        data: seriesData.map(item => [item[0], item[1]]),
+        symbol: 'none',
+        lineStyle: {
+            width: index === 0 ? 2 : 1,
+            type: index === 0 ? 'solid' : 'dotted'
+        },
+        color: 'dodgerblue',
+        opacity: Math.pow(0.9, index),
+    }));
+
+    // Add a separate series item for the markLine
+    series.push({
+        type: 'line',
+        data: [], // No line data needed, markLine will be used instead
+        markLine: {
+            symbol: 'none',
+            label: {
+                formatter: 'Nyt',
+                position: 'end'
             },
-            legend: {
-                data: ['Nordpool', 'Ennuste'],
-                right: 16
+            lineStyle: {
+                type: 'dotted',
+                color: 'skyblue',
+                width: 1.5
             },
-            toolbox: {
-                // Not optimal on mobile, so disabled for now   
-                // feature: {
-                //     dataZoom: {
-                //         yAxisIndex: 'none'
-                //     },
-                //     restore: {},
-                //     saveAsImage: {}
-                // }
-            },
-            dataZoom: [
-                // {
-                //     type: 'inside',
-                //     start: 66,
-                //     end: 100
-                // },
+            data: [
                 {
-                    type: 'slider',
-                    start: 66,
-                    end: 100
-                }
-            ],
-            tooltip: {
-                trigger: 'axis',
-                formatter: function (params) {
-                    var result = params[0].axisValueLabel + '<br/>';
-                    params.forEach(function (item) {
-                        var valueRounded = item.value[1].toFixed(1);
-                        result += item.marker + " " + item.seriesName + ': ' + valueRounded + ' ¢/kWh<br/>';
-                    });
-                    return result;
-                }
-            },
-            xAxis: {
-                type: 'time',
-                boundaryGap: false,
-                axisLabel: {
-                    formatter: function (value) {
-                        var date = new Date(value);
-                        return date.toLocaleDateString('fi-FI');
-                    },
-                    rotate: 45,
-
-                }
-            },
-            yAxis: {
-                type: 'value',
-                name: '¢/kWh ALV24',
-                nameLocation: 'end',
-                nameGap: 20,
-                axisLabel: {
-                    formatter: '{value}'
-                }
-            },
-            series: [
-                {
-                    name: 'Nordpool',
-                    type: 'line',
-                    data: actualPriceData,
-                    symbol: 'none',
-                    symbolSize: 6,
-                    smooth: true,
-                    lineStyle: {
-                        color: 'skyblue',
-                        width: 1
-                    },
-                    itemStyle: {
-                        color: 'skyblue'
-                    }
-                },
-                {
-                    name: 'Ennuste',
-                    type: 'line',
-                    data: predictedPriceData,
-                    symbol: 'none',
-                    symbolSize: 6,
-                    smooth: true,
-                    lineStyle: {
-                        color: 'darkorange',
-                        width: 1
-                    },
-                    itemStyle: {
-                        color: 'darkorange'
-                    },
-
+                    xAxis: new Date().getTime()
                 }
             ]
-        });
-    })
-    .catch(error => {
-        console.error('Error fetching or processing data:', error);
+        }
     });
-// END: eCharts code for history
+
+    historyChart.setOption({
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                var result = params[0].axisValueLabel + '<br/>';
+                params.forEach(function (item) {
+                    if (item.seriesType === 'line') {
+                        var valueRounded = item.value[1] ? item.value[1].toFixed(1) : '';
+                        result += item.marker + " " + item.seriesName + ': ' + valueRounded + ' ¢/kWh<br/>';
+                    }
+                });
+                return result;
+            }
+        },
+        xAxis: {
+            type: 'time',
+            boundaryGap: false,
+            axisLabel: {
+                interval: 0,
+                formatter: function (value) {
+                    var date = new Date(value);
+                    return date.toLocaleDateString('fi-FI');
+                },
+                rotate: 45,
+            }
+        },
+        yAxis: {
+            type: 'value',
+            name: '¢/kWh ALV24',
+            nameLocation: 'end',
+            nameGap: 20,
+            max: value => Math.ceil(value.max / 10) * 10,
+            nameTextStyle: {
+                fontWeight: 'regular'
+            },
+            axisLabel: {
+                formatter: function (value) {
+                    return value.toFixed(0);
+                }
+            }
+        },
+        series: series
+    });
+
+    console.log("setupHistoryChart with", series.length, "series");
+    return series.length;
+}
+
+
+function setupSahkotinData(nrSeries) {
+    // Assuming you've already calculated the start and end dates based on your requirement
+    const startDate = getPastDateStrings(7).pop(); // Gets the earliest date from your range
+    var endDate = addDays(new Date(), 2).toISOString();
+
+    const sahkotinUrl = 'https://sahkotin.fi/prices.csv';
+    const sahkotinParams = new URLSearchParams({
+        fix: 'true',
+        vat: 'true',
+        start: startDate,
+        end: endDate,
+    });
+
+    // Fetch Sähkötin data
+    fetch(`${sahkotinUrl}?${sahkotinParams}`)
+        .then(response => response.text())
+        .then(csvData => {
+            const sahkotinData = processSahkotinCsv(csvData);
+            // Add Sähkötin data to chart
+            addSahkotinDataToChart(sahkotinData, nrSeries);
+        })
+        .catch(error => console.error("Error fetching Sähkötin data:", error));
+}
+
+function processSahkotinCsv(csvData) {
+    // Convert CSV to format expected by ECharts ([date, value] pairs)
+    const lines = csvData.split('\n').slice(1); // Skip header
+    return lines.map(line => {
+        const [timestamp, price] = line.split(',');
+        // Convert timestamp to time and price to float
+        return [new Date(timestamp).getTime(), parseFloat(price)];
+    });
+}
+
+function addSahkotinDataToChart(sahkotinData, nrSeries) {
+    const sahkotinSeries = {
+        name: 'Nordpool',
+        type: 'line',
+        data: sahkotinData,
+        symbol: 'none',
+        step: 'middle',
+        lineStyle: {
+            type: 'solid',
+            width: 2
+        },
+        color: 'orange'
+    };
+
+    // Assuming 'historyChart' is accessible here; if not, you might need to make it globally accessible
+    historyChart.setOption({
+        series: historyChart.getOption().series.concat(sahkotinSeries)
+    });
+}
+
+
+// Fetch historical data and set up the chart
+fetchHistoricalData(historicalUrls).then(data => {
+    var nrSeries = setupHistoryChart(data);
+    setupSahkotinData(nrSeries);
+}).catch(error => console.error("Error in chart setup:", error));
+
+// END: eCharts code for historyChart
 
 // Resize the chart when the window is resized
 window.onresize = function () {
     nfpChart.resize();
-    pastPredictions.resize();
+    historyChart.resize();
 }

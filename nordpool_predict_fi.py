@@ -123,7 +123,8 @@ if args.train:
     
     print(f"→ Model trained:\n  MAE (vs test set): {mae}\n  MSE (vs test set): {mse}\n  R² (vs test set): {r2}\n  MAE (vs 10x500 randoms): {samples_mae}\n  MSE (vs 10x500 randoms): {samples_mse}\n  R² (vs 10x500 randoms): {samples_r2}")
 
-    if args.commit:
+    # If we're moving towards --predict, we're not saving, it's continuous training then
+    if args.commit and not args.predict:
         joblib.dump(rf_trained, model_path)
         print(f"→ Model saved to {model_path}")
 
@@ -132,7 +133,7 @@ if args.train:
         print("→ Model stats added to the database.")
         print("→ Training done.")
     else:
-        print("→ Model NOT saved to the database (no --commit).")
+        print("→ Model NOT saved to the database but left in memory.")
         print("→ Training done.")
 
 # Show evals based on the current database

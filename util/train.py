@@ -51,10 +51,12 @@ def train_model(df, fmisid_ws, fmisid_t):
     y_filtered = df_filtered['Price_cpkWh']
 
     # Train the first model (Random Forest) on the filtered data
+    # During CONTINUOUS in-memory training for every forecast, we use all the data we have available
+    # TODO: Make a --continuous option explicit, not implicit like it is now, if also running --prediction
     X_train, X_test, y_train, y_test = train_test_split(
         X_filtered, 
         y_filtered, 
-        test_size=0.2, 
+        test_size=0.1,  # Change this ratio before saving a model and running evals
         random_state=42
         )
     

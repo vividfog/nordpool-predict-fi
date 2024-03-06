@@ -17,20 +17,20 @@
     <title>Pörssisähkön hintaennuste</title>
 </head>
 <body>
-    <div id="topdisclaimer"> </div>
+    <div id="topdisclaimer">Sivusta on alkanut ilmestyä kopioita. Tarkista että sivun osoite on https://sahkovatkain.web.app ja älä jaa muita linkkejä.</div>
     <div id="predictionText">
         <h1 style="padding-top: 16px">Pörssisähkön hintaennuste</h1>
         <p><strong>Tämä kokeellinen koneoppimismalli haarukoi pörssisähkön kuluttajahintaa noin 5 pv eteenpäin. Malli peilaa mm. ennustettua säätä, sähköntuotantoa ja nykyistä kuukautta/viikonpäivää aiempiin ajanjaksoihin, joissa nämä seikat olivat samankaltaiset.</strong></p>
-        <p>Vaikka malli on toisinaan yllättävänkin tarkka, sen tuottamaan ennusteeseen tulee suhtautua varauksella. Se ei huomioi tulevia poikkeuspäiviä, kuten esim. ydinvoimaloiden tai siirtoyhteyksien huoltokatkoja. Sääennuste voi vielä muuttua, ja tämä vaikuttaa lähipäivien hintaan. Ennuste päivittyy muutaman kerran päivässä uusimman datan pohjalta.</p>
+        <p>Vaikka malli on toisinaan yllättävänkin tarkka, sen tuottamaan ennusteeseen tulee suhtautua varauksella. Se ei huomioi tulevia poikkeuspäiviä, kuten esim. ydinvoimaloiden tai siirtoyhteyksien huoltokatkoja. Sääennuste voi vielä muuttua, ja tämä vaikuttaa lähipäivien hintaan. Malli ja ennuste päivittyvät muutaman kerran päivässä uusimman datan pohjalta.</p>
         <p>Nordpool-hinta näkyy liikennevalon väreillä. Mallin ennuste sinisellä katkoviivalla.</p>
         <p id="predictionChart"></p>
         <h1>Lähipäivien hintakehitys</h1>
         <p id="llm">Teksti on luotu koneellisesti kielimallin avulla.</p>
         <p id="narration"></p>
-        <h1>Toteutunut hinta vs. arvio</h1>
-        <p>Graafi kertoo, miten pörssihinta ja mallin siitä oppima arvio vertautuvat toisiinsa: "Mitä tämän sivun malli arvaisi sähkön hinnaksi näissä menneissä olosuhteissa?" Vie hiiri graafin päälle tai siirrä/tiivistä/laajenna aikajanaa, niin näet lisää.</p>
-        <p><strong>Huom:</strong> Tulevaisuudessa samat sää- ja tuotanto-olosuhteet saattavat johtaa aivan erilaiseen hintaan, jolloin malli ennusteineen on väärässä.</p>
-        <p id="pastPredictions"></p>
+        <h1>Ennusteen kehitys</h1>
+        <p>Graafi kertoo, miten mallin ennusteet ovat kehittyneet ajan yli. Tämä saattaa auttaa hahmottamaan, mihin suuntaan ennuste on menossa. Isoja mielenmuutoksia voi tulla esim. mallin päivityksen jälkeen, tai jos sääennuste on muuttunut paljon, tai jos ohjelmointivirhe on sotkenut aiemman ennusteen.</p>
+        <p>Oranssi viiva on toteutunut Nordpool-hinta. Vahva sininen viiva on uusin ennuste. Ohenevat siniset viivat ovat aiempia ennusteita aiemmilta päiviltä.</p>    
+        <div id="historyChart" style="height: 40vh; width: 100%; max-width: 920px; margin: auto; box-sizing: border-box; padding-top: 32px;"></div>
         <h1 style="padding-top: 32px">Mitä ennuste huomioi?</h1>
         <p>Kyseessä on <a href="https://statquest.org/statquest-random-forests-part-1-building-using-and-evaluating/" target="_blank">Random Forest</a> -koneoppimismalli, joka hakee korrelaatioita eri muuttujien välillä ja oppii, millaiseen hintaan kukin yhdistelmä historian perusteella johtaa. Tämä ei siis ole aikasarjaennuste, vaan jokainen tunti saa arvonsa erikseen näiden tietojen perusteella:</p>
         <li><strong>Isoimpien tuulivoima-alueiden tuuliennuste:</strong> FMI-sääasemat, eli epäsuorasti tuulivoiman määrä</li>
