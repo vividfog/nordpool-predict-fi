@@ -1,10 +1,10 @@
 """
-USAGE: python find_hyperparameters.py path_to_your_data.csv
+USAGE: python find_hyperparameters.py path_to_your_dump.csv
 
 This script takes in a csv file containing a dataset and applies GridSearchCV using RandomForestRegressor.
 It then outputs the best hyperparameters for the model based on the data.
 
-The script requires a path to a csv file as a command-line argument.
+The script requires a path to a dump.csv file as a command-line argument.
 
 Example:
     $ python find_hyperparameters.py dataset.csv
