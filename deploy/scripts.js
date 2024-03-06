@@ -238,7 +238,7 @@ Promise.all([
 
 // Function to update the vertical marker position
 function updateMarkerPosition() {
-    console.log('A new minute, a new marker position!');
+    console.log('marker position update...');
     var currentTime = new Date().getTime(); // Get current time in milliseconds
 
     // Update the markLine data for the current time marker
@@ -282,20 +282,22 @@ function getPastDateStrings(count) {
 // Construct URLs for fetching historical data
 const dateStrings = getPastDateStrings(14);
 const historicalUrls = dateStrings.map(date => `${baseUrl}/prediction_snapshot_${date}.json`);
-console.log("Datestrings: ", historicalUrls);
+// console.log("Datestrings: ", historicalUrls);
 
 // Fetch and process historical data from the constructed URLs
 function fetchHistoricalData(urls) {
-    console.log("fetchHistoricalData trying: ", urls);
+    // console.log("fetchHistoricalData trying: ", urls);
     return Promise.all(urls.map(url =>
         fetch(url).then(response => {
             if (!response.ok) {
-                throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+                // DEBUG only, not all files are supposed to exist
+                // throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
             }
             return response.json();
         }).catch(error => {
-            console.error("Fetching error for URL:", url, error);
-            return null; // Returning null for failed requests to filter them out later
+            // DEBUG only, not all files are supposed to exist
+            // console.error("Fetching error for URL:", url, error);
+            return null; // Return null for snapshots that don't (yet) exist
         })
     ));
 }
@@ -303,7 +305,7 @@ function fetchHistoricalData(urls) {
 // Function to set up the history chart with fetched data
 function setupHistoryChart(data) {
     const cleanedData = data.filter(item => item !== null).slice(1);
-    console.log("setupHistoryChart with: ", cleanedData);
+    console.log("setupHistoryChart found these snapshots: ", cleanedData);
 
     const series = cleanedData.map((seriesData, index) => ({
         name: index === 0 ? "Uusin" : `${0 - index} pv sitten`,
@@ -385,7 +387,7 @@ function setupHistoryChart(data) {
         series: series
     });
 
-    console.log("setupHistoryChart with", series.length, "series");
+    console.log("setupHistoryChart found", series.length, "snapshots");
     return series.length;
 }
 
