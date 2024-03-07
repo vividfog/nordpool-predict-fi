@@ -12,15 +12,11 @@ This repository contains all the code and much of the data to re-train the model
 
 <img src="data/home_assistant_sample_plot.png" alt="Predictions shown inside Home Assistant using ApexCharts" style="zoom:50%;" />
 
-## Model performance
-
-TODO
-
 ## Co-authors
 
 The original RF model was initially co-trained with [Autogen](https://github.com/microsoft/autogen). GPT-4 was used a lot during coding, but a real human has re-written most of the code and comments by hand, including this README. Originally the project was a personal Autogen + AI pair programming evaluation/trial and a hobby project written over 2 weekends.
 
-In addition to Random Forest, we (human and AI) also tried Linear Regression, GBM and LSTM, and a Random Forest with Linear Regression scaling. Out of these, the RF model performed the best, so that's what's used here.
+In addition to Random Forest, we also tried Linear Regression, GBM and LSTM, and a Random Forest with Linear Regression scaling. Out of these, the RF model performed the best, so that's what's used here.
 
 [Continue.dev](https://github.com/continuedev/continue) was the tool of choice for AI pair programming.
 
@@ -64,30 +60,106 @@ First make sure you've installed the requirements from requirements.txt. The mai
 
 Examples:
 
-- Start with: `python nordpool_predict_fi.py --predict` to create a set of price predictions for 7 days into the past and 5 days into the future with NO commit to DB
+- Start with: `python nordpool_predict_fi.py --predict` to create a set of price predictions for 7 days into the past and 5 days into the future with NO commit to DB.
 
-- Longer end to end pipeline: Train a new model, show eval stats for it, update a price forecast data frame with it, narrate the forecast, commit it to your SQLite database and deploy the json/md outputs with that data: `python nordpool_predict_fi.py --train --predict --narrate --commit --deploy`
+- Longer end to end pipeline: Train a new model, show eval stats for it, update a price forecast data frame with it, narrate the forecast, commit it to your SQLite database and deploy the json/md outputs with that data: `python nordpool_predict_fi.py --train --predict --narrate --commit --deploy`.
 
-  Optionally, you can do a retrospective update to the PricePredict field for the whole DB by including `--add-history` into the command line above
+  Optionally, you can do a retrospective update to the PricePredict field for the whole DB by including `--add-history` into the command line above.
 
-  There is plenty of STDOUT info, it's a good idea to read it to see what's going on
+  There is plenty of STDOUT info, it's a good idea to read it to see what's going on.
 
-- Open `index.html` from the `deploy` folder locally in your browser to see what you did; also see what's changed in the data and deploy folders
+- You'll find `prediction.json` in your deploy folder. This file contains the prediction for the coming days. The first number of each pair is milliseconds since epoch, the second number is predicted price as cents per kWh with VAT 24%. See [how to use this data in your apps](https://github.com/vividfog/nordpool-predict-fi?tab=readme-ov-file#how-to-use-the-data-in-your-apps).
 
-## How does this model work?
+- The `--predict` option creates and rotates snapshot JSON files of daily predictions for a week. This data can be used to visualize, how the predictions change over time.
 
-Surpisingly, this model (or problem) is **not** a time series prediction. Price now doesn't tell much about price in 2 hours before or after. Just look at the shape of the chart above.
+- Open `index.html` from the `deploy` folder locally in your browser to see what you did; also see what's changed in the data and deploy folders.
 
-Following intuition and observing past price fluctuations, outdoor temperature can hedge much of the price-impacting demand and wind can hedge much of the price-impacting supply, if the supply side is *otherwise* working as-usual on any given day. What if we ignore all the other variables and see what happens if we just follow the wind?
+### Sample run
+
+Here's what a no-commit trial run might look like:
+
+```
+python nordpool_predict_fi.py --train --predict
+[2024-03-08 00:16:18] Nordpool Predict FI
+Training a new model candidate using the data in the database...
+* FMI Weather Stations for Wind: ['ws_101673', 'ws_101256', 'ws_101846', 'ws_101267']
+* FMI Weather Stations for Temperature: ['t_101786', 't_101118', 't_100968', 't_101339']
+→ Feature Importance:
+       Feature  Importance
+      t_101339    0.211443
+     ws_101256    0.181828
+      t_100968    0.162449
+NuclearPowerMW    0.106445
+      t_101786    0.066850
+          hour    0.062656
+     ws_101673    0.047487
+   day_of_week    0.042330
+     ws_101846    0.040911
+      t_101118    0.034386
+         month    0.027271
+     ws_101267    0.015943
+→ Durbin-Watson autocorrelation test: 2.00
+→ ACF values for the first 5 lags:
+  Lag 1: 1.0000
+  Lag 2: -0.0014
+  Lag 3: -0.0237
+  Lag 4: -0.0202
+  Lag 5: -0.0028
+  Lag 6: -0.0080
+→ Model trained:
+  MAE (vs test set): 1.7806310108575483
+  MSE (vs test set): 17.125934255294478
+  R² (vs test set): 0.8378969382433199
+  MAE (vs 10x500 randoms): 1.1947948581029935
+  MSE (vs 10x500 randoms): 10.365377264411277
+  R² (vs 10x500 randoms): 0.9001239127137068
+→ Model NOT saved to the database but remains available in memory for --prediction.
+→ Training done.
+Running predictions...
+* Fetching wind speed forecast and historical data between 2024-02-29 and 2024-03-12
+* Fetching temperature forecast and historical data between 2024-02-29 and 2024-03-12
+* Fetching nuclear power production data between 2024-02-29 and 2024-03-12 and inferring missing values
+* Fingrid: Fetched 2648 hours, aggregated to 133 hourly averages spanning from 2024-02-29 to 2024-03-05
+→ Fingrid: Using last known nuclear power production value: 2764 MW
+* ENTSO-E: Fetching nuclear downtime messages...
+→ ENTSO-E: Avg: 2772, max: 2772, min: 2772 MW
+* Fetching electricity price data between 2024-02-29 and 2024-03-12
+→ Days of data coverage (should be 7 back, 5 forward for now):  12
+→ Found a newly created in-memory model for predictions
+                    Timestamp  PricePredict_cpkWh  ws_101256  ws_101267  ws_101673  ws_101846  t_101118  t_101339  t_101786  t_100968  NuclearPowerMW  Price_cpkWh
+0   2024-03-01 00:00:00+00:00            0.268877       13.8       12.4       11.6       11.3      0.31      0.43      1.62      0.67        4228.760       0.0000
+1   2024-03-01 01:00:00+00:00            0.239165       13.5       11.4       11.3       11.1      0.55      0.35      1.70      0.58        4228.825       0.0000
+2   2024-03-01 02:00:00+00:00            0.338605       13.4       10.2       11.1       10.9      0.60      0.31      1.60      0.34        4229.235       0.0000
+3   2024-03-01 03:00:00+00:00            0.729866       13.0       10.0       10.9       10.4      0.62      0.28      1.55      0.01        4228.350       0.0012
+4   2024-03-01 04:00:00+00:00            2.111404       12.7       10.0       10.8        9.9      0.36      0.27      1.23     -0.35        4229.000       2.5370
+..                        ...                 ...        ...        ...        ...        ...       ...       ...       ...       ...             ...          ...
+283 2024-03-12 19:00:00+00:00           12.084022        2.2        2.1        4.7        2.1     -5.29     -7.53     -5.28     -6.27        2772.000          NaN
+284 2024-03-12 20:00:00+00:00           12.363734        2.0        2.1        4.7        2.3     -5.87     -7.94     -5.59     -6.97        2772.000          NaN
+285 2024-03-12 21:00:00+00:00           10.250964        1.9        2.4        4.5        2.5     -4.83     -6.69     -8.43     -4.51        2772.000          NaN
+286 2024-03-12 22:00:00+00:00            8.946699        1.8        2.5        4.4        2.6     -5.52     -7.10     -8.61     -5.14        2772.000          NaN
+287 2024-03-12 23:00:00+00:00            8.871415        1.6        2.5        4.3        2.8     -6.21     -7.51     -8.80     -5.77        2772.000          NaN
+
+[288 rows x 12 columns]
+* Predictions NOT committed to the database (no --commit).
+```
+
+## How does the model work?
+
+Surprisingly, this model (or problem) is **not** a time series prediction. Price now doesn't tell much about price in 2 hours before or after, and the intraday spikes frequently seen in Nordpool charts do seem quite unpredictable. According to the hypothesis, trying to follow temporal patterns would be futile, so the model does what it can to *not* use movement of time as a predictor.
+
+Also, the price can vary with a 1000x magnitude within the same year. While outliers are normal and the one-hour spikes are OK to miss, we should have the correct number of digits in our prediction, whether the realized price is 0.1 cents, 1 cent, 10 cents or 100 cents. If we're (far) more accurate than that, that's a bonus.
+
+Following intuition and observing past price fluctuations, outdoor temperature can account for much of the price-impacting demand and wind can explain much of the price-impacting supply, if the supply side is *otherwise* working as-usual on any given day. What if we ignore all the other variables and see what happens if we just follow the wind?
 
 The idea here was to formalize that intuition through a data set and a model.
 
-* A set of FMI weather stations near wind power clusters to measure wind speed, a predictor for wind power
-* Another set near urban centers to measure wind speed, a predictor for consumption due to heating 
+* A set of [FMI weather stations](https://www.ilmatieteenlaitos.fi/havaintoasemat?filterKey=groups&filterQuery=sää) near wind power clusters to measure **wind speed**, a predictor for wind power. Any wind power model is likely to use this data as well, so we skip the interim step of predicting wind power production and use a small set of its component predictors instead.
+* A set near urban centers to measure **temperature**, a predictor for consumption due to heating. If it's cold in these urban centers, electricity consumption tends to go up.
+* For weather observations and forecasts, we use FMI stations that are the original source of observations and not part of an interpolated figure, and therefore likely a good souce for a weather forecast too. While it's possible to get a grid prediction for a bounding box, that's effectively stacking more models into the pipeline, potentially adding not just signal but also noise.
 
-- Since the day of the week (Sunday vs. Monday) makes a difference, as does the time of the day (3 AM vs. 7 PM), and a month (January vs. July), those too were included as variables. But the day-of-the-month was not, because all it says is likely already captured by the weather, the time and the weekday.
-
-- Nuclear power production data: Planned or unplanned maintenance break can offset a large amount of supply that wind power then needs to replace. The model uses ENTSO-E messages to deduce near-future nuclear capacity, and failing that, falls back to the last known realized value from Fingrid.
+- **Nuclear power** production data: Planned or unplanned maintenance break can offset a large amount of supply that wind power then needs to replace. The model uses ENTSO-E messages to deduce near-future nuclear capacity, and failing that, falls back to the last known realized value from Fingrid.
+- Since the **day of the week** (Sunday vs. Monday) makes a difference, as does the **time of the day** (3 AM vs. 7 PM), and a **month** (January vs. July), those too were included as labels. But the day-of-the-month was not, because all it says is likely already captured by the weather, the time and the weekday. Out of these, month turned out to have negligible predictive power and the other time variables are far behind wind/temperature/production variables too. These could be removed and the forecast would still be usable.
+- Time stamps are stripped off from the training data, and the data set is shuffled before training. This is to further enforce the hypothesis to NOT use time and temporal relations as a predictor, but instead infer the price from weather and production data. Data analysis shows the training data has negligible autocorrelation (temporal patterns) after these operations.
 
 Data schema used for training and inference is this:
 
@@ -109,7 +181,7 @@ CREATE TABLE prediction (
 );
 ```
 
-The columns starting with `t_` and `ws_` are [FMSIDs](https://www.ilmatieteenlaitos.fi/havaintoasemat?filterKey=groups&filterQuery=sää) of the FMI weather stations nearest to the locations of interest. They offer both observations and forecasts that have a high correlation with each other post-hoc. As a side effect of this approach, the repository also contains [functions](util/fmi.py) for working with FMI history/forecast queries.
+The columns starting with `t_` and `ws_` are [FMSIDs](https://www.ilmatieteenlaitos.fi/havaintoasemat?filterKey=groups&filterQuery=sää) of the FMI weather stations nearest to the locations of interest. They offer both observations and forecasts that have a high correlation with each other post-hoc. As a side effect of this approach, the repository also contains [functions](util) for working with FMI history/forecast queries, Fingrid open data and ENTSO-E market messages APIs.
 
 ### Hidden patterns in weather/price data
 
@@ -122,6 +194,25 @@ As code, the price information is learned from, or is a function of, patterns an
 > - Cold Winter Night: -12°C at 2 AM with 4 m/s wind speed - Expected Price: 12 to 18 cents/kWh due to high heating demand, partially offset by moderate wind generation.
 > - Mild Spring Afternoon: 16°C at 3 PM with 5 m/s wind speed - Expected Price: 3 to 5 cents/kWh, a balance of mild demand and good wind supply.
 > - Cool Autumn Midnight: 6°C at 11 PM with 6 m/s wind speed - Expected Price: 1 to 3 cents/kWh, low demand and high wind energy generation.
+
+### What are the important predictors in this model?
+
+According to Feature Importance analysis, as of now they are:
+
+| Feature        | Importance | Place: measurement     |
+| -------------- | ---------- | ---------------------- |
+| t_101339       | 0.211      | Oulu: temperature      |
+| ws_101256      | 0.182      | Kaskinen: speed        |
+| t_100968       | 0.162      | Vantaa: temperature    |
+| NuclearPowerMW | 0.106      | 0...4372 megawatts     |
+| t_101786       | 0.067      | Pirkkala: temperature  |
+| hour           | 0.063      | 0...23                 |
+| ws_101673      | 0.047      | Kalajoki: wind speed   |
+| day_of_week    | 0.042      | 1...7                  |
+| ws_101846      | 0.041      | Kemi: wind speed       |
+| t_101118       | 0.034      | Jyväskylä: temperature |
+| month          | 0.027      | 1...12                 |
+| ws_101267      | 0.016      | Pori: wind speed       |
 
 ### What's a Random Forest?
 
@@ -247,7 +338,7 @@ You need to update the database to have a complete time series of your new train
 3. Try the training results, pay attention to the eval results. Compare them with and without your column:
 
    ```shell
-   python nordpool_predict_fi.py --train --eval
+   python nordpool_predict_fi.py --train
    ```
 
 ​	Once you're satisified with the results, you can include this new column during the predict process too. 
@@ -278,9 +369,11 @@ You need to update the database to have a complete time series of your new train
    ...
    My_function_debug_output:
    ...
-   [288 rows x 12 columns] # do we have +1 in the columns and 288 rows after df update by your function?
+   [288 rows x 12 columns]
    ```
 
+   If you added a new column too, we'd have 13 columns instead of 12.
+   
    If all goes well, you're ready to test.
 
 ## 4. Test your new model and function in apps
