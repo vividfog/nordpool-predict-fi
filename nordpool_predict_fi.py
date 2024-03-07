@@ -16,8 +16,10 @@ from util.sahkotin import update_spot
 from util.fingrid import update_nuclear
 from util.llm import narrate_prediction
 from datetime import datetime, timedelta
+from util.entso_e import entso_e_nuclear
 from util.sql import db_update, db_query_all
 from util.github import push_updates_to_github
+from util.dataframes import update_df_from_df
 from util.fmi import update_wind_speed, update_temperature
 from util.models import write_model_stats, stats, list_models
 from util.eval import create_prediction_snapshot, rotate_snapshots
@@ -236,19 +238,25 @@ if args.predict:
     df.rename(columns={'index': 'Timestamp'}, inplace=True)
 
     # Get the latest FMI wind speed values for the data frame, past and future
-    # NOTE: To save on API calls, we don't fill in weather history beyond 7 days even if asked
+    # NOTE: To save on API calls, this won't backfill history beyond 7 days even if asked
     df = update_wind_speed(df)
            
     # Get the latest FMI temperature values for the data frame, past and future
-    # NOTE: To save on API calls, we don't fill in weather history beyond 7 days even if asked
+    # NOTE: To save on API calls, this won't backfill history beyond 7 days even if asked
     df = update_temperature(df)
        
-    # Get the latest nuclear power data for the data frame, and infer the future
-    # NOTE: To save on API calls, we don't fill in weather history beyond 7 days even if asked
+    # Get the latest nuclear power data for the data frame, and infer the future from last known value
+    # NOTE: To save on API calls, this won't backfill history beyond 7 days even if asked
     df = update_nuclear(df, fingrid_api_key=fingrid_api_key)
-        
+    
+    # Fetch future nuclear downtime information from ENTSO-E unavailability data, h/t github:@pkautio
+    df_entso_e = entso_e_nuclear(entso_e_api_key)
+    
+    # Refresh the previously inferred nuclear power numbers with the ENTSO-E data
+    df = update_df_from_df(df, df_entso_e)
+    
     # Get the latest spot prices for the data frame, past and future if any
-    # NOTE: To save on API calls, we don't fill in weather history beyond 7 days even if asked
+    # NOTE: To save on API calls, this won't backfill history beyond 7 days even if asked
     df = update_spot(df)
     
     # TODO: Decide if including wind power capacity is necessary; it seems to worsen the MSE and R2
