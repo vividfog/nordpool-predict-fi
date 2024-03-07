@@ -3,25 +3,20 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import permutation_test_score
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from sklearn.impute import SimpleImputer
-from datetime import datetime, timedelta
 from statsmodels.stats.stattools import durbin_watson
 from statsmodels.tsa.stattools import acf
 from sklearn.utils import shuffle
 
 import pandas as pd
-from datetime import datetime
-import pytz
 
 def train_model(df, fmisid_ws, fmisid_t):
     
     # Sort the data frame by timestamp
-    df = df.sort_values(by='timestamp')
+    # df = df.sort_values(by='timestamp')
     
-    # Or we can shuffle to get a bit less accurate but more generalized model
-    # df = shuffle(df, random_state=42)
+    # Or we can shuffle to get a bit more generalized model and evals
+    df = shuffle(df, random_state=42)
     
     # We don't need what we are trying to predict in the training data
     df = df.drop(columns=['PricePredict_cpkWh'])
@@ -51,25 +46,34 @@ def train_model(df, fmisid_ws, fmisid_t):
     y_filtered = df_filtered['Price_cpkWh']
 
     # Train the first model (Random Forest) on the filtered data
-    # During CONTINUOUS in-memory training for every forecast, we use all the data we have available
     # TODO: Make a --continuous option explicit, not implicit like it is now, if also running --prediction
     X_train, X_test, y_train, y_test = train_test_split(
         X_filtered, 
         y_filtered, 
-        test_size=0.1,  # Change this ratio before saving a model and running evals
+        test_size=0.15, # a compromise between 0.1 and 0.2 with limited data available
         random_state=42
         )
     
-    # These do make a difference. Current set of parameters is the best we have found so far.
-    # TODO: A routine that self-optimizes these values to find the best combination of parameters would be a good addition to the project.
+    # These do make a difference.
+    # Original set:
+    # rf = RandomForestRegressor(
+    #     n_estimators=150, 
+    #     max_depth=15, 
+    #     min_samples_split=4, 
+    #     min_samples_leaf=2, 
+    #     max_features='sqrt', 
+    #     random_state=42
+    #     )
+    
+    # Updated model training code with new best parameters found via grid search (2024-03-07)
     rf = RandomForestRegressor(
-        n_estimators=150, 
-        max_depth=15, 
-        min_samples_split=4, 
-        min_samples_leaf=2, 
-        max_features='sqrt', 
-        random_state=42
-        )
+        n_estimators=150,          # Same as before
+        max_depth=20,              # Increased from 15 to 20 based on best parameters
+        min_samples_split=2,       # Reduced from 4 to 2, allowing finer decision boundaries
+        min_samples_leaf=4,        # Increased from 2 to 4, providing more generalization at leaves
+        random_state=42            # Keeping the random state for reproducibility
+    )
+    
     rf.fit(X_train, y_train)
     
     # Feature importances

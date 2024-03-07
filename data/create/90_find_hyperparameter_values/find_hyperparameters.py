@@ -36,7 +36,7 @@ if len(sys.argv) != 2:
     sys.exit()
 
 # Load the dataset
-data_path = sys.argv[1]
+data_path = sys.argv[1]  # Use the provided command-line argument for the data path
 data = pd.read_csv(data_path)
 
 # Preprocess the dataset
@@ -52,24 +52,53 @@ features = ['MonthNumber', 'WeekdayNumber', 'HourNumber', 'ws_101256', 'ws_10126
 X = data[features]
 y = data['Price_cpkWh']
 
-# Define a grid of hyperparameters for tuning
+# Split the data into training and testing sets (80/20 split)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Define a grid of hyperparameters for tuning, including 'max_features'
 param_grid = {
     'n_estimators': [50, 100, 150, 200],
     'max_depth': [None, 10, 20, 30],
     'min_samples_split': [2, 4, 6],
     'min_samples_leaf': [1, 2, 4],
-}
+    'max_features': ['sqrt', None, 0.5]
+    }
 
-# Initialize and perform the grid search
+# Initialize and perform the grid search on the training set
 grid_search = GridSearchCV(RandomForestRegressor(random_state=42), param_grid, cv=5,
                            scoring={'MAE': 'neg_mean_absolute_error', 'MSE': 'neg_mean_squared_error', 'RMSE': rmse_scorer, 'R2': 'r2'},
-                           refit='MAE', return_train_score=True, verbose=3, n_jobs=1)
-grid_search.fit(X, y)
+                           refit='MAE', return_train_score=True, verbose=3, n_jobs=-1)
+grid_search.fit(X_train, y_train)
 
-# Output the best parameters and their corresponding scores
+# After completion, output the best parameters and their corresponding scores
 print("Best parameters:", grid_search.best_params_)
 best_index = grid_search.best_index_
 print("Best MAE (validation):", -grid_search.cv_results_['mean_test_MAE'][best_index])
 print("Best MSE (validation):", -grid_search.cv_results_['mean_test_MSE'][best_index])
 print("Best RMSE (validation):", -grid_search.cv_results_['mean_test_RMSE'][best_index])
 print("Best R^2 (validation):", grid_search.cv_results_['mean_test_R2'][best_index])
+
+# Optionally, evaluate the best model on the test set
+best_model = grid_search.best_estimator_
+y_pred = best_model.predict(X_test)
+test_mse = mean_squared_error(y_test, y_pred)
+test_rmse = rmse(y_test, y_pred)
+test_r2 = r2_score(y_test, y_pred)
+
+print("Test MSE:", test_mse)
+print("Test RMSE:", test_rmse)
+print("Test R^2:", test_r2)
+
+# First run:
+# Best parameters: {'max_depth': 20, 'min_samples_leaf': 4, 'min_samples_split': 2, 'n_estimators': 150}
+# Best MAE (validation): 4.0287002630635556
+# Best MSE (validation): 68.55174752722753
+# Best RMSE (validation): 7.474467935623276
+
+# Second run:
+# Best parameters: {'max_depth': 20, 'min_samples_leaf': 4, 'min_samples_split': 2, 'n_estimators': 150}
+# Best MAE (validation): 4.0287002630635556
+# Best MSE (validation): 68.55174752722753
+# Best RMSE (validation): 7.474467935623276
+# Best R^2 (validation): 0.1444278396002968
+

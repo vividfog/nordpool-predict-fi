@@ -133,7 +133,7 @@ if args.train:
         print("→ Model stats added to the database.")
         print("→ Training done.")
     else:
-        print("→ Model NOT saved to the database but left in memory.")
+        print("→ Model NOT saved to the database but remains available in memory for --prediction.")
         print("→ Training done.")
 
 # Show evals based on the current database
