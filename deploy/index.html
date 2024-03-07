@@ -21,14 +21,14 @@
     <div id="predictionText">
         <h1 style="padding-top: 16px">Pörssisähkön hintaennuste</h1>
         <p><strong>Tämä kokeellinen koneoppimismalli haarukoi pörssisähkön kuluttajahintaa noin 5 pv eteenpäin. Malli peilaa mm. ennustettua säätä, sähköntuotantoa ja nykyistä kuukautta/viikonpäivää aiempiin ajanjaksoihin, joissa nämä seikat olivat samankaltaiset.</strong></p>
-        <p>Vaikka malli on toisinaan yllättävänkin tarkka, sen tuottamaan ennusteeseen tulee suhtautua varauksella. Se ei huomioi tulevia poikkeuspäiviä, kuten esim. siirtoyhteyksien katkeamisia tai palautumisia. Sääennuste voi vielä muuttua, ja tämä vaikuttaa lähipäivien hintaan. Malli ja ennuste päivittyvät muutaman kerran päivässä uusimman datan pohjalta.</p>
+        <p>Vaikka malli on toisinaan yllättävänkin tarkka, sen tuottamaan ennusteeseen tulee suhtautua varauksella. Se ei huomioi tulevia poikkeuspäiviä, kuten siirtoyhteyksien katkeamisia tai palautumisia. Sääennuste voi muuttua, ja tämä vaikuttaa lähipäivien hintaan. Malli ja ennuste päivittyvät muutaman kerran päivässä uusimman datan pohjalta.</p>
         <p>Nordpool-hinta näkyy liikennevalon väreillä. Mallin ennuste sinisellä katkoviivalla.</p>
         <p id="predictionChart"></p>
         <h1>Lähipäivien hintakehitys</h1>
         <p id="llm">Teksti on luotu koneellisesti kielimallin avulla.</p>
         <p id="narration"></p>
         <h1>Ennusteen kehitys</h1>
-        <p>Graafi kertoo, miten mallin ennusteet ovat kehittyneet ajan yli. Tämä saattaa auttaa hahmottamaan, mihin suuntaan ennuste on menossa. Isoja mielenmuutoksia voi tulla esim. mallin rakenteen muuttuessa, tai jos sääennuste on muuttunut paljon, tai jos ohjelmointivirhe on sotkenut aiemman ennusteen.</p>
+        <p>Graafi kertoo, miten mallin ennusteet ovat kehittyneet ajan yli. Tämä saattaa auttaa hahmottamaan, mihin suuntaan ennuste on menossa. Isoja mielenmuutoksia voi tulla mm. jos sääennuste on muuttunut paljon tai jos numeroiden taustalla olevaa avointa lähdekoodia on hiljattain muutettu.</p>
         <p>Oranssi viiva on toteutunut Nordpool-hinta. Vahva sininen viiva on uusin ennuste. Ohenevat siniset viivat ovat aiempia ennusteita aiemmilta päiviltä.</p>    
         <div id="historyChart" style="height: 40vh; width: 100%; max-width: 920px; margin: auto; box-sizing: border-box; padding-top: 32px;"></div>
         <h1 style="padding-top: 32px">Mitä ennuste huomioi?</h1>
@@ -38,9 +38,10 @@
         <li><strong>Ydinvoimatuotanto:</strong> Fingrid (mallin opetus) ja ENTSO-E REMIT UMM (ennuste)</li>
         <li><strong>Viikonpäivä:</strong> ma-su</li>
         <li><strong>Kellonaika:</strong> 0-23</li>
-        <li><strong>Kuukausi:</strong> vuodenajan vaikutus, jos sellainen vaikutus on</li>
+        <li><strong>Kuukausi:</strong> vuodenajan vaikutus</li>
         <p>Nämä muuttujat on valittu intuitiolla ja kokeilemalla. Jokin toinen yhdistelmä voisi toimia paremmin tai huonommin. Lähdekoodi on avointa, joten olet tervetullut kokeilemaan erilaisia vaihtoehtoja näiden lisäksi tai sijaan.<p>
-        <p>Ota huomioon, että sähkömarkkinoilla seilaa <a href="https://www.terracognita.fi/tuote/musta-joutsen/" target="_blank">mustia joutsenia</a> ja pörssisähkön ensi viikon hintaan ei tällä vatkaimella ole todellista näkyvyyttä, saati valtaa. Se lukee samoja sääennusteita kuin sinä, ja sääennusteetkin ovat tämän tästä väärässä.
+        <h1>Mitä ennuste ei huomioi?</h1>
+        <p>Ennuste ei näe mitään muuta kuin mitä yllä on mainittu. Muista, että sähkömarkkinoilla seilaa <a href="https://www.terracognita.fi/tuote/musta-joutsen/" target="_blank">mustia joutsenia</a> ja pörssisähkön ensi viikon hintaan ei tällä vatkaimella ole todellista näkyvyyttä, saati valtaa. Se lukee samoja sääennusteita kuin sinä, ja sääennusteetkin ovat tämän tästä väärässä.</p>
         <p style="padding-bottom: 24px;">Vaikka malli osaa "ennustaa" menneisyyttä oivasti, se ei takaa että arviot tulevaisuudesta osuvat kohdalleen. Älä siis esim. säädä talosi lämmitystä näiden numeroiden perusteella, jos et ole kotona.</p>
         <div id="disclaimer" style="padding-bottom: 24px;"><a id="source-code-link" href="mailto:judo.farming0u@icloud.com" target="_blank">email</a></div>
 
