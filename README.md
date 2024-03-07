@@ -87,7 +87,7 @@ The idea here was to formalize that intuition through a data set and a model.
 
 - Since the day of the week (Sunday vs. Monday) makes a difference, as does the time of the day (3 AM vs. 7 PM), and a month (January vs. July), those too were included as variables. But the day-of-the-month was not, because all it says is likely already captured by the weather, the time and the weekday.
 
-- Nuclear power production data is included post-hoc and near future is inferred from last known values. Planned or unplanned maintenance break can offset a large amount of supply that wind power then needs to replace. The model reacts to these with a few hours a delay, as the drop becomes apparent in the input data.
+- Nuclear power production data: Planned or unplanned maintenance break can offset a large amount of supply that wind power then needs to replace. The model uses ENTSO-E messages to deduce near-future nuclear capacity, and failing that, falls back to the last known realized value from Fingrid.
 
 Data schema used for training and inference is this:
 
@@ -266,6 +266,8 @@ You need to update the database to have a complete time series of your new train
    ```
 
    The returned data frame should be the exact same DF passed to it, but now filled with data 7 days into the past and 5 days into the future. Merging data frames and working with time stamps can be a bit tricky, but there's sample code in the FMI/Fingrid/Sahkotin functions.
+
+   > Failing that, just return a data frame that goes 5 days to the future, with time stamps. There's a helper function in util/dataframes.py to merge the DFs in the next step, currently used for ENTSO-E. The long term plan for "where to merge" is TODO.
 
 3. Call that function as part of the chain that builds the data frame for the predictions. Again, your function can either add a column, or edit the existing columns.
 
