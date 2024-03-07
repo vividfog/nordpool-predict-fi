@@ -44,6 +44,7 @@ try:
     predictions_file = get_mandatory_env_variable('PREDICTIONS_FILE')
     averages_file = get_mandatory_env_variable('AVERAGES_FILE')
     fingrid_api_key = get_mandatory_env_variable('FINGRID_API_KEY')
+    entso_e_api_key = get_mandatory_env_variable('ENTSO_E_API_KEY')
     fmisid_ws_env = get_mandatory_env_variable('FMISID_WS')
     fmisid_t_env = get_mandatory_env_variable('FMISID_T')
     fmisid_ws = ['ws_' + id for id in fmisid_ws_env.split(',')]
@@ -54,11 +55,11 @@ except ValueError as e:
     exit(1)
 
 # Optional env variables for --github or --narrate:
+openai_api_key = os.getenv('OPENAI_API_KEY') # OpenAI API key, used by --narrate
+narration_file = os.getenv('NARRATION_FILE') # used by --narrate
 token = os.getenv('TOKEN') # used by --github
 commit_message = os.getenv('COMMIT_MESSAGE') # used by --github
 deploy_folder_path = os.getenv('DEPLOY_FOLDER_PATH') # used by --github
-openai_api_key = os.getenv('OPENAI_API_KEY') # OpenAI API key, used by --narrate
-narration_file = os.getenv('NARRATION_FILE') # used by --narrate
 
 # Arguments
 parser = argparse.ArgumentParser()
@@ -266,7 +267,7 @@ if args.predict:
     df['hour'] = df['Timestamp'].dt.hour
     df['month'] = df['Timestamp'].dt.month
          
-    # Use (if from --train) or load and apply a Random Forest model for predictions
+    # Use (if coming from --train) or load and apply a Random Forest model for predictions
     if rf_trained is None:
         rf_model = joblib.load(rf_model_path)
         print("→ Loaded the Random Forest model from", rf_model_path)
@@ -343,8 +344,7 @@ if args.narrate:
         print(narration)
 
 # Deploy can be done solo, or with --predict and --narrate
-# This argument was previously called --publish but for now they both point here
-# Note that we have a dedicated --github argument to push to GitHub (not many need to use this step)
+# Note that we have a dedicated --github argument to push to GitHub (not many need to use it)
 if args.deploy:
     print("Deploing the latest prediction data:", deploy_folder_path, "...")
     
@@ -422,7 +422,7 @@ if args.deploy:
     exit()
 
 if __name__ == "__main__":
-    # If no arguments were given, print a message
+    # If no arguments were given, print usage
     if not any(vars(args).values()):
         print("No arguments given.")
         parser.print_help()
