@@ -21,7 +21,7 @@
     <div id="predictionText">
         <h1 style="padding-top: 16px">Pörssisähkön hintaennuste</h1>
         <p><strong>Tämä kokeellinen koneoppimismalli haarukoi pörssisähkön kuluttajahintaa noin 5 pv eteenpäin. Malli peilaa mm. ennustettua säätä, sähköntuotantoa ja nykyistä kuukautta/viikonpäivää aiempiin ajanjaksoihin, joissa nämä seikat olivat samankaltaiset.</strong></p>
-        <p>Vaikka malli on toisinaan yllättävänkin tarkka, sen tuottamaan ennusteeseen tulee suhtautua varauksella. Se ei huomioi tulevia poikkeuspäiviä, kuten esim. ydinvoimaloiden tai siirtoyhteyksien huoltokatkoja. Sääennuste voi vielä muuttua, ja tämä vaikuttaa lähipäivien hintaan. Malli ja ennuste päivittyvät muutaman kerran päivässä uusimman datan pohjalta.</p>
+        <p>Vaikka malli on toisinaan yllättävänkin tarkka, sen tuottamaan ennusteeseen tulee suhtautua varauksella. Se ei huomioi tulevia poikkeuspäiviä, kuten esim. siirtoyhteyksien katkeamisia tai palautumisia. Sääennuste voi vielä muuttua, ja tämä vaikuttaa lähipäivien hintaan. Malli ja ennuste päivittyvät muutaman kerran päivässä uusimman datan pohjalta.</p>
         <p>Nordpool-hinta näkyy liikennevalon väreillä. Mallin ennuste sinisellä katkoviivalla.</p>
         <p id="predictionChart"></p>
         <h1>Lähipäivien hintakehitys</h1>
@@ -35,7 +35,7 @@
         <p>Kyseessä on <a href="https://statquest.org/statquest-random-forests-part-1-building-using-and-evaluating/" target="_blank">Random Forest</a> -koneoppimismalli, joka hakee korrelaatioita eri muuttujien välillä ja oppii, millaiseen hintaan kukin yhdistelmä historian perusteella johtaa. Tämä ei siis ole aikasarjaennuste, vaan jokainen tunti saa arvonsa erikseen näiden tietojen perusteella:</p>
         <li><strong>Isoimpien tuulivoima-alueiden tuuliennuste:</strong> FMI-sääasemat, eli epäsuorasti tuulivoiman määrä</li>
         <li><strong>Muutaman keskeisen asutuskeskuksen lämpötilaennuste:</strong> FMI-sääasemat, eli epäsuorasti lämmitystarve</li>
-        <li><strong>Ydinvoimatuotanto:</strong> Fingrid, huomioidaan usemman tunnin viiveellä, eli huoltokatkot eivät näy mallille etukäteen</li>
+        <li><strong>Ydinvoimatuotanto:</strong> Fingrid (mallin opetus) ja ENTSO-E REMIT UMM (ennuste)</li>
         <li><strong>Viikonpäivä:</strong> ma-su</li>
         <li><strong>Kellonaika:</strong> 0-23</li>
         <li><strong>Kuukausi:</strong> vuodenajan vaikutus, jos sellainen vaikutus on</li>
