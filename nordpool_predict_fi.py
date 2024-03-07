@@ -43,7 +43,6 @@ try:
     repo_path = get_mandatory_env_variable('REPO_PATH')
     predictions_file = get_mandatory_env_variable('PREDICTIONS_FILE')
     averages_file = get_mandatory_env_variable('AVERAGES_FILE')
-    past_performance_file = get_mandatory_env_variable('PAST_PERFORMANCE_FILE')
     fingrid_api_key = get_mandatory_env_variable('FINGRID_API_KEY')
     fmisid_ws_env = get_mandatory_env_variable('FMISID_WS')
     fmisid_t_env = get_mandatory_env_variable('FMISID_T')
@@ -67,12 +66,11 @@ parser.add_argument('--train', action='store_true', help='Train a new model cand
 parser.add_argument('--eval', action='store_true', help='Show evaluation metrics for the current database')
 parser.add_argument('--training-stats', action='store_true', help='Show training stats for candidate models in the database as a CSV')
 parser.add_argument('--dump', action='store_true', help='Dump the SQLite database to CSV format')
-parser.add_argument('--past-performance', action='store_true', help='Generate past performance stats for recent months')
 parser.add_argument('--plot', action='store_true', help='Plot all predictions and actual prices to a PNG file in the data folder')
 parser.add_argument('--predict', action='store_true', help='Generate price predictions from now onwards')
 parser.add_argument('--add-history', action='store_true', help='Add all missing predictions to the database post-hoc; use with --predict')
 parser.add_argument('--narrate', action='store_true', help='Narrate the predictions into text using an LLM')
-parser.add_argument('--commit', action='store_true', help='Commit the results to DB and deploy folder; use with --predict, --narrate, --past-performance')
+parser.add_argument('--commit', action='store_true', help='Commit the results to DB and deploy folder; use with --predict, --narrate')
 parser.add_argument('--deploy', action='store_true', help='Deploy the output files to the deploy folder but not GitHub')
 # --publish will be deprecated in the future, prefer --deploy instead:
 parser.add_argument('--publish', action='store_true', help='Deploy the output files to the deploy folder but not GitHub', dest='deploy') #redirected
@@ -344,67 +342,6 @@ if args.narrate:
     else:
         print(narration)
 
-# Past performance can be used with the previous arguments
-if args.past_performance:
-    print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-
-    past_df = db_query_all(db_path)
-    past_df = past_df.sort_values(by='timestamp')
-
-    past_df['timestamp'] = pd.to_datetime(past_df['timestamp'])
-    before_filtering_length = len(past_df)
-
-    # Filter out rows where 'timestamp' is earlier than 90 days ago or later than now
-    now = datetime.now(pytz.utc)
-    past_df = past_df[(past_df['timestamp'] >= now - timedelta(days=90)) & (past_df['timestamp'] <= now)]
-
-    nan_rows = past_df[past_df['Price_cpkWh'].isna() | past_df['PricePredict_cpkWh'].isna()]
-
-    # Drop empty or NaN rows
-    past_df = past_df.dropna(subset=['Price_cpkWh', 'PricePredict_cpkWh'])
-
-    # Calculate the metrics
-    past_df = past_df.dropna(subset=['Price_cpkWh', 'PricePredict_cpkWh'])
-    y_true = past_df['Price_cpkWh']
-    y_pred = past_df['PricePredict_cpkWh']
-    mae = mean_absolute_error(y_true, y_pred)
-    mse = mean_squared_error(y_true, y_pred)
-    rmse = np.sqrt(mse)
-    r2 = r2_score(y_true, y_pred)
-
-    print("Mean Absolute Error:", mae, "c/kWh")
-    print("Mean Squared Error:", mse, "c/kWh")
-    print("Root Mean Squared Error:", rmse, "c/kWh")
-    print("R-squared:", r2)
-
-    if args.commit:
-        # Prepare data for Apex Charts
-        past_performance_data = {
-            "data": [
-                {"name": "Actual Price", "data": []},
-                {"name": "Predicted Price", "data": []}
-            ],
-            "metrics": {
-                "mae": mae,
-                "mse": mse,
-                "rmse": rmse,
-                "r2": r2
-            }
-        }
-
-        # Convert timestamps to milliseconds since epoch and pair with values
-        for _, row in past_df.iterrows():
-            timestamp_ms = int(row['timestamp'].timestamp() * 1000)
-            past_performance_data["data"][0]["data"].append([timestamp_ms, row['Price_cpkWh']])
-            past_performance_data["data"][1]["data"].append([timestamp_ms, row['PricePredict_cpkWh']])
-        
-        # Save to JSON file
-        past_performance_json_path = os.path.join(deploy_folder_path, past_performance_file)
-        with open(past_performance_json_path, 'w') as f:
-            json.dump(past_performance_data, f)
-
-        print(f"Past performance data saved to {past_performance_json_path}")
-
 # Deploy can be done solo, or with --predict and --narrate
 # This argument was previously called --publish but for now they both point here
 # Note that we have a dedicated --github argument to push to GitHub (not many need to use this step)
@@ -472,7 +409,7 @@ if args.deploy:
 
     # Commit and push the updates to GitHub
     if args.github:
-        files_to_push = [predictions_file, averages_file, narration_file, past_performance_file]
+        files_to_push = [predictions_file, averages_file, narration_file]
 
         try:
             if push_updates_to_github(repo_path, deploy_folder_path, files_to_push, commit_message):

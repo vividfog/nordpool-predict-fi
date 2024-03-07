@@ -39,7 +39,7 @@ The script uses environment variables for configuration. These can be set in a f
 How to use:
 
 ```
-usage: nordpool_predict_fi.py [-h] [--train] [--eval] [--training-stats] [--dump] [--past-performance] [--plot] [--predict] [--add-history] [--narrate] [--commit] [--deploy] [--publish] [--github]
+usage: nordpool_predict_fi.py [-h] [--train] [--eval] [--training-stats] [--dump] [--plot] [--predict] [--add-history] [--narrate] [--commit] [--deploy] [--publish] [--github]
 
 options:
   -h, --help          show this help message and exit
@@ -47,12 +47,11 @@ options:
   --eval              Show evaluation metrics for the current database
   --training-stats    Show training stats for candidate models in the database as a CSV
   --dump              Dump the SQLite database to CSV format
-  --past-performance  Generate past performance stats for recent months
   --plot              Plot all predictions and actual prices to a PNG file in the data folder
   --predict           Generate price predictions from now onwards
   --add-history       Add all missing predictions to the database post-hoc; use with --predict
   --narrate           Narrate the predictions into text using an LLM
-  --commit            Commit the results to DB and deploy folder; use with --predict, --narrate, --past-performance
+  --commit            Commit the results to DB and deploy folder; use with --predict, --narrate
   --deploy            Deploy the output files to the deploy folder but not GitHub
   --github            Push the deployed files to a GitHub repo; use with --deploy
 ```
@@ -67,7 +66,7 @@ Examples:
 
 - Start with: `python nordpool_predict_fi.py --predict` to create a set of price predictions for 7 days into the past and 5 days into the future with NO commit to DB
 
-- Longer end to end pipeline: Train a new model, show eval stats for it, update a price forecast data frame with it, narrate the forecast, commit it to your SQLite database and deploy the json/md outputs with that data: `python nordpool_predict_fi.py --train --eval --predict --narrate --commit --deploy`
+- Longer end to end pipeline: Train a new model, show eval stats for it, update a price forecast data frame with it, narrate the forecast, commit it to your SQLite database and deploy the json/md outputs with that data: `python nordpool_predict_fi.py --train --predict --narrate --commit --deploy`
 
   Optionally, you can do a retrospective update to the PricePredict field for the whole DB by including `--add-history` into the command line above
 
