@@ -180,6 +180,7 @@ Promise.all([
                         type: 'dotted',
                         width: 3
                     },
+                    opacity: 0.9
                 },
                 {
                     // Realized
@@ -188,6 +189,7 @@ Promise.all([
                     data: sahkotinSeriesData,
                     symbol: 'none',
                     step: 'middle',
+                    opacity: 0.9
                 },
                 {
                     // MarkLine for current time
@@ -317,7 +319,7 @@ function setupHistoryChart(data) {
             type: index === 0 ? 'solid' : 'dotted'
         },
         color: 'dodgerblue',
-        opacity: Math.pow(0.9, index),
+        opacity: Math.pow(0.9, index)-.1
     }));
 
     // Add a separate series item for the markLine
@@ -437,7 +439,8 @@ function addSahkotinDataToChart(sahkotinData, nrSeries) {
             type: 'solid',
             width: 2
         },
-        color: 'orange'
+        color: 'orange',
+        opacity: 0.9
     };
 
     // Assuming 'historyChart' is accessible here; if not, you might need to make it globally accessible
