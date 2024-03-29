@@ -1,3 +1,5 @@
-**Lauantaina** sähkön hinta liikkuu välillä 1-9 ¢/kWh, tarjoten edullisia diilejä energianälkäisille. **Sunnuntaina** hinta nousee hieman, mutta pysyy silti kohtuullisena 4-10 ¢/kWh. **Maanantaina** sähkön hinta kohoaa 5-10 ¢/kWh, mutta tarjoaa silti hyvän diilin energiankuluttajille. **Tiistaina** hinta pysyy vakaana 7-9 ¢/kWh, tarjoten edelleen kohtuullisen vaihtoehdon. Viikko huipentuu **keskiviikkoon**, jolloin sähkön hinta liikkuu 3-6 ¢/kWh, tarjoten jälleen edullisen vaihtoehdon energiankuluttajille.
+**Lauantaina** sähkön hinta liikkuu edullisissa lukemissa, mutta **sunnuntaina** se kohoaa kohtuulliselle tasolle. **Maanantaina** hinta nousee entisestään, ja **tiistaina** se pysyy korkealla tasolla. **Keskiviikkona** sähkön hinta laskee hieman, mutta pysyy silti melko korkeana.
 
-Kaiken kaikkiaan lähipäivien sähkön hinnat vaihtelevat maltillisesti, tarjoten kuluttajille mahdollisuuden hyödyntää edullisia diilejä. Kannattaa siis pitää silmällä sähkön hintakehitystä ja hyödyntää edullisia hintoja energiankulutuksessa.
+Näiden päivien perusteella sähkön hinta vaihtelee edullisista hinnoista aina kohtuullisen kalliisiin lukemiin. Kannattaa siis olla tarkkana sähkönkulutuksen kanssa, jotta vältytään suurilta sähkölaskuilta. Muista seurata hintojen kehitystä ja hyödynnä edullisemmat hinnat silloin kun niitä on tarjolla.
+
+Sähkön hintojen vaihtelu on osa arkea, mutta pienillä teoilla voi säästää rahaa ja vaivaa. Muista siis seurata sähkön hintoja ja reagoida niihin järkevästi.
