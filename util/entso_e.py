@@ -17,7 +17,6 @@ Forecast is based on known maximum production based on all 5 nuclear plants (OL1
     """
 
 def entso_e_nuclear(entso_e_api_key):
-    
     print("* ENTSO-E: Fetching nuclear downtime messages...")  
     client = EntsoePandasClient(api_key=entso_e_api_key)
 
@@ -32,8 +31,12 @@ def entso_e_nuclear(entso_e_api_key):
 
     country_code = 'FI'  # Finland
 
-    # "Unavaibility of generation units" from Entso-E includes Olkiluoto units
-    unavailable_generation = client.query_unavailability_of_generation_units(country_code, start=start, end=end, docstatus=None, periodstartupdate=None, periodendupdate=None)
+    try:
+        # "Unavailability of generation units" from Entso-E includes Olkiluoto units
+        unavailable_generation = client.query_unavailability_of_generation_units(country_code, start=start, end=end, docstatus=None, periodstartupdate=None, periodendupdate=None)
+    except Exception as e:
+        raise ConnectionError(f"Failed to fetch unavailability of generation units: {e}")
+
     unavailable_nuclear1 = unavailable_generation[unavailable_generation['plant_type'] == 'Nuclear'] 
     unavailable_nuclear1 = unavailable_nuclear1[unavailable_nuclear1['businesstype'] == 'Planned maintenance'] 
     unavailable_nuclear1 = unavailable_nuclear1[unavailable_nuclear1['resolution'] == 'PT60M'] 
