@@ -35,7 +35,7 @@ The script uses environment variables for configuration. These can be set in a f
 How to use:
 
 ```
-usage: nordpool_predict_fi.py [-h] [--train] [--eval] [--training-stats] [--dump] [--plot] [--predict] [--add-history] [--narrate] [--commit] [--deploy] [--publish] [--github]
+usage: nordpool_predict_fi.py [-h] [--train] [--eval] [--training-stats] [--dump] [--plot] [--predict] [--add-history] [--narrate] [--commit] [--deploy] [--publish]
 
 options:
   -h, --help          show this help message and exit
@@ -48,8 +48,7 @@ options:
   --add-history       Add all missing predictions to the database post-hoc; use with --predict
   --narrate           Narrate the predictions into text using an LLM
   --commit            Commit the results to DB and deploy folder; use with --predict, --narrate
-  --deploy            Deploy the output files to the deploy folder but not GitHub
-  --github            Push the deployed files to a GitHub repo; use with --deploy
+  --deploy            Deploy the output files to the deploy folder
 ```
 
 See the data/create folder for a set of DB initialization scripts if you need them. You may need to fetch some of the data sets from their original sources.

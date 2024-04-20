@@ -18,7 +18,6 @@ from util.llm import narrate_prediction
 from datetime import datetime, timedelta
 from util.entso_e import entso_e_nuclear
 from util.sql import db_update, db_query_all
-from util.github import push_updates_to_github
 from util.dataframes import update_df_from_df
 from util.fmi import update_wind_speed, update_temperature
 from util.models import write_model_stats, stats, list_models
@@ -42,7 +41,6 @@ try:
     rf_model_path = get_mandatory_env_variable('RF_MODEL_PATH')
     data_folder_path = get_mandatory_env_variable('DATA_FOLDER_PATH')
     db_path = get_mandatory_env_variable('DB_PATH')
-    repo_path = get_mandatory_env_variable('REPO_PATH')
     predictions_file = get_mandatory_env_variable('PREDICTIONS_FILE')
     averages_file = get_mandatory_env_variable('AVERAGES_FILE')
     fingrid_api_key = get_mandatory_env_variable('FINGRID_API_KEY')
@@ -56,12 +54,9 @@ except ValueError as e:
     print(f"Error: {e}")
     exit(1)
 
-# Optional env variables for --github or --narrate:
+# Optional env variables for --narrate:
 openai_api_key = os.getenv('OPENAI_API_KEY') # OpenAI API key, used by --narrate
 narration_file = os.getenv('NARRATION_FILE') # used by --narrate
-token = os.getenv('TOKEN') # used by --github
-commit_message = os.getenv('COMMIT_MESSAGE') # used by --github
-deploy_folder_path = os.getenv('DEPLOY_FOLDER_PATH') # used by --github
 
 # Arguments
 parser = argparse.ArgumentParser()
@@ -74,10 +69,9 @@ parser.add_argument('--predict', action='store_true', help='Generate price predi
 parser.add_argument('--add-history', action='store_true', help='Add all missing predictions to the database post-hoc; use with --predict')
 parser.add_argument('--narrate', action='store_true', help='Narrate the predictions into text using an LLM')
 parser.add_argument('--commit', action='store_true', help='Commit the results to DB and deploy folder; use with --predict, --narrate')
-parser.add_argument('--deploy', action='store_true', help='Deploy the output files to the deploy folder but not GitHub')
+parser.add_argument('--deploy', action='store_true', help='Deploy the output files to the deploy folder')
 # --publish will be deprecated in the future, prefer --deploy instead:
-parser.add_argument('--publish', action='store_true', help='Deploy the output files to the deploy folder but not GitHub', dest='deploy') #redirected
-parser.add_argument('--github', action='store_true', help='Push the deployed files to a GitHub repo; use with --deploy')
+parser.add_argument('--publish', action='store_true', help='Deploy the output files to the deploy folder', dest='deploy') #redirected
 
 args = parser.parse_args()
 
@@ -352,7 +346,6 @@ if args.narrate:
         print(narration)
 
 # Deploy can be done solo, or with --predict and --narrate
-# Note that we have a dedicated --github argument to push to GitHub (not many need to use it)
 if args.deploy:
     print("Deploing the latest prediction data:", deploy_folder_path, "...")
     
@@ -414,20 +407,6 @@ if args.deploy:
     with open(json_path, 'w') as f:
         f.write(json_data)
     print(f"→ Daily averages saved to {json_path}")
-
-    # Commit and push the updates to GitHub
-    if args.github:
-        files_to_push = [predictions_file, averages_file, narration_file]
-
-        try:
-            if push_updates_to_github(repo_path, deploy_folder_path, files_to_push, commit_message):
-                print("Data pushed to GitHub.")
-        except Exception as e:
-            print("Error occurred while pushing data to GitHub: ", str(e))
-
-        print("Script execution completed.")
-
-    exit()
 
 if __name__ == "__main__":
     # If no arguments were given, print usage
