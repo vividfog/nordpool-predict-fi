@@ -40,6 +40,7 @@ try:
     # Configuration and secrets, mandatory:
     rf_model_path = get_mandatory_env_variable('RF_MODEL_PATH')
     data_folder_path = get_mandatory_env_variable('DATA_FOLDER_PATH')
+    deploy_folder_path = get_mandatory_env_variable('DEPLOY_FOLDER_PATH')
     db_path = get_mandatory_env_variable('DB_PATH')
     predictions_file = get_mandatory_env_variable('PREDICTIONS_FILE')
     averages_file = get_mandatory_env_variable('AVERAGES_FILE')
