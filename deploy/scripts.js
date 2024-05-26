@@ -88,15 +88,30 @@ Promise.all([
             tooltip: {
                 trigger: 'axis',
                 formatter: function (params) {
-                    var result = params[0].axisValueLabel + '<br/>';
+                    var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
+                    var date = new Date(params[0].axisValue);
+
+                    var weekday = weekdays[date.getDay()]; 
+                    var year = date.getFullYear();
+                    var month = date.getMonth() + 1; // Month is 0-based, add 1 but no leading zero
+                    var day = date.getDate(); // No leading zero for day
+                    var hours = ("0" + date.getHours()).slice(-2); // Add leading zero
+                    var minutes = ("0" + date.getMinutes()).slice(-2); // Add leading zero
+                    var seconds = ("0" + date.getSeconds()).slice(-2); // Add leading zero
+
+                    var formattedDateString = `${weekday} ${day}.${month}. klo ${hours}`;
+                    
+                    var result = formattedDateString + '<br/>';
                     params.forEach(function (item) {
                         // Round the value to one decimal place
                         var valueRounded = item.value[1].toFixed(1);
                         result += item.marker + " " + item.seriesName + ': ' + valueRounded + ' ¢/kWh<br/>';
                     });
+                    
                     return result;
                 }
             },
+
             xAxis: {
                 type: 'time',
                 boundaryGap: false,
