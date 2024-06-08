@@ -1,3 +1,5 @@
-**Lauantain** sähkön hinta pysyy maltillisena, mutta **sunnuntaina** odotettavissa pientä nousua. **Maanantaina** hinta laskee edelleen, ja tiistaina hinta kohoaa merkittävästi. **Keskiviikkona** sähkön hinta pysyy korkealla tasolla, mutta **torstaina** hinta laskee hieman.
+**Sähkön hinta lähtee liitoon lähipäivinä!** 
 
-Viikon sähkön hintakehitys tarjoaa monipuolisen kuvan markkinatilanteesta. Sähkön hinta vaihtelee edullisesta kohtuulliseen ja palaa taas takaisin edullisemmalle tasolle. Vaikka tiistain ja keskiviikon hintojen nousu saattaa aiheuttaa pientä huolta, torstain hintojen lasku tuo helpotusta kuluttajille. On jälleen osoitus siitä, miten vaihteleva ja ennustamaton sähkömarkkina voi olla. Seuraamalla hintojen kehitystä päivittäin voi kuitenkin löytää parhaat hetket sähkön kulutukseen ja säästää siten rahaa.
+**Sunnuntaina** sähkön hinta pysyy vielä maltillisena, mutta **maanantaina** se nousee hieman. **Tiistaina** hinta kohoaa huomattavasti, ja keskiviikkona se pysyy korkealla tasolla. **Torstaina** hinta laskee hieman, mutta pysyy silti korkeana. 
+
+Viikon aikana sähkön hinta vaihtelee merkittävästi, mutta keskihinta nousee jyrkästi. Halvimmillaan sähköä saa lähes ilmaiseksi, mutta kalleimmillaan hinta hipoo pilviä. Kannattaa siis seurata hintakehitystä tarkasti ja mahdollisesti hyödyntää halvempia hintoja silloin, kun niitä on tarjolla. Muista kuitenkin, että sähkön hinta voi vaihdella nopeasti, joten päätökset on tehtävä nopeasti. Jännittäviä päiviä siis luvassa sähkömarkkinoilla!
