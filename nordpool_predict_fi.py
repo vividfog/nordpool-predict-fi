@@ -24,8 +24,9 @@ from util.models import write_model_stats, stats, list_models
 from util.eval import create_prediction_snapshot, rotate_snapshots
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
+# Fetch environment variables from .env.local (create yours from .env.template)
 try:
-    load_dotenv('.env.local')  # take environment variables from .env.local
+    load_dotenv('.env.local')
 except Exception as e:
     print(f"Error loading .env.local file. Did you create one? See README.md.")
 
@@ -36,8 +37,8 @@ def get_mandatory_env_variable(name):
         raise ValueError(f"Mandatory variable {name} not set in environment")
     return value
 
+# Configuration and secrets, mandatory:
 try:
-    # Configuration and secrets, mandatory:
     rf_model_path = get_mandatory_env_variable('RF_MODEL_PATH')
     data_folder_path = get_mandatory_env_variable('DATA_FOLDER_PATH')
     deploy_folder_path = get_mandatory_env_variable('DEPLOY_FOLDER_PATH')
@@ -59,7 +60,7 @@ except ValueError as e:
 openai_api_key = os.getenv('OPENAI_API_KEY') # OpenAI API key, used by --narrate
 narration_file = os.getenv('NARRATION_FILE') # used by --narrate
 
-# Arguments
+# Command line arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('--train', action='store_true', help='Train a new model candidate using the data in the database')
 parser.add_argument('--eval', action='store_true', help='Show evaluation metrics for the current database')
@@ -71,8 +72,6 @@ parser.add_argument('--add-history', action='store_true', help='Add all missing 
 parser.add_argument('--narrate', action='store_true', help='Narrate the predictions into text using an LLM')
 parser.add_argument('--commit', action='store_true', help='Commit the results to DB and deploy folder; use with --predict, --narrate')
 parser.add_argument('--deploy', action='store_true', help='Deploy the output files to the deploy folder')
-# --publish will be deprecated in the future, prefer --deploy instead:
-parser.add_argument('--publish', action='store_true', help='Deploy the output files to the deploy folder', dest='deploy') #redirected
 
 args = parser.parse_args()
 
@@ -80,7 +79,7 @@ args = parser.parse_args()
 if not args.dump:
     print(datetime.now().strftime("[%Y-%m-%d %H:%M:%S]"), "Nordpool Predict FI")
 
-# Train a model with new data and make it available for the rest of the script
+# --train: Train a model with new data and make it available for the rest of the script
 rf_trained = None
 
 if args.train:
@@ -132,11 +131,11 @@ if args.train:
         print("→ Model NOT saved to the database but remains available in memory for --prediction.")
         print("→ Training done.")
 
-# Show evals based on the current database
+# --eval: Show evals based on the current database
 if args.eval:
     print(eval(db_path))
 
-# Show training stats for all models in the database as CSV
+# --training-stats: Show training stats for all models in the database as CSV
 if args.training_stats:
     print("Training stats for all models in the database:")
 
@@ -163,10 +162,12 @@ if args.training_stats:
         
     exit()
 
+# --dump: Dump the SQLite database as CSV to STDOUT
 if args.dump: 
     dump_sqlite_db(data_folder_path)
     exit()
 
+# --plot: Plot all predictions and actual prices to a PNG file in the data folder
 if args.plot:
     fig, ax = plt.subplots(figsize=(12, 8))  # Huge
 
@@ -200,6 +201,7 @@ if args.plot:
 
     exit()
 
+# --predict: Use the model to predict future prices
 if args.predict:
     print("Running predictions...")
 
@@ -284,7 +286,7 @@ if args.predict:
     # We drop these columns before commit/display, as we can later compute them from the timestamp
     df = df.drop(columns=['day_of_week', 'hour', 'month'])
 
-    # We are going to be verbose and ask before committing a lot of data to the database    
+    # --add-history: We are going to be verbose and ask before committing a lot of data to the database    
     if args.add_history:
         pd.set_option('display.max_columns', None)
         print("Spot Prices random sample of 20:\n", df.sample(20))
@@ -309,7 +311,7 @@ if args.predict:
         print("Root Mean Squared Error:", rmse, "c/kWh")
         print("R-squared:", r2)
    
-    # Update the database with the final data
+    # --commit: Update the database with the final data
     if args.commit:    
         if args.add_history:        
             # Ask if the user wants to add the predictions to the database
@@ -329,7 +331,7 @@ if args.predict:
     # df.to_csv(os.path.join(data_folder_path + "/private", "predictions_df.csv"), index=False)    
     # exit()
 
-# Narrate can be used with the previous arguments
+# --narrate: Narrate can be used with the previous arguments
 if args.narrate:
     print("Narrating predictions...")
     tomorrow = datetime.now(pytz.utc).replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(days=1)
@@ -346,14 +348,14 @@ if args.narrate:
     else:
         print(narration)
 
-# Deploy can be done solo, or with --predict and --narrate
+# --deploy: Deploy can be done solo, or with --predict and --narrate
 if args.deploy:
     print("Deploing the latest prediction data:", deploy_folder_path, "...")
     
-    publish_df = db_query_all(db_path)
+    deploy_df = db_query_all(db_path)
 
     # Ensure 'timestamp' column is in datetime format
-    publish_df['timestamp'] = pd.to_datetime(publish_df['timestamp'])
+    deploy_df['timestamp'] = pd.to_datetime(deploy_df['timestamp'])
 
     # Helsinki time zone setup
     helsinki_tz = pytz.timezone('Europe/Helsinki')
@@ -365,11 +367,11 @@ if args.deploy:
     start_of_yesterday_utc = start_of_yesterday_helsinki.astimezone(pytz.utc)
 
     # Ensure 'timestamp' column is in datetime format and UTC for comparison
-    publish_df['timestamp'] = pd.to_datetime(publish_df['timestamp']).dt.tz_localize(None).dt.tz_localize(pytz.utc)
+    deploy_df['timestamp'] = pd.to_datetime(deploy_df['timestamp']).dt.tz_localize(None).dt.tz_localize(pytz.utc)
 
     # Filter out rows where 'timestamp' is earlier than the start of yesterday in Helsinki, adjusted to UTC
-    publish_df = publish_df[publish_df['timestamp'] >= start_of_yesterday_utc]
-    hourly_predictions = publish_df[['timestamp', 'PricePredict_cpkWh']].copy()
+    deploy_df = deploy_df[deploy_df['timestamp'] >= start_of_yesterday_utc]
+    hourly_predictions = deploy_df[['timestamp', 'PricePredict_cpkWh']].copy()
     hourly_predictions['timestamp'] = hourly_predictions['timestamp'].dt.tz_localize(None) if hourly_predictions['timestamp'].dt.tz is not None else hourly_predictions['timestamp']
     hourly_predictions['timestamp'] = hourly_predictions['timestamp'].apply(
         lambda x: (x - pd.Timestamp("1970-01-01")) // pd.Timedelta('1ms')
@@ -392,9 +394,9 @@ if args.deploy:
     rotate_snapshots(deploy_folder_path, pattern="prediction_snapshot*", max_files=6)
 
     # Normalize 'timestamp' to set the time to 00:00:00 for daily average grouping
-    publish_df['timestamp'] = publish_df['timestamp'].dt.tz_localize(None) if publish_df['timestamp'].dt.tz is not None else publish_df['timestamp']
-    publish_df['timestamp'] = publish_df['timestamp'].dt.normalize()
-    daily_averages = publish_df.groupby('timestamp')['PricePredict_cpkWh'].mean().reset_index()
+    deploy_df['timestamp'] = deploy_df['timestamp'].dt.tz_localize(None) if deploy_df['timestamp'].dt.tz is not None else deploy_df['timestamp']
+    deploy_df['timestamp'] = deploy_df['timestamp'].dt.normalize()
+    daily_averages = deploy_df.groupby('timestamp')['PricePredict_cpkWh'].mean().reset_index()
 
     # Before applying lambda, ensure 'timestamp' is timezone-naive for consistency
     daily_averages['timestamp'] = daily_averages['timestamp'].apply(
