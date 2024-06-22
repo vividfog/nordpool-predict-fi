@@ -270,12 +270,13 @@ def update_temperature(df):
 
     return df
 
+# Main function for testing the FMI API functions
 if __name__ == "__main__":
 
     # Comparing hourly forecast, same-day-history and ability to fetch data from way past
 
     # Get forecast for a specific day and place
-    date = "2024-02-28"
+    date = datetime.today().strftime('%Y-%m-%d')
     fmisid = 101846 # Kemi Ajos
     parameters_forecast = ['temperature', 'windspeedms']
     forecast = get_forecast(fmisid, date, parameters_forecast)
