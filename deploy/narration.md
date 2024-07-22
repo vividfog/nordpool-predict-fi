@@ -1,3 +1,5 @@
-**Tiistaina** sähkön hinta liikkuu välillä 3-6 senttiä per kilowattitunti, keskimäärin 5 senttiä. **Keskiviikkona** hinta laskee hieman, ollen 2-4 senttiä, keskiarvon ollessa 3 senttiä. **Torstaina** hinta nousee hieman, liikkuen 3-7 sentin välillä, keskimäärin 4 senttiä. **Perjantaina** hinta pysyy samana kuin keskiviikkona, eli 1-4 sentissä, keskiarvon ollessa 3 senttiä. **Lauantaina** hinta on jälleen 1-6 senttiä, keskimäärin 3 senttiä.
+**Tiistaina** ja **keskiviikkona** pörssisähkön hinta pysyy alhaisena, vain 1-3 ¢/kWh välillä. Mutta **torstaina** hinta nousee hieman, liikkuen 2-10 ¢/kWh välillä. **Perjantaina** hinta laskee taas 2-4 ¢/kWh välille, mutta **lauantaina** se kohoaa 2-7 ¢/kWh asti.
 
-Kaiken kaikkiaan lähipäivien sähkön hintakehitys vaikuttaa melko tasaiselta, vaikka pieniä vaihteluita esiintyykin päivittäin. Sähkön hinta pysyy kuitenkin kohtuullisena koko viikon, eikä kuluttajien tarvitse huolehtia suurista hintapiikeistä. On siis hyvä hetki hyödyntää sähköä viikon mittaan ilman suuria kustannuksia.
+Kokonaisuutena lähipäivien sähkön hinnat vaihtelevat melko maltillisesti, mutta tarjoavat silti pientä jännitystä markkinoille. **Torstain** hintapiikki erottuu selvästi muista päivistä, mutta onneksi se ei kestä kauaa. **Perjantain** edullinen hinta tarjoaa hyvän tilaisuuden sähkönkuluttajille, kun taas **lauantaina** hinta kohoaa hieman, mutta pysyy silti kohtuullisena.
+
+Sähkön hintakehitys lupailee mielenkiintoisia päiviä markkinoilla, ja kuluttajien kannattaa olla valppaina seuraamaan hintojen vaihtelua.
