@@ -35,11 +35,14 @@
         <p>Kyseessä on <a href="https://statquest.org/statquest-random-forests-part-1-building-using-and-evaluating/" target="_blank">Random Forest</a> -koneoppimismalli, joka hakee korrelaatioita eri muuttujien välillä ja oppii, millaiseen hintaan kukin yhdistelmä historian perusteella johtaa. Tämä ei siis ole aikasarjaennuste, vaan jokainen tunti saa arvonsa erikseen näiden tietojen perusteella:</p>
         <li><strong>Isoimpien tuulivoima-alueiden tuuliennuste:</strong> FMI-sääasemat, eli epäsuorasti tuulivoiman määrä</li>
         <li><strong>Muutaman keskeisen asutuskeskuksen lämpötilaennuste:</strong> FMI-sääasemat, eli epäsuorasti lämmitystarve</li>
-        <li><strong>Ydinvoimatuotanto:</strong> Fingrid (mallin opetus) ja ENTSO-E REMIT UMM (ennuste)</li>
+        <li><strong>Ydinvoimatuotanto:</strong> Fingrid (mallin opetus) <del>ja ENTSO-E REMIT UMM (ennuste)</del></li>
         <li><strong>Viikonpäivä:</strong> ma-su</li>
         <li><strong>Kellonaika:</strong> 0-23</li>
-        <li><strong>Kuukausi:</strong> vuodenajan vaikutus</li>
+        <li><strong><del>Kuukausi:</del></strong> <del>vuodenajan vaikutus</del></li>
         <p>Nämä muuttujat on valittu intuitiolla ja kokeilemalla. Jokin toinen yhdistelmä voisi toimia paremmin tai huonommin. Lähdekoodi on avointa, joten olet tervetullut kokeilemaan erilaisia vaihtoehtoja näiden lisäksi tai sijaan.<p>
+        <p><strong>Muutokset 11.8.2024:</strong></p>
+        <li>Poistettu ENTSO-E REMIT UMM -tuotantomuuttuja, koska rajapinnan mukaan OL3 olisi huollossa vuoden 2025 puolelle asti. Tämä ei onneksi ole totta, mutta sotkee ennusteen. Tutkimme asiaa ja palautamme ydinvoimaennusteen mukaan opetukseen, jos virheen syy löytyy. Ydinvoimaennuste olettaa nyt, että viimeisin tunnettu tuotantoluku pysyy seuraavat 5 vrk.</li>
+        <li>Kuukausitieto (tammikuu-joulukuu) on poistettu mallin opetuksesta, koska takavuosien kk-keskiarvot voivat markkinatilanteen vuoksi olla hyvin erilaiset kuin tänä vuonna. Vuodenajan hintavaikutus käy opetuksessa ilmi myös säätilasta, kun lämpötilat menevät pakkaselle ja kulutus kasvaa.</li>
         <h1>Mitä ennuste ei huomioi?</h1>
         <p>Ennuste ei näe mitään muuta kuin mitä yllä on mainittu. Muista, että sähkömarkkinoilla seilaa <a href="https://www.terracognita.fi/tuote/musta-joutsen/" target="_blank">mustia joutsenia</a> ja pörssisähkön ensi viikon hintaan ei tällä vatkaimella ole todellista näkyvyyttä, saati valtaa. Se lukee samoja sääennusteita kuin sinä, ja sääennusteetkin ovat tämän tästä väärässä.</p>
         <p style="padding-bottom: 24px;">Vaikka malli osaa "ennustaa" menneisyyttä oivasti, se ei takaa että arviot tulevaisuudesta osuvat kohdalleen. Älä siis esim. säädä talosi lämmitystä näiden numeroiden perusteella, jos et ole kotona.</p>
