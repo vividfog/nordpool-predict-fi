@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 import pandas as pd
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from entsoe import EntsoePandasClient
 import pandas as pd
 
@@ -16,18 +16,24 @@ Forecast is based on known maximum production based on all 5 nuclear plants (OL1
     - pd.DataFrame: A pandas DataFrame with a row for each hour of the specified date range and column for forecasted Nuclear production
     """
 
-def entso_e_nuclear(entso_e_api_key):
+def entso_e_nuclear(entso_e_api_key, DEBUG=False):
     print("* ENTSO-E: Fetching nuclear downtime messages...")  
     client = EntsoePandasClient(api_key=entso_e_api_key)
 
     # Total nuclear capacity in Finland is 4372 MW (2 x 890 MW, 1 x 1600 MW and 2 x 496 MW)
     total_capacity = 4372 # TODO: Get from .env.local instead
 
-    start_time = datetime.utcnow().replace(minute=0, second=0, microsecond=0) + timedelta(hours=1)  # Round to the next full hour
-    end_time = start_time + timedelta(days=6) # 5+1 to fill the data frame (TODO: these should match without this hack)
+    if DEBUG:
+        print(f"→ ENTSO-E: Total nuclear capacity: {total_capacity} MW")
 
-    start = pd.Timestamp(pd.to_datetime(start_time), tz='Europe/Helsinki')
-    end = pd.Timestamp(pd.to_datetime(end_time), tz='Europe/Helsinki')
+    start_time = datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0) + timedelta(hours=1)  # Round to the next full hour
+    end_time = start_time + timedelta(days=6)  # 5+1 to fill the data frame (TODO: these should match without this hack)
+
+    start = pd.Timestamp(start_time).tz_convert('Europe/Helsinki')
+    end = pd.Timestamp(end_time).tz_convert('Europe/Helsinki')
+
+    if DEBUG:
+        print(f"→ ENTSO-E: Fetching data from {start} to {end}")
 
     country_code = 'FI'  # Finland
 
@@ -37,17 +43,31 @@ def entso_e_nuclear(entso_e_api_key):
     except Exception as e:
         raise ConnectionError(f"Failed to fetch unavailability of generation units: {e}")
 
+    if DEBUG:
+        print("→ ENTSO-E: Unavailability of generation units, RAW data:\n", unavailable_generation)
+
     unavailable_nuclear1 = unavailable_generation[unavailable_generation['plant_type'] == 'Nuclear'] 
     unavailable_nuclear1 = unavailable_nuclear1[unavailable_nuclear1['businesstype'] == 'Planned maintenance'] 
     unavailable_nuclear1 = unavailable_nuclear1[unavailable_nuclear1['resolution'] == 'PT60M'] 
     unavailable_nuclear1 = unavailable_nuclear1[['start', 'end','avail_qty','nominal_power', 'production_resource_name']]
 
+    if DEBUG:
+        print("→ ENTSO-E: Unavailability of generation units:\n", unavailable_nuclear1)
+
     # "Unavailability of production plants" from Entso-E includes Loviisa units
     unavailable_production = client.query_unavailability_of_production_units(country_code, start, end, docstatus=None, periodstartupdate=None, periodendupdate=None)
+
+    # Debug print    
+    if DEBUG:
+        print("→ ENTSO-E: Unavailability of production units, RAW data:\n", unavailable_production)
+    
     unavailable_nuclear2 = unavailable_production[unavailable_production['plant_type'] == 'Nuclear'] 
     unavailable_nuclear2 = unavailable_nuclear2[unavailable_nuclear2['businesstype'] == 'Planned maintenance']
     unavailable_nuclear2 = unavailable_nuclear2[unavailable_nuclear2['resolution'] == 'PT60M'] 
     unavailable_nuclear2 = unavailable_nuclear2[['start', 'end','avail_qty','nominal_power', 'production_resource_name']]
+
+    if DEBUG:
+        print("→ ENTSO-E: Unavailability of production units:\n", unavailable_nuclear2)
 
     # Combine datasets
     unavailable_nuclear = pd.concat([unavailable_nuclear1, unavailable_nuclear2], axis=0)
@@ -56,6 +76,9 @@ def entso_e_nuclear(entso_e_api_key):
 
     # Drop "created_doc_time" column
     unavailable_nuclear = unavailable_nuclear.reset_index(drop=True)
+
+    if DEBUG:
+        print("→ ENTSO-E: Combined unavailability of nuclear power plants:\n", unavailable_nuclear)
 
     # Calculate unavailable capacity for each unavailability entry
     unavailable_nuclear_capacity = unavailable_nuclear.assign(unavailable_qty = (unavailable_nuclear['nominal_power'] - unavailable_nuclear['avail_qty']))
@@ -67,12 +90,19 @@ def entso_e_nuclear(entso_e_api_key):
     nuclear_forecast = pd.DataFrame(index=date_range, columns=["available_capacity"])
     nuclear_forecast['available_capacity'] = total_capacity
 
+    # Debug print    
+    if DEBUG:
+        print("→ ENTSO-E: Forecast dataset initialized with baseline capacity:\n", nuclear_forecast)
+
     # Adjust available capacity based on unavailability entries
     for _, row in unavailable_nuclear_capacity.iterrows():
         mask = (nuclear_forecast.index >= row['start']) & (nuclear_forecast.index < row['end'])
         nuclear_forecast.loc[mask, 'available_capacity'] -= row['unavailable_qty']
         
     nuclear_forecast.reset_index(inplace=True)
+    
+    if DEBUG:
+        print("→ ENTSO-E: Forecast dataset with adjusted capacity:\n", nuclear_forecast)
 
     # Let's go back to the host program naming conventions
     nuclear_forecast.rename(columns={'index': 'timestamp', 'available_capacity': 'NuclearPowerMW'}, inplace=True)
@@ -81,7 +111,7 @@ def entso_e_nuclear(entso_e_api_key):
     avg_capacity = round(nuclear_forecast['NuclearPowerMW'].mean())
     max_capacity = round(nuclear_forecast['NuclearPowerMW'].max())
     min_capacity = round(nuclear_forecast['NuclearPowerMW'].min())
-    
+
     print(f"→ ENTSO-E: Avg: {avg_capacity}, max: {max_capacity}, min: {min_capacity} MW")
             
     return nuclear_forecast
@@ -103,7 +133,7 @@ def main():
 
     try:
         # Fetch nuclear power forecast data
-        nuclear_forecast_data = entso_e_nuclear(entso_e_api_key)
+        nuclear_forecast_data = entso_e_nuclear(entso_e_api_key, DEBUG=True)
         
         # Display the fetched data
         print(nuclear_forecast_data)

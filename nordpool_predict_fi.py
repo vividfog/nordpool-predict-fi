@@ -75,6 +75,9 @@ parser.add_argument('--deploy', action='store_true', help='Deploy the output fil
 
 args = parser.parse_args()
 
+# Configure pandas to display all rows
+pd.set_option('display.max_rows', None)
+
 # Start with a timestamp intro to STDOUT, but not if we're here to dump the database as CSV
 if not args.dump:
     print(datetime.now().strftime("[%Y-%m-%d %H:%M:%S]"), "Nordpool Predict FI")
@@ -246,11 +249,12 @@ if args.predict:
     # NOTE: To save on API calls, this won't backfill history beyond 7 days even if asked
     df = update_nuclear(df, fingrid_api_key=fingrid_api_key)
     
+    # BUG: Entso-E data appears to show OL3 downtime for entire rest of 2024, which can't be true; need to investigate; dropping for now
     # Fetch future nuclear downtime information from ENTSO-E unavailability data, h/t github:@pkautio
-    df_entso_e = entso_e_nuclear(entso_e_api_key)
+    # df_entso_e = entso_e_nuclear(entso_e_api_key)
     
     # Refresh the previously inferred nuclear power numbers with the ENTSO-E data
-    df = update_df_from_df(df, df_entso_e)
+    # df = update_df_from_df(df, df_entso_e)
     
     # Get the latest spot prices for the data frame, past and future if any
     # NOTE: To save on API calls, this won't backfill history beyond 7 days even if asked
@@ -279,8 +283,9 @@ if args.predict:
     else:
         rf_model = rf_trained
         print("→ Found a newly created in-memory model for predictions")
-        
-    price_df = rf_model.predict(df[['day_of_week', 'hour', 'month', 'NuclearPowerMW'] + fmisid_ws + fmisid_t])
+
+    # TODO: 2024-08-10: We're dropping MONTH information for now, as historical month data can be misleading for the model; inspect this again later.
+    price_df = rf_model.predict(df[['day_of_week', 'hour', 'NuclearPowerMW'] + fmisid_ws + fmisid_t])
     df['PricePredict_cpkWh'] = price_df
     
     # We drop these columns before commit/display, as we can later compute them from the timestamp

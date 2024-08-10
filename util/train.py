@@ -42,7 +42,10 @@ def train_model(df, fmisid_ws, fmisid_t):
     # Define features and target for the first model after outlier removal
     # If you defined a different set of FMI stations in your .env.local, they should automatically be reflected here
     # You may need to manually add those ws_ and t_ columns to your SQLite database first though; TODO: Automate this process
-    X_filtered = df_filtered[['day_of_week', 'hour', 'month', 'NuclearPowerMW'] + fmisid_ws + fmisid_t]
+    # X_filtered = df_filtered[['day_of_week', 'hour', 'month', 'NuclearPowerMW'] + fmisid_ws + fmisid_t]
+
+    # TODO: 2024-08-10: We're dropping MONTH information for now, as historical month data can be misleading for the model; inspect this again.
+    X_filtered = df_filtered[['day_of_week', 'hour', 'NuclearPowerMW'] + fmisid_ws + fmisid_t]
     y_filtered = df_filtered['Price_cpkWh']
 
     # Train the first model (Random Forest) on the filtered data
@@ -132,7 +135,10 @@ def train_model(df, fmisid_ws, fmisid_t):
         random_sample = df.sample(n=500, random_state=None)  # 'None' for truly random behavior
 
         # Pick input/output features for the random sample
-        X_random_sample = random_sample[['day_of_week', 'hour', 'month', 'NuclearPowerMW'] + fmisid_ws + fmisid_t]
+        # X_random_sample = random_sample[['day_of_week', 'hour', 'month', 'NuclearPowerMW'] + fmisid_ws + fmisid_t]
+        
+        # TODO: 2024-08-10: We're dropping MONTH information for now, as historical month data can be misleading for the model; inspect this again.
+        X_random_sample = random_sample[['day_of_week', 'hour', 'NuclearPowerMW'] + fmisid_ws + fmisid_t]
         y_filtered = df_filtered['Price_cpkWh']
         y_random_sample_true = random_sample['Price_cpkWh']
 
