@@ -14,6 +14,7 @@ from util.train import train_model
 from util.dump import dump_sqlite_db
 from util.sahkotin import update_spot
 from util.fingrid import update_nuclear
+from util.imports import update_import_capacity
 from util.llm import narrate_prediction
 from datetime import datetime, timedelta
 from util.entso_e import entso_e_nuclear
@@ -102,9 +103,12 @@ if args.train:
     
     # If NuclearPowerMW is null, fill it with the last known value
     df['NuclearPowerMW'] = df['NuclearPowerMW'].fillna(method='ffill')
+
+    # If ImportCapacityMW is null, fill it with the last known value
+    df['ImportCapacityMW'] = df['ImportCapacityMW'].fillna(method='ffill')
     
     # Define other required columns
-    required_columns = ['timestamp', 'NuclearPowerMW', 'Price_cpkWh'] + fmisid_ws + fmisid_t
+    required_columns = ['timestamp', 'NuclearPowerMW', 'ImportCapacityMW', 'Price_cpkWh'] + fmisid_ws + fmisid_t
 
     # Drop rows with missing values in the cleaned required columns list
     df = df.dropna(subset=required_columns)
@@ -249,6 +253,18 @@ if args.predict:
     # NOTE: To save on API calls, this won't backfill history beyond 7 days even if asked
     df = update_nuclear(df, fingrid_api_key=fingrid_api_key)
     
+    # Print the head of the DataFrame after updating nuclear power
+    # print("→ DataFrame after updating nuclear power:")
+    # print(df.head())
+    
+    # Get the latest import capacity data for the data frame, and infer the future from last known value
+    # NOTE: To save on API calls, this won't backfill history beyond 7 days even if asked
+    df = update_import_capacity(df, fingrid_api_key=fingrid_api_key)
+
+    # Print the head of the DataFrame after updating import capacity
+    # print("→ DataFrame after updating import capacity:")
+    # print(df.head())
+    
     # BUG: Entso-E data appears to show OL3 downtime for entire rest of 2024, which can't be true; need to investigate; dropping for now
     # Fetch future nuclear downtime information from ENTSO-E unavailability data, h/t github:@pkautio
     # df_entso_e = entso_e_nuclear(entso_e_api_key)
@@ -259,6 +275,10 @@ if args.predict:
     # Get the latest spot prices for the data frame, past and future if any
     # NOTE: To save on API calls, this won't backfill history beyond 7 days even if asked
     df = update_spot(df)
+
+    # Print the head of the DataFrame after updating spot prices
+    # print("→ DataFrame after updating spot prices:")
+    # print(df.head())
     
     # TODO: Decide if including wind power capacity is necessary; it seems to worsen the MSE and R2
     # For now we'll drop it
@@ -275,6 +295,24 @@ if args.predict:
     df['day_of_week'] = df['Timestamp'].dt.dayofweek + 1
     df['hour'] = df['Timestamp'].dt.hour
     df['month'] = df['Timestamp'].dt.month
+
+    prediction_features = ['day_of_week', 'hour', 'NuclearPowerMW', 'ImportCapacityMW'] + fmisid_ws + fmisid_t
+
+    # Print feature names used during prediction
+    # print("→ Feature names used during prediction:")
+    # print(prediction_features)
+
+    # Print DataFrame columns before prediction
+    # print("→ DataFrame columns before prediction:")
+    # print(df.columns.tolist())
+
+    # Print the head of the DataFrame before prediction
+    # print("→ DataFrame before prediction:")
+    # print(df.head())
+
+    # Check for missing values in the prediction features
+    # print("→ Checking for missing values in prediction features:")
+    # print(df[prediction_features].isnull().sum())
          
     # Use (if coming from --train) or load and apply a Random Forest model for predictions
     if rf_trained is None:
@@ -285,7 +323,8 @@ if args.predict:
         print("→ Found a newly created in-memory model for predictions")
 
     # TODO: 2024-08-10: We're dropping MONTH information for now, as historical month data can be misleading for the model; inspect this again later.
-    price_df = rf_model.predict(df[['day_of_week', 'hour', 'NuclearPowerMW'] + fmisid_ws + fmisid_t])
+    # price_df = rf_model.predict(df[['day_of_week', 'hour', 'NuclearPowerMW', 'ImportCapacityMW'] + fmisid_ws + fmisid_t])
+    price_df = rf_model.predict(df[prediction_features])
     df['PricePredict_cpkWh'] = price_df
     
     # We drop these columns before commit/display, as we can later compute them from the timestamp

@@ -45,15 +45,20 @@ def train_model(df, fmisid_ws, fmisid_t):
     # X_filtered = df_filtered[['day_of_week', 'hour', 'month', 'NuclearPowerMW'] + fmisid_ws + fmisid_t]
 
     # TODO: 2024-08-10: We're dropping MONTH information for now, as historical month data can be misleading for the model; inspect this again.
-    X_filtered = df_filtered[['day_of_week', 'hour', 'NuclearPowerMW'] + fmisid_ws + fmisid_t]
+    X_filtered = df_filtered[['day_of_week', 'hour', 'NuclearPowerMW', 'ImportCapacityMW'] + fmisid_ws + fmisid_t]
     y_filtered = df_filtered['Price_cpkWh']
+
+    # Print feature names used during training
+    # print("→ Feature names used during training:")
+    # print(X_filtered.columns.tolist())
 
     # Train the first model (Random Forest) on the filtered data
     # TODO: Make a --continuous option explicit, not implicit like it is now, if also running --prediction
     X_train, X_test, y_train, y_test = train_test_split(
         X_filtered, 
         y_filtered, 
-        test_size=0.15, # a compromise between 0.1 and 0.2 with limited data available
+        # test_size=0.15, # a compromise between 0.1 and 0.2 with limited data available
+        test_size=0.000001, # might as well train with all the data, because we re-train the model every time we predict → no waste
         random_state=42
         )
     
@@ -138,7 +143,7 @@ def train_model(df, fmisid_ws, fmisid_t):
         # X_random_sample = random_sample[['day_of_week', 'hour', 'month', 'NuclearPowerMW'] + fmisid_ws + fmisid_t]
         
         # TODO: 2024-08-10: We're dropping MONTH information for now, as historical month data can be misleading for the model; inspect this again.
-        X_random_sample = random_sample[['day_of_week', 'hour', 'NuclearPowerMW'] + fmisid_ws + fmisid_t]
+        X_random_sample = random_sample[['day_of_week', 'hour', 'NuclearPowerMW', 'ImportCapacityMW'] + fmisid_ws + fmisid_t]
         y_filtered = df_filtered['Price_cpkWh']
         y_random_sample_true = random_sample['Price_cpkWh']
 

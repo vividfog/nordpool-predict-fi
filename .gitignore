@@ -31,3 +31,4 @@ model/models.db
 .envrc
 .mailmap
 .pre-commit-config.yaml
+utils/private/
