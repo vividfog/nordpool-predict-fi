@@ -39,7 +39,7 @@ usage: nordpool_predict_fi.py [-h] [--train] [--eval] [--training-stats] [--dump
 
 options:
   -h, --help          show this help message and exit
-  --train             Train a new model candidate using the data in the database
+  --train             Train a new model candidate using the data in the database; use with --predict
   --eval              Show evaluation metrics for the current database
   --training-stats    Show training stats for candidate models in the database as a CSV
   --dump              Dump the SQLite database to CSV format
@@ -59,7 +59,7 @@ First make sure you've installed the requirements from requirements.txt. The mai
 
 Examples:
 
-- Start with: `python nordpool_predict_fi.py --predict` to create a set of price predictions for 7 days into the past and 5 days into the future with NO commit to DB.
+- Start with: `python nordpool_predict_fi.py --train --predict` to create a set of price predictions for 7 days into the past and 5 days into the future with NO commit to DB. Training happens in-memory and the model file is not saved. This should take less than a minute on a modern CPU.
 
 - Longer end to end pipeline: Train a new model, show eval stats for it, update a price forecast data frame with it, narrate the forecast, commit it to your SQLite database and deploy the json/md outputs with that data: `python nordpool_predict_fi.py --train --predict --narrate --commit --deploy`.
 
@@ -67,7 +67,7 @@ Examples:
 
   There is plenty of STDOUT info, it's a good idea to read it to see what's going on.
 
-- You'll find `prediction.json` in your deploy folder. This file contains the prediction for the coming days. The first number of each pair is milliseconds since epoch, the second number is predicted price as cents per kWh with VAT 24%. See [how to use this data in your apps](https://github.com/vividfog/nordpool-predict-fi?tab=readme-ov-file#how-to-use-the-data-in-your-apps).
+- You'll find `prediction.json` in your `deploy` folder. This file contains the prediction for the coming days. The first number of each pair is milliseconds since epoch, the second number is predicted price as cents per kWh with VAT 24%. See [how to use this data in your apps](https://github.com/vividfog/nordpool-predict-fi?tab=readme-ov-file#how-to-use-the-data-in-your-apps).
 
 - The `--predict` option creates and rotates snapshot JSON files of daily predictions for a week. This data can be used to visualize, how the predictions change over time.
 
@@ -156,8 +156,10 @@ The idea here was to formalize that intuition through a data set and a model.
 * A set near urban centers to measure **temperature**, a predictor for consumption due to heating. If it's cold in these urban centers, electricity consumption tends to go up.
 * For weather observations and forecasts, we use FMI stations that are the original source of observations and not part of an interpolated figure, and therefore likely a good souce for a weather forecast too. While it's possible to get a grid prediction for a bounding box, that's effectively stacking more models into the pipeline, potentially adding not just signal but also noise.
 
-- **Nuclear power** production data: Planned or unplanned maintenance break can offset a large amount of supply that wind power then needs to replace. The model uses ENTSO-E messages to deduce near-future nuclear capacity, and failing that, falls back to the last known realized value from Fingrid.
+- **Nuclear power** production data: Planned or unplanned maintenance break can offset a large amount of supply that wind power then needs to replace. The model can use ENTSO-E messages to deduce near-future nuclear capacity, and failing that, falls back to the last known realized value from Fingrid.
 - Since the **day of the week** (Sunday vs. Monday) makes a difference, as does the **time of the day** (3 AM vs. 7 PM), and a **month** (January vs. July), those too were included as labels. But the day-of-the-month was not, because all it says is likely already captured by the weather, the time and the weekday. Out of these, month turned out to have negligible predictive power and the other time variables are far behind wind/temperature/production variables too. These could be removed and the forecast would still be usable.
+  - **Month** has since been removed from the data, as the model should be able to infer the seasonal effects by paying attention to the temperatures. Just because it's December doesn't necessarily mean it's cold, and May of next year can be much colder than May of last year.
+- **Import capacity**: The total available import capacity from Sweden and Estonia: SE1, SE3 and EE, in megawatts. When there's shortage in transfer capacity due to maintenance or other reasons, Finland can't import cheap energy from abroad, which tends to inflate prices. (Adding export capacity is under consideration.)
 - Time stamps are stripped off from the training data, and the data set is shuffled before training. This is to further enforce the hypothesis to NOT use time and temporal relations as a predictor, but instead infer the price from weather and production data. Data analysis shows the training data has negligible autocorrelation (temporal patterns) after these operations.
 
 Data schema used for training and inference is this:
@@ -282,7 +284,7 @@ The existing data sources either use publicly available forecast data sources (e
 
 - An example of a smarter *existing* column: Create a function that has the ability to fill in nuclear power production into the respective column for 5 days into the future, perhaps by reading market messages.
 
-- An example of a *new* column: Transmission_FI_SE3, which either predicts or makes assumptions about the transfer lines between Finland and Northern Sweden.
+- An example of a *new* column: SolarPowerMW, which follows, predicts or makes assumptions about solar power production in megawatts.
 
 In both cases, your predictor function needs to return a data frame with 7 days to the past, and 5 days to the future, using the best assumptions (or sub-model) it can work with.
 
@@ -304,17 +306,17 @@ You need to update the database to have a complete time series of your new train
 
 3. Open the CSV to understand its structure. Your task is to add a new column and populate it with data. Ensure completeness for every hourly timestamp, avoiding NaN/NULL values.
 
-4. Let's say your new column is called `Transmission_FI_SE3`, you need to add that to the SQLite3 prediction.db schema.
+4. Let's say your new column is called `SolarPowerMW`, you need to add that to the SQLite3 prediction.db schema.
 
    ```sqlite
-   ALTER TABLE prediction ADD COLUMN Transmission_FI_SE3 FLOAT;
+   ALTER TABLE prediction ADD COLUMN SolarPowerMW FLOAT;
    ```
 
 5. Convert the new column in your CSV to a set of SQL update statements that set or update the values for that column for every time stamp. Now you have a baseline prediction.db to work with.
 
    One approach is to use (Chat)GPT-4 or one of the open-license LLMs to generate SQL update statements from the CSV. Here's how you might phrase your prompt to the model. ChatGPT has a built-in Python interpreter which can do this for a dropped CSV file:
 
-   > Take a look at this CSV file. Read the first few lines to learn its structure. Pay attention to the Transmission_FI_SE3 column. I want you to create SQLite3 statements that update the whole database with those values, matching the timestamps you find in the CSV. Focus only on timestamp and Transmission_FI_SE3. Use Python to create a conversion script, then run it, and I'd like to download the final .sql file with the update statements.
+   > Take a look at this CSV file. Read the first few lines to learn its structure. Pay attention to the SolarPowerMW column. I want you to create SQLite3 statements that update the whole database with those values, matching the timestamps you find in the CSV. Focus only on timestamp and SolarPowerMW. Use Python to create a conversion script, then run it, and I'd like to download the final .sql file with the update statements.
 
    Then review and commit those updates to the database, for example:
 
@@ -337,7 +339,7 @@ You need to update the database to have a complete time series of your new train
 3. Try the training results, pay attention to the eval results. Compare them with and without your column:
 
    ```shell
-   python nordpool_predict_fi.py --train
+   python nordpool_predict_fi.py --train --predict
    ```
 
 ​	Once you're satisified with the results, you can include this new column during the predict process too. 
@@ -364,7 +366,7 @@ You need to update the database to have a complete time series of your new train
    If you need to debug: 7+5 days is 12 days, and that is 288 hours. That should be the number of rows given back by your function. For example:
 
    ```shell
-   python nordpool_predict_fi.py --predict
+   python nordpool_predict_fi.py --train --predict
    ...
    My_function_debug_output:
    ...
@@ -382,7 +384,7 @@ You've already verified earlier that the results are better than without this ne
 1. Commit a new set of predictions to the database and deploy them to the JSON files in the deploy folder:
 
    ```shell
-   python nordpool_predict_fi.py --predict --commit --deploy
+   python nordpool_predict_fi.py --train --predict --commit --deploy
    ```
 
 2. Now you can test the JSON files with the index.html page, or with Home Assistant, or your preferred method. See how you like the results.
