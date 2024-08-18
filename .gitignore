@@ -32,3 +32,5 @@ model/models.db
 .mailmap
 .pre-commit-config.yaml
 utils/private/
+model/
+model/rf_model.joblib
