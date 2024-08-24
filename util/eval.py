@@ -10,6 +10,7 @@ from datetime import datetime
 import os
 import json
 import fnmatch
+from rich import print
 
 def eval(db_path, plot=False):
     # Load the data

@@ -1,5 +1,6 @@
 import sqlite3
 import pandas as pd
+from rich import print
 
 def dump_sqlite_db(data_folder_path):
     # Connect to the SQLite database

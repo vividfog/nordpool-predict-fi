@@ -12,6 +12,7 @@ import requests
 import pytz
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
+from rich import print
 
 # Constants for import dataset IDs: SE1, SE3, and EE
 IMPORT_DATASET_IDS = [24, 25, 112]

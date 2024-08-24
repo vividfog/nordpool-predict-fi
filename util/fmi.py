@@ -4,6 +4,7 @@ from lxml import etree
 from datetime import datetime, timedelta
 import pytz
 import sys
+from rich import print
 
 def get_forecast(fmisid, start_date, parameters, end_date=None):
     """

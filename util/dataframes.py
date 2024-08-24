@@ -8,6 +8,7 @@ Functions:
 """
 
 import pandas as pd
+from rich import print
 
 def update_df_from_df(df1, df2):
     # Ensure df1's 'Timestamp' column is in the correct format and UTC

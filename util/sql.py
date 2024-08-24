@@ -1,6 +1,7 @@
 import sqlite3
 import pandas as pd
 import sys
+from rich import print
 
 # A set of functions to work with the predictions SQLite database
 

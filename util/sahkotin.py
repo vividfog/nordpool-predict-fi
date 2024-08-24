@@ -3,6 +3,7 @@ import requests
 from datetime import datetime, timedelta
 import pytz
 import sys
+from rich import print
 
 def fetch_electricity_price_data(start_date, end_date):
     """

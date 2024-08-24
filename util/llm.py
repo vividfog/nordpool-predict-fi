@@ -6,6 +6,7 @@ import os
 import pytz
 from openai import OpenAI
 from .sql import db_query
+from rich import print
 
 import pytz
 

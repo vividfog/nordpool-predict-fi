@@ -4,6 +4,7 @@ import pandas as pd
 from datetime import datetime, timedelta, timezone
 from entsoe import EntsoePandasClient
 import pandas as pd
+from rich import print
 
 """
 Fetch nuclear production forecast data for Finland for next 5 days.

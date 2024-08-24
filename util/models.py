@@ -2,6 +2,7 @@ import sqlite3
 import json
 import os
 from datetime import datetime
+from rich import print
 
 # Database file path
 DB_FILE = 'model/models.db'

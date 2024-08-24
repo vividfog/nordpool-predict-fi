@@ -7,6 +7,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from statsmodels.stats.stattools import durbin_watson
 from statsmodels.tsa.stattools import acf
 from sklearn.utils import shuffle
+from rich import print
 
 import pandas as pd
 
@@ -32,9 +33,9 @@ def train_model(df, fmisid_ws, fmisid_t):
     Q3 = df['Price_cpkWh'].quantile(0.75)
     IQR = Q3 - Q1
 
-    # This leaves a lot of "outliers" into the data, but that was necessary to retain the exteme price spikes that are the most interesting to predict.
+    # Higher multipliers include more data, but also more extreme outliers
     min_threshold = Q1 - 3 * IQR
-    max_threshold = Q3 + 100 * IQR
+    max_threshold = Q3 + 3 * IQR
     df_filtered = df[(df['Price_cpkWh'] >= min_threshold) & (df['Price_cpkWh'] <= max_threshold)]
 
     # TODO: Training without WindPowerCapacityMW results in a marginally better model, so for now we are not including it. Perhaps it had more importance when we had a direct WindPowerMW feature. We use the wind speed and temperature from the FMI data as proxies for wind power generation. This is something to be studied further, given time. Does increasing the nr of weather stations for wind park wind speeds and urban area temperatures improve the model? Make it worse? Or no difference?
@@ -48,17 +49,20 @@ def train_model(df, fmisid_ws, fmisid_t):
     X_filtered = df_filtered[['day_of_week', 'hour', 'NuclearPowerMW', 'ImportCapacityMW'] + fmisid_ws + fmisid_t]
     y_filtered = df_filtered['Price_cpkWh']
 
-    # Print feature names used during training
-    # print("→ Feature names used during training:")
-    # print(X_filtered.columns.tolist())
+    # Round each feature up to X significant digits to reduce decision tree complexity, potentially for better generalization
+    digits = 2
+    X_filtered = X_filtered.applymap(lambda x: round(x, digits - int(np.floor(np.log10(abs(x)))) - 1) if x != 0 else 0)
+    
+    # Show the first few rows of the filtered data
+    print("→ Filtered & rounded data for training, a sampling:")
+    print(X_filtered.head())
 
     # Train the first model (Random Forest) on the filtered data
     # TODO: Make a --continuous option explicit, not implicit like it is now, if also running --prediction
     X_train, X_test, y_train, y_test = train_test_split(
         X_filtered, 
         y_filtered, 
-        # test_size=0.15, # a compromise between 0.1 and 0.2 with limited data available
-        test_size=0.000001, # might as well train with all the data, because we re-train the model every time we predict → no waste
+        test_size=0.15,
         random_state=42
         )
     

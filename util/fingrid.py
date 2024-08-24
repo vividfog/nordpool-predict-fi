@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 import pytz
 from datetime import datetime, timedelta
+from rich import print
 
 def fetch_nuclear_power_data(fingrid_api_key, start_date, end_date):
     dataset_id = 188  # Nuclear power production dataset ID
