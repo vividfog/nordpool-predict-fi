@@ -334,7 +334,7 @@ function setupHistoryChart(data) {
             type: index === 0 ? 'solid' : 'dotted'
         },
         color: 'dodgerblue',
-        opacity: Math.pow(0.9, index)-.1
+        opacity: Math.pow(0.95, index)-.1
     }));
 
     // Add a separate series item for the markLine

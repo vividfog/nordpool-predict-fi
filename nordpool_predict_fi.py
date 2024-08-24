@@ -434,9 +434,9 @@ if args.deploy:
     # TODO: Remove fixed file name, derive from .env.local
     create_prediction_snapshot(deploy_folder_path, json_data_list, "prediction_snapshot")
 
-    # Rotate snapshots to maintain only the latest 6 (+today=7)
+    # Rotate snapshots to maintain the latest X snapshots
     # TODO: Remove fixed file name, derive from .env.local
-    rotate_snapshots(deploy_folder_path, pattern="prediction_snapshot*", max_files=6)
+    rotate_snapshots(deploy_folder_path, pattern="prediction_snapshot*", max_files=14)
 
     # Normalize 'timestamp' to set the time to 00:00:00 for daily average grouping
     deploy_df['timestamp'] = deploy_df['timestamp'].dt.tz_localize(None) if deploy_df['timestamp'].dt.tz is not None else deploy_df['timestamp']
