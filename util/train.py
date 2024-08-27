@@ -24,9 +24,9 @@ def train_model(df, fmisid_ws, fmisid_t):
 
     # Infer some missing, required time-related features from the timestamp
     df['timestamp'] = pd.to_datetime(df['timestamp'])
+    df['month'] = df['timestamp'].dt.month
     df['day_of_week'] = df['timestamp'].dt.dayofweek + 1
     df['hour'] = df['timestamp'].dt.hour
-    df['month'] = df['timestamp'].dt.month
 
     # Remove outliers using the IQR method
     Q1 = df['Price_cpkWh'].quantile(0.25)
@@ -34,8 +34,8 @@ def train_model(df, fmisid_ws, fmisid_t):
     IQR = Q3 - Q1
 
     # Higher multipliers include more data, but also more extreme outliers
-    min_threshold = Q1 - 3 * IQR
-    max_threshold = Q3 + 3 * IQR
+    min_threshold = Q1 - 2.5 * IQR
+    max_threshold = Q3 + 2.5 * IQR
     df_filtered = df[(df['Price_cpkWh'] >= min_threshold) & (df['Price_cpkWh'] <= max_threshold)]
 
     # TODO: Training without WindPowerCapacityMW results in a marginally better model, so for now we are not including it. Perhaps it had more importance when we had a direct WindPowerMW feature. We use the wind speed and temperature from the FMI data as proxies for wind power generation. This is something to be studied further, given time. Does increasing the nr of weather stations for wind park wind speeds and urban area temperatures improve the model? Make it worse? Or no difference?
@@ -50,11 +50,11 @@ def train_model(df, fmisid_ws, fmisid_t):
     y_filtered = df_filtered['Price_cpkWh']
 
     # Round each feature up to X significant digits to reduce decision tree complexity, potentially for better generalization
-    digits = 2
-    X_filtered = X_filtered.applymap(lambda x: round(x, digits - int(np.floor(np.log10(abs(x)))) - 1) if x != 0 else 0)
+    # digits = 2
+    # X_filtered = X_filtered.applymap(lambda x: round(x, digits - int(np.floor(np.log10(abs(x)))) - 1) if x != 0 else 0)
     
     # Show the first few rows of the filtered data
-    print("→ Filtered & rounded data for training, a sampling:")
+    print("→ Data for training, a sampling:")
     print(X_filtered.head())
 
     # Train the first model (Random Forest) on the filtered data
@@ -66,25 +66,24 @@ def train_model(df, fmisid_ws, fmisid_t):
         random_state=42
         )
     
-    # These do make a difference.
-    # Original set:
-    # rf = RandomForestRegressor(
-    #     n_estimators=150, 
-    #     max_depth=15, 
-    #     min_samples_split=4, 
-    #     min_samples_leaf=2, 
-    #     max_features='sqrt', 
-    #     random_state=42
-    #     )
-    
-    # Updated model training code with new best parameters found via grid search (2024-03-07)
+    # Original set; also 2024-08-27 (grid search TODO)
     rf = RandomForestRegressor(
-        n_estimators=150,          # Same as before
-        max_depth=20,              # Increased from 15 to 20 based on best parameters
-        min_samples_split=2,       # Reduced from 4 to 2, allowing finer decision boundaries
-        min_samples_leaf=4,        # Increased from 2 to 4, providing more generalization at leaves
-        random_state=42            # Keeping the random state for reproducibility
-    )
+        n_estimators=150, 
+        max_depth=16, 
+        min_samples_split=4, 
+        min_samples_leaf=2, 
+        max_features='sqrt', 
+        random_state=42
+        )
+    
+    # Grid search (2024-03-07)
+    # rf = RandomForestRegressor(
+    #     n_estimators=150,          # Same as before
+    #     max_depth=20,              # Increased from 15 to 20 based on best parameters
+    #     min_samples_split=2,       # Reduced from 4 to 2, allowing finer decision boundaries
+    #     min_samples_leaf=4,        # Increased from 2 to 4, providing more generalization at leaves
+    #     random_state=42            # Keeping the random state for reproducibility
+    # )
     
     rf.fit(X_train, y_train)
     

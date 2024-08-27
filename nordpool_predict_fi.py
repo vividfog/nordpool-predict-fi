@@ -293,9 +293,9 @@ if args.predict:
 
     # Fill in the 'hour', 'day_of_week', and 'month' columns for the model
     df['Timestamp'] = pd.to_datetime(df['Timestamp'])
+    df['month'] = df['Timestamp'].dt.month
     df['day_of_week'] = df['Timestamp'].dt.dayofweek + 1
     df['hour'] = df['Timestamp'].dt.hour
-    df['month'] = df['Timestamp'].dt.month
 
     prediction_features = ['day_of_week', 'hour', 'NuclearPowerMW', 'ImportCapacityMW'] + fmisid_ws + fmisid_t
 

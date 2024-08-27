@@ -40,7 +40,8 @@ data_path = sys.argv[1]  # Use the provided command-line argument for the data p
 data = pd.read_csv(data_path)
 
 # Preprocess the dataset
-data['timestamp'] = pd.to_datetime(data['timestamp'])
+# data['timestamp'] = pd.to_datetime(data['timestamp'])
+data['timestamp'] = pd.to_datetime(data['timestamp'], utc=True)
 data['MonthNumber'] = data['timestamp'].dt.month
 data['WeekdayNumber'] = data['timestamp'].dt.weekday
 data['HourNumber'] = data['timestamp'].dt.hour
@@ -48,7 +49,13 @@ data.drop(columns=['WindPowerCapacityMW', 'PricePredict_cpkWh', 'timestamp'], in
 data = data.dropna()
 
 # Select features and target variable
-features = ['MonthNumber', 'WeekdayNumber', 'HourNumber', 'ws_101256', 'ws_101267', 'ws_101673', 'ws_101846', 't_101118', 't_101339', 't_101786', 't_100968']
+features = [
+    'MonthNumber', 'WeekdayNumber', 'HourNumber', 
+    'ws_101256', 'ws_101267', 'ws_101673', 'ws_101846', 
+    't_101118', 't_101339', 't_101786', 't_100968', 
+    'NuclearPowerMW', 'ImportCapacityMW'
+]
+
 X = data[features]
 y = data['Price_cpkWh']
 
