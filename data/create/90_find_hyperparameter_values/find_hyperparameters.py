@@ -60,21 +60,62 @@ X = data[features]
 y = data['Price_cpkWh']
 
 # Split the data into training and testing sets (80/20 split)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, 
+    y, 
+    test_size=0.2, 
+    random_state=42
+    )
 
-# Define a grid of hyperparameters for tuning, including 'max_features'
+# Original; faster to run
+# # Define a grid of hyperparameters for tuning, including 'max_features'
+# param_grid = {
+#     'n_estimators': [50, 100, 150, 200],
+#     'max_depth': [None, 10, 20, 30],
+#     'min_samples_split': [2, 4, 6],
+#     'min_samples_leaf': [1, 2, 4],
+#     'max_features': ['sqrt', None, 0.5]
+#     }
+
+# # Initialize and perform the grid search on the training set
+# grid_search = GridSearchCV(
+#     RandomForestRegressor(random_state=42), 
+#     param_grid, 
+#     cv=5,
+#     scoring={
+#         'MAE': 'neg_mean_absolute_error', 
+#         'MSE': 'neg_mean_squared_error', 
+#         'RMSE': rmse_scorer, 
+#         'R2': 'r2'
+#         },
+#     refit='MAE', 
+#     return_train_score=True, 
+#     verbose=3, 
+#     n_jobs=-1
+#     )
+
+# 2024-08-28: Larger grid, 8-fold cross-validation, takes about 10x the time!
 param_grid = {
-    'n_estimators': [50, 100, 150, 200],
-    'max_depth': [None, 10, 20, 30],
-    'min_samples_split': [2, 4, 6],
-    'min_samples_leaf': [1, 2, 4],
-    'max_features': ['sqrt', None, 0.5]
-    }
+    'n_estimators': [100, 200, 300, 400],
+    'max_depth': [None, 10, 20, 25, 30, 35],
+    'min_samples_split': [2, 3, 4, 5],
+    'min_samples_leaf': [1, 2, 3, 4],
+    'max_features': ['sqrt', 'log2', None, 0.5, 0.7],
+    'bootstrap': [True, False]
+}
 
-# Initialize and perform the grid search on the training set
-grid_search = GridSearchCV(RandomForestRegressor(random_state=42), param_grid, cv=5,
-                           scoring={'MAE': 'neg_mean_absolute_error', 'MSE': 'neg_mean_squared_error', 'RMSE': rmse_scorer, 'R2': 'r2'},
-                           refit='MAE', return_train_score=True, verbose=3, n_jobs=-1)
+# Initialize and perform the grid search on the training set with more detailed options
+grid_search = GridSearchCV(
+    RandomForestRegressor(random_state=42), 
+    param_grid, 
+    cv=8,  # Increased to 10-fold cross-validation
+    scoring={'MAE': 'neg_mean_absolute_error', 'MSE': 'neg_mean_squared_error', 'RMSE': rmse_scorer, 'R2': 'r2'},
+    refit='MAE', 
+    return_train_score=True, 
+    verbose=3, 
+    n_jobs=-1
+)
+
 grid_search.fit(X_train, y_train)
 
 # After completion, output the best parameters and their corresponding scores

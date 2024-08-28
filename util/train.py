@@ -67,14 +67,14 @@ def train_model(df, fmisid_ws, fmisid_t):
         )
     
     # Original set; also 2024-08-27 (grid search TODO)
-    rf = RandomForestRegressor(
-        n_estimators=150, 
-        max_depth=16, 
-        min_samples_split=4, 
-        min_samples_leaf=2, 
-        max_features='sqrt', 
-        random_state=42
-        )
+    # rf = RandomForestRegressor(
+    #     n_estimators=150, 
+    #     max_depth=16, 
+    #     min_samples_split=4, 
+    #     min_samples_leaf=2, 
+    #     max_features='sqrt', 
+    #     random_state=42
+    #     )
     
     # Grid search (2024-03-07)
     # rf = RandomForestRegressor(
@@ -84,6 +84,16 @@ def train_model(df, fmisid_ws, fmisid_t):
     #     min_samples_leaf=4,        # Increased from 2 to 4, providing more generalization at leaves
     #     random_state=42            # Keeping the random state for reproducibility
     # )
+ 
+    # Grid search (2024-08-28)   
+    rf = RandomForestRegressor(
+        n_estimators=200,           # Increased from 150 to 200 as per grid search results
+        max_depth=30,               # Increased from 16 to 30 as per grid search results
+        min_samples_split=2,        # Reduced from 4 to 2 for finer splits
+        min_samples_leaf=1,         # Reduced from 2 to 1 to allow more detailed trees
+        max_features=None,          # Changed from 'sqrt' to None to consider all features
+        random_state=42             # Keeping the random state for reproducibility
+    )
     
     rf.fit(X_train, y_train)
     
