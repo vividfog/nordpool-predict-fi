@@ -85,14 +85,49 @@ def train_model(df, fmisid_ws, fmisid_t):
     #     random_state=42            # Keeping the random state for reproducibility
     # )
  
-    # Grid search (2024-08-28)   
+    # Grid search (2024-08-28), with 5-fold cross-validation   
+    # rf = RandomForestRegressor(
+    #     n_estimators=200,           # Increased from 150 to 200 as per grid search results
+    #     max_depth=30,               # Increased from 16 to 30 as per grid search results
+    #     min_samples_split=2,        # Reduced from 4 to 2 for finer splits
+    #     min_samples_leaf=1,         # Reduced from 2 to 1 to allow more detailed trees
+    #     max_features=None,          # Changed from 'sqrt' to None to consider all features
+    #     random_state=42             # Keeping the random state for reproducibility
+    # )
+    
+    # Grid search (2024-08-29), with 8-fold cross-validation
+    # rf = RandomForestRegressor(
+    #     n_estimators=400,           # Increased from 200 to 400
+    #     max_depth=None,             # Set to None, meaning no maximum depth
+    #     min_samples_split=2,        # Minimum samples required to split a node
+    #     min_samples_leaf=1,         # Minimum samples required at a leaf node
+    #     max_features=0.5,           # Considering 50% of features at each split
+    #     bootstrap=False,            # No bootstrapping, using the whole dataset for each tree
+    #     random_state=42             # Keeping the random state for reproducibility
+    # )
+    
+    # Grid search (2024-08-30)
+    # rf = RandomForestRegressor(
+    #     n_estimators=600,           # Increased from 400 to 600 as per the latest results
+    #     max_depth=40,               # Set to 40, allowing deeper trees
+    #     min_samples_split=2,        # Minimum samples required to split a node
+    #     min_samples_leaf=1,         # Minimum samples required at a leaf node
+    #     max_features=0.5,           # Considering 50% of features at each split
+    #     bootstrap=False,            # No bootstrapping, using the whole dataset for each tree
+    #     criterion='squared_error',  # Using 'squared_error' (MSE) as the criterion
+    #     random_state=42             # Keeping the random state for reproducibility
+    # )
+
+    # Grid search (2024-09-01)
     rf = RandomForestRegressor(
-        n_estimators=200,           # Increased from 150 to 200 as per grid search results
-        max_depth=30,               # Increased from 16 to 30 as per grid search results
-        min_samples_split=2,        # Reduced from 4 to 2 for finer splits
-        min_samples_leaf=1,         # Reduced from 2 to 1 to allow more detailed trees
-        max_features=None,          # Changed from 'sqrt' to None to consider all features
-        random_state=42             # Keeping the random state for reproducibility
+        n_estimators=700,
+        max_depth=45,
+        min_samples_split=2,
+        min_samples_leaf=2,
+        max_features=0.55,
+        bootstrap=False,
+        criterion='squared_error',
+        random_state=42
     )
     
     rf.fit(X_train, y_train)
