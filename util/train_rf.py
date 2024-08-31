@@ -38,27 +38,19 @@ def train_model(df, fmisid_ws, fmisid_t):
     max_threshold = Q3 + 2.5 * IQR
     df_filtered = df[(df['Price_cpkWh'] >= min_threshold) & (df['Price_cpkWh'] <= max_threshold)]
 
-    # TODO: Training without WindPowerCapacityMW results in a marginally better model, so for now we are not including it. Perhaps it had more importance when we had a direct WindPowerMW feature. We use the wind speed and temperature from the FMI data as proxies for wind power generation. This is something to be studied further, given time. Does increasing the nr of weather stations for wind park wind speeds and urban area temperatures improve the model? Make it worse? Or no difference?
-
     # Define features and target for the first model after outlier removal
     # If you defined a different set of FMI stations in your .env.local, they should automatically be reflected here
     # You may need to manually add those ws_ and t_ columns to your SQLite database first though; TODO: Automate this process
-    # X_filtered = df_filtered[['day_of_week', 'hour', 'month', 'NuclearPowerMW'] + fmisid_ws + fmisid_t]
 
     # TODO: 2024-08-10: We're dropping MONTH information for now, as historical month data can be misleading for the model; inspect this again.
     X_filtered = df_filtered[['day_of_week', 'hour', 'NuclearPowerMW', 'ImportCapacityMW'] + fmisid_ws + fmisid_t]
     y_filtered = df_filtered['Price_cpkWh']
-
-    # Round each feature up to X significant digits to reduce decision tree complexity, potentially for better generalization
-    # digits = 2
-    # X_filtered = X_filtered.applymap(lambda x: round(x, digits - int(np.floor(np.log10(abs(x)))) - 1) if x != 0 else 0)
-    
+  
     # Show the first few rows of the filtered data
     print("→ Data for training, a sampling:")
     print(X_filtered.head())
 
     # Train the first model (Random Forest) on the filtered data
-    # TODO: Make a --continuous option explicit, not implicit like it is now, if also running --prediction
     X_train, X_test, y_train, y_test = train_test_split(
         X_filtered, 
         y_filtered, 
@@ -66,64 +58,12 @@ def train_model(df, fmisid_ws, fmisid_t):
         random_state=42
         )
     
-    # Original set; also 2024-08-27 (grid search TODO)
-    # rf = RandomForestRegressor(
-    #     n_estimators=150, 
-    #     max_depth=16, 
-    #     min_samples_split=4, 
-    #     min_samples_leaf=2, 
-    #     max_features='sqrt', 
-    #     random_state=42
-    #     )
-    
-    # Grid search (2024-03-07)
-    # rf = RandomForestRegressor(
-    #     n_estimators=150,          # Same as before
-    #     max_depth=20,              # Increased from 15 to 20 based on best parameters
-    #     min_samples_split=2,       # Reduced from 4 to 2, allowing finer decision boundaries
-    #     min_samples_leaf=4,        # Increased from 2 to 4, providing more generalization at leaves
-    #     random_state=42            # Keeping the random state for reproducibility
-    # )
- 
-    # Grid search (2024-08-28), with 5-fold cross-validation   
-    # rf = RandomForestRegressor(
-    #     n_estimators=200,           # Increased from 150 to 200 as per grid search results
-    #     max_depth=30,               # Increased from 16 to 30 as per grid search results
-    #     min_samples_split=2,        # Reduced from 4 to 2 for finer splits
-    #     min_samples_leaf=1,         # Reduced from 2 to 1 to allow more detailed trees
-    #     max_features=None,          # Changed from 'sqrt' to None to consider all features
-    #     random_state=42             # Keeping the random state for reproducibility
-    # )
-    
-    # Grid search (2024-08-29), with 8-fold cross-validation
-    # rf = RandomForestRegressor(
-    #     n_estimators=400,           # Increased from 200 to 400
-    #     max_depth=None,             # Set to None, meaning no maximum depth
-    #     min_samples_split=2,        # Minimum samples required to split a node
-    #     min_samples_leaf=1,         # Minimum samples required at a leaf node
-    #     max_features=0.5,           # Considering 50% of features at each split
-    #     bootstrap=False,            # No bootstrapping, using the whole dataset for each tree
-    #     random_state=42             # Keeping the random state for reproducibility
-    # )
-    
-    # Grid search (2024-08-30)
-    # rf = RandomForestRegressor(
-    #     n_estimators=600,           # Increased from 400 to 600 as per the latest results
-    #     max_depth=40,               # Set to 40, allowing deeper trees
-    #     min_samples_split=2,        # Minimum samples required to split a node
-    #     min_samples_leaf=1,         # Minimum samples required at a leaf node
-    #     max_features=0.5,           # Considering 50% of features at each split
-    #     bootstrap=False,            # No bootstrapping, using the whole dataset for each tree
-    #     criterion='squared_error',  # Using 'squared_error' (MSE) as the criterion
-    #     random_state=42             # Keeping the random state for reproducibility
-    # )
-
-    # Grid search (2024-09-01)
+    # Grid search (2024-08-31)
     rf = RandomForestRegressor(
-        n_estimators=700,
-        max_depth=45,
+        n_estimators=959,
+        max_depth=21,
         min_samples_split=2,
-        min_samples_leaf=2,
+        min_samples_leaf=1,
         max_features=0.55,
         bootstrap=False,
         criterion='squared_error',
@@ -172,9 +112,6 @@ def train_model(df, fmisid_ws, fmisid_t):
     mae = mean_absolute_error(y_test, y_pred_filtered)
     mse = mean_squared_error(y_test, y_pred_filtered)
     r2 = r2_score(y_test, y_pred_filtered)
-    # print(f"Mean Absolute Error (MAE): {mae}")
-    # print(f"Mean Squared Error (MSE): {mse}")
-    # print(f"Coefficient of Determination (R² score): {r2}")
 
     # Initialize lists to store metrics for each iteration
     mae_list = []
@@ -208,10 +145,4 @@ def train_model(df, fmisid_ws, fmisid_t):
     samples_mse = np.mean(mse_list)
     samples_r2 = np.mean(r2_list)
     
-    # print(f"Mean Random Batch MAE: {samples_mae}")
-    # print(f"Mean Random Batch MSE: {samples_mse}")
-    # print(f"Mean Random Batch R² score: {samples_r2}")
-    
     return mae, mse, r2, samples_mae, samples_mse, samples_r2, rf
-
-"This is not meant to be executed directly."

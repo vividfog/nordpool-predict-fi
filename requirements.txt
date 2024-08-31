@@ -14,4 +14,10 @@ selenium==4.17.2
 statsmodels==0.14.1
 tensorflow==2.15.0
 typer==0.9.0
-entsoe-py == 0.6.7
+entsoe-py==0.6.7
+numpy==1.26.4
+xgboost==2.1.1
+lightgbm==4.5.0
+python-dotenv==0.21.1
+rich==12.5.1
+scipy==1.13.0

@@ -408,10 +408,9 @@ function setupHistoryChart(data) {
     return series.length;
 }
 
-
 function setupSahkotinData(nrSeries) {
     // Assuming you've already calculated the start and end dates based on your requirement
-    const startDate = getPastDateStrings(7).pop(); // Gets the earliest date from your range
+    const startDate = getPastDateStrings(14).pop(); // Gets the earliest date from your range
     var endDate = addDays(new Date(), 2).toISOString();
 
     const sahkotinUrl = 'https://sahkotin.fi/prices.csv';

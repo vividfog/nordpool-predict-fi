@@ -1,6 +1,6 @@
 # Nordpool FI Spot Price Prediction
 
-**This is a Python app that predicts electricity prices for the Nordpool FI market. It fetches a 5-day weather forecast and more, and uses them to predict future Nordpool FI electricity prices, using a trained Random Forest model.**
+**This is a Python app that predicts electricity prices for the Nordpool FI market. It fetches a 5-day weather forecast and more, and uses them to predict future Nordpool FI electricity prices, using a trained ~~Random Forest~~ XGBoost model.**
 
 Live version: https://sahkovatkain.web.app
 
@@ -14,11 +14,13 @@ This repository contains all the code and much of the data to re-train the model
 
 ## Co-authors
 
-The original RF model was initially co-trained with [Autogen](https://github.com/microsoft/autogen). GPT-4 was used a lot during coding, but a real human has re-written most of the code and comments by hand, including this README. Originally the project was a personal Autogen + AI pair programming evaluation/trial and a hobby project written over 2 weekends.
+The original RF model was initially co-trained with [Autogen](https://github.com/microsoft/autogen). Language models were used a lot during coding, but a real human has re-written most of the code and comments by hand, including this README. Originally the project was a personal Autogen + AI pair programming evaluation/trial and a hobby project written over 2 weekends, with some updates since.
 
 In addition to Random Forest, we also tried Linear Regression, GBM and LSTM, and a Random Forest with Linear Regression scaling. Out of these, the RF model performed the best, so that's what's used here.
 
-[Continue.dev](https://github.com/continuedev/continue) was the tool of choice for AI pair programming.
+**Aug 31, 2024:** After grid search [experiments](data/create/91_model_experiments/rf_vs_world.py) measuring Random Forest, XGBoost, Gradient Boosting, and Light GBM, we're currently running XGBoost by default.
+
+[Continue.dev](https://github.com/continuedev/continue) was and remains the tool of choice for AI pair programming.
 
 ## Usage
 
@@ -75,70 +77,86 @@ Examples:
 
 ### Sample run
 
-Here's what a no-commit trial run might look like:
+Here's what a no-commit trial run might look like.
 
 ```
 python nordpool_predict_fi.py --train --predict
-[2024-03-08 00:16:18] Nordpool Predict FI
 Training a new model candidate using the data in the database...
-* FMI Weather Stations for Wind: ['ws_101673', 'ws_101256', 'ws_101846', 'ws_101267']
-* FMI Weather Stations for Temperature: ['t_101786', 't_101118', 't_100968', 't_101339']
+* FMI Weather Stations for Wind:
+['ws_101673', 'ws_101256', 'ws_101846', 'ws_101267']
+* FMI Weather Stations for Temperature:
+['t_101786', 't_101118', 't_100968', 't_101339']
+→ Data for training, a sampling:
+       day_of_week  hour  NuclearPowerMW  ImportCapacityMW  ws_101673  ws_101256  ws_101846  ws_101267  t_101786  t_101118  t_100968  t_101339
+6193             6     1     3560.649997            2436.0        7.7       11.3        4.9       12.5      8.30     13.10     14.70     10.50
+12211            4    19     3027.955000            2739.0        5.9        1.4        7.2        3.0     12.57     18.64     16.23     17.93
+3717             7    21     3986.749997            3466.0        8.7       10.8        7.3        6.4      9.10     10.20     10.40      8.00
+8878             5    22     4324.489997            3461.0        5.4        4.9        5.2        3.7    -28.50    -20.70    -16.20    -28.40
+8290             2    10     4399.799996            3446.0        5.8        4.4        4.7        4.9    -11.20     -9.00     -8.30    -12.20
 → Feature Importance:
-       Feature  Importance
-      t_101339    0.211443
-     ws_101256    0.181828
-      t_100968    0.162449
-NuclearPowerMW    0.106445
-      t_101786    0.066850
-          hour    0.062656
-     ws_101673    0.047487
-   day_of_week    0.042330
-     ws_101846    0.040911
-      t_101118    0.034386
-         month    0.027271
-     ws_101267    0.015943
-→ Durbin-Watson autocorrelation test: 2.00
+         Feature  Importance
+        t_101118    0.176956
+        t_100968    0.145068
+ImportCapacityMW    0.110822
+  NuclearPowerMW    0.099665
+        t_101339    0.086524
+            hour    0.069084
+       ws_101256    0.065383
+     day_of_week    0.064194
+        t_101786    0.059386
+       ws_101267    0.044082
+       ws_101673    0.041684
+       ws_101846    0.037152
+→ Durbin-Watson autocorrelation test: 1.98
 → ACF values for the first 5 lags:
   Lag 1: 1.0000
-  Lag 2: -0.0014
-  Lag 3: -0.0237
-  Lag 4: -0.0202
-  Lag 5: -0.0028
-  Lag 6: -0.0080
+  Lag 2: 0.0088
+  Lag 3: 0.0465
+  Lag 4: 0.0139
+  Lag 5: 0.0411
+  Lag 6: -0.0218
 → Model trained:
-  MAE (vs test set): 1.7806310108575483
-  MSE (vs test set): 17.125934255294478
-  R² (vs test set): 0.8378969382433199
-  MAE (vs 10x500 randoms): 1.1947948581029935
-  MSE (vs 10x500 randoms): 10.365377264411277
-  R² (vs 10x500 randoms): 0.9001239127137068
+  MAE (vs test set): 1.1321738186463985
+  MSE (vs test set): 3.386582976961483
+  R² (vs test set): 0.883941221390727
+  MAE (vs 10x500 randoms): 0.6527679246515273
+  MSE (vs 10x500 randoms): 35.001805827151195
+  R² (vs 10x500 randoms): 0.6761444937432602
 → Model NOT saved to the database but remains available in memory for --prediction.
 → Training done.
 Running predictions...
-* Fetching wind speed forecast and historical data between 2024-02-29 and 2024-03-12
-* Fetching temperature forecast and historical data between 2024-02-29 and 2024-03-12
-* Fetching nuclear power production data between 2024-02-29 and 2024-03-12 and inferring missing values
-* Fingrid: Fetched 2648 hours, aggregated to 133 hourly averages spanning from 2024-02-29 to 2024-03-05
-→ Fingrid: Using last known nuclear power production value: 2764 MW
-* ENTSO-E: Fetching nuclear downtime messages...
-→ ENTSO-E: Avg: 2772, max: 2772, min: 2772 MW
-* Fetching electricity price data between 2024-02-29 and 2024-03-12
+* Fetching wind speed forecast and historical data between 2024-08-24 and 2024-09-05
+* Fetching temperature forecast and historical data between 2024-08-24 and 2024-09-05
+* Fetching nuclear power production data between 2024-08-24 and 2024-09-05 and inferring missing values
+* Fingrid: Fetched 3731 hours, aggregated to 187 hourly averages spanning from 2024-08-24 to 2024-08-31
+→ Fingrid: Using last known nuclear power production value: 3550 MW
+* Fetching import capacities between 2024-08-24 and 2024-09-05
+* Fetching electricity price data between 2024-08-24 and 2024-09-05
 → Days of data coverage (should be 7 back, 5 forward for now):  12
 → Found a newly created in-memory model for predictions
-                    Timestamp  PricePredict_cpkWh  ws_101256  ws_101267  ws_101673  ws_101846  t_101118  t_101339  t_101786  t_100968  NuclearPowerMW  Price_cpkWh
-0   2024-03-01 00:00:00+00:00            0.268877       13.8       12.4       11.6       11.3      0.31      0.43      1.62      0.67        4228.760       0.0000
-1   2024-03-01 01:00:00+00:00            0.239165       13.5       11.4       11.3       11.1      0.55      0.35      1.70      0.58        4228.825       0.0000
-2   2024-03-01 02:00:00+00:00            0.338605       13.4       10.2       11.1       10.9      0.60      0.31      1.60      0.34        4229.235       0.0000
-3   2024-03-01 03:00:00+00:00            0.729866       13.0       10.0       10.9       10.4      0.62      0.28      1.55      0.01        4228.350       0.0012
-4   2024-03-01 04:00:00+00:00            2.111404       12.7       10.0       10.8        9.9      0.36      0.27      1.23     -0.35        4229.000       2.5370
-..                        ...                 ...        ...        ...        ...        ...       ...       ...       ...       ...             ...          ...
-283 2024-03-12 19:00:00+00:00           12.084022        2.2        2.1        4.7        2.1     -5.29     -7.53     -5.28     -6.27        2772.000          NaN
-284 2024-03-12 20:00:00+00:00           12.363734        2.0        2.1        4.7        2.3     -5.87     -7.94     -5.59     -6.97        2772.000          NaN
-285 2024-03-12 21:00:00+00:00           10.250964        1.9        2.4        4.5        2.5     -4.83     -6.69     -8.43     -4.51        2772.000          NaN
-286 2024-03-12 22:00:00+00:00            8.946699        1.8        2.5        4.4        2.6     -5.52     -7.10     -8.61     -5.14        2772.000          NaN
-287 2024-03-12 23:00:00+00:00            8.871415        1.6        2.5        4.3        2.8     -6.21     -7.51     -8.80     -5.77        2772.000          NaN
-
-[288 rows x 12 columns]
+                    Timestamp  PricePredict_cpkWh  ws_101256  ws_101267  ws_101673  ws_101846  t_101118  t_101339  t_101786  t_100968  NuclearPowerMW  ImportCapacityMW  Price_cpkWh
+0   2024-08-24 20:00:00+00:00           -0.127842        5.5        5.8        7.7        6.2     16.31     16.04     16.69     16.09     3156.580000            2218.0      -0.1476
+1   2024-08-24 21:00:00+00:00           -0.472777        5.5        5.5        6.5        5.1     15.67     15.18     16.26     15.48     3157.830000            2213.0      -0.2492
+2   2024-08-24 22:00:00+00:00            0.268920        5.5        5.3        5.3        4.1     15.03     14.32     15.83     14.87     3158.110000            1880.0      -0.1922
+3   2024-08-24 23:00:00+00:00            1.871971        5.6        5.0        4.1        3.1     14.39     13.46     15.39     14.26     3161.435000            1880.0      -0.2468
+4   2024-08-25 00:00:00+00:00            0.043346        5.6        4.8        2.9        2.1     13.76     12.61     14.96     13.65     3160.985000            1878.0      -0.2505
+5   2024-08-25 01:00:00+00:00           -0.043021        5.8        5.2        3.5        2.5     14.16     13.16     15.05     14.38     3160.960000            1878.0      -0.2170
+6   2024-08-25 02:00:00+00:00           -0.124118        6.1        5.7        4.2        2.9     14.56     13.71     15.15     15.10     3159.960000            1878.0      -0.2170
+7   2024-08-25 03:00:00+00:00            0.195499        6.3        6.1        4.9        3.4     14.96     14.27     15.24     15.83     3160.250000            1880.0      -0.2170
+8   2024-08-25 04:00:00+00:00           -0.111654        6.6        6.6        5.5        3.8     15.36     14.82     15.33     16.55     3161.650000            1880.0      -0.1600
+9   2024-08-25 05:00:00+00:00           -0.092328        6.8        7.0        6.2        4.2     15.76     15.37     15.42     17.27     3161.200000            1880.0      -0.1116
+10  2024-08-25 06:00:00+00:00           -0.099133        7.0        7.5        6.8        4.6     16.16     15.92     15.51     18.00     3160.540000            1880.0      -0.1116
+...
+278 2024-09-05 10:00:00+00:00            1.604935        5.4        3.8        8.0        5.6     21.91     21.48     20.46     22.61     3549.733333            2193.0          NaN
+279 2024-09-05 11:00:00+00:00            1.397185        5.6        3.8        8.0        5.5     23.36     22.77     21.14     23.79     3549.733333            2193.0          NaN
+280 2024-09-05 12:00:00+00:00            1.276368        5.8        3.8        8.0        5.5     24.81     24.06     21.82     24.97     3549.733333            2193.0          NaN
+281 2024-09-05 13:00:00+00:00            1.773011        5.8        4.0        8.2        5.3     23.83     22.98     21.50     24.01     3549.733333            2193.0          NaN
+282 2024-09-05 14:00:00+00:00            1.811605        5.9        4.2        8.5        5.1     23.84     22.90     21.78     23.83     3549.733333            2193.0          NaN
+283 2024-09-05 15:00:00+00:00            2.613164        5.9        4.4        8.7        4.9     22.61     21.57     21.31     22.67     3549.733333            2193.0          NaN
+284 2024-09-05 16:00:00+00:00            2.142339        6.0        4.6        8.9        4.7     21.38     20.24     20.84     21.51     3549.733333            2193.0          NaN
+285 2024-09-05 17:00:00+00:00            2.272456        6.0        4.8        9.2        4.5     20.15     18.91     20.37     20.34     3549.733333            2193.0          NaN
+286 2024-09-05 18:00:00+00:00            1.627901        6.0        4.9        9.4        4.3     18.92     17.59     19.91     19.18     3549.733333            2193.0          NaN
+287 2024-09-05 19:00:00+00:00            0.887464        6.2        5.1        9.5        4.7     17.96     16.66     19.26     18.13     3549.733333            2193.0          NaN
 * Predictions NOT committed to the database (no --commit).
 ```
 
@@ -215,27 +233,23 @@ According to Feature Importance analysis, as of now they are:
 | month          | 0.027      | 1...12                 |
 | ws_101267      | 0.016      | Pori: wind speed       |
 
-### What's a Random Forest?
+### Machine Learning Models Used
 
-How can a Random Forest model learn these patterns to predict future prices based on future weather? That's a good question. We could ask GPT-4 to see what it says:
+This project has so far applied two methods to predict electricity prices:
 
-> A Random Forest model learns to predict outcomes, such as electricity prices based on weather and other conditions, through a combination of decision trees. Here's how it typically works for understanding and predicting patterns like those in your examples:
->
-> 1. **Decision Trees**: At the heart of a Random Forest are decision trees. Each decision tree in the forest is built from a random subset of the data features ('Temp_dC', 'Wind_mps', 'WindPowerMW', etc.) and instances. These trees are grown to their maximum size without pruning, which makes them highly sensitive to the specific data they're trained on, capturing complex patterns including nonlinear relationships and interactions between variables.
->
-> 2. **Randomness**: Two levels of randomness are introduced in a Random Forest: 
->    - **Feature Sampling**: When splitting a node, the model randomly selects a subset of the features to consider for the split. This ensures that the trees in the forest are diverse, which reduces the model's variance and helps to avoid overfitting.
->    - **Bootstrap Sampling**: Each tree is trained on a different bootstrap sample of the data (i.e., a sample drawn with replacement), which adds to the diversity among the trees.
->
-> 3. **Aggregation (Bagging)**: The predictions from all the trees are aggregated (usually by averaging) to make a final prediction. This process of combining multiple models to improve the overall performance is known as bootstrap aggregating, or bagging. The aggregation reduces the variance without increasing the bias, making the model robust against overfitting and capable of capturing complex patterns in the data.
->
-> 4. **Learning Correlations**: In the context of your examples, the Random Forest model would learn the intricate relationships between temperature, wind speed, time of day, and other factors with the electricity prices. Each tree in the forest would capture different aspects of these relationships based on the subset of data and features it's trained on. For instance, one tree might learn the importance of wind power capacity during high-demand periods, while another might focus on the impact of temperature during different seasons.
->
-> 5. **Feature Importance**: An additional benefit of using Random Forests is that they can provide insights into the importance of each feature in predicting the outcome. In your case, this could help identify which factors (e.g., temperature, wind speed, time of day) are most influential in determining electricity prices.
->
-> The Random Forest algorithm is particularly well-suited for this kind of prediction task because it can handle complex, nonlinear relationships between variables and is robust against overfitting. It achieves this by learning from the collective insights of multiple decision trees, each of which may capture different underlying patterns and correlations in the data.
+1. Random Forest (previously used):
+   - Combines multiple decision trees
+   - Each tree uses a random subset of features and data
+   - Final prediction is an average from all trees
 
-That's a lot of hidden complexity that happens during the about 2 seconds it takes to re-train the model with the data. [It doesn't need a lot of code though.](util/train.py#L49)
+2. XGBoost (currently used):
+   - Builds decision trees sequentially
+   - Each new tree corrects errors from previous ones
+   - Uses gradient boosting to minimize errors
+   - Employs regularization to prevent overfitting
+   - Known for speed and performance on structured data
+
+Both models can effectively learn patterns from weather and other data to predict electricity prices, each with its own strengths. Based on an extensive grid search between these two, and other methods, XGBoost looks like the best option for now. 
 
 ## How long will this repository/data be updated?
 

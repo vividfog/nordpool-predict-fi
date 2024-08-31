@@ -11,7 +11,7 @@ import matplotlib.dates as mdates
 
 from util.eval import eval
 from dotenv import load_dotenv
-from util.train import train_model
+from util.train_xb import train_model # XGBoost variant
 from util.dump import dump_sqlite_db
 from util.sahkotin import update_spot
 from util.fingrid import update_nuclear
@@ -315,10 +315,10 @@ if args.predict:
     # print("→ Checking for missing values in prediction features:")
     # print(df[prediction_features].isnull().sum())
          
-    # Use (if coming from --train) or load and apply a Random Forest model for predictions
+    # Use (if coming from --train) or load and apply a model for predictions
     if rf_trained is None:
         rf_model = joblib.load(rf_model_path)
-        print("→ Loaded the Random Forest model from", rf_model_path)
+        print("→ Loaded a model from", rf_model_path)
     else:
         rf_model = rf_trained
         print("→ Found a newly created in-memory model for predictions")
