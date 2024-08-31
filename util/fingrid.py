@@ -112,7 +112,7 @@ def update_nuclear(df, fingrid_api_key):
         hourly_nuclear_df = nuclear_df.resample('H').mean().reset_index()
 
         # Log the Fingrid data fetch and aggregation results        
-        print(f"* Fingrid: Fetched {len(nuclear_df)} hours, aggregated to {len(hourly_nuclear_df)} hourly averages spanning from {hourly_nuclear_df['startTime'].min().strftime('%Y-%m-%d')} to {hourly_nuclear_df['startTime'].max().strftime('%Y-%m-%d')}")
+        print(f"* Fingrid: Fetched {len(nuclear_df)} rows, aggregated to {len(hourly_nuclear_df)} hourly averages spanning from {hourly_nuclear_df['startTime'].min().strftime('%Y-%m-%d')} to {hourly_nuclear_df['startTime'].max().strftime('%Y-%m-%d')}")
         
         # print("* Fingrid: DEBUG: Last few rows of nuclear power production data:\n", hourly_nuclear_df.tail())
         
