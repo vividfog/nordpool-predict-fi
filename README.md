@@ -36,7 +36,7 @@ The script uses environment variables for configuration. These can be set in a f
 
 How to use:
 
-```
+```shell
 usage: nordpool_predict_fi.py [-h] [--train] [--eval] [--training-stats] [--dump] [--plot] [--predict] [--add-history] [--narrate] [--commit] [--deploy] [--publish]
 
 options:
@@ -79,7 +79,7 @@ Examples:
 
 Here's what a no-commit trial run might look like.
 
-```
+```shell
 python nordpool_predict_fi.py --train --predict
 Training a new model candidate using the data in the database...
 * FMI Weather Stations for Wind:
@@ -170,9 +170,9 @@ Following intuition and observing past price fluctuations, outdoor temperature c
 
 The idea here was to formalize that intuition through a data set and a model.
 
-* A set of [FMI weather stations](https://www.ilmatieteenlaitos.fi/havaintoasemat?filterKey=groups&filterQuery=sää) near wind power clusters to measure **wind speed**, a predictor for wind power. Any wind power model is likely to use this data as well, so we skip the interim step of predicting wind power production and use a small set of its component predictors instead.
-* A set near urban centers to measure **temperature**, a predictor for consumption due to heating. If it's cold in these urban centers, electricity consumption tends to go up.
-* For weather observations and forecasts, we use FMI stations that are the original source of observations and not part of an interpolated figure, and therefore likely a good souce for a weather forecast too. While it's possible to get a grid prediction for a bounding box, that's effectively stacking more models into the pipeline, potentially adding not just signal but also noise.
+- A set of [FMI weather stations](https://www.ilmatieteenlaitos.fi/havaintoasemat?filterKey=groups&filterQuery=sää) near wind power clusters to measure **wind speed**, a predictor for wind power. Any wind power model is likely to use this data as well, so we skip the interim step of predicting wind power production and use a small set of its component predictors instead.
+- A set near urban centers to measure **temperature**, a predictor for consumption due to heating. If it's cold in these urban centers, electricity consumption tends to go up.
+- For weather observations and forecasts, we use FMI stations that are the original source of observations and not part of an interpolated figure, and therefore likely a good souce for a weather forecast too. While it's possible to get a grid prediction for a bounding box, that's effectively stacking more models into the pipeline, potentially adding not just signal but also noise.
 
 - **Nuclear power** production data: Planned or unplanned maintenance break can offset a large amount of supply that wind power then needs to replace. The model can use ENTSO-E messages to deduce near-future nuclear capacity, and failing that, falls back to the last known realized value from Fingrid.
 - Since the **day of the week** (Sunday vs. Monday) makes a difference, as does the **time of the day** (3 AM vs. 7 PM), and a **month** (January vs. July), those too were included as labels. But the day-of-the-month was not, because all it says is likely already captured by the weather, the time and the weekday. Out of these, month turned out to have negligible predictive power and the other time variables are far behind wind/temperature/production variables too. These could be removed and the forecast would still be usable.
@@ -182,7 +182,7 @@ The idea here was to formalize that intuition through a data set and a model.
 
 Data schema used for training and inference is this:
 
-```
+```sql
 CREATE TABLE prediction (
     timestamp TIMESTAMP PRIMARY KEY,
     "ws_101256" FLOAT,
@@ -196,8 +196,9 @@ CREATE TABLE prediction (
     "WindPowerCapacityMW" FLOAT,
     "NuclearPowerMW" FLOAT,
     "Price_cpkWh" FLOAT,
-    "PricePredict_cpkWh" FLOAT
-);
+    "PricePredict_cpkWh" FLOAT,
+    "ImportCapacityMW" FLOAT);
+CREATE TABLE sqlite_sequence(name,seq);
 ```
 
 The columns starting with `t_` and `ws_` are [FMSIDs](https://www.ilmatieteenlaitos.fi/havaintoasemat?filterKey=groups&filterQuery=sää) of the FMI weather stations nearest to the locations of interest. They offer both observations and forecasts that have a high correlation with each other post-hoc. As a side effect of this approach, the repository also contains [functions](util) for working with FMI history/forecast queries, Fingrid open data and ENTSO-E market messages APIs.
@@ -279,8 +280,8 @@ You can show the Nordpool prices with predictions on your dashboard. The code us
 
 - [custom:apexcharts-card](https://github.com/RomRider/apexcharts-card) (available through HACS)
 - [Nordpool integration](https://github.com/custom-components/nordpool), set to EUR VAT0 prices (available through HACS)
-    - Adjust the sensor names to match yours: `sensor.nordpool_kwh_fi_eur_3_10_0`
-    - Remove the "124" multiplication from your code, if your sensor already produces cent values with VAT
+  - Adjust the sensor names to match yours: `sensor.nordpool_kwh_fi_eur_3_10_0`
+  - Remove the "124" multiplication from your code, if your sensor already produces cent values with VAT
 
 ### Add the card to your dashboard
 
@@ -356,7 +357,7 @@ You need to update the database to have a complete time series of your new train
    python nordpool_predict_fi.py --train --predict
    ```
 
-​	Once you're satisified with the results, you can include this new column during the predict process too. 
+​   Once you're satisified with the results, you can include this new column during the predict process too. 
 
 ## 3. Create a new predictor function as a utility
 
@@ -364,7 +365,7 @@ You need to update the database to have a complete time series of your new train
 
 2. Create a function that accepts a data frame and returns a data frame. Add this to the util folder and import it. Use it after or in between the existing function calls.
 
-   ```
+   ```python
    df = update_wind_speed(df)
    df = update_nuclear(df, fingrid_api_key=fingrid_api_key)
    df = update_spot(df)
@@ -388,7 +389,7 @@ You need to update the database to have a complete time series of your new train
    ```
 
    If you added a new column too, we'd have 13 columns instead of 12.
-   
+
    If all goes well, you're ready to test.
 
 ## 4. Test your new model and function in apps
@@ -412,4 +413,3 @@ If you run into trouble or have a suggestion on how to make this process easier,
 ## License
 
 This project is licensed under the MIT License.
-
