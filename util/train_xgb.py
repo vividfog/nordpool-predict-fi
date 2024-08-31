@@ -43,16 +43,20 @@ def train_model(df, fmisid_ws, fmisid_t):
         random_state=42
     )
     
-    # XGBoost model with tuned parameters
+    # XGBoost model with optimal tuned parameters
     xgb_model = XGBRegressor(
-        n_estimators=954,
-        max_depth=9,
-        learning_rate=0.0341,
-        subsample=0.8830,
-        colsample_bytree=0.7693,
+        n_estimators=904,
+        max_depth=8,
+        learning_rate=0.0379,
+        subsample=0.8068,
+        colsample_bytree=0.7123,
+        gamma=0.0845,
+        reg_alpha=0.2744,
+        reg_lambda=0.2672,
+        max_delta_step=4,
         random_state=42
     )
-    
+
     xgb_model.fit(X_train, y_train)
     
     # Feature importances

@@ -11,16 +11,16 @@ import matplotlib.dates as mdates
 
 from util.eval import eval
 from dotenv import load_dotenv
-from util.train_xb import train_model # XGBoost variant
 from util.dump import dump_sqlite_db
 from util.sahkotin import update_spot
+from util.train_xgb import train_model
 from util.fingrid import update_nuclear
-from util.imports import update_import_capacity
 from util.llm import narrate_prediction
 from datetime import datetime, timedelta
 from util.entso_e import entso_e_nuclear
 from util.sql import db_update, db_query_all
 from util.dataframes import update_df_from_df
+from util.imports import update_import_capacity
 from util.fmi import update_wind_speed, update_temperature
 from util.models import write_model_stats, stats, list_models
 from util.eval import create_prediction_snapshot, rotate_snapshots
