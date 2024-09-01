@@ -34,12 +34,11 @@
         <h1 style="padding-top: 32px">Mitä ennuste huomioi?</h1>
         <p>Kyseessä on koneoppimismalli, joka hakee korrelaatioita eri muuttujien välillä ja oppii, millaiseen hintaan kukin yhdistelmä historian perusteella johtaa. Tämä ei siis ole aikasarjaennuste, vaan jokainen tunti saa arvonsa erikseen näiden tietojen perusteella:</p>
         <li><strong>Isoimpien tuulivoima-alueiden tuuliennuste:</strong> FMI-sääasemat, eli epäsuorasti tuulivoiman määrä</li>
-        <li><strong>Muutaman keskeisen asutuskeskuksen lämpötilaennuste:</strong> FMI-sääasemat, eli epäsuorasti lämmitystarve</li>
+        <li><strong>Muutaman keskeisen asutuskeskuksen lämpötilaennuste:</strong> FMI-sääasemat, eli epäsuorasti lämmitystarve ja vuodenaika</li>
         <li><strong>Ydinvoimatuotanto:</strong> Fingrid (mallin opetus) <del>ja ENTSO-E REMIT UMM (ennuste)</del></li>
         <li><strong>Siirtokapasiteetti:</strong> Ruotsista ja Virosta Suomen suuntaan</li>
         <li><strong>Viikonpäivä:</strong> ma-su</li>
         <li><strong>Kellonaika:</strong> 0-23</li>
-        <li><strong><del>Kuukausi:</del></strong> <del>vuodenajan vaikutus</del></li>
         <p>Nämä muuttujat on valittu intuitiolla ja kokeilemalla. Jokin toinen yhdistelmä voisi toimia paremmin tai huonommin. Lähdekoodi on avointa, joten olet tervetullut kokeilemaan erilaisia vaihtoehtoja näiden lisäksi tai sijaan.<p>
         <p><strong>11.8.2024:</strong></p>
         <li>Poistettu ENTSO-E REMIT UMM -tuotantomuuttuja, koska rajapinnan mukaan OL3 olisi huollossa vuoden 2025 puolelle asti. Tämä ei onneksi ole totta, mutta sotkee ennusteen. Tutkimme asiaa ja palautamme ydinvoimaennusteen mukaan opetukseen, jos virheen syy löytyy. Ydinvoimaennuste olettaa nyt, että viimeisin tunnettu tuotantoluku pysyy seuraavat 5 vrk.</li>
