@@ -1,4 +1,4 @@
-# pip install numpy pandas python-dotenv lightgbm rich scikit-learn xgboost statsmodels scipy argparse
+# pip install numpy pandas python-dotenv lightgbm rich scikit-learn xgboost statsmodels scipy argparse joblib
 
 """
 Wind Power Prediction Model Comparison
@@ -16,9 +16,9 @@ Features:
     - Results visualization
 
 Usage:
-    python data/create/91_model_experiments/rf_vs_world.py --data 'data/dump.csv' --mode 'quick'
-    python data/create/91_model_experiments/rf_vs_world.py --data 'data/dump.csv' --mode 'default'
-    python data/create/91_model_experiments/rf_vs_world.py --data 'data/dump.csv' --mode 'full'
+    python data/create/91_model_experiments/rf_vs_world_windpower.py --data 'data/dump.csv' --mode 'quick'
+    python data/create/91_model_experiments/rf_vs_world_windpower.py --data 'data/dump.csv' --mode 'default'
+    python data/create/91_model_experiments/rf_vs_world_windpower.py --data 'data/dump.csv' --mode 'full' --output-dir 'data/'
 
 Arguments:
     --data: Path to the input CSV data file (default: 'data/dump.csv')
@@ -28,6 +28,7 @@ Arguments:
         'full': Includes hyperparameter grid search and additional analyses
     --optimize: Specify which model to optimize hyperparameters for (only in 'full' mode), if not all.
         Options are 'RF' for Random Forest, 'XGB' for XGBoost, 'GB' for Gradient Boosting, and 'LGBM' for LightGBM.
+    --output-dir: Directory to save trained models (default: 'data/')
 
 The application uses environment variables for FMISID features, which should be
 defined in a .env.local file. See .env.template for an example.
@@ -36,6 +37,12 @@ Output:
     - Detailed logging of the process
     - Tables displaying model performance comparisons
     - Feature importance rankings
+    - Saved model files
+    
+Todo:
+    - Add more weather stations for training
+    - Create a more robust wind power model for use in the price prediction pipeline
+    - Multi-pass hyperparameter search, narrowing down the search space depending on the results of the previous passes
 """
 
 import argparse
@@ -44,6 +51,7 @@ import time
 from typing import List, Tuple, Dict, Any
 import numpy as np
 import pandas as pd
+import os
 from dotenv import load_dotenv, dotenv_values
 from lightgbm import LGBMRegressor
 from rich.console import Console
@@ -59,6 +67,7 @@ from statsmodels.stats.stattools import durbin_watson
 from statsmodels.tsa.stattools import acf
 import multiprocessing
 from scipy.stats import randint, uniform
+import joblib
 
 # Load environment variables
 load_dotenv()
@@ -77,6 +86,8 @@ logging.basicConfig(
 )
 logger = logging.getLogger("rich")
 console = Console()
+
+logger.info(f"FMISID_WS: {FMISID_WS}, FMISID_T: {FMISID_T}")
 
 def get_n_jobs():
     """Determine the number of jobs to run in parallel."""
@@ -308,9 +319,15 @@ def main():
     parser.add_argument('--data', type=str, default='data/dump.csv', help='Path to the data file (default: data/dump.csv)')
     parser.add_argument('--mode', type=str, choices=['quick', 'default', 'full'], default='default', help='Operation mode (default: default)')
     parser.add_argument('--optimize', type=str, choices=['RF', 'XGB', 'GB', 'LGBM'], help='Specify which model to optimize (RF: Random Forest, XGB: XGBoost, GB: Gradient Boosting, LGBM: Light GBM)')
+    parser.add_argument('--output-dir', type=str, default='data/', help='Directory to save trained models (default: data/)')
     args = parser.parse_args()
 
     logger.info(f"Starting model comparison in {args.mode} mode")
+
+    # Ensure the output directory exists
+    output_dir = args.output_dir
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
     try:
         df = pd.read_csv(args.data)
@@ -379,6 +396,12 @@ def main():
             eval_results = train_and_evaluate_model(model, X_train, y_train, X_test, y_test, model_name, args.mode)
             results[model_name] = {**cv_results, **eval_results}
 
+            # Save the trained model
+            filename = f"windpower_{model_name.replace(' ', '_').lower()}.joblib"
+            filepath = os.path.join(output_dir, filename)
+            joblib.dump(model, filepath)
+            logger.info(f"{model_name} saved as {filepath}")
+
         except Exception as e:
             logger.error(f"Error processing {model_name}: {str(e)}")
 
@@ -388,5 +411,87 @@ def main():
     except Exception as e:
         logger.error(f"Error displaying results: {str(e)}")
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
+      
+# 2024-09-01: Winner: Gradient Boosting
+
+# learning_rate: 0.012508150095666463
+# max_depth: 12
+# max_features: 0.5233328316068078
+# n_estimators: 899
+# subsample: 0.6831809216468459
+
+# Results:
+
+#          Model Performance Comparison - Test Set Metrics
+# ┏━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━┓
+# ┃ Model             ┃      MAE ┃         MSE ┃     RMSE ┃     R² ┃
+# ┡━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━┩
+# │ Random Forest     │ 459.6638 │ 392049.6739 │ 626.1387 │ 0.7594 │
+# │ XGBoost           │ 432.8361 │ 362743.4374 │ 602.2819 │ 0.7774 │
+# │ Gradient Boosting │ 424.6831 │ 350969.3553 │ 592.4267 │ 0.7846 │
+# │ Light GBM         │ 461.0011 │ 399318.5351 │ 631.9166 │ 0.7549 │
+# └───────────────────┴──────────┴─────────────┴──────────┴────────┘
+#                  5-Fold Cross-Validation Results
+# ┏━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━┓
+# ┃ Model             ┃   CV MAE ┃      CV MSE ┃  CV RMSE ┃  CV R² ┃
+# ┡━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━┩
+# │ Random Forest     │ 479.2966 │ 426813.8320 │ 653.3099 │ 0.7474 │
+# │ XGBoost           │ 446.6376 │ 382851.2972 │ 618.7498 │ 0.7735 │
+# │ Gradient Boosting │ 441.6042 │ 379494.6784 │ 616.0314 │ 0.7755 │
+# │ Light GBM         │ 471.8722 │ 415177.6202 │ 644.3428 │ 0.7543 │
+# └───────────────────┴──────────┴─────────────┴──────────┴────────┘
+#                            Autocorrelation Analysis
+# ┏━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
+# ┃ Model             ┃ Durbin-Watson ┃ ACF (Lag 1) ┃ ACF (Lag 2) ┃ ACF (Lag 3) ┃
+# ┡━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
+# │ Random Forest     │        2.0024 │     -0.0049 │      0.0216 │     -0.0314 │
+# │ XGBoost           │        2.0091 │     -0.0059 │      0.0182 │     -0.0256 │
+# │ Gradient Boosting │        1.9968 │      0.0000 │      0.0219 │     -0.0347 │
+# │ Light GBM         │        1.9795 │      0.0097 │      0.0114 │     -0.0178 │
+# └───────────────────┴───────────────┴─────────────┴─────────────┴─────────────┘
+
+# Top 10 Feature Importance for Random Forest:
+#   Feature  Importance
+# ws_101673    0.430571
+# ws_101256    0.176456
+# ws_101846    0.080221
+#  t_101339    0.067645
+#  t_101786    0.067280
+# ws_101267    0.066799
+#  t_100968    0.062345
+#  t_101118    0.048683
+
+# Top 10 Feature Importance for XGBoost:
+#   Feature  Importance
+# ws_101673    0.375390
+# ws_101256    0.177948
+# ws_101846    0.090846
+#  t_100968    0.075800
+#  t_101339    0.074666
+# ws_101267    0.073706
+#  t_101786    0.069250
+#  t_101118    0.062394
+
+# Top 10 Feature Importance for Gradient Boosting:
+#   Feature  Importance
+# ws_101673    0.281634
+# ws_101256    0.188972
+# ws_101846    0.133093
+# ws_101267    0.098818
+#  t_101786    0.080414
+#  t_100968    0.074849
+#  t_101339    0.074281
+#  t_101118    0.067938
+
+# Top 10 Feature Importance for Light GBM:
+#   Feature  Importance
+#  t_101786        8121
+# ws_101256        7420
+# ws_101673        7162
+# ws_101846        7149
+# ws_101267        7086
+#  t_100968        6999
+#  t_101339        6769
+#  t_101118        6631

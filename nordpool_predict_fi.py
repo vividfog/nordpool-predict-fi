@@ -14,13 +14,14 @@ from dotenv import load_dotenv
 from util.dump import dump_sqlite_db
 from util.sahkotin import update_spot
 from util.train_xgb import train_model
-from util.fingrid import update_nuclear
+from util.fingrid_nuclear import update_nuclear
+from util.fingrid_imports import update_import_capacity
+from util.fingrid_windpower import update_windpower
 from util.llm import narrate_prediction
 from datetime import datetime, timedelta
 from util.entso_e import entso_e_nuclear
 from util.sql import db_update, db_query_all
 from util.dataframes import update_df_from_df
-from util.imports import update_import_capacity
 from util.fmi import update_wind_speed, update_temperature
 from util.models import write_model_stats, stats, list_models
 from util.eval import create_prediction_snapshot, rotate_snapshots
@@ -262,9 +263,12 @@ if args.predict:
     # NOTE: To save on API calls, this won't backfill history beyond 7 days even if asked
     df = update_import_capacity(df, fingrid_api_key=fingrid_api_key)
 
-    # Print the head of the DataFrame after updating import capacity
-    # print("→ DataFrame after updating import capacity:")
-    # print(df.head())
+    # Now we update WindPowerMW, but we're not using it in training yet
+    df = update_windpower(df, fingrid_api_key=fingrid_api_key)
+
+    # Print the head of the DataFrame after WindPowerMW update
+    # print("→ DataFrame after updating WindPowerMW:")
+    # print(df)
     
     # BUG: Entso-E data appears to show OL3 downtime for entire rest of 2024, which can't be true; need to investigate; dropping for now
     # Fetch future nuclear downtime information from ENTSO-E unavailability data, h/t github:@pkautio
@@ -416,19 +420,21 @@ if args.deploy:
 
     # Filter out rows where 'timestamp' is earlier than the start of yesterday in Helsinki, adjusted to UTC
     deploy_df = deploy_df[deploy_df['timestamp'] >= start_of_yesterday_utc]
-    hourly_predictions = deploy_df[['timestamp', 'PricePredict_cpkWh']].copy()
-    hourly_predictions['timestamp'] = hourly_predictions['timestamp'].dt.tz_localize(None) if hourly_predictions['timestamp'].dt.tz is not None else hourly_predictions['timestamp']
-    hourly_predictions['timestamp'] = hourly_predictions['timestamp'].apply(
+
+    # Hourly Price Predictions
+    hourly_price_predictions = deploy_df[['timestamp', 'PricePredict_cpkWh']].copy()
+    hourly_price_predictions['timestamp'] = hourly_price_predictions['timestamp'].dt.tz_localize(None) if hourly_price_predictions['timestamp'].dt.tz is not None else hourly_price_predictions['timestamp']
+    hourly_price_predictions['timestamp'] = hourly_price_predictions['timestamp'].apply(
         lambda x: (x - pd.Timestamp("1970-01-01")) // pd.Timedelta('1ms')
     )
 
-    # Write prediction.json to the deploy folder
-    json_data_list = hourly_predictions.values.tolist()
+    # Write price prediction.json to the deploy folder
+    json_data_list = hourly_price_predictions.values.tolist()
     json_data = json.dumps(json_data_list, ensure_ascii=False)
     json_path = os.path.join(deploy_folder_path, predictions_file)
     with open(json_path, 'w') as f:
         f.write(json_data)
-    print(f"→ Hourly predictions saved to {json_path}")
+    print(f"→ Hourly price predictions saved to {json_path}")
 
     # Create/update the snapshot JSON file for today's predictions
     # TODO: Remove fixed file name, derive from .env.local
@@ -455,6 +461,21 @@ if args.deploy:
     with open(json_path, 'w') as f:
         f.write(json_data)
     print(f"→ Daily averages saved to {json_path}")
+
+    # Hourly Wind Power Predictions
+    windpower_preds = deploy_df[['timestamp', 'WindPowerMW']].copy()
+    windpower_preds['timestamp'] = windpower_preds['timestamp'].dt.tz_localize(None) if windpower_preds['timestamp'].dt.tz is not None else windpower_preds['timestamp']
+    windpower_preds['timestamp'] = windpower_preds['timestamp'].apply(
+        lambda x: (x - pd.Timestamp("1970-01-01")) // pd.Timedelta('1ms')
+    )
+
+    # Write wind power prediction JSON to the deploy folder
+    json_data_list = windpower_preds.values.tolist()
+    json_data = json.dumps(json_data_list, ensure_ascii=False)
+    json_path_wind = os.path.join(deploy_folder_path, 'windpower.json')  # Define a separate path or filename
+    with open(json_path_wind, 'w') as f:
+        f.write(json_data)
+    print(f"→ Hourly wind power predictions saved to {json_path_wind}")
 
 if __name__ == "__main__":
     # If no arguments were given, print usage
