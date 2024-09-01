@@ -9,7 +9,7 @@ Features:
     - Cross-validation
     - Hyperparameter tuning (in full mode)
     - Performance metrics calculation (MAE, MSE, RMSE, R²)
-    - Full analysis including Durbin-Watson test and autocorrelation (in 'full' mode)
+    - Durbin-Watson test and autocorrelation (in 'full' mode)
     - Feature importance ranking
     - Results visualization
 
@@ -24,6 +24,8 @@ Arguments:
         'quick': Only trains and evaluates Random Forest
         'default': Trains and evaluates all models without grid search
         'full': Includes hyperparameter grid search and additional analyses
+    --optimize: Specify which model to optimize hyperparameters for (only in 'full' mode), if not all.
+        Options are 'RF' for Random Forest, 'XGB' for XGBoost, 'GB' for Gradient Boosting, and 'LGBM' for LightGBM.
 
 The application uses environment variables for FMISID features, which should be
 defined in a .env.local file. See .env.template for an example.
@@ -45,6 +47,7 @@ from lightgbm import LGBMRegressor
 from rich.console import Console
 from rich.logging import RichHandler
 from rich.table import Table
+from rich.progress import Progress
 from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.model_selection import train_test_split, cross_val_score, KFold, RandomizedSearchCV
@@ -81,19 +84,33 @@ def get_n_jobs():
 def preprocess_data(df: pd.DataFrame, fmisid_ws: List[str], fmisid_t: List[str]) -> Tuple[pd.DataFrame, pd.Series]:
     """Preprocess the input data for model training."""
     logger.info("Starting data preprocessing...")
-    
-    df = shuffle(df, random_state=42)
-    df = df.drop(columns=['PricePredict_cpkWh'])
 
-    df['timestamp'] = pd.to_datetime(df['timestamp'], infer_datetime_format=True, errors='coerce')
+    # Shuffle the data
+    df = shuffle(df, random_state=42)
+    
+    # Drop the predictions column if it exists
+    df = df.drop(columns=['PricePredict_cpkWh'], errors='ignore')
+    
+    # Convert the timestamp to datetime and extract features
+    df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
     df['day_of_week'] = df['timestamp'].dt.dayofweek + 1
     df['hour'] = df['timestamp'].dt.hour
 
+    # Define feature columns including dynamic columns based on fmisid_ws and fmisid_t
+    feature_columns = ['day_of_week', 'hour', 'NuclearPowerMW', 'ImportCapacityMW'] + fmisid_ws + fmisid_t
+
+    # Drop rows with NaN values in the feature columns
+    initial_row_count = df.shape[0]
+    df = df.dropna(subset=feature_columns)
+    dropped_rows = initial_row_count - df.shape[0]
+    logger.info(f"Dropped {dropped_rows} rows due to NaN values in feature columns.")
+
+    # Filter outliers based on the IQR for Price_cpkWh column
     Q1, Q3 = df['Price_cpkWh'].quantile([0.25, 0.75])
     IQR = Q3 - Q1
     df_filtered = df[(df['Price_cpkWh'] >= Q1 - 2.5 * IQR) & (df['Price_cpkWh'] <= Q3 + 2.5 * IQR)]
 
-    feature_columns = ['day_of_week', 'hour', 'NuclearPowerMW', 'ImportCapacityMW'] + fmisid_ws + fmisid_t
+    # Extract features and target variable
     X_filtered = df_filtered[feature_columns]
     y_filtered = df_filtered['Price_cpkWh']
 
@@ -101,16 +118,22 @@ def preprocess_data(df: pd.DataFrame, fmisid_ws: List[str], fmisid_t: List[str])
     return X_filtered, y_filtered
 
 def perform_cross_validation(model, X: pd.DataFrame, y: pd.Series, model_name: str, n_splits: int = 5) -> Dict[str, float]:
-    """Perform k-fold cross-validation and return the results."""
     logger.info(f"Starting {n_splits}-fold cross-validation for {model_name}...")
     
     kf = KFold(n_splits=n_splits, shuffle=True, random_state=42)
     n_jobs = get_n_jobs()
-    
-    mae_scores = cross_val_score(model, X, y, scoring='neg_mean_absolute_error', cv=kf, n_jobs=n_jobs)
-    mse_scores = cross_val_score(model, X, y, scoring='neg_mean_squared_error', cv=kf, n_jobs=n_jobs)
-    r2_scores = cross_val_score(model, X, y, scoring='r2', cv=kf, n_jobs=n_jobs)
-    
+
+    with Progress() as progress:
+        task = progress.add_task(f"[cyan]Cross-validating {model_name}...", total=n_splits)
+
+        mae_scores = cross_val_score(model, X, y, scoring='neg_mean_absolute_error', cv=kf, n_jobs=n_jobs)
+        mse_scores = cross_val_score(model, X, y, scoring='neg_mean_squared_error', cv=kf, n_jobs=n_jobs)
+        r2_scores = cross_val_score(model, X, y, scoring='r2', cv=kf, n_jobs=n_jobs)
+
+        # Simulating progress update for the cross-validation
+        for _ in range(n_splits):
+            progress.update(task, advance=1)
+
     mae = -mae_scores.mean()
     mse = -mse_scores.mean()
     rmse = np.sqrt(mse)
@@ -125,6 +148,7 @@ def perform_cross_validation(model, X: pd.DataFrame, y: pd.Series, model_name: s
         "CV_RMSE": rmse,
         "CV_R²": r2
     }
+
 
 def train_and_evaluate_model(model, X_train: pd.DataFrame, y_train: pd.Series, X_test: pd.DataFrame, y_test: pd.Series, model_name: str, mode: str) -> Dict[str, Any]:
     """Train the model and evaluate its performance."""
@@ -273,7 +297,7 @@ def tune_model(model, X, y):
         n_jobs=n_jobs, random_state=42, verbose=1
     )
 
-    if model_type == 'XGBRegressor':
+    if model_type == 'XGBoost':
         random_search.fit(
             X_train, y_train,
             eval_set=[(X_val, y_val)],
@@ -311,16 +335,25 @@ def main():
         X, y = preprocess_data(df, fmisid_ws, fmisid_t)
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
         X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.2, random_state=42)
+
+        logger.info(
+            f"Data splits: "
+            f"Training set: {X_train.shape}, "
+            f"Validation set: {X_val.shape}, "
+            f"Testing set: {X_test.shape}"
+        )
+
     except Exception as e:
         logger.error(f"Error during data preprocessing or splitting: {str(e)}")
         return
+
 
     n_jobs = get_n_jobs()
     models = {
         "Random Forest": RandomForestRegressor(random_state=42, n_jobs=n_jobs),
         "XGBoost": XGBRegressor(random_state=42, n_jobs=n_jobs),
         "Gradient Boosting": GradientBoostingRegressor(random_state=42),
-        "Light GBM": LGBMRegressor(random_state=42, n_jobs=n_jobs)
+        "Light GBM": LGBMRegressor(random_state=42, n_jobs=n_jobs, verbose=-1)
     }
 
     # Mapping between short names and full names
