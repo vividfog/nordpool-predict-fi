@@ -90,7 +90,7 @@ def update_import_capacity(df, fingrid_api_key):
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
     end_date = (datetime.now(pytz.UTC) + timedelta(hours=120)).strftime("%Y-%m-%d")
     
-    print(f"* Fetching import capacities between {history_date} and {end_date}")
+    print(f"* Fingrid: Fetching import capacities between {history_date} and {end_date}")
 
     # Fetch import capacity data
     import_df = fetch_transfer_capacity_data(fingrid_api_key, IMPORT_DATASET_IDS, history_date, end_date)
