@@ -1,3 +1,5 @@
+# pip install numpy pandas python-dotenv lightgbm rich scikit-learn xgboost statsmodels scipy argparse
+
 """
 Electricity Price Prediction Model Comparison
 
