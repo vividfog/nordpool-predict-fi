@@ -239,35 +239,35 @@ def tune_model(model, X, y):
         
     param_distributions = {
         'RandomForestRegressor': {
-            'n_estimators': randint(200, 2000),  # expand range
-            'max_depth': randint(10, 100),      # wider range
-            'min_samples_split': randint(2, 10),# larger range
-            'min_samples_leaf': randint(1, 10)  # larger range
+            'n_estimators': randint(200, 2000),
+            'max_depth': randint(10, 100),
+            'min_samples_split': randint(2, 10),
+            'min_samples_leaf': randint(1, 10)
         },
         'GradientBoostingRegressor': {
-            'n_estimators': randint(200, 2000),          # expanded range
-            'max_depth': randint(3, 20),                 # broader range
-            'learning_rate': uniform(0.001, 0.5),        # more conservative and aggressive
-            'subsample': uniform(0.5, 0.9),              # widened range
-            'max_features': uniform(0.5, 1.0)            # maxing out at 1.0
+            'n_estimators': randint(200, 2000),
+            'max_depth': randint(3, 20),
+            'learning_rate': uniform(0.001, 0.499),  # Upper bound is 0.001 + 0.499 = 0.5
+            'subsample': uniform(0.5, 0.5),  # Range is 0.5 to 1.0
+            'max_features': uniform(0.5, 0.5)  # Range is 0.5 to 1.0
         },
         'LGBMRegressor': {
-            'n_estimators': randint(200, 2000),             # larger range
-            'max_depth': randint(4, 20),                    # broaden both ends
-            'learning_rate': uniform(0.001, 0.5),           # broad range
-            'subsample': uniform(0.5, 1.0),                 # expanded
-            'colsample_bytree': uniform(0.5, 1.0)           # max out at 1.0
+            'n_estimators': randint(200, 2000),
+            'max_depth': randint(3, 20),
+            'learning_rate': uniform(0.001, 0.499),
+            'subsample': uniform(0.5, 0.5),
+            'colsample_bytree': uniform(0.5, 0.5)
         },
         'XGBRegressor': {
-            'n_estimators': randint(200, 2000),             # significantly expanded
-            'max_depth': randint(3, 20),                    # expand in both directions
-            'learning_rate': uniform(0.001, 0.5),           # broad learning rate range
-            'subsample': uniform(0.5, 1.0),                 # explore full range
-            'colsample_bytree': uniform(0.5, 1.0),          # explore full range
-            'gamma': uniform(0, 1.0),                       # wider range
-            'reg_alpha': uniform(0, 1.0),                   # explore full range
-            'reg_lambda': uniform(0, 1.0),                  # explore full range
-            'max_delta_step': randint(0, 10)                # larger range
+            'n_estimators': randint(200, 2000),
+            'max_depth': randint(3, 20),
+            'learning_rate': uniform(0.001, 0.499),
+            'subsample': uniform(0.5, 0.5),
+            'colsample_bytree': uniform(0.5, 0.5),
+            'gamma': uniform(0, 5),
+            'reg_alpha': uniform(1e-5, 1.0),
+            'reg_lambda': uniform(1e-5, 1.0),
+            'min_child_weight': randint(1, 10)
         }
     }
 
