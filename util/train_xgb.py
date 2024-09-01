@@ -43,7 +43,7 @@ def train_model(df, fmisid_ws, fmisid_t):
         random_state=42
     )
     
-    # XGBoost model with optimal tuned parameters
+    # XGBoost model, tuned 2024-04-01
     xgb_model = XGBRegressor(
         n_estimators=904,
         max_depth=8,

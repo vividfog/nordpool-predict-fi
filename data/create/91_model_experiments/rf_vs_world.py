@@ -99,13 +99,16 @@ def preprocess_data(df: pd.DataFrame, fmisid_ws: List[str], fmisid_t: List[str])
     df['hour'] = df['timestamp'].dt.hour
 
     # Define feature columns including dynamic columns based on fmisid_ws and fmisid_t
-    feature_columns = ['day_of_week', 'hour', 'NuclearPowerMW', 'ImportCapacityMW'] + fmisid_ws + fmisid_t
+    # feature_columns = ['day_of_week', 'hour', 'NuclearPowerMW', 'ImportCapacityMW'] + fmisid_ws + fmisid_t
+
+    # TEST - Include WindPowerMW
+    feature_columns = ['day_of_week', 'hour', 'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW'] + fmisid_ws + fmisid_t
 
     # Drop rows with NaN values in the feature columns
     initial_row_count = df.shape[0]
-    df = df.dropna(subset=feature_columns)
+    df = df.dropna(subset=feature_columns + ['Price_cpkWh'])
     dropped_rows = initial_row_count - df.shape[0]
-    logger.info(f"Dropped {dropped_rows} rows due to NaN values in feature columns.")
+    logger.info(f"Dropped {dropped_rows} rows due to NaN values in feature or target columns.")
 
     # Filter outliers based on the IQR for Price_cpkWh column
     Q1, Q3 = df['Price_cpkWh'].quantile([0.25, 0.75])
@@ -406,3 +409,160 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Sample run, 2024-09-02, with WindPowerMW included:
+
+# [2024-09-01 23:18:30] INFO     [2024-09-01 23:18:30] - Starting model comparison in full mode                                                                                                     rf_vs_world.py:327
+#                       INFO     [2024-09-01 23:18:30] - Dataset loaded successfully. Shape: (14750, 15)                                                                                            rf_vs_world.py:331
+#                       INFO     [2024-09-01 23:18:30] - Starting data preprocessing...                                                                                                              rf_vs_world.py:88
+#                       INFO     [2024-09-01 23:18:30] - Dropped 88 rows due to NaN values in feature or target columns.                                                                            rf_vs_world.py:111
+#                       INFO     [2024-09-01 23:18:30] - Preprocessed data shape: X=(14517, 13), y=(14517,)                                                                                         rf_vs_world.py:122
+#                       INFO     [2024-09-01 23:18:30] - Data splits: Training set: (9290, 13), Validation set: (2323, 13), Testing set: (2904, 13)                                                 rf_vs_world.py:344
+#                       INFO     [2024-09-01 23:18:30] - Processing Random Forest...                                                                                                                rf_vs_world.py:384
+#                       INFO     [2024-09-01 23:18:30] - Starting model tuning for RandomForestRegressor                                                                                            rf_vs_world.py:252
+# Fitting 3 folds for each of 100 candidates, totalling 300 fits
+# [2024-09-01 23:36:57] INFO     [2024-09-01 23:36:57] - Best parameters found: {'max_depth': 47, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 779}                               rf_vs_world.py:314
+#                       INFO     [2024-09-01 23:36:57] - Best score: 6.3706                                                                                                                         rf_vs_world.py:315
+#                       INFO     [2024-09-01 23:36:57] - Starting 5-fold cross-validation for Random Forest...                                                                                      rf_vs_world.py:126
+# Cross-validating Random Forest... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+# [2024-09-01 23:38:53] INFO     [2024-09-01 23:38:53] - Cross-validation completed for Random Forest                                                                                               rf_vs_world.py:147
+#                       INFO     [2024-09-01 23:38:53] - Mean MAE: 1.4178, Mean MSE: 4.9802, Mean RMSE: 2.2316, Mean R²: 0.8284                                                                     rf_vs_world.py:148
+# [2024-09-01 23:39:08] INFO     [2024-09-01 23:39:08] - Starting training and evaluation for Random Forest...                                                                                      rf_vs_world.py:160
+# [2024-09-01 23:39:22] INFO     [2024-09-01 23:39:22] - Random Forest training completed in 14.18 seconds                                                                                          rf_vs_world.py:165
+#                       INFO     [2024-09-01 23:39:22] - Random Forest prediction completed in 0.13 seconds                                                                                         rf_vs_world.py:170
+#                       INFO     [2024-09-01 23:39:22] - Performing full analysis for Random Forest...                                                                                              rf_vs_world.py:185
+#                       INFO     [2024-09-01 23:39:22] - Full analysis completed                                                                                                                    rf_vs_world.py:189
+#                       INFO     [2024-09-01 23:39:22] - Random Forest evaluation completed                                                                                                         rf_vs_world.py:194
+#                       INFO     [2024-09-01 23:39:22] - MAE: 1.3871, MSE: 4.8166, RMSE: 2.1947, R²: 0.8462                                                                                         rf_vs_world.py:195
+# [2024-09-01 23:39:23] INFO     [2024-09-01 23:39:23] - Processing XGBoost...                                                                                                                      rf_vs_world.py:384
+#                       INFO     [2024-09-01 23:39:23] - Starting model tuning for XGBRegressor                                                                                                     rf_vs_world.py:252
+# Fitting 3 folds for each of 100 candidates, totalling 300 fits
+# [2024-09-01 23:43:09] INFO     [2024-09-01 23:43:09] - Best parameters found: {'colsample_bytree': 0.9724797657899961, 'gamma': 0.11978094533348621, 'learning_rate': 0.02448948720912231,        rf_vs_world.py:314
+#                                'max_delta_step': 3, 'max_depth': 8, 'n_estimators': 915, 'reg_alpha': 0.29634836193969677, 'reg_lambda': 0.040426663166357624, 'subsample': 0.8108963368184213}
+#                       INFO     [2024-09-01 23:43:09] - Best score: 4.9067                                                                                                                         rf_vs_world.py:315
+#                       INFO     [2024-09-01 23:43:09] - Starting 5-fold cross-validation for XGBoost...                                                                                            rf_vs_world.py:126
+# Cross-validating XGBoost... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+# [2024-09-01 23:43:41] INFO     [2024-09-01 23:43:41] - Cross-validation completed for XGBoost                                                                                                     rf_vs_world.py:147
+#                       INFO     [2024-09-01 23:43:41] - Mean MAE: 1.2581, Mean MSE: 3.8796, Mean RMSE: 1.9697, Mean R²: 0.8663                                                                     rf_vs_world.py:148
+# [2024-09-01 23:43:43] INFO     [2024-09-01 23:43:43] - Starting training and evaluation for XGBoost...                                                                                            rf_vs_world.py:160
+# [2024-09-01 23:43:46] INFO     [2024-09-01 23:43:46] - XGBoost training completed in 2.34 seconds                                                                                                 rf_vs_world.py:165
+#                       INFO     [2024-09-01 23:43:46] - XGBoost prediction completed in 0.02 seconds                                                                                               rf_vs_world.py:170
+#                       INFO     [2024-09-01 23:43:46] - Performing full analysis for XGBoost...                                                                                                    rf_vs_world.py:185
+#                       INFO     [2024-09-01 23:43:46] - Full analysis completed                                                                                                                    rf_vs_world.py:189
+#                       INFO     [2024-09-01 23:43:46] - XGBoost evaluation completed                                                                                                               rf_vs_world.py:194
+#                       INFO     [2024-09-01 23:43:46] - MAE: 1.2165, MSE: 3.6411, RMSE: 1.9082, R²: 0.8837                                                                                         rf_vs_world.py:195
+#                       INFO     [2024-09-01 23:43:46] - Processing Gradient Boosting...                                                                                                            rf_vs_world.py:384
+#                       INFO     [2024-09-01 23:43:46] - Starting model tuning for GradientBoostingRegressor                                                                                        rf_vs_world.py:252
+# Fitting 3 folds for each of 100 candidates, totalling 300 fits
+# [2024-09-02 00:06:19] INFO     [2024-09-02 00:06:19] - Best parameters found: {'learning_rate': 0.027711067940704895, 'max_depth': 9, 'max_features': 0.9650482066798776, 'n_estimators': 879,    rf_vs_world.py:314
+#                                'subsample': 0.7046369849586602}
+#                       INFO     [2024-09-02 00:06:19] - Best score: 4.9145                                                                                                                         rf_vs_world.py:315
+#                       INFO     [2024-09-02 00:06:19] - Starting 5-fold cross-validation for Gradient Boosting...                                                                                  rf_vs_world.py:126
+# Cross-validating Gradient Boosting... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+# [2024-09-02 00:08:37] INFO     [2024-09-02 00:08:37] - Cross-validation completed for Gradient Boosting                                                                                           rf_vs_world.py:147
+#                       INFO     [2024-09-02 00:08:37] - Mean MAE: 1.2027, Mean MSE: 3.7273, Mean RMSE: 1.9306, Mean R²: 0.8716                                                                     rf_vs_world.py:148
+# [2024-09-02 00:09:03] INFO     [2024-09-02 00:09:03] - Starting training and evaluation for Gradient Boosting...                                                                                  rf_vs_world.py:160
+# [2024-09-02 00:09:29] INFO     [2024-09-02 00:09:29] - Gradient Boosting training completed in 26.30 seconds                                                                                      rf_vs_world.py:165
+#                       INFO     [2024-09-02 00:09:29] - Gradient Boosting prediction completed in 0.08 seconds                                                                                     rf_vs_world.py:170
+#                       INFO     [2024-09-02 00:09:29] - Performing full analysis for Gradient Boosting...                                                                                          rf_vs_world.py:185
+#                       INFO     [2024-09-02 00:09:29] - Full analysis completed                                                                                                                    rf_vs_world.py:189
+#                       INFO     [2024-09-02 00:09:29] - Gradient Boosting evaluation completed                                                                                                     rf_vs_world.py:194
+#                       INFO     [2024-09-02 00:09:29] - MAE: 1.1514, MSE: 3.5129, RMSE: 1.8743, R²: 0.8878                                                                                         rf_vs_world.py:195
+#                       INFO     [2024-09-02 00:09:29] - Processing Light GBM...                                                                                                                    rf_vs_world.py:384
+#                       INFO     [2024-09-02 00:09:29] - Starting model tuning for LGBMRegressor                                                                                                    rf_vs_world.py:252
+# Fitting 3 folds for each of 100 candidates, totalling 300 fits
+# [2024-09-02 00:13:17] INFO     [2024-09-02 00:13:17] - Best parameters found: {'colsample_bytree': 0.954674147279825, 'learning_rate': 0.08217295211648731, 'max_depth': 11, 'n_estimators': 858, rf_vs_world.py:314
+#                                'subsample': 0.7121300768615294}
+#                       INFO     [2024-09-02 00:13:17] - Best score: 4.8420                                                                                                                         rf_vs_world.py:315
+#                       INFO     [2024-09-02 00:13:17] - Starting 5-fold cross-validation for Light GBM...                                                                                          rf_vs_world.py:126
+# Cross-validating Light GBM... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+# [2024-09-02 00:13:34] INFO     [2024-09-02 00:13:34] - Cross-validation completed for Light GBM                                                                                                   rf_vs_world.py:147
+#                       INFO     [2024-09-02 00:13:34] - Mean MAE: 1.2837, Mean MSE: 3.7761, Mean RMSE: 1.9432, Mean R²: 0.8698                                                                     rf_vs_world.py:148
+# [2024-09-02 00:13:35] INFO     [2024-09-02 00:13:35] - Starting training and evaluation for Light GBM...                                                                                          rf_vs_world.py:160
+# [2024-09-02 00:13:36] INFO     [2024-09-02 00:13:36] - Light GBM training completed in 1.11 seconds                                                                                               rf_vs_world.py:165
+#                       INFO     [2024-09-02 00:13:36] - Light GBM prediction completed in 0.04 seconds                                                                                             rf_vs_world.py:170
+#                       INFO     [2024-09-02 00:13:36] - Performing full analysis for Light GBM...                                                                                                  rf_vs_world.py:185
+#                       INFO     [2024-09-02 00:13:36] - Full analysis completed                                                                                                                    rf_vs_world.py:189
+#                       INFO     [2024-09-02 00:13:36] - Light GBM evaluation completed                                                                                                             rf_vs_world.py:194
+#                       INFO     [2024-09-02 00:13:36] - MAE: 1.2358, MSE: 3.5830, RMSE: 1.8929, R²: 0.8856                                                                                         rf_vs_world.py:195
+#                       INFO     [2024-09-02 00:13:36] - Preparing to display model comparison results...                                                                                           rf_vs_world.py:201
+#      Model Performance Comparison - Test Set Metrics
+# ┏━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┓
+# ┃ Model             ┃    MAE ┃    MSE ┃   RMSE ┃     R² ┃
+# ┡━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━┩
+# │ Random Forest     │ 1.3871 │ 4.8166 │ 2.1947 │ 0.8462 │
+# │ XGBoost           │ 1.2165 │ 3.6411 │ 1.9082 │ 0.8837 │
+# │ Gradient Boosting │ 1.1514 │ 3.5129 │ 1.8743 │ 0.8878 │
+# │ Light GBM         │ 1.2358 │ 3.5830 │ 1.8929 │ 0.8856 │
+# └───────────────────┴────────┴────────┴────────┴────────┘
+#              5-Fold Cross-Validation Results
+# ┏━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┓
+# ┃ Model             ┃ CV MAE ┃ CV MSE ┃ CV RMSE ┃  CV R² ┃
+# ┡━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━╇━━━━━━━━┩
+# │ Random Forest     │ 1.4178 │ 4.9802 │  2.2316 │ 0.8284 │
+# │ XGBoost           │ 1.2581 │ 3.8796 │  1.9697 │ 0.8663 │
+# │ Gradient Boosting │ 1.2027 │ 3.7273 │  1.9306 │ 0.8716 │
+# │ Light GBM         │ 1.2837 │ 3.7761 │  1.9432 │ 0.8698 │
+# └───────────────────┴────────┴────────┴─────────┴────────┘
+#                            Autocorrelation Analysis
+# ┏━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
+# ┃ Model             ┃ Durbin-Watson ┃ ACF (Lag 1) ┃ ACF (Lag 2) ┃ ACF (Lag 3) ┃
+# ┡━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
+# │ Random Forest     │        1.9569 │      0.0193 │     -0.0184 │     -0.0233 │
+# │ XGBoost           │        1.9560 │      0.0170 │     -0.0226 │     -0.0244 │
+# │ Gradient Boosting │        1.9608 │      0.0176 │     -0.0215 │     -0.0189 │
+# │ Light GBM         │        1.9513 │      0.0183 │     -0.0274 │     -0.0177 │
+# └───────────────────┴───────────────┴─────────────┴─────────────┴─────────────┘
+
+# Top 10 Feature Importance for Random Forest:
+#          Feature  Importance
+#      WindPowerMW    0.187503
+#         t_101118    0.160503
+#   NuclearPowerMW    0.134186
+#         t_100968    0.125291
+#             hour    0.079554
+#      day_of_week    0.065748
+#         t_101786    0.060388
+# ImportCapacityMW    0.059412
+#         t_101339    0.035450
+#        ws_101673    0.025667
+
+# Top 10 Feature Importance for XGBoost:
+#          Feature  Importance
+#         t_100968    0.232281
+#         t_101118    0.193524
+#      WindPowerMW    0.126449
+#   NuclearPowerMW    0.082230
+# ImportCapacityMW    0.064701
+#      day_of_week    0.056527
+#             hour    0.056055
+#         t_101339    0.050888
+#         t_101786    0.045616
+#        ws_101256    0.026455
+
+# Top 10 Feature Importance for Gradient Boosting:
+#          Feature  Importance
+#      WindPowerMW    0.176867
+#         t_100968    0.153029
+#   NuclearPowerMW    0.136690
+#         t_101118    0.125474
+#             hour    0.090595
+# ImportCapacityMW    0.073169
+#      day_of_week    0.065681
+#         t_101786    0.050461
+#         t_101339    0.036762
+#        ws_101256    0.024679
+
+# Top 10 Feature Importance for Light GBM:
+#          Feature  Importance
+#   NuclearPowerMW        3036
+#      WindPowerMW        2764
+# ImportCapacityMW        2465
+#         t_101786        2165
+#        ws_101673        1889
+#        ws_101267        1845
+#        ws_101256        1815
+#        ws_101846        1777
+#         t_100968        1756
+#         t_101339        1687
+#                       INFO     [2024-09-02 00:13:36] - Model comparison completed
