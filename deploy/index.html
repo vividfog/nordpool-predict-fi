@@ -29,7 +29,8 @@
         <p id="narration"></p>
         <h1>Ennusteen kehitys</h1>
         <p>Graafi kertoo, miten mallin ennusteet ovat kehittyneet ajan yli. Tämä saattaa auttaa hahmottamaan, mihin suuntaan ennuste on menossa. Isoja mielenmuutoksia voi tulla mm. jos sääennuste on muuttunut paljon tai jos numeroiden taustalla olevaa avointa lähdekoodia on hiljattain muutettu.</p>
-        <p>Oranssi viiva on toteutunut Nordpool-hinta. Vahva sininen viiva on uusin ennuste. Ohenevat siniset viivat ovat aiempia ennusteita aiemmilta päiviltä.</p>    
+        <p>Oranssi viiva on toteutunut Nordpool-hinta. Vahva sininen viiva on uusin ennuste. Ohenevat siniset viivat ovat aiempia ennusteita aiemmilta päiviltä.</p>
+        <p>(<strong>8.9.2024:</strong> Historiatiedon tallennus jouduttiin ohjelmointivirheen takia aloittamaan uudelleen ja graafi näyttää sen vuoksi nyt hetken ei-oota.)</p>
         <div id="historyChart" style="height: 40vh; width: 100%; max-width: 920px; margin: auto; box-sizing: border-box; padding-top: 32px;"></div>
         <h1 style="padding-top: 32px">Mitä ennuste huomioi?</h1>
         <p>Kyseessä on koneoppimismalli, joka hakee korrelaatioita eri muuttujien välillä ja oppii, millaiseen hintaan kukin yhdistelmä historian perusteella johtaa. Tämä ei siis ole aikasarjaennuste, vaan jokainen tunti saa arvonsa erikseen näiden tietojen perusteella:</p>
@@ -49,9 +50,9 @@
         <li>Vaihdettiin ennustemallin tyyppi Random Forestista XGBoostiin grid search -vertailun perusteella. Numeroiden mukaan tällä voisi olla positiivinen vaikutus. Seuraillaan.</li>
         <h1>Mitä ennuste ei huomioi?</h1>
         <p>Ennuste ei näe mitään muuta kuin mitä yllä on mainittu. Muista, että sähkömarkkinoilla seilaa <a href="https://www.terracognita.fi/tuote/musta-joutsen/" target="_blank">mustia joutsenia</a> ja pörssisähkön ensi viikon hintaan ei tällä vatkaimella ole todellista näkyvyyttä, saati valtaa. Se lukee samoja sääennusteita kuin sinä, ja sääennusteet(kin) ovat tämän tästä väärässä.</p>
-        <p style="padding-bottom: 24px;">Vaikka malli osaa "ennustaa" menneisyyttä oivasti, se ei takaa että arviot tulevaisuudesta osuvat kohdalleen. Älä siis esim. säädä talosi lämmitystä näiden numeroiden perusteella, jos et ole kotona.</p>
+        <p style="padding-bottom: 24px;">Vaikka malli osaa "ennustaa" menneisyyttä oivasti — koska sitä koulutetaan joka päivä — arviot tulevaisuudesta voivat olla aivan pielessä. Älä siis esim. säädä talosi lämmitystä näiden numeroiden perusteella, jos et ole kotona.</p>
+        <p>Tärkein kehityskohde on oman tuulivoimamallin rakentaminen. Forecan hintapuntarin tapainen megawattiennuste antaisi mallille enemmän numerotietoa siitä, miten tuulivoiman määrä liikuttaa sähkön hintaa. Tällä hetkellä tuuliennuste kerätään vain muutamalta rannikon sääasemalta, ja kokonaiskuvaan niitä pitäisi olla enemmän.</p>
         <div id="disclaimer" style="padding-bottom: 24px;"><a id="source-code-link" href="mailto:judo.farming0u@icloud.com" target="_blank">email</a></div>
-
 
     </div>
     </div>

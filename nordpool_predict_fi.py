@@ -436,6 +436,14 @@ if args.deploy:
         f.write(json_data)
     print(f"→ Hourly price predictions saved to {json_path}")
 
+    # Create/update the snapshot JSON file for today's predictions
+    # TODO: Remove fixed file name, derive from .env.local
+    create_prediction_snapshot(deploy_folder_path, json_data_list, "prediction_snapshot")
+
+    # Rotate snapshots to maintain the latest X snapshots
+    # TODO: Remove fixed file name, derive from .env.local
+    rotate_snapshots(deploy_folder_path, pattern="prediction_snapshot*", max_files=14)
+
     # Hourly Wind Power Predictions
     windpower_preds = deploy_df[['timestamp', 'WindPowerMW']].copy()
     windpower_preds['timestamp'] = windpower_preds['timestamp'].dt.tz_localize(None) if windpower_preds['timestamp'].dt.tz is not None else windpower_preds['timestamp']
@@ -450,14 +458,6 @@ if args.deploy:
     with open(json_path_wind, 'w') as f:
         f.write(json_data)
     print(f"→ Hourly wind power predictions saved to {json_path_wind}")
-
-    # Create/update the snapshot JSON file for today's predictions
-    # TODO: Remove fixed file name, derive from .env.local
-    create_prediction_snapshot(deploy_folder_path, json_data_list, "prediction_snapshot")
-
-    # Rotate snapshots to maintain the latest X snapshots
-    # TODO: Remove fixed file name, derive from .env.local
-    rotate_snapshots(deploy_folder_path, pattern="prediction_snapshot*", max_files=14)
 
     # Normalize 'timestamp' to set the time to 00:00:00 for daily average grouping
     deploy_df['timestamp'] = deploy_df['timestamp'].dt.tz_localize(None) if deploy_df['timestamp'].dt.tz is not None else deploy_df['timestamp']
