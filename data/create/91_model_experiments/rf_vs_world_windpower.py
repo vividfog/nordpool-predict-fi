@@ -1,4 +1,4 @@
-# pip install numpy pandas python-dotenv lightgbm rich scikit-learn xgboost statsmodels scipy argparse joblib
+# pip install numpy pandas python-dotenv lightgbm rich scikit-learn xgboost statsmodels scipy argparse joblib optuna shap
 
 """
 Wind Power Prediction Model Comparison
@@ -8,11 +8,11 @@ for predicting wind power amounts based on weather data.
 
 Features:
     - Model training and evaluation (Random Forest, XGBoost, Gradient Boosting, LightGBM)
-    - Cross-validation
-    - Hyperparameter tuning (in full mode)
+    - Cross-validation with nested approach
+    - Hyperparameter tuning with Optuna
     - Performance metrics calculation (MAE, MSE, RMSE, R²)
-    - Durbin-Watson test and autocorrelation (in 'full' mode)
-    - Feature importance ranking
+    - Durbin-Watson test and autocorrelation
+    - SHAP values for feature importance
     - Results visualization
 
 Usage:
@@ -25,7 +25,7 @@ Arguments:
     --mode: Operation mode (default: 'default')
         'quick': Only trains and evaluates Random Forest
         'default': Trains and evaluates all models without grid search
-        'full': Includes hyperparameter grid search and additional analyses
+        'full': Includes hyperparameter tuning with Optuna
     --optimize: Specify which model to optimize hyperparameters for (only in 'full' mode), if not all.
         Options are 'RF' for Random Forest, 'XGB' for XGBoost, 'GB' for Gradient Boosting, and 'LGBM' for LightGBM.
     --output-dir: Directory to save trained models (default: 'data/')
@@ -36,46 +36,41 @@ defined in a .env.local file. See .env.template for an example.
 Output:
     - Detailed logging of the process
     - Tables displaying model performance comparisons
-    - Feature importance rankings
+    - SHAP values
     - Saved model files
-    
-Todo:
-    - Add more weather stations for training
-    - Create a more robust wind power model for use in the price prediction pipeline
-    - Multi-pass hyperparameter search, narrowing down the search space depending on the results of the previous passes
 """
 
 import argparse
 import logging
 import time
+import os
 from typing import List, Tuple, Dict, Any
 import numpy as np
 import pandas as pd
-import os
+import multiprocessing
+from scipy.stats import randint, uniform
+import joblib
+import shap
+import optuna
 from dotenv import load_dotenv, dotenv_values
 from lightgbm import LGBMRegressor
 from rich.console import Console
 from rich.logging import RichHandler
 from rich.table import Table
-from rich.progress import Progress
+from sklearn.impute import SimpleImputer
 from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from sklearn.model_selection import train_test_split, cross_val_score, KFold, RandomizedSearchCV
-from sklearn.utils import shuffle
+from sklearn.model_selection import train_test_split, KFold
 from xgboost import XGBRegressor
 from statsmodels.stats.stattools import durbin_watson
 from statsmodels.tsa.stattools import acf
-import multiprocessing
-from scipy.stats import randint, uniform
-import joblib
 
 # Load environment variables
 load_dotenv()
 env_vars = dotenv_values(".env.local")
 
 # Get the FMISID features from environment variables
-FMISID_WS = env_vars["FMISID_WS"].split(',')
-FMISID_T = env_vars["FMISID_T"].split(',')
+WP_FMISID = env_vars["WP_FMISID"].split(',')
 
 # Configure logging
 logging.basicConfig(
@@ -87,64 +82,90 @@ logging.basicConfig(
 logger = logging.getLogger("rich")
 console = Console()
 
-logger.info(f"FMISID_WS: {FMISID_WS}, FMISID_T: {FMISID_T}")
+logger.info(f"WP_FMISID: {WP_FMISID}")
 
-def get_n_jobs():
+def get_n_jobs() -> int:
     """Determine the number of jobs to run in parallel."""
     total_cores = multiprocessing.cpu_count()
-    return max(1, total_cores // 2)
+    return int(max(1, total_cores * 0.8))
 
-def preprocess_data(df: pd.DataFrame, fmisid_ws: List[str], fmisid_t: List[str]) -> Tuple[pd.DataFrame, pd.Series]:
+def preprocess_data(df: pd.DataFrame, wp_fmisid: List[str]) -> Tuple[pd.DataFrame, pd.Series]:
     """Preprocess the input data for model training."""
-    logger.info("Starting data preprocessing...")
-
-    # Shuffle the data
-    df = shuffle(df, random_state=42)
+    logger.info("Starting data preprocessing with imputation...")
     
+    # Convert the timestamp column to datetime format
+    df['timestamp'] = pd.to_datetime(df['timestamp'])
+
+    # Extract hour from the timestamp
+    df['hour'] = df['timestamp'].dt.hour
+
+    # Add sine and cosine transformation of the hour
+    df['hour_sin'] = np.sin(2 * np.pi * df['hour'] / 24)
+    df['hour_cos'] = np.cos(2 * np.pi * df['hour'] / 24)
+
+    # Forward fill missing values for WindPowerCapacityMW
+    df['WindPowerCapacityMW'] = df['WindPowerCapacityMW'].ffill()
+
     # Drop the predictions column if it exists
     df = df.drop(columns=['WindPowerMW_predict'], errors='ignore')
     
-    # Define feature columns including dynamic columns based on fmisid_ws and fmisid_t
-    feature_columns = fmisid_ws + fmisid_t
+    # Define feature columns including WS and T columns based on WP_FMISID
+    feature_columns = [f"ws_{id}" for id in wp_fmisid] + [f"t_{id}" for id in wp_fmisid] + ['hour_sin', 'hour_cos', 'WindPowerCapacityMW']
 
-    # Drop rows with NaN values in the feature columns or target variable
-    initial_row_count = df.shape[0]
-    df = df.dropna(subset=feature_columns + ['WindPowerMW'])
-    dropped_rows = initial_row_count - df.shape[0]
-    logger.info(f"Dropped {dropped_rows} rows due to NaN values.")
-
-    # Extract features and target variable
+    # Separate features and target variable
     X = df[feature_columns]
     y = df['WindPowerMW']
-
-    logger.info(f"Preprocessed data shape: X={X.shape}, y={y.shape}")
-    return X, y
-
-def perform_cross_validation(model, X: pd.DataFrame, y: pd.Series, model_name: str, n_splits: int = 5) -> Dict[str, float]:
-    logger.info(f"Starting {n_splits}-fold cross-validation for {model_name}...")
     
-    kf = KFold(n_splits=n_splits, shuffle=True, random_state=42)
-    n_jobs = get_n_jobs()
+    # Impute missing values in features using mean strategy
+    imp = SimpleImputer(strategy='mean')
+    X_imputed = imp.fit_transform(X)
+    
+    # Log what was imputed
+    imputations = pd.DataFrame(imp.transform(X) - X.to_numpy(), columns=feature_columns)
+    for column in feature_columns:
+        imputed_values = imputations[column][imputations[column] != 0].count()
+        logger.info(f"Imputed {imputed_values} missing values in column: {column}")
 
-    with Progress() as progress:
-        task = progress.add_task(f"[cyan]Cross-validating {model_name}...", total=n_splits)
+    # If there are missing values in y, we should consider imputation or report them
+    y_initial_missing = y.isna().sum()
+    if y_initial_missing > 0:
+        imp_y = SimpleImputer(strategy='mean')
+        y = imp_y.fit_transform(y.values.reshape(-1, 1)).ravel()
+        logger.info(f"Imputed {y_initial_missing} missing values in target variable 'WindPowerMW'.")
 
-        mae_scores = cross_val_score(model, X, y, scoring='neg_mean_absolute_error', cv=kf, n_jobs=n_jobs)
-        mse_scores = cross_val_score(model, X, y, scoring='neg_mean_squared_error', cv=kf, n_jobs=n_jobs)
-        r2_scores = cross_val_score(model, X, y, scoring='r2', cv=kf, n_jobs=n_jobs)
+    # Log final shapes
+    X_imputed_df = pd.DataFrame(X_imputed, columns=feature_columns)
+    logger.info(f"Preprocessed data shape: X={X_imputed_df.shape}, y={y.shape}")
+    return X_imputed_df, y
 
-        # Simulating progress update for the cross-validation
-        for _ in range(n_splits):
-            progress.update(task, advance=1)
+def cross_validate(model, X, y, model_name, n_splits=5) -> Dict[str, float]:
+    """Perform cross-validation on the model using KFold."""
+    logger.info(f"Starting cross-validation for {model_name}...")
 
-    mae = -mae_scores.mean()
-    mse = -mse_scores.mean()
+    # Use KFold with shuffle for cross-validation
+    kf = KFold(n_splits=n_splits, shuffle=True, random_state=42) 
+    mae_scores, mse_scores, r2_scores = [], [], []
+
+    # Iterate over each fold and calculate metrics
+    for fold, (train_index, test_index) in enumerate(kf.split(X)):
+        X_train, X_val = X.iloc[train_index], X.iloc[test_index]
+        y_train, y_val = y.iloc[train_index], y.iloc[test_index]
+        model.fit(X_train, y_train)
+        y_pred = model.predict(X_val)
+        mae_scores.append(mean_absolute_error(y_val, y_pred))
+        mse_scores.append(mean_squared_error(y_val, y_pred))
+        r2_scores.append(r2_score(y_val, y_pred))
+
+    # Calculate mean metrics across all folds
+    mae = np.mean(mae_scores)
+    mse = np.mean(mse_scores)
     rmse = np.sqrt(mse)
-    r2 = r2_scores.mean()
-    
+    r2 = np.mean(r2_scores)
+
+    # Log the cross-validation results
     logger.info(f"Cross-validation completed for {model_name}")
     logger.info(f"Mean MAE: {mae:.4f}, Mean MSE: {mse:.4f}, Mean RMSE: {rmse:.4f}, Mean R²: {r2:.4f}")
-    
+
     return {
         "CV_MAE": mae,
         "CV_MSE": mse,
@@ -152,48 +173,62 @@ def perform_cross_validation(model, X: pd.DataFrame, y: pd.Series, model_name: s
         "CV_R²": r2
     }
 
-def train_and_evaluate_model(model, X_train: pd.DataFrame, y_train: pd.Series, X_test: pd.DataFrame, y_test: pd.Series, model_name: str, mode: str) -> Dict[str, Any]:
+def train_and_evaluate_model(model, X_train, y_train, X_test, y_test, model_name):
     """Train the model and evaluate its performance."""
     logger.info(f"Starting training and evaluation for {model_name}...")
     
-    start_time = time.time()
+    # Fit the model with training data
     model.fit(X_train, y_train)
-    training_time = time.time() - start_time
-    logger.info(f"{model_name} training completed in {training_time:.2f} seconds")
-
-    start_time = time.time()
+    
+    # Predict using the model on the test set
     y_pred = model.predict(X_test)
-    prediction_time = time.time() - start_time
-    logger.info(f"{model_name} prediction completed in {prediction_time:.2f} seconds")
 
+    # Calculate performance metrics
     mae = mean_absolute_error(y_test, y_pred)
     mse = mean_squared_error(y_test, y_pred)
     rmse = np.sqrt(mse)
     r2 = r2_score(y_test, y_pred)
 
+    # Calculate residuals and perform additional analyses
+    residuals = y_test - y_pred
+    dw_stat = durbin_watson(residuals)
+    acf_values = acf(residuals, nlags=3, fft=False)
+
+    # Feature importance
+    feature_importance = pd.DataFrame({'Feature': X_train.columns, 'Importance': model.feature_importances_}).sort_values(by='Importance', ascending=False)
+
+    # SHAP values
+    shap_values = None
+    shap_summary = None
+    try:
+        explainer = shap.TreeExplainer(model, X_train)
+        shap_values = explainer.shap_values(X_test)
+        
+        # Calculate mean absolute SHAP values
+        mean_shap_values = np.abs(shap_values).mean(axis=0)
+        shap_summary = pd.DataFrame({'Feature': X_test.columns, 'Mean SHAP Value': mean_shap_values}).sort_values(by='Mean SHAP Value', ascending=False)
+    except Exception as e:
+        logger.warning(f"SHAP analysis failed for {model_name}: {str(e)}")
+
+    # Compile results
     results = {
         "MAE": mae,
         "MSE": mse,
         "RMSE": rmse,
         "R²": r2,
+        "Durbin-Watson": dw_stat,
+        "ACF": acf_values,
+        "Feature Importance": feature_importance,
+        "SHAP Summary": shap_summary,
     }
-
-    if mode == 'full':
-        logger.info(f"Performing full analysis for {model_name}...")
-        residuals = y_test - y_pred
-        results["Durbin-Watson"] = durbin_watson(residuals)
-        results["ACF"] = acf(residuals, nlags=5, fft=False)
-        logger.info("Full analysis completed")
-
-    feature_importance = pd.DataFrame({'Feature': X_train.columns, 'Importance': model.feature_importances_})
-    results["Feature Importance"] = feature_importance.sort_values('Importance', ascending=False)
-
+    
+    # Log the evaluation results
     logger.info(f"{model_name} evaluation completed")
     logger.info(f"MAE: {mae:.4f}, MSE: {mse:.4f}, RMSE: {rmse:.4f}, R²: {r2:.4f}")
     
     return results
 
-def display_results(results: Dict[str, Dict[str, Any]], mode: str):
+def display_results(results, mode):
     """Display the results of model comparison."""
     logger.info("Preparing to display model comparison results...")
 
@@ -203,6 +238,7 @@ def display_results(results: Dict[str, Dict[str, Any]], mode: str):
         "autocorr": Table(title="Autocorrelation Analysis")
     }
 
+    # Main table setup
     tables["main"].add_column("Model", justify="left", style="cyan")
     for metric in ["MAE", "MSE", "RMSE", "R²"]:
         tables["main"].add_column(metric, justify="right")
@@ -243,75 +279,81 @@ def display_results(results: Dict[str, Dict[str, Any]], mode: str):
     for model_name, metrics in results.items():
         console.print(f"\nTop 10 Feature Importance for {model_name}:")
         console.print(metrics['Feature Importance'].head(10).to_string(index=False))
-
-def tune_model(model, X, y):
-    """Tune model hyperparameters."""
-    logger.info(f"Starting model tuning for {type(model).__name__}")
         
-    param_distributions = {
-        'RandomForestRegressor': {
-            'n_estimators': randint(200, 2000),
-            'max_depth': randint(10, 100),
-            'min_samples_split': randint(2, 10),
-            'min_samples_leaf': randint(1, 10)
-        },
-        'GradientBoostingRegressor': {
-            'n_estimators': randint(200, 2000),
-            'max_depth': randint(3, 20),
-            'learning_rate': uniform(0.001, 0.499),  # Upper bound is 0.001 + 0.499 = 0.5
-            'subsample': uniform(0.5, 0.5),  # Range is 0.5 to 1.0
-            'max_features': uniform(0.5, 0.5)  # Range is 0.5 to 1.0
-        },
-        'LGBMRegressor': {
-            'n_estimators': randint(200, 2000),
-            'max_depth': randint(3, 20),
-            'learning_rate': uniform(0.001, 0.499),
-            'subsample': uniform(0.5, 0.5),
-            'colsample_bytree': uniform(0.5, 0.5)
-        },
-        'XGBRegressor': {
-            'n_estimators': randint(200, 2000),
-            'max_depth': randint(3, 20),
-            'learning_rate': uniform(0.001, 0.499),
-            'subsample': uniform(0.5, 0.5),
-            'colsample_bytree': uniform(0.5, 0.5),
-            'gamma': uniform(0, 5),
-            'reg_alpha': uniform(1e-5, 1.0),
-            'reg_lambda': uniform(1e-5, 1.0),
-            'min_child_weight': randint(1, 10)
-        }
-    }
+        if 'SHAP Summary' in metrics and metrics['SHAP Summary'] is not None:
+            console.print(f"\nTop 10 SHAP Mean Absolute Values for {model_name}:")
+            console.print(metrics['SHAP Summary'].head(10).to_string(index=False))
 
-    model_type = type(model).__name__
-    if model_type not in param_distributions:
-        logger.warning(f"No specific tuning parameters for {model_type}. Using default.")
-        return model
+def tune_model_with_optuna(model_class, X, y, model_name, timeout, n_trials):
+    """Use Optuna to find the best model parameters with nested cross-validation."""
+    logger.info(f"Starting nested cross-validation with Optuna for {model_name}")
 
-    n_iter = 100
-    cv = 3
-    n_jobs = get_n_jobs()
+    def objective(trial):
+        if model_name == "XGBoost":
+            # General ballpark hyperparameters for XGBoost:
+            # [2024-09-17 21:12:40] INFO     [2024-09-17 21:12:40] - Best parameters found for XGBoost: {'n_estimators': 5878, 'max_depth': 6, 'learning_rate': 0.016536051996816806, 'subsample': 0.41536974302490287, 'colsample_bytree': 0.604025429289723}                                                                       rf_vs_world_windpower.py:351
+            params = {
+                'n_estimators': trial.suggest_int('n_estimators', 4000, 8000),
+                'max_depth': trial.suggest_int('max_depth', 4, 10),
+                'learning_rate': trial.suggest_float('learning_rate', 0.005, 0.06),
+                'subsample': trial.suggest_float('subsample', 0.2, 0.6),
+                'colsample_bytree': trial.suggest_float('colsample_bytree', 0.25, 0.85),
+            }
 
-    X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
+        elif model_name == "Light GBM":
+            # Define hyperparameter search space for LightGBM
+            params = {
+                'n_estimators': trial.suggest_int('n_estimators', 200, 2000),
+                'max_depth': trial.suggest_int('max_depth', -1, 20),
+                'learning_rate': trial.suggest_float('learning_rate', 0.001, 0.3, log=True),
+                'num_leaves': trial.suggest_int('num_leaves', 2, 256),
+                'feature_fraction': trial.suggest_float('feature_fraction', 0.5, 1.0),
+                'bagging_fraction': trial.suggest_float('bagging_fraction', 0.5, 1.0),
+                'bagging_freq': trial.suggest_int('bagging_freq', 1, 7),
+            }
+        elif model_name == "Gradient Boosting":
+            # Define hyperparameter search space for Gradient Boosting
+            params = {
+                'n_estimators': trial.suggest_int('n_estimators', 100, 1000),
+                'max_depth': trial.suggest_int('max_depth', 3, 20),
+                'learning_rate': trial.suggest_loguniform('learning_rate', 0.001, 0.3),
+                'subsample': trial.suggest_float('subsample', 0.5, 1.0),
+            }
+        elif model_name == "Random Forest":
+            # Define hyperparameter search space for Random Forest
+            params = {
+                'n_estimators': trial.suggest_int('n_estimators', 100, 1000),
+                'max_depth': trial.suggest_int('max_depth', 3, 30),
+                'max_features': trial.suggest_categorical('max_features', ['auto', 'sqrt', 'log2']),
+                'min_samples_split': trial.suggest_int('min_samples_split', 2, 10),
+            }
+        else:
+            logger.error(f"Unknown model name: {model_name}")
+            return float('inf')
 
-    random_search = RandomizedSearchCV(
-        model, param_distributions=param_distributions[model_type], 
-        n_iter=n_iter, cv=cv, scoring='neg_mean_squared_error',
-        n_jobs=n_jobs, random_state=42, verbose=1
-    )
+        model = model_class(**params)
+        inner_kf = KFold(n_splits=3, shuffle=True, random_state=42)
+        cv_scores = []
 
-    if model_type == 'XGBoost':
-        random_search.fit(
-            X_train, y_train,
-            eval_set=[(X_val, y_val)],
-            verbose=False
-        )
-    else:
-        random_search.fit(X_train, y_train)
+        for train_idx, val_idx in inner_kf.split(X):
+            X_train, X_val = X.iloc[train_idx], X.iloc[val_idx]
+            y_train, y_val = y.iloc[train_idx], y.iloc[val_idx]
+
+            model.fit(X_train, y_train)
+            y_pred = model.predict(X_val)
+            mse = mean_squared_error(y_val, y_pred)
+            cv_scores.append(mse)
+            
+        return np.mean(cv_scores)
+
+    study = optuna.create_study(direction="minimize")
+    study.optimize(objective, n_trials=n_trials, timeout=timeout, n_jobs=get_n_jobs())
     
-    logger.info(f"Best parameters found: {random_search.best_params_}")
-    logger.info(f"Best score: {-random_search.best_score_:.4f}")
-    
-    return random_search.best_estimator_
+    best_params = study.best_params
+    logger.info(f"Best parameters found for {model_name}: {best_params}")
+
+    best_model = model_class(**best_params)
+    return best_model
 
 def main():
     """Main function to run the model comparison experiment."""
@@ -320,6 +362,9 @@ def main():
     parser.add_argument('--mode', type=str, choices=['quick', 'default', 'full'], default='default', help='Operation mode (default: default)')
     parser.add_argument('--optimize', type=str, choices=['RF', 'XGB', 'GB', 'LGBM'], help='Specify which model to optimize (RF: Random Forest, XGB: XGBoost, GB: Gradient Boosting, LGBM: Light GBM)')
     parser.add_argument('--output-dir', type=str, default='data/', help='Directory to save trained models (default: data/)')
+    parser.add_argument('--iters', type=int, default=200, help='Number of Optuna trials (default: 200)')
+    parser.add_argument('--timeout', type=int, default=3600, help='Timeout for Optuna optimization in seconds (default: 3600)')
+
     args = parser.parse_args()
 
     logger.info(f"Starting model comparison in {args.mode} mode")
@@ -336,18 +381,14 @@ def main():
         logger.error(f"Error loading the dataset: {str(e)}")
         return
 
-    fmisid_ws = [f"ws_{id}" for id in FMISID_WS]
-    fmisid_t = [f"t_{id}" for id in FMISID_T]
-    
+    # Preprocess data using the single list WP_FMISID
     try:
-        X, y = preprocess_data(df, fmisid_ws, fmisid_t)
+        X, y = preprocess_data(df, WP_FMISID)
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-        X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.2, random_state=42)
-
+        
         logger.info(
             f"Data splits: "
             f"Training set: {X_train.shape}, "
-            f"Validation set: {X_val.shape}, "
             f"Testing set: {X_test.shape}"
         )
 
@@ -357,13 +398,12 @@ def main():
 
     n_jobs = get_n_jobs()
     models = {
-        "Random Forest": RandomForestRegressor(random_state=42, n_jobs=n_jobs),
-        "XGBoost": XGBRegressor(random_state=42, n_jobs=n_jobs),
+        "Random Forest": RandomForestRegressor(random_state=42, n_jobs=1),
+        "XGBoost": XGBRegressor(random_state=42, n_jobs=1),
         "Gradient Boosting": GradientBoostingRegressor(random_state=42),
-        "Light GBM": LGBMRegressor(random_state=42, n_jobs=n_jobs, verbose=-1)
+        "Light GBM": LGBMRegressor(random_state=42, n_jobs=1, verbose=-1)
     }
 
-    # Mapping between short names and full names
     model_map = {
         "RF": "Random Forest",
         "XGB": "XGBoost",
@@ -386,17 +426,17 @@ def main():
         logger.info(f"Processing {model_name}...")
         try:
             if args.mode == 'full':
-                model = tune_model(model, X_train, y_train)
+                model_class = type(model)
+                model = tune_model_with_optuna(model_class, X_train, y_train, model_name, timeout=args.timeout, n_trials=args.iters)
             
             if args.mode in ['default', 'full']:
-                cv_results = perform_cross_validation(model, X_train, y_train, model_name)
+                cv_results = cross_validate(model, X_train, y_train, model_name)
             else:
                 cv_results = {}
             
-            eval_results = train_and_evaluate_model(model, X_train, y_train, X_test, y_test, model_name, args.mode)
+            eval_results = train_and_evaluate_model(model, X_train, y_train, X_test, y_test, model_name)
             results[model_name] = {**cv_results, **eval_results}
 
-            # Save the trained model
             filename = f"windpower_{model_name.replace(' ', '_').lower()}.joblib"
             filepath = os.path.join(output_dir, filename)
             joblib.dump(model, filepath)
@@ -413,85 +453,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-      
-# 2024-09-01: Winner: Gradient Boosting
 
-# learning_rate: 0.012508150095666463
-# max_depth: 12
-# max_features: 0.5233328316068078
-# n_estimators: 899
-# subsample: 0.6831809216468459
-
-# Results:
-
-#          Model Performance Comparison - Test Set Metrics
-# ┏━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━┓
-# ┃ Model             ┃      MAE ┃         MSE ┃     RMSE ┃     R² ┃
-# ┡━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━┩
-# │ Random Forest     │ 459.6638 │ 392049.6739 │ 626.1387 │ 0.7594 │
-# │ XGBoost           │ 432.8361 │ 362743.4374 │ 602.2819 │ 0.7774 │
-# │ Gradient Boosting │ 424.6831 │ 350969.3553 │ 592.4267 │ 0.7846 │
-# │ Light GBM         │ 461.0011 │ 399318.5351 │ 631.9166 │ 0.7549 │
-# └───────────────────┴──────────┴─────────────┴──────────┴────────┘
-#                  5-Fold Cross-Validation Results
-# ┏━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━┓
-# ┃ Model             ┃   CV MAE ┃      CV MSE ┃  CV RMSE ┃  CV R² ┃
-# ┡━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━┩
-# │ Random Forest     │ 479.2966 │ 426813.8320 │ 653.3099 │ 0.7474 │
-# │ XGBoost           │ 446.6376 │ 382851.2972 │ 618.7498 │ 0.7735 │
-# │ Gradient Boosting │ 441.6042 │ 379494.6784 │ 616.0314 │ 0.7755 │
-# │ Light GBM         │ 471.8722 │ 415177.6202 │ 644.3428 │ 0.7543 │
-# └───────────────────┴──────────┴─────────────┴──────────┴────────┘
-#                            Autocorrelation Analysis
-# ┏━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
-# ┃ Model             ┃ Durbin-Watson ┃ ACF (Lag 1) ┃ ACF (Lag 2) ┃ ACF (Lag 3) ┃
-# ┡━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
-# │ Random Forest     │        2.0024 │     -0.0049 │      0.0216 │     -0.0314 │
-# │ XGBoost           │        2.0091 │     -0.0059 │      0.0182 │     -0.0256 │
-# │ Gradient Boosting │        1.9968 │      0.0000 │      0.0219 │     -0.0347 │
-# │ Light GBM         │        1.9795 │      0.0097 │      0.0114 │     -0.0178 │
-# └───────────────────┴───────────────┴─────────────┴─────────────┴─────────────┘
-
-# Top 10 Feature Importance for Random Forest:
-#   Feature  Importance
-# ws_101673    0.430571
-# ws_101256    0.176456
-# ws_101846    0.080221
-#  t_101339    0.067645
-#  t_101786    0.067280
-# ws_101267    0.066799
-#  t_100968    0.062345
-#  t_101118    0.048683
-
-# Top 10 Feature Importance for XGBoost:
-#   Feature  Importance
-# ws_101673    0.375390
-# ws_101256    0.177948
-# ws_101846    0.090846
-#  t_100968    0.075800
-#  t_101339    0.074666
-# ws_101267    0.073706
-#  t_101786    0.069250
-#  t_101118    0.062394
-
-# Top 10 Feature Importance for Gradient Boosting:
-#   Feature  Importance
-# ws_101673    0.281634
-# ws_101256    0.188972
-# ws_101846    0.133093
-# ws_101267    0.098818
-#  t_101786    0.080414
-#  t_100968    0.074849
-#  t_101339    0.074281
-#  t_101118    0.067938
-
-# Top 10 Feature Importance for Light GBM:
-#   Feature  Importance
-#  t_101786        8121
-# ws_101256        7420
-# ws_101673        7162
-# ws_101846        7149
-# ws_101267        7086
-#  t_100968        6999
-#  t_101339        6769
-#  t_101118        6631

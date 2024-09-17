@@ -58,7 +58,7 @@ def main():
                 write_header = False
             
             current_date += timedelta(days=1)
-            time.sleep(1)  # Let's not spam the FMI API
+            time.sleep(0.2)  # Let's not spam the FMI API
 
         print(f"Data saved to {csv_filename}")
 
