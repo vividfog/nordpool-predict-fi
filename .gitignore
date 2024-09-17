@@ -34,4 +34,7 @@ model/models.db
 utils/private/
 model/
 model/rf_model.joblib
-data/create/91_model_experiments/windpower_gradient_boosting.joblib
+data/create/**/*.csv
+**/*.db
+**/*.db-journal
+data/prediction.db
