@@ -48,7 +48,7 @@ def narrate_prediction(timestamp):
     df_result['date'] = df_result['timestamp'].dt.date
     # print(df_result)
     df_result = df_result.groupby('date').agg({'PricePredict_cpkWh': ['min', 'max', 'mean']})
-    print("→ Narration stats:\n", df_result)
+    print("→ Narration stats fetched from predictions.db:\n", df_result)
     narrative = send_to_gpt(df_result)
     
     # Return the prediction as text
@@ -72,20 +72,34 @@ def send_to_gpt(df):
     weekday_today = today.strftime("%A")
     date_today = today.strftime("%d.%m.%Y")
 
-    prompt = (f"// Tänään on {weekday_today.lower()} {date_today} ja ennusteet lähipäiville ovat seuraavat. Ole tarkkana että käytät näitä numeroita oikein:\n\n")
+    prompt = (f"Tänään on {weekday_today.lower()} {date_today} ja ennusteet lähipäiville ovat seuraavat. Ole tarkkana että käytät näitä numeroita oikein:\n\n")
 
     for date, row in df.iterrows():
         prompt += (f"{date.strftime('%A %d.%m.%Y')}: Pörssisähkön hinta min {row[('PricePredict_cpkWh', 'min')]:.0f} ¢/kWh, max {row[('PricePredict_cpkWh', 'max')]:.0f} ¢/kWh, keskihinta {row[('PricePredict_cpkWh', 'mean')]:.0f} ¢/kWh.\n\n")
       
     prompt += """
-// Kirjoita viihdyttävä ja rikasta suomen kieltä käyttävä UUTISARTIKKELI viihteellisen aikakauslehden kolumniin näiden tietojen pohjalta. Aloita kuvailemalla sähkön hinnan kehitystä lähipäiville, ja kommentoi sitten lähipäiviä kokonaisuutena. Tavoitepituus on noin 140-160 sanaa.
-// Tiedoksi itsellesi: alle 7 ¢ on halpa hinta, 10 senttiä on kohtuullinen hinta ja yli 15-20 senttiä on lukijoille kallis hinta. Mutta kun viittaat hintoihin, kirjoita niistä numeroilla eikä adjektiiveilla.
-// Älä mainitse päivämääriä, koska viikonpäivät riittävät. 
-// Vältä turhaa toistoa ja älä anna mitään neuvoja! Tehtäväsi on puhua vain hinnoista! Ole perinpohjainen. 
-// Käytä Markdown-muotoilua näin: **Vahvenna** viikonpäivät, kuten '**maanantai**' tai '**torstaina**', mutta vain kun mainitset ne ensi kertaa, ja vain viikonpäivät, ei muuta.
-// Koska tämä on ennustus, puhu aina tulevassa aikamuodossa.
-// Ole positiivinen vaikka hinta nousisi.
-// Nyt voit kirjoittaa valmiin tekstin. Kiitos!
+Olet tekoäly, joka kirjoittaa  hintatiedotteen sähkönkäyttäjille.
+Kirjoita viihdyttävä ja rikasta suomen kieltä käyttävä UUTISARTIKKELI saamiesi tietojen pohjalta. 
+1. Aloita kuvailemalla sähkön hinnan kehitystä lähipäiville
+2. Kommentoi sitten lähipäiviä kokonaisuutena. 
+3. Tavoitepituus on noin 140-160 sanaa.
+
+Sähkönkäyttäjien yleinen hintaherkkyys: 
+- Sähkönkäyttäjille halpa hinta tarkoittaa alle 5 ¢. Tätä korkeampi hinta ei ole koskaan halpa.
+- Kohtuullinen hinta on 5-10 senttiä. 
+- Kallis hinta on yli 10 senttiä.
+- Hyvin kallis hinta on 20 senttiä tai enemmän.
+
+Muita ohjeita, joita sinun tulee ehdottomasti noudattaa:
+- Älä anna mitään neuvoja! Tehtäväsi on puhua vain hinnoista! Ole perinpohjainen ja tarkka. 
+- Tämä tarkoittaa, että kun viittaat hintoihin, kirjoita niistä numeroilla eikä adjektiiveilla.
+- Yllä olevat hintaherkkyystiedot on annettu tiedoksi vain sinulle. Älä käytä niitä vastauksessasi.
+- Älä myöskään mainitse päivämääriä, koska viikonpäivät ovat riittävä tieto.
+- Jos käytät sanoja 'halpa', 'kohtuullinen', 'kallis' tai 'hyvin kallis', voit käyttää niitä vain lähipäivien yhteenvedossa.
+- Käytä Markdown-muotoilua näin: **Vahvenna** viikonpäivät, kuten '**maanantai**' tai '**torstaina**', mutta vain kun mainitset ne ensi kertaa, ja vain viikonpäivät, ei muuta.
+- Koska tämä on ennustus, puhu aina tulevassa aikamuodossa.
+
+Nyt voit kirjoittaa valmiin tekstin. Älä kirjoita mitään muuta kuin valmis teksti. Kiitos!
 """
     
     # To view the output in English, add the following to the prompt:
@@ -95,12 +109,12 @@ def send_to_gpt(df):
     
     try:
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": f"{prompt}"},
+                {"role": "user", "content": f"{prompt}"},
             ],
-            temperature=0.3,
-            max_tokens=1024,
+            temperature=0.7,
+            max_tokens=512,
             stream=False,
         )
     except Exception as e:

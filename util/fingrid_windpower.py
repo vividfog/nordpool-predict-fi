@@ -2,7 +2,7 @@
 Retrieves wind power data from the Fingrid API, integrates it into an existing DataFrame, infers missing values up to 5 days in the future.
 
 - Fetches wind power data from 7 days in the past to 5 days in the future.
-- Merges the retrieved data into an input DataFrame and infers absent values using a pre-trained Gradient Boosting model, which forecasts wind power based on defined weather inputs in .env.local.
+- Merges the retrieved data into an input DataFrame and infers absent values using a pre-trained model, which forecasts wind power based on defined weather inputs in .env.local.
 - There's a main function with dummy data generation for testing purposes.
 
 To pretrain a model:
@@ -28,9 +28,12 @@ from rich import print
 import joblib
 import numpy as np
 
-# Constants: experimental for now so not in .env.local
-WIND_POWER_DATASET_ID = 245
-GB_MODEL_PATH = 'data/create/91_model_experiments/windpower_gradient_boosting.joblib'
+# Load environment variables
+load_dotenv('.env.local')
+
+# Constants
+WIND_POWER_DATASET_ID = 245 # Fingrid dataset ID for wind power
+WIND_POWER_MODEL_PATH = os.getenv("WIND_POWER_MODEL_PATH", "data/create/91_model_experiments/windpower_xgboost.joblib")
 
 def fetch_wind_power_data(fingrid_api_key, dataset_id, start_date, end_date):
     api_url = "https://data.fingrid.fi/api/data"
@@ -87,9 +90,9 @@ def fetch_wind_power_data(fingrid_api_key, dataset_id, start_date, end_date):
 def update_windpower(df, fingrid_api_key):
     """
     Updates the input DataFrame with wind power data.
-    Fills in missing WindPowerMW values using a Gradient Boosting model.
+    Fills in missing WindPowerMW values using a given model.
     """
-
+    
     # Define the current date and adjust the start and end dates
     current_date = datetime.now(pytz.UTC).strftime("%Y-%m-%d")
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
@@ -114,27 +117,39 @@ def update_windpower(df, fingrid_api_key):
 
     # Drop intermediate columns with API suffix
     merged_df.drop(columns=['WindPowerMW_api'], inplace=True)
-
-    # Load the Gradient Boosting model
-    gb_model = joblib.load(GB_MODEL_PATH)
+    
+    # Load the model
+    prediction_model = joblib.load(WIND_POWER_MODEL_PATH)
 
     # Identify rows with missing WindPowerMW values
     missing_wind_power = merged_df['WindPowerMW'].isnull()
 
     # Prepare input features for the model
-    load_dotenv('.env.local')
     ws_ids = os.getenv('FMISID_WS').split(',')
     t_ids = os.getenv('FMISID_T').split(',')
 
-    # Aggregate the ws_ and t_ columns and create a DataFrame
+    # Extract the hour from the Timestamp
+    merged_df['hour'] = merged_df['Timestamp'].dt.hour
+        
+    # Forward fill WindPowerCapacityMW values
+    merged_df['WindPowerCapacityMW'] = merged_df['WindPowerCapacityMW'].ffill()
+
+    # Aggregate the ws_, t_ columns and the hour column to create a DataFrame for missing values
     features = {f'ws_{ws_id}': merged_df.loc[missing_wind_power, f'ws_{ws_id}'] for ws_id in ws_ids}
     features.update({f't_{t_id}': merged_df.loc[missing_wind_power, f't_{t_id}'] for t_id in t_ids})
+    
+    # Generate cyclic features for the hour
+    features['hour_sin'] = np.sin(2 * np.pi * merged_df.loc[missing_wind_power, 'hour'] / 24)
+    features['hour_cos'] = np.cos(2 * np.pi * merged_df.loc[missing_wind_power, 'hour'] / 24)
 
+    # Add the WindPowerCapacityMW column
+    features['WindPowerCapacityMW'] = merged_df.loc[missing_wind_power, 'WindPowerCapacityMW']
+    
     # Create a DataFrame with the feature columns
     X_missing_df = pd.DataFrame(features)
 
     if not X_missing_df.empty:
-        predicted_wind_power = gb_model.predict(X_missing_df)
+        predicted_wind_power = prediction_model.predict(X_missing_df)
         predicted_wind_power = np.round(predicted_wind_power, 1)
         merged_df.loc[missing_wind_power, 'WindPowerMW'] = predicted_wind_power
     else:
@@ -200,6 +215,10 @@ def main():
     # Add dummy data for the WindPowerMW column, setting last 50 entries to NaN
     df_data['WindPowerMW'] = np.round(np.random.uniform(50.0, 150.0, len(timestamps)), 1)
     df_data['WindPowerMW'][-50:] = np.nan  # Set the last 50 values to NaN
+
+    # Add dummy data for the WindPowerCapacityMW column, setting last 50 entries to NaN
+    df_data['WindPowerCapacityMW'] = np.round(np.random.uniform(50.0, 1500.0, len(timestamps)), 1)
+    df_data['WindPowerCapacityMW'][-50:] = np.nan  # Set the last 50 values to NaN
 
     df = pd.DataFrame(df_data)
     

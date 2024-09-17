@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 import pytz
 import sys
 from rich import print
+import time
 
 def get_forecast(fmisid, start_date, parameters, end_date=None):
     """
@@ -44,6 +45,10 @@ def get_forecast(fmisid, start_date, parameters, end_date=None):
     except requests.RequestException as e:
         print(f"Error fetching data from FMI: {e}")
         sys.exit(1)
+        
+    # Let's not spam the FMI API
+    time.sleep(.2)
+        
     if response.status_code != 200:
         raise Exception("Failed to fetch data")
     
@@ -112,6 +117,9 @@ def get_history(fmisid, start_date, parameters, end_date=None):
     response = requests.get(base_url, params=params)
     if response.status_code != 200:
         raise Exception(f"Failed to fetch data: {response.text}")
+
+    # Let's not spam the FMI API
+    time.sleep(0.2)
 
     # Parse the XML response
     root = etree.fromstring(response.content)

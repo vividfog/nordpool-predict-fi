@@ -110,13 +110,10 @@ if args.train:
     df['ImportCapacityMW'] = df['ImportCapacityMW'].fillna(method='ffill')
     
     # Define other required columns
-    required_columns = ['timestamp', 'NuclearPowerMW', 'ImportCapacityMW', 'Price_cpkWh'] + fmisid_ws + fmisid_t
+    required_columns = ['timestamp', 'NuclearPowerMW', 'ImportCapacityMW', 'Price_cpkWh', 'WindPowerMW'] + fmisid_t
 
     # Drop rows with missing values in the cleaned required columns list
     df = df.dropna(subset=required_columns)
-      
-    # This will produce a "candidate.joblib" file in the model folder
-    # You can rename it to "rf_model.joblib" if you want to use it in the prediction process
     
     # Re-training of a model, and save it to the model folder
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -284,10 +281,6 @@ if args.predict:
     # Print the head of the DataFrame after updating spot prices
     # print("→ DataFrame after updating spot prices:")
     # print(df.head())
-    
-    # TODO: Decide if including wind power capacity is necessary; it seems to worsen the MSE and R2
-    # For now we'll drop it
-    df = df.drop(columns=['WindPowerCapacityMW'])
 
     # print("Filled-in dataframe before predict:\n", df)
     print("→ Days of data coverage (should be 7 back, 5 forward for now): ", int(len(df)/24))
@@ -301,23 +294,15 @@ if args.predict:
     df['day_of_week'] = df['Timestamp'].dt.dayofweek + 1
     df['hour'] = df['Timestamp'].dt.hour
 
-    prediction_features = ['day_of_week', 'hour', 'NuclearPowerMW', 'ImportCapacityMW'] + fmisid_ws + fmisid_t
-
-    # Print feature names used during prediction
-    # print("→ Feature names used during prediction:")
-    # print(prediction_features)
-
-    # Print DataFrame columns before prediction
-    # print("→ DataFrame columns before prediction:")
-    # print(df.columns.tolist())
-
-    # Print the head of the DataFrame before prediction
-    # print("→ DataFrame before prediction:")
-    # print(df.head())
-
-    # Check for missing values in the prediction features
-    # print("→ Checking for missing values in prediction features:")
-    # print(df[prediction_features].isnull().sum())
+    # Add cyclical transformations for datetime columns
+    df['day_of_week_sin'] = np.sin(2 * np.pi * df['day_of_week'] / 7)
+    df['day_of_week_cos'] = np.cos(2 * np.pi * df['day_of_week'] / 7)
+    df['hour_sin'] = np.sin(2 * np.pi * df['hour'] / 24)
+    df['hour_cos'] = np.cos(2 * np.pi * df['hour'] / 24)
+    
+    # Update with cyclical features for prediction
+    prediction_features = ['day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos',
+                        'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW'] + fmisid_t
          
     # Use (if coming from --train) or load and apply a model for predictions
     if rf_trained is None:
@@ -327,13 +312,12 @@ if args.predict:
         rf_model = rf_trained
         print("→ Found a newly created in-memory model for predictions")
 
-    # TODO: 2024-08-10: We're dropping MONTH information for now, as historical month data can be misleading for the model; inspect this again later.
-    # price_df = rf_model.predict(df[['day_of_week', 'hour', 'NuclearPowerMW', 'ImportCapacityMW'] + fmisid_ws + fmisid_t])
+    # Predict the prices
     price_df = rf_model.predict(df[prediction_features])
     df['PricePredict_cpkWh'] = price_df
     
     # We drop these columns before commit/display, as we can later compute them from the timestamp
-    df = df.drop(columns=['day_of_week', 'hour', 'month'])
+    df = df.drop(columns=['day_of_week', 'hour', 'month', 'day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos'])
 
     # --add-history: We are going to be verbose and ask before committing a lot of data to the database    
     if args.add_history:
@@ -454,7 +438,7 @@ if args.deploy:
     # Write wind power prediction JSON to the deploy folder
     json_data_list = windpower_preds.values.tolist()
     json_data = json.dumps(json_data_list, ensure_ascii=False)
-    json_path_wind = os.path.join(deploy_folder_path, 'windpower.json')  # Define a separate path or filename
+    json_path_wind = os.path.join(deploy_folder_path, 'windpower.json') 
     with open(json_path_wind, 'w') as f:
         f.write(json_data)
     print(f"→ Hourly wind power predictions saved to {json_path_wind}")
