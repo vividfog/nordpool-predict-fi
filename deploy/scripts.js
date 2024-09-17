@@ -1,4 +1,3 @@
-
 if (window.location.hostname === "nordpool-predict-fi.web.app") {
     window.location.href = "https://sahkovatkain.web.app" + window.location.pathname + window.location.search;
 }
@@ -67,14 +66,19 @@ Promise.all([
     fetch(`${sahkotinUrl}?${sahkotinParams}`).then(r => r.text()) // Fetch Sähkötin data
 ])
     .then(([npfData, sahkotinCsv]) => {
-        // Prepare NPF series data
-        var npfSeriesData = npfData.map(item => [item[0], item[1]]);
-
         // Prepare Sähkötin series data
         var sahkotinSeriesData = sahkotinCsv.split('\n').slice(1).map(line => {
             var [timestamp, price] = line.split(',');
             return [new Date(timestamp).getTime(), parseFloat(price)];
         });
+
+        // Find the last timestamp in Sähkötin data
+        var lastSahkotinTimestamp = Math.max(...sahkotinSeriesData.map(item => item[0]));
+
+        // Prepare NPF series data, start from after the last Sähkötin timestamp
+        var npfSeriesData = npfData
+            .map(item => [item[0], item[1]])
+            .filter(item => item[0] > lastSahkotinTimestamp);
 
         // Define the chart option with both series
         nfpChart.setOption({
@@ -193,7 +197,7 @@ Promise.all([
                     symbol: 'none',
                     lineStyle: {
                         type: 'dotted',
-                        width: 3
+                        width: 2
                     },
                     opacity: 0.9
                 },
@@ -204,8 +208,7 @@ Promise.all([
                     data: sahkotinSeriesData,
                     symbol: 'none',
                     step: 'middle',
-                    opacity: 0.9
-                },
+                    opacity: 0.9                },
                 {
                     // MarkLine for current time
                     type: 'line',
@@ -240,14 +243,6 @@ Promise.all([
                 }
             ]
         });
-
-        // Match the time axis of the two series
-        var npfSeriesData = npfData.map(item => [item[0] * 1000, item[1]]);
-
-        var sahkotinSeriesData = sahkotinCsv.split('\n').slice(1).map(line => {
-            var [timestamp, price] = line.split(',');
-            return [new Date(timestamp).getTime(), parseFloat(price)];
-        });
     })
     .catch(error => {
         console.error('Error fetching or processing data:', error);
@@ -278,6 +273,183 @@ function updateMarkerPosition() {
 setInterval(updateMarkerPosition, 10000); // 10000 milliseconds = check every 10 seconds
 
 // END: eCharts code predictions
+
+//////////////////////////////////////////////////////////////////////////
+// START: eCharts code for windPowerChart
+
+// Initialize the wind power chart
+var windPowerChart = echarts.init(document.getElementById('windPowerChart'));
+
+// Fetch the wind power data from the URL
+var windPowerUrl = `${baseUrl}/windpower.json`;
+
+fetch(windPowerUrl)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(windPowerData => {
+        console.log("Wind Power Data:", windPowerData); // Log the data for debugging
+
+        // Prepare wind power series data
+        var windPowerSeriesData = windPowerData.map(item => [item[0], item[1] / 1000]);
+        console.log("Processed Wind Power Series Data:", windPowerSeriesData);
+
+        // Set option for wind power chart
+        windPowerChart.setOption({
+            title: {
+                text: ' '  // Clear the title
+            },
+            legend: {
+                show: false,
+                data: ['Tuulivoima (GW)'],
+                right: 16
+            },
+            tooltip: {
+                trigger: 'axis',
+                formatter: function (params) {
+                    var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la']; // Finnish weekdays
+                    var date = new Date(params[0].axisValue);
+
+                    var weekday = weekdays[date.getDay()];
+                    var day = date.getDate();
+                    var month = date.getMonth() + 1; // Month is zero-based
+
+                    var hours = ("0" + date.getHours()).slice(-2);
+                    var minutes = ("0" + date.getMinutes()).slice(-2);
+
+                    var formattedDateString = `${weekday} ${day}.${month}. klo ${hours}:${minutes}`;
+                    
+                    var result = formattedDateString + '<br/>';
+                    params.forEach(function (item) {
+                        var valueRounded = item.value[1].toFixed(0); // Display integer GW values
+                        result += item.marker + " " + item.seriesName + ': ' + valueRounded + ' GW<br/>';
+                    });
+
+                    return result;
+                }
+            },
+            xAxis: {
+                type: 'time',
+                boundaryGap: false,
+                axisLabel: {
+                    formatter: function (value) {
+                        var date = new Date(value);
+                        var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
+                        var weekday = weekdays[date.getDay()];
+                        var day = date.getDate();
+                        var month = date.getMonth() + 1;  // add 1 since getMonth() starts from 0
+                        return `${weekday} ${day}.${month}.`;
+                    }
+                }
+            },
+            yAxis: {
+                type: 'value',
+                name: 'GW',
+                nameLocation: 'end',
+                nameGap: 20,
+                max: 7, // gigawatts
+                nameTextStyle: {
+                    fontWeight: 'regular'
+                },
+                axisLabel: {
+                    formatter: function (value) {
+                        return value.toFixed(0); // Display without any decimal places
+                    }
+                }
+            },
+
+            // Set wind power gradient colors
+            visualMap: {
+                show: false,
+                seriesIndex: 0,
+                pieces: [
+                    { lte: 1, color: 'red' },
+                    { gt: 1, lte: 2, color: 'skyblue' },
+                    { gt: 2, lte: 3, color: 'deepskyblue' },
+                    { gt: 3, lte: 4, color: 'dodgerblue' },
+                    { gt: 4, lte: 5, color: 'blue' },
+                    { gt: 5, lte: 6, color: 'mediumblue' },
+                    { gt: 6, lte: 7, color: 'darkblue' },
+                    { gt: 7, color: 'midnightblue' }
+                ],
+                outOfRange: {
+                    color: '#999'
+                }
+            },
+
+            series: [
+                {
+                    name: 'Tuulivoima (GW)',
+                    type: 'line',
+                    data: windPowerSeriesData,
+                    symbol: 'none',
+                    lineStyle: {
+                        type: 'solid',
+                        width: 1.5
+                    },
+                    step: 'end',
+                    areaStyle: { 
+                        color: 'rgba(135, 206, 250, 0.1)' // skyblue
+                    },
+                    opacity: 0.9,
+                    markLine: {
+                        symbol: 'none',
+                        label: {
+                            formatter: function () {
+                                let currentTime = new Date();
+                                let hours = currentTime.getHours();
+                                let minutes = currentTime.getMinutes();
+            
+                                hours = hours < 10 ? '0' + hours : hours;
+                                minutes = minutes < 10 ? '0' + minutes : minutes;
+                                return 'klo ' + hours + ':' + minutes;
+                            },
+                            position: 'end'
+                        },
+                        lineStyle: {
+                            type: 'dotted',
+                            color: 'skyblue',
+                            width: 1.5
+                        },
+                        data: [
+                            {
+                                xAxis: new Date().getTime()
+                            }
+                        ]
+                    }
+                }
+            ]
+        });
+    })
+    .catch(error => console.error('Error fetching wind power data:', error));
+
+// Function to update the vertical marker position for windPowerChart
+function updateWindMarkerPosition() {
+    var currentTime = new Date().getTime(); // Get current time in milliseconds
+
+    // Update the markLine data for the current time marker
+    var option = windPowerChart.getOption(); // Get the current chart options to modify
+    option.series.forEach((series) => {
+        if (series.markLine) {
+            series.markLine.data = [
+                {
+                    xAxis: currentTime
+                }
+            ];
+        }
+    });
+
+    // Update the chart with the new option
+    windPowerChart.setOption(option, false, false);
+}
+
+// Call the update function periodically to update the marker
+setInterval(updateWindMarkerPosition, 10000); // Update every 10 seconds
+
+// END: eCharts code for windPowerChart
 
 //////////////////////////////////////////////////////////////////////////
 // START: eCharts code for historyChart
@@ -330,7 +502,7 @@ function setupHistoryChart(data) {
         data: seriesData.map(item => [item[0], item[1]]),
         symbol: 'none',
         lineStyle: {
-            width: index === 0 ? 2 : 1,
+            width: index === 0 ? 1.5 : 1,
             type: index === 0 ? 'solid' : 'dotted'
         },
         color: 'dodgerblue',
@@ -409,8 +581,7 @@ function setupHistoryChart(data) {
 }
 
 function setupSahkotinData(nrSeries) {
-    // Assuming you've already calculated the start and end dates based on your requirement
-    const startDate = getPastDateStrings(14).pop(); // Gets the earliest date from your range
+    const startDate = getPastDateStrings(14).pop();
     var endDate = addDays(new Date(), 2).toISOString();
 
     const sahkotinUrl = 'https://sahkotin.fi/prices.csv';
@@ -451,13 +622,12 @@ function addSahkotinDataToChart(sahkotinData, nrSeries) {
         step: 'middle',
         lineStyle: {
             type: 'solid',
-            width: 2
+            width: 1.5
         },
         color: 'orange',
         opacity: 0.9
     };
 
-    // Assuming 'historyChart' is accessible here; if not, you might need to make it globally accessible
     historyChart.setOption({
         series: historyChart.getOption().series.concat(sahkotinSeries)
     });
@@ -476,4 +646,5 @@ fetchHistoricalData(historicalUrls).then(data => {
 window.onresize = function () {
     nfpChart.resize();
     historyChart.resize();
+    windPowerChart.resize();
 }

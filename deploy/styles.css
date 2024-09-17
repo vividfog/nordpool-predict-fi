@@ -8,11 +8,20 @@ body {
 
 #predictionChart {
     height: 40vh;
-    width: 100%;
+    width: 95%;
     max-width: 920px;
     margin: auto;
     box-sizing: border-box;
-    padding-top: 32px;
+    padding-top: 24px;
+}
+
+#windPowerChart {
+    max-width: 920px;
+    margin: auto;
+    box-sizing: border-box;
+    height: 40vh;
+    width: 95%;
+    padding-top: 24px;
 }
 
 #chart {
