@@ -9,7 +9,7 @@ Live version: [https://nordpool-predict-fi.web.app](https://nordpool-predict-fi.
 The array consists of hourly pairs.
 
 - The first number is UNIX time in milliseconds, UTC, directly compatible with Apex Charts.
-- The second number is price prediction in euro cents, VAT 24%.
+- The second number is price prediction in euro cents, with VAT.
 
 Sample contents:
 

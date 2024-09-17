@@ -21,7 +21,6 @@ apex_config:
   yaxis:
     decimalsInFloat: 1
     forceNiceScale: true
-    min: 0
   xaxis:
     labels:
       datetimeFormatter:
@@ -31,7 +30,7 @@ all_series_config:
   show:
     offset_in_name: true
 header:
-  title: Nordpool spot FI ¢/kWh, VAT24
+  title: Nordpool spot FI ¢/kWh, VAT
   show: true
   show_states: true
   colorize_states: true
@@ -65,7 +64,7 @@ series:
       - value: 20
         color: darkred
       - value: 30
-        color: black
+        color: purple
   - entity: sensor.nordpool_kwh_fi_eur_3_10_0
     name: Tomorrow ¢/kWh
     type: column
@@ -89,7 +88,7 @@ series:
       - value: 20
         color: darkred
       - value: 30
-        color: black
+        color: purple
     show:
       legend_value: false
       in_header: false

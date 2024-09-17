@@ -21,7 +21,6 @@ apex_config:
   yaxis:
     decimalsInFloat: 1
     forceNiceScale: true
-    min: 0
   xaxis:
     type: datetime
     labels:
@@ -44,7 +43,7 @@ series:
     type: column
     float_precision: 3
     stroke_width: 0
-    opacity: 0.2
+    opacity: 0.33
     fill_raw: 'null'
     unit: ¢/kWh
     name: Nordpool ¢/kWh
@@ -80,7 +79,7 @@ series:
       - value: 20
         color: darkred
       - value: 30
-        color: black
+        color: purple
   - entity: sensor.nordpool_kwh_fi_eur_3_10_0
     type: line
     float_precision: 3
@@ -105,7 +104,7 @@ series:
         color: darkred
         opacity: 0.8
       - value: 30
-        color: black
+        color: purple
         opacity: 0.8
     show:
       in_header: false
