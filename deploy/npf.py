@@ -82,9 +82,9 @@ if df is not None:
     # Convert the timestamp to Helsinki timestamp if --helsinki option is used
     if args.helsinki:
         filtered_df = convert_to_helsinki_time(filtered_df)
-        print("Helsinki time /w price in c/kWh VAT 24%:")
+        print("Helsinki time /w price in c/kWh VAT:")
     else:
-        print("UTC time, price in c/kWh VAT 24%:")
+        print("UTC time, price in c/kWh VAT:")
 
     # Show what the filtered data looks like
     print(filtered_df)
