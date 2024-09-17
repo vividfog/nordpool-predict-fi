@@ -88,7 +88,7 @@ This is the current training data set:
 - 20 [FMI weather stations](https://www.ilmatieteenlaitos.fi/havaintoasemat?filterKey=groups&filterQuery=sää) to report and forecast **wind speed**, a predictor for wind power. From this, we train our own wind power prediction, which the the main price prediction model then uses as a feature. 
 - 20 weather stations to report and forecast **temperature**, a predictor for consumption due to heating. If it's cold in these urban centers, electricity consumption tends to go up.
 - **Nuclear power** production data: Planned or unplanned maintenance break can offset a large amount of supply that wind power then needs to replace. The model can use ENTSO-E messages to deduce near-future nuclear capacity, and failing that, falls back to the last known realized value from Fingrid.
-- **Day of the week** (Sunday vs. Monday) and time of the day** (3 AM vs. 7 PM), used as cyclical features via their sin/cos values. Month, day-of-month and year are not used for training, as one year can be very different from another.
+- **Day of the week** (Sunday vs. Monday) and **time of the day** (3 AM vs. 7 PM), used as cyclical features via their sin/cos values. Month, day-of-month and year are not used for training, as one year can be very different from another.
 - **Import capacity**: The total available import capacity from Sweden and Estonia: SE1, SE3 and EE, in megawatts. When there's shortage in transfer capacity due to maintenance or other reasons, Finland can't import cheap energy from abroad, which tends to inflate prices. (Adding export capacity is under consideration.)
 - **Time stamps (year/month)** are stripped off from the training data, and the weekday/hour values are used as cyclical sin/cos values. Data analysis shows the training data has negligible autocorrelation (temporal patterns) after these operations.
 
@@ -162,13 +162,15 @@ The predictor function receives a data frame, and returns it with new column(s) 
 
 You need to update the database to have a complete time series of your new training variable, so that you can refer to it during training.
 
-1. Ensure you have the latest predictions.db from this repo to have baseline data in the `data` folder:
+1. Ensure you have the latest data dump from this repo to have baseline in the `data` folder:
 
    ```shell
    git pull
    ```
 
-3. Open `data/dump.csv` and `dump.sql` to understand the structure of the DB as it is now. Your task is to add a new column and populate it with data. Ensure completeness for every hourly timestamp, avoiding NaN/NULL values.
+2. Open `data/dump.csv` and `dump.sql` to understand the structure of the DB as it is now. Your task is to add a new column and populate it with data. Ensure completeness for every hourly timestamp, avoiding NaN/NULL values.
+
+3. Create a data `prediction.db` file using the data dump. Try using the code as-is first, check the logs, see what happens and in which order in `nordpool_predict_fi.py`.
 
 4. Let's say your new column is called `SolarPowerMW`, you need to add that to the SQLite3 prediction.db schema.
 
