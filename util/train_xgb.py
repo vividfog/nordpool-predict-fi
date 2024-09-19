@@ -94,18 +94,35 @@ def train_model(df, fmisid_ws, fmisid_t):
     # │ XGBoost │        1.9841 │      0.0074 │      0.0102 │      0.0093 │
     # └─────────┴───────────────┴─────────────┴─────────────┴─────────────┘
 
-    # Top 10 Feature Importance for XGBoost:
-    #             Feature  Importance
-    # 0   day_of_week_sin    0.089599
-    # 9          t_101661    0.077820
-    # 19         t_101485    0.061823
-    # 6       WindPowerMW    0.051509
-    # 3          hour_cos    0.049792
-    # 17         t_101256    0.048891
-    # 4    NuclearPowerMW    0.047275
-    # 8          t_101673    0.045575
-    # 1   day_of_week_cos    0.043805
-    # 25         t_100932    0.041732
+    # → SHAP feature importances (Mean Absolute SHAP Values per Feature):
+    #          Feature  Mean |SHAP Value|
+    #      WindPowerMW           1.877910
+    #         hour_cos           1.220947
+    #   NuclearPowerMW           0.985708
+    #         t_100932           0.846231
+    # ImportCapacityMW           0.693394
+    #         t_101462           0.606805
+    #  day_of_week_cos           0.578532
+    #         t_101783           0.534611
+    #  day_of_week_sin           0.532808
+    #         hour_sin           0.523874
+    #         t_100908           0.414381
+    #         t_101673           0.403350
+    #         t_101481           0.335002
+    #         t_101061           0.299095
+    #         t_101799           0.269494
+    #         t_101840           0.266109
+    #         t_101485           0.259707
+    #         t_101464           0.238291
+    #         t_101267           0.236653
+    #         t_101256           0.212746
+    #         t_101660           0.192300
+    #         t_101794           0.188335
+    #         t_101785           0.180629
+    #         t_101268           0.164027
+    #         t_101784           0.153068
+    #         t_101661           0.139739
+    #         t_101846           0.135072
 
     xgb_model.fit(X_train, y_train)
     
