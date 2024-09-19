@@ -23,8 +23,8 @@ def train_model(df, fmisid_ws, fmisid_t):
     df['hour'] = df['timestamp'].dt.hour
 
     # Cap extreme outliers based on percentiles and filter the DataFrame
-    upper_limit = df['Price_cpkWh'].quantile(0.9999)
-    lower_limit = df['Price_cpkWh'].quantile(0.0001)
+    upper_limit = df['Price_cpkWh'].quantile(0.9995)
+    lower_limit = df['Price_cpkWh'].quantile(0.0008)
     df['Price_cpkWh'] = np.clip(df['Price_cpkWh'], lower_limit, upper_limit)
 
     # Preprocess cyclical time-based features
@@ -62,18 +62,50 @@ def train_model(df, fmisid_ws, fmisid_t):
     #     random_state=42
     # )
         
-    # XGBoost model, tuned 2024-09-16
+    # XGBoost 10000 rounds with nested CV and K-split, 2024-09-19
     xgb_model = XGBRegressor(
-        n_estimators=1068,
-        max_depth=8,
-        learning_rate=0.0480036004871706,
-        subsample=0.5446724785247077,
-        colsample_bytree=0.5377856183822594,
-        gamma=0.04018761839320819,
-        reg_alpha=0.6790029956358611,
-        reg_lambda=0.7749298438321474,
+        n_estimators=7467,
+        max_depth=6,
+        learning_rate=0.02484589286162099,
+        subsample=0.35399400017778704,
+        colsample_bytree=0.6830482625298456,
+        gamma=0.0032089426199345406,
+        reg_alpha=3.6905699541222847,
+        reg_lambda=0.005134966919362188,
         random_state=42
     )
+
+    #      Model Performance Comparison - Test Set Metrics
+    # ┏━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━┓
+    # ┃ Model   ┃    MAE ┃    MSE ┃   RMSE ┃     R² ┃   SMAPE ┃
+    # ┡━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━┩
+    # │ XGBoost │ 1.1606 │ 6.0288 │ 2.4554 │ 0.8690 │ 38.6508 │
+    # └─────────┴────────┴────────┴────────┴────────┴─────────┘
+    #               5-Fold Cross-Validation Results
+    # ┏━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┓
+    # ┃ Model   ┃ CV MAE ┃ CV MSE ┃ CV RMSE ┃  CV R² ┃ CV SMAPE ┃
+    # ┡━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━┩
+    # │ XGBoost │ 1.2358 │ 6.1301 │  2.4759 │ 0.8878 │  41.9760 │
+    # └─────────┴────────┴────────┴─────────┴────────┴──────────┘
+    #                       Autocorrelation Analysis
+    # ┏━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
+    # ┃ Model   ┃ Durbin-Watson ┃ ACF (Lag 1) ┃ ACF (Lag 2) ┃ ACF (Lag 3) ┃
+    # ┡━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
+    # │ XGBoost │        1.9841 │      0.0074 │      0.0102 │      0.0093 │
+    # └─────────┴───────────────┴─────────────┴─────────────┴─────────────┘
+
+    # Top 10 Feature Importance for XGBoost:
+    #             Feature  Importance
+    # 0   day_of_week_sin    0.089599
+    # 9          t_101661    0.077820
+    # 19         t_101485    0.061823
+    # 6       WindPowerMW    0.051509
+    # 3          hour_cos    0.049792
+    # 17         t_101256    0.048891
+    # 4    NuclearPowerMW    0.047275
+    # 8          t_101673    0.045575
+    # 1   day_of_week_cos    0.043805
+    # 25         t_100932    0.041732
 
     xgb_model.fit(X_train, y_train)
     
