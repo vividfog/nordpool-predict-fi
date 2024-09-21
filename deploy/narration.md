@@ -1,3 +1,13 @@
-Sähkön hintakehitys lähipäivinä näyttää mielenkiintoiselta. **Sunnuntaina** keskihinta nousee 7.0 ¢/kWh, mikä on kohtuullinen taso. **Maanantaina** hinta laskee edelleen 5.0 ¢/kWh:iin, mikä tekee siitä edullisen vaihtoehdon. **Tiistaina** ja **keskiviikkona** hinta pysyy samana 4.0 ¢/kWh, mikä on erittäin houkutteleva hinta sähkönkäyttäjille. **Torstaina** hinta laskee vielä 4.0 ¢/kWh:iin, mikä viittaa siihen, että tuulivoiman määrä on ollut riittävän korkea, jotta se on voinut vaikuttaa hintoihin myönteisesti. Viikon aikana nähdään siis selkeä laskutrendi, ja erityisesti tiistai ja keskiviikko erottuvat edullisina päivinä.
+Viikon sähkön hintakehitys näyttää mielenkiintoiselta. Erityisesti **maanantai** erottuu ennusteen mukaan, sillä sen keskihinta on selvästi alhaisempi verrattuna muihin päiviin. Tuulivoiman määrä vaihtelee merkittävästi viikon aikana, mikä voi vaikuttaa sähkön hintakehitykseen. 
 
-Katsotaanpa tarkemmin hintavaihteluita lähipäiville. **Sunnuntaina** sähkön hinta vaihtelee 2.0 ¢/kWh ja 16.0 ¢/kWh välillä. **Maanantaina** minimi- ja maksimihinnat ovat 2.0 ¢/kWh ja 12.0 ¢/kWh. **Tiistaina** hinta vaihtelee 2.0 ¢/kWh:sta 8.0 ¢/kWh:iin, ja **keskiviikkona** se pysyy samana, 2.0 ¢/kWh - 7.0 ¢/kWh. **Torstaina** minimi on 1.0 ¢/kWh ja maksimi 8.0 ¢/kWh. Viikon aikana sähkön hinnat pysyvät alhaalla, ja erityisesti tiistai ja keskiviikko tarjoavat erinomaisia mahdollisuuksia edulliseen sähkönkäyttöön.
+**sunnuntaina** pörssisähkön hinta liikkuu välillä 5 ja 32 senttiä. Minimihinta on 5 senttiä ja maksimihinta 32 senttiä. 
+
+**maanantaina** sähkön hinta vaihtelee 5 ja 13 sentin välillä. Minimihinta on 5 senttiä ja maksimihinta 13 senttiä. 
+
+**tiistaina** sähkön hinta on ennustettu vaihtelemaan 3 ja 11 sentin välillä. Minimihinta on 3 senttiä ja maksimihinta 11 senttiä. 
+
+**keskiviikkona** pörssisähkön hinta liikkuu 2 ja 10 sentin välillä. Minimihinta on 2 senttiä ja maksimihinta 10 senttiä. 
+
+**torstaina** sähkön hinta vaihtelee 3 ja 9 sentin välillä. Minimihinta on 3 senttiä ja maksimihinta 9 senttiä. 
+
+Viikon hintakehitys osoittaa, että sähkön hinnat ovat kohtuullisia useimpina päivinä, erityisesti **maanantaina**, jolloin hinta on alhaisin. **keskiviikkona** ja **torstaina** nähdään myös edullisia hintoja, mikä voi houkutella sähkönkäyttäjiä. Tuulivoiman määrä vaikuttaa selvästi hintoihin, ja erityisesti **tiistaina** ja **keskiviikkona** tuulivoiman kasvu voi pitää hinnat alhaalla.
