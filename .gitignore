@@ -2,6 +2,7 @@
 venv/
 **/.DS_Store
 archive/
+private/
 data/private/
 data/foreca*
 data/models.db
