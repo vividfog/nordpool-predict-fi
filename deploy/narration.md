@@ -1,13 +1,15 @@
-Sähkön hintakehitys tulevalla viikolla näyttää mielenkiintoiselta. Erityisesti **tiistaina** ennustetaan poikkeuksellisen alhaisia hintoja, mikä voi houkutella sähkönkäyttäjiä. Tuulivoiman määrä vaihtelee, ja sen odotetaan olevan korkeimmillaan **tiistaina** ja **keskiviikkona**, mikä voi vaikuttaa hintakehitykseen.
+Sähkön hintakehitys lähiviikkoina näyttää vaihtelevalta. Erityisesti **tiistai** erottuu edukseen alhaisilla hinnoillaan. Tuulivoiman määrä on myös huomionarvoinen, sillä se vaihtelee eri päivinä, mikä vaikuttaa hintakehitykseen. Kova tuuli voi laskea hintoja, kun taas tyyntä voi nostaa niitä merkittävästi.
 
-**Maanantaina** pörssisähkön hinta vaihtelee 3 ¢/kWh ja 19 ¢/kWh välillä. Keskimääräinen hinta on 8 ¢/kWh. 
+**Maanantaina** pörssisähkön hinta vaihtelee 1 ¢/kWh ja 17 ¢/kWh välillä. Minimi on 1 ¢/kWh ja maksimi 17 ¢/kWh. 
 
-**Tiistaina** sähkön hinta on ennustettu minimiin 0 ¢/kWh ja maksimiin 7 ¢/kWh. Keskimääräinen hinta on 3 ¢/kWh. 
+**Tiistaina** sähkön hinta on alhaalla, sillä minimihinta on 0 ¢/kWh ja maksimi 6 ¢/kWh. 
 
-**Keskiviikkona** sähkön hinta vaihtelee 1 ¢/kWh ja 9 ¢/kWh välillä. Keskimääräinen hinta on 5 ¢/kWh. 
+**Keskiviikkona** sähkön hinta nousee hieman, sillä minimihinta on 1 ¢/kWh ja maksimi 8 ¢/kWh. 
 
-**Torstaina** pörssisähkön hinta on ennustettu minimiin 0 ¢/kWh ja maksimiin 8 ¢/kWh. Keskimääräinen hinta on 4 ¢/kWh. 
+**Torstaina** sähkön hinta pysyy kohtuullisena, minimin ollessa 1 ¢/kWh ja maksimin 7 ¢/kWh. 
 
-**Perjantaina** sähkön hinta vaihtelee 1 ¢/kWh ja 8 ¢/kWh välillä. Keskimääräinen hinta on 5 ¢/kWh. 
+**Perjantaina** sähkön hinta on jälleen 1 ¢/kWh ja 8 ¢/kWh, minimi 1 ¢/kWh ja maksimi 8 ¢/kWh. 
 
-Viikon hintakehitys näyttää lupaavalta, erityisesti **tiistaina** ja **torstaina**, jolloin hinnat ovat alhaisia. Tuulivoiman määrä tukee tätä kehitystä, ja sähkönkäyttäjät voivat nauttia edullisista hinnoista. Keskimääräiset hinnat pysyvät kohtuullisina useimpina päivinä, mutta erityisesti **tiistaina** ja **torstaina** hinnat ovat erittäin kilpailukykyisiä.
+**Lauantaina** sähkön hinta on tasainen, sillä minimi ja maksimi ovat molemmat 4 ¢/kWh.
+
+Viikon hintakehitys osoittaa, että **tiistai** tarjoaa erityisen edulliset hinnat, kun taas muut päivät vaihtelevat enemmän. Kova tuuli **tiistaina** ja **torstaina** voi selittää alhaisia hintoja, kun taas **maanantaina** ja **keskiviikkona** hinnat nousevat korkeammiksi. Yhteenvetona voidaan todeta, että viikko tarjoaa vaihtelevaa hintatasoa, jossa **tiistai** erottuu edullisuudellaan.
