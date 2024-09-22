@@ -39,3 +39,4 @@ data/create/**/*.csv
 **/*.db
 **/*.db-journal
 data/prediction.db
+.schema
