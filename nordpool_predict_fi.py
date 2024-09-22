@@ -81,6 +81,9 @@ args = parser.parse_args()
 # Configure pandas to display all rows
 pd.set_option('display.max_rows', None)
 
+# Set the global print option for float format
+pd.options.display.float_format = '{:.1f}'.format
+
 # Start with a timestamp intro to STDOUT, but not if we're here to dump the database as CSV
 if not args.dump:
     print(datetime.now().strftime("[%Y-%m-%d %H:%M:%S]"), "Nordpool Predict FI")
@@ -299,10 +302,15 @@ if args.predict:
     df['day_of_week_cos'] = np.cos(2 * np.pi * df['day_of_week'] / 7)
     df['hour_sin'] = np.sin(2 * np.pi * df['hour'] / 24)
     df['hour_cos'] = np.cos(2 * np.pi * df['hour'] / 24)
+ 
+     # Calculate temp_mean and temp_variance
+    df['temp_mean'] = df[fmisid_t].mean(axis=1)
+    df['temp_variance'] = df[fmisid_t].var(axis=1)
     
-    # Update with cyclical features for prediction
+    # Update with cyclical features and temp aggregates for prediction
     prediction_features = ['day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos',
-                        'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW'] + fmisid_t
+                        'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW',
+                        'temp_mean', 'temp_variance'] + fmisid_t
          
     # Use (if coming from --train) or load and apply a model for predictions
     if rf_trained is None:
@@ -316,8 +324,8 @@ if args.predict:
     price_df = rf_model.predict(df[prediction_features])
     df['PricePredict_cpkWh'] = price_df
     
-    # We drop these columns before commit/display, as we can later compute them from the timestamp
-    df = df.drop(columns=['day_of_week', 'hour', 'month', 'day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos'])
+    # We drop these columns before commit/display, as we can later compute them
+    df = df.drop(columns=['day_of_week', 'hour', 'month', 'day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos', 'temp_mean', 'temp_variance'])
 
     # --add-history: We are going to be verbose and ask before committing a lot of data to the database    
     if args.add_history:

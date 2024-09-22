@@ -33,9 +33,16 @@ def train_model(df, fmisid_ws, fmisid_t):
     df['hour_sin'] = np.sin(2 * np.pi * df['hour'] / 24)
     df['hour_cos'] = np.cos(2 * np.pi * df['hour'] / 24)
 
-    # Use the updated feature selection
-    X_filtered = df[['day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos',
-                     'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW'] + fmisid_t]
+    # Calculate temp_mean and temp_variance
+    df['temp_mean'] = df[fmisid_t].mean(axis=1)
+    df['temp_variance'] = df[fmisid_t].var(axis=1)
+
+    # Feature selection
+    X_filtered = df[['day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos', 
+                     'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW', 
+                     'temp_mean', 'temp_variance'] + fmisid_t]
+
+    # Target variable
     y_filtered = df['Price_cpkWh']
   
     print("→ Data for training, a sampling:")
@@ -75,63 +82,15 @@ def train_model(df, fmisid_ws, fmisid_t):
         random_state=42
     )
 
-    #      Model Performance Comparison - Test Set Metrics
-    # ┏━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━┓
-    # ┃ Model   ┃    MAE ┃    MSE ┃   RMSE ┃     R² ┃   SMAPE ┃
-    # ┡━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━┩
-    # │ XGBoost │ 1.1606 │ 6.0288 │ 2.4554 │ 0.8690 │ 38.6508 │
-    # └─────────┴────────┴────────┴────────┴────────┴─────────┘
-    #               5-Fold Cross-Validation Results
-    # ┏━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┓
-    # ┃ Model   ┃ CV MAE ┃ CV MSE ┃ CV RMSE ┃  CV R² ┃ CV SMAPE ┃
-    # ┡━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━┩
-    # │ XGBoost │ 1.2358 │ 6.1301 │  2.4759 │ 0.8878 │  41.9760 │
-    # └─────────┴────────┴────────┴─────────┴────────┴──────────┘
-    #                       Autocorrelation Analysis
-    # ┏━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
-    # ┃ Model   ┃ Durbin-Watson ┃ ACF (Lag 1) ┃ ACF (Lag 2) ┃ ACF (Lag 3) ┃
-    # ┡━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
-    # │ XGBoost │        1.9841 │      0.0074 │      0.0102 │      0.0093 │
-    # └─────────┴───────────────┴─────────────┴─────────────┴─────────────┘
-
-    # → SHAP feature importances (Mean Absolute SHAP Values per Feature):
-    #          Feature  Mean |SHAP Value|
-    #      WindPowerMW           1.877910
-    #         hour_cos           1.220947
-    #   NuclearPowerMW           0.985708
-    #         t_100932           0.846231
-    # ImportCapacityMW           0.693394
-    #         t_101462           0.606805
-    #  day_of_week_cos           0.578532
-    #         t_101783           0.534611
-    #  day_of_week_sin           0.532808
-    #         hour_sin           0.523874
-    #         t_100908           0.414381
-    #         t_101673           0.403350
-    #         t_101481           0.335002
-    #         t_101061           0.299095
-    #         t_101799           0.269494
-    #         t_101840           0.266109
-    #         t_101485           0.259707
-    #         t_101464           0.238291
-    #         t_101267           0.236653
-    #         t_101256           0.212746
-    #         t_101660           0.192300
-    #         t_101794           0.188335
-    #         t_101785           0.180629
-    #         t_101268           0.164027
-    #         t_101784           0.153068
-    #         t_101661           0.139739
-    #         t_101846           0.135072
 
     xgb_model.fit(X_train, y_train)
     
-    # XGB feature importances
-    feature_importances = xgb_model.feature_importances_
-    features = X_train.columns
-    importance_df = pd.DataFrame({'Feature': features, 'Importance': feature_importances}).sort_values(by='Importance', ascending=False)
-    print("→ XGB feature importances:")
-    print(importance_df.to_string(index=False))
+    # XGB feature importances (deprecated after SHAP analysis)
+    # feature_importances = xgb_model.feature_importances_
+    # features = X_train.columns
+    # importance_df = pd.DataFrame({'Feature': features, 'Importance': feature_importances}).sort_values(by='Importance', ascending=False)
+    # print("→ XGB feature importances:")
+    # print(importance_df.to_string(index=False))
 
     # SHAP analysis
     explainer = shap.TreeExplainer(xgb_model)
@@ -178,10 +137,15 @@ def train_model(df, fmisid_ws, fmisid_t):
         random_sample['day_of_week_cos'] = np.cos(2 * np.pi * random_sample['day_of_week'] / 7)
         random_sample['hour_sin'] = np.sin(2 * np.pi * random_sample['hour'] / 24)
         random_sample['hour_cos'] = np.cos(2 * np.pi * random_sample['hour'] / 24)
+
+        # Compute temp_mean and temp_variance
+        random_sample['temp_mean'] = random_sample[fmisid_t].mean(axis=1)
+        random_sample['temp_variance'] = random_sample[fmisid_t].var(axis=1)
         
         # Match the feature selection used for training
         X_random_sample = random_sample[['day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos',
-                                        'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW'] + fmisid_t]
+                                        'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW',
+                                        'temp_mean', 'temp_variance'] + fmisid_t]
         
         y_random_sample_true = random_sample['Price_cpkWh']
         y_random_sample_pred = xgb_model.predict(X_random_sample)
