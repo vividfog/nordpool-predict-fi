@@ -30,7 +30,7 @@ fetch(`${baseUrl}/narration.md`)
     })
     .then(text => {
         // LLM generated text in quotes
-        document.getElementById('narration').innerHTML = marked.parse("\"" + text + "\"");
+        document.getElementById('narration').innerHTML = marked.parse(text);
     })
     .catch(error => console.error('Fetching Markdown failed:', error));
 
@@ -72,10 +72,10 @@ Promise.all([
             return [new Date(timestamp).getTime(), parseFloat(price)];
         });
 
-        // Find the last timestamp in Sähkötin data
-        var lastSahkotinTimestamp = Math.max(...sahkotinSeriesData.map(item => item[0]));
+        // Find the last timestamp in Sähkötin data, subtract 24 hours for overlap
+        var lastSahkotinTimestamp = Math.max(...sahkotinSeriesData.map(item => item[0])) - (24 * 60 * 60 * 1000);
 
-        // Prepare NPF series data, start from after the last Sähkötin timestamp
+        // Prepare NPF series data, start from 24 hours before the last Sähkötin timestamp
         var npfSeriesData = npfData
             .map(item => [item[0], item[1]])
             .filter(item => item[0] > lastSahkotinTimestamp);
