@@ -124,29 +124,33 @@ def update_windpower(df, fingrid_api_key):
     # Identify rows with missing WindPowerMW values
     missing_wind_power = merged_df['WindPowerMW'].isnull()
 
-    # Prepare input features for the model
+    # Prepare input features for the model dynamically
     ws_ids = os.getenv('FMISID_WS').split(',')
     t_ids = os.getenv('FMISID_T').split(',')
 
-    # Extract the hour from the Timestamp
-    merged_df['hour'] = merged_df['Timestamp'].dt.hour
-        
-    # Forward fill WindPowerCapacityMW values
-    merged_df['WindPowerCapacityMW'] = merged_df['WindPowerCapacityMW'].ffill()
-
-    # Aggregate the ws_, t_ columns and the hour column to create a DataFrame for missing values
+    # Construct the feature dictionary dynamically without adding columns to merged_df
     features = {f'ws_{ws_id}': merged_df.loc[missing_wind_power, f'ws_{ws_id}'] for ws_id in ws_ids}
     features.update({f't_{t_id}': merged_df.loc[missing_wind_power, f't_{t_id}'] for t_id in t_ids})
     
-    # Generate cyclic features for the hour
-    features['hour_sin'] = np.sin(2 * np.pi * merged_df.loc[missing_wind_power, 'hour'] / 24)
-    features['hour_cos'] = np.cos(2 * np.pi * merged_df.loc[missing_wind_power, 'hour'] / 24)
+    # Extract the hour from the Timestamp and create cyclic features dynamically
+    hour = merged_df.loc[missing_wind_power, 'Timestamp'].dt.hour
+    features['hour_sin'] = np.sin(2 * np.pi * hour / 24)
+    features['hour_cos'] = np.cos(2 * np.pi * hour / 24)
 
-    # Add the WindPowerCapacityMW column
-    features['WindPowerCapacityMW'] = merged_df.loc[missing_wind_power, 'WindPowerCapacityMW']
-    
+    # Add the WindPowerCapacityMW value (already forward-filled)
+    features['WindPowerCapacityMW'] = merged_df.loc[missing_wind_power, 'WindPowerCapacityMW'].ffill()
+
+    # Dynamically compute average wind speed and variance from ws_ columns
+    ws_cols = [f'ws_{ws_id}' for ws_id in ws_ids]
+    features['Avg_WindSpeed'] = merged_df.loc[missing_wind_power, ws_cols].mean(axis=1)
+    features['WindSpeed_Variance'] = merged_df.loc[missing_wind_power, ws_cols].var(axis=1)
+
     # Create a DataFrame with the feature columns
     X_missing_df = pd.DataFrame(features)
+    
+    # Print the data for debugging
+    # print("→ Missing wind power data before predictions:")
+    # print(X_missing_df)
 
     if not X_missing_df.empty:
         predicted_wind_power = prediction_model.predict(X_missing_df)
@@ -163,8 +167,8 @@ def update_windpower(df, fingrid_api_key):
         median_pred = np.median(predicted_wind_power)
 
         print(f"→ Inferred wind power values for {missing_wind_power.sum()} missing entries "
-              f"(Min: {round(min_pred, 1)}, Max: {round(max_pred, 1)}, "
-              f"Avg: {round(avg_pred, 1)}, Median: {round(median_pred, 1)}).")
+            f"(Min: {min_pred:.1f}, Max: {max_pred:.1f}, "
+            f"Avg: {avg_pred:.1f}, Median: {median_pred:.1f}).")
     else:
         print("→ No wind power values needed to be inferred.")
 
@@ -212,13 +216,13 @@ def main():
     for t_id in t_ids:
         df_data[f't_{t_id}'] = np.round(np.random.uniform(-10.0, 20.0, len(timestamps)), 1)
 
-    # Add dummy data for the WindPowerMW column, setting last 50 entries to NaN
-    df_data['WindPowerMW'] = np.round(np.random.uniform(50.0, 150.0, len(timestamps)), 1)
-    df_data['WindPowerMW'][-50:] = np.nan  # Set the last 50 values to NaN
+    # Add dummy data for the WindPowerMW column
+    df_data['WindPowerMW'] = np.round(np.random.uniform(50.0, 5000.0, len(timestamps)), 1)
+    df_data['WindPowerMW'][-120:] = np.nan  # Set the lastvalues to NaN
 
-    # Add dummy data for the WindPowerCapacityMW column, setting last 50 entries to NaN
-    df_data['WindPowerCapacityMW'] = np.round(np.random.uniform(50.0, 1500.0, len(timestamps)), 1)
-    df_data['WindPowerCapacityMW'][-50:] = np.nan  # Set the last 50 values to NaN
+    # Add dummy data for the WindPowerCapacityMW column
+    df_data['WindPowerCapacityMW'] = np.round(np.random.uniform(7000.0, 7000.0, len(timestamps)), 1)
+    df_data['WindPowerCapacityMW'][-120:] = np.nan  # Set the last 50 values to NaN
 
     df = pd.DataFrame(df_data)
     
