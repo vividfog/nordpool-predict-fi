@@ -1,13 +1,13 @@
-Sähkön hintakehitys tulevalla viikolla näyttää mielenkiintoiselta. Erityisesti **tiistaina** sähkön hinta voi laskea merkittävästi, sillä ennusteet lupaavat erittäin alhaisia hintoja. Tuulivoiman määrä on myös nousussa, mikä voi vaikuttaa hintakehitykseen suotuisasti. 
+Viikon sähkön hintakehitys näyttää mielenkiintoiselta. Erityisesti **maanantai** erottuu korkealla keskihinnallaan, kun taas **tiistaina** ja **torstaina** hinnat laskevat merkittävästi. Tuulivoiman määrä vaihtelee, ja kova tuuli voi vaikuttaa hintakehitykseen.
 
-**Maanantaina** pörssisähkön hinta vaihtelee 3 ¢/kWh ja 11 ¢/kWh välillä. Keskimääräinen hinta on 6 ¢/kWh. 
+**Maanantaina** pörssisähkön hinta liikkuu välillä 2 ja 17 senttiä. Keskiarvo on 7 senttiä. 
 
-**Tiistaina** sähkön hinta on ennusteen mukaan 0 ¢/kWh ja 10 ¢/kWh. Keskimääräinen hinta on 4 ¢/kWh. 
+**Tiistaina** sähkön hinta vaihtelee -1 ja 6 sentin välillä. Keskiarvo on 3 senttiä. 
 
-**Keskiviikkona** pörssisähkön hinta liikkuu 2 ¢/kWh ja 10 ¢/kWh välillä. Keskimääräinen hinta on 6 ¢/kWh. 
+**Keskiviikkona** hinta on 0 ja 7 sentin välillä. Keskiarvo on 4 senttiä. 
 
-**Torstaina** sähkön hinta on 1 ¢/kWh ja 8 ¢/kWh. Keskimääräinen hinta on 4 ¢/kWh. 
+**Torstaina** sähkön hinta vaihtelee 0 ja 6 sentin välillä. Keskiarvo on 3 senttiä. 
 
-**Perjantaina** sähkön hinta vaihtelee 1 ¢/kWh ja 10 ¢/kWh välillä. Keskimääräinen hinta on 5 ¢/kWh. 
+**Perjantaina** pörssisähkön hinta liikkuu 1 ja 8 sentin välillä. Keskiarvo on 4 senttiä. 
 
-Viikon hintakehitys osoittaa, että **tiistaina** ja **torstaina** sähkön hinnat ovat erityisen alhaisia, mikä tekee niistä houkuttelevia päiviä sähkönkäyttäjille. Keskimääräiset hinnat pysyvät kohtuullisina, mutta **maanantaina** ja **keskiviikkona** hinnat nousevat korkeammiksi. Tuulivoiman lisääntyminen voi vaikuttaa myönteisesti hintakehitykseen, erityisesti tuulisina päivinä.
+Viikon hintakehitys osoittaa selkeää vaihtelua. Maanantai on kalliimpi, kun taas tiistai ja torstai tarjoavat edullisempia hintoja. Tuulivoiman määrä vaikuttaa hintojen laskemiseen, erityisesti tiistaina ja torstaina, jolloin tuulivoimaa on runsaasti. Yhteenvetona voidaan todeta, että viikko tarjoaa sekä korkeita että matalia hintoja, mikä tekee siitä mielenkiintoisen sähkönkäyttäjille.
