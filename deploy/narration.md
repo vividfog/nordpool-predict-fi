@@ -1,13 +1,13 @@
-Viikon sähkön hintakehitys näyttää mielenkiintoiselta. Erityisesti **maanantai** erottuu korkealla keskihinnallaan, kun taas **tiistaina** ja **torstaina** hinnat laskevat merkittävästi. Tuulivoiman määrä vaihtelee, ja kova tuuli voi vaikuttaa hintakehitykseen.
+Sähkön hintakehitys tulevalla viikolla näyttää mielenkiintoiselta. Erityisesti **tiistaina** ennustetaan poikkeuksellisen alhaisia hintoja, mikä voi houkutella sähkönkäyttäjiä. Tuulivoiman määrä vaihtelee, ja sen odotetaan olevan korkeimmillaan **tiistaina** ja **keskiviikkona**, mikä voi vaikuttaa hintakehitykseen.
 
-**Maanantaina** pörssisähkön hinta liikkuu välillä 2 ja 17 senttiä. Keskiarvo on 7 senttiä. 
+**Maanantaina** pörssisähkön hinta vaihtelee 3 ¢/kWh ja 19 ¢/kWh välillä. Keskimääräinen hinta on 8 ¢/kWh. 
 
-**Tiistaina** sähkön hinta vaihtelee -1 ja 6 sentin välillä. Keskiarvo on 3 senttiä. 
+**Tiistaina** sähkön hinta on ennustettu minimiin 0 ¢/kWh ja maksimiin 7 ¢/kWh. Keskimääräinen hinta on 3 ¢/kWh. 
 
-**Keskiviikkona** hinta on 0 ja 7 sentin välillä. Keskiarvo on 4 senttiä. 
+**Keskiviikkona** sähkön hinta vaihtelee 1 ¢/kWh ja 9 ¢/kWh välillä. Keskimääräinen hinta on 5 ¢/kWh. 
 
-**Torstaina** sähkön hinta vaihtelee 0 ja 6 sentin välillä. Keskiarvo on 3 senttiä. 
+**Torstaina** pörssisähkön hinta on ennustettu minimiin 0 ¢/kWh ja maksimiin 8 ¢/kWh. Keskimääräinen hinta on 4 ¢/kWh. 
 
-**Perjantaina** pörssisähkön hinta liikkuu 1 ja 8 sentin välillä. Keskiarvo on 4 senttiä. 
+**Perjantaina** sähkön hinta vaihtelee 1 ¢/kWh ja 8 ¢/kWh välillä. Keskimääräinen hinta on 5 ¢/kWh. 
 
-Viikon hintakehitys osoittaa selkeää vaihtelua. Maanantai on kalliimpi, kun taas tiistai ja torstai tarjoavat edullisempia hintoja. Tuulivoiman määrä vaikuttaa hintojen laskemiseen, erityisesti tiistaina ja torstaina, jolloin tuulivoimaa on runsaasti. Yhteenvetona voidaan todeta, että viikko tarjoaa sekä korkeita että matalia hintoja, mikä tekee siitä mielenkiintoisen sähkönkäyttäjille.
+Viikon hintakehitys näyttää lupaavalta, erityisesti **tiistaina** ja **torstaina**, jolloin hinnat ovat alhaisia. Tuulivoiman määrä tukee tätä kehitystä, ja sähkönkäyttäjät voivat nauttia edullisista hinnoista. Keskimääräiset hinnat pysyvät kohtuullisina useimpina päivinä, mutta erityisesti **tiistaina** ja **torstaina** hinnat ovat erittäin kilpailukykyisiä.
