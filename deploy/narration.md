@@ -1,13 +1,9 @@
-Sähkön hintakehitys tulevalla viikolla näyttää vaihtelevalta. Erityisesti **torstaina** ja **perjantaina** hinnat ovat alhaisimmat, kun taas **lauantaina** sähkön hinta nousee merkittävästi. Tuulivoiman määrä vaihtelee, ja kova tuuli ennustaa hintojen laskua useina päivinä.
+Viikon sähkön hintakehitys näyttää vaihtelevalta. Erityisesti **lauantaina** sähkön hinta nousee merkittävästi. Tuulivoiman määrä vaihtelee, ja se voi vaikuttaa hintoihin. Kova tuuli näkyy alhaisempina hintoina alkuviikosta, kun taas lauantaina tuulivoiman määrä on huomattavasti pienempi.
 
-**Tiistaina** pörssisähkön hinta liikkuu välillä 2 ¢/kWh - 10 ¢/kWh. Minimihinta on 2 ¢/kWh ja maksimihinta 10 ¢/kWh. 
+**tiistaina** pörssisähkön hinta vaihtelee 1 ¢/kWh ja 10 ¢/kWh välillä. Keskihinta on 4 ¢/kWh.  
+**keskiviikkona** pörssisähkön hinta vaihtelee 1 ¢/kWh ja 10 ¢/kWh välillä. Keskihinta on 6 ¢/kWh.  
+**torstaina** pörssisähkön hinta vaihtelee 1 ¢/kWh ja 12 ¢/kWh välillä. Keskihinta on 5 ¢/kWh.  
+**perjantaina** pörssisähkön hinta vaihtelee 1 ¢/kWh ja 12 ¢/kWh välillä. Keskihinta on 6 ¢/kWh.  
+**lauantaina** pörssisähkön hinta vaihtelee 2 ¢/kWh ja 17 ¢/kWh välillä. Keskihinta on 10 ¢/kWh.  
 
-**Keskiviikkona** sähkön hinta vaihtelee 3 ¢/kWh - 9 ¢/kWh. Minimihinta on 3 ¢/kWh ja maksimihinta 9 ¢/kWh. 
-
-**Torstaina** pörssisähkön hinta on 2 ¢/kWh - 10 ¢/kWh. Minimihinta on 2 ¢/kWh ja maksimihinta 10 ¢/kWh. 
-
-**Perjantaina** sähkön hinta liikkuu välillä 2 ¢/kWh - 11 ¢/kWh. Minimihinta on 2 ¢/kWh ja maksimihinta 11 ¢/kWh. 
-
-**Lauantaina** sähkön hinta vaihtelee 3 ¢/kWh - 15 ¢/kWh. Minimihinta on 3 ¢/kWh ja maksimihinta 15 ¢/kWh. 
-
-Viikon hintakehitys osoittaa, että **torstaina** ja **perjantaina** hinnat pysyvät alhaisina, mikä on hyvä uutinen sähkönkäyttäjille. **Lauantaina** hinnat nousevat merkittävästi, mikä voi aiheuttaa huolta. Tuulivoiman määrä vaikuttaa hintakehitykseen, ja kova tuuli useina päivinä voi pitää hinnat kohtuullisina.
+Viikon hintakehitys osoittaa, että sähkön hinnat vaihtelevat merkittävästi. Alkuviikosta hinnat pysyvät kohtuullisina, mutta **lauantaina** hinta nousee korkeaksi. Tuulivoiman määrä vaikuttaa hintoihin, ja erityisesti kova tuuli alkuviikosta pitää hinnat alhaisina. Lauantaina tuulivoiman väheneminen nostaa hintoja huomattavasti.
