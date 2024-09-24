@@ -1,9 +1,9 @@
-Viikon sähkön hintakehitys näyttää vaihtelevalta. Erityisesti **lauantaina** sähkön hinta nousee merkittävästi. Tuulivoiman määrä vaihtelee, ja se voi vaikuttaa hintoihin. Kova tuuli näkyy alhaisempina hintoina alkuviikosta, kun taas lauantaina tuulivoiman määrä on huomattavasti pienempi.
+Viikon sähkön hintakehitys näyttää vaihtelevalta, ja erityisesti **lauantaina** sähkön hinta nousee merkittävästi. Tuulivoiman määrä vaihtelee, ja sen vaikutus hintoihin on huomattava. Kova tuuli voi laskea hintoja, kun taas tyyntä säätä voi seurata hintojen nousu.
 
-**tiistaina** pörssisähkön hinta vaihtelee 1 ¢/kWh ja 10 ¢/kWh välillä. Keskihinta on 4 ¢/kWh.  
-**keskiviikkona** pörssisähkön hinta vaihtelee 1 ¢/kWh ja 10 ¢/kWh välillä. Keskihinta on 6 ¢/kWh.  
-**torstaina** pörssisähkön hinta vaihtelee 1 ¢/kWh ja 12 ¢/kWh välillä. Keskihinta on 5 ¢/kWh.  
-**perjantaina** pörssisähkön hinta vaihtelee 1 ¢/kWh ja 12 ¢/kWh välillä. Keskihinta on 6 ¢/kWh.  
-**lauantaina** pörssisähkön hinta vaihtelee 2 ¢/kWh ja 17 ¢/kWh välillä. Keskihinta on 10 ¢/kWh.  
+**keskiviikkona** pörssisähkön hinta vaihtelee 1 ¢/kWh ja 8 ¢/kWh välillä. Keskihinta on 4 ¢/kWh.  
+**torstaina** sähkön hinta on alhaisempi, sillä minimihinta on 0 ¢/kWh ja maksimihinta 8 ¢/kWh. Keskihinta on 3 ¢/kWh.  
+**perjantaina** sähkön hinta vaihtelee 0 ¢/kWh ja 9 ¢/kWh välillä. Keskihinta on 4 ¢/kWh.  
+**lauantaina** sähkön hinta nousee merkittävästi, sillä minimihinta on 1 ¢/kWh ja maksimihinta 15 ¢/kWh. Keskihinta on 8 ¢/kWh.  
+**sunnuntaina** sähkön hinta on 3 ¢/kWh minimissään ja 4 ¢/kWh maksimissaan. Keskihinta on 4 ¢/kWh.
 
-Viikon hintakehitys osoittaa, että sähkön hinnat vaihtelevat merkittävästi. Alkuviikosta hinnat pysyvät kohtuullisina, mutta **lauantaina** hinta nousee korkeaksi. Tuulivoiman määrä vaikuttaa hintoihin, ja erityisesti kova tuuli alkuviikosta pitää hinnat alhaisina. Lauantaina tuulivoiman väheneminen nostaa hintoja huomattavasti.
+Viikon hintakehitys osoittaa, että **lauantaina** hinnat nousevat huomattavasti, mikä erottuu muista päivistä. Muina päivinä hinnat pysyvät alhaisina tai kohtuullisina. Tuulivoiman määrä vaikuttaa hintakehitykseen, ja kova tuuli voi tuoda mukanaan edullisempia hintoja. Kokonaisuudessaan viikko tarjoaa vaihtelevaa hintatasoa, mutta erityisesti **lauantaina** hinnat nousevat selvästi.
