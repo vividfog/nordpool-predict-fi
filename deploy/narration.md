@@ -1,5 +1,13 @@
-Viikon sähkön hintakehitys näyttää mielenkiintoiselta. Erityisesti **torstaina** ennustetaan suurta hintavaihtelua, kun pörssisähkön hinta voi nousta jopa 11 senttiin. Tuulivoiman määrä vaihtelee, ja **torstaina** tuulivoimaa on ennustettu olevan 3.8 GW, mikä voi vaikuttaa hintakehitykseen. 
+Viikon sähkön hintakehitys näyttää vaihtelevalta, ja erityisesti **torstaina** hinnat ovat ennusteen mukaan matalimmillaan. Tuulivoiman määrä vaihtelee, ja se vaikuttaa hintojen kehitykseen. Kova tuuli **torstaina** tuo mukanaan edullisia hintoja, kun taas viikon loppupuolella tuulivoiman määrä laskee, mikä voi nostaa hintoja.
 
-**Keskiviikkona** pörssisähkön hinta vaihtelee 1 sentistä 5 senttiin. **Torstaina** hinta voi olla 0 sentistä 11 senttiin. **Perjantaina** sähkön hinta liikkuu 1 sentistä 13 senttiin. **Lauantaina** hinta vaihtelee 2 sentistä 17 senttiin. **Sunnuntaina** sähkön hinta on 4 sentistä 8 senttiin.
+**Torstaina** pörssisähkön hinta on ennusteen mukaan minimissään 0 ¢/kWh ja maksimissaan 6 ¢/kWh. 
 
-Yhteenvetona voidaan todeta, että viikon aikana sähkön hinta vaihtelee merkittävästi. **Torstaina** ja **lauantaina** ennustetaan korkeita hintoja, kun taas **keskiviikkona** ja **sunnuntaina** hinnat pysyvät alhaisempina. Tuulivoiman määrä vaikuttaa hintakehitykseen, ja **perjantaina** ja **lauantaina** tuulivoiman vähäisyys voi nostaa hintoja. Viikon hintakehitys tarjoaa sähkönkäyttäjille mahdollisuuden seurata markkinoita tarkasti.
+**Perjantaina** sähkön hinta nousee, ja sen minimihinta on 1 ¢/kWh, kun taas maksimihinta kohoaa 10 ¢/kWh. 
+
+**Lauantaina** hinnat jatkavat nousuaan. Minimihinta on 2 ¢/kWh ja maksimihinta 15 ¢/kWh. 
+
+**Sunnuntaina** sähkön hinta laskee hieman, ja minimihinta on 1 ¢/kWh, kun taas maksimihinta on 7 ¢/kWh. 
+
+**Maanantaina** sähkön hinta on ennusteen mukaan 0 ¢/kWh sekä minimissään että maksimissaan. 
+
+Viikon hintakehitys osoittaa, että **torstaina** hinnat ovat erityisen alhaiset, mikä tarjoaa mahdollisuuden edulliseen sähkön käyttöön. **Perjantaina** ja **lauantaina** hinnat nousevat merkittävästi, mikä voi aiheuttaa haasteita sähkönkäyttäjille. **Sunnuntaina** hinnat laskevat jälleen, mutta **maanantaina** sähkön hinta on ennusteen mukaan nolla, mikä on poikkeuksellista. Tällä viikolla sähkön hintakehitys on siis vaihtelevaa, ja tuulivoiman määrä vaikuttaa merkittävästi hintojen muodostumiseen.
