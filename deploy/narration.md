@@ -1,9 +1,9 @@
-Viikon sähkön hintakehitys näyttää vaihtelevalta. Erityisesti **lauantaina** ennustetaan korkeaa hintaa, mikä erottuu muista päivistä. Tuulivoiman määrä vaihtelee, ja se voi vaikuttaa hintojen kehitykseen. Kova tuuli voi laskea hintoja, kun taas tyyntä voi nostaa niitä merkittävästi.
+Viikon sähkön hintakehitys näyttää mielenkiintoiselta. **Torstaina** sähkön hinta on ennusteen mukaan erityisen alhainen, mikä voi houkutella kuluttajia. Tuulivoiman määrä on myös huomattava, mikä voi vaikuttaa positiivisesti hintoihin. Muina päivinä hinnat vaihtelevat, ja on syytä tarkkailla, miten tuuli vaikuttaa markkinoihin.
 
-**torstaina** pörssisähkön hinnan minimihinta on -1 ¢/kWh ja maksimihinta 10 ¢/kWh. Keskimääräinen hinta on 3 ¢/kWh.  
-**perjantaina** minimihinta on 1 ¢/kWh ja maksimihinta 9 ¢/kWh. Keskimääräinen hinta on 5 ¢/kWh.  
-**lauantaina** minimihinta on 2 ¢/kWh ja maksimihinta 15 ¢/kWh. Keskimääräinen hinta on 8 ¢/kWh.  
-**sunnuntaina** minimihinta on 1 ¢/kWh ja maksimihinta 7 ¢/kWh. Keskimääräinen hinta on 4 ¢/kWh.  
-**maanantaina** minimihinta on 1 ¢/kWh ja maksimihinta 11 ¢/kWh. Keskimääräinen hinta on 4 ¢/kWh.  
+**Torstaina** pörssisähkön hinta vaihtelee 0 ¢/kWh ja 10 ¢/kWh välillä. Keskihinta on 4 ¢/kWh.  
+**Perjantaina** sähkön hinta on 1 ¢/kWh ja 8 ¢/kWh. Keskihinta nousee 5 ¢/kWh.  
+**Lauantaina** sähkön hinta liikkuu 1 ¢/kWh ja 13 ¢/kWh. Keskihinta on 7 ¢/kWh.  
+**Sunnuntaina** sähkön hinta vaihtelee 1 ¢/kWh ja 6 ¢/kWh. Keskihinta on 3 ¢/kWh.  
+**Maanantaina** sähkön hinta on 1 ¢/kWh ja 10 ¢/kWh. Keskihinta on 3 ¢/kWh.
 
-Yhteenvetona viikon hintakehitys osoittaa, että **lauantaina** hinnat nousevat korkealle. Muina päivinä hinnat pysyvät kohtuullisina tai jopa halpoina. Tuulivoiman määrä vaihtelee, mikä voi vaikuttaa hintojen kehitykseen. Kova tuuli voi tuoda helpotusta sähkönkäyttäjille, kun taas tyyntä voi nostaa hintoja.
+Viikon hintakehitys osoittaa, että **torstaina** ja **sunnuntaina** hinnat ovat erityisen alhaiset. **Lauantaina** hinnat nousevat kohtuullisiksi, mutta pysyvät silti hallittavissa. Tuulivoiman määrä vaihtelee, ja erityisesti **torstaina** tuulivoima on korkealla tasolla, mikä voi selittää alhaisia hintoja. Yhteenvetona voidaan todeta, että viikon aikana sähkön hinnat vaihtelevat, mutta kokonaisuudessaan tilanne vaikuttaa suotuisalta kuluttajille.
