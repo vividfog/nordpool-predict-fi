@@ -1,13 +1,13 @@
-Viikon sähkön hintakehitys näyttää monipuoliselta ja vaihtelevalta. Erityisesti **maanantai** erottuu edukseen alhaisilla hinnoillaan. Tuulivoiman määrä vaihtelee, ja se vaikuttaa merkittävästi sähkön hintaan. **Perjantaina** ja **lauantaina** tuulivoiman määrä on alhaisempi, mikä voi nostaa hintoja. **Tiistaina** tuulivoima on korkeimmillaan, mikä saattaa laskea hintoja.
+Viikon sähkön hintakehitys näyttää vaihtelevalta, ja erityisesti **maanantai** erottuu edukseen. Tuulivoiman määrä vaihtelee huomattavasti, mikä vaikuttaa hintoihin. Korkeimmat hinnat nähdään **lauantaina**, kun tuulivoimaa on vähemmän, ja alhaisimmat hinnat **maanantaina**, jolloin tuulivoimaa on runsaasti.
 
-**Perjantaina** pörssisähkön hinta vaihtelee 4 ¢/kWh ja 12 ¢/kWh välillä. Minimihinta on 4 ¢/kWh ja maksimihinta 12 ¢/kWh. 
+**Perjantaina** pörssisähkön hinta vaihtelee 3 ¢/kWh ja 10 ¢/kWh välillä. Keskihinta on 7 ¢/kWh. 
 
-**Lauantaina** sähkön hinta nousee, ja se vaihtelee 5 ¢/kWh ja 19 ¢/kWh välillä. Minimihinta on 5 ¢/kWh ja maksimihinta 19 ¢/kWh. 
+**Lauantaina** sähkön hinta nousee, ja sen minimihinta on 4 ¢/kWh, kun taas maksimihinta kohoaa 16 ¢/kWh. Keskihinta on 10 ¢/kWh.
 
-**Sunnuntaina** pörssisähkön hinta on 5 ¢/kWh ja 11 ¢/kWh. Minimihinta on 5 ¢/kWh ja maksimihinta 11 ¢/kWh. 
+**Sunnuntaina** sähkön hinta vaihtelee 4 ¢/kWh ja 10 ¢/kWh välillä. Keskihinta on 6 ¢/kWh.
 
-**Maanantaina** sähkön hinta laskee huomattavasti. Minimihinta on 1 ¢/kWh ja maksimihinta 14 ¢/kWh. 
+**Maanantaina** sähkön hinta on alhaisempi, sillä minimihinta on 1 ¢/kWh ja maksimihinta 15 ¢/kWh. Keskihinta on 4 ¢/kWh.
 
-**Tiistaina** sähkön hinta on alhaisin koko viikolla. Minimihinta on 1 ¢/kWh ja maksimihinta 2 ¢/kWh. 
+**Tiistaina** sähkön hinta pysyy alhaisena, minimihinta on 1 ¢/kWh ja maksimihinta 6 ¢/kWh. Keskihinta on 2 ¢/kWh.
 
-Viikon hintakehitys osoittaa, että **maanantai** ja **tiistai** tarjoavat erityisen edullisia hintoja. **Perjantai** ja **lauantai** erottuvat korkeammilla hinnoillaan, mikä voi johtua tuulivoiman alhaisesta määrästä. Yhteenvetona voidaan todeta, että viikon aikana sähkön hinnat vaihtelevat merkittävästi, ja tuulivoiman määrä vaikuttaa selvästi hintatrendeihin.
+Viikon hintakehitys osoittaa, että **maanantai** tarjoaa erityisen edulliset hinnat, kun taas **lauantai** tuo mukanaan korkeimmat hinnat. Tuulivoiman määrä vaikuttaa selvästi hintoihin, ja kova tuuli maanantaina auttaa pitämään hinnat alhaalla. Yhteenvetona voidaan todeta, että viikon aikana sähkön hinnat vaihtelevat merkittävästi, ja erityisesti tuulivoiman määrä on keskeinen tekijä hintakehityksessä.
