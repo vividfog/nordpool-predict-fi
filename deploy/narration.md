@@ -1,9 +1,13 @@
-Viikon sähkön hintakehitys näyttää mielenkiintoiselta ja vaihtelevalta. Erityisesti **lauantai** erottuu korkealla keskihinnallaan. Tuulivoiman määrä vaihtelee, ja se voi vaikuttaa hintojen kehitykseen. Kova tuuli voi tuoda mukanaan edullisempia hintoja, kun taas tyyntä säätä saattaa seurata hintojen nousu.
+Viikon sähkön hintakehitys näyttää vaihtelevalta, ja erityisesti **lauantai** erottuu korkeammilla hinnoillaan. Tuulivoiman määrä vaihtelee, mikä vaikuttaa hintojen kehitykseen. Kova tuuli voi laskea hintoja, kun taas tyyntä voi nostaa niitä merkittävästi.
 
-**Perjantaina** pörssisähkön hinta vaihtelee 4 ¢/kWh ja 11 ¢/kWh välillä. Keskihinta on 7 ¢/kWh.  
-**Lauantaina** sähkön hinta nousee, sillä minimihinta on 3 ¢/kWh ja maksimi 17 ¢/kWh. Keskihinta on 10 ¢/kWh.  
-**Sunnuntaina** sähkön hinta vaihtelee 3 ¢/kWh ja 10 ¢/kWh välillä. Keskihinta on 6 ¢/kWh.  
-**Maanantaina** sähkön hinta laskee, sillä minimihinta on 1 ¢/kWh ja maksimi 14 ¢/kWh. Keskihinta on 4 ¢/kWh.  
-**Tiistaina** sähkön hinta on alhaisin, sillä minimihinta on 0 ¢/kWh ja maksimi 12 ¢/kWh. Keskihinta on 5 ¢/kWh.
+**perjantaina** pörssisähkön hinta vaihtelee 1 ¢/kWh ja 4 ¢/kWh välillä. Minimihinta on -1 ¢/kWh ja maksimihinta 4 ¢/kWh. 
 
-Viikon hintakehitys osoittaa, että **lauantai** on erityisen kallis keskihinnallaan. Muina päivinä hinnat vaihtelevat enemmän, ja **tiistaina** sähkön hinta on alhaisin. Tuulivoiman määrä vaihtelee, mikä voi selittää hintojen kehitystä. Yhteenvetona voidaan todeta, että viikon aikana nähdään sekä edullisia että kalliita hintoja, mikä tekee sähkön käytöstä mielenkiintoista.
+**lauantaina** sähkön hinta nousee. Minimihinta on 0 ¢/kWh ja maksimihinta 11 ¢/kWh. 
+
+**sunnuntaina** hinnat laskevat jälleen. Minimihinta on -1 ¢/kWh ja maksimihinta 4 ¢/kWh. 
+
+**maanantaina** sähkön hinta vaihtelee jälleen. Minimihinta on -1 ¢/kWh ja maksimihinta 10 ¢/kWh. 
+
+**tiistaina** hinnat pysyvät kohtuullisina. Minimihinta on 0 ¢/kWh ja maksimihinta 8 ¢/kWh. 
+
+Viikon hintakehitys osoittaa, että **lauantai** on erityinen päivä korkeammalla hinnalla. Muina päivinä hinnat vaihtelevat alhaisemman ja kohtuullisen välillä. Tuulivoiman määrä vaikuttaa selvästi hintakehitykseen, ja kova tuuli voi tuoda helpotusta sähkönkäyttäjille.
