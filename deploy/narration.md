@@ -1,9 +1,13 @@
-Viikon sähkön hintakehitys näyttää vaihtelevalta. **Lauantai** erottuu erityisesti korkealla keskihinnallaan, kun taas **tiistaina** hinnat voivat laskea merkittävästi. Tuulivoiman määrä vaihtelee, mikä vaikuttaa hintakehitykseen. **Maanantaina** ja **tiistaina** tuulivoiman määrä on korkeampi, mikä voi laskea hintoja.
+Sähkön hintakehitys tulevalla viikolla näyttää vaihtelevalta. Erityisesti **sunnuntai** erottuu alhaisilla hinnoillaan, mikä voi houkutella sähkönkäyttäjiä. Tuulivoiman määrä on myös nousussa, mikä voi vaikuttaa hintojen laskemiseen. 
 
-**Lauantaina** pörssisähkön hinta vaihtelee 1 ¢/kWh ja 16 ¢/kWh välillä. Keskimääräinen hinta on 9 ¢/kWh.  
-**Sunnuntaina** hinta on 2 ¢/kWh ja 11 ¢/kWh. Keskimääräinen hinta on 6 ¢/kWh.  
-**Maanantaina** sähkön hinta vaihtelee 1 ¢/kWh ja 13 ¢/kWh. Keskimääräinen hinta on 4 ¢/kWh.  
-**Tiistaina** hinta on 0 ¢/kWh ja 13 ¢/kWh. Keskimääräinen hinta on 6 ¢/kWh.  
-**Keskiviikkona** sähkön hinta vaihtelee 1 ¢/kWh ja 7 ¢/kWh. Keskimääräinen hinta on 4 ¢/kWh.  
+**lauantaina** pörssisähkön hinta vaihtelee 0 ¢/kWh ja 15 ¢/kWh välillä. Minimi on 0 ¢/kWh ja maksimi 15 ¢/kWh. 
 
-Yhteenvetona viikon hintakehitys osoittaa, että **lauantai** on kallis päivä, kun taas **maanantai** ja **keskiviikko** tarjoavat edullisempia hintoja. **Tiistaina** hinnat voivat olla erityisen alhaiset, mikä tuo helpotusta sähkönkäyttäjille. Tuulivoiman määrä vaikuttaa hintakehitykseen, ja kova tuuli voi laskea hintoja merkittävästi.
+**sunnuntaina** sähkön hinta on 0 ¢/kWh ja 9 ¢/kWh. Minimi on 0 ¢/kWh ja maksimi 9 ¢/kWh. 
+
+**maanantaina** pörssisähkön hinta vaihtelee 0 ¢/kWh ja 11 ¢/kWh välillä. Minimi on 0 ¢/kWh ja maksimi 11 ¢/kWh. 
+
+**tiistaina** sähkön hinta on 0 ¢/kWh ja 13 ¢/kWh. Minimi on 0 ¢/kWh ja maksimi 13 ¢/kWh. 
+
+**keskiviikkona** pörssisähkön hinta vaihtelee 1 ¢/kWh ja 9 ¢/kWh välillä. Minimi on 1 ¢/kWh ja maksimi 9 ¢/kWh. 
+
+Viikon hintakehitys näyttää olevan suotuisa sähkönkäyttäjille, erityisesti **sunnuntaina**, jolloin hinnat ovat alhaiset. Tuulivoiman kasvu voi myös tukea hintojen laskua, mikä tekee viikosta houkuttelevan sähkönkäyttäjille.
