@@ -1,5 +1,13 @@
-Sähkön hintakehitys tulevalla viikolla näyttää vaihtelevalta, ja erityisesti **lauantai** erottuu matalilla hinnoillaan. Tuulivoiman määrä pysyy suurimmaksi osaksi kohtuullisena, mutta **maanantaina** ja **tiistaina** tuulivoiman kasvu voi vaikuttaa hintojen laskuun. 
+Sähkön hintakehitys tulevalla viikolla näyttää vaihtelevalta. Erityisesti **lauantaina** sähkön hinta nousee korkealle, mikä erottuu muista päivistä. Tuulivoiman määrä vaihtelee, ja se vaikuttaa hintakehitykseen. Viikon aikana tuulivoiman keskimääräinen määrä on 2.1 GW ja 3.0 GW välillä, mikä voi vaikuttaa hintojen vaihteluun.
 
-**lauantaina** pörssisähkön hinta vaihtelee 0 ¢/kWh ja 14 ¢/kWh välillä. **sunnuntaina** hinta nousee hieman, ollen 3 ¢/kWh ja 9 ¢/kWh. **maanantaina** sähkön hinta on jälleen alhaalla, vaihdellen 0 ¢/kWh ja 11 ¢/kWh. **tiistaina** hinnat pysyvät samankaltaisina, ollen 0 ¢/kWh ja 11 ¢/kWh. **keskiviikkona** sähkön hinta laskee merkittävästi, vaihdellen 1 ¢/kWh ja 2 ¢/kWh.
+**lauantaina** sähkön hinta vaihtelee 1 ¢/kWh:sta 15 ¢/kWh:iin. Keskimääräinen hinta on 9 ¢/kWh. 
 
-Viikon hintakehitys näyttää olevan suotuisa sähkönkäyttäjille, erityisesti **lauantaina** ja **keskiviikkona**, jolloin hinnat ovat alhaiset. **maanantaina** ja **tiistaina** tuulivoiman kasvu voi myös tukea edullisia hintoja. Kokonaisuudessaan viikko tarjoaa vaihtelevaa hintatasoa, mutta erottuvat päivät antavat mahdollisuuden hyödyntää edullisia sähkönhintoja.
+**sunnuntaina** sähkön hinta on 5 ¢/kWh - 11 ¢/kWh. Keskimääräinen hinta on 7 ¢/kWh.
+
+**maanantaina** sähkön hinta vaihtelee 1 ¢/kWh:sta 13 ¢/kWh:iin. Keskimääräinen hinta on 4 ¢/kWh.
+
+**tiistaina** sähkön hinta on 0 ¢/kWh - 12 ¢/kWh. Keskimääräinen hinta on 5 ¢/kWh.
+
+**keskiviikkona** sähkön hinta vaihtelee 1 ¢/kWh:sta 7 ¢/kWh:iin. Keskimääräinen hinta on 3 ¢/kWh.
+
+Viikon hintakehitys osoittaa, että **lauantaina** sähkön hinta nousee merkittävästi, kun taas **maanantaina**, **tiistaina** ja **keskiviikkona** hinnat pysyvät alhaisina. **Sunnuntaina** ja **maanantaina** hinnat ovat kohtuullisella tasolla. Tuulivoiman määrä vaikuttaa hintakehitykseen, ja viikko näyttää tarjoavan vaihtelevaa hintatasoa sähkönkäyttäjille.
