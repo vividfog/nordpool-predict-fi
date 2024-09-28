@@ -1,13 +1,5 @@
-Sähkön hintakehitys tulevalla viikolla näyttää vaihtelevalta. Erityisesti **sunnuntai** erottuu alhaisilla hinnoillaan, mikä voi houkutella sähkönkäyttäjiä. Tuulivoiman määrä on myös nousussa, mikä voi vaikuttaa hintojen laskemiseen. 
+Viikon sähkön hintakehitys näyttää mielenkiintoiselta. Erityisesti **tiistaina** on odotettavissa korkeampi hintahuippu, kun pörssisähkön hinta nousee merkittävästi. Tuulivoiman määrä vaihtelee viikon aikana, mikä vaikuttaa hintakehitykseen. **Sunnuntaina** ja **maanantaina** tuulivoima on kohtuullisella tasolla, mikä voi pitää hinnat alhaisina. **Torstaina** tuulivoiman määrä on selvästi vähäisempi, mikä voi nostaa hintoja.
 
-**lauantaina** pörssisähkön hinta vaihtelee 0 ¢/kWh ja 15 ¢/kWh välillä. Minimi on 0 ¢/kWh ja maksimi 15 ¢/kWh. 
+**Sunnuntaina** pörssisähkön hinta vaihtelee 0 ¢/kWh ja 7 ¢/kWh välillä. **Maanantaina** hinta liikkuu 0 ¢/kWh ja 9 ¢/kWh. **Tiistaina** sähkön hinta nousee 0 ¢/kWh:sta 12 ¢/kWh:iin. **Keskiviikkona** hinta vaihtelee 0 ¢/kWh ja 8 ¢/kWh välillä. **Torstaina** sähkön hinta on 2 ¢/kWh ja 3 ¢/kWh.
 
-**sunnuntaina** sähkön hinta on 0 ¢/kWh ja 9 ¢/kWh. Minimi on 0 ¢/kWh ja maksimi 9 ¢/kWh. 
-
-**maanantaina** pörssisähkön hinta vaihtelee 0 ¢/kWh ja 11 ¢/kWh välillä. Minimi on 0 ¢/kWh ja maksimi 11 ¢/kWh. 
-
-**tiistaina** sähkön hinta on 0 ¢/kWh ja 13 ¢/kWh. Minimi on 0 ¢/kWh ja maksimi 13 ¢/kWh. 
-
-**keskiviikkona** pörssisähkön hinta vaihtelee 1 ¢/kWh ja 9 ¢/kWh välillä. Minimi on 1 ¢/kWh ja maksimi 9 ¢/kWh. 
-
-Viikon hintakehitys näyttää olevan suotuisa sähkönkäyttäjille, erityisesti **sunnuntaina**, jolloin hinnat ovat alhaiset. Tuulivoiman kasvu voi myös tukea hintojen laskua, mikä tekee viikosta houkuttelevan sähkönkäyttäjille.
+Viikon hintakehitys osoittaa, että **tiistaina** sähkön hinta nousee selvästi, kun taas **torstaina** hinnat pysyvät alhaisina. **Sunnuntaina** ja **maanantaina** hinnat ovat kohtuullisessa tasossa, mutta **tiistaina** ja **keskiviikkona** on odotettavissa korkeampia hintoja. Yhteenvetona voidaan todeta, että viikon aikana sähkön hinnat vaihtelevat, ja tuulivoiman määrä vaikuttaa merkittävästi hintakehitykseen.
