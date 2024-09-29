@@ -104,13 +104,13 @@ if args.train:
     df['timestamp'] = pd.to_datetime(df['timestamp'])
 
     # If WindPowerCapacityMW is null, fill it with the last known value
-    df['WindPowerCapacityMW'] = df['WindPowerCapacityMW'].fillna(method='ffill')
+    df['WindPowerCapacityMW'] = df['WindPowerCapacityMW'].ffill()
     
     # If NuclearPowerMW is null, fill it with the last known value
-    df['NuclearPowerMW'] = df['NuclearPowerMW'].fillna(method='ffill')
+    df['NuclearPowerMW'] = df['NuclearPowerMW'].ffill()
 
     # If ImportCapacityMW is null, fill it with the last known value
-    df['ImportCapacityMW'] = df['ImportCapacityMW'].fillna(method='ffill')
+    df['ImportCapacityMW'] = df['ImportCapacityMW'].ffill()
     
     # Define other required columns
     required_columns = ['timestamp', 'NuclearPowerMW', 'ImportCapacityMW', 'Price_cpkWh', 'WindPowerMW'] + fmisid_t
