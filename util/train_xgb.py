@@ -52,7 +52,7 @@ def train_model(df, fmisid_ws, fmisid_t):
     X_train, X_test, y_train, y_test = train_test_split(
         X_filtered, 
         y_filtered, 
-        test_size=0.15,
+        test_size=0.1, # Using almost all data, as the model is used instantly and evaluation has its own routines elsewhere
         random_state=42
     )
     
@@ -69,19 +69,18 @@ def train_model(df, fmisid_ws, fmisid_t):
     #     random_state=42
     # )
         
-    # XGBoost 10000 rounds with nested CV and K-split, 2024-09-19
+    # XGBoost 10000 rounds with nested CV and K-split, 2024-09-29
     xgb_model = XGBRegressor(
-        n_estimators=7467,
+        n_estimators=8062,
         max_depth=6,
-        learning_rate=0.02484589286162099,
-        subsample=0.35399400017778704,
-        colsample_bytree=0.6830482625298456,
-        gamma=0.0032089426199345406,
-        reg_alpha=3.6905699541222847,
-        reg_lambda=0.005134966919362188,
+        learning_rate=0.026493443183508738,
+        subsample=0.4664246600913551,
+        colsample_bytree=0.4994047430694387,
+        gamma=0.03957369803518469,
+        reg_alpha=4.967562820577262,
+        reg_lambda=0.799263401779804,
         random_state=42
     )
-
 
     xgb_model.fit(X_train, y_train)
     
@@ -91,6 +90,8 @@ def train_model(df, fmisid_ws, fmisid_t):
     # importance_df = pd.DataFrame({'Feature': features, 'Importance': feature_importances}).sort_values(by='Importance', ascending=False)
     # print("→ XGB feature importances:")
     # print(importance_df.to_string(index=False))
+
+    # These evals are a sanity check only
 
     # SHAP analysis
     explainer = shap.TreeExplainer(xgb_model)

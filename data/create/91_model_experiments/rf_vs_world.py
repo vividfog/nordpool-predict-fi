@@ -129,11 +129,16 @@ def preprocess_data(df: pd.DataFrame, fmisid_t: List[str]) -> Tuple[pd.DataFrame
     df['hour_sin'] = np.sin(2 * np.pi * df['hour'] / 24)
     df['hour_cos'] = np.cos(2 * np.pi * df['hour'] / 24)
 
+    # Calculate temp_mean and temp_variance from temperature features
+    df['temp_mean'] = df[fmisid_t].mean(axis=1)
+    df['temp_variance'] = df[fmisid_t].var(axis=1)
+
     # Drop the original time features from training data
     feature_columns = [
         'day_of_week_sin', 'day_of_week_cos',
         'hour_sin', 'hour_cos',
-        'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW'
+        'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW',
+        'temp_mean', 'temp_variance'  # Add temp_mean and temp_variance features here
     ] + fmisid_t
 
     # Use forward-fill imputation to handle missing values
@@ -143,8 +148,8 @@ def preprocess_data(df: pd.DataFrame, fmisid_t: List[str]) -> Tuple[pd.DataFrame
     logger.info(f"Initial feature columns extracted: {feature_columns}")
 
     # Cap the outliers at percentile thresholds
-    upper_limit = df['Price_cpkWh'].quantile(0.9999)
-    lower_limit = df['Price_cpkWh'].quantile(0.0001)
+    upper_limit = df['Price_cpkWh'].quantile(0.9997)
+    lower_limit = df['Price_cpkWh'].quantile(0.0009)
     df['Price_cpkWh'] = np.clip(df['Price_cpkWh'], lower_limit, upper_limit)
     logger.info(f"Capped 'Price_cpkWh' at lower_limit: {lower_limit} and upper_limit: {upper_limit}")
 
@@ -154,6 +159,7 @@ def preprocess_data(df: pd.DataFrame, fmisid_t: List[str]) -> Tuple[pd.DataFrame
     logger.info(f"Data shape for optimization: X={X_filtered.shape}, y={y_filtered.shape}")
 
     return X_filtered, y_filtered
+
 
 def cross_validate(model, X, y, model_name, n_splits=5) -> Dict[str, float]:
     """Perform cross-validation on the model using KFold."""
@@ -362,14 +368,14 @@ def tune_model_with_optuna(model_class, X, y, model_name, timeout, iterations):
             # For this model we know a range from previous experiments
             elif model_name == 'XGBoost':
                 params = {
-                    'n_estimators': trial.suggest_int('n_estimators', 750, 1200),
+                    'n_estimators': trial.suggest_int('n_estimators', 7000, 9999),
                     'max_depth': trial.suggest_int('max_depth', 5, 12),            
                     'learning_rate': trial.suggest_float('learning_rate', 0.005, 0.05, log=True),
-                    'subsample': trial.suggest_float('subsample', 0.5, 0.8),
-                    'colsample_bytree': trial.suggest_float('colsample_bytree', 0.4, 0.6),
+                    'subsample': trial.suggest_float('subsample', 0.1, 0.8),
+                    'colsample_bytree': trial.suggest_float('colsample_bytree', 0.4, 0.8),
                     'gamma': trial.suggest_float('gamma', 0, 0.1),
-                    'reg_alpha': trial.suggest_float('reg_alpha', 0.6, 1.0),
-                    'reg_lambda': trial.suggest_float('reg_lambda', 0.6, 0.8),
+                    'reg_alpha': trial.suggest_float('reg_alpha', 0.6, 5.0),
+                    'reg_lambda': trial.suggest_float('reg_lambda', 0.0001, 0.8),
                     'random_state': 42,
                     'n_jobs': get_n_jobs(),
                 }
