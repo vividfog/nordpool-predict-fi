@@ -7,8 +7,9 @@ import pytz
 from openai import OpenAI
 from .sql import db_query
 from rich import print
+from dotenv import load_dotenv
 
-import pytz
+load_dotenv('.env.local')
 
 def narrate_prediction(timestamp):
     """Fetch prediction data from the database and narrate it using an LLM."""
@@ -23,8 +24,10 @@ def narrate_prediction(timestamp):
         print(f"Database query failed for OpenAI narration: {e}")
         sys.exit(1)
 
-    # Keep timestamp, predicted price, and wind power data
-    df_result = df_result[['timestamp', 'PricePredict_cpkWh', 'WindPowerMW']]
+    # Keep timestamp, predicted price, wind power data, and temperature data
+    temperature_ids = os.getenv('FMISID_T').split(',')
+    temperature_columns = [f't_{temp_id}' for temp_id in temperature_ids]
+    df_result = df_result[['timestamp', 'PricePredict_cpkWh', 'WindPowerMW'] + temperature_columns]
 
     # Drop rows with missing values
     df_result = df_result.dropna()
@@ -43,18 +46,23 @@ def narrate_prediction(timestamp):
     # Convert WindPowerMW to gigawatts (GW)
     df_result['WindPowerGW'] = (df_result['WindPowerMW'] / 1000)
 
-    # Group by date and calculate min, max, and average price, as well as the average wind power
+    # Calculate average temperature
+    df_result['Avg_Temperature'] = df_result[temperature_columns].mean(axis=1)
+
+    # Group by date and calculate min, max, and average price, as well as the average wind power and temperature
     df_result['date'] = df_result['timestamp'].dt.date
     df_grouped = df_result.groupby('date').agg({
         'PricePredict_cpkWh': ['min', 'max', 'mean'],
-        'WindPowerGW': 'mean'
+        'WindPowerGW': 'mean',
+        'Avg_Temperature': 'mean'
     })
 
     # Round price values to integer
     df_grouped['PricePredict_cpkWh'] = df_grouped['PricePredict_cpkWh'].round(0).astype(int)
     
-    # Round wind power values to 1 decimal
+    # Round wind power and temperature values to 1 decimal
     df_grouped['WindPowerGW'] = df_grouped['WindPowerGW'].round(1)
+    df_grouped['Avg_Temperature'] = df_grouped['Avg_Temperature'].round(1)
 
     # Convert date index to weekday names and retain it in the DataFrame
     df_grouped.index = pd.to_datetime(df_grouped.index).strftime('%A')
@@ -87,15 +95,17 @@ def send_to_gpt(df):
     for weekday, row in df.iterrows():
         prompt += (
             f"{weekday}: Pörssisähkön hinta min {row[('PricePredict_cpkWh', 'min')]} ¢/kWh, max {row[('PricePredict_cpkWh', 'max')]} ¢/kWh, keskihinta {row[('PricePredict_cpkWh', 'mean')]} ¢/kWh. "
-            f"Keskimääräinen tuulivoimamäärä {row[('WindPowerGW', 'mean')]} GW.\n\n"
+            f"Keskimääräinen tuulivoimamäärä {row[('WindPowerGW', 'mean')]} GW. "
+            f"Päivän keskilämpötila {row[('Avg_Temperature', 'mean')]} °C.\n\n"
         )
-      
+
+
     prompt += """
 Olet tekoäly, joka kirjoittaa hintatiedotteen sähkönkäyttäjille.
 
 Sähkönkäyttäjien yleinen hintaherkkyys: 
 - Sähkönkäyttäjille halpa hinta tarkoittaa alle 5 ¢. Tätä korkeampi hinta ei ole koskaan halpa.
-- Kohtuullinen keskihinta on 5-9 senttiä. 
+- Normaali keskihinta on 5-9 senttiä. 
 - Kallis keskihinta on 10 senttiä tai yli.
 - Hyvin kallis keskihinta on 15 senttiä tai enemmän.
 
@@ -103,12 +113,20 @@ Tuulivoimasta:
 - Tyyntä: Alle 1 GW tuulivoima voi nostaa sähkön hintaa selvästi.
 - Kova tuuli: Yli 3 GW tuulivoima voi laskea sähkön hintaa selvästi.
 
+Lämpötiloista:
+- Kova pakkanen: Alle -10 °C voi nostaa sähkön hintaa selvästi.
+- Normaali talvikeli: -10 °C - 5 °C voi nostaa sähkön hintaa vähän.
+- Viileä sää: 5 °C - 15 °C ei välttämättä ole erityistä hintavaikutusta.
+- Lämmin sää: Yli 15 °C ei välttämättä ole erityistä hintavaikutusta.
+
 Muita ohjeita, joita sinun tulee ehdottomasti noudattaa:
 - Älä anna mitään neuvoja! Tehtäväsi on puhua vain hinnoista! Ole perinpohjainen ja tarkka.
 - Tämä tarkoittaa, että kun viittaat hintoihin, kirjoita niistä numeroilla eikä adjektiiveilla.
 - Yllä olevat hintaherkkyystiedot on annettu tiedoksi vain sinulle. Älä käytä niitä vastauksessasi.
 - Älä koskaan mainitse päivämääriä (kuukausi, vuosi), koska viikonpäivät ovat riittävä tieto. Jos käytät päivämääriä (kuten 31.1.2024), vastauksesi hylätään.
 - Tuulivoimasta voit puhua jos jaksolla on hyvin tyyntä tai tuulista ja se voi selittää hintoja.
+- Lämpötilasta voit puhua jos jaksolla on erityisen kylmä pakkaspäivä joka voi nostaa lämmitystarvetta ja hintoja.
+- Hyvin matala tuuli ja kova pakkanen voivat yhdessä nostaa hintoja.
 - Jos käytät sanoja 'halpa', 'kohtuullinen', 'kallis' tai 'hyvin kallis', voit käyttää niitä vain yhteenvetojen yhteydessä.
 - Käytä Markdown-muotoilua näin: **Vahvenna** viikonpäivät, kuten '**maanantai**' tai '**torstaina**', mutta vain kun mainitset ne ensi kertaa.
 - Koska tämä on ennustus, puhu aina tulevassa aikamuodossa eli futuurissa.
@@ -116,7 +134,7 @@ Muita ohjeita, joita sinun tulee ehdottomasti noudattaa:
 
 Kirjoita tiivis, viihdyttävä, rikasta suomen kieltä käyttävä UUTISARTIKKELI saamiesi tietojen pohjalta.
 
-1. Alusta artikkeli yleiskuvauksella viikon hintakehityksestä. Mainitse, jos jokin päivä erottuu erityisesti. Käytä tässä adjektiiveja. Voit kertoa tuulivoiman trendeistä.
+1. Alusta artikkeli yleiskuvauksella viikon hintakehityksestä. Mainitse, jos jokin päivä erottuu erityisesti. Käytä tässä adjektiiveja. Voit kertoa tuulivoiman trendeistä. 
 
 2. Kirjoita jokaisesta päivästä oma kappale keskittyen kyseisen päivän minimaalisuuteen ja maksimaalisuuteen hintaan numeroina. Vältä adjektiiveja. Älä mainitse tuulivoimaa tässä.
 
