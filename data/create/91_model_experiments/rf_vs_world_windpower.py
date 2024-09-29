@@ -106,11 +106,20 @@ def preprocess_data(df: pd.DataFrame, wp_fmisid: List[str]) -> Tuple[pd.DataFram
     # Forward fill missing values for WindPowerCapacityMW
     df['WindPowerCapacityMW'] = df['WindPowerCapacityMW'].ffill()
 
+    # Compute statistical features: Avg_WindSpeed and WindSpeed_Variance
+    ws_cols = [f"ws_{id}" for id in wp_fmisid]
+    df['Avg_WindSpeed'] = df[ws_cols].mean(axis=1)
+    df['WindSpeed_Variance'] = df[ws_cols].var(axis=1)
+    
     # Drop the predictions column if it exists
     df = df.drop(columns=['WindPowerMW_predict'], errors='ignore')
     
     # Define feature columns including WS and T columns based on WP_FMISID
-    feature_columns = [f"ws_{id}" for id in wp_fmisid] + [f"t_{id}" for id in wp_fmisid] + ['hour_sin', 'hour_cos', 'WindPowerCapacityMW']
+    feature_columns = (
+        [f"ws_{id}" for id in wp_fmisid] + 
+        [f"t_{id}" for id in wp_fmisid] + 
+        ['hour_sin', 'hour_cos', 'WindPowerCapacityMW', 'Avg_WindSpeed', 'WindSpeed_Variance']
+    )
 
     # Separate features and target variable
     X = df[feature_columns]
@@ -137,6 +146,7 @@ def preprocess_data(df: pd.DataFrame, wp_fmisid: List[str]) -> Tuple[pd.DataFram
     X_imputed_df = pd.DataFrame(X_imputed, columns=feature_columns)
     logger.info(f"Preprocessed data shape: X={X_imputed_df.shape}, y={y.shape}")
     return X_imputed_df, y
+
 
 def cross_validate(model, X, y, model_name, n_splits=5) -> Dict[str, float]:
     """Perform cross-validation on the model using KFold."""
@@ -293,11 +303,17 @@ def tune_model_with_optuna(model_class, X, y, model_name, timeout, n_trials):
             # General ballpark hyperparameters for XGBoost:
             # [2024-09-17 21:12:40] INFO     [2024-09-17 21:12:40] - Best parameters found for XGBoost: {'n_estimators': 5878, 'max_depth': 6, 'learning_rate': 0.016536051996816806, 'subsample': 0.41536974302490287, 'colsample_bytree': 0.604025429289723}                                                                       rf_vs_world_windpower.py:351
             params = {
-                'n_estimators': trial.suggest_int('n_estimators', 4000, 8000),
-                'max_depth': trial.suggest_int('max_depth', 4, 10),
-                'learning_rate': trial.suggest_float('learning_rate', 0.005, 0.06),
+                'n_estimators': trial.suggest_int('n_estimators', 1000, 8000),
+                'max_depth': trial.suggest_int('max_depth', 2, 12),
+                'learning_rate': trial.suggest_float('learning_rate', 0.001, 0.06),
                 'subsample': trial.suggest_float('subsample', 0.2, 0.6),
                 'colsample_bytree': trial.suggest_float('colsample_bytree', 0.25, 0.85),
+                'gamma': trial.suggest_float('gamma', 0, 0.1),  # Regularization parameter
+                'reg_alpha': trial.suggest_float('reg_alpha', 0, 1.0),  # L1 regularization term
+                'reg_lambda': trial.suggest_float('reg_lambda', 0, 1.0),  # L2 regularization term
+                'random_state': 42,  # Ensures reproducibility
+                'n_jobs': -1,        # Use all available CPU cores
+                'tree_method': 'auto' # Let XGBoost automatically choose the method
             }
 
         elif model_name == "Light GBM":

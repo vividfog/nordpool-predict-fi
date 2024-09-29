@@ -33,9 +33,10 @@ load_dotenv('.env.local')
 
 # Constants
 WIND_POWER_DATASET_ID = 245 # Fingrid dataset ID for wind power
+WIND_POWER_CAPACITY_DATASET_ID = 268 # Fingrid dataset ID for wind power capacity
 WIND_POWER_MODEL_PATH = os.getenv("WIND_POWER_MODEL_PATH", "data/create/91_model_experiments/windpower_xgboost.joblib")
 
-def fetch_wind_power_data(fingrid_api_key, dataset_id, start_date, end_date):
+def fetch_fingrid_data(fingrid_api_key, dataset_id, start_date, end_date):
     api_url = "https://data.fingrid.fi/api/data"
     headers = {'x-api-key': fingrid_api_key}
     params = {
@@ -73,8 +74,7 @@ def fetch_wind_power_data(fingrid_api_key, dataset_id, start_date, end_date):
                     else:
                         df['startTime'] = pd.to_datetime(df['startTime'], utc=True)
                     
-                    df.rename(columns={'value': 'WindPowerMW'}, inplace=True)
-                    return df[['startTime', 'WindPowerMW']]
+                    return df
             elif response.status_code == 429:
                 retry_after = int(response.headers.get('Retry-After', 60))
                 print(f"Rate limited! Waiting for {retry_after} seconds.")
@@ -101,23 +101,34 @@ def update_windpower(df, fingrid_api_key):
     print(f"* Fingrid: Fetching wind power data between {history_date} and {end_date}")
 
     # Fetch wind power data
-    wind_power_df = fetch_wind_power_data(fingrid_api_key, WIND_POWER_DATASET_ID, history_date, end_date)
+    wind_power_df = fetch_fingrid_data(fingrid_api_key, WIND_POWER_DATASET_ID, history_date, end_date)
+    wind_power_df.rename(columns={'value': 'WindPowerMW'}, inplace=True)
+
+    # Fetch wind power capacity data
+    wind_power_capacity_df = fetch_fingrid_data(fingrid_api_key, WIND_POWER_CAPACITY_DATASET_ID, history_date, end_date)
+    wind_power_capacity_df.rename(columns={'value': 'WindPowerCapacityMW'}, inplace=True)
 
     # Ensure the Timestamp column is in datetime format
     df['Timestamp'] = pd.to_datetime(df['Timestamp'], utc=True)
 
-    # Merge to include wind power data while preserving other columns
+    # Merge both wind power data and wind power capacity into input dataframe
     merged_df = pd.merge(df, wind_power_df, left_on='Timestamp', right_on='startTime', how='left', suffixes=('', '_api'))
+    merged_df = pd.merge(merged_df, wind_power_capacity_df, left_on='Timestamp', right_on='startTime', how='left', suffixes=('', '_capacity_api'))
 
-    # Drop the API-specific timestamp column
-    merged_df.drop(columns=['startTime'], inplace=True)
+    # Drop the API-specific timestamp columns
+    merged_df.drop(columns=['startTime', 'startTime_capacity_api'], inplace=True)
 
-    # Priority: Overwrite input DF from API truthful data
+    # Prioritize overwriting input DF with API truthful data
     merged_df['WindPowerMW'] = merged_df['WindPowerMW_api']
-
-    # Drop intermediate columns with API suffix
     merged_df.drop(columns=['WindPowerMW_api'], inplace=True)
-    
+
+    # Prioritize filling WindPowerCapacityMW from API data
+    merged_df['WindPowerCapacityMW'] = merged_df['WindPowerCapacityMW_capacity_api'].ffill()
+    merged_df.drop(columns=['WindPowerCapacityMW_capacity_api'], inplace=True)
+
+    # Drop redundant columns that originated from the API data
+    merged_df.drop(columns=['datasetId', 'endTime', 'datasetId_capacity_api', 'endTime_capacity_api'], inplace=True)
+
     # Load the model
     prediction_model = joblib.load(WIND_POWER_MODEL_PATH)
 
@@ -137,7 +148,7 @@ def update_windpower(df, fingrid_api_key):
     features['hour_sin'] = np.sin(2 * np.pi * hour / 24)
     features['hour_cos'] = np.cos(2 * np.pi * hour / 24)
 
-    # Add the WindPowerCapacityMW value (already forward-filled)
+    # The WindPowerCapacityMW value is now directly fetched and filled from the API
     features['WindPowerCapacityMW'] = merged_df.loc[missing_wind_power, 'WindPowerCapacityMW'].ffill()
 
     # Dynamically compute average wind speed and variance from ws_ columns
@@ -218,11 +229,11 @@ def main():
 
     # Add dummy data for the WindPowerMW column
     df_data['WindPowerMW'] = np.round(np.random.uniform(50.0, 5000.0, len(timestamps)), 1)
-    df_data['WindPowerMW'][-120:] = np.nan  # Set the lastvalues to NaN
+    df_data['WindPowerMW'][-120:] = np.nan  # Set the last values to NaN
 
     # Add dummy data for the WindPowerCapacityMW column
     df_data['WindPowerCapacityMW'] = np.round(np.random.uniform(7000.0, 7000.0, len(timestamps)), 1)
-    df_data['WindPowerCapacityMW'][-120:] = np.nan  # Set the last 50 values to NaN
+    df_data['WindPowerCapacityMW'][-120:] = np.nan  # Set the last values to NaN
 
     df = pd.DataFrame(df_data)
     
