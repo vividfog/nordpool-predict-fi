@@ -1,13 +1,5 @@
-Sähkön hintakehitys tulevalla viikolla näyttää vaihtelevalta. Erityisesti **torstaina** ennustettu keskihinta nousee merkittävästi, mikä voi herättää huomiota sähkönkäyttäjien keskuudessa. Tuulivoiman määrä vaihtelee, ja se voi vaikuttaa hintakehitykseen. Viikon aikana tuulivoiman määrä vaihtelee 0.6 GW:sta 2.5 GW:iin, mikä voi tuoda mukanaan eroja sähkön hinnoissa.
+Sähkön hintakehitys tulevalla viikolla näyttää vaihtelevalta. Erityisesti **torstaina** sähkön hinta nousee korkeaksi, kun taas **perjantaina** ja **lauantaina** hinnat pysyvät matalampina. Tuulivoiman määrä vaihtelee, ja se voi vaikuttaa hintakehitykseen. **Perjantaina** ja **sunnuntaina** tuulivoiman määrä on huomattavasti korkeampi, mikä voi pitää hinnat alhaalla.
 
-**Torstaina** pörssisähkön hinta vaihtelee 6 ¢/kWh:sta 41 ¢/kWh:iin. Keskiarvo on 20 ¢/kWh. 
+**Torstaina** pörssisähkön hinta vaihtelee 9 ja 48 sentin välillä. Minimi on 9, ja maksimi 48. **Perjantaina** sähkön hinta on matalampi, vaihdellen 6 ja 18 sentin välillä. Minimi on 6, ja maksimi 18. **Lauantaina** sähkön hinta pysyy edelleen alhaalla, vaihdellen 5 ja 20 sentin välillä. Minimi on 5, ja maksimi 20. **Sunnuntaina** sähkön hinta on samalla tasolla kuin lauantaina, vaihdellen 5 ja 13 sentin välillä. Minimi on 5, ja maksimi 13. **Maanantaina** sähkön hinta nousee jälleen, vaihdellen 6 ja 28 sentin välillä. Minimi on 6, ja maksimi 28.
 
-**Perjantaina** sähkön hinta laskee, ja se vaihtelee 3 ¢/kWh:sta 16 ¢/kWh:iin. Keskiarvo on 9 ¢/kWh. 
-
-**Lauantaina** hinta pysyy alhaisena, vaihdellen 5 ¢/kWh:sta 16 ¢/kWh:iin. Keskiarvo on 8 ¢/kWh. 
-
-**Sunnuntaina** sähkön hinta vaihtelee 4 ¢/kWh:sta 12 ¢/kWh:iin. Keskiarvo on 7 ¢/kWh. 
-
-**Maanantaina** sähkön hinta on 6 ¢/kWh:sta 8 ¢/kWh:iin. Keskiarvo on 7 ¢/kWh. 
-
-Viikon hintakehitys osoittaa, että **torstaina** hinnat nousevat merkittävästi, kun taas muina päivinä hinnat pysyvät kohtuullisina. **Perjantaina** ja **lauantaina** nähdään alhaisempia hintoja, mikä voi olla positiivinen uutinen sähkönkäyttäjille. Yhteenvetona voidaan todeta, että viikon hintakehitys tuo mukanaan vaihtelevaa hintatasoa, mutta yleisesti ottaen hinnat pysyvät kohtuullisina useimpina päivinä.
+Viikon hintakehitys näyttää vaihtelevalta, mutta **perjantaina** ja **lauantaina** hinnat ovat kohtuullisempia. **Torstaina** ja **maanantaina** hinnat nousevat korkeiksi, mikä voi aiheuttaa huolta sähkönkäyttäjille. Tuulivoiman määrä, erityisesti **perjantaina**, voi kuitenkin auttaa pitämään hinnat alhaalla. Yhteenvetona voidaan todeta, että viikon aikana sähkön hinnat vaihtelevat merkittävästi, ja käyttäjien kannattaa seurata kehitystä tarkasti.
