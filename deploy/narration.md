@@ -1,5 +1,13 @@
-Sähkön hintakehitys tulevalla viikolla näyttää mielenkiintoiselta. Erityisesti **torstaina** ennustetaan korkeita hintoja, kun taas **sunnuntaina** sähkön hinnat voivat olla alhaiset. Tuulivoiman määrä vaihtelee merkittävästi, ja se voi vaikuttaa hintakehitykseen. **Torstaina** tuulivoiman keskimääräinen määrä on vain 0.6 GW, mikä voi nostaa hintoja. **Perjantaina** ja **lauantaina** tuulivoiman määrä nousee, mikä saattaa vaikuttaa hintojen laskemiseen.
+Viikon sähkön hintakehitys näyttää vaihtelevalta, ja erityisesti **maanantai** erottuu korkeiden hintojen vuoksi. Tuulivoiman määrä vaihtelee, ja se voi vaikuttaa hintatrendeihin. Viikon aikana nähdään sekä korkeita että matalia hintapisteitä, mikä tekee sähkön hinnoista kiinnostavan seurattavan.
 
-**Torstaina** pörssisähkön hinta vaihtelee 7 ¢/kWh ja 38 ¢/kWh välillä. Keskiarvo on 18 ¢/kWh. **Perjantaina** hinnat laskevat, ja minimihinta on 4 ¢/kWh, kun taas maksimi on 16 ¢/kWh. Keskiarvo on 9 ¢/kWh. **Lauantaina** hinnat pysyvät alhaisina, minimihinta on 4 ¢/kWh ja maksimi 18 ¢/kWh. Keskiarvo on 8 ¢/kWh. **Sunnuntaina** sähkön hinnat laskevat entisestään, minimihinta on 3 ¢/kWh ja maksimi 10 ¢/kWh. Keskiarvo on 7 ¢/kWh. **Maanantaina** hinnat nousevat jälleen, minimihinta on 6 ¢/kWh ja maksimi 27 ¢/kWh. Keskiarvo on 13 ¢/kWh.
+**Perjantaina** pörssisähkön hinta vaihtelee 6 ¢/kWh ja 18 ¢/kWh välillä. Keskiarvo on 11 ¢/kWh. 
 
-Viikon hintakehitys näyttää vaihtelevalta. **Torstaina** ja **maanantaina** hinnat nousevat korkeiksi, kun taas **perjantaina**, **lauantaina** ja **sunnuntaina** hinnat pysyvät alhaisina. Tuulivoiman määrä vaikuttaa selvästi hintakehitykseen, ja viikon loppupuolella tuuli voi tuoda helpotusta sähkönkäyttäjille. Yhteenvetona voidaan todeta, että viikko tarjoaa sekä edullisia että kalliita sähkönhintoja, mikä tekee siitä mielenkiintoisen ajanjakson sähkönkäyttäjille.
+**lauantaina** sähkön hinta on alhaisempi, sillä minimihinta on 5 ¢/kWh ja maksimihinta 20 ¢/kWh. Keskiarvo nousee 10 ¢/kWh:iin. 
+
+**Sunnuntaina** sähkön hinta liikkuu 6 ¢/kWh ja 14 ¢/kWh välillä. Keskiarvo on 10 ¢/kWh. 
+
+**Maanantaina** hinnat nousevat merkittävästi. Minimihinta on 7 ¢/kWh ja maksimihinta 29 ¢/kWh. Keskiarvo on 16 ¢/kWh. 
+
+**Tiistaina** sähkön hinta on alhaisin viikon aikana. Minimihinta on 7 ¢/kWh ja maksimihinta 9 ¢/kWh. Keskiarvo on 8 ¢/kWh. 
+
+Viikon hintakehitys osoittaa, että **maanantai** on erityisen kallis päivä, kun taas **tiistaina** hinnat laskevat. Yleisesti ottaen viikon aikana nähdään vaihtelevaa hintatasoa, ja tuulivoiman määrä saattaa vaikuttaa hintoihin eri päivinä. Halvimmat hinnat esiintyvät **lauantaina** ja **tiistaina**, kun taas **maanantai** on selvästi kallein päivä.
