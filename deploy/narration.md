@@ -1,13 +1,13 @@
-Viikon sähkön hintakehitys näyttää mielenkiintoiselta. Erityisesti **maanantai** erottuu korkeammalla hintahaarukallaan, kun taas **keskiviikkona** hinnat pysyvät alhaisina. Tuulivoiman määrä vaihtelee, ja se voi vaikuttaa hintakehitykseen. **Lauantaina** ja **sunnuntaina** tuulivoimaa on kohtuullisesti, mikä voi pitää hinnat kohtuullisina.
+Viikon sähkön hintakehitys näyttää mielenkiintoiselta. Erityisesti **tiistaina** sähkön hinta voi olla alhaisempi, kun tuulivoiman määrä nousee. Muina päivinä hinnat vaihtelevat enemmän, ja **maanantaina** saattaa olla huomattavasti korkeampi hinta. Tuulivoiman määrä vaihtelee, mikä voi vaikuttaa hintakehitykseen.
 
-**Lauantaina** pörssisähkön hinta vaihtelee 3 ¢/kWh ja 11 ¢/kWh välillä. Keskihinta on 7 ¢/kWh. 
+**lauantaina** pörssisähkön hinta vaihtelee 2 ¢/kWh ja 14 ¢/kWh välillä. Keskihinta on 9 ¢/kWh. 
 
-**Sunnuntaina** sähkön hinta on 3 ¢/kWh ja 8 ¢/kWh. Keskihinta on 6 ¢/kWh.
+**sunnuntaina** sähkön hinta on 2 ¢/kWh - 8 ¢/kWh. Keskihinta laskee 5 ¢/kWh:iin. 
 
-**Maanantaina** sähkön hinta nousee 3 ¢/kWh:sta 19 ¢/kWh:iin. Keskihinta on 9 ¢/kWh.
+**maanantaina** sähkön hinta nousee 3 ¢/kWh:sta 19 ¢/kWh:iin. Keskihinta on 8 ¢/kWh. 
 
-**Tiistaina** sähkön hinta vaihtelee 3 ¢/kWh ja 13 ¢/kWh välillä. Keskihinta on 6 ¢/kWh.
+**tiistaina** sähkön hinta vaihtelee 2 ¢/kWh ja 12 ¢/kWh välillä. Keskihinta on 6 ¢/kWh. 
 
-**Keskiviikkona** sähkön hinta on 4 ¢/kWh ja 5 ¢/kWh. Keskihinta on 4 ¢/kWh.
+**keskiviikkona** sähkön hinta on 2 ¢/kWh - 11 ¢/kWh. Keskihinta on 5 ¢/kWh. 
 
-Viikon hintakehitys osoittaa, että **maanantai** on selvästi korkeampi verrattuna muihin päiviin. **Keskiviikkona** hinnat pysyvät alhaisina, mikä tarjoaa sähkönkäyttäjille edullisen vaihtoehdon. Yhteenvetona voidaan todeta, että viikon aikana sähkön hinnat vaihtelevat, mutta **maanantai** tuo mukanaan haasteita korkeampien hintojen muodossa.
+Viikon aikana sähkön hinnat vaihtelevat huomattavasti. **maanantaina** on odotettavissa korkeimmat hinnat, kun taas **sunnuntaina** ja **tiistaina** hinnat ovat alhaisempia. Tuulivoiman määrä ja lämpötila voivat vaikuttaa hintakehitykseen, mutta yleisesti ottaen viikon hintakehitys näyttää kohtuulliselta.
