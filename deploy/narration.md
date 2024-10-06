@@ -1,5 +1,13 @@
-Viikon sähkön hintakehitys näyttää mielenkiintoiselta. **Maanantaina** sähkön hinta nousee korkealle, kun taas **tiistaina** ja **keskiviikkona** hintojen odotetaan olevan alhaisia. **Torstaina** ja **perjantaina** hinnat pysyvät kohtuullisina. Tuulivoiman määrä vaihtelee, ja erityisesti **keskiviikkona** ja **torstaina** tuulivoiman odotetaan olevan korkealla tasolla, mikä voi vaikuttaa hintakehitykseen.
+Sähkön hintakehitys tulevilla päivillä näyttää mielenkiintoiselta. Erityisesti **maanantai** erottuu korkealla keskihinnallaan, kun taas **tiistaina** ja **keskiviikkona** hinnat laskevat merkittävästi. Tuulivoiman määrä on kasvussa, mikä voi vaikuttaa hintakehitykseen.
 
-**Maanantaina** pörssisähkön hinta vaihtelee 2 ¢/kWh ja 12 ¢/kWh välillä. **Tiistaina** sähkön hinta on ennakoitavissa  -1 ¢/kWh ja 8 ¢/kWh. **Keskiviikkona** hinta liikkuu 0 ¢/kWh ja 6 ¢/kWh. **Torstaina** sähkön hinta on -1 ¢/kWh ja 7 ¢/kWh. **Perjantaina** hinta vaihtelee 1 ¢/kWh ja 7 ¢/kWh.
+**Maanantaina** pörssisähkön hinta vaihtelee 2 ¢/kWh ja 26 ¢/kWh välillä. Keskimääräinen hinta on 13 ¢/kWh. 
 
-Viikon aikana sähkön hintakehitys näyttää vaihtelevalta. **Maanantaina** hinnat nousevat korkeiksi, mutta **tiistaina** ja **keskiviikkona** ne laskevat selvästi. **Torstaina** ja **perjantaina** hinnat pysyvät kohtuullisina, mikä tarjoaa sähkönkäyttäjille mahdollisuuden hyödyntää alhaisempia hintoja. Tuulivoiman määrä on erityisen korkea **keskiviikkona** ja **torstaina**, mikä voi tukea hintojen alhaista tasoa. Yhteenvetona voidaan todeta, että viikon hintakehitys tarjoaa sähkönkäyttäjille sekä hyviä että kohtuullisia hintahetkiä.
+**Tiistaina** sähkön hinta laskee, ja se vaihtelee -1 ¢/kWh ja 11 ¢/kWh välillä. Keskimääräinen hinta on 4 ¢/kWh.
+
+**Keskiviikkona** pörssisähkön hinta on edelleen alhainen, vaihdellen 0 ¢/kWh ja 9 ¢/kWh välillä. Keskimääräinen hinta on 4 ¢/kWh.
+
+**Torstaina** sähkön hinta pysyy matalana, vaihdellen 0 ¢/kWh ja 7 ¢/kWh välillä. Keskimääräinen hinta on 3 ¢/kWh.
+
+**Perjantaina** sähkön hinta nousee hieman, vaihdellen 0 ¢/kWh ja 6 ¢/kWh välillä. Keskimääräinen hinta on 3 ¢/kWh.
+
+Viikon hintakehitys osoittaa, että **maanantai** on selkeästi kalliimpi päivä, kun taas **tiistaina**, **keskiviikkona**, **torstaina** ja **perjantaina** hinnat pysyvät alhaisina. Tuulivoiman kasvu voi olla syynä hintojen laskuun loppuviikosta. Yhteenvetona voidaan todeta, että viikko tarjoaa sähkönkäyttäjille kohtuullisia hintoja, erityisesti alkuviikosta.
