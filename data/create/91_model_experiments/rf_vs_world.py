@@ -138,9 +138,7 @@ def preprocess_data(df: pd.DataFrame, fmisid_t: List[str]) -> Tuple[pd.DataFrame
     feature_columns = [
         'year', 'day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos',
         'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW',
-        'temp_mean', 'temp_variance',
-        'Estimated_Demand', 'Total_Supply', 'Supply_Demand_Imbalance'
-        ] + fmisid_t
+        'temp_mean', 'temp_variance' ] + fmisid_t
 
     # Use forward-fill imputation to handle missing values
     df[feature_columns] = df[feature_columns].ffill()
