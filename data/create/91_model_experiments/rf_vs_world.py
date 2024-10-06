@@ -128,6 +128,7 @@ def preprocess_data(df: pd.DataFrame, fmisid_t: List[str]) -> Tuple[pd.DataFrame
     df['day_of_week_cos'] = np.cos(2 * np.pi * df['day_of_week'] / 7)
     df['hour_sin'] = np.sin(2 * np.pi * df['hour'] / 24)
     df['hour_cos'] = np.cos(2 * np.pi * df['hour'] / 24)
+    df['year'] = df['timestamp'].dt.year
 
     # Calculate temp_mean and temp_variance from temperature features
     df['temp_mean'] = df[fmisid_t].mean(axis=1)
@@ -135,11 +136,11 @@ def preprocess_data(df: pd.DataFrame, fmisid_t: List[str]) -> Tuple[pd.DataFrame
 
     # Drop the original time features from training data
     feature_columns = [
-        'day_of_week_sin', 'day_of_week_cos',
-        'hour_sin', 'hour_cos',
+        'year', 'day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos',
         'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW',
-        'temp_mean', 'temp_variance'  # Add temp_mean and temp_variance features here
-    ] + fmisid_t
+        'temp_mean', 'temp_variance',
+        'Estimated_Demand', 'Total_Supply', 'Supply_Demand_Imbalance'
+        ] + fmisid_t
 
     # Use forward-fill imputation to handle missing values
     df[feature_columns] = df[feature_columns].ffill()
@@ -159,7 +160,6 @@ def preprocess_data(df: pd.DataFrame, fmisid_t: List[str]) -> Tuple[pd.DataFrame
     logger.info(f"Data shape for optimization: X={X_filtered.shape}, y={y_filtered.shape}")
 
     return X_filtered, y_filtered
-
 
 def cross_validate(model, X, y, model_name, n_splits=5) -> Dict[str, float]:
     """Perform cross-validation on the model using KFold."""

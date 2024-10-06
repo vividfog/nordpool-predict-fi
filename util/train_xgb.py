@@ -5,15 +5,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from statsmodels.stats.stattools import durbin_watson
 from statsmodels.tsa.stattools import acf
-from sklearn.utils import shuffle
 from rich import print
 from xgboost import XGBRegressor
 
 def train_model(df, fmisid_ws, fmisid_t):
-    
-    # Shuffle the data for a more generalized model
-    df = shuffle(df, random_state=42)
-    
+        
     # Drop the target column from training data
     df = df.drop(columns=['PricePredict_cpkWh'])
 
@@ -21,6 +17,7 @@ def train_model(df, fmisid_ws, fmisid_t):
     df['timestamp'] = pd.to_datetime(df['timestamp'])
     df['day_of_week'] = df['timestamp'].dt.dayofweek + 1
     df['hour'] = df['timestamp'].dt.hour
+    df['year'] = df['timestamp'].dt.year
 
     # Cap extreme outliers based on percentiles and filter the DataFrame
     upper_limit = df['Price_cpkWh'].quantile(0.9995)
@@ -38,60 +35,41 @@ def train_model(df, fmisid_ws, fmisid_t):
     df['temp_variance'] = df[fmisid_t].var(axis=1)
 
     # Feature selection
-    X_filtered = df[['day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos', 
+    X_filtered = df[['year', 'day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos', 
                      'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW', 
                      'temp_mean', 'temp_variance'] + fmisid_t]
 
     # Target variable
     y_filtered = df['Price_cpkWh']
   
-    print("→ Data for training, a sampling:")
-    print(X_filtered.head())
-
     # Split the data
     X_train, X_test, y_train, y_test = train_test_split(
         X_filtered, 
         y_filtered, 
-        test_size=0.1, # Using almost all data, as the model is used instantly and evaluation has its own routines elsewhere
-        random_state=42
+        test_size=0.10, # Using almost all data, as the model is used instantly and evaluation has its own routines elsewhere
+        random_state=42,
+        shuffle=True
     )
+  
+    print("→ Data for training, head:")
+    print(X_train.head())
     
-    # XGBoost model, tuned 2024-09-15
-    # xgb_model = XGBRegressor(
-    #     n_estimators=961,
-    #     max_depth=8,
-    #     learning_rate=0.0305,
-    #     subsample=0.7256,
-    #     colsample_bytree=0.5344,
-    #     gamma=0.0247,
-    #     reg_alpha=0.8735,
-    #     reg_lambda=0.7603,
-    #     random_state=42
-    # )
-        
-    # XGBoost 10000 rounds with nested CV and K-split, 2024-09-29
-    xgb_model = XGBRegressor(
-        n_estimators=8062,
-        max_depth=6,
-        learning_rate=0.026493443183508738,
-        subsample=0.4664246600913551,
-        colsample_bytree=0.4994047430694387,
-        gamma=0.03957369803518469,
-        reg_alpha=4.967562820577262,
-        reg_lambda=0.799263401779804,
-        random_state=42
-    )
+    params = {
+        'objective': 'reg:squarederror', 
+        'n_estimators': 8062,
+        'max_depth': 6,
+        'learning_rate': 0.026493443183508738,
+        'subsample': 0.4664246600913551,
+        'colsample_bytree': 0.4994047430694387,
+        'gamma': 0.03957369803518469,
+        'reg_alpha': 4.967562820577262,
+        'reg_lambda': 0.799263401779804,
+        'random_state': 42,
+    }
 
+    # Train the model using the reg:quantileerror objective
+    xgb_model = XGBRegressor(**params)
     xgb_model.fit(X_train, y_train)
-    
-    # XGB feature importances (deprecated after SHAP analysis)
-    # feature_importances = xgb_model.feature_importances_
-    # features = X_train.columns
-    # importance_df = pd.DataFrame({'Feature': features, 'Importance': feature_importances}).sort_values(by='Importance', ascending=False)
-    # print("→ XGB feature importances:")
-    # print(importance_df.to_string(index=False))
-
-    # These evals are a sanity check only
 
     # SHAP analysis
     explainer = shap.TreeExplainer(xgb_model)
@@ -144,7 +122,7 @@ def train_model(df, fmisid_ws, fmisid_t):
         random_sample['temp_variance'] = random_sample[fmisid_t].var(axis=1)
         
         # Match the feature selection used for training
-        X_random_sample = random_sample[['day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos',
+        X_random_sample = random_sample[['year','day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos',
                                         'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW',
                                         'temp_mean', 'temp_variance'] + fmisid_t]
         
