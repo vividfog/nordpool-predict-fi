@@ -1,13 +1,13 @@
-Sähkön hintakehitys tulevalla viikolla näyttää mielenkiintoiselta. Erityisesti **maanantai** erottuu, sillä sen keskihinta nousee merkittävästi verrattuna muihin päiviin. Tuulivoiman määrä vaihtelee, ja se vaikuttaa hintakehitykseen. **Perjantaina** ja **sunnuntaina** tuulivoimaa on runsaasti, mikä voi pitää hinnat kohtuullisina.
+Viikon sähkön hintakehitys näyttää mielenkiintoiselta. Erityisesti **maanantai** erottuu korkeammalla keskihinnallaan, kun taas **perjantaina** ja **lauantaina** hinnat pysyvät matalina. Tuulivoiman määrä vaihtelee, ja sen vaikutus hintoihin on huomattava. **Perjantaina** odotetaan kovan tuulen tuovan mukanaan edullisempia hintoja, kun taas **lauantaina** tuulivoiman määrä on alhaisempi.
 
-**Perjantaina** pörssisähkön hinta vaihtelee -1 ¢/kWh ja 7 ¢/kWh välillä. Keskihinta on 3 ¢/kWh. 
+**Perjantaina** pörssisähkön hinta vaihtelee 0 ¢/kWh ja 5 ¢/kWh välillä. Keskimääräinen hinta on 2 ¢/kWh. 
 
-**Lauantaina** sähkön hinta liikkuu -1 ¢/kWh ja 5 ¢/kWh välillä. Keskihinta on 2 ¢/kWh. 
+**Lauantaina** sähkön hinta liikkuu 0 ¢/kWh ja 5 ¢/kWh välillä. Keskimääräinen hinta on 3 ¢/kWh.
 
-**Sunnuntaina** pörssisähkön hinta on -1 ¢/kWh ja 8 ¢/kWh. Keskihinta on 3 ¢/kWh. 
+**Sunnuntaina** pörssisähkön hinta on 1 ¢/kWh ja 9 ¢/kWh. Keskimääräinen hinta nousee 3 ¢/kWh:iin.
 
-**Maanantaina** sähkön hinta nousee 1 ¢/kWh:stä 12 ¢/kWh:iin. Keskihinta on 5 ¢/kWh. 
+**Maanantaina** sähkön hinta kohoaa 1 ¢/kWh:sta 12 ¢/kWh:iin. Keskimääräinen hinta on 5 ¢/kWh.
 
-**Tiistaina** pörssisähkön hinta vaihtelee 2 ¢/kWh ja 15 ¢/kWh välillä. Keskihinta on 7 ¢/kWh. 
+**Tiistaina** sähkön hinta vaihtelee 0 ¢/kWh ja 15 ¢/kWh välillä. Keskimääräinen hinta nousee 6 ¢/kWh:iin.
 
-Viikon hintakehitys näyttää olevan vaihteleva. Perjantai, lauantai ja sunnuntai tarjoavat edullisia hintoja, kun taas maanantai ja tiistai tuovat mukanaan korkeammat hinnat. Erityisesti maanantain keskihinta nousee merkittävästi, mikä tekee siitä viikon kalleimman päivän. Tuulivoiman määrä ja lämpötilat vaikuttavat hintakehitykseen, mutta viikonlopun tuulisuus voi pitää hinnat alhaisina.
+Viikon hintakehitys osoittaa, että **perjantaina** ja **lauantaina** hinnat pysyvät edullisina, kun taas **maanantaina** ja **tiistaina** hinnat nousevat merkittävästi. Tuulivoiman määrä vaikuttaa hintoihin, ja kova tuuli **perjantaina** voi tuoda helpotusta sähkönkäyttäjille. Yhteenvetona voidaan todeta, että viikon aikana sähkön hinnat vaihtelevat, mutta **perjantaina** ja **lauantaina** on odotettavissa edullisempia hintoja.
