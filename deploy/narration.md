@@ -1,13 +1,9 @@
-Sähkön hintakehitys tulevalla viikolla näyttää mielenkiintoiselta. Erityisesti **maanantaina** ja **tiistaina** odotetaan alhaisia hintoja, kun taas **keskiviikkona** ja **torstaina** hinnat saattavat laskea entisestään. Tuulivoiman määrä on kasvussa, mikä voi vaikuttaa hintakehitykseen. 
+Viikon sähkön hintakehitys näyttää mielenkiintoiselta. Erityisesti **maanantaina** sähkön hinta nousee korkeaksi, kun taas **tiistaina** ja **keskiviikkona** hinnat laskevat merkittävästi. Tuulivoiman määrä vaihtelee huomattavasti, mikä vaikuttaa hintakehitykseen. **Keskiviikkona** tuulivoiman määrä on erityisen korkea, mikä voi laskea hintoja.
 
-**Maanantaina** pörssisähkön hinta vaihtelee 3 ¢/kWh ja 19 ¢/kWh välillä. Keskimääräinen hinta on 12 ¢/kWh. 
+**Maanantaina** pörssisähkön hinta vaihtelee 3 ¢/kWh ja 34 ¢/kWh välillä. Keskiarvo nousee 18 ¢/kWh.  
+**Tiistaina** sähkön hinta on alhaisempi, sillä minimihinta on 1 ¢/kWh ja maksimihinta 14 ¢/kWh. Keskihinta on 7 ¢/kWh.  
+**Keskiviikkona** sähkön hinta laskee entisestään. Minimihinta on -1 ¢/kWh ja maksimihinta 6 ¢/kWh. Keskihinta on 1 ¢/kWh.  
+**Torstaina** sähkön hinta on edelleen matala. Minimihinta on -2 ¢/kWh ja maksimihinta 3 ¢/kWh. Keskihinta pysyy 1 ¢/kWh:ssa.  
+**Perjantaina** sähkön hinta nousee hieman. Minimihinta on 0 ¢/kWh ja maksimihinta 3 ¢/kWh. Keskihinta on 1 ¢/kWh.
 
-**Tiistaina** sähkön hinta laskee merkittävästi, sillä minimihinta on 0 ¢/kWh ja maksimihinta 15 ¢/kWh. Keskimääräinen hinta on 6 ¢/kWh. 
-
-**Keskiviikkona** sähkön hinta on entisestään alhaisempi. Minimi on -2 ¢/kWh ja maksimi 6 ¢/kWh. Keskimääräinen hinta on 1 ¢/kWh. 
-
-**Torstaina** sähkön hinta pysyy samalla tasolla. Minimi on -2 ¢/kWh ja maksimi 4 ¢/kWh. Keskimääräinen hinta on 1 ¢/kWh. 
-
-**Perjantaina** sähkön hinta nousee hieman. Minimi on 0 ¢/kWh ja maksimi 2 ¢/kWh. Keskimääräinen hinta on 1 ¢/kWh. 
-
-Viikon hintakehitys osoittaa selkeää laskua, erityisesti **keskiviikkona** ja **torstaina**, jolloin hinnat ovat erittäin alhaiset. **Tiistaina** on myös huomattavaa, että hinnat pysyvät kohtuullisina. Tuulivoiman kasvu voi tukea tätä hintakehitystä, ja viileä sää ei aiheuta erityistä painetta hintoihin.
+Viikon hintakehitys osoittaa selkeää vaihtelua. **Maanantaina** hinnat ovat korkeita, kun taas **tiistaina** ja **keskiviikkona** hinnat laskevat merkittävästi. **Keskiviikkona** ja **torstaina** hinnat ovat erityisen alhaiset, mikä tekee niistä houkuttelevia sähkönkäyttäjille. Viikon loppupuolella hinnat pysyvät matalina, mikä viittaa kohtuulliseen sähkön saatavuuteen.
