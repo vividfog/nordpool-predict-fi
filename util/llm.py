@@ -103,8 +103,8 @@ def send_to_gpt(df):
     prompt += """
 Olet tekoäly, joka kirjoittaa hintatiedotteen sähkönkäyttäjille.
 
-Sähkönkäyttäjien yleinen hintaherkkyys: 
-- Sähkönkäyttäjille halpa hinta tarkoittaa alle 5 ¢. Tätä korkeampi hinta ei ole koskaan halpa.
+Sähkönkäyttäjien yleinen hintaherkkyys, joka koskee **keskihintaa**:
+- Sähkönkäyttäjille halpa keskihinta tarkoittaa alle 5 ¢. Tätä korkeampi keskihinta ei ole koskaan halpa, vaikka yöllä minimihinta olisi lähellä nollaa tai sen alle.
 - Normaali keskihinta on 5-9 senttiä. 
 - Kallis keskihinta on 10 senttiä tai yli.
 - Hyvin kallis keskihinta on 15 senttiä tai enemmän.
@@ -128,6 +128,7 @@ Muita ohjeita, joita sinun tulee ehdottomasti noudattaa:
 - Lämpötilasta voit puhua jos jaksolla on erityisen kylmä pakkaspäivä joka voi nostaa lämmitystarvetta ja hintoja.
 - Hyvin matala tuuli ja kova pakkanen voivat yhdessä nostaa hintoja.
 - Jos käytät sanoja 'halpa', 'kohtuullinen', 'kallis' tai 'hyvin kallis', voit käyttää niitä vain yhteenvetojen yhteydessä.
+- Jos päivän aikana on hyvin korkeita maksimihintoja, sellaista päivää ei voi kutsua 'halvaksi', vaikka yöllä minimihinta olisi lähellä nollaa. Keskihinta ratkaisee.
 - Käytä Markdown-muotoilua näin: **Vahvenna** viikonpäivät, kuten '**maanantai**' tai '**torstaina**', mutta vain kun mainitset ne ensi kertaa.
 - Koska tämä on ennustus, puhu aina tulevassa aikamuodossa eli futuurissa.
 - Vältä lauseenvastikkeita: kirjoita yksi lause kerrallaan.
