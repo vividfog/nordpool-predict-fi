@@ -7,7 +7,8 @@ var baseUrl;
 
 switch (window.location.hostname) {
     case "":
-        baseUrl = "";
+    case "localhost":
+        baseUrl = "http://localhost:5005";
         break;
     case "nordpool-predict-fi.web.app":
         baseUrl = "https://nordpool-predict-fi.web.app";
@@ -43,7 +44,7 @@ var startDate = addDays(new Date(), -2).toISOString();
 var endDate = addDays(new Date(), 2).toISOString();
 
 // URLs for the datasets
-var npfUrl = `${baseUrl}/prediction.json`; // Using your existing baseUrl for NPF data
+var npfUrl = `${baseUrl}/prediction.json`;
 var sahkotinUrl = 'https://sahkotin.fi/prices.csv';
 var sahkotinParams = new URLSearchParams({
     fix: 'true',
@@ -60,96 +61,141 @@ function addDays(date, days) {
     return result;
 }
 
-// Fetch the data and display the chart
+// Fetch the data from both the prediction and Sähkötin sources and display the chart
 Promise.all([
-    fetch(npfUrl).then(r => r.json()), // Fetch NPF data
-    fetch(`${sahkotinUrl}?${sahkotinParams}`).then(r => r.text()) // Fetch Sähkötin data
+    // Fetch the prediction data from the specified URL and parse it as JSON
+    // Note: Prediction data is in UTC
+    fetch(npfUrl).then(r => r.json()),
+    // Fetch the Sähkötin data, which is in CSV format, and retrieve it as text
+    // Note: Sähkötin data is in UTC
+    fetch(`${sahkotinUrl}?${sahkotinParams}`).then(r => r.text())
 ])
     .then(([npfData, sahkotinCsv]) => {
-        // Prepare Sähkötin series data
+        // Prepare the Sähkötin series data for the chart
+        // Split the CSV data into lines, skip the header, and map each line to a data point
         var sahkotinSeriesData = sahkotinCsv.split('\n').slice(1).map(line => {
+            // Split each line by comma to separate timestamp and price
             var [timestamp, price] = line.split(',');
-            return [new Date(timestamp).getTime(), parseFloat(price)];
+            // Parse the timestamp into a JavaScript Date object and convert it to milliseconds
+            // Implicit time zone interpretation happens here; assuming UTC
+            var parsedTime = new Date(timestamp).getTime();
+            // Convert the parsed time to a human-readable string for logging
+            // Implicit conversion from UTC to local time happens here
+            var localTime = new Date(parsedTime).toString();
+            // Log the timestamp and price for debugging purposes
+            console.log(`Sähkötin timestamp: ${localTime}, Price: ${parseFloat(price)} ¢/kWh`);
+            // Return the parsed time and price as a data point
+            return [parsedTime, parseFloat(price)];
         });
 
-        // Find the last timestamp in Sähkötin data, subtract 24 hours for overlap
-        var lastSahkotinTimestamp = Math.max(...sahkotinSeriesData.map(item => item[0])) - (24 * 60 * 60 * 1000);
+        // Align the Sähkötin data to the Nordpool data
+        // Determine the last timestamp in the Sähkötin data and subtract 25 hours for overlap (the price data contains the 00-01 hour too)
+        var lastSahkotinTimestamp = Math.max(...sahkotinSeriesData.map(item => item[0])) - (25 * 60 * 60 * 1000);
+        // Log the adjusted last timestamp for debugging
+        // Implicit conversion from UTC to local time happens here
+        console.log("End of Sähkötin data for today; displaying the Nordpool prediction data from:", new Date(lastSahkotinTimestamp).toString());
 
-        // Prepare NPF series data, start from 24 hours before the last Sähkötin timestamp
+        // Prepare the NPF series data, with one overlapping 24 hour period
         var npfSeriesData = npfData
+            // Map each item in the NPF data to a data point
             .map(item => [item[0], item[1]])
+            // Filter out data points that are older than the adjusted last Sähkötin timestamp
             .filter(item => item[0] > lastSahkotinTimestamp);
 
-        // Define the chart option with both series
+        // Log each prediction timestamp and price for debugging
+        npfSeriesData.forEach(item => {
+            // Implicit conversion from UTC to local time happens here
+            var localTime = new Date(item[0]).toString();
+            console.log(`Prediction timestamp: ${localTime}, Price: ${item[1]} ¢/kWh`);
+        });
+
+        // Define the chart options, including both the prediction and Sähkötin series
         nfpChart.setOption({
+            // Set the chart title (currently empty)
             title: {
                 text: ' '
             },
+            // Define the legend for the chart, specifying the series names and position
             legend: {
                 data: ['Nordpool', 'Ennuste'],
                 right: 16
             },
+            // Configure the tooltip to display information when hovering over the chart
             tooltip: {
                 trigger: 'axis',
                 formatter: function (params) {
+                    // Define an array of weekday abbreviations for formatting dates
                     var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
+                    // Convert the axis value to a Date object
+                    // Implicit conversion from UTC to local time happens here
                     var date = new Date(params[0].axisValue);
 
-                    var weekday = weekdays[date.getDay()]; 
+                    // Extract and format the date components for display
+                    var weekday = weekdays[date.getDay()];
                     var year = date.getFullYear();
-                    var month = date.getMonth() + 1; // Month is 0-based, add 1 but no leading zero
-                    var day = date.getDate(); // No leading zero for day
-                    var hours = ("0" + date.getHours()).slice(-2); // Add leading zero
-                    var minutes = ("0" + date.getMinutes()).slice(-2); // Add leading zero
-                    var seconds = ("0" + date.getSeconds()).slice(-2); // Add leading zero
-
+                    var month = date.getMonth() + 1;
+                    var day = date.getDate();
+                    var hours = ("0" + date.getHours()).slice(-2);
+                    var minutes = ("0" + date.getMinutes()).slice(-2);
                     var formattedDateString = `${weekday} ${day}.${month}. klo ${hours}`;
-                    
+
+                    // Initialize the result string with the formatted date
                     var result = formattedDateString + '<br/>';
+                    // Append each series' data to the result string
                     params.forEach(function (item) {
-                        // Round the value to one decimal place
                         var valueRounded = item.value[1].toFixed(1);
                         result += item.marker + " " + item.seriesName + ': ' + valueRounded + ' ¢/kWh<br/>';
                     });
-                    
+
+                    // Return the formatted result string for the tooltip
                     return result;
                 }
             },
 
+            // Configure the x-axis of the chart
             xAxis: {
                 type: 'time',
                 boundaryGap: false,
                 axisLabel: {
                     formatter: function (value) {
+                        // Convert the axis value to a Date object
+                        // Implicit conversion from UTC to local time happens here
                         var date = new Date(value);
+
+                        // Define an array of weekday abbreviations for formatting dates
                         var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
+                        // Extract and format the date components for display
                         var year = date.getFullYear();
                         var day = ("0" + date.getDate()).slice(-2);
-                        var month = date.getMonth() + 1;  // add 1 since getMonth() starts from 0
+                        var month = date.getMonth() + 1;
                         var weekday = weekdays[date.getDay()];
 
+                        // Return the formatted date string for the axis label
                         return weekday + ' ' + day + '.';
                     }
                 }
             },
+            // Configure the y-axis of the chart
             yAxis: {
                 type: 'value',
                 name: '¢/kWh ALV24',
                 nameLocation: 'end',
                 nameGap: 20,
+                // Set the maximum value of the y-axis to the nearest higher multiple of 10
                 max: value => Math.ceil(value.max / 10) * 10,
                 nameTextStyle: {
                     fontWeight: 'regular'
                 },
                 axisLabel: {
                     formatter: function (value) {
-                        // Round the cents to one decimal place
+                        // Format the axis label value to have no decimal places
                         return value.toFixed(0);
                     }
                 }
             },
 
-            // Set gradient colors for the realized price
+            // Define the visual map for setting gradient colors based on price ranges
+            // This visual map applies to the realized price series
             visualMap: [{
                 show: false,
                 seriesIndex: [1],
@@ -168,7 +214,7 @@ Promise.all([
                 }
             },
 
-            // Set gradient colors for the predicted price
+            // This visual map applies to the predicted price series
             {
                 show: false,
                 seriesIndex: [0],
@@ -187,10 +233,9 @@ Promise.all([
                 }
             }],
 
-            // Data series
+            // Define the series for the chart, including both prediction and Sähkötin data
             series: [
                 {
-                    // Prediction
                     name: 'Ennuste',
                     type: 'line',
                     data: npfSeriesData,
@@ -202,28 +247,29 @@ Promise.all([
                     opacity: 0.9
                 },
                 {
-                    // Realized
                     name: 'Nordpool',
                     type: 'line',
                     data: sahkotinSeriesData,
                     symbol: 'none',
                     step: 'middle',
-                    opacity: 0.9                },
+                    opacity: 0.9
+                },
                 {
-                    // MarkLine for current time
                     type: 'line',
                     markLine: {
-                        // Hides the symbol at the end of the line
                         symbol: 'none',
                         label: {
                             formatter: function () {
+                                // Get the current time and format it as hours and minutes
+                                // Implicit conversion from local time to UTC happens here
                                 let currentTime = new Date();
                                 let hours = currentTime.getHours();
                                 let minutes = currentTime.getMinutes();
 
+                                // Add leading zeros to hours and minutes if necessary
                                 hours = hours < 10 ? '0' + hours : hours;
                                 minutes = minutes < 10 ? '0' + minutes : minutes;
-                                // This will be local time 24 hour formatted string
+                                // Return the formatted time string for the mark line label
                                 return 'klo ' + hours + ':' + minutes;
                             },
                             position: 'end'
@@ -235,7 +281,8 @@ Promise.all([
                         },
                         data: [
                             {
-                                // Current time as the position for the line
+                                // Set the x-axis position of the mark line to the current time
+                                // Implicit conversion from local time to UTC happens here
                                 xAxis: new Date().getTime()
                             }
                         ]
@@ -245,6 +292,7 @@ Promise.all([
         });
     })
     .catch(error => {
+        // Log an error message if there is an issue fetching or processing the data
         console.error('Error fetching or processing data:', error);
     });
 
@@ -648,3 +696,4 @@ window.onresize = function () {
     historyChart.resize();
     windPowerChart.resize();
 }
+
