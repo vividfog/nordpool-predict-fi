@@ -187,8 +187,25 @@ def train_and_evaluate_model(model, X_train, y_train, X_test, y_test, model_name
     """Train the model and evaluate its performance."""
     logger.info(f"Starting training and evaluation for {model_name}...")
     
-    # Fit the model with training data
-    model.fit(X_train, y_train)
+    start_time = time.time()
+    
+    # Check if the model supports eval_set
+    if hasattr(model, 'fit') and 'eval_set' in model.fit.__code__.co_varnames:
+        # Fit the model with training data and use eval_set for early stopping
+        model.fit(
+            X_train, y_train,
+            eval_set=[(X_test, y_test)],
+            eval_metric='rmse',  # You can choose other metrics like 'mae' or 'logloss'
+            early_stopping_rounds=50,  # Adjust the number of rounds for early stopping
+            verbose=True  # Set to True if you want to see the evaluation results during training
+        )
+        logger.info(f"Training time for {model_name}: {time.time() - start_time:.2f} seconds")
+        if hasattr(model, 'best_iteration'):
+            logger.info(f"{model_name} stopped on iteration: {model.best_iteration}")
+    else:
+        # Fit the model without eval_set
+        model.fit(X_train, y_train)
+        logger.info(f"Training time for {model_name}: {time.time() - start_time:.2f} seconds")
     
     # Predict using the model on the test set
     y_pred = model.predict(X_test)
@@ -300,24 +317,21 @@ def tune_model_with_optuna(model_class, X, y, model_name, timeout, n_trials):
 
     def objective(trial):
         if model_name == "XGBoost":
-            # General ballpark hyperparameters for XGBoost:
-            # [2024-09-17 21:12:40] INFO     [2024-09-17 21:12:40] - Best parameters found for XGBoost: {'n_estimators': 5878, 'max_depth': 6, 'learning_rate': 0.016536051996816806, 'subsample': 0.41536974302490287, 'colsample_bytree': 0.604025429289723}                                                                       rf_vs_world_windpower.py:351
             params = {
-                'n_estimators': trial.suggest_int('n_estimators', 1000, 8000),
+                'n_estimators': trial.suggest_int('n_estimators', 1000, 12000),
                 'max_depth': trial.suggest_int('max_depth', 2, 12),
                 'learning_rate': trial.suggest_float('learning_rate', 0.001, 0.06),
                 'subsample': trial.suggest_float('subsample', 0.2, 0.6),
                 'colsample_bytree': trial.suggest_float('colsample_bytree', 0.25, 0.85),
-                'gamma': trial.suggest_float('gamma', 0, 0.1),  # Regularization parameter
-                'reg_alpha': trial.suggest_float('reg_alpha', 0, 1.0),  # L1 regularization term
-                'reg_lambda': trial.suggest_float('reg_lambda', 0, 1.0),  # L2 regularization term
-                'random_state': 42,  # Ensures reproducibility
-                'n_jobs': -1,        # Use all available CPU cores
-                'tree_method': 'auto' # Let XGBoost automatically choose the method
+                'gamma': trial.suggest_float('gamma', 0, 0.1),
+                'reg_alpha': trial.suggest_float('reg_alpha', 0, 1.0),
+                'reg_lambda': trial.suggest_float('reg_lambda', 0, 1.0),
+                'random_state': 42,
+                'n_jobs': -1,
+                'tree_method': 'auto'
             }
 
         elif model_name == "Light GBM":
-            # Define hyperparameter search space for LightGBM
             params = {
                 'n_estimators': trial.suggest_int('n_estimators', 200, 2000),
                 'max_depth': trial.suggest_int('max_depth', -1, 20),
@@ -328,7 +342,6 @@ def tune_model_with_optuna(model_class, X, y, model_name, timeout, n_trials):
                 'bagging_freq': trial.suggest_int('bagging_freq', 1, 7),
             }
         elif model_name == "Gradient Boosting":
-            # Define hyperparameter search space for Gradient Boosting
             params = {
                 'n_estimators': trial.suggest_int('n_estimators', 100, 1000),
                 'max_depth': trial.suggest_int('max_depth', 3, 20),
@@ -336,7 +349,6 @@ def tune_model_with_optuna(model_class, X, y, model_name, timeout, n_trials):
                 'subsample': trial.suggest_float('subsample', 0.5, 1.0),
             }
         elif model_name == "Random Forest":
-            # Define hyperparameter search space for Random Forest
             params = {
                 'n_estimators': trial.suggest_int('n_estimators', 100, 1000),
                 'max_depth': trial.suggest_int('max_depth', 3, 30),
@@ -355,7 +367,20 @@ def tune_model_with_optuna(model_class, X, y, model_name, timeout, n_trials):
             X_train, X_val = X.iloc[train_idx], X.iloc[val_idx]
             y_train, y_val = y.iloc[train_idx], y.iloc[val_idx]
 
-            model.fit(X_train, y_train)
+            # Check if the model supports eval_set
+            if hasattr(model, 'fit') and 'eval_set' in model.fit.__code__.co_varnames:
+                model.fit(
+                    X_train, y_train,
+                    eval_set=[(X_val, y_val)],
+                    eval_metric='rmse',  # Adjust metric as needed
+                    early_stopping_rounds=50,
+                    verbose=True
+                )
+                if hasattr(model, 'best_iteration'):
+                    logger.info(f"Model stopped on iteration: {model.best_iteration}")
+            else:
+                model.fit(X_train, y_train)
+
             y_pred = model.predict(X_val)
             mse = mean_squared_error(y_val, y_pred)
             cv_scores.append(mse)
@@ -414,10 +439,10 @@ def main():
 
     n_jobs = get_n_jobs()
     models = {
-        "Random Forest": RandomForestRegressor(random_state=42, n_jobs=1),
-        "XGBoost": XGBRegressor(random_state=42, n_jobs=1),
+        "Random Forest": RandomForestRegressor(random_state=42, n_jobs=n_jobs),
+        "XGBoost": XGBRegressor(random_state=42, n_jobs=n_jobs, early_stopping_rounds=50),
         "Gradient Boosting": GradientBoostingRegressor(random_state=42),
-        "Light GBM": LGBMRegressor(random_state=42, n_jobs=1, verbose=-1)
+        "Light GBM": LGBMRegressor(random_state=42, n_jobs=n_jobs, verbose=-1)
     }
 
     model_map = {
