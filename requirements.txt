@@ -1,6 +1,7 @@
 bs4==0.0.2
 lxml==5.1.0
 matplotlib==3.8.2
+optuna==4.0.0
 pandas==2.2.0
 pip==24.0
 pipdeptree==2.14.0
