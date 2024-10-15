@@ -70,13 +70,18 @@ parser.add_argument('--eval', action='store_true', help='Show evaluation metrics
 parser.add_argument('--training-stats', action='store_true', help='Show training stats for candidate models in the database as a CSV')
 parser.add_argument('--dump', action='store_true', help='Dump the SQLite database to CSV format')
 parser.add_argument('--plot', action='store_true', help='Plot all predictions and actual prices to a PNG file in the data folder')
-parser.add_argument('--predict', action='store_true', help='Generate price predictions from now onwards')
+parser.add_argument('--predict', action='store_true', help='Generate price predictions from now onwards (requires --train)')
 parser.add_argument('--add-history', action='store_true', help='Add all missing predictions to the database post-hoc; use with --predict')
 parser.add_argument('--narrate', action='store_true', help='Narrate the predictions into text using an LLM')
 parser.add_argument('--commit', action='store_true', help='Commit the results to DB and deploy folder; use with --predict, --narrate')
 parser.add_argument('--deploy', action='store_true', help='Deploy the output files to the deploy folder')
 
 args = parser.parse_args()
+
+# Ensure --predict is only used with --train
+if args.predict and not args.train:
+    print("Error: --predict requires --train to be used together.")
+    exit(1)
 
 # Configure pandas to display all rows
 pd.set_option('display.max_rows', None)
@@ -125,7 +130,7 @@ if args.train:
     # Train a model and fetch the stats for it
     mae, mse, r2, samples_mae, samples_mse, samples_r2, rf_trained = train_model(df, fmisid_ws=fmisid_ws, fmisid_t=fmisid_t)
     
-    print(f"→ Model trained:\n  MAE (vs test set): {mae}\n  MSE (vs test set): {mse}\n  R² (vs test set): {r2}\n  MAE (vs 10x500 randoms): {samples_mae}\n  MSE (vs 10x500 randoms): {samples_mse}\n  R² (vs 10x500 randoms): {samples_r2}")
+    print(f"→ Training sanity check:\n  MAE (vs test set): {mae}\n  MSE (vs test set): {mse}\n  R² (vs test set): {r2}\n  MAE (vs 10x500 randoms): {samples_mae}\n  MSE (vs 10x500 randoms): {samples_mse}\n  R² (vs 10x500 randoms): {samples_r2}")
 
     # If we're moving towards --predict, we're not saving, it's continuous training then
     if args.commit and not args.predict:
@@ -323,6 +328,7 @@ if args.predict:
         print("→ Found a newly created in-memory model for predictions")
 
     # Predict the prices
+    print("→ Predicting prices...")
     price_df = rf_model.predict(df[prediction_features])
     df['PricePredict_cpkWh'] = price_df
     
