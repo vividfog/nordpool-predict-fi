@@ -109,7 +109,10 @@ def update_spot(df):
         merged_df = pd.merge(df, price_df, on='Timestamp', how='left')
        
         merged_df = clean_up_df_after_merge(merged_df)
-               
+
+        # Interpolate to fill NaN values in 'Price_cpkWh'
+        merged_df['Price_cpkWh'] = merged_df['Price_cpkWh'].interpolate(method='cubic')
+
         return merged_df
     else:
         print("Warning: No electricity price data fetched; unable to update DataFrame.")
