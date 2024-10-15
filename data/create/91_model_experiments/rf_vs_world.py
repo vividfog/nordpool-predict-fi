@@ -202,8 +202,25 @@ def train_and_evaluate(model, X_train, y_train, X_test, y_test, model_name):
     """Train the model and evaluate its performance."""
     logger.info(f"Starting training and evaluation for {model_name}...")
     
-    # Fit the model with training data
-    model.fit(X_train, y_train)
+    start_time = time.time()
+    
+    # Check if the model supports eval_set
+    if hasattr(model, 'fit') and 'eval_set' in model.fit.__code__.co_varnames:
+        # Fit the model with training data and use eval_set for early stopping
+        model.fit(
+            X_train, y_train,
+            eval_set=[(X_test, y_test)],
+            eval_metric='rmse',  # You can choose other metrics like 'mae' or 'logloss'
+            early_stopping_rounds=50,  # Adjust the number of rounds for early stopping
+            verbose=True  # Set to True if you want to see the evaluation results during training
+        )
+        logger.info(f"Training time for {model_name}: {time.time() - start_time:.2f} seconds")
+        if hasattr(model, 'best_iteration'):
+            logger.info(f"{model_name} stopped on iteration: {model.best_iteration}")
+    else:
+        # Fit the model without eval_set
+        model.fit(X_train, y_train)
+        logger.info(f"Training time for {model_name}: {time.time() - start_time:.2f} seconds")
     
     # Predict using the model on the test set
     y_pred = model.predict(X_test)
@@ -249,8 +266,8 @@ def train_and_evaluate(model, X_train, y_train, X_test, y_test, model_name):
         explainer = shap.TreeExplainer(model, X_train)
         shap_values = explainer(X_test, check_additivity=False)
         shap.summary_plot(shap_values, X_test, plot_type="bar", show=False)
-        plt.savefig(f"models/{model_name}_shap_summary.png")
-        logger.info(f"SHAP summary plot saved to models/{model_name}_shap_summary.png")
+        plt.savefig(f"{model_name}_shap_summary.png")
+        logger.info(f"SHAP summary plot saved to {model_name}_shap_summary.png")
     except Exception as e:
         logger.warning(f"SHAP analysis failed for {model_name}: {str(e)}")
 
@@ -366,7 +383,7 @@ def tune_model_with_optuna(model_class, X, y, model_name, timeout, iterations):
             # For this model we know a range from previous experiments
             elif model_name == 'XGBoost':
                 params = {
-                    'n_estimators': trial.suggest_int('n_estimators', 7000, 9999),
+                    'n_estimators': trial.suggest_int('n_estimators', 7000, 12000),
                     'max_depth': trial.suggest_int('max_depth', 5, 12),            
                     'learning_rate': trial.suggest_float('learning_rate', 0.005, 0.05, log=True),
                     'subsample': trial.suggest_float('subsample', 0.1, 0.8),
@@ -393,12 +410,23 @@ def tune_model_with_optuna(model_class, X, y, model_name, timeout, iterations):
             inner_kf = KFold(n_splits=3, shuffle=True, random_state=42)  # Inner cross-validation
             inner_scores = []
 
-            # Inner fold training and evaluation
+            # Inner fold training and evaluation with early stopping
             for inner_fold, (inner_train_index, inner_test_index) in enumerate(inner_kf.split(X_outer_train)):
                 X_inner_train, X_inner_val = X_outer_train.iloc[inner_train_index], X_outer_train.iloc[inner_test_index]
                 y_inner_train, y_inner_val = y_outer_train.iloc[inner_train_index], y_outer_train.iloc[inner_test_index]
 
-                model.fit(X_inner_train, y_inner_train)
+                # Check if the model supports eval_set for early stopping
+                if hasattr(model, 'fit') and 'eval_set' in model.fit.__code__.co_varnames:
+                    model.fit(
+                        X_inner_train, y_inner_train,
+                        eval_set=[(X_inner_val, y_inner_val)],
+                        eval_metric='rmse',
+                        early_stopping_rounds=50,
+                        verbose=False
+                    )
+                else:
+                    model.fit(X_inner_train, y_inner_train)
+
                 y_pred = model.predict(X_inner_val)
                 score = mean_squared_error(y_inner_val, y_pred)
                 inner_scores.append(score)
@@ -470,7 +498,7 @@ def main():
     # Define models to optimize
     all_models = {
         "rf": ("Random Forest", RandomForestRegressor(random_state=42, n_jobs=n_jobs)),
-        "xgb": ("XGBoost", XGBRegressor(random_state=42, n_jobs=n_jobs)),
+        "xgb": ("XGBoost", XGBRegressor(random_state=42, n_jobs=n_jobs, early_stopping_rounds=50)),
         "gb": ("Gradient Boosting", GradientBoostingRegressor(random_state=42))
     }
 
@@ -499,8 +527,8 @@ def main():
             eval_results = train_and_evaluate(model, X_train, y_train, X_test, y_test, model_name)
             results[model_name] = {**cv_results, **eval_results, "Best Params": best_params}
 
-            joblib.dump(model, f'models/{model_name}_model.pkl')
-            logger.info(f"{model_name} model saved to 'models/{model_name}_model.pkl'")
+            joblib.dump(model, f'{model_name}_model.pkl')
+            logger.info(f"{model_name} model saved to '{model_name}_model.pkl'")
 
         except Exception as e:
             logger.error(f"Error processing {model_name}: {str(e)}")

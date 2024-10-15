@@ -51,27 +51,52 @@ def train_model(df, fmisid_ws, fmisid_t):
         shuffle=True
     )
   
-    print("→ Data for training, head:")
+    print("→ Data for training, sample:")
     print(X_train.head())
-    
+
+    # 2024-10-01 with no early stopping
+    # params = {
+    #     'objective': 'reg:squarederror', 
+    #     'n_estimators': 8062,
+    #     'max_depth': 6,
+    #     'learning_rate': 0.026493443183508738,
+    #     'subsample': 0.4664246600913551,
+    #     'colsample_bytree': 0.4994047430694387,
+    #     'gamma': 0.03957369803518469,
+    #     'reg_alpha': 4.967562820577262,
+    #     'reg_lambda': 0.799263401779804,
+    #     'random_state': 42,
+    # }
+
+    # xgb_model = XGBRegressor(**params)
+    # xgb_model.fit(X_train, y_train)
+
+    # 2024-10-15: 400 rounds 5 fold CVE with early stopping of 50 rounds
+    # Best Parameters found for XGBoost: {'n_estimators': 11867, 'max_depth': 7, 'learning_rate': 0.028142731058495178, 'subsample': 0.20366946173978723, 'colsample_bytree': 0.7631260495996145, 'gamma': 0.06244658663024986, 'reg_alpha': 4.542768133426432, 'reg_lambda': 0.6949143888830083}
     params = {
-        'objective': 'reg:squarederror', 
-        'n_estimators': 8062,
-        'max_depth': 6,
-        'learning_rate': 0.026493443183508738,
-        'subsample': 0.4664246600913551,
-        'colsample_bytree': 0.4994047430694387,
-        'gamma': 0.03957369803518469,
-        'reg_alpha': 4.967562820577262,
-        'reg_lambda': 0.799263401779804,
+        'early_stopping_rounds': 50,
+        'objective': 'reg:squarederror',
+        'eval_metric': 'rmse',
+        'n_estimators': 11867,
+        'max_depth': 7,
+        'learning_rate': 0.028142731058495178,
+        'subsample': 0.20366946173978723,
+        'colsample_bytree': 0.7631260495996145,
+        'gamma': 0.06244658663024986,
+        'reg_alpha': 4.542768133426432,
+        'reg_lambda': 0.6949143888830083,
         'random_state': 42,
     }
 
-    # Train the model using the reg:quantileerror objective
+    # Train the model
+    print("→ XGBoost: ", end="")
+    print(", ".join(f"{k}={v}" for k, v in params.items()))
+
     xgb_model = XGBRegressor(**params)
-    xgb_model.fit(X_train, y_train)
+    xgb_model.fit(X_train, y_train, eval_set=[(X_test, y_test)], verbose=100)
 
     # SHAP analysis
+    print("→ SHAP feature importances (Mean Absolute SHAP Values per Feature):")
     explainer = shap.TreeExplainer(xgb_model)
     shap_values = explainer.shap_values(X_test, check_additivity=False)
 
@@ -82,7 +107,6 @@ def train_model(df, fmisid_ws, fmisid_t):
         'Mean |SHAP Value|': shap_summary
     }).sort_values(by='Mean |SHAP Value|', ascending=False)
 
-    print("\n→ SHAP feature importances (Mean Absolute SHAP Values per Feature):")
     print(shap_summary_df.to_string(index=False))
 
     # Residual analysis
