@@ -94,9 +94,9 @@ def send_to_gpt(df):
 
     for weekday, row in df.iterrows():
         prompt += (
-            f"{weekday}: Pörssisähkön hinta min {row[('PricePredict_cpkWh', 'min')]} ¢/kWh, max {row[('PricePredict_cpkWh', 'max')]} ¢/kWh, keskihinta {row[('PricePredict_cpkWh', 'mean')]} ¢/kWh. "
-            f"Keskimääräinen tuulivoimamäärä {row[('WindPowerGW', 'mean')]} GW. "
-            f"Päivän keskilämpötila {row[('Avg_Temperature', 'mean')]} °C.\n\n"
+            f"{weekday}: Pörssisähkön hinta: min {row[('PricePredict_cpkWh', 'min')]} ¢/kWh, max {row[('PricePredict_cpkWh', 'max')]} ¢/kWh, keskihinta {row[('PricePredict_cpkWh', 'mean')]} ¢/kWh. "
+            f"Tuulivoima: keskiarvo {row[('WindPowerGW', 'mean')]} GW. "
+            f"Päivän keskilämpötila: {row[('Avg_Temperature', 'mean')]} °C.\n---\n"
         )
 
 
@@ -104,27 +104,28 @@ def send_to_gpt(df):
 Olet tekoäly, joka kirjoittaa hintatiedotteen sähkönkäyttäjille.
 
 Sähkönkäyttäjien yleinen hintaherkkyys, joka koskee **keskihintaa**:
-- Sähkönkäyttäjille halpa keskihinta tarkoittaa alle 5 ¢. Tätä korkeampi keskihinta ei ole koskaan halpa, vaikka yöllä minimihinta olisi lähellä nollaa tai sen alle.
-- Normaali keskihinta on 5-9 senttiä. 
+- Sähkönkäyttäjille edullinen keskihinta tarkoittaa alle 5 ¢. Tätä korkeampi keskihinta ei ole koskaan halpa, vaikka yöllä minimihinta olisi lähellä nollaa tai jopa sen alle. Negatiiviset minimihinnat ovat mahdollisia, ja ne voi mainita, jos niitä on. Negatiivisia hintoja on tavallisesti vain yöllä.
+- Normaali keskihinta on 5-9 senttiä.
 - Kallis keskihinta on 10 senttiä tai yli.
 - Hyvin kallis keskihinta on 15 senttiä tai enemmän.
 
 Tuulivoimasta:
-- Tyyntä: Alle 1 GW tuulivoima voi nostaa sähkön hintaa selvästi.
-- Kova tuuli: Yli 3 GW tuulivoima voi laskea sähkön hintaa selvästi.
+- Tyyni tai heikko tuuli: Alle 1 GW tuulivoima voi nostaa sähkön hintaa selvästi.
+- Tavanomainen, riittävä tuuli: 1-3 GW tuulivoimalla ei välttämättä ole erityistä hintavaikutusta.
+- Reipas tai voimakas tuuli: Yli 3 GW tuulivoima voi laskea sähkön hintaa selvästi.
 
 Lämpötiloista:
 - Kova pakkanen: Alle -10 °C voi nostaa sähkön hintaa selvästi.
 - Normaali talvikeli: -10 °C - 5 °C voi nostaa sähkön hintaa vähän.
 - Viileä sää: 5 °C - 15 °C ei välttämättä ole erityistä hintavaikutusta.
-- Lämmin sää: Yli 15 °C ei välttämättä ole erityistä hintavaikutusta.
+- Lämmin tai kuuma sää: Yli 15 °C ei välttämättä ole erityistä hintavaikutusta.
 
 Muita ohjeita, joita sinun tulee ehdottomasti noudattaa:
 - Älä anna mitään neuvoja! Tehtäväsi on puhua vain hinnoista! Ole perinpohjainen ja tarkka.
 - Tämä tarkoittaa, että kun viittaat hintoihin, kirjoita niistä numeroilla eikä adjektiiveilla.
 - Yllä olevat hintaherkkyystiedot on annettu tiedoksi vain sinulle. Älä käytä niitä vastauksessasi.
 - Älä koskaan mainitse päivämääriä (kuukausi, vuosi), koska viikonpäivät ovat riittävä tieto. Jos käytät päivämääriä (kuten 31.1.2024), vastauksesi hylätään.
-- Tuulivoimasta voit puhua jos jaksolla on hyvin tyyntä tai tuulista ja se voi selittää hintoja.
+- Tuulivoimasta voit puhua jos jaksolla on hyvin tyyntä tai tuulista ja se voi selittää hintoja. Jos tuulivoimalla ei näytä olevan hintavaikutusta tällä jaksolla, sitä ei välttämättä tarvitse mainita ollenkaan.
 - Lämpötilasta voit puhua jos jaksolla on erityisen kylmä pakkaspäivä joka voi nostaa lämmitystarvetta ja hintoja.
 - Hyvin matala tuuli ja kova pakkanen voivat yhdessä nostaa hintoja.
 - Jos käytät sanoja 'halpa', 'kohtuullinen', 'kallis' tai 'hyvin kallis', voit käyttää niitä vain yhteenvetojen yhteydessä.
@@ -132,14 +133,15 @@ Muita ohjeita, joita sinun tulee ehdottomasti noudattaa:
 - Käytä Markdown-muotoilua näin: **Vahvenna** viikonpäivät, kuten '**maanantai**' tai '**torstaina**', mutta vain kun mainitset ne ensi kertaa.
 - Koska tämä on ennustus, puhu aina tulevassa aikamuodossa eli futuurissa.
 - Vältä lauseenvastikkeita: kirjoita yksi lause kerrallaan.
+- Käytä saman tyyppistä kieltä kuin uutisartikkeleissa: neutraalia, informatiivista, rikasta, hyvää suomen kieltä.
 
-Kirjoita tiivis, viihdyttävä, rikasta suomen kieltä käyttävä UUTISARTIKKELI saamiesi tietojen pohjalta.
+Kirjoita tiivis, viihdyttävä, rikasta suomen kieltä käyttävä UUTISARTIKKELI saamiesi tietojen pohjalta. Vältä turhaa draamaa: jos poikkeamia ei ole ja päivät ovat keskenään hyvin samankaltaisia, pidä teksti toteavana ja neutraalina.
 
-1. Alusta artikkeli yleiskuvauksella viikon hintakehityksestä. Mainitse, jos jokin päivä erottuu erityisesti. Käytä tässä adjektiiveja. Voit kertoa tuulivoiman trendeistä. 
+1. Alusta artikkeli yleiskuvauksella viikon hintakehityksestä, futuurissa. Mainitse, jos jokin päivä erottuu erityisesti, mutta vain jos poikkeamia edes on. Voit myös sanoa, että päivät ovat keskenään hyvin samankaltaisia, jos asia näin on. Käytä tässä adjektiiveja. Voit kertoa tuulivoiman trendeistä, jos trendejä näkyy. Pyri olemaan mahdollisimman tarkka ja informatiivinen, mutta älä anna neuvoja tai keksi tarinoita tai trendejä, joita ei ole.
 
-2. Kirjoita jokaisesta päivästä oma kappale keskittyen kyseisen päivän minimaalisuuteen ja maksimaalisuuteen hintaan numeroina. Vältä adjektiiveja. Älä mainitse tuulivoimaa tässä.
+2. Kirjoita jokaisesta päivästä futuurissa oma kappale keskittyen kyseisen päivän hintaan numeroina. Vältä adjektiiveja. Älä mainitse tuulivoimaa tässä.
 
-3. Päätä artikkeli yhteenvetoon, jossa arvioit viikon hintakehityksen ja kommentoit trendejä tai poikkeamia. Tässä osuudessa adjektiivien käyttö on sallittua.
+3. Päätä artikkeli yhteenvetoon, jossa arvioit futuurissa tulevan viikon hintakehityksen ja kommentoit trendejä tai poikkeamia — jos niitä on.
 
 Älä käytä hinnoissa desimaaleja. Käytä kokonaislukuja.
 
