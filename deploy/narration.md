@@ -1,13 +1,13 @@
-Sähkön hintakehitys tällä viikolla näyttää mielenkiintoiselta. Erityisesti **perjantaina** ja **lauantaina** on odotettavissa mielenkiintoisia hintamuutoksia, kun tuulivoiman määrä nousee. Keskimääräiset hinnat pysyvät kuitenkin kohtuullisina, mikä tarjoaa sähkönkäyttäjille mahdollisuuden hyödyntää edullisempia energiahintoja. Tuulivoiman määrä vaihtelee, mutta se on pääasiassa kohtuullisella tasolla.
+Viikon sähkön hintakehitys näyttää olevan melko tasainen. Pörssisähkön hinnat vaihtelevat vain hieman eri päivinä, eikä suuria poikkeamia näytä olevan. Tuulivoiman keskiarvot vaihtelevat hieman, mutta eivät vaikuta merkittävästi hintakehitykseen. 
 
-**Keskiviikkona** pörssisähkön hinta vaihtelee 1 ¢/kWh ja 5 ¢/kWh välillä. Keskimääräinen hinta on 2 ¢/kWh. 
+**Keskiviikkona** pörssisähkön hinta on ennustettu olevan minimissään 0 ¢/kWh ja maksimmillaan 4 ¢/kWh. Keskihinta nousee 1 ¢/kWh. 
 
-**Torstaina** sähkön hinta pysyy samankaltaisena, sillä minimihinta on -1 ¢/kWh ja maksimihinta 5 ¢/kWh. Keskimääräinen hinta on jälleen 2 ¢/kWh.
+**Torstaina** pörssisähkön hinta on ennustettu minimissään 0 ¢/kWh ja maksimmillaan 3 ¢/kWh. Keskihinta on 2 ¢/kWh. 
 
-**Perjantaina** sähkön hinta nousee hieman. Minimihinta on 0 ¢/kWh ja maksimihinta 3 ¢/kWh. Keskimääräinen hinta on 1 ¢/kWh.
+**Perjantaina** pörssisähkön hinta on ennustettu minimissään 0 ¢/kWh ja maksimmillaan 2 ¢/kWh. Keskihinta pysyy 1 ¢/kWh:ssa. 
 
-**Lauantaina** sähkön hinta vaihtelee 0 ¢/kWh ja 5 ¢/kWh välillä. Keskimääräinen hinta on 1 ¢/kWh.
+**Lauantaina** pörssisähkön hinta on ennustettu minimissään 0 ¢/kWh ja maksimmillaan 3 ¢/kWh. Keskihinta on 1 ¢/kWh. 
 
-**Sunnuntaina** sähkön hinta on 0 ¢/kWh minimissään ja 2 ¢/kWh maksimissaan. Keskimääräinen hinta on 1 ¢/kWh.
+**Sunnuntaina** pörssisähkön hinta on ennustettu minimissään 0 ¢/kWh ja maksimmillaan 3 ¢/kWh. Keskihinta on 1 ¢/kWh. 
 
-Viikon hintakehitys näyttää olevan kohtuullinen, ja sähkönkäyttäjät voivat nauttia edullisista hinnoista. Erityisesti **perjantaina** ja **lauantaina** on havaittavissa trendi, jossa tuulivoiman määrä voi vaikuttaa hintakehitykseen. Keskimääräiset hinnat pysyvät alle 5 ¢/kWh, mikä tekee viikosta houkuttelevan sähkönkäyttäjille.
+Yhteenvetona voidaan todeta, että tuleva viikko tarjoaa sähkönkäyttäjille edullisia hintoja. Keskihinnat pysyvät alhaisina, ja tuulivoiman keskiarvot ovat riittäviä, mikä tukee hintakehitystä. Poikkeamia ei ole havaittavissa, ja hinnat pysyvät samankaltaisina läpi viikon.
