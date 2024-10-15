@@ -1,46 +1,42 @@
 # pip install numpy pandas python-dotenv rich scikit-learn xgboost statsmodels scipy argparse matplotlib optuna shap
 
 """
-Electricity Price Prediction Model Comparison Script
+Electricity Price Prediction Model Comparison
 
-This script trains and compares tree-based machine learning models to predict
-electricity prices, specifically focusing on Random Forest, XGBoost, and 
-Gradient Boosting.
+This script trains and compares tree-based models (Random Forest, XGBoost, Gradient Boosting)
+for predicting electricity prices.
 
-Key Features:
---------------
+Features:
+---------
 1. Data Preprocessing:
    - Cyclical transformations for time features
-   - Missing value handling and outlier capping
+   - Handling missing values and outliers
 
 2. Model Training and Evaluation:
    - Nested cross-validation with Optuna for hyperparameter tuning
-   - Evaluation metrics: MAE, MSE, RMSE, R², SMAPE
-   - Residual analysis: Durbin-Watson test and autocorrelation
+   - Metrics: MAE, MSE, RMSE, R², SMAPE
+   - Residual analysis: Durbin-Watson and autocorrelation
 
 3. Feature Importance:
-   - Ranking via SHAP values with saved plots for interpretability
+   - SHAP values for interpretability
 
 4. Output:
-   - Logs with process details and metrics
-   - Tables comparing model performance
-   - Saved SHAP plots and model artifacts
+   - Logs, metrics, comparison tables, SHAP plots, and model artifacts
 
 Usage:
 ------
-    python data/create/91_model_experiments/rf_vs_world.py --data 'data/dump.csv' --optimize 'rf,xgb'
+    python rf_vs_world.py --data 'data/dump.csv' --optimize 'rf,xgb'
 
 Arguments:
 ----------
     --data:     Path to input CSV (default: 'data/dump.csv')
-    --optimize: Comma-separated list of models to optimize (e.g., 'rf,xgb,gb')
-    --timeout:  Timeout for optimization (default: 1800 seconds)
+    --optimize: Models to optimize (e.g., 'rf,xgb,gb')
+    --timeout:  Optimization timeout (default: 1800 seconds)
     --iters:    Number of optimization trials (default: 200)
 
 Pre-requisites:
 ---------------
 - Define FMISID features in a .env.local file per the .env.template
-
 """
 
 import shap
@@ -210,9 +206,9 @@ def train_and_evaluate(model, X_train, y_train, X_test, y_test, model_name):
         model.fit(
             X_train, y_train,
             eval_set=[(X_test, y_test)],
-            eval_metric='rmse',  # You can choose other metrics like 'mae' or 'logloss'
-            early_stopping_rounds=50,  # Adjust the number of rounds for early stopping
-            verbose=True  # Set to True if you want to see the evaluation results during training
+            eval_metric='rmse',
+            early_stopping_rounds=50,
+            verbose=True
         )
         logger.info(f"Training time for {model_name}: {time.time() - start_time:.2f} seconds")
         if hasattr(model, 'best_iteration'):
