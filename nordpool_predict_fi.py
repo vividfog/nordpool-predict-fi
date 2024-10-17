@@ -275,12 +275,15 @@ if args.predict:
     # print("→ DataFrame after updating WindPowerMW:")
     # print(df)
     
-    # BUG: Entso-E data appears to show OL3 downtime for entire rest of 2024, which can't be true; need to investigate; dropping for now
     # Fetch future nuclear downtime information from ENTSO-E unavailability data, h/t github:@pkautio
-    # df_entso_e = entso_e_nuclear(entso_e_api_key)
+    df_entso_e = entso_e_nuclear(entso_e_api_key)
     
-    # Refresh the previously inferred nuclear power numbers with the ENTSO-E data
-    # df = update_df_from_df(df, df_entso_e)
+    # ENTSO-E data is not always available and has had anomalies in the past; fall back to the last known good value if needed
+    if df_entso_e is not None:
+        # Refresh the previously inferred nuclear power numbers with the ENTSO-E data
+        df = update_df_from_df(df, df_entso_e)
+    else:
+        print("! [WARNING] ENTSO-E data is unavailable. Using last known nuclear production value for predictions.")
     
     # Get the latest spot prices for the data frame, past and future if any
     # NOTE: To save on API calls, this won't backfill history beyond 7 days even if asked
