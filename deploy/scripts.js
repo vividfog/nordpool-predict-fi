@@ -90,7 +90,11 @@ Promise.all([
 
         // Align the Sähkötin data to the Nordpool data
         // Determine the last timestamp in the Sähkötin data and subtract 25 hours for overlap (the price data contains the 00-01 hour too)
-        var lastSahkotinTimestamp = Math.max(...sahkotinSeriesData.map(item => item[0])) - (25 * 60 * 60 * 1000);
+        // var lastSahkotinTimestamp = Math.max(...sahkotinSeriesData.map(item => item[0])) - (25 * 60 * 60 * 1000);
+
+        // 2024-10-19: No overlap for bar chart experiment
+        var lastSahkotinTimestamp = Math.max(...sahkotinSeriesData.map(item => item[0])) - (0 * 60 * 60 * 1000);
+
         // Log the adjusted last timestamp for debugging
         // Implicit conversion from UTC to local time happens here
         console.log("End of Sähkötin data for today; displaying the Nordpool prediction data from:", new Date(lastSahkotinTimestamp).toString());
@@ -178,7 +182,7 @@ Promise.all([
             // Configure the y-axis of the chart
             yAxis: {
                 type: 'value',
-                name: '¢/kWh ALV24',
+                name: '¢/kWh (verollinen)',
                 nameLocation: 'end',
                 nameGap: 20,
                 // Set the maximum value of the y-axis to the nearest higher multiple of 10
@@ -221,12 +225,12 @@ Promise.all([
                 top: 50,
                 right: 10,
                 pieces: [
-                    { lte: 5, color: 'skyblue' },
-                    { gt: 5, lte: 10, color: 'deepskyblue' },
-                    { gt: 10, lte: 15, color: 'dodgerblue' },
-                    { gt: 15, lte: 20, color: 'blue' },
-                    { gt: 20, lte: 30, color: 'darkblue' },
-                    { gt: 30, color: 'midnightblue' }
+                    { lte: 5, color: 'deepskyblue' },
+                    { gt: 5, lte: 10, color: 'dodgerblue' },
+                    { gt: 10, lte: 15, color: 'blue' },
+                    { gt: 15, lte: 20, color: 'slateblue' },
+                    { gt: 20, lte: 30, color: 'darkviolet' },
+                    { gt: 30, color: 'purple' }
                 ],
                 outOfRange: {
                     color: '#999'
@@ -237,22 +241,18 @@ Promise.all([
             series: [
                 {
                     name: 'Ennuste',
-                    type: 'line',
+                    type: 'bar',
                     data: npfSeriesData,
                     symbol: 'none',
-                    lineStyle: {
-                        type: 'dotted',
-                        width: 2
-                    },
-                    opacity: 0.9
+                    opacity: 1.0
                 },
                 {
                     name: 'Nordpool',
-                    type: 'line',
+                    type: 'bar',
                     data: sahkotinSeriesData,
                     symbol: 'none',
                     step: 'middle',
-                    opacity: 0.9
+                    opacity: 1.0
                 },
                 {
                     type: 'line',
@@ -440,7 +440,7 @@ fetch(windPowerUrl)
                     },
                     step: 'end',
                     areaStyle: { 
-                        color: 'rgba(135, 206, 250, 0.1)' // skyblue
+                        color: 'rgba(135, 206, 250, 0.2)' // skyblue
                     },
                     opacity: 0.9,
                     markLine: {
@@ -608,7 +608,7 @@ function setupHistoryChart(data) {
         },
         yAxis: {
             type: 'value',
-            name: '¢/kWh ALV24',
+            name: '¢/kWh (verollinen)',
             nameLocation: 'end',
             nameGap: 20,
             max: value => Math.ceil(value.max / 10) * 10,
