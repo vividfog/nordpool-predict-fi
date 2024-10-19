@@ -1,13 +1,13 @@
-Viikon sähkön hintakehitys näyttää olevan melko tasainen, mutta eroja eri päivien välillä on havaittavissa. **Sunnuntaina** sähkön hinta on erityisen alhainen, kun taas **torstaina** hinta nousee merkittävästi. Tuulivoiman keskiarvot vaihtelevat, ja sunnuntaina on havaittavissa reipasta tuulta, mikä voi vaikuttaa hintakehitykseen. Muina päivinä tuulivoiman määrä on kohtuullinen, mutta ei erityisesti vaikuta hintoihin.
+Sähkön hintakehitys tulevalla viikolla näyttää varsin tasaiselta. Hinnat vaihtelevat hieman eri päivinä, mutta suuria poikkeamia ei ole havaittavissa. Tuulivoiman keskiarvo vaihtelee, mikä voi vaikuttaa hintakehitykseen, mutta päivät ovat keskenään hyvin samankaltaisia. 
 
-**Sunnuntaina** pörssisähkön hinta on min 0 ¢/kWh, max 1 ¢/kWh ja keskihinta 0 ¢/kWh. Tämä päivä erottuu selvästi alhaisilla hinnoillaan.
+**Sunnuntaina** pörssisähkön hinta on ennustettu vaihtelemaan -1 ¢/kWh ja 1 ¢/kWh välillä. Keskihinta on 0 ¢/kWh. 
 
-**Maanantaina** pörssisähkön hinta on min -1 ¢/kWh, max 3 ¢/kWh ja keskihinta 1 ¢/kWh. Negatiivinen minimihinta on merkittävä, mutta keskihinta pysyy silti alhaisena.
+**Maanantaina** pörssisähkön hinta nousee hieman. Minimihinta on 0 ¢/kWh ja maksimihinta 2 ¢/kWh. Keskihinta on 1 ¢/kWh. 
 
-**Tiistaina** pörssisähkön hinta on min 0 ¢/kWh, max 7 ¢/kWh ja keskihinta 3 ¢/kWh. Hinnat nousevat hieman edellispäivästä, mutta pysyvät silti kohtuullisina.
+**Tiistaina** sähkön hinta nousee edelleen. Minimihinta on 1 ¢/kWh ja maksimihinta 7 ¢/kWh. Keskihinta on 3 ¢/kWh. 
 
-**Keskiviikkona** pörssisähkön hinta on min 0 ¢/kWh, max 4 ¢/kWh ja keskihinta 2 ¢/kWh. Hinnat ovat edelleen alhaiset ja samankaltaiset kuin tiistaina.
+**Keskiviikkona** sähkön hinta pysyy samalla tasolla kuin maanantaina. Minimihinta on 0 ¢/kWh ja maksimihinta 6 ¢/kWh. Keskihinta on 1 ¢/kWh. 
 
-**Torstaina** pörssisähkön hinta on min -1 ¢/kWh, max 11 ¢/kWh ja keskihinta 4 ¢/kWh. Tämä päivä erottuu korkeammalla maksimihinnallaan, mutta keskihinta pysyy silti kohtuullisena.
+**Torstaina** sähkön hinta nousee merkittävästi. Minimihinta on -1 ¢/kWh ja maksimihinta 15 ¢/kWh. Keskihinta on 6 ¢/kWh. 
 
-Yhteenvetona voidaan todeta, että tuleva viikko tarjoaa sähkönkäyttäjille pääasiassa alhaisia hintoja, erityisesti sunnuntaina ja maanantaina. Torstaina hinnat nousevat, mutta pysyvät silti kohtuullisina. Tuulivoiman määrä vaihtelee, mutta sunnuntain reipas tuuli voi osaltaan vaikuttaa hintakehitykseen.
+Yhteenvetona voidaan todeta, että tulevalla viikolla sähkön hinnat pysyvät pääasiassa alhaisina, mutta torstaina odotettavissa oleva korkeampi keskihinta voi erottua muista päivistä. Tuulivoiman keskiarvo vaihtelee, mutta sen vaikutus hintakehitykseen ei ole merkittävä.
