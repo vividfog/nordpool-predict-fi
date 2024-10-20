@@ -1,0 +1,24 @@
+{
+    "import_capacity_daily_average": [
+        {
+            "average_import_capacity_mw": 3388.4166666666665,
+            "date": "2024-10-20"
+        },
+        {
+            "average_import_capacity_mw": 3416.0,
+            "date": "2024-10-21"
+        },
+        {
+            "average_import_capacity_mw": 3416.0,
+            "date": "2024-10-22"
+        },
+        {
+            "average_import_capacity_mw": 3416.0,
+            "date": "2024-10-23"
+        },
+        {
+            "average_import_capacity_mw": 2582.6666666666665,
+            "date": "2024-10-24"
+        }
+    ]
+}
