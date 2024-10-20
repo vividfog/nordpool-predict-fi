@@ -51,9 +51,6 @@ def narrate_prediction(timestamp):
         df_result['timestamp'] = df_result['timestamp'].dt.tz_localize('UTC')
     df_result['timestamp'] = df_result['timestamp'].dt.tz_convert(helsinki_tz)
 
-    # Convert WindPowerMW to gigawatts (GW)
-    df_result['WindPowerGW'] = (df_result['WindPowerMW'] / 1000)
-
     # Calculate average temperature
     df_result['Avg_Temperature'] = df_result[temperature_columns].mean(axis=1)
 
@@ -61,15 +58,14 @@ def narrate_prediction(timestamp):
     df_result['date'] = df_result['timestamp'].dt.date
     df_grouped = df_result.groupby('date').agg({
         'PricePredict_cpkWh': ['min', 'max', 'mean'],
-        'WindPowerGW': 'mean',
+        'WindPowerMW': 'mean',
         'Avg_Temperature': 'mean'
     })
 
     # Round price values to integer
     df_grouped['PricePredict_cpkWh'] = df_grouped['PricePredict_cpkWh'].round(0).astype(int)
     
-    # Round wind power and temperature values to 1 decimal
-    df_grouped['WindPowerGW'] = df_grouped['WindPowerGW'].round(1)
+    # Round temperature values to 1 decimal
     df_grouped['Avg_Temperature'] = df_grouped['Avg_Temperature'].round(1)
 
     # Convert date index to weekday names and retain it in the DataFrame
@@ -107,7 +103,7 @@ def send_to_gpt(df):
     weekday_today = today.strftime("%A")
     date_today = today.strftime("%d. %B %Y")
 
-    prompt = (f"<data>\nTänään on {weekday_today.lower()} {date_today} ja Nordpool-sähköpörssin verolliset Suomen markkinan hintaennusteet lähipäiville ovat seuraavat. Ole tarkkana että käytät näitä numeroita oikein ja lue säännöt tarkasti:\n")
+    prompt = (f"<data>\nTänään on {weekday_today.lower()} {date_today.lower()} ja Nordpool-sähköpörssin verolliset Suomen markkinan hintaennusteet lähipäiville ovat seuraavat. Ole tarkkana että käytät näitä numeroita oikein ja lue ohjeet tarkasti:\n")
 
     # Iterate over each weekday and concatenate all relevant data
     for weekday, row in df.iterrows():
@@ -117,8 +113,7 @@ def send_to_gpt(df):
             f"max {row[('PricePredict_cpkWh', 'max')]} ¢/kWh, "
             f"keskihinta {row[('PricePredict_cpkWh', 'mean')]} ¢/kWh.\n"
         )
-        prompt += f"- Tuulivoima: keskiarvo {row[('WindPowerGW', 'mean')]} GW.\n"
-        prompt += f"- Päivän keskilämpötila: {row[('Avg_Temperature', 'mean')]} °C.\n"
+        prompt += f"- Tuulivoima: keskiarvo {int(row[('WindPowerMW', 'mean')])} MW.\n"
 
         # Add import capacity information for the specific weekday
         if IMPORT_CAPACITY_DATA is not None:
@@ -126,7 +121,9 @@ def send_to_gpt(df):
                 date = pd.to_datetime(capacity['date'])
                 if date.strftime('%A') == weekday:
                     average_import_capacity = capacity['average_import_capacity_mw']
-                    prompt += f"- Sähkönsiirron tuontikapasiteetti: keskiarvo {int(average_import_capacity)} MW.\n"
+                    prompt += f"- Sähkönsiirron tuontikapasiteetti: {int(average_import_capacity)} MW.\n"
+
+        prompt += f"- Päivän keskilämpötila: {row[('Avg_Temperature', 'mean')]} °C.\n"
 
     # Add a separate section for nuclear outages
     if NUCLEAR_OUTAGE_DATA is not None:
@@ -154,11 +151,12 @@ def send_to_gpt(df):
 Olet sähkömarkkinoiden asiantuntija ja kirjoitat uutisartikkelin hintaennusteista lähipäiville. Käytä dataa ja ohjeita apunasi.
 
 ## Tutki ensin seuraavia tekijöitä ja mieti, miten ne vaikuttavat sähkön hintaan
-- Onko viikko keskimäärin tasainen, vai onko suuria eroja tiettyjen päivien välillä? Erot voivat koskea hintaa, tuulivoimaa, lämpötilaa tai ydinvoimaa.
+- Onko viikko keskimäärin tasainen, vai onko suuria eroja tiettyjen päivien välillä? Erot voivat koskea hintaa, tuulivoimaa, lämpötilaa, siirtoyhteyksiä tai ydinvoimaa.
 - Onko käynnissä poikkeuksellisen suuria ydinvoimaloiden tuotantovajauksia vai ei?
+- Onko sähkönsiirron tuontikapasiteetti normaali vai poikkeuksellisen alhainen? Erottuuko jokin päivä erityisesti, vai ei?
 - Onko tuulivoimaa eri päivinä paljon, vähän vai normaalisti? Erottuuko jokin päivä erityisesti, vai ei?
-- Onko lämpötila erityisen korkea tai matala tulevina päivinä?
-- Jos jonkin päivän keskihinta on muita korkeampi, mikä selittää sitä? Onko syynä tuulivoima, lämpötila, ydinvoima vai jokin muu tekijä?
+- Onko lämpötila erityisen korkea tai matala tulevina päivinä? Erottuuko jokin päivä erityisesti, vai ei?
+- Jos jonkin päivän keskihinta on muita korkeampi, mikä voisi selittää sitä? Onko syynä tuulivoima, lämpötila, ydinvoima, siirtoyhteydet vai jokin muu/tuntematon tekijä?
 
 ## Sähkönkäyttäjien yleinen hintaherkkyys, joka koskee **keskihintaa**
 - Sähkönkäyttäjille edullinen keskihinta tarkoittaa alle 5 ¢. Tätä korkeampi keskihinta ei ole koskaan halpa, vaikka yöllä minimihinta olisi lähellä nollaa tai jopa sen alle. Negatiiviset minimihinnat ovat mahdollisia, ja ne voi mainita, jos niitä on. Negatiivisia hintoja on tavallisesti vain yöllä.
@@ -167,9 +165,9 @@ Olet sähkömarkkinoiden asiantuntija ja kirjoitat uutisartikkelin hintaennustei
 - Hyvin kallis keskihinta on 15 senttiä tai enemmän.
 
 ## Tuulivoimasta
-- Tyyni tai heikko tuuli: Alle 1 GW tuulivoima usein johtaa korkeaan sähkön hintaan.
-- Tavanomainen, riittävä tuuli: 1-3 GW tuulivoimalla ei välttämättä ole erityistä hintavaikutusta.
-- Reipas tai voimakas tuuli: Yli 3 GW tuulivoima voi laskea sähkön hintaa selvästi.
+- Tyyni tai heikko tuuli: Alle 1000 MW tuulivoima usein johtaa korkeaan sähkön hintaan.
+- Tavanomainen, riittävä tuuli: 1000-3000 MW tuulivoimalla ei välttämättä ole erityistä hintavaikutusta.
+- Reipas tai voimakas tuuli: Yli 3000 MW tuulivoima voi laskea sähkön hintaa selvästi.
 
 ## Lämpötiloista
 - Kova pakkanen: Alle -5 °C ja varsinkin alle -10 °C voi selittää sähkön korkeaa hintaa, koska (kovalla) pakkasella lämmitysenergiaa kuluu paljon.
@@ -186,9 +184,11 @@ Olet sähkömarkkinoiden asiantuntija ja kirjoitat uutisartikkelin hintaennustei
 - Voit puhua ydinvoimasta vain jos niillä on poikkeuksellisen suuri tuotantovajaus, käytettävyys alle 70 %. Tällöin mainitse aina myös laitosyksikön nimellisteho ja käytettävyysprosentti.
 
 ## Sähkönsiirron tuontikapasiteetista
-- Sähkönsiirron tuontikapasiteetti Ruotsista ja Virosta voi vaikuttaa sähkön hintaan, jos se on poikkeuksellisen alhainen.
-- Normaalitilanteessa tuontikapasiteetti on yli 3000 MW. Alle 2000 MW voi selittää hinnannousuja selvästi. Alle 1000 MW voi selittää hinnannousuja paljon.
-- Jos tuontikapasiteetti on normaali, sen hintavaikutusta ei tarvitse mainita.
+- Sähkönsiirron tuontikapasiteetti Ruotsista ja Virosta voi nostaa sähkön hintaa, jos kapasiteetti poikkeuksellisen alhainen.
+- Suurimmillaan tuontikapasiteetti voi olla noin 3700 MW.
+- Normaalitilanteessa tuontikapasiteetti on yli 3000 MW. Tällöin tuontienergia voi tasata hintapiikkejä.
+- Alle 3000 MW voi selittää päivittäisiä hinnannousuja. Alle 2000 MW voi selittää hinnannousuja paljon, jos samaan aikaan tuulivoima ei riitä paikkaamaan kulutusta.
+- Jos yhden tai useamman päivän kapasiteetti ei ole normaali, mainitse se vastauksessasi.
 
 ## Muita ohjeita, joita sinun tulee ehdottomasti noudattaa
 - Älä anna mitään neuvoja! Tehtäväsi on puhua vain hinnoista! Ole perinpohjainen ja tarkka.
@@ -212,13 +212,11 @@ Kirjoita tiivis, rikasta suomen kieltä käyttävä UUTISARTIKKELI saamiesi tiet
 
 1. Alusta artikkeli yleiskuvauksella viikon hintakehityksestä, futuurissa. Mainitse eniten erottuva päivä ja sen keski- ja maksimihinta, mutta vain jos korkeita hintoja on. Voit myös sanoa, että päivät ovat keskenään hyvin samankaltaisia, jos asia näin on. Käytä tässä adjektiiveja. Voit kertoa tuulivoiman trendeistä, jos trendejä näkyy. Voit kertoa ydinvoimaloiden poikkeamista, mutta vain jos hintavaikutus on täysin selvä. Muuten älä mainitse ydinvoimaa. Sama koskee sähkön tuontia: normaalia siirtokapasiteettia ei tarvise kommentoida. Pyri olemaan mahdollisimman tarkka ja informatiivinen, mutta älä anna neuvoja tai keksi tarinoita tai trendejä, joita ei datassa ole.
 
-2. Kirjoita jokaisesta päivästä futuurissa oma kappale keskittyen kyseisen päivän hintaan numeroina. Vältä adjektiiveja. Kerro vain hintatiedot, ellei yksittäisen päivän kohdalla näy hyvin selkeä noussutta hintaa selittävä poikkeama, josta on syytä mainita. Älä kerro päivän hintakehityksestä enempää kuin yhden lauseen verran. Jokaisen päivän kuvailu voi olla rakenteeltaan erilainen.
+2. Kirjoita jokaisesta päivästä futuurissa oma kappale keskittyen kyseisen päivän numeroihin. Vältä adjektiiveja. Onko yhden tai useamman päivän kohdalla selkeä hintaa selittävä poikkeama, josta on syytä mainita? Älä kerro päivän hintakehityksestä enempää kuin yhden lauseen verran. Jokaisen päivän kuvailu voi olla rakenteeltaan erilainen.
 
-3. Päätä artikkeli yhteenvetoon, jossa arvioit futuurissa tulevan viikon hintakehityksen ja kommentoit trendejä. Jos yksittäisenä päivänä näkyy muita selvästi korkeampi **maksimihinta**, voit mainita tämän numeron yhteenvedossa. Muuten keskity keskihintoihin.
+3. Yhteenveto.
 
 Älä käytä hinnoissa desimaaleja. Käytä kokonaislukuja.
-
-Tuulivoimassa (GW) voit käyttää desimaaleja.
 
 Tavoitepituus on noin 200-300 sanaa.
 

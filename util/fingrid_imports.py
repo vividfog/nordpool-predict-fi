@@ -144,8 +144,8 @@ def update_import_capacity(df, fingrid_api_key):
     # Get the current date in Helsinki time
     today_helsinki = datetime.now(helsinki_tz).date()
 
-    # Filter for today and the next 5 days based on Helsinki time
-    future_dates_df = daily_avg_df[daily_avg_df['Date'] >= today_helsinki].head(5)
+    # Filter for today and the next 6 days based on Helsinki time
+    future_dates_df = daily_avg_df[daily_avg_df['Date'] >= today_helsinki].head(6)
 
     # Convert to JSON format
     daily_avg_data = future_dates_df.to_dict(orient='records')
