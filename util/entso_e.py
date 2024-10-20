@@ -1,4 +1,5 @@
 import os
+import json
 import pandas as pd
 from dotenv import load_dotenv
 from datetime import datetime, timedelta, timezone
@@ -104,8 +105,25 @@ def entso_e_nuclear(entso_e_api_key, DEBUG=False):
                 else:
                     print(f"  [WARNING] Anomaly detected: Outage for {row['production_resource_name']} is longer than 6 months ({row['outage_length_hours']} hours). Expected?")
 
+        # Calculate availability percentage and drop outage_length_hours
+        future_outages['availability'] = (future_outages['avail_qty'] / future_outages['nominal_power'])
+        future_outages.drop(columns=['outage_length_hours'], inplace=True)
+
         print("→ ENTSO-E: Nuclear unavailability (future/ongoing only):\n", future_outages)
 
+        # Save future outages to JSON
+        future_outages_json = future_outages.to_json(orient='records', date_format='iso')
+
+        # Combine all data into a single JSON structure
+        combined_data = {
+            "nuclear_outages": json.loads(future_outages_json),
+        }
+
+        with open('deploy/nuclear_outages.json', 'w') as f:
+            json.dump(combined_data, f, indent=4)
+
+        print("→ ENTSO-E: Future nuclear outages saved to deploy/nuclear_outages.json")
+            
         # Calculate unavailable capacity for each outage entry
         unavailable_capacity = combined_outages.assign(unavailable_qty=(combined_outages['nominal_power'] - combined_outages['avail_qty']))
         unavailable_capacity['start'] = pd.to_datetime(unavailable_capacity['start'])
@@ -141,7 +159,7 @@ def entso_e_nuclear(entso_e_api_key, DEBUG=False):
         print(f"→ ENTSO-E: Avg: {avg_capacity}, max: {max_capacity}, min: {min_capacity} MW")
                 
         return nuclear_forecast
-    
+
     except Exception as e:
         print(f"! [ERROR] ENTSO-E update: {e} - returning None")
         return None

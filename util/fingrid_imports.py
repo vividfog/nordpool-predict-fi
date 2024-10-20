@@ -1,5 +1,6 @@
 import os
 import time
+import json
 import pandas as pd
 import requests
 import pytz
@@ -130,6 +131,34 @@ def update_import_capacity(df, fingrid_api_key):
 
     # Fill missing capacity data with forward and backward fill
     final_df['ImportCapacityMW'] = final_df['ImportCapacityMW'].ffill().bfill()
+
+    # Calculate daily averages of ImportCapacityMW
+    temp_df = final_df.copy()
+    temp_df['Date'] = temp_df['Timestamp'].dt.date
+    daily_avg_df = temp_df.groupby('Date')['ImportCapacityMW'].mean().reset_index()
+    daily_avg_df.rename(columns={'ImportCapacityMW': 'average_import_capacity_mw'}, inplace=True)
+
+    # Define Helsinki timezone
+    helsinki_tz = pytz.timezone('Europe/Helsinki')
+
+    # Get the current date in Helsinki time
+    today_helsinki = datetime.now(helsinki_tz).date()
+
+    # Filter for today and the next 5 days based on Helsinki time
+    future_dates_df = daily_avg_df[daily_avg_df['Date'] >= today_helsinki].head(5)
+
+    # Convert to JSON format
+    daily_avg_data = future_dates_df.to_dict(orient='records')
+    for entry in daily_avg_data:
+        entry['date'] = entry.pop('Date')
+
+    # Wrap the data in a dictionary with a key
+    output_data = {"import_capacity_daily_average": daily_avg_data}
+
+    with open('deploy/import_capacity_daily_average.json', 'w') as json_file:
+        json.dump(output_data, json_file, indent=4, default=str)
+
+    print("→ Daily average import capacity data saved to deploy/import_capacity_daily_average.json")
 
     return final_df
 
