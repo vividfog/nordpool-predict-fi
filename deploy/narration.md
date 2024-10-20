@@ -1,13 +1,13 @@
-Viikon sähkön hintakehitys näyttää olevan melko tasainen, mutta **torstai** erottuu muista päivistä korkeammalla keskihinnalla. Torstain keskihinta on 6 ¢/kWh ja maksimihinta 16 ¢/kWh. Tuulivoiman keskiarvo vaihtelee päivittäin, mutta ei vaikuta merkittävästi hintakehitykseen. Ydinvoimaloiden huoltokatkot eivät aiheuta poikkeuksellista tuotantovajetta, joten niiden vaikutusta hintoihin ei käsitellä.
+Viikon sähkön hintakehitys näyttää olevan melko tasainen, mutta **torstai** erottuu korkeammalla keskihinnalla. Sen keskihinta on 6 ¢/kWh ja maksimihinta 14 ¢/kWh. Muut päivät pysyvät keskimäärin alle 5 ¢/kWh, mikä viittaa kohtuulliseen hintatasoon. Tuulivoiman osalta viikolla esiintyy vaihtelevaa tuotantoa, mutta erityisiä poikkeamia ei havaita. Ydinvoimaloiden huoltokatkot eivät vaikuta merkittävästi hintakehitykseen tällä viikolla.
 
-**Maanantaina** pörssisähkön hinta on 0 ¢/kWh keskihinnalla. Minimihinta on -1 ¢/kWh ja maksimihinta 2 ¢/kWh. Tuulivoiman keskiarvo on 5.1 GW ja päivän keskilämpötila 10.1 °C.
+**Maanantaina** pörssisähkön hinta on keskimäärin 0 ¢/kWh, ja maksimihinta nousee 2 ¢/kWh. Tuulivoiman keskiarvo on 5293 MW, mikä on vahvaa tuotantoa. Sähkönsiirron tuontikapasiteetti on 3396 MW.
 
-**Tiistaina** sähkön hinta nousee keskimäärin 2 ¢/kWh. Minimihinta on 0 ¢/kWh ja maksimihinta 6 ¢/kWh. Tuulivoiman keskiarvo on 2.8 GW ja päivän keskilämpötila 9.6 °C.
+**Tiistaina** sähkön keskihinta nousee 2 ¢/kWh:iin, ja maksimihinta on 7 ¢/kWh. Tuulivoiman keskiarvo on 3104 MW, mikä on riittävä, mutta ei erityisen korkea. Siirron tuontikapasiteetti on 3416 MW.
 
-**Keskiviikkona** keskihinta on 1 ¢/kWh. Minimihinta on 0 ¢/kWh ja maksimihinta 6 ¢/kWh. Tuulivoiman keskiarvo on 3.0 GW ja päivän keskilämpötila 8.5 °C.
+**Keskiviikkona** keskihinta on 1 ¢/kWh ja maksimihinta 5 ¢/kWh. Tuulivoiman keskiarvo on 3034 MW. Sähkönsiirron tuontikapasiteetti pysyy 3416 MW:ssa.
 
-**Torstaina** sähkön hinta nousee keskimäärin 6 ¢/kWh. Minimihinta on -1 ¢/kWh ja maksimihinta 16 ¢/kWh. Tuulivoiman keskiarvo on 1.7 GW ja päivän keskilämpötila 7.5 °C.
+**Torstaina** sähkön keskihinta nousee 6 ¢/kWh:iin, ja maksimihinta on 14 ¢/kWh. Tuulivoiman keskiarvo on 1677 MW, mikä on heikkoa tuotantoa. Sähkönsiirron tuontikapasiteetti on 2582 MW, mikä on alhainen ja voi osaltaan selittää korkeaa hintaa.
 
-**Perjantaina** keskihinta on 1 ¢/kWh. Minimihinta on -1 ¢/kWh ja maksimihinta 5 ¢/kWh. Tuulivoiman keskiarvo on 2.7 GW ja päivän keskilämpötila 7.7 °C.
+**Perjantaina** keskihinta on 2 ¢/kWh ja maksimihinta 5 ¢/kWh. Tuulivoiman keskiarvo on 2404 MW, joka on edelleen riittävä. Sähkönsiirron tuontikapasiteetti on 2416 MW, mikä on alhainen.
 
-Yhteenvetona voidaan todeta, että tulevalla viikolla sähkön hintakehitys on pääosin tasainen, mutta **torstai** tuo mukanaan selvästi korkeammat hinnat. Keskihinnat vaihtelevat 0-6 ¢/kWh välillä, mikä viittaa kohtuulliseen hintatasoon. Tuulivoiman määrä ei vaikuta merkittävästi hintakehitykseen, ja ydinvoiman tuotantovajeet eivät ole huomattavia.
+Yhteenvetona, viikon sähkön hintakehitys on pääosin tasainen, mutta **torstai** erottuu korkeammalla keskihinnalla ja maksimihinnalla. Tuulivoiman tuotanto vaihtelee, ja sähkönsiirron tuontikapasiteetti on alhainen torstaina, mikä voi vaikuttaa hintakehitykseen.
