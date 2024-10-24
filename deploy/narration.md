@@ -1,13 +1,13 @@
-Viikon sähkön hintakehitys näyttää olevan melko tasainen, mutta **lauantai** erottuu selkeästi korkeammalla keskihinnalla, joka on 3 ¢/kWh. Tämän päivän maksimihinta nousee jopa 10 ¢/kWh, mikä on huomattavasti korkeampi kuin muina päivinä. Tuulivoiman keskiarvo vaihtelee, ja **lauantaina** se on vain 1500 MW, mikä voi vaikuttaa hintakehitykseen. Sähkönsiirron tuontikapasiteetti on normaali, eikä ydinvoimaloiden huoltokatkoilla ole merkittävää vaikutusta hintakehitykseen.
+Sähkön hintakehitys tulevina päivinä näyttää olevan melko tasainen, mutta **lauantai** erottuu korkeammalla keskihinnallaan. Lauantaina keskihinta on 3 ¢/kWh ja maksimihinta 9 ¢/kWh. Tuulivoiman keskiarvo on alhaisempi kuin muina päivinä, mikä voi osaltaan vaikuttaa hintakehitykseen. Sähkönsiirron tuontikapasiteetti on myös normaali, eikä ydinvoimaloiden huoltokatkoilla ole merkittävää vaikutusta.
 
-**Perjantaina** pörssisähkön hinta on keskimäärin 2 ¢/kWh. Minimihinta on 1 ¢/kWh ja maksimihinta 4 ¢/kWh. Tuulivoiman keskiarvo on 3284 MW, mikä voi osaltaan pitää hinnat alhaisina. 
+**Perjantaina** pörssisähkön hinta on keskimäärin 2 ¢/kWh, ja maksimihinta nousee 4 ¢/kWh. Tuulivoiman keskiarvo on 3516 MW, mikä on riittävän korkea, jotta se voi vaikuttaa hintaan alaspäin. 
 
-**Lauantaina** keskihinta nousee 3 ¢/kWh. Minimihinta on -1 ¢/kWh, mikä on poikkeuksellista, ja maksimihinta 10 ¢/kWh. Tuulivoima on vain 1500 MW, mikä voi selittää korkeampia hintoja.
+**Lauantaina** sähkön hinta nousee keskimäärin 3 ¢/kWh, ja maksimihinta voi olla jopa 9 ¢/kWh. Tuulivoima on keskimäärin 1569 MW, mikä on alhaisempi kuin perjantaina, ja tämä voi osaltaan nostaa hintoja.
 
-**Sunnuntaina** sähkön hinta laskee jälleen 1 ¢/kWh keskihintaan. Minimihinta on 0 ¢/kWh ja maksimihinta 2 ¢/kWh. Tuulivoiman keskiarvo on 2486 MW, mikä on hieman parempi kuin lauantaina.
+**Sunnuntaina** keskihinta laskee jälleen 1 ¢/kWh:iin, ja maksimihinta on 2 ¢/kWh. Tuulivoiman keskiarvo on 2486 MW, mikä on hieman korkeampi kuin lauantaina, mutta ei riitä selittämään hintojen nousua.
 
-**Maanantaina** keskihinta pysyy 1 ¢/kWh. Minimihinta on 0 ¢/kWh ja maksimihinta 3 ¢/kWh. Tuulivoima on 3364 MW, mikä voi tukea alhaisia hintoja.
+**Maanantaina** sähkön hinta pysyy keskimäärin 1 ¢/kWh:ssa, ja maksimihinta on 3 ¢/kWh. Tuulivoima nousee 3364 MW:iin, mikä voi tukea alhaisia hintoja.
 
-**Tiistaina** sähkön hinta nousee 4 ¢/kWh. Minimihinta on 0 ¢/kWh ja maksimihinta 12 ¢/kWh. Tuulivoiman keskiarvo on 2839 MW, mikä on riittävää, mutta ei riitä pitämään hintoja alhaalla.
+**Tiistaina** keskihinta nousee jälleen 3 ¢/kWh:iin, ja maksimihinta voi olla jopa 11 ¢/kWh. Tuulivoima on 3060 MW, mikä on riittävää, mutta ei estä korkeita maksimihintoja.
 
-Yhteenvetona, viikon aikana sähkön hinnat vaihtelevat 1 ¢/kWh ja 4 ¢/kWh välillä, mutta **lauantai** erottuu korkeammalla keskihinnalla. Tuulivoiman määrä vaihtelee, ja se vaikuttaa hintakehitykseen. Sähkönsiirron tuontikapasiteetti pysyy normaalina.
+Yhteenvetona voidaan todeta, että tulevat päivät ovat keskenään melko samankaltaisia sähkön hintakehityksessä, mutta **lauantai** erottuu korkeammalla keskihinnallaan. Tuulivoiman vaihtelut ja sähkönsiirron kapasiteetti vaikuttavat hintakehitykseen, mutta ydinvoiman osalta ei ole merkittäviä poikkeamia.
