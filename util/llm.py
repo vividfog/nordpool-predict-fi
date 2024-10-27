@@ -13,17 +13,34 @@ from dotenv import load_dotenv
 
 # Attempt to set the locale to Finnish for day names
 try:
-    locale.setlocale(locale.LC_TIME, 'fi_FI.UTF-8')  # Use 'fi_FI.UTF-8' for Unix-like systems
+    locale.setlocale(locale.LC_TIME, 'fi_FI.UTF-8')
 except locale.Error:
     print("! [WARNING] Finnish locale (fi_FI.UTF-8) not available, using default.")
 
 load_dotenv('.env.local')
 
-def narrate_prediction(timestamp):
+def narrate_prediction():
     """Fetch prediction data from the database and narrate it using an LLM."""
+    
+    # Determine the current time in Helsinki
+    helsinki_tz = pytz.timezone('Europe/Helsinki')
+    now_hel = datetime.datetime.now(helsinki_tz)
 
-    # Create a DataFrame with timestamps for the next 5 days    
-    df = pd.DataFrame({'Timestamp': pd.date_range(timestamp, timestamp + datetime.timedelta(days=5), freq='h')})
+    # Calculate tomorrow's date
+    tomorrow_date = now_hel.date() + datetime.timedelta(days=1)
+
+    # Get midnight of tomorrow in Helsinki time (should be DST aware)
+    tomorrow_start = helsinki_tz.localize(datetime.datetime.combine(tomorrow_date, datetime.time(0, 0)))
+
+    # Create a DataFrame with timestamps for up to the next 7 days starting from tomorrow
+    df = pd.DataFrame({
+        'Timestamp': pd.date_range(
+            start=tomorrow_start,
+            periods=7 * 24,
+            freq='H',
+            tz=helsinki_tz
+        )
+    })
 
     # Fetch data from the database
     try:
@@ -33,50 +50,36 @@ def narrate_prediction(timestamp):
         sys.exit(1)
 
     # Keep timestamp, predicted price, wind power data, and temperature data
-    temperature_ids = os.getenv('FMISID_T').split(',')
+    temperature_ids = os.getenv('FMISID_T', "").split(',')
     temperature_columns = [f't_{temp_id}' for temp_id in temperature_ids]
     df_result = df_result[['timestamp', 'PricePredict_cpkWh', 'WindPowerMW'] + temperature_columns]
 
     # Drop rows with missing values
     df_result = df_result.dropna()
 
-    # Ensure the timestamp is a datetime object
-    df_result['timestamp'] = pd.to_datetime(df_result['timestamp'])
-
-    # Define the Helsinki timezone
-    helsinki_tz = pytz.timezone('Europe/Helsinki')
-
-    # Localize to UTC if naive, then convert to Helsinki timezone
-    if df_result['timestamp'].dt.tz is None:
-        df_result['timestamp'] = df_result['timestamp'].dt.tz_localize('UTC')
-    df_result['timestamp'] = df_result['timestamp'].dt.tz_convert(helsinki_tz)
+    # Ensure timestamp is a datetime object with Helsinki timezone
+    df_result['timestamp'] = pd.to_datetime(df_result['timestamp'], utc=True).dt.tz_convert(helsinki_tz)
 
     # Calculate average temperature
     df_result['Avg_Temperature'] = df_result[temperature_columns].mean(axis=1)
 
-    # Group by date and calculate min, max, and average price, as well as the average wind power and temperature
-    df_result['date'] = df_result['timestamp'].dt.date
-    df_grouped = df_result.groupby('date').agg({
+    # Group by the day in Helsinki timezone
+    df_grouped = df_result.groupby(df_result['timestamp'].dt.floor('D')).agg({
         'PricePredict_cpkWh': ['min', 'max', 'mean'],
-        'WindPowerMW': 'mean',
+        'WindPowerMW': ['min', 'max', 'mean'],
         'Avg_Temperature': 'mean'
     })
 
-    # Round price values to integer
+    # Round values accordingly
     df_grouped['PricePredict_cpkWh'] = df_grouped['PricePredict_cpkWh'].round(0).astype(int)
-    
-    # Round temperature values to 1 decimal
+    df_grouped['WindPowerMW'] = df_grouped['WindPowerMW'].round(0).astype(int)
     df_grouped['Avg_Temperature'] = df_grouped['Avg_Temperature'].round(1)
 
-    # Convert date index to weekday names and retain it in the DataFrame
+    # Convert the date index to weekday names
     df_grouped.index = pd.to_datetime(df_grouped.index).strftime('%A')
-
-    # print("→ Narration stats fetched from predictions.db:\n", df_grouped)
-
-    # TODO: Collecting data, creating a prompt, sending it to GPT should each be done in dedicated functions (right now gathering happens both here and in send_to_gpt)
+    
     narrative = send_to_gpt(df_grouped)
 
-    # Return the prediction as text
     return narrative
 
 def send_to_gpt(df):
@@ -109,11 +112,15 @@ def send_to_gpt(df):
     for weekday, row in df.iterrows():
         prompt += f"\n**{weekday}**\n"
         prompt += (
-            f"- Pörssisähkön hinta: min {row[('PricePredict_cpkWh', 'min')]} ¢/kWh, "
-            f"max {row[('PricePredict_cpkWh', 'max')]} ¢/kWh, "
-            f"keskihinta {row[('PricePredict_cpkWh', 'mean')]} ¢/kWh.\n"
+            f"- Pörssisähkön hinta ¢/kWh: {row[('PricePredict_cpkWh', 'min')]} - "
+            f"{row[('PricePredict_cpkWh', 'max')]}, "
+            f"päivän keskihinta {row[('PricePredict_cpkWh', 'mean')]} ¢/kWh.\n"
         )
-        prompt += f"- Tuulivoima: keskiarvo {int(row[('WindPowerMW', 'mean')])} MW.\n"
+        prompt += (
+            f"- Tuulivoima MW: {int(row[('WindPowerMW', 'min')])} - "
+            f"{int(row[('WindPowerMW', 'max')])}, "
+            f"keskimäärin {int(row[('WindPowerMW', 'mean')])} MW.\n"
+        )
 
         # Add import capacity information for the specific weekday
         if IMPORT_CAPACITY_DATA is not None:
@@ -146,82 +153,102 @@ def send_to_gpt(df):
 
     prompt += """
 <instructions>
-# Ohjeita
+# 1. Miten pörssisähkön hinta muodostuu
 
-Olet sähkömarkkinoiden asiantuntija ja kirjoitat uutisartikkelin hintaennusteista lähipäiville. Käytä dataa ja ohjeita apunasi.
+Olet sähkömarkkinoiden asiantuntija ja kirjoitat kohta uutisartikkelin hintaennusteista lähipäiville. Seuraa näitä ohjeita tarkasti.
 
-## Tutki ensin seuraavia tekijöitä ja mieti, miten ne vaikuttavat sähkön hintaan
-- Onko viikko keskimäärin tasainen, vai onko suuria eroja tiettyjen päivien välillä? Erot voivat koskea hintaa, tuulivoimaa, lämpötilaa, siirtoyhteyksiä tai ydinvoimaa.
-- Onko käynnissä poikkeuksellisen suuria ydinvoimaloiden tuotantovajauksia vai ei?
-- Onko sähkönsiirron tuontikapasiteetti normaali vai poikkeuksellisen alhainen? Erottuuko jokin päivä erityisesti, vai ei?
-- Onko tuulivoimaa eri päivinä paljon, vähän vai normaalisti? Erottuuko jokin päivä erityisesti, vai ei?
-- Onko lämpötila erityisen korkea tai matala tulevina päivinä? Erottuuko jokin päivä erityisesti, vai ei?
-- Jos jonkin päivän keskihinta on muita korkeampi, mikä voisi selittää sitä? Onko syynä tuulivoima, lämpötila, ydinvoima, siirtoyhteydet vai jokin muu/tuntematon tekijä?
+## 1.1. Tutki seuraavia tekijöitä ja mieti, miten ne vaikuttavat sähkön hintaan
+- Onko viikko tasainen vai onko suuria eroja päivien välillä? Erot voivat koskea hintaa, tuulivoimaa, lämpötilaa, siirtoyhteyksiä tai ydinvoimaa.
+- Onko käynnissä poikkeuksellisen suuria ydinvoimaloiden tuotantovajauksia?
+- Onko sähkönsiirron tuontikapasiteetti normaali vai poikkeuksellisen alhainen? Erottuuko jokin päivä erityisesti?
+- Onko tuulivoimaa eri päivinä paljon, vähän vai normaalisti? Erottuuko jokin päivä matalammalla keskituotannolla?
+- Onko jonkin päivän sisällä tuulivoimaa minimissään poikkeuksellisen vähän? Osuuko samalle päivälle korkea maksimihinta?
+- Onko lämpötila erityisen korkea tai matala tulevina päivinä? Erottuuko jokin päivä erityisesti?
+- Jos jonkin päivän keskihinta tai maksimihinta on muita selvästi korkeampi, mikä voisi selittää sitä? Onko syynä tuulivoima, lämpötila, ydinvoima, siirtoyhteydet vai jokin muu/tuntematon tekijä?
 
-## Sähkönkäyttäjien yleinen hintaherkkyys, joka koskee **keskihintaa**
-- Sähkönkäyttäjille edullinen keskihinta tarkoittaa alle 5 ¢. Tätä korkeampi keskihinta ei ole koskaan halpa, vaikka yöllä minimihinta olisi lähellä nollaa tai jopa sen alle. Negatiiviset minimihinnat ovat mahdollisia, ja ne voi mainita, jos niitä on. Negatiivisia hintoja on tavallisesti vain yöllä.
-- Normaali keskihinta on 5-9 senttiä.
-- Kallis keskihinta on 10 senttiä tai yli.
-- Hyvin kallis keskihinta on 15 senttiä tai enemmän.
+## 1.2. Sähkönkäyttäjien yleinen hintaherkkyys (keskihinta)
+- Edullinen keskihinta: alle 5 ¢.
+- Normaali keskihinta: 5-9 ¢.
+- Kallis keskihinta: 10 ¢ tai yli.
+- Hyvin kallis keskihinta: 15 ¢ tai enemmän.
+- Minimihinnat voivat olla negatiivisia, tavallisesti yöllä. Mainitse ne, jos niitä on.
 
-## Tuulivoimasta
-- Tyyni tai heikko tuuli: Alle 1000 MW tuulivoima usein johtaa korkeaan sähkön hintaan.
-- Tavanomainen, riittävä tuuli: 1000-3000 MW tuulivoimalla ei välttämättä ole erityistä hintavaikutusta.
-- Reipas tai voimakas tuuli: Yli 3000 MW tuulivoima voi laskea sähkön hintaa selvästi.
+## 1.3. Sähkön hinta ja tuulivoiman määrä
+- Tyyni tai heikko tuuli: alle 2000 MW tuulivoima voi nostaa hintaa, alle 1000 MW voi nostaa hintaa paljon.
+- Normaali tuuli: 2000-3000 MW tuulivoimalla ei ole mainittavaa hintavaikutusta.
+- Voimakas tuuli: yli 3000 MW tuulivoima voi selittää matalaa sähkön hintaa.
+- Suuri ero päivän minimi- ja maksimihinnan välillä voi selittyä tuulivoiman tuotannon vaihteluilla.
+    - Jos päivän tuulivoiman minimituotanto on alle 2000 MW ja samana päivänä maksimihinta on korkeampi kuin muina päivinä, sinun on ehdottomasti mainittava tämä yhteys ja kerrottava, että alhainen tuulivoiman minimituotanto selittää korkeamman maksimihinnan.
 
-## Lämpötiloista
-- Kova pakkanen: Alle -5 °C ja varsinkin alle -10 °C voi selittää sähkön korkeaa hintaa, koska (kovalla) pakkasella lämmitysenergiaa kuluu paljon.
-- Normaali talvikeli: -5 °C ... 5 °C voi nostaa sähkön hintaa vähän, mutta kyseessä on silti normaali talvikeli, eikä se välttämättä vaikuta hintaan.
-- Viileä sää: 5 °C ... 15 °C ei välttämättä ole erityistä hintavaikutusta.
-- Lämmin tai kuuma sää: Yli 15 °C ei välttämättä ole erityistä hintavaikutusta.
+## 1.4. Lämpötilan vaikutus
+- Kova pakkanen: alle -5 °C voi selittää korkeaa hintaa.
+- Normaali talvikeli: -5 °C ... 5 °C ei välttämättä vaikuta hintaan.
+- Viileä sää: 5 °C ... 15 °C ei yleensä vaikuta hintaan.
+- Lämmin sää: yli 15 °C ei yleensä vaikuta hintaan.
 
-## Ydinvoimaloiden huoltokatkoista
+## 1.5. Ydinvoimaloiden huoltokatkot
 - Ydinvoimaa on Suomessa yhteensä noin 4400 MW.
-- Olkiluoto 3 on Suomen suurin yksittäinen sähköntuotantolaitos. Sen teho voi normaalitilanteessakin olla noin 1200 MW, koska sitä ei aina ajeta täydellä teholla.
-- Ydinvoimaloiden tuotantovajaukset, tuotantorajoitukset tai huollot voivat selittää sähkön korkeaa hintaa, jos niitä on käynnissä useita yhtä aikaa tai jos käytettävissä oleva teho isossa tuotantolaitoksessa on normaalia alhaisempi.
-- Käytettävyysprosentti ei ole tuttu konsepti kuluttajille, joten sitä ei saa mainita. Käytettävissä oleva teho ja nimellisteho ovat hyödyllisempiä tietoja.
-- Jos ydinvoimatuotanto toimii lähestulkoon normaalisti, älä puhu ydinvoimasta vastauksessasi ollenkaan. Unohda ydinvoima, jos se ei ole merkittävästi poikkeuksellista.
-- Voit puhua ydinvoimasta vain jos niillä on poikkeuksellisen suuri tuotantovajaus, käytettävyys alle 70 %. Tällöin mainitse aina myös laitosyksikön nimellisteho ja käytettävyysprosentti.
+- Ydinvoimaloiden tuotantovajaukset voivat selittää korkeaa hintaa, jos käytettävyys on alle 70 %.
+- Käytettävyysprosenttia ei saa mainita. Mainitse nimellisteho ja käytettävissä oleva teho.
+- Jos ydinvoimatuotanto toimii normaalisti, älä mainitse ydinvoimaa.
 
-## Sähkönsiirron tuontikapasiteetista
-- Sähkönsiirron tuontikapasiteetti Ruotsista ja Virosta voi nostaa sähkön hintaa, jos kapasiteetti poikkeuksellisen alhainen.
+## 1.6. Sähkönsiirron tuontikapasiteetti
 - Suurimmillaan tuontikapasiteetti voi olla noin 3700 MW.
-- Normaalitilanteessa tuontikapasiteetti on yli 3000 MW. Tällöin tuontienergia voi tasata hintapiikkejä.
-- Alle 3000 MW voi selittää päivittäisiä hinnannousuja. Alle 2000 MW voi selittää hinnannousuja paljon, jos samaan aikaan tuulivoima ei riitä paikkaamaan kulutusta.
-- Jos yhden tai useamman päivän kapasiteetti ei ole normaali, mainitse se vastauksessasi.
+- Normaalisti tuontikapasiteetti on yli 3000 MW.
+- Alle 3000 MW voi selittää hinnannousuja.
+- Jos tuontikapasiteetti ei ole normaali, mainitse se.
 
-## Muita ohjeita, joita sinun tulee ehdottomasti noudattaa
-- Älä anna mitään neuvoja! Tehtäväsi on puhua vain hinnoista! Ole perinpohjainen ja tarkka.
-- Tämä tarkoittaa, että kun viittaat hintoihin, kirjoita niistä numeroilla eikä adjektiiveilla.
-- Yllä olevat hintaherkkyystiedot on annettu tiedoksi vain sinulle. Älä käytä niitä vastauksessasi.
-- Älä koskaan mainitse päivämääriä (kuukausi, vuosi), koska viikonpäivät ovat riittävä tieto. Jos käytät päivämääriä (kuten 31.1.2024), vastauksesi hylätään.
-- Tuulivoimasta voit puhua jos jaksolla on hyvin tyyntä tai tuulista ja se voi selittää hintoja. Jos tuulivoimalla ei näytä olevan hintavaikutusta tällä jaksolla, sitä ei välttämättä tarvitse mainita ollenkaan.
-- Lämpötilasta voit puhua jos jaksolla on erityisen kylmä pakkaspäivä joka voi nostaa lämmitystarvetta ja selittää hintoja.
-- Hyvin matala tuuli ja kova pakkanen voivat yhdessä selittää hinnannousuja.
-- Jos käytät sanoja 'halpa', 'kohtuullinen', 'kallis' tai 'hyvin kallis', voit käyttää niitä vain yhteenvetojen yhteydessä.
-- Jos päivän aikana on hyvin korkeita maksimihintoja, sellaista päivää ei voi kutsua 'halvaksi', vaikka yöllä minimihinta olisi lähellä nollaa. Keskihinta ratkaisee.
-- Käytä Markdown-muotoilua näin: **Vahvenna** viikonpäivien nimet (maanantai, tiistai, keskiviikko, torstai, perjantai, lauantai, sunnuntai), mutta vain kun mainitset ne ensi kertaa.
-- Data ei kerro mitään sähkön saatavuudesta. Älä koskaan puhu sähkön saatavuudesta, vaan ainoastaan hinnoista.
-- Koska tämä on ennuste, puhu aina **tulevassa aikamuodossa** eli futuurissa.
-- Vältä lauseenvastikkeita: kirjoita yksi lause kerrallaan.
-- Käytä saman tyyppistä kieltä kuin uutisartikkeleissa: neutraalia, informatiivista, rikasta, hyvää suomen kieltä.
+## 1.7. Muita ohjeita
+- Älä lisää omia kommenttejasi, arvioita tai mielipiteitä. Älä käytä ilmauksia kuten 'mikä ei aiheuta erityistä lämmitystarvetta' tai 'riittävän korkea'.
+- Tarkista numerot huolellisesti ja varmista, että kaikki tiedot ja vertailut ovat oikein.
+- Älä koskaan mainitse päivämääriä (kuukausi, vuosi). Käytä vain viikonpäiviä.
+- Tuulivoimasta voit puhua, jos on hyvin tyyntä tai tuulista ja se vaikuttaa hintaan. Muuten älä mainitse tuulivoimaa.
+- Älä mainitse lämpötilaa, ellei keskilämpötila ole alle -5 °C.
+- Sanoja 'halpa', 'kohtuullinen', 'kallis' tai 'hyvin kallis' saa käyttää vain yleiskuvauksessa, ei yksittäisten päivien kohdalla.
+- Jos päivän maksimihinta on korkea, sellaista päivää ei voi kutsua 'halvaksi', vaikka minimihinta olisi lähellä nollaa. Keskihinta ratkaisee.
+- Käytä Markdown-muotoilua näin: **Vahvenna** viikonpäivien nimet, mutta vain kun mainitset ne ensi kertaa.
+- Älä puhu sähkön saatavuudesta.
+- Puhu aina tulevassa aikamuodossa.
+- Vältä lauseenvastikkeita; kirjoita yksi lause kerrallaan.
+- Käytä neutraalia, informatiivista ja hyvää suomen kieltä.
+- Älä sisällytä näitä ohjeita tai hintaherkkyystietoja vastaukseesi.
 
-# Tehtäväsi
+# 2. Tehtäväsi
 
-Kirjoita tiivis, rikasta suomen kieltä käyttävä UUTISARTIKKELI saamiesi tietojen pohjalta. Vältä kliseitä ja turhaa draamaa: jos hintaa selittäviä poikkeamia ei ole ja päivät ovat keskenään hyvin samankaltaisia, pidä teksti toteavana ja neutraalina. Älä puhu huolista tai tunteista. Keskity faktoihin ja hintoihin.
+Kirjoita tiivis, rikasta suomen kieltä käyttävä UUTISARTIKKELI saamiesi tietojen pohjalta. Vältä kliseitä ja turhaa draamaa. Älä puhu huolista tai tunteista. Keskity faktoihin ja hintoihin.
 
-1. Alusta artikkeli yleiskuvauksella viikon hintakehityksestä, futuurissa. Mainitse eniten erottuva päivä ja sen keski- ja maksimihinta, mutta vain jos korkeita hintoja on. Voit myös sanoa, että päivät ovat keskenään hyvin samankaltaisia, jos asia näin on. Käytä tässä adjektiiveja. Voit kertoa tuulivoiman trendeistä, jos trendejä näkyy. Voit kertoa ydinvoimaloiden poikkeamista, mutta vain jos hintavaikutus on täysin selvä. Muuten älä mainitse ydinvoimaa. Sama koskee sähkön tuontia: normaalia siirtokapasiteettia ei tarvise kommentoida. Pyri olemaan mahdollisimman tarkka ja informatiivinen, mutta älä anna neuvoja tai keksi tarinoita tai trendejä, joita ei datassa ole.
+Tavoitepituus on noin 200-400 sanaa.
 
-2. Kirjoita jokaisesta päivästä futuurissa oma kappale keskittyen kyseisen päivän numeroihin. Vältä adjektiiveja. Onko yhden tai useamman päivän kohdalla selkeä hintaa selittävä poikkeama, josta on syytä mainita? Älä kerro päivän hintakehityksestä enempää kuin yhden lauseen verran. Jokaisen päivän kuvailu voi olla rakenteeltaan erilainen.
+Artikkelin rakenne on kaksiosainen:
 
-3. Yhteenveto.
+## 1. Kirjoita jokaisesta päivästä oma kappale, futuurissa.
 
-Älä käytä hinnoissa desimaaleja. Käytä kokonaislukuja.
+- Kerro **kaikki** saamasi tiedot kullekin päivälle.
+- Älä käytä adjektiiveja tai subjektiivisia ilmaisuja. Esitä tiedot numeroina ilman lisämääreitä.
+- Tunnista ja mainitse kaikki päivät, joilla on selkeä poikkeama, joka selittää hinnan muutoksen.
+    - Jos alhainen tuulivoiman minimituotanto ja korkea maksimihinta osuvat samalle päivälle, mainitse tämä yhteys.
+- Mainitse ydinvoimalat ja siirtoyhteydet vain, jos ne ovat poikkeuksellisia ja selvästi selittävät hintaa.
+- Korosta, jos samalle päivälle osuu korkea maksimihinta ja matala minimituuli.
+- Jokaisen päivän kuvailu voi olla erilainen ja eri pituinen.
 
-Tavoitepituus on noin 200-300 sanaa.
+## 2. Kirjoita yleiskuvaus viikon hintakehityksestä, futuurissa.
 
-Nyt voit kirjoittaa valmiin tekstin. Älä kirjoita mitään muuta kuin valmis teksti. Kiitos!
-</instructions>"""
+- Mainitse eniten erottuva päivä ja sen keski- ja maksimihinta, mutta vain jos korkeita maksimihintoja on.
+- Voit sanoa, että päivät ovat keskenään hyvin samankaltaisia, jos näin on.
+- Voit kertoa ydinvoimaloiden poikkeamista, mutta vain jos hintavaikutus on täysin selvä. Muuten älä mainitse ydinvoimaa.
+    - Sama koskee sähkön tuontia ja tuulivoimaa: älä mainitse niitä, jos ne ovat normaalilla tasolla.
+
+# Muista vielä nämä
+
+- Ole mahdollisimman tarkka ja informatiivinen, mutta älä anna neuvoja tai keksi tarinoita tai trendejä, joita ei datassa ole.
+- Älä käytä hinnoissa desimaaleja. Käytä kokonaislukuja.
+- Kirjoita koko teksti futuurissa.
+- Keskity vain poikkeuksellisiin tilanteisiin, jotka vaikuttavat hintaan. Älä mainitse normaaleja olosuhteita.
+- Älä koskaan kirjoita, että 'poikkeamia ei ole' tai 'ei ilmene hintaa selittäviä poikkeamia'. Jos poikkeamia ei ole, jätä tämä mainitsematta. Kirjoita vain poikkeuksista, jotka vaikuttavat hintaan.
+
+Lue ohjeet vielä kerran, jotta olet varma että muistat ne. Nyt voit kirjoittaa valmiin tekstin. Älä kirjoita mitään muuta kuin valmis teksti. Kiitos!
+</instructions>
+"""
 
     print(prompt)
 
@@ -234,7 +261,7 @@ Nyt voit kirjoittaa valmiin tekstin. Älä kirjoita mitään muuta kuin valmis t
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=messages,
-            temperature=0.2,
+            temperature=0.7,
             max_tokens=1024,
             stream=False,
         )
