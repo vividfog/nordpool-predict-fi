@@ -269,6 +269,13 @@ Lue ohjeet vielä kerran, jotta olet varma että muistat ne. Nyt voit kirjoittaa
         print(f"OpenAI API call failed: {e}")
         sys.exit(1)
 
+    # Append the assistant's message content to the messages list
+    narration_json = { "content": response.choices[0].message.content }
+
+    # Save the messages to a JSON file in deploy/narration.json
+    with open('deploy/narration.json', 'w', encoding='utf-8') as file:
+        json.dump(narration_json, file, indent=2, ensure_ascii=False)
+
     return response.choices[0].message.content
 
 def test_llm():
