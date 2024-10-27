@@ -386,8 +386,7 @@ if args.predict:
 # --narrate: Narrate can be used with the previous arguments
 if args.narrate:
     print("Narrating predictions...")
-    tomorrow = datetime.now(pytz.utc).replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(days=1)
-    narration = narrate_prediction(tomorrow)
+    narration = narrate_prediction()
 
     if args.commit:
         # Create/update deploy/narration.md
