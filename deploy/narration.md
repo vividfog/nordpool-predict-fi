@@ -1,11 +1,11 @@
-**Torstaina** pörssisähkön hinta vaihtelee 1.0 - 10.0 ¢/kWh, ja päivän keskihinta on 5 ¢/kWh. Tuulivoiman tuotanto on keskimäärin 3028 MW, joten se ei aiheuta merkittävää hintavaikutusta. Sähkönsiirron tuontikapasiteetti on 0 MW. Päivän keskilämpötila on 3.6 °C, mikä ei vaikuta hintaan.
+**Torstaina** pörssisähkön hinta vaihtelee 0-11 ¢/kWh ja päivän keskihinta on 6 ¢/kWh. Tuulivoiman keskimääräinen tuotanto on 2740 MW. Sähkönsiirron tuontikapasiteetti on 0 MW. Päivän keskilämpötila on 3.6 °C.
 
-**Perjantaina** pörssisähkön hinta vaihtelee 1.0 - 5.0 ¢/kWh, ja päivän keskihinta on 4 ¢/kWh. Tuulivoiman keskimääräinen tuotanto nousee 4504 MW:iin, mikä selittää matalaa hintaa. Sähkönsiirron tuontikapasiteetti pysyy edelleen 0 MW:na, ja keskilämpötila on 2.1 °C.
+**Perjantaina** pörssisähkön hinta vaihtelee 1-5 ¢/kWh ja päivän keskihinta on 3 ¢/kWh. Tuulivoiman keskimääräinen tuotanto nousee 4504 MW:iin. Sähkönsiirron tuontikapasiteetti on jälleen 0 MW. Päivän keskilämpötila on 2.1 °C.
 
-**Lauantaina** pörssisähkön hinta vaihtelee 1.0 - 6.0 ¢/kWh, ja päivän keskihinta on jälleen 4 ¢/kWh. Tuulivoiman keskimääräinen tuotanto on 4074 MW, mikä ei aiheuta merkittävää hintavaikutusta. Sähkönsiirron tuontikapasiteetti on edelleen 0 MW, ja keskilämpötila pysyy 2.1 °C:ssa.
+**Lauantaina** pörssisähkön hinta vaihtelee 2-6 ¢/kWh, ja päivän keskihinta on 4 ¢/kWh. Tuulivoiman keskimääräinen tuotanto on 4074 MW. Sähkönsiirron tuontikapasiteetti pysyy 0 MW:ssa. Päivän keskilämpötila on 2.1 °C.
 
-**Sunnuntaina** pörssisähkön hinta vaihtelee 2.0 - 8.0 ¢/kWh, ja päivän keskihinta on 4 ¢/kWh. Tuulivoiman keskimääräinen tuotanto on 3569 MW, mikä ei selitä korkeaa maksimi- tai matalaa minimihintaa. Sähkönsiirron tuontikapasiteetti on yhä 0 MW, ja keskilämpötila on 3.3 °C.
+**Sunnuntaina** pörssisähkön hinta vaihtelee 2-7 ¢/kWh, ja päivän keskihinta on 4 ¢/kWh. Tuulivoiman keskimääräinen tuotanto on 3569 MW. Sähkönsiirron tuontikapasiteetti on 0 MW. Päivän keskilämpötila on 3.3 °C.
 
-**Maanantaina** pörssisähkön hinta vaihtelee 1.0 - 2.0 ¢/kWh, ja päivän keskihinta on 2 ¢/kWh. Tuulivoiman keskimääräinen tuotanto on 4111 MW, mikä ei vaikuta hintaan. Sähkönsiirron tuontikapasiteetti pysyy 0 MW:ssa, ja keskilämpötila on 2.0 °C.
+**Maanantaina** pörssisähkön hinta vaihtelee 1-9 ¢/kWh, ja päivän keskihinta on 4 ¢/kWh. Tuulivoiman keskimääräinen tuotanto nousee 4282 MW:iin. Sähkönsiirron tuontikapasiteetti pysyy 0 MW:ssa. Päivän keskilämpötila on 2.3 °C.
 
-Viikon hintakehitys osoittaa, että päivät ovat keskenään melko samankaltaisia. Erottuva päivä on **torstai**, jolloin pörssisähkön maksimihinta voi nousta 10 ¢/kWh:iin, mutta keskihinta pysyy 5 ¢/kWh:ssa. Tämä korkeampi maksimihinta ei kuitenkaan liity erityisiin poikkeuksiin tuulivoiman tai sähkönsiirron osalta. Ydinvoimaloiden huoltokatkot eivät vaikuta hintakehitykseen merkittävästi tällä viikolla.
+Viikon hintakehitys on varsin tasainen, ja päivät ovat keskenään samankaltaisia. Korkeimmat maksimihinnat esiintyvät torstaina, jolloin pörssisähkön hinta nousee 11 ¢/kWh. Tämä voi johtua alhaisesta sähkönsiirron tuontikapasiteetista, joka on 0 MW. Muut päivät, erityisesti perjantai ja maanantai, tarjoavat kohtuullisia hintoja, joissa keskihinnat pysyvät alle 5 ¢/kWh. Ydinvoimaloiden huoltokatkot eivät näy selvästi sähkön hinnoissa, eikä niiden vaikutus ole merkittävä tällä viikolla.
