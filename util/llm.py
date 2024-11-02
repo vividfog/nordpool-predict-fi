@@ -167,10 +167,10 @@ Olet sähkömarkkinoiden asiantuntija ja kirjoitat kohta uutisartikkelin hintaen
 - Jos jonkin päivän keskihinta tai maksimihinta on muita selvästi korkeampi, mikä voisi selittää sitä? Onko syynä tuulivoima, lämpötila, ydinvoima, siirtoyhteydet vai jokin muu/tuntematon tekijä?
 
 ## 1.2. Sähkönkäyttäjien yleinen hintaherkkyys (keskihinta)
-- Edullinen keskihinta: alle 5 ¢.
-- Normaali keskihinta: 5-9 ¢.
+- Edullinen keskihinta: alle 5 senttiä/kilowattitunti.
+- Normaali keskihinta: 5-9 ¢/kWh.
 - Kallis keskihinta: 10 ¢ tai yli.
-- Hyvin kallis keskihinta: 15 ¢ tai enemmän.
+- Hyvin kallis keskihinta: 15 senttiä tai enemmän.
 - Minimihinnat voivat olla negatiivisia, tavallisesti yöllä. Mainitse ne, jos niitä on.
 
 ## 1.3. Sähkön hinta ja tuulivoiman määrä
