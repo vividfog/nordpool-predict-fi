@@ -461,14 +461,19 @@ if args.deploy:
         f.write(json_data)
     print(f"→ Hourly wind power predictions saved to {json_path_wind}")
 
-    # Normalize 'timestamp' to set the time to 00:00:00 for daily average grouping
-    deploy_df['timestamp'] = deploy_df['timestamp'].dt.tz_localize(None) if deploy_df['timestamp'].dt.tz is not None else deploy_df['timestamp']
+    # Convert timestamps to Helsinki timezone
+    deploy_df['timestamp'] = deploy_df['timestamp'].dt.tz_convert(helsinki_tz)
+
+    # Normalize 'timestamp' to set the time to 00:00:00 for daily average grouping in local time
     deploy_df['timestamp'] = deploy_df['timestamp'].dt.normalize()
+
+    # Calculate daily averages in Helsinki time
     daily_averages = deploy_df.groupby('timestamp')['PricePredict_cpkWh'].mean().reset_index()
 
-    # Before applying lambda, ensure 'timestamp' is timezone-naive for consistency
+    # Convert timestamps back to UTC for the JSON output
+    daily_averages['timestamp'] = daily_averages['timestamp'].dt.tz_convert(pytz.utc)
     daily_averages['timestamp'] = daily_averages['timestamp'].apply(
-        lambda x: (x - pd.Timestamp("1970-01-01")) // pd.Timedelta('1ms')
+        lambda x: int((x - pd.Timestamp("1970-01-01", tz='utc')) // pd.Timedelta('1ms'))
     )
 
     # Save the daily averages to a JSON file in the deploy folder
