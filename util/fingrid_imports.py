@@ -1,12 +1,16 @@
 import os
 import time
 import json
+import argparse
 import pandas as pd
 import requests
 import pytz
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from rich import print
+
+# Define the DEBUG variable
+DEBUG = False
 
 # Constants for import dataset IDs
 PRIMARY_DATASET_IDS = [24, 25, 112] # SE1, SE3, and EE real import capacities
@@ -44,6 +48,10 @@ def fetch_transfer_capacity_data(fingrid_api_key, dataset_ids, start_date, end_d
                 if 'data' not in response.json():
                     raise ValueError("Unexpected response structure: " + str(response.json()))
 
+                if DEBUG:
+                    print(f"Fetched data from {'backup' if backup else 'primary'} sets:")
+                    print(data)
+
                 df = pd.DataFrame(data)
                 if not df.empty:
                     df['startTime'] = pd.to_datetime(df['startTime'], utc=True)
@@ -54,11 +62,9 @@ def fetch_transfer_capacity_data(fingrid_api_key, dataset_ids, start_date, end_d
                     df_pivot.ffill(inplace=True)
                     df_unpivot = df_pivot.reset_index().melt(id_vars='startTime', var_name='datasetId', value_name='CapacityMW')
 
-                    # Log DataFrame info for debugging, sorted by startTime
-                    # if backup:
-                    #     print("DataFrame Info from Fingrid (backup):")
-                    #     print(df_unpivot.sort_values(by='startTime'))
-
+                    if DEBUG:
+                        print("Pivoted and unpivoted DataFrame:")
+                        print(df_unpivot.sort_values(by='startTime'))
                     return df_unpivot[['startTime', 'CapacityMW']]
             elif response.status_code == 429:
                 retry_after = int(response.headers.get('Retry-After', 60))
@@ -72,17 +78,36 @@ def fetch_transfer_capacity_data(fingrid_api_key, dataset_ids, start_date, end_d
     
     raise RuntimeError("Failed to fetch data after 3 attempts")
 
-
 def calculate_capacity_sums(df):
     """
-    This function calculates the sum of capacities for each time period.
+    This function calculates the sum of capacities for each time period,
+    replacing zero sums with the last known non-zero sum.
     """
     if df.empty:
         return pd.DataFrame(columns=['startTime', 'TotalCapacityMW'])
     
     summed_df = df.groupby('startTime').sum().reset_index()
     summed_df.rename(columns={'CapacityMW': 'TotalCapacityMW'}, inplace=True)
+    
+    # Identify zero sums and replace them
+    edits_made = False
+    if not summed_df.empty:
+        # Forward fill zero values
+        condition = (summed_df['TotalCapacityMW'] == 0)
+        last_non_zero_value = None
+        for index, row in summed_df.iterrows():
+            if condition[index]:
+                if last_non_zero_value is not None:
+                    summed_df.at[index, 'TotalCapacityMW'] = last_non_zero_value
+                    edits_made = True
+            else:
+                last_non_zero_value = row['TotalCapacityMW']
+    
+    if edits_made:
+        print("[WARNING] Zero sums in Fingrid planned transfer data. Replaced with last known non-zero values.")
+
     return summed_df
+
 
 def update_import_capacity(df, fingrid_api_key):
     """
@@ -99,23 +124,48 @@ def update_import_capacity(df, fingrid_api_key):
     primary_df = fetch_transfer_capacity_data(fingrid_api_key, PRIMARY_DATASET_IDS, history_date, end_date)
     backup_df = fetch_transfer_capacity_data(fingrid_api_key, BACKUP_DATASET_IDS, history_date, end_date, backup=True)
 
+    if DEBUG:
+        print("Primary DataFrame:")
+        print(primary_df)
+        print("Backup DataFrame:")
+        print(backup_df)
+
     # Calculate summed import capacities
     summed_primary_df = calculate_capacity_sums(primary_df)
     summed_backup_df = calculate_capacity_sums(backup_df)
 
+    if DEBUG:
+        print("Summed Primary DataFrame:")
+        print(summed_primary_df)
+        print("Summed Backup DataFrame:")
+        print(summed_backup_df)
+
+    # Check if the backup dataset is completely zero and set it to None for forward filling
+    if summed_backup_df['TotalCapacityMW'].eq(0).all():
+        summed_backup_df['TotalCapacityMW'] = None  # Prepare for forward filling by setting to None
+
     # Merge primary and backup capacities
     if not summed_primary_df.empty and not summed_backup_df.empty:
         merged_df = pd.merge(summed_primary_df, summed_backup_df, on='startTime', how='outer', suffixes=('_primary', '_backup'))
+        # Use backup when primary is not available, then forward fill zeros to ensure continuity of data
         merged_df['TotalCapacityMW'] = merged_df['TotalCapacityMW_primary'].where(
             merged_df['TotalCapacityMW_primary'].notna(), merged_df['TotalCapacityMW_backup'])
-        # Drop the extra columns
         merged_df = merged_df[['startTime', 'TotalCapacityMW']]
     elif not summed_primary_df.empty:
+        # Use primary directly if backup is not usable
         merged_df = summed_primary_df.rename(columns={'TotalCapacityMW': 'TotalCapacityMW'})
     elif not summed_backup_df.empty:
+        # Use backup directly if primary is not available
         merged_df = summed_backup_df.rename(columns={'TotalCapacityMW': 'TotalCapacityMW'})
     else:
         raise ValueError("Failed to retrieve data from both primary and backup datasets.")
+
+    # Forward fill any remaining NaN values
+    merged_df['TotalCapacityMW'] = merged_df['TotalCapacityMW'].ffill()
+
+    if DEBUG:
+        print("Merged DataFrame:")
+        print(merged_df)
 
     # Prepare to merge with original DataFrame
     df['Timestamp'] = pd.to_datetime(df['Timestamp'], utc=True)
@@ -137,6 +187,9 @@ def update_import_capacity(df, fingrid_api_key):
     temp_df['Date'] = temp_df['Timestamp'].dt.date
     daily_avg_df = temp_df.groupby('Date')['ImportCapacityMW'].mean().reset_index()
     daily_avg_df.rename(columns={'ImportCapacityMW': 'average_import_capacity_mw'}, inplace=True)
+
+    # Round the average import capacity to 1 decimal
+    daily_avg_df['average_import_capacity_mw'] = daily_avg_df['average_import_capacity_mw'].round(1)
 
     # Define Helsinki timezone
     helsinki_tz = pytz.timezone('Europe/Helsinki')
@@ -164,6 +217,15 @@ def update_import_capacity(df, fingrid_api_key):
 
 # Main function, for testing purposes only
 def main():
+    global DEBUG
+
+    # Set up argument parsing
+    parser = argparse.ArgumentParser(description="Fetch and process Fingrid import capacity data.")
+    parser.add_argument('--debug', action='store_true', help="Enable debug mode for detailed logging.")
+    args = parser.parse_args()
+
+    # Set DEBUG based on the argument
+    DEBUG = args.debug
     
     # Configure pandas to display all rows
     pd.set_option('display.max_rows', None)
