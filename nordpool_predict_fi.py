@@ -60,7 +60,7 @@ narration_file = os.getenv('NARRATION_FILE')  # used by --narrate
 # Command line arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('--train', action='store_true', help='[Deprecated] Train a new model candidate using the data in the database')
-parser.add_argument('--predict', action='store_true', help='Generate price predictions from now onwards')
+parser.add_argument('--predict', action='store_true', help='Train a model (in memory) and display price predictions')
 parser.add_argument('--narrate', action='store_true', help='Narrate the predictions into text using an LLM')
 parser.add_argument('--commit', action='store_true', help='Commit the predictions/narrations results to DB; use with --predict, --narrate')
 parser.add_argument('--deploy', action='store_true', help='Deploy the output files to the web folder')
