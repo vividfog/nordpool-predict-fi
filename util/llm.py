@@ -97,8 +97,9 @@ def send_to_gpt(df):
     today = datetime.date.today()
     weekday_today = today.strftime("%A")
     date_today = today.strftime("%d. %B %Y")
+    time_now = datetime.datetime.now().strftime("%H:%M")
 
-    prompt = (f"<data>\nTänään on {weekday_today.lower()} {date_today.lower()} ja Nordpool-sähköpörssin verolliset Suomen markkinan hintaennusteet lähipäiville ovat seuraavat. Ole tarkkana että käytät näitä numeroita oikein ja lue ohjeet tarkasti:\n")
+    prompt = (f"<data>\nTänään on {weekday_today.lower()} {date_today.lower()} klo {time_now} ja Nordpool-sähköpörssin verolliset Suomen markkinan hintaennusteet lähipäiville ovat seuraavat. Ole tarkkana että käytät näitä numeroita oikein ja lue ohjeet tarkasti:\n")
 
     # Iterate over each weekday and concatenate all relevant data
     for weekday, row in df.iterrows():
@@ -135,7 +136,7 @@ def send_to_gpt(df):
 
     prompt += "</data>\n"
 
-    prompt += """
+    prompt += f"""
 <instructions>
 # 1. Miten pörssisähkön hinta muodostuu
 
@@ -170,16 +171,16 @@ Olet sähkömarkkinoiden asiantuntija ja kirjoitat kohta uutisartikkelin hintaen
 - Viileä sää: 5 °C ... 15 °C ei yleensä vaikuta hintaan.
 - Lämmin sää: yli 15 °C ei yleensä vaikuta hintaan.
 
-## 1.5. Ydinvoimaloiden huoltokatkot
+## 1.5. Ydinvoimaloiden huoltokatkot ja käyttöaste
 - Ydinvoimaa on Suomessa yhteensä noin 4400 MW.
 - Ydinvoimaloiden tuotantovajaukset voivat selittää korkeaa hintaa, jos käytettävyys on alle 70 %.
 - Käytettävyysprosenttia ei saa mainita. Mainitse nimellisteho ja käytettävissä oleva teho.
+- Jos tuotanto on nolla, käytä termiä huoltokatko. Muuten oikea termi on tuotantovajaus.
 - Jos ydinvoimatuotanto toimii normaalisti, älä mainitse ydinvoimaa.
 
 ## 1.7. Muita ohjeita
 - Älä lisää omia kommenttejasi, arvioita tai mielipiteitä. Älä käytä ilmauksia kuten 'mikä ei aiheuta erityistä lämmitystarvetta' tai 'riittävän korkea'.
 - Tarkista numerot huolellisesti ja varmista, että kaikki tiedot ja vertailut ovat oikein.
-- Älä koskaan mainitse päivämääriä (kuukausi, vuosi). Käytä vain viikonpäiviä.
 - Tuulivoimasta voit puhua, jos on hyvin tyyntä tai tuulista ja se vaikuttaa hintaan. Muuten älä mainitse tuulivoimaa.
 - Älä mainitse lämpötilaa, ellei keskilämpötila ole alle -5 °C.
 - Sanoja 'halpa', 'kohtuullinen', 'kallis' tai 'hyvin kallis' saa käyttää vain yleiskuvauksessa, ei yksittäisten päivien kohdalla.
@@ -195,26 +196,30 @@ Olet sähkömarkkinoiden asiantuntija ja kirjoitat kohta uutisartikkelin hintaen
 
 Kirjoita tiivis, rikasta suomen kieltä käyttävä UUTISARTIKKELI saamiesi tietojen pohjalta. Vältä kliseitä ja turhaa draamaa. Älä puhu huolista tai tunteista. Keskity faktoihin ja hintoihin.
 
-Tavoitepituus on noin 200-400 sanaa.
+Artikkelia ei tule otsikoida.
 
-Artikkelin rakenne on kaksiosainen:
+Artikkelin rakenne on kolmiosainen:
 
-## 1. Kirjoita jokaisesta päivästä oma kappale, futuurissa.
+## 1. Tee taulukko. Kirjoita jokaisesta päivästä oma rivi taulukkoon.
 
-- Kerro **kaikki** saamasi tiedot kullekin päivälle.
-- Älä käytä adjektiiveja tai subjektiivisia ilmaisuja. Esitä tiedot numeroina ilman lisämääreitä.
-- Tunnista ja mainitse kaikki päivät, joilla on selkeä poikkeama, joka selittää hinnan muutoksen.
-    - Jos alhainen tuulivoiman minimituotanto ja korkea maksimihinta osuvat samalle päivälle, mainitse tämä yhteys.
-- Mainitse ydinvoimalat vain, jos ne ovat poikkeuksellisia ja selvästi selittävät hintaa.
-- Korosta, jos samalle päivälle osuu korkea maksimihinta ja matala minimituuli.
-- Jokaisen päivän kuvailu voi olla erilainen ja eri pituinen.
+| Viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+
+jossa "ka" tarkoittaa kyseisen viikonpäivän keskihintaa. Tasaa sarakkeet kuten esimerkissä. 
 
 ## 2. Kirjoita yleiskuvaus viikon hintakehityksestä, futuurissa.
 
+- Tavoitepituus on noin 200 sanaa.
 - Mainitse eniten erottuva päivä ja sen keski- ja maksimihinta, mutta vain jos korkeita maksimihintoja on.
 - Voit sanoa, että päivät ovat keskenään hyvin samankaltaisia, jos näin on.
 - Voit kertoa ydinvoimaloiden poikkeamista, mutta vain jos hintavaikutus on täysin selvä. Muuten älä mainitse ydinvoimaa.
 - Sama koskee tuulivoimaa: älä kommentoi tuulivoimaa, jos se on keskimäärin normaalilla tasolla eikä vaikuta hintaan ylös- tai alaspäin.
+
+## 3. Kerro parilla sanalla, koska ennuste on päivitetty.
+
+{weekday_today.lower()} klo {time_now}
+
+Älä koskaan mainitse päivämääriä (kuukausi, vuosi). Käytä vain viikonpäiviä.
 
 # Muista vielä nämä
 
