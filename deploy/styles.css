@@ -182,6 +182,20 @@ li {
     text-indent: -16px;
 }
 
+table {
+    width: 100%;
+    font-size: 0.8em;
+    border-collapse: separate;
+    border-spacing: 2px;
+    margin: auto;
+}
+
+th, td {
+    vertical-align: middle;
+    /* text-align: center; */
+    padding: 2px;
+}
+
 @media (max-width: 768px) {
     #body {
         margin: 4px;
