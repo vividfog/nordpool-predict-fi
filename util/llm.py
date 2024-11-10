@@ -91,14 +91,6 @@ def send_to_gpt(df):
     except (FileNotFoundError, json.JSONDecodeError) as e:
         print(f"! [WARNING] Loading nuclear outage data failed: {e}. Narration will be incomplete.")
         NUCLEAR_OUTAGE_DATA = None
-
-    # Load import capacity data from JSON
-    try:
-        with open('deploy/import_capacity_daily_average.json', 'r') as file:
-            IMPORT_CAPACITY_DATA = json.load(file)['import_capacity_daily_average']
-    except (FileNotFoundError, json.JSONDecodeError) as e:
-        print(f"! [WARNING] Loading import capacity data failed: {e}. Narration will be incomplete.")
-        IMPORT_CAPACITY_DATA = None
     
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
@@ -121,14 +113,6 @@ def send_to_gpt(df):
             f"{int(row[('WindPowerMW', 'max')])}, "
             f"keskimäärin {int(row[('WindPowerMW', 'mean')])} MW.\n"
         )
-
-        # Add import capacity information for the specific weekday
-        if IMPORT_CAPACITY_DATA is not None:
-            for capacity in IMPORT_CAPACITY_DATA:
-                date = pd.to_datetime(capacity['date'])
-                if date.strftime('%A') == weekday:
-                    average_import_capacity = capacity['average_import_capacity_mw']
-                    prompt += f"- Sähkönsiirron tuontikapasiteetti: {int(average_import_capacity)} MW.\n"
 
         prompt += f"- Päivän keskilämpötila: {row[('Avg_Temperature', 'mean')]} °C.\n"
 
@@ -158,25 +142,25 @@ def send_to_gpt(df):
 Olet sähkömarkkinoiden asiantuntija ja kirjoitat kohta uutisartikkelin hintaennusteista lähipäiville. Seuraa näitä ohjeita tarkasti.
 
 ## 1.1. Tutki seuraavia tekijöitä ja mieti, miten ne vaikuttavat sähkön hintaan
-- Onko viikko tasainen vai onko suuria eroja päivien välillä? Erot voivat koskea hintaa, tuulivoimaa, lämpötilaa, siirtoyhteyksiä tai ydinvoimaa.
+- Onko viikko tasainen vai onko suuria eroja päivien välillä? Erot voivat koskea hintaa, tuulivoimaa, lämpötilaa tai ydinvoimaa.
 - Onko käynnissä poikkeuksellisen suuria ydinvoimaloiden tuotantovajauksia?
-- Onko sähkönsiirron tuontikapasiteetti normaali vai poikkeuksellisen alhainen? Erottuuko jokin päivä erityisesti?
 - Onko tuulivoimaa eri päivinä paljon, vähän vai normaalisti? Erottuuko jokin päivä matalammalla keskituotannolla?
 - Onko jonkin päivän sisällä tuulivoimaa minimissään poikkeuksellisen vähän? Osuuko samalle päivälle korkea maksimihinta?
 - Onko lämpötila erityisen korkea tai matala tulevina päivinä? Erottuuko jokin päivä erityisesti?
-- Jos jonkin päivän keskihinta tai maksimihinta on muita selvästi korkeampi, mikä voisi selittää sitä? Onko syynä tuulivoima, lämpötila, ydinvoima, siirtoyhteydet vai jokin muu/tuntematon tekijä?
+- Jos jonkin päivän keskihinta tai maksimihinta on muita selvästi korkeampi, mikä voisi selittää sitä? Onko syynä tuulivoima, lämpötila, ydinvoima vai jokin muu/tuntematon tekijä?
 
 ## 1.2. Sähkönkäyttäjien yleinen hintaherkkyys (keskihinta)
 - Edullinen keskihinta: alle 5 senttiä/kilowattitunti.
-- Normaali keskihinta: 5-9 ¢/kWh.
-- Kallis keskihinta: 10 ¢ tai yli.
+- Normaali keskihinta: 5-8 ¢/kWh. Normaalia keskihintaa ei tarvitse selittää.
+- Kallis keskihinta: 9 ¢ tai yli.
 - Hyvin kallis keskihinta: 15 senttiä tai enemmän.
 - Minimihinnat voivat olla negatiivisia, tavallisesti yöllä. Mainitse ne, jos niitä on.
 
 ## 1.3. Sähkön hinta ja tuulivoiman määrä
-- Tyyni tai heikko tuuli: alle 2000 MW tuulivoima voi nostaa hintaa, alle 1000 MW voi nostaa hintaa paljon.
-- Normaali tuuli: 2000-3000 MW tuulivoimalla ei ole mainittavaa hintavaikutusta.
-- Voimakas tuuli: yli 3000 MW tuulivoima voi selittää matalaa sähkön hintaa.
+- Tyyni: Jos tuulivoimaa on keskimäärin vain alle 1000 MW, se voi nostaa sähkön keskihintaa selvästi. Tuulivoima on heikkoa.
+- Heikko tuuli: alle 2500 MW keskimääräinen tuulivoima voi voi nostaa sähkön keskihintaa jonkin verran. Tuulivoima on matalalla tasolla.
+- Tavanomainen tuuli: 2500-3000 MW tuulivoimalla ei ole mainittavaa hintavaikutusta, joten silloin tuulivoimaa ei tarvitse ennusteessa edes mainita.
+- Voimakas tuuli: yli 3000 MW tuulivoima voi selittää matalaa sähkön hintaa. Tuulivoimaa on tarjolla paljon.
 - Suuri ero päivän minimi- ja maksimihinnan välillä voi selittyä tuulivoiman tuotannon vaihteluilla.
     - Jos päivän tuulivoiman minimituotanto on alle 2000 MW ja samana päivänä maksimihinta on korkeampi kuin muina päivinä, sinun on ehdottomasti mainittava tämä yhteys ja kerrottava, että alhainen tuulivoiman minimituotanto selittää korkeamman maksimihinnan.
 
@@ -191,12 +175,6 @@ Olet sähkömarkkinoiden asiantuntija ja kirjoitat kohta uutisartikkelin hintaen
 - Ydinvoimaloiden tuotantovajaukset voivat selittää korkeaa hintaa, jos käytettävyys on alle 70 %.
 - Käytettävyysprosenttia ei saa mainita. Mainitse nimellisteho ja käytettävissä oleva teho.
 - Jos ydinvoimatuotanto toimii normaalisti, älä mainitse ydinvoimaa.
-
-## 1.6. Sähkönsiirron tuontikapasiteetti
-- Suurimmillaan tuontikapasiteetti voi olla noin 3700 MW.
-- Normaalisti tuontikapasiteetti on yli 3000 MW.
-- Alle 3000 MW voi selittää hinnannousuja.
-- Jos tuontikapasiteetti ei ole normaali, mainitse se.
 
 ## 1.7. Muita ohjeita
 - Älä lisää omia kommenttejasi, arvioita tai mielipiteitä. Älä käytä ilmauksia kuten 'mikä ei aiheuta erityistä lämmitystarvetta' tai 'riittävän korkea'.
@@ -227,7 +205,7 @@ Artikkelin rakenne on kaksiosainen:
 - Älä käytä adjektiiveja tai subjektiivisia ilmaisuja. Esitä tiedot numeroina ilman lisämääreitä.
 - Tunnista ja mainitse kaikki päivät, joilla on selkeä poikkeama, joka selittää hinnan muutoksen.
     - Jos alhainen tuulivoiman minimituotanto ja korkea maksimihinta osuvat samalle päivälle, mainitse tämä yhteys.
-- Mainitse ydinvoimalat ja siirtoyhteydet vain, jos ne ovat poikkeuksellisia ja selvästi selittävät hintaa.
+- Mainitse ydinvoimalat vain, jos ne ovat poikkeuksellisia ja selvästi selittävät hintaa.
 - Korosta, jos samalle päivälle osuu korkea maksimihinta ja matala minimituuli.
 - Jokaisen päivän kuvailu voi olla erilainen ja eri pituinen.
 
@@ -236,7 +214,7 @@ Artikkelin rakenne on kaksiosainen:
 - Mainitse eniten erottuva päivä ja sen keski- ja maksimihinta, mutta vain jos korkeita maksimihintoja on.
 - Voit sanoa, että päivät ovat keskenään hyvin samankaltaisia, jos näin on.
 - Voit kertoa ydinvoimaloiden poikkeamista, mutta vain jos hintavaikutus on täysin selvä. Muuten älä mainitse ydinvoimaa.
-    - Sama koskee sähkön tuontia ja tuulivoimaa: älä mainitse niitä, jos ne ovat normaalilla tasolla.
+- Sama koskee tuulivoimaa: älä kommentoi tuulivoimaa, jos se on keskimäärin normaalilla tasolla eikä vaikuta hintaan ylös- tai alaspäin.
 
 # Muista vielä nämä
 
