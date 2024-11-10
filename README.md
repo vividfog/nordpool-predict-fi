@@ -1,12 +1,12 @@
 # Nordpool FI Spot Price Prediction
 
-**This is a Python app that predicts electricity prices for the Nordpool FI market. It fetches a 5-day weather forecast and more, and uses them to predict future Nordpool FI electricity prices, using a set of fine-tuned XGBoost models. Works with Random Forest, Gradient Boost, potentially other .joblib type models too.**
+**This is a Python app that predicts electricity prices for the Nordpool FI market. It fetches a 5-day weather forecast and more, and uses them to predict future Nordpool FI electricity prices, using a pair of XGBoost models. Can also work with Random Forest, Gradient Boost, and other decision tree based models.**
 
 Live version: https://sahkovatkain.web.app
 
-If you need the predictions, you'll find them in the [deploy](deploy) folder. See [below](#home-assistant-chart) for Home Assistant instructions. Alternatively, download [index.html](deploy/index.html) from this repository, save it, and open it locally to see the current prediction.
+If you just the predictions as raw data, you'll find them in the [deploy](deploy) folder. See [below](#home-assistant-chart) for Home Assistant instructions.
 
-This repository contains all the code and much of the data to re-train the required 2 models, generate predictions, express a quantitative model analysis and plot the results.
+This repository contains all the code and most of the data to train the 2 required models, generate the predictions and express an LLM-based narration of the results.
 
 [TOC]
 
@@ -23,6 +23,8 @@ All of the code is curated by an actual person, but there may be some AI comment
 **Aug 31, 2024:** After hyperparameter optimization [experiments](data/create/91_model_experiments/) measuring Random Forest, XGBoost, Gradient Boosting, and Light GBM, we're currently running XGBoost by default.
 
 **Sep 17, 2024:** Added a wind power model training and tuning [routine](https://github.com/vividfog/nordpool-predict-fi/tree/main/data/create/91_model_experiments) for wind power preditions. It generates a .joblib file required by `utils/fingrid_windpower.py`. The updated `--predict` routine now consults this model. The same folder has a script for price prediction model tuning with [Optuna](https://github.com/optuna/optuna). Wind power prediction is now an optional extra chart for Home Assistant users, see below.
+
+**Nov 10, 2024:** Replaced Fingrid trasmission API with [JAO Border Flow API](https://publicationtool.jao.eu/nordic/maxBorderFlow/), for compatibility with flow-based capacity planning, required for import capacity information. Removed some unused/deprecated utility features.
 
 [Continue.dev](https://github.com/continuedev/continue) was and remains the tool of choice for AI pair programming. The choice of LLMs is a range of locally running and commercial models, typically the latest available and currently under evaluation.
 
@@ -41,20 +43,15 @@ The repo uses environment variables for configuration. These can be set in a fil
 How to use:
 
 ```shell
-usage: nordpool_predict_fi.py [-h] [--train] [--eval] [--training-stats] [--dump] [--plot] [--predict] [--add-history] [--narrate] [--commit] [--deploy] [--publish]
+usage: nordpool_predict_fi.py [-h] [--predict] [--narrate] [--commit] [--deploy] [--dump]
 
 options:
-  -h, --help          show this help message and exit
-  --train             Train a new model candidate using the data in the database; use with --predict
-  --eval              Show evaluation metrics for the current database
-  --training-stats    Show training stats for candidate models in the database as a CSV
-  --dump              Dump the SQLite database to CSV format
-  --plot              Plot all predictions and actual prices to a PNG file in the data folder
-  --predict           Generate price predictions from now onwards
-  --add-history       Add all missing predictions to the database post-hoc; use with --predict
-  --narrate           Narrate the predictions into text using an LLM
-  --commit            Commit the results to DB and deploy folder; use with --predict, --narrate
-  --deploy            Deploy the output files to the deploy folder
+  -h, --help  show this help message and exit
+  --predict   Train a model (in memory) and display price predictions
+  --narrate   Narrate the predictions into text using an LLM
+  --commit    Commit the predictions/narrations results to DB; use with --predict, --narrate
+  --deploy    Deploy the output files to the web folder
+  --dump      Dump the SQLite database to CSV format
 ```
 
 See the `data/create` folders for a set of DB initialization scripts if you need them. You may need to fetch some of the data sets from their original sources. The CSV and SQL database dumps are updated from time to time.
@@ -65,9 +62,9 @@ First make sure you've installed the requirements from requirements.txt. The mai
 
 Examples:
 
-- Start with: `python nordpool_predict_fi.py --train --predict` to create a set of price predictions for 7 days into the past and 5 days into the future with no commit back to database. Training happens in-memory and the model file is not saved. This should take a minute or few on a modern CPU. Even a Raspberry Pi is fine for predicitons, if model development and tuning is first done elsewhere.
+- Start with: `python nordpool_predict_fi.py --predict` to train a model and display a set of price predictions for 7 days into the past and 5 days into the future with no commit back to database. Training happens in-memory and the model file is not saved. This should take a minute or few on a modern CPU. Even a Raspberry Pi is fine for predictions, if model hyperparameter search is first done elsewhere.
 
-- Longer pipeline: Train a new model, show eval stats for it, update a price forecast data frame with it, narrate the forecast, commit it to your SQLite database and deploy the json/md outputs with that data: `python nordpool_predict_fi.py --train --predict --narrate --commit --deploy`.
+- Longer pipeline: Train a new model, show eval stats for it, update a price forecast data frame with it, narrate the forecast, commit it to your SQLite database and deploy the json/md outputs with that data: `python nordpool_predict_fi.py --predict --narrate --commit --deploy`.
 
   There is plenty of STDOUT info, it's a good idea to read it to see what's going on.
 
@@ -112,10 +109,6 @@ As code, the price information is learned from, or is a function of, patterns an
 Feel free to fork the project and make it your own, or submit a pull request. We plan to keep this code working as a hobby project, until there's a new and more exciting hobby project.
 
 # How to use the data in your apps
-
-## Local web page
-
-If you download [index.html](deploy/index.html) and open it locally, it will draw the latest data in a nice format at runtime using eCharts. This is the same page which can be found at https://sahkovatkain.web.app.
 
 ## Python sample script
 
@@ -201,15 +194,15 @@ You need to update the database to have a complete time series of your new train
 
 ## 3. Create a new predictor function as a utility
 
-1. See the source code for how the util/FMI, Fingrid and Sahkotin functions work and how the main script calls them inside the `--train` and `--predict` arguments. These are in the util folder.
+1. See the source code for how the util/FMI, Fingrid and Sahkotin functions work and how the main script calls them inside the `--predict` arguments. Utility functions are located in the `util` folder.
 
-2. Create a function that accepts a data frame and returns a data frame. Add this to the util folder and import it. Use it after or in between the existing function calls.
+2. Create a function that accepts a data frame and returns a data frame. Add this to the `util` folder and import it. Use it after or in between the existing function calls.
 
    ```python
    df = update_wind_speed(df)
    df = update_nuclear(df, fingrid_api_key=fingrid_api_key)
    df = update_spot(df)
-   df = update_se3(df) # this could be your new function
+   df = update_solar(df) # this could be your new function
    ```
 
    The returned data frame should be the exact same DF passed to it, but now filled with data 7 days into the past and 5 days into the future. Merging data frames and working with time stamps can be a bit tricky, but there's sample code in the FMI/Fingrid/Sahkotin functions.
@@ -239,7 +232,7 @@ You've already verified earlier that the results are better than without this ne
 1. Commit a new set of predictions to the database and deploy them to the JSON files in the deploy folder:
 
    ```shell
-   python nordpool_predict_fi.py --train --predict --commit --narrate --deploy
+   python nordpool_predict_fi.py --predict --commit --narrate --deploy
    ```
 
    This would perform the following steps:
@@ -261,4 +254,4 @@ If you run into trouble or have a suggestion on how to make this process easier,
 
 ## License
 
-This project is licensed under the MIT License. It is a hobby and it's free, but a shoutout would be nice if you use the code in public.
+This project is licensed under the MIT License. It is a hobby and it's free, but a shoutout would be nice if you use this code in public or were inspired by it.
