@@ -1,3 +1,9 @@
+#
+# THIS SCRIPT IS NO LONGER IN USE. IT HAS BEEN REPLACED BY THE JAO IMPORT CAPACITY API.
+# https://publicationtool.jao.eu/nordic/api
+# https://www.fingrid.fi/ajankohtaista/tiedotteet/2024/flow-based-kapasiteetinlaskentamenetelma-otettu-onnistuneesti-kayttoon/
+#
+
 import os
 import time
 import json
