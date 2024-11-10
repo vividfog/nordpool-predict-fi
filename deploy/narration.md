@@ -1,11 +1,11 @@
-**Maanantai** tuo tullessaan pörssisähkön keskihinnan 9 ¢/kWh. Maksimihinta nousee 14 ¢/kWh, kun minimihinta on 5 ¢/kWh. Tuulivoiman keskimääräinen tuotanto on 1659 MW, mikä on kohtuullisella tasolla. Päivän keskilämpötila on 3.8 °C.
+**Maanantai** tuo mukanaan pörssisähkön hinnan, joka vaihtelee 5-14 ¢/kWh, päivän keskihinnan ollessa 10 ¢/kWh. Tuulivoiman keskimääräinen tuotanto on 1663 MW, ja päivän keskilämpötila on 3.8 °C.
 
-**Tiistaina** sähkön keskihinta pysyy samalla tasolla 9 ¢/kWh. Minimihinta on 4 ¢/kWh ja maksimihinta 14 ¢/kWh. Tuulivoiman keskimääräinen tuotanto on 1337 MW, mikä on matalalla tasolla. Keski-ilma on 3.7 °C.
+**Tiistaina** sähkön hinta vaihtelee 5-15 ¢/kWh, päivän keskihinnan ollessa 10 ¢/kWh. Tuulivoiman keskimääräinen tuotanto on 1265 MW, ja päivän keskilämpötila on 3.7 °C. Tällä päivällä ei ole erityisiä poikkeamia.
 
-**Keskiviikko** tuo mukanaan merkittävän muutoksen. Pörssisähkön keskihinta laskee 6 ¢/kWh, ja maksimihinta on 10 ¢/kWh, kun minimihinta on 0 ¢/kWh. Tuulivoiman keskimääräinen tuotanto on 2033 MW, mikä on hyvällä tasolla. Keski-ilma on 3.6 °C.
+**Keskiviikkona** pörssisähkön hinta vaihtelee 1-11 ¢/kWh, ja päivän keskihinta on 7 ¢/kWh. Tuulivoiman keskimääräinen tuotanto nousee 2033 MW:iin, mikä on korkeata verrattuna aiempiin päiviin. Päivän keskilämpötila on 3.6 °C. Tämä päivä erottuu muiden joukosta tuulivoiman tuotannon vuoksi.
 
-**Torstaina** sähkön hinta laskee edelleen, ja keskihinta on vain 2 ¢/kWh. Minimihinta on 0 ¢/kWh ja maksimihinta 8 ¢/kWh. Tuulivoiman keskimääräinen tuotanto nousee 4015 MW:iin, mikä voi vaikuttaa edulliseen hintatasoon. Päivän keskilämpötila on 5.3 °C.
+**Torstaina** sähkön hinta vaihtelee 1-7 ¢/kWh, ja päivän keskihinta on 3 ¢/kWh. Tuulivoima on korkealla tasolla, keskimäärin 4015 MW. Päivän keskilämpötila nousee 5.3 °C:seen. Tämä tuulivoiman tuotanto mahdollistaa matalan keskihinnan.
 
-**Perjantaina** sähkön keskihinta pysyy ennallaan 2 ¢/kWh. Minimihinta on 1 ¢/kWh ja maksimihinta 4 ¢/kWh. Tuulivoiman keskimääräinen tuotanto on korkea, 4594 MW, mikä tukee hintakehitystä. Keski-ilma on 5.9 °C.
+**Perjantaina** sähkön hinta vaihtelee 1-6 ¢/kWh, ja päivän keskihinta on jälleen 3 ¢/kWh. Tuulivoiman keskimääräinen tuotanto on 4130 MW, mikä on vahva taso. Päivän keskilämpötila on 5.8 °C. Perjantai jää myös alhaisille hinnoille tuulivoiman ansiosta.
 
-Viikon hintakehitys vaikuttaa melko tasaiselta, mutta **torstaina** on erityisen alhaiset hinnat. Sen keskihinta on vain 2 ¢/kWh, mikä johtuu korkeasta tuulivoiman tuotannosta 4015 MW. Muiden päivien keskihinnat ovat korkeampia, erityisesti maanantaina ja tiistaina, jolloin keskihinta on 9 ¢/kWh. Huomionarvoista on, että ydinvoimaloiden poikkeukselliset huoltokatkot voivat myös vaikuttaa hintakehitykseen, mutta niiden vaikutus ei ole selkeä ilman erottuvia hintapoikkeamia.
+Viikon hintakehitys on suhteellisen tasaista. Keskiviikko erottuu korkeammalla tuulivoiman tuotannolla, mikä selittää matalan keskihinnan. Torstai ja perjantai tarjoavat myös alhaisia keskihintoja, johtuen korkeasta tuulivoimasta. Ydinvoimaloiden huoltokatkot eivät vaikuta merkittävästi hintakehitykseen, joten ne eivät ole keskiössä. Yhteenvetona, viikon hinnat pysyvät matalilla tasoilla, mikä johtuu pääasiassa vahvasta tuulivoimasta.
