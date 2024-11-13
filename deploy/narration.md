@@ -1,13 +1,11 @@
 | Viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **torstai**  | 2                | 0 - 5           | 4303 - 6374   | 5.3          |
-| **perjantai**| 3                | 1 - 6           | 1737 - 5376   | 5.9          |
-| **lauantai** | 0                | -1 - 2          | 3721 - 5090   | 6.8          |
-| **sunnuntai**| 1                | 0 - 3           | 2157 - 4537   | 4.6          |
-| **maanantai**| 6                | 3 - 10          | 1900 - 2951   | 2.6          |
+| **torstai**  |        0        |        0 - 1    |    5491 - 6389   |      5       |
+| **perjantai**|        2        |        0 - 6    |    1737 - 5951   |      5       |
+| **lauantai** |        0        |       -2 - 1    |    3721 - 5090   |      7       |
+| **sunnuntai**|        1        |       -1 - 3    |    2157 - 4537   |      5       |
+| **maanantai**|        6        |        4 - 9    |    1900 - 2951   |      3       |
 
-Viikon sähkön hintakehitys näyttää olevan vaihteleva. **Maanantai** erottuu selvästi muista päivistä, sillä sen keskihinta nousee 6 senttiin kilowattitunnilta, mikä on huomattavasti korkeampi kuin muun viikon keskihinnat. Maanantain maksimihinta yltää jopa 10 senttiin, mikä voi johtua ydinvoimaloiden tuotantovajeista. Muut päivät, erityisesti **lauantai**, tarjoavat alhaisia hintoja, jopa negatiivisia, mikä viittaa tuulivoiman riittävyydestä tai muista tuotantotekijöistä. 
+Viikon sähkön hintakehitys näyttää vaihtelevalta. Erityisesti **maanantai** erottuu korkealla keskihinnalla 6 ¢/kWh, mikä johtuu korkeista maksimihinnasta, jotka vaihtelevat 4:stä 9:ään ¢/kWh. Viikon aikana on huomattavia eroja tuulivoiman tuotannossa, erityisesti **perjantaina**, jolloin tuulivoiman minimituotanto on vain 1737 MW, mikä voi nostaa hintoja. **Torstai** ja **lauantai** tarjoavat matalia keskihintoja, 0 ¢/kWh, mutta **lauantaina** on negatiivinen minimihinta, mikä on harvinaista. **Sunnuntaina** keskihinta nousee 1 ¢/kWh, mutta se pysyy silti alhaisena. Ydinvoimaloiden huoltokatkot vaikuttavat tuotantovajeeseen, mikä voi selittää hintakehitystä, mutta niiden vaikutus ei ole suoraan näkyvissä. 
 
-Keskihinnat vaihtelevat viiden sentin sisällä, mikä viittaa siihen, että kysynnän ja tarjonnan tasapaino säilyy suurimmaksi osaksi. **Torstaina** ja **perjantaina** keskihinnat ovat 2 ja 3 senttiä, mikä pitää hinnat kohtuullisina. **Lauantai** tuo esiin alhaisen keskihinnan, mikä voi johtua tuulivoiman riittävyydestä ja matalasta kysynnästä. 
-
-Ennuste on päivitetty keskiviikkona klo 09:03.
+Ennuste on päivitetty keskiviikkona klo 15:04.
