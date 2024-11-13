@@ -1,13 +1,13 @@
 | Viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **keskiviikko** | 2                | 0 - 5            | 2518 - 5972   | 3.6           |
-| **torstai**     | 3                | 1 - 8            | 2708 - 6176   | 5.3           |
-| **perjantai**   | 3                | 0 - 6            | 1737 - 5376   | 5.9           |
-| **lauantai**    | 0                | -1 - 2           | 3721 - 5090   | 6.8           |
-| **sunnuntai**   | 1                | 0 - 2            | 3348 - 4537   | 4.7           |
+| **torstai**  | 2                | 0 - 5            | 3662 - 6366   | 5.3          |
+| **perjantai**| 3                | 0 - 6            | 1737 - 5376   | 5.9          |
+| **lauantai** | 0                | -1 - 1           | 3721 - 5090   | 6.8          |
+| **sunnuntai**| 1                | 0 - 3            | 2157 - 4537   | 4.6          |
+| **maanantai**| 4                | 3 - 5            | 1900 - 2214   | 3.1          |
 
-Viikon sähkön hintakehitys näyttää olevan melko tasainen, mutta **lauantai** erottuu selvästi matalalla keskihinnallaan, joka on 0 ¢/kWh. Lauantaina pörssisähkön minimihinta on negatiivinen, mikä on harvinaista, ja maksimihinta on vain 2 ¢/kWh. Tällä päivällä on myös huomattava tuulivoiman keskimääräinen tuotanto, joka tukee alhaista hintatasoa.
+Viikon sähkön hintaennusteet osoittavat kohtuullista vaihtelua, mutta erottuvimpana päivänä on maanantai, jolloin keskihinta nousee neljään senttiin kilowattitunnilta. Lauantai erottuu myös, sillä sen keskihinta on nolla senttiä, ja päivän maksimi on vain yksi sentti. Tällöin tuulivoiman keskimääräinen tuotanto voi olla riittävää, mutta päivän tuulivoiman minimituotanto on lähellä alarajaa. Tämä yhdistelmä voi selittää nollahinnan.
 
-Ydinvoimaloiden tuotantovajauksia esiintyy, mutta niiden vaikutus sähkön hintaan ei ole selvästi havaittavissa, joten se ei vaikuta merkittävästi ennusteeseen. Muilla päivillä hinnat vaihtelevat 1 - 3 ¢/kWh, mikä osoittaa, että markkinoilla on kohtuullinen hintataso. Eroja päivien välillä ei ole merkittävästi havaittavissa, lukuun ottamatta **lauantaita**, joka on selkeästi poikkeuksellinen.
+Ydinvoimaloiden tuotantovajaus ei ole merkittävässä roolissa viikon aikana, sillä käytettävissä oleva teho on riittävä. Tuulivoiman määrä vaihtelee huomattavasti viikon eri päivinä. Torstaina ja perjantaina on voimakasta tuulivoimaa, mikä voi osaltaan pitää sähkön hinnan alhaisena.
 
-Ennuste on päivitetty tiistaina klo 21:02.
+Ennuste on päivitetty keskiviikkona klo 03:02.
