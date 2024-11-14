@@ -1,13 +1,13 @@
 | Viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **perjantai**|       1         |     -1 - 3      |    4635 - 5737|     5.9      |
-| **lauantai** |       0         |     -1 - 1      |    3721 - 5223|     6.8      |
-| **sunnuntai**|       1         |      0 - 3      |    2157 - 4537|     4.6      |
-| **maanantai**|       7         |      4 - 11     |    1900 - 2951|     2.4      |
-| **tiistai**  |       7         |      3 - 11     |    1322 - 3670|     1.3      |
+| **perjantai**|        1        |      -1 - 3      |   4128 - 5762 |      5.9      |
+| **lauantai** |        0        |      -1 - 1      |   3721 - 5208 |      6.8      |
+| **sunnuntai**|        1        |       0 - 3      |   2157 - 4537 |      4.6      |
+| **maanantai**|        7        |       4 - 10     |   1900 - 2951 |      2.4      |
+| **tiistai**  |        7        |       2 - 11     |   1322 - 3670 |      1.2      |
 
-Viikon hintakehitys on vaihteleva, mutta suurimmat erot esiintyvät maanantaina, jolloin keskihinta nousee 7 senttiin, ja maksimihinta kohoaa jopa 11 senttiin. Tämä korkeampi hinta voi johtua ydinvoimaloiden tuotantovajeista, sillä Olkiluoto 2 ja Olkiluoto 3 ovat huoltokatkolla, mikä rajoittaa ydinvoiman saatavuutta. 
+Viikon sähkön hintakehitys näyttää eroavaisuuksia erityisesti maanantaina, jolloin keskihinta nousee selvästi 7 senttiin kilowattitunnilta. Tämä on huomattavasti korkeampi verrattuna perjantain ja sunnuntain 1 senttiin. Lauantain keskihinta on 0 senttiä, mikä tarkoittaa, että hinta on nolla tai jopa negatiivinen, mutta se ei estä maanantain korkeaa hintaa. Maanantain korkeaa hintaa voidaan osittain selittää alhaisella tuulivoimalla, jonka keskimääräinen tuotanto on vain 2385 megawattia.
 
-Perjantaina ja sunnuntaina keskihinnat ovat 1 sentti, kun taas lauantaina keskihinta on nolla senttiä, mikä tarkoittaa, että sähkön hinta on hyvin alhainen. Tuulivoiman määrä vaihtelee; perjantaina ja lauantaina tuulivoimaa on runsaasti, mikä osaltaan selittää alhaisia hintoja. Maanantai ja tiistai näyttävät ydinvoiman tuotantovajeiden vaikutuksen, mikä nostaa hintoja selvästi. 
+Ydinvoimaloiden huoltokatkojen vuoksi Olkiluoto 2:n ja Olkiluoto 3:n käytettävissä oleva teho on alhaisempi kuin normaalisti. Tämä voi vaikuttaa maanantain hintatasoon, sillä ydinvoiman tuotanto on yhteensä noin 4400 megawattia, ja käytettävissä oleva teho on rajoitettu. Kuitenkin, koska maanantain keskihinta on korkea, on mahdollista, että tuotantovajaus ydinvoimasta nostaa hintaa.
 
-Ennuste on päivitetty torstaina klo 15:03.
+Ennuste on päivitetty torstaina klo 21:03.
