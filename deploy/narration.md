@@ -1,13 +1,13 @@
-Olkiluoto 3 -ydinvoimala on parhaillaan huoltokatkolla. Huoltokatko alkoi sunnuntaina klo 17:00 ja sen odotetaan päättyvän keskiviikkona klo 12:00. Huoltokatko voi vaikuttaa ennusteen tarkkuuteen, koska opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
+Olkiluoto 3 -ydinvoimalassa on käynnissä huoltokatko, joka alkoi sunnuntaina klo 17:00 ja päättyy torstaina klo 12:00. Loviisa 2 -ydinvoimalassa huoltokatko alkoi maanantaina klo 21:00 ja päättyy torstaina klo 21:00. Huoltokatkot voivat vaikuttaa ennusteen tarkkuuteen, koska opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
 
 | viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **keskiviikko** | 5,7 | 1 - 14 | 1958 - 6472 | -0,0 |
-| **torstai** | 2,5 | 1 - 4 | 2404 - 6473 | -0,0 |
-| **perjantai** | 3,4 | 0 - 7 | 1559 - 4345 | 1,1 |
-| **lauantai** | 5,6 | 4 - 8 | 922 - 3251 | -1,0 |
-| **sunnuntai** | 5,9 | 5 - 7 | 876 - 2491 | -1,2 |
+| **keskiviikko** | 5,9 | 1 - 15 | 1878 - 6484 | -0,0 |
+| **torstai**    | 3,7 | 0 - 9  | 2819 - 6482 | -0,0 |
+| **perjantai**  | 3,2 | 0 - 7  | 1559 - 4345 | 1,1  |
+| **lauantai**   | 5,1 | 4 - 7  | 922 - 3251  | -1,0 |
+| **sunnuntai**  | 4,5 | 1 - 7  | 876 - 3803  | -1,0 |
 
-Viikon sähkön hintakehityksessä torstai erottuu selvästi edullisena päivänä, sillä sen keskihinta on vain 2,5 ¢/kWh. Tämä on huomattavasti alle muiden päivien hintatason. Torstain alhainen maksimihinta yhdistettynä runsaan tuulivoiman tuotantoon voi selittää tämän hintatason. Sunnuntaina on korkein keskihinta, 5,9 ¢/kWh, mutta keskihinnat pysyvät koko viikon ajan normaalilla tasolla. Keskiviikkona maksimihinta nousee 14 ¢/kWh, mikä on viikon korkein. Tämä voi liittyä tuulivoiman tuotannon vaihteluihin, sillä tuulivoiman minimituotanto on keskiviikkona alle 2000 MW. Viikon lämpötilat pysyvät normaalin talvisään rajoissa, eivätkä vaikuta merkittävästi sähkön hintaan.
+Viikon pörssisähkön hinnat vaihtelevat jonkin verran, mutta pysyvät pääsääntöisesti edullisina. Keskiviikkona keskihinta on 5,9 ¢/kWh, ja päivän maksimihinta nousee 15 ¢/kWh tasolle, mikä on viikon korkein. Tämä selittyy osittain alhaisella tuulivoiman minimituotannolla, joka jää 1878 MW tasolle. Torstaina ja perjantaina keskihinnat laskevat 3,7 ¢/kWh ja 3,2 ¢/kWh tasolle, mikä johtuu osittain voimakkaammasta tuulivoiman tuotannosta. Lauantaina keskihinta nousee 5,1 ¢/kWh, mikä selittyy osittain heikolla tuulivoiman tuotannolla. Sunnuntaina keskihinta asettuu 4,5 ¢/kWh tasolle.
 
-Ennuste on päivitetty tiistaina klo 15:03.
+Ennuste on päivitetty tiistaina klo 21:03.
