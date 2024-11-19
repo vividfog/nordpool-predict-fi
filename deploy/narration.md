@@ -1,11 +1,13 @@
-**Olkiluoto 3** -ydinvoimala on huoltokatkolla sunnuntaista kello 17:00 alkaen ja sen on arvioitu päättyvän keskiviikkona kello 01:00. Huoltokatko voi vaikuttaa ennusteen tarkkuuteen, koska opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
+Olkiluoto 3 -ydinvoimala on huoltokatkolla sunnuntaista 17:00 alkaen ja sen arvioidaan päättyvän keskiviikkona 01:00. Loviisa 2 -ydinvoimala on huoltokatkolla maanantaista 21:00 alkaen ja sen arvioidaan päättyvän torstaina 21:00. Huoltokatko voi vaikuttaa ennusteen tarkkuuteen, koska opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
 
 | viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| tiistai      |      15,5      |      8 - 21      |   865 - 2352  |      1,1     |
-| keskiviikko  |       4,8      |      3 - 8       |  2458 - 4326  |     -0,0     |
-| torstai      |       3,9      |      2 - 5       |  2389 - 4651  |     -0,0     |
-| perjantai    |       4,4      |      1 - 8       |  1559 - 4345  |      1,1     |
-| lauantai     |       6,6      |      4 - 8       |  1765 - 3251  |     -0,9     |
+| **keskiviikko** | 4,4 | 3 - 7 | 1796 - 6076 | -0,0 |
+| **torstai** | 4,4 | 1 - 6 | 2389 - 4651 | -0,0 |
+| **perjantai** | 4,1 | 1 - 8 | 1559 - 4345 | 1,1 |
+| **lauantai** | 6,9 | 6 - 9 | 922 - 3251 | -1,0 |
+| **sunnuntai** | 5,7 | 5 - 6 | 876 - 1196 | -1,7 |
 
-Tulevan viikon hintakehityksessä erottuu erityisesti **tiistai**, jolloin sähkön keskihinta nousee huomattavasti korkeammaksi, 15,5 ¢/kWh, ja maksimihinta yltää 21 ¢/kWh. Tämä tiistain korkea hinta voi osittain johtua tuulivoiman matalasta minimituotannosta, joka jää 865 MW tasolle. Muina päivinä keskihinnat ovat huomattavasti alhaisempia, alkaen keskiviikon 4,8 ¢/kWh:sta ja torstain 3,9 ¢/kWh:sta. Perjantaina ja lauantaina keskihinnat ovat 4,4 ¢/kWh ja 6,6 ¢/kWh vastaavasti. Keskiviikkona ja torstaina tuulivoimaa on runsaasti, mikä selittää alhaisemmat hinnat näinä päivinä. Viikon keskilämpötilat pysyttelevät normaalin talvisään rajoissa, eivätkä ne siten vaikuta merkittävästi hintakehitykseen. Ennuste on päivitetty maanantaina klo 21:02.
+Tulevalla viikolla sähkön hintaennusteet näyttävät eri päivien välillä vaihtelevia keskihintoja. **Lauantai** erottuu korkeimmalla keskihinnallaan, joka on 6,9 ¢/kWh. Tämä saattaa osittain selittyä alhaisella tuulivoiman tuotannolla, joka on minimissään 922 MW. Myös **sunnuntaina** on odotettavissa korkeampi keskihinta 5,7 ¢/kWh, tuulivoiman tuotannon ollessa erityisen matalalla tasolla, keskimäärin 1017 MW. Viikon muut päivät ovat hintatasoltaan melko tasaisia, keskihintojen pysytellessä alle 5 ¢/kWh. Kylmät lämpötilat eivät kuitenkaan näillä näkymin vaikuta hintatasoon erityisesti.
+
+Ennuste on päivitetty tiistaina klo 03:02.
