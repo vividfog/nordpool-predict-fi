@@ -53,10 +53,10 @@ series:
       extremas: false
     data_generator: |
       return [...entity.attributes.raw_today.map((start, index) => {
-                return [new Date(start["start"]).getTime(), entity.attributes.raw_today[index]["value"]*124];
+                return [new Date(start["start"]).getTime(), entity.attributes.raw_today[index]["value"]*125.5];
              }),
              ...entity.attributes.raw_tomorrow.map((entry) => {
-                return [new Date(entry.start).getTime(), entry.value*124];
+                return [new Date(entry.start).getTime(), entry.value*125.5];
              }),
              // Add a new entry for the day after tomorrow with a zero value
              [new Date(new Date().setDate(new Date().getDate() + 2)).setHours(0, 0, 0, 0), 0]

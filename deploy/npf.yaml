@@ -49,7 +49,7 @@ series:
       extremas: true
     data_generator: |
       return entity.attributes.raw_today.map((start, index) => {
-        return [new Date(start["start"]).getTime(), entity.attributes.raw_today[index]["value"]*124];
+        return [new Date(start["start"]).getTime(), entity.attributes.raw_today[index]["value"]*125.5];
       });
     color: '#aaaaaa'
     color_threshold:
@@ -74,7 +74,7 @@ series:
     stroke_width: 0
     data_generator: |
       return entity.attributes.raw_tomorrow.map((entry) => {
-        return [new Date(entry.start), entry.value*124];
+        return [new Date(entry.start), entry.value*125.5];
       });
     color_threshold:
       - value: 0
