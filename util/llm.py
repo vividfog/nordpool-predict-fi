@@ -1,15 +1,15 @@
-import datetime
-import locale
 import sys
+import os
 import json
 import locale
+import datetime
 import pandas as pd
-import os
 import pytz
-from openai import OpenAI
-from .sql import db_query
-from rich import print
 from dotenv import load_dotenv
+from openai import OpenAI
+from rich import print
+from datetime import datetime as dt
+from .sql import db_query
 
 # Attempt to set the locale to Finnish for day names
 try:
@@ -70,10 +70,18 @@ def narrate_prediction():
         'Avg_Temperature': 'mean'
     })
 
-    # Round values accordingly
-    df_grouped['PricePredict_cpkWh'] = df_grouped['PricePredict_cpkWh'].round(0).astype(int)
-    df_grouped['WindPowerMW'] = df_grouped['WindPowerMW'].round(0).astype(int)
-    df_grouped['Avg_Temperature'] = df_grouped['Avg_Temperature'].round(1)
+    # Rounding and conversion to ensure integer output for min and max
+    df_grouped[('PricePredict_cpkWh', 'min')] = df_grouped[('PricePredict_cpkWh', 'min')].round().astype(int)
+    df_grouped[('PricePredict_cpkWh', 'max')] = df_grouped[('PricePredict_cpkWh', 'max')].round().astype(int)
+
+    # Keeping mean as a float rounded to 1 decimal place
+    df_grouped[('PricePredict_cpkWh', 'mean')] = df_grouped[('PricePredict_cpkWh', 'mean')].round(1)
+
+    # Ensure WindPowerMW is integer and Avg_Temperature one decimal float
+    df_grouped[('WindPowerMW', 'min')] = df_grouped[('WindPowerMW', 'min')].round().astype(int)
+    df_grouped[('WindPowerMW', 'max')] = df_grouped[('WindPowerMW', 'max')].round().astype(int)
+    df_grouped[('WindPowerMW', 'mean')] = df_grouped[('WindPowerMW', 'mean')].round().astype(int)
+    df_grouped[('Avg_Temperature', 'mean')] = df_grouped[('Avg_Temperature', 'mean')].round(1)
 
     # Convert the date index to weekday names
     df_grouped.index = pd.to_datetime(df_grouped.index).strftime('%A')
@@ -83,7 +91,6 @@ def narrate_prediction():
     return narrative
 
 def send_to_gpt(df):
-    
     # Load nuclear outage data from JSON
     try:
         with open('deploy/nuclear_outages.json', 'r') as file:
@@ -91,7 +98,7 @@ def send_to_gpt(df):
     except (FileNotFoundError, json.JSONDecodeError) as e:
         print(f"! [WARNING] Loading nuclear outage data failed: {e}. Narration will be incomplete.")
         NUCLEAR_OUTAGE_DATA = None
-    
+
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
     today = datetime.date.today()
@@ -105,8 +112,8 @@ def send_to_gpt(df):
     for weekday, row in df.iterrows():
         prompt += f"\n**{weekday}**\n"
         prompt += (
-            f"- Pörssisähkön hinta ¢/kWh: {row[('PricePredict_cpkWh', 'min')]} - "
-            f"{row[('PricePredict_cpkWh', 'max')]}, "
+            f"- Pörssisähkön hinta ¢/kWh: {int(row[('PricePredict_cpkWh', 'min')])} - "
+            f"{int(row[('PricePredict_cpkWh', 'max')])}, "
             f"päivän keskihinta {row[('PricePredict_cpkWh', 'mean')]} ¢/kWh.\n"
         )
         prompt += (
@@ -114,25 +121,41 @@ def send_to_gpt(df):
             f"{int(row[('WindPowerMW', 'max')])}, "
             f"keskimäärin {int(row[('WindPowerMW', 'mean')])} MW.\n"
         )
-
         prompt += f"- Päivän keskilämpötila: {row[('Avg_Temperature', 'mean')]} °C.\n"
 
-    # Add a separate section for nuclear outages
+    # Add a single section for nuclear outages
     if NUCLEAR_OUTAGE_DATA is not None:
-        prompt += "\n**Ydinvoimaloiden huoltokatkot**\n"
+        nuclear_outage_section = "\n**Ydinvoimalat**\n"
+        section_empty = True  # Flag to check if any entry is added
+        
+        helsinki_tz = pytz.timezone('Europe/Helsinki')
+        
         for outage in NUCLEAR_OUTAGE_DATA:
-            start_date = pd.to_datetime(outage['start']).date()
-            end_date = pd.to_datetime(outage['end']).date()
-            if start_date <= today <= end_date:
-                nominal_power = outage['nominal_power']
-                avail_qty = outage['avail_qty']
+            start_date_utc = pd.to_datetime(outage['start'])
+            end_date_utc = pd.to_datetime(outage['end'])
+
+            start_date_hel = start_date_utc.tz_convert(helsinki_tz)
+            end_date_hel = end_date_utc.tz_convert(helsinki_tz)
+
+            # Assuming today is defined earlier in the code using dt.date.today()
+            if start_date_hel.date() <= today <= end_date_hel.date():
                 availability = outage['availability'] * 100  # Convert to percentage
-                resource_name = outage['production_resource_name']
-                prompt += (
-                    f"- {resource_name}: Nimellisteho {nominal_power} MW, "
-                    f"käytettävissä oleva teho {avail_qty} MW, "
-                    f"käytettävyys-% {availability:.1f}. Alkaa - loppuu: {start_date} - {end_date}.\n"
-                )
+                if availability < 70:  # Only include rows with availability below 70%
+                    section_empty = False  # Mark that the section is not empty
+                    nominal_power = outage['nominal_power']
+                    avail_qty = outage['avail_qty']
+                    resource_name = outage['production_resource_name']
+                    start_date_str = start_date_hel.strftime('%A %Y-%m-%d %H:%M')  # %A for full weekday name
+                    end_date_str = end_date_hel.strftime('%A %Y-%m-%d %H:%M')
+                    nuclear_outage_section += (
+                        f"- {resource_name}: Nimellisteho {nominal_power} MW, "
+                        f"käytettävissä oleva teho {avail_qty} MW, "
+                        f"käytettävyys-% {availability:.1f}. Alkaa - loppuu: "
+                        f"{start_date_str} - {end_date_str}. Päättymisaika on ennuste, joka voi muuttua.\n"
+                    )
+
+        if not section_empty:
+            prompt += nuclear_outage_section
 
     prompt += "</data>\n"
 
@@ -143,12 +166,11 @@ def send_to_gpt(df):
 Olet sähkömarkkinoiden asiantuntija ja kirjoitat kohta uutisartikkelin hintaennusteista lähipäiville. Seuraa näitä ohjeita tarkasti.
 
 ## 1.1. Tutki seuraavia tekijöitä ja mieti, miten ne vaikuttavat sähkön hintaan
-- Onko viikko tasainen vai onko suuria eroja päivien välillä? Erot voivat koskea hintaa, tuulivoimaa, lämpötilaa tai ydinvoimaa.
-- Onko käynnissä poikkeuksellisen suuria ydinvoimaloiden tuotantovajauksia?
+- Onko viikko tasainen vai onko suuria eroja päivien välillä? Erot voivat koskea hintaa, tuulivoimaa tai lämpötilaa.
 - Onko tuulivoimaa eri päivinä paljon, vähän vai normaalisti? Erottuuko jokin päivä matalammalla keskituotannolla?
 - Onko jonkin päivän sisällä tuulivoimaa minimissään poikkeuksellisen vähän? Osuuko samalle päivälle korkea maksimihinta?
 - Onko lämpötila erityisen korkea tai matala tulevina päivinä? Erottuuko jokin päivä erityisesti?
-- Jos jonkin päivän keskihinta tai maksimihinta on muita selvästi korkeampi, mikä voisi selittää sitä? Onko syynä tuulivoima, lämpötila, ydinvoima vai jokin muu/tuntematon tekijä?
+- Jos jonkin päivän keskihinta tai maksimihinta on muita selvästi korkeampi, mikä voisi selittää sitä? Onko syynä tuulivoima, lämpötila vai jokin muu/tuntematon tekijä?
 
 ## 1.2. Sähkönkäyttäjien yleinen hintaherkkyys (keskihinta)
 - Edullinen keskihinta: alle 5 senttiä/kilowattitunti.
@@ -171,12 +193,11 @@ Olet sähkömarkkinoiden asiantuntija ja kirjoitat kohta uutisartikkelin hintaen
 - Viileä sää: 5 °C ... 15 °C ei yleensä vaikuta hintaan.
 - Lämmin sää: yli 15 °C ei yleensä vaikuta hintaan.
 
-## 1.5. Ydinvoimaloiden huoltokatkot ja käyttöaste
-- Ydinvoimaa on Suomessa yhteensä noin 4400 MW.
-- Ydinvoimaloiden tuotantovajaukset voivat selittää korkeaa hintaa, jos käytettävyys on alle 70 %.
-- Käytettävyysprosenttia ei saa mainita. Mainitse nimellisteho ja käytettävissä oleva teho.
-- Jos tuotanto on nolla, käytä termiä huoltokatko. Muuten oikea termi on tuotantovajaus.
-- Jos ydinvoimatuotanto toimii normaalisti, älä mainitse ydinvoimaa.
+## 1.5. Ydinvoimaloiden tuotanto
+- Suomessa on viisi ydinvoimalaa: Olkiluoto 1, 2 ja 3, sekä Loviisa 1 ja 2.
+- Näet listan poikkeuksellisen suurista ydinvoimaloiden tuotantovajauksista.
+- Jos käyttöaste on nolla prosenttia, silloin käytä termiä huoltokatko. Muuten kyseessä on tuotantovajaus.
+- Huoltokatko tai tuotantovajaus voi vaikuttaa hintaennusteen tarkkuuteen. Tämän vuoksi älä koskaan spekuloi ydinvoiman mahdollisella hintavaikutuksella, vaan raportoi tiedot sellaisenaan, ja kerro myös että opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
 
 ## 1.7. Muita ohjeita
 - Älä lisää omia kommenttejasi, arvioita tai mielipiteitä. Älä käytä ilmauksia kuten 'mikä ei aiheuta erityistä lämmitystarvetta' tai 'riittävän korkea'.
@@ -200,22 +221,32 @@ Artikkelia ei tule otsikoida.
 
 Artikkelin rakenne on kolmiosainen:
 
-## 1. Tee taulukko. Kirjoita jokaisesta päivästä oma rivi taulukkoon.
+## 1. Jos käynnissä on ydinvoiman huoltokatkoja
 
-| Viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
+- Mainitse voimala ja häiriön alkamis- ja loppumisaika kellonaikoineen.
+- Mainitse että huoltokatko voi vaikuttaa ennusteen tarkkuuteen, koska opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
+
+Jos käynnissä ei ole ydinvoiman huoltokatkoja, jätä tämä osio kokonaan pois.
+
+## 2. Tee taulukko. Kirjoita jokaisesta päivästä oma rivi taulukkoon.
+
+Muista, että jos käynnissä ei ole ydinvoiman huoltokatkoja, artikkeli alkaa suoraan taulukosta.
+
+| viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
 
-jossa "ka" tarkoittaa kyseisen viikonpäivän keskihintaa. Tasaa sarakkeet kuten esimerkissä. 
+jossa "ka" tarkoittaa kyseisen viikonpäivän keskihintaa. Tasaa sarakkeet kuten esimerkissä.
 
-## 2. Kirjoita yleiskuvaus viikon hintakehityksestä, futuurissa.
+Huomaa että minimi- ja maksimihinnat ovat kokonaislukuja, mutta keskihinnassa on yksi desimaali. Hinnat on kirjattu tarkoituksella juuri näin.
+
+## 3. Kirjoita yleiskuvaus viikon hintakehityksestä, futuurissa.
 
 - Tavoitepituus on noin 200 sanaa.
 - Mainitse eniten erottuva päivä ja sen keski- ja maksimihinta, mutta vain jos korkeita maksimihintoja on.
 - Voit sanoa, että päivät ovat keskenään hyvin samankaltaisia, jos näin on.
-- Voit kertoa ydinvoimaloiden poikkeamista, mutta vain jos hintavaikutus on täysin selvä. Muuten älä mainitse ydinvoimaa.
-- Sama koskee tuulivoimaa: älä kommentoi tuulivoimaa, jos se on keskimäärin normaalilla tasolla eikä vaikuta hintaan ylös- tai alaspäin.
+- Älä kommentoi tuulivoimaa, jos se on keskimäärin normaalilla tasolla eikä vaikuta hintaan ylös- tai alaspäin.
 
-## 3. Kerro parilla sanalla, koska ennuste on päivitetty.
+## 4. Kerro parilla sanalla, koska ennuste on päivitetty.
 
 {weekday_today.lower()} klo {time_now}
 
@@ -224,10 +255,12 @@ jossa "ka" tarkoittaa kyseisen viikonpäivän keskihintaa. Tasaa sarakkeet kuten
 # Muista vielä nämä
 
 - Ole mahdollisimman tarkka ja informatiivinen, mutta älä anna neuvoja tai keksi tarinoita tai trendejä, joita ei datassa ole.
-- Älä käytä hinnoissa desimaaleja. Käytä kokonaislukuja.
+- Desimaaliluvut: käytä pilkkua, ei pistettä. Toista desimaali- ja kokonaisluvut täsmälleen niin kuin ne on annettu.
 - Kirjoita koko teksti futuurissa.
+- Jos ja vain jos tuulivoima on hyvin matalalla tai hyvin korkealla tasolla, silloin voit mainita hintavaikutuksen annettujen ohjeiden mukaisesti.
 - Keskity vain poikkeuksellisiin tilanteisiin, jotka vaikuttavat hintaan. Älä mainitse normaaleja olosuhteita.
 - Älä koskaan kirjoita, että 'poikkeamia ei ole' tai 'ei ilmene hintaa selittäviä poikkeamia'. Jos poikkeamia ei ole, jätä tämä mainitsematta. Kirjoita vain poikkeuksista, jotka vaikuttavat hintaan.
+- Älä koskaan spekuloi ydinvoiman mahdollisella hintavaikutuksella. Kerro vain, että huoltokatko voi vaikuttaa ennusteen tarkkuuteen ja raportoi annetut tiedot sellaisenaan, kuten yllä on ohjeistettu.
 
 Lue ohjeet vielä kerran, jotta olet varma että muistat ne. Nyt voit kirjoittaa valmiin tekstin. Älä kirjoita mitään muuta kuin valmis teksti. Kiitos!
 </instructions>
@@ -242,7 +275,7 @@ Lue ohjeet vielä kerran, jotta olet varma että muistat ne. Nyt voit kirjoittaa
 
     try:
         response = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model="gpt-4o",
             messages=messages,
             temperature=0.7,
             max_tokens=1024,
