@@ -129,7 +129,7 @@ You can show the Nordpool prices with predictions on your dashboard. The code us
 - [custom:apexcharts-card](https://github.com/RomRider/apexcharts-card) (available through HACS)
 - [Nordpool integration](https://github.com/custom-components/nordpool), set to EUR VAT0 prices (available through HACS)
   - Adjust the sensor names to match yours: `sensor.nordpool_kwh_fi_eur_3_10_0`
-  - Remove the "124" multiplication from your code, if your sensor already produces cent values with VAT
+  - Remove the "125.5" multiplication from your code, if your sensor already produces cent values with VAT
 
 ### Add the card to your dashboard
 
