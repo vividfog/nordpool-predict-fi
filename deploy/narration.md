@@ -1,13 +1,9 @@
-Loviisa 2 -ydinvoimalassa on käynnissä huoltokatko, joka alkoi maanantaina klo 21:00 ja päättyy perjantaina klo 19:00. Huoltokatko voi vaikuttaa ennusteen tarkkuuteen, koska opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
-
 | viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **lauantai** |       6,0       |       3 - 9      |    2341 - 5002    |      -1,0     |
-| **sunnuntai**|       6,6       |       3 - 9      |     959 - 5229    |      -1,0     |
-| **maanantai**|       4,5       |       1 - 9      |    1884 - 4975    |       3,8     |
-| **tiistai**  |       4,3       |       1 - 7      |    3222 - 4989    |       4,9     |
-| **keskiviikko**|     5,7       |       3 - 10     |    1862 - 3334    |       3,0     |
+| **lauantai** | 5,8 | 3 - 9 | 2346 - 5003 | -1,0 |
+| **sunnuntai** | 6,1 | 2 - 10 | 1196 - 5425 | -1,0 |
+| **maanantai** | 5,0 | 2 - 9 | 1884 - 4975 | 3,8 |
+| **tiistai** | 5,2 | 1 - 8 | 3222 - 4989 | 4,9 |
+| **keskiviikko** | 6,7 | 3 - 12 | 1862 - 3334 | 2,5 |
 
-Tulevien päivien sähkömarkkinoilla hintakehitys on melko tasaista. Lauantain ja sunnuntain keskihinnat asettuvat normaalitasolle, mutta keskiviikkona keskihinta nousee hieman, ollen 5,7 ¢/kWh. Keskiviikon maksimihinta, 10 ¢/kWh, on korkein ennustettuna päivänä. Tämä saattaa osittain johtua alhaisesta tuulivoiman minimituotannosta. Maanantai ja tiistai erottuvat edullisemmilla hinnoillaan, keskihintojen ollessa alle 5 ¢/kWh, mikä voi liittyä voimakkaaseen tuulivoiman tuotantoon. Koko viikon ajan lämpötilat pysyvät normaalilla talvikelitasolla, eivätkä merkittävästi vaikuta sähkön hintoihin.
-
-Ennuste on päivitetty perjantaina klo 12:02.
+Tulevina päivinä sähkön keskihinnat vaihtelevat normaalin hintatason sisällä, eikä merkittäviä poikkeamia lämpötilassa ole havaittavissa. Viikon alkupuolella, erityisesti sunnuntaina ja keskiviikkona, pörssisähkön maksimihinta on hieman korkeampi verrattuna muihin päiviin. Sunnuntain maksimihinta on 10 ¢/kWh ja keskiviikkona jopa 12 ¢/kWh, mikä voi osittain selittyä alhaisella tuulivoiman minimituotannolla sunnuntaina, kun se on 1196 MW. Muutoin viikonpäivät ovat hintakehitykseltään melko samankaltaisia, ja tuulivoiman tarjonta on pääosin tavanomaisella tasolla. Ennuste on päivitetty perjantaina klo 15:03.
