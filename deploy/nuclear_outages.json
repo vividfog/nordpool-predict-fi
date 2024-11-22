@@ -17,14 +17,6 @@
             "availability": 0.7875
         },
         {
-            "start": "2024-11-17T15:00:00.000Z",
-            "end": "2024-11-21T23:00:00.000Z",
-            "avail_qty": 0,
-            "nominal_power": 1600.0,
-            "production_resource_name": "Olkiluoto 3",
-            "availability": 0.0
-        },
-        {
             "start": "2024-11-18T19:00:00.000Z",
             "end": "2024-11-22T12:00:00.000Z",
             "avail_qty": 0,
