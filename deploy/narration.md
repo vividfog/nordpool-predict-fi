@@ -1,11 +1,11 @@
 | viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **perjantai**   | 4,4  | 3 - 8   | 1203 - 5523 | 2,4 |
-| **lauantai**   | 8,1  | 3 - 11  | 987 - 4144  | 2,3 |
-| **sunnuntai**  | 2,4  | 1 - 4   | 3053 - 5673 | 4,4 |
-| **maanantai**  | 5,9  | 1 - 12  | 1138 - 5113 | 3,7 |
-| **tiistai**    | 8,4  | 5 - 11  | 1936 - 2883 | -1,3 |
+| **lauantai** | 6,0 | 2 - 9 | 1059 - 4144 | 2,3 |
+| **sunnuntai** | 1,7 | 1 - 3 | 3053 - 5673 | 4,4 |
+| **maanantai** | 5,1 | 0 - 11 | 1138 - 5113 | 3,7 |
+| **tiistai** | 8,2 | 5 - 11 | 1826 - 2883 | -1,4 |
+| **keskiviikko** | 6,0 | 6 - 6 | 1555 - 1770 | -3,0 |
 
-Lähipäivien sähkömarkkinoilla nähdään mielenkiintoisia hintavaihteluita. **Lauantai** erottuu korkeimmalla keskihinnallaan, 8,1 ¢/kWh, mikä voi selittyä matalalla tuulivoimatuotannolla, joka jää keskimäärin 1735 MW:n tasolle. Samana päivänä sähkön hinta vaihtelee 3-11 ¢/kWh. **Sunnuntai** tarjoaa edullisimman keskihinnan, 2,4 ¢/kWh, voimakkaan tuulivoimatuotannon myötä, joka kohoaa keskimäärin 4168 MW:iin. **Tiistai** on myös mainitsemisen arvoinen, sillä se on kylmin päivä lämpötilan laskiessa -1,3 °C:een, ja keskihinta nousee 8,4 ¢/kWh:iin. 
+Tulevan viikon pörssisähkön hinnat vaihtelevat jonkin verran eri päivinä. **Sunnuntai** erottuu erityisen edullisella keskihinnalla, joka on 1,7 ¢/kWh, mikä on merkittävästi alhaisempi kuin muina päivinä. Tämä voi johtua voimakkaasta tuulivoimasta, joka on sunnuntaina keskimäärin yli 4000 MW. **Tiistai** puolestaan erottuu korkeammalla keskihinnalla, joka on 8,2 ¢/kWh. Tämän päivän korkeampi hinta saattaa liittyä matalaan tuulivoiman tuotantoon, joka on alle 2500 MW. Tiistaina maksimihinta nousee 11 ¢/kWh, mikä on korkeampi kuin muina päivinä, samanaikaisesti kun tuulivoiman minimituotanto on alle 2000 MW. Muiden päivien hintatasot ovat lähellä toisiaan ilman merkittäviä poikkeamia.
 
-Viikon muut päivät näyttävät keskihintojen osalta asettuvan maltillisemmalle tasolle, vaikka maanantaina maksimihinta kohoaa 12 ¢/kWh:iin, mikä voi liittyä tuulivoiman vaihteluihin. Ennuste päivitettiin torstaina klo 21:03.
+Ennuste on päivitetty perjantai klo 03:01.
