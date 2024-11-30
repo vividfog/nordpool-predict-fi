@@ -1,11 +1,11 @@
 | viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **sunnuntai** | 2,3 | 1 - 4 | 2475 - 5704 | 4,4 |
-| **maanantai** | 5,7 | 1 - 13 | 1149 - 5167 | 3,7 |
-| **tiistai** | 7,2 | 4 - 10 | 1911 - 2916 | -1,4 |
-| **keskiviikko** | 10,7 | 2 - 16 | 871 - 4140 | -2,2 |
-| **torstai** | 1,2 | 1 - 1 | 4529 - 5187 | -2,0 |
+| **sunnuntai** | 2,0 | 1 - 3 | 2471 - 6575 | 4,4 |
+| **maanantai** | 5,8 | 1 - 13 | 1149 - 5167 | 3,7 |
+| **tiistai** | 7,1 | 3 - 10 | 1911 - 2916 | -1,4 |
+| **keskiviikko** | 10,2 | 2 - 16 | 871 - 4140 | -2,2 |
+| **torstai** | 2,4 | 1 - 5 | 4529 - 6360 | -1,6 |
 
-Sähkön markkinahinnat vaihtelevat huomattavasti tulevina päivinä. **Keskiviikko** erottuu korkeimmalla keskihinnalla, joka on 10,7 senttiä kilowattitunnilta, ja päivän maksimihinta yltää 16 senttiin. Tämä hintakehitys saattaa liittyä tuulivoiman matalaan minimituotantoon, joka on vain 871 megawattia. **Torstaina** nähdään viikon edullisin keskihinta 1,2 senttiä kilowattitunnilta, mikä johtuu osittain voimakkaasta tuulesta, kun tuulivoiman keskimääräinen tuotanto ylittää 3000 megawattia. Yleisesti ottaen viikon lämpötilat pysyvät normaalilla talvitasolla, eikä niiden odoteta vaikuttavan merkittävästi sähkön hintoihin.
+Tulevina päivinä sähkön hinta vaihtelee merkittävästi. **Keskiviikko** erottuu selvästi korkeimmalla keskihinnallaan, joka on 10,2 ¢/kWh. Tämän päivän maksimihinta nousee jopa 16 senttiin kilowattitunnilta. Tämä voi johtua siitä, että päivän minimituulivoimatuotanto on vain 871 MW, mikä on alhaisimmillaan koko viikolla. Muina päivinä hintakehitys on maltillisempaa, vaikka maanantain maksimihinta yltääkin 13 senttiin kilowattitunnilta. **Sunnuntai** ja **torstai** tarjoavat edullisimmat keskihinnat, ollen 2,0 ja 2,4 ¢/kWh. Tämä on linjassa voimakkaamman tuulivoimatuotannon kanssa, joka osaltaan tukee matalampia hintoja. Viikon lämpötilat pysyvät normaalin talvisään rajoissa, joten niillä ei odoteta olevan merkittävää vaikutusta hintatasoon.
 
-Ennuste on päivitetty lauantai klo 03:03.
+Ennuste on päivitetty lauantai klo 09:03.
