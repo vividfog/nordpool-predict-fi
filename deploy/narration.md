@@ -1,11 +1,11 @@
 | viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **tiistai**  |       8,4        |      4 - 13      |   1753 - 3431 |     -1,4      |
-| **keskiviikko** |     9,5        |      1 - 15      |   1243 - 4531 |     -2,2      |
-| **torstai**  |       4,6        |       0 - 10     |   1144 - 7086 |     -1,3      |
-| **perjantai** |      6,8        |      4 - 12      |   1202 - 3577 |     -0,2      |
-| **lauantai** |      5,0        |       4 - 6      |   2310 - 3016 |      0,0      |
+| **tiistai**  |      12,4        |      1 - 21      |   1770 - 3443 |     -1,4      |
+| **keskiviikko** |      11,6        |      4 - 18      |   1243 - 4531 |     -2,2      |
+| **torstai**  |       6,3        |      1 - 11      |   1144 - 7086 |     -1,3      |
+| **perjantai** |       7,2        |      3 - 13      |   1202 - 3577 |     -0,2      |
+| **lauantai** |       5,0        |      4 - 7       |   2310 - 3264 |      0,0      |
 
-Tulevalla viikolla sähkön hinnassa nähdään jonkin verran vaihtelua. **Keskiviikko** erottuu korkeimmalla keskihinnallaan, joka on 9,5 ¢/kWh, ja maksimihinnalla 15 ¢/kWh. Tämä hinnoittelu voi osaltaan selittyä päivän alhaisella tuulivoiman minimituotannolla, joka on 1243 MW. **Torstai** puolestaan tarjoaa alhaisimman keskihinnan 4,6 ¢/kWh, ja päivän aikana voi esiintyä jopa nollahintoja. Viikon muut päivät pysyvät keskihinnaltaan normaalina, vaihdellen 5,0 ¢/kWh ja 8,4 ¢/kWh välillä, ilman merkittäviä hintapoikkeamia.
+Tulevan viikon sähkön hinnat säilyvät melko tasaisina, mutta joitakin eroja on nähtävissä. Tiistaina sähkön keskihinta on ennusteen mukaan korkein, 12,4 senttiä kilowattitunnilta. Samana päivänä maksimihinta nousee 21 senttiin. Tämä saattaa johtua alhaisemmasta tuulivoiman minimituotannosta, joka on vain 1770 MW. Keskiviikkona sähkön keskihinta laskee hieman 11,6 senttiin, ja maksimihinta on maltillisempi 18 senttiä. Torstaina hinnat laskevat merkittävästi päivän keskihinnan ollessa 6,3 senttiä, mikä johtuu mahdollisesti runsaasta tuulivoimasta. Perjantaina keskihinta on 7,2 senttiä, ja lauantaina se laskee edelleen 5,0 senttiin, mikä on viikon alhaisin keskihinta.
 
-Ennuste on päivitetty maanantai klo 12:03.
+Ennuste on päivitetty maanantai klo 15:04.
