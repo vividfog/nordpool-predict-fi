@@ -1,9 +1,11 @@
 | viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **tiistai**  |      8,9         |      4 - 13      |   1046 - 2785 |     -1,4      |
-| **keskiviikko** |      9,6         |      2 - 14      |   1243 - 4531 |     -2,2      |
-| **torstai**  |      4,7         |      0 - 10      |   1144 - 7086 |     -1,3      |
-| **perjantai** |      6,5         |      3 - 12      |   1202 - 3577 |     -0,2      |
-| **lauantai** |      4,9         |      4 - 6       |   2310 - 3016 |      0,1      |
+| **tiistai**  |       8,4        |      4 - 13      |   1753 - 3431 |     -1,4      |
+| **keskiviikko** |     9,5        |      1 - 15      |   1243 - 4531 |     -2,2      |
+| **torstai**  |       4,6        |       0 - 10     |   1144 - 7086 |     -1,3      |
+| **perjantai** |      6,8        |      4 - 12      |   1202 - 3577 |     -0,2      |
+| **lauantai** |      5,0        |       4 - 6      |   2310 - 3016 |      0,0      |
 
-Keskiviikko erottuu viikon kalleimpana päivänä, sillä sen keskihinta on 9,6 ¢/kWh. Päivän maksimihinta on myös korkea, 14 ¢/kWh, mikä voi johtua alhaisesta tuulivoiman minimituotannosta, joka on 1243 MW. Tiistai ja torstai tarjoavat suurimmat vaihtelut tuulivoiman tuotannossa, mutta torstain keskihinta on merkittävästi matalampi, 4,7 ¢/kWh, mitä voimakas tuuli selittää. Lauantai on viikon tasaisin päivä sekä hinnan että tuulivoiman suhteen, keskihinnan ollessa 4,9 ¢/kWh. Viikon lämpötilat pysyvät normaaleissa talvilukemissa, eikä niillä ole merkittävää vaikutusta sähkön hintaan. Ennuste on päivitetty maanantai klo 09:03.
+Tulevalla viikolla sähkön hinnassa nähdään jonkin verran vaihtelua. **Keskiviikko** erottuu korkeimmalla keskihinnallaan, joka on 9,5 ¢/kWh, ja maksimihinnalla 15 ¢/kWh. Tämä hinnoittelu voi osaltaan selittyä päivän alhaisella tuulivoiman minimituotannolla, joka on 1243 MW. **Torstai** puolestaan tarjoaa alhaisimman keskihinnan 4,6 ¢/kWh, ja päivän aikana voi esiintyä jopa nollahintoja. Viikon muut päivät pysyvät keskihinnaltaan normaalina, vaihdellen 5,0 ¢/kWh ja 8,4 ¢/kWh välillä, ilman merkittäviä hintapoikkeamia.
+
+Ennuste on päivitetty maanantai klo 12:03.
