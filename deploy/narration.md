@@ -1,11 +1,11 @@
 | viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **torstai**  |       6,4        |       2 - 11     |   1144 - 5177 |     -1,3      |
-| **perjantai**|       7,4        |       4 - 14     |   1202 - 3577 |     -0,2      |
-| **lauantai** |       5,8        |       4 - 8      |   1049 - 3264 |     -0,0      |
-| **sunnuntai**|       7,2        |       4 - 10     |    510 - 2225 |     -0,6      |
-| **maanantai**|       6,1        |       5 - 7      |   1366 - 2135 |     -1,1      |
+| **torstai**  |       5,0        |       2 - 8      |   1144 - 5173 |     -1,3      |
+| **perjantai**|       7,1        |      4 - 13      |   1202 - 3577 |     -0,2      |
+| **lauantai** |       5,6        |       4 - 8      |   1049 - 3264 |     -0,0      |
+| **sunnuntai**|       7,5        |      5 - 10      |    510 - 2225 |     -0,6      |
+| **maanantai**|      10,3        |      6 - 19      |    414 - 2135 |     -1,2      |
 
-Sähkön hinnat tulevat pysymään pääosin normaalilla tasolla tulevina päivinä. **Perjantaina** keskihinta nousee hieman korkeammaksi, 7,4 senttiin kilowattitunnilta, ja päivän maksimihinta saavuttaa 14 senttiä. Tämä saattaa johtua alhaisesta tuulivoiman minimituotannosta, joka on 1202 MW. **Torstai** ja **sunnuntai** erottuvat vähäisemmällä tuulivoiman tuotannolla, mutta hintavaikutus pysyy maltillisena. Sähkön hinnat ovat muuten melko tasaisia, ilman merkittäviä piikkejä tai laskuja. Viikon päivien keskilämpötilat ovat lievästi pakkasen puolella, mikä ei vaikuta huomattavasti hintakehitykseen. 
+Sähkömarkkinoiden tulevien päivien ennusteissa on nähtävissä vaihtelua. **Maanantai** erottuu korkeimmalla keskihinnalla, joka on 10,3 senttiä kilowattitunnilta. Tämän päivän korkein hinta, 19 senttiä, voi osittain selittyä matalalla tuulivoiman minimituotannolla, joka on vain 414 MW. **Sunnuntai** on toinen päivä, jolloin keskihinta nousee hieman, 7,5 senttiin, ja tuulivoiman tuotanto on alhaisimmillaan 510 MW. Muina päivinä hinnat pysyvät keskimäärin 5-7 sentin välillä, mikä on normaalia talvikautta. Lämpötilan vaihtelut ovat vähäisiä, eivätkä ne todennäköisesti vaikuta merkittävästi hintakehitykseen.
 
-Ennuste päivitetty keskiviikko klo 03:02.
+Tämä ennuste on päivitetty keskiviikkona klo 09:03.
