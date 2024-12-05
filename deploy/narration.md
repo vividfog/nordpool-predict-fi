@@ -1,11 +1,9 @@
 | viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **perjantai** | 3,8 | 1 - 6 | 4118 - 4911 | -0,2 |
-| **lauantai**  | 4,9 | 2 - 8 | 1049 - 4558 | -0,0 |
-| **sunnuntai** | 6,7 | 4 - 9 | 510 - 2225 | -0,6 |
-| **maanantai** | 11,5 | 4 - 19 | 325 - 3779 | -0,7 |
-| **tiistai**   | 5,2 | 3 - 8 | 1915 - 5991 | 1,2 |
+| **perjantai** | 2,6 | 0 - 5 | 4135 - 4908 | -0,2 |
+| **lauantai** | 4,6 | 1 - 8 | 1049 - 4532 | -0,0 |
+| **sunnuntai** | 6,7 | 4 - 10 | 510 - 2225 | -0,6 |
+| **maanantai** | 12,1 | 5 - 19 | 325 - 3779 | -0,7 |
+| **tiistai** | 5,1 | 3 - 8 | 1915 - 6030 | 1,6 |
 
-Tulevina päivinä sähkön hintaennusteet vaihtelevat jonkin verran. **Maanantai** erottuu korkeimmalla keskihinnalla, 11,5 ¢/kWh, ja se on ainoa päivä, jolloin sähkön hinta nousee kalliiksi. Tänä päivänä myös maksimihinta, 19 ¢/kWh, on huomattavasti korkeampi kuin muina päivinä. Tämä voi johtua alhaisesta tuulivoiman minimituotannosta, joka on vain 325 MW. Muina päivinä hinnat pysyvät edullisesta normaaliin hintaluokkaan. **Perjantai** on viikolla edullisin päivä, keskihinnan ollessa 3,8 ¢/kWh. Viikon aikana lämpötilat pysyvät normaaleissa talviolissa, joten niillä ei ole merkittävää vaikutusta sähkön hintaan. Tiistaina keskihinta on 5,2 ¢/kWh, mikä on normaali hintataso.
-
-Ennuste on päivitetty torstai klo 12:02.
+Tulevan viikon sähkön hintaennusteissa on havaittavissa merkittäviä vaihteluita. **Maanantai** erottuu selvästi korkeimmalla keskihinnalla, joka on 12,1 ¢/kWh. Tänä päivänä myös maksimihinta nousee 19 ¢/kWh, mikä on huomattavasti korkeampi kuin muina päivinä. Tämän selittää osaltaan alhainen tuulivoiman minimituotanto, joka jää vain 325 MW tasolle. Viikon alun jälkeen hinnat tasaantuvat, ja **tiistain** keskihinta palautuu normaaliin 5,1 ¢/kWh tasoon. **Perjantai** ja **lauantai** ovat edullisempia päiviä, keskihintojen ollessa 2,6 ¢/kWh ja 4,6 ¢/kWh vastaavasti. Viikonloppuna **sunnuntain** keskihinta nousee 6,7 ¢/kWh tasolle, mutta ei yllä maanantain lukemiin. Ennuste on päivitetty torstai klo 15:03.
