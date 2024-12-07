@@ -14,7 +14,6 @@ from util.train_xgb import train_model
 from util.fingrid_nuclear import update_nuclear
 # from util.fingrid_imports import update_import_capacity
 from util.jao_imports import update_import_capacity
-from util.fingrid_windpower import update_windpower
 from util.llm import narrate_prediction
 from util.entso_e import entso_e_nuclear
 from util.sql import db_update, db_query_all
@@ -65,12 +64,13 @@ parser.add_argument('--narrate', action='store_true', help='Narrate the predicti
 parser.add_argument('--commit', action='store_true', help='Commit the predictions/narrations results to DB; use with --predict, --narrate')
 parser.add_argument('--deploy', action='store_true', help='Deploy the output files to the web folder')
 parser.add_argument('--dump', action='store_true', help='Dump the SQLite database to CSV format')
+parser.add_argument('--nn', action='store_true', help='Use neural network model(s) instead of XGBoost')
 
 args = parser.parse_args()
 
 # Deprecate --train option
 if args.train:
-    print("Warning: The --train option is deprecated and is no longer required. Training is now performed automatically during prediction.")
+    print("[WARNING] The --train option is deprecated and is no longer used. Training is now performed automatically during prediction.")
 
 # Configure pandas to display all rows
 pd.set_option('display.max_rows', None)
@@ -87,8 +87,19 @@ if args.dump:
     dump_sqlite_db(data_folder_path)
     exit()
 
+# Choose NN based wind power model, if requested; default to the XGBoost model
+if args.nn or os.getenv('ALWAYS_USE_NN', '0') == '1':
+    from util.fingrid_windpower_nn import update_windpower
+
+    if os.getenv('ALWAYS_USE_NN', '0') == '1':
+        print(f"* Wind power NN model requested in .env.local: '{get_mandatory_env_variable('WIND_POWER_NN_STATE_DICT')}'")
+    else:
+        print(f"* Wind power NN model: '{get_mandatory_env_variable('WIND_POWER_NN_STATE_DICT')}'")
+else:
+    from util.fingrid_windpower import update_windpower
+
 if args.predict:
-    print("Loading data from the database...")
+    print("* Loading data from the database...")
     df_full = db_query_all(db_path)
     df_full['timestamp'] = pd.to_datetime(df_full['timestamp'])
     df_full.set_index('timestamp', inplace=True)
@@ -115,7 +126,7 @@ if args.predict:
     df_recent.rename(columns={'index': 'Timestamp'}, inplace=True)
 
     # Update the recent data with latest information
-    print("Updating recent data with latest information...")
+    print("* Gathering online data updates...")
     df_recent = update_wind_speed(df_recent)
     df_recent = update_temperature(df_recent)
     df_recent = update_nuclear(df_recent, fingrid_api_key=fingrid_api_key)
