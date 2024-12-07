@@ -106,7 +106,10 @@ def send_to_gpt(df):
     date_today = today.strftime("%d. %B %Y")
     time_now = datetime.datetime.now().strftime("%H:%M")
 
-    prompt = (f"<data>\nTänään on {weekday_today.lower()} {date_today.lower()} klo {time_now} ja Nordpool-sähköpörssin verolliset Suomen markkinan hintaennusteet lähipäiville ovat seuraavat. Ole tarkkana että käytät näitä numeroita oikein ja lue ohjeet tarkasti:\n")
+    prompt = "<data>\n"
+    prompt = f"Nyt on {weekday_today.lower()} {date_today.lower()} klo {time_now}. "
+    prompt += f"Nordpool-sähköpörssin verolliset Suomen markkinan hintaennusteet lähipäiville ovat seuraavat (viimeisin päivitys: {weekday_today.lower()}na klo {time_now}). "
+    prompt += "Ole tarkkana että käytät näitä numeroita oikein ja lue ohjeet tarkasti:\n"
 
     # Iterate over each weekday and concatenate all relevant data
     for weekday, row in df.iterrows():
@@ -122,7 +125,7 @@ def send_to_gpt(df):
             f"keskimäärin {int(row[('WindPowerMW', 'mean')])} MW.\n"
         )
         prompt += f"- Päivän keskilämpötila: {row[('Avg_Temperature', 'mean')]} °C.\n"
-
+        
     # Add a single section for nuclear outages
     if NUCLEAR_OUTAGE_DATA is not None:
         nuclear_outage_section = "\n**Ydinvoimalat**\n"
@@ -217,7 +220,9 @@ Olet sähkömarkkinoiden asiantuntija ja kirjoitat kohta uutisartikkelin hintaen
 
 Kirjoita tiivis, rikasta suomen kieltä käyttävä UUTISARTIKKELI saamiesi tietojen pohjalta. Vältä kliseitä ja turhaa draamaa. Älä puhu huolista tai tunteista. Keskity faktoihin ja hintoihin.
 
-Artikkelia ei tule otsikoida.
+- Artikkelia ei tule otsikoida.
+
+- Älä koskaan mainitse päivämääriä (kuukausi, vuosi). Käytä vain viikonpäiviä.
 
 Artikkelin rakenne on kolmiosainen:
 
@@ -232,6 +237,10 @@ Jos käynnissä ei ole ydinvoiman huoltokatkoja, jätä tämä osio kokonaan poi
 
 Muista, että jos käynnissä ei ole ydinvoiman huoltokatkoja, artikkeli alkaa suoraan taulukosta.
 
+Mainitse taulukon yläpuolella leipätekstinä, koska ennuste on päivitetty.
+
+Sitten näytä taulukko:
+
 | viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
 
@@ -245,12 +254,6 @@ Huomaa että minimi- ja maksimihinnat ovat kokonaislukuja, mutta keskihinnassa o
 - Mainitse eniten erottuva päivä ja sen keski- ja maksimihinta, mutta vain jos korkeita maksimihintoja on.
 - Voit sanoa, että päivät ovat keskenään hyvin samankaltaisia, jos näin on.
 - Älä kommentoi tuulivoimaa, jos se on keskimäärin normaalilla tasolla eikä vaikuta hintaan ylös- tai alaspäin.
-
-## 4. Kerro parilla sanalla, koska ennuste on päivitetty.
-
-{weekday_today.lower()} klo {time_now}
-
-Älä koskaan mainitse päivämääriä (kuukausi, vuosi). Käytä vain viikonpäiviä.
 
 # Muista vielä nämä
 
