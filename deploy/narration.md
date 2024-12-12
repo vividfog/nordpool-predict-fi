@@ -1,11 +1,11 @@
-Ennuste on päivitetty torstaina klo 15:03.
+Ennuste on päivitetty torstaina klo 21:02.
 
 | viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **perjantai** | 16,6 | 5 - 36 | 1066 - 3799 | -0,9 |
-| **lauantai** | 5,4 | 3 - 9 | 481 - 4449 | -2,0 |
-| **sunnuntai** | 5,9 | 3 - 12 | 388 - 5070 | -1,6 |
-| **maanantai** | 5,0 | 2 - 8 | 2193 - 6012 | 0,9 |
-| **tiistai** | 7,7 | 3 - 12 | 2008 - 5161 | 0,1 |
+| **perjantai** | 16,5 | 5 - 36 | 1075 - 3937 | -0,9 |
+| **lauantai** | 5,0 | 3 - 9 | 1162 - 4449 | -2,0 |
+| **sunnuntai** | 6,4 | 3 - 12 | 388 - 5070 | -1,6 |
+| **maanantai** | 5,0 | 1 - 8 | 2193 - 6012 | 0,9 |
+| **tiistai** | 8,9 | 4 - 14 | 2008 - 5161 | -0,2 |
 
-Lähipäivien pörssisähkön hintaennusteissa on havaittavissa vaihtelua hintatasoissa ja tuulivoiman tuotannossa. **Perjantai** erottuu selkeästi korkeammalla keskihinnallaan, joka on 16,6 ¢/kWh. Tämä päivä sisältää myös viikon korkeimman maksimihinnan 36 ¢/kWh. Perjantain korkeampaa hintaa selittää osittain tuulivoiman alhainen minimituotanto, joka on vain 1066 MW. Muina päivinä hinnat ovat maltillisempia. **Lauantai** ja **sunnuntai** asettuvat hintaherkkyyden mukaan edulliseen hintaluokkaan, keskihintojen ollessa 5,4 ¢/kWh ja 5,9 ¢/kWh. **Maanantai** on viikolla edullisin päivä, keskihinnan ollessa 5,0 ¢/kWh. **Tiistai** puolestaan asettuu normaaliin hintaluokkaan, keskihinnan ollessa 7,7 ¢/kWh. Lämpötilat pysyvät ennusteen mukaan normaalilla talvikelillä, eivätkä ne aiheuta merkittävää vaikutusta hintakehitykseen. Kokonaisuudessaan viikon hintaennusteet osoittavat merkittäviä eroja päivien välillä, erityisesti perjantain osalta.
+Viikon päivittäiset sähkön hinnat tulevat vaihtelemaan merkittävästi. **Perjantai** erottuu selvästi korkealla keskihinnallaan, 16,5 ¢/kWh, mikä luokitellaan hyvin kalliiksi. Tämän päivän korkea maksimihinta, 36 ¢/kWh, voi osaltaan johtua matalasta tuulivoiman minimituotannosta, joka on 1075 MW. **Lauantai** tulee olemaan edullinen, keskihintaan 5,0 ¢/kWh, ja hinta on alhaisempi kuin muina päivinä. **Sunnuntai** ja **maanantai** tarjoavat normaalia hintatasoa, ja tuulivoiman tuotanto nousee sunnuntaina huomattavasti korkeammalle tasolle. **Tiistai** on suhteellisen kallis, keskihinnalla 8,9 ¢/kWh, ja tuulivoiman tuotantomäärät ovat vaihtelevia. Huomionarvoista on, että viikon lämpötilat pysyvät normaalissa talvikelissä, eivätkä ne vaikuta merkittävästi sähkön hintaan.
