@@ -121,6 +121,9 @@ if args.predict:
     future_index = pd.date_range(start=start_time, end=end_time, freq='h')
     df_recent = df_recent.reindex(df_recent.index.union(future_index))
 
+    # Since FMI can remove weather stations from their API without notice, we should rely on .env.local rather than the database as the source of truth. Filter df_recent to include only columns corresponding to specified FMI weather station and temperature IDs listed in .env.local, or columns that do not have the 'ws_'/'t_' prefix.
+    df_recent = df_recent[list(set(fmisid_ws + fmisid_t) | {col for col in set(df_recent.columns) if not col.startswith(('ws_', 't_'))})]
+
     # Reset the index to turn 'timestamp' back into a column before the update functions
     df_recent.reset_index(inplace=True)
     df_recent.rename(columns={'index': 'Timestamp'}, inplace=True)

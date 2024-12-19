@@ -56,7 +56,7 @@ except ValueError as e:
 
 # Neural network definition
 class WindPowerNN(nn.Module):
-    def __init__(self, input_size: int = 45):
+    def __init__(self, input_size: int = 43):
         # Load hyperparameters from the JSON file
         with open(WIND_POWER_NN_HYPERPARAMS, 'r') as f:
             hyperparams = json.load(f)
