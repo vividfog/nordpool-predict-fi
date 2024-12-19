@@ -1,1 +1,1 @@
-{"hidden_size_1": 256, "hidden_size_2": 128, "dropout_rate": 0.02, "learning_rate": 0.0011496512434207538, "batch_size": 32}
+{"hidden_size_1": 240, "hidden_size_2": 128, "dropout_rate": 0.01, "learning_rate": 0.0030564465019300617, "batch_size": 128}
