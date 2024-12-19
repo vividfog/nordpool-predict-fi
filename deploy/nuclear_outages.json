@@ -1,14 +1,6 @@
 {
     "nuclear_outages": [
         {
-            "start": "2024-10-06T03:00:00.000Z",
-            "end": "2024-12-19T07:00:00.000Z",
-            "avail_qty": 735,
-            "nominal_power": 890.0,
-            "production_resource_name": "Olkiluoto 2",
-            "availability": 0.8258426966
-        },
-        {
             "start": "2024-12-19T09:00:00.000Z",
             "end": "2025-05-25T15:00:00.000Z",
             "avail_qty": 735,
