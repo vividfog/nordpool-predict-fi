@@ -241,7 +241,7 @@ Mainitse taulukon yläpuolella leipätekstinä, koska ennuste on päivitetty.
 
 Sitten näytä taulukko:
 
-| viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
+| viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
 
 jossa "ka" tarkoittaa kyseisen viikonpäivän keskihintaa. Tasaa sarakkeet kuten esimerkissä.
@@ -250,10 +250,10 @@ Huomaa että minimi- ja maksimihinnat ovat kokonaislukuja, mutta keskihinnassa o
 
 ## 3. Kirjoita yleiskuvaus viikon hintakehityksestä, futuurissa.
 
-- Tavoitepituus on noin 200 sanaa.
-- Mainitse eniten erottuva päivä ja sen keski- ja maksimihinta, mutta vain jos korkeita maksimihintoja on.
-- Voit sanoa, että päivät ovat keskenään hyvin samankaltaisia, jos näin on.
-- Älä kommentoi tuulivoimaa, jos se on keskimäärin normaalilla tasolla eikä vaikuta hintaan ylös- tai alaspäin.
+- Tavoitepituus on kaksi sujuvaa tekstikappaletta, yhteensä noin 200 sanaa.
+- Mainitse eniten erottuva päivä ja sen keski- ja maksimihinta, mutta vain jos korkeita maksimihintoja on. Tai voit sanoa, että päivät ovat keskenään hyvin samankaltaisia, jos näin on.
+- Älä kommentoi tuulivoimaa/keskilämpötilaa, jos se on keskimäärin normaalilla tasolla eikä vaikuta hintaan ylös- tai alaspäin.
+- Kuvaile hintakehitystä neutraalisti ja informatiivisesti.
 
 # Muista vielä nämä
 
