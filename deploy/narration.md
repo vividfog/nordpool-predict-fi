@@ -1,13 +1,15 @@
-Ennuste on päivitetty keskiviikkona klo 21:03.
+Ennuste on päivitetty torstaina klo 03:03.
 
 | viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima min - max<br>MW | lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **torstai**  |       2,6       |        0 - 5     |    3632 - 6494   |     -1,3     |
-| **perjantai**|       5,7       |       2 - 14     |     394 - 4853   |     -3,1     |
-| **lauantai** |       6,4       |       2 - 12     |     942 - 4493   |     -6,4     |
-| **sunnuntai**|       5,5       |        3 - 8     |    1202 - 3585   |     -4,0     |
-| **maanantai**|      11,0       |       4 - 16     |     484 - 2012   |     -0,7     |
+| **perjantai**   | 5,0             | 2 - 9            | 1721 - 4853   | -3,1          |
+| **lauantai**    | 6,4             | 2 - 11           | 942 - 4493    | -6,4          |
+| **sunnuntai**   | 5,1             | 2 - 8            | 1202 - 3585   | -4,0          |
+| **maanantai**   | 10,8            | 4 - 16           | 484 - 2012    | -0,7          |
+| **tiistai**     | 5,8             | 5 - 6            | 1048 - 1630   | -2,2          |
 
-Tulevien päivien sähkömarkkinoilla on havaittavissa vaihtelua erityisesti pörssisähkön hinnassa ja tuulivoiman määrässä. **Torstai** erottuu edullisella keskihinnallaan 2,6 ¢/kWh, kun taas **maanantai** on viikon kallein päivä keskihinnan ollessa 11,0 ¢/kWh. Maanantain korkeampaa hintaa selittää alhainen tuulivoiman minimituotanto, joka on vain 484 MW, samalla kun päivän maksimihinta nousee 16 ¢/kWh. 
+Lähitulevaisuuden sähkömarkkinoilla on havaittavissa selkeitä hintavaihteluita eri päivien välillä. **Maanantai** erottuu joukosta korkeimmalla keskihinnallaan 10,8 ¢/kWh ja maksimihinnalla 16 ¢/kWh. Tämä selittyy osittain matalalla tuulivoiman minimituotannolla, joka jää 484 MW:iin. Lisäksi lämpötila maanantaina on tavanomaisella talvikelin tasolla, -0,7 °C, mikä ei todennäköisesti vaikuta hintaan merkittävästi.
 
-Lauantaina keskilämpötila laskee -6,4 °C:een, mikä voi osaltaan vaikuttaa sähkön hintaan. Tämä päivä on myös viikon ainoa, jolloin lämpötila on alle -5 °C. Muina päivinä lämpötilat pysyvät normaalin talvikelin rajoissa. Viikonlopun hintakehitys on muuten melko tasaista, sunnuntaina keskihinnan ollessa 5,5 ¢/kWh ja perjantaina 5,7 ¢/kWh. Yhteenvetona voidaan todeta, että viikon keskihinta vaihtelee selvästi, mutta maanantai nousee esiin korkeampien hintojen päivänä.
+Muina päivinä hintataso pysyy melko vakaana. **Lauantai** on hieman kylmempi päivä, -6,4 °C, mikä voi jonkin verran kohottaa hintaa, mutta kokonaisvaikutus jää suhteellisen pieneksi, sillä keskihinta on edelleen kohtalainen 6,4 ¢/kWh. **Perjantai** ja **sunnuntai** tarjoavat tasapainoista hintakehitystä, jolloin keskihinnat ovat 5,0 ¢/kWh ja 5,1 ¢/kWh. **Tiistai** eroaa muista päivän sisäisen hintavaihtelun vähäisyydellä, kun minimihinta sekä maksimihinta ovat hyvin lähellä toisiaan, ja keskihinta on 5,8 ¢/kWh.
+
+Kokonaisuutena tarkasteltuna viikon hintakehitys tuo esiin maanantain poikkeuksellisen korkeat hinnat, mutta muuten päivät ovat keskenään melko tasapainoisia hintakehitykseltään.
