@@ -1,23 +1,20 @@
 """
 This script retrieves wind power data from the Fingrid API, integrates it into an existing DataFrame,
-and infers missing values up to 5 days in the future using a pre-trained neural network model.
+and infers missing values up to 5 days in the future using a neural network model that is trained on-the-fly.
 
 - Fetches wind power data from 7 days in the past to 5 days in the future.
-- Merges the retrieved data into an input DataFrame and infers absent values using a neural network model.
+- Merges the retrieved data into an input DataFrame and infers absent values using a dynamically trained neural network model.
 - The model predicts wind power based on weather inputs defined in the .env.local configuration.
-- Utilizes a PyTorch neural network model for predictions.
-
-To pretrain the neural network model:
-    python data/create/91_model_experiments/windpower_nn.py --help
+- Utilizes PyTorch for defining and training the neural network model.
 
 Requirements:
-- A trained neural network model saved as a state dictionary (.pth file).
-- Scalers for input features and target variable saved as joblib files.
+- API keys and FMISID values set in the .env.local file for accessing the Fingrid API and configuring the weather input features.
 
 Usage:
-- Ensure environment variables are set in .env.local for API keys and model paths.
+- Ensure the environment variables are properly set in .env.local.
 - Run the script to test that it can infer missing wind power values from a synthetic test dataset.
 """
+
 
 import os
 import sys
@@ -35,49 +32,14 @@ import torch.nn as nn
 import joblib
 import json
 
+from util.train_windpower_nn import train_windpower_nn
+
 # Load environment variables
 load_dotenv('.env.local')
 
 # Constants
 WIND_POWER_DATASET_ID = 245  # Fingrid dataset ID for wind power
 WIND_POWER_CAPACITY_DATASET_ID = 268  # Fingrid dataset ID for wind power capacity
-
-try:
-    WIND_POWER_NN_STATE_DICT = os.getenv("WIND_POWER_NN_STATE_DICT")
-    WIND_POWER_NN_HYPERPARAMS = os.getenv("WIND_POWER_NN_HYPERPARAMS")
-    WIND_POWER_NN_SCALER_X_PATH = os.getenv("WIND_POWER_NN_SCALER_X_PATH")
-    WIND_POWER_NN_SCALER_Y_PATH = os.getenv("WIND_POWER_NN_SCALER_Y_PATH")
-
-    if not all([WIND_POWER_NN_STATE_DICT, WIND_POWER_NN_HYPERPARAMS, WIND_POWER_NN_SCALER_X_PATH, WIND_POWER_NN_SCALER_Y_PATH]):
-        raise ValueError("[ERROR] One or more required environment variables are not set.")
-except ValueError as e:
-    print(f"Wind power .env.local variables are not set correctly. See .env.local.template for reference.")
-    sys.exit(1)
-
-# Neural network definition
-class WindPowerNN(nn.Module):
-    def __init__(self, input_size: int = 43):
-        # Load hyperparameters from the JSON file
-        with open(WIND_POWER_NN_HYPERPARAMS, 'r') as f:
-            hyperparams = json.load(f)
-
-        hidden_size_1 = hyperparams.get("hidden_size_1", 256)
-        hidden_size_2 = hyperparams.get("hidden_size_2", 112)
-        dropout_rate = hyperparams.get("dropout_rate", 0.01)
-
-        super(WindPowerNN, self).__init__()
-        self.fc1 = nn.Linear(input_size, hidden_size_1)
-        self.leaky_relu = nn.LeakyReLU()
-        self.dropout = nn.Dropout(dropout_rate)
-        self.fc2 = nn.Linear(hidden_size_1, hidden_size_2)
-        self.fc3 = nn.Linear(hidden_size_2, 1)
-
-    def forward(self, x):
-        x = self.leaky_relu(self.fc1(x))
-        x = self.dropout(x)
-        x = self.leaky_relu(self.fc2(x))
-        x = self.fc3(x)
-        return x
 
 def fetch_fingrid_data(fingrid_api_key, dataset_id, start_date, end_date):
     api_url = "https://data.fingrid.fi/api/data"
@@ -172,22 +134,16 @@ def update_windpower(df, fingrid_api_key):
     # Drop redundant columns that originated from the API data
     merged_df.drop(columns=['datasetId', 'endTime', 'datasetId_capacity_api', 'endTime_capacity_api'], inplace=True)
 
-    # Load the state dictionary
-    model = WindPowerNN()
-    state_dict = torch.load(WIND_POWER_NN_STATE_DICT, map_location=torch.device('cpu'))
-    model.load_state_dict(state_dict)
-    model.eval()
-
-    # Load scalers
-    scaler_X = joblib.load(WIND_POWER_NN_SCALER_X_PATH)
-    scaler_y = joblib.load(WIND_POWER_NN_SCALER_Y_PATH)
-
     # Identify rows with missing WindPowerMW values
     missing_wind_power = merged_df['WindPowerMW'].isnull()
 
-    # Prepare input features for the model dynamically
+    # Prepare input features dynamically
     ws_ids = os.getenv('FMISID_WS').split(',')
     t_ids = os.getenv('FMISID_T').split(',')
+
+    # Train model on-demand using the merged_df
+    # This will return a model and scalers in memory (no loading from disk)
+    model, scaler_X, scaler_y = train_windpower_nn(target_col='WindPowerMW', wp_fmisid=ws_ids)
 
     # Construct the feature dictionary dynamically without adding columns to merged_df
     features = {f'ws_{ws_id}': merged_df.loc[missing_wind_power, f'ws_{ws_id}'] for ws_id in ws_ids}
@@ -198,10 +154,10 @@ def update_windpower(df, fingrid_api_key):
     features['hour_sin'] = np.sin(2 * np.pi * hour / 24)
     features['hour_cos'] = np.cos(2 * np.pi * hour / 24)
 
-    # The WindPowerCapacityMW value is now directly fetched and filled from the API
+    # Use the WindPowerCapacityMW from the merged df
     features['WindPowerCapacityMW'] = merged_df.loc[missing_wind_power, 'WindPowerCapacityMW'].ffill()
 
-    # Dynamically compute average wind speed and variance from ws_ columns
+    # Dynamically compute average wind speed and variance
     ws_cols = [f'ws_{ws_id}' for ws_id in ws_ids]
     features['Avg_WindSpeed'] = merged_df.loc[missing_wind_power, ws_cols].mean(axis=1)
     features['WindSpeed_Variance'] = merged_df.loc[missing_wind_power, ws_cols].var(axis=1)
@@ -216,7 +172,7 @@ def update_windpower(df, fingrid_api_key):
         # Convert to torch tensor
         X_tensor = torch.tensor(X_scaled, dtype=torch.float32)
 
-        # Predict using the neural network model
+        # Predict using the trained model
         with torch.no_grad():
             predicted_wind_power = model(X_tensor).numpy().flatten()
 
@@ -232,15 +188,15 @@ def update_windpower(df, fingrid_api_key):
         print("→ No missing wind power values found, no predictions needed.")
 
     # Calculate statistics for the inferred values
-    if len(predicted_wind_power) > 0:
+    if 'predicted_wind_power' in locals() and len(predicted_wind_power) > 0:
         min_pred = np.min(predicted_wind_power)
         max_pred = np.max(predicted_wind_power)
         avg_pred = np.mean(predicted_wind_power)
         median_pred = np.median(predicted_wind_power)
 
         print(f"→ Inferred wind power values for {missing_wind_power.sum()} missing entries "
-            f"(Min: {min_pred:.1f}, Max: {max_pred:.1f}, "
-            f"Avg: {avg_pred:.1f}, Median: {median_pred:.1f}).")
+              f"(Min: {min_pred:.1f}, Max: {max_pred:.1f}, "
+              f"Avg: {avg_pred:.1f}, Median: {median_pred:.1f}).")
     else:
         print("→ No wind power values needed to be inferred.")
 
