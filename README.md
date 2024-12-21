@@ -26,6 +26,8 @@ All of the code is curated by an actual person, but there may be some AI comment
 
 **Nov 10, 2024:** Replaced Fingrid trasmission API with [JAO Border Flow API](https://publicationtool.jao.eu/nordic/maxBorderFlow/), for compatibility with flow-based capacity planning, required for import capacity information. Removed some unused/deprecated utility features.
 
+**Dec 21, 2024:** Wind power model now uses in-memory live training for a hands-free model update just before prediction. For hyperparameter optimization, the previous [routines](https://github.com/vividfog/nordpool-predict-fi/tree/main/data/create/91_model_experiments) are still valid.
+
 [Continue.dev](https://github.com/continuedev/continue) was and remains the tool of choice for AI pair programming. The choice of LLMs is a range of locally running and commercial models, typically the latest available and currently under evaluation.
 
 ## Usage
@@ -87,7 +89,7 @@ This is the current training data set:
 - **Nuclear power** production data: Planned or unplanned maintenance break can offset a large amount of supply that wind power then needs to replace. The model can use ENTSO-E messages to deduce near-future nuclear capacity, and failing that, falls back to the last known realized value from Fingrid.
 - **Day of the week** (Sunday vs. Monday) and **time of the day** (3 AM vs. 7 PM), used as cyclical features via their sin/cos values. Month, day-of-month and year are not used for training, as one year can be very different from another.
 - **Import capacity**: The total available import capacity from Sweden and Estonia: SE1, SE3 and EE, in megawatts. When there's shortage in transfer capacity due to maintenance or other reasons, Finland can't import cheap energy from abroad, which tends to inflate prices. (Adding export capacity is under consideration.)
-- **Time stamps (year/month)** are stripped off from the training data, and the weekday/hour values are used as cyclical sin/cos values. Data analysis shows the training data has negligible autocorrelation (temporal patterns) after these operations.
+- **Time stamps** are largely stripped off from the training data. Weekday/hour values are used as cyclical sin/cos values. Data analysis shows the training data has negligible autocorrelation (temporal patterns) after these operations. Seasonal effects are inferred from weather data. Year value is retained as-is, month is dropped.
 
 ### Hidden patterns in weather/price data
 
@@ -113,6 +115,8 @@ Feel free to fork the project and make it your own, or submit a pull request. We
 ## Python sample script
 
 Pending an API, there's a sample script [deploy/npf.py](deploy/npf.py) to demonstrate how to fetch [prediction.json](deploy/prediction.json), convert it into a Pandas dataframe and save it to a CSV file.
+
+The file contains pairs of Unix time stamps (milliseconds since epoch) and cents per kWh, with VAT. The format is chosen so that it's compatible with what Apex Charts (Home Assistant) expects.
 
 ## Home Assistant
 
