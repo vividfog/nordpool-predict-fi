@@ -41,3 +41,5 @@ data/create/**/*.csv
 data/prediction.db
 .schema
 package-lock.json
+data/create/91_model_experiments/models/
+data/create/11_weather_csv_2_sql/*.sql
