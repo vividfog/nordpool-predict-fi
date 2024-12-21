@@ -12,8 +12,8 @@ from util.dump import dump_sqlite_db
 from util.sahkotin import update_spot
 from util.train_xgb import train_model
 from util.fingrid_nuclear import update_nuclear
-# from util.fingrid_imports import update_import_capacity
 from util.jao_imports import update_import_capacity
+from util.fingrid_windpower_nn import update_windpower
 from util.llm import narrate_prediction
 from util.entso_e import entso_e_nuclear
 from util.sql import db_update, db_query_all
@@ -86,17 +86,6 @@ if not args.dump:
 if args.dump:
     dump_sqlite_db(data_folder_path)
     exit()
-
-# Choose NN based wind power model, if requested; default to the XGBoost model
-if args.nn or os.getenv('ALWAYS_USE_NN', '0') == '1':
-    from util.fingrid_windpower_nn import update_windpower
-
-    if os.getenv('ALWAYS_USE_NN', '0') == '1':
-        print(f"* Wind power NN model requested in .env.local: '{get_mandatory_env_variable('WIND_POWER_NN_STATE_DICT')}'")
-    else:
-        print(f"* Wind power NN model: '{get_mandatory_env_variable('WIND_POWER_NN_STATE_DICT')}'")
-else:
-    from util.fingrid_windpower import update_windpower
 
 if args.predict:
     print("* Loading data from the database...")
