@@ -141,7 +141,7 @@ Promise.all([
                     var day = date.getDate();
                     var hours = ("0" + date.getHours()).slice(-2);
                     var minutes = ("0" + date.getMinutes()).slice(-2);
-                    var formattedDateString = `${weekday} ${day}.${month}. klo ${hours}`;
+                    var formattedDateString = `${weekday} ${day}.${month}. klo ${hours}:${minutes}`;
 
                     // Initialize the result string with the formatted date
                     var result = formattedDateString + '<br/>';
@@ -175,7 +175,8 @@ Promise.all([
                         var weekday = weekdays[date.getDay()];
 
                         // Return the formatted date string for the axis label
-                        return weekday + ' ' + day + '.';
+                        // return weekday + ' ' + day + '.';
+                        return weekday;
                     }
                 }
             },
@@ -203,15 +204,10 @@ Promise.all([
             visualMap: [{
                 show: false,
                 seriesIndex: [1],
-                top: 50,
-                right: 10,
+                // top: 50,
+                // right: 10,
                 pieces: [
-                    { lte: 5, color: 'lime' },
-                    { gt: 5, lte: 10, color: 'limegreen' },
-                    { gt: 10, lte: 15, color: 'gold' },
-                    { gt: 15, lte: 20, color: 'darkorange' },
-                    { gt: 20, lte: 30, color: 'red' },
-                    { gt: 30, color: 'darkred' }
+                    { lte: 10000, color: 'limegreen' },
                 ],
                 outOfRange: {
                     color: '#999'
@@ -222,15 +218,10 @@ Promise.all([
             {
                 show: false,
                 seriesIndex: [0],
-                top: 50,
-                right: 10,
+                // top: 50,
+                // right: 10,
                 pieces: [
-                    { lte: 5, color: 'deepskyblue' },
-                    { gt: 5, lte: 10, color: 'dodgerblue' },
-                    { gt: 10, lte: 15, color: 'blue' },
-                    { gt: 15, lte: 20, color: 'slateblue' },
-                    { gt: 20, lte: 30, color: 'darkviolet' },
-                    { gt: 30, color: 'purple' }
+                    { lte: 10000, color: 'dodgerblue' }
                 ],
                 outOfRange: {
                     color: '#999'
@@ -242,6 +233,8 @@ Promise.all([
                 {
                     name: 'Ennuste',
                     type: 'bar',
+                    barWidth: '50%',
+                    // barGap: '20%',
                     data: npfSeriesData,
                     symbol: 'none',
                     opacity: 1.0
@@ -249,6 +242,8 @@ Promise.all([
                 {
                     name: 'Nordpool',
                     type: 'bar',
+                    barWidth: '50%',
+                    // barGap: '20%',
                     data: sahkotinSeriesData,
                     symbol: 'none',
                     step: 'middle',
@@ -260,18 +255,20 @@ Promise.all([
                         symbol: 'none',
                         label: {
                             formatter: function () {
-                                // Get the current time and format it as hours and minutes
-                                // Implicit conversion from local time to UTC happens here
                                 let currentTime = new Date();
+                                let month = currentTime.getMonth() + 1;
+                                let day = currentTime.getDate();
                                 let hours = currentTime.getHours();
                                 let minutes = currentTime.getMinutes();
 
-                                // Add leading zeros to hours and minutes if necessary
+                                month = month < 10 ? '0' + month : month;
+                                day = day < 10 ? '0' + day : day;
                                 hours = hours < 10 ? '0' + hours : hours;
                                 minutes = minutes < 10 ? '0' + minutes : minutes;
-                                // Return the formatted time string for the mark line label
-                                return 'klo ' + hours + ':' + minutes;
+
+                                return day + '.' + month + '. klo ' + hours + ':' + minutes;
                             },
+
                             position: 'end'
                         },
                         lineStyle: {
@@ -389,7 +386,8 @@ fetch(windPowerUrl)
                         var weekday = weekdays[date.getDay()];
                         var day = date.getDate();
                         var month = date.getMonth() + 1;  // add 1 since getMonth() starts from 0
-                        return `${weekday} ${day}.${month}.`;
+                        // return `${weekday} ${day}.${month}.`;
+                        return weekday;
                     }
                 }
             },
@@ -448,13 +446,19 @@ fetch(windPowerUrl)
                         label: {
                             formatter: function () {
                                 let currentTime = new Date();
+                                let month = currentTime.getMonth() + 1;
+                                let day = currentTime.getDate();
                                 let hours = currentTime.getHours();
                                 let minutes = currentTime.getMinutes();
-            
+
+                                // Lisää etunollat vain tunneille ja minuuteille, jos tarpeen
                                 hours = hours < 10 ? '0' + hours : hours;
                                 minutes = minutes < 10 ? '0' + minutes : minutes;
-                                return 'klo ' + hours + ':' + minutes;
+
+                                // Palauta muotoiltu päivämäärä ja aika
+                                return day + '.' + month + '. klo ' + hours + ':' + minutes;
                             },
+
                             position: 'end'
                         },
                         lineStyle: {
