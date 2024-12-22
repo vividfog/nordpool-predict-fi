@@ -1,13 +1,13 @@
-Ennuste on päivitetty lauantaina klo 21:05.
+Ennuste on päivitetty sunnuntaina klo 03:06.
 
 | viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **sunnuntai**    | 2,7            | 0 - 6            | 2394 - 4313   | -4,4          |
-| **maanantai**    | 6,0            | 2 - 11           | 1279 - 2911   | -1,0          |
-| **tiistai**      | 6,9            | 1 - 14           | 680 - 4697    | -1,8          |
-| **keskiviikko**  | 0,9            | -1 - 2           | 4095 - 6664   | 2,5           |
-| **torstai**      | 0,8            | -1 - 4           | 2729 - 6523   | 3,3           |
+| **maanantai**    |       7.0       |       3 - 11      |   1073 - 2976    |      -1.0     |
+| **tiistai**      |       7.4       |       3 - 14      |    581 - 4275    |      -1.8     |
+| **keskiviikko**  |       0.6       |      -1 - 2       |   3813 - 6829    |      2.5      |
+| **torstai**      |       1.0       |      -1 - 4       |   2732 - 6747    |      3.3      |
+| **perjantai**    |       0.0       |       0 - 0       |   4357 - 6105    |      3.1      |
 
-Tulevan viikon sähkön hinnat vaihtelevat merkittävästi eri päivinä. Viikon korkein keskihinta on **tiistaina**, jolloin keskihinta nousee 6,9 ¢/kWh. Samana päivänä maksimihinta on myös korkea, 14 ¢/kWh, mikä saattaa johtua tuulivoiman alhaisesta minimituotannosta, joka on vain 680 MW. Tämä alhainen tuulituotanto voi nostaa hintoja. **Maanantaina** keskihinta on 6,0 ¢/kWh, mikä on myös normaalia korkeampi, mutta ilman poikkeuksellisen suuria hintavaihteluita.
+Tuleva viikko näyttää vaihtelevalta sähkön hinnoittelun osalta. **Maanantaina** ja **tiistaina** keskihinnat asettuvat normaalin hintaluokan ylärajoille, ja tiistaina maksimihinta nousee hieman korkeammaksi. Tämä voi liittyä matalaan tuulivoiman minimituotantoon, erityisesti tiistaina, jolloin minimituotanto on vain 581 MW. Keskiviikosta eteenpäin tuulivoiman tarjonta kasvaa merkittävästi, mikä osaltaan selittää sähkön hintojen laskua. **Keskiviikkona** sähkön keskihinta putoaa huomattavasti ollen vain 0,6 ¢/kWh, ja tuulivoiman tuotanto nousee huomattavasti. Myös **torstaina** ja **perjantaina** hinnat pysyvät alhaisina, ja perjantaina odotetaan jopa nollahintaa.
 
-Viikon edullisimmat keskihinnat nähdään **keskiviikkona** ja **torstaina**, jolloin keskihinnat ovat 0,9 ¢/kWh ja 0,8 ¢/kWh. Näinä päivinä tuulivoiman tuotanto on voimakasta, mikä osaltaan selittää alhaisia hintoja. Keskiviikkona ja torstaina minimihinnat voivat jopa olla negatiivisia, mikä on seurausta runsaasta tuulivoimasta. Keskimääräinen lämpötila pysyy koko viikon normaalilla talvisella tasolla, eikä sillä odoteta olevan merkittävää vaikutusta sähkön hintaan.
+Viikon mielenkiintoisin päivä on keskiviikko, jolloin sähkön hinta on poikkeuksellisen alhainen, ja tuulivoimaa on runsaasti tarjolla. Matalat hinnat jatkuvat torstaina ja perjantaina, mikä viittaa siihen, että tuulivoiman lisääntyminen voi merkittävästi vaikuttaa sähkön hintaan. Kokonaisuutena viikko tarjoaa vaihtelua, mutta erityisesti keskiviikon ja perjantain edulliset hinnat erottuvat edukseen.
