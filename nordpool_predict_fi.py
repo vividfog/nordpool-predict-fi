@@ -4,23 +4,30 @@ import pytz
 import argparse
 import numpy as np
 import pandas as pd
-
 from rich import print
 from datetime import datetime
 from dotenv import load_dotenv
 from util.dump import dump_sqlite_db
 from util.sahkotin import update_spot
 from util.train_xgb import train_model
-from util.fingrid_nuclear import update_nuclear
-from util.jao_imports import update_import_capacity
-from util.fingrid_windpower_nn import update_windpower
 from util.llm import narrate_prediction
 from util.entso_e import entso_e_nuclear
 from util.sql import db_update, db_query_all
 from util.dataframes import update_df_from_df
+from util.fingrid_nuclear import update_nuclear
+from util.jao_imports import update_import_capacity
+from util.fingrid_windpower_nn import update_windpower
 from util.fmi import update_wind_speed, update_temperature
 from util.eval import create_prediction_snapshot, rotate_snapshots
 
+# -----------------------------------------------------------------------------------------------------------------------------
+# Configure pandas to display all rows
+pd.set_option('display.max_rows', None)
+
+# Set the global print option for float format
+pd.options.display.float_format = '{:.1f}'.format
+
+# -----------------------------------------------------------------------------------------------------------------------------
 # Fetch environment variables from .env.local (create yours from .env.template)
 try:
     load_dotenv('.env.local')
@@ -56,6 +63,7 @@ except ValueError as e:
 openai_api_key = os.getenv('OPENAI_API_KEY')  # OpenAI API key, used by --narrate
 narration_file = os.getenv('NARRATION_FILE')  # used by --narrate
 
+# -----------------------------------------------------------------------------------------------------------------------------
 # Command line arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('--train', action='store_true', help='[Deprecated] Train a new model candidate using the data in the database')
@@ -65,28 +73,23 @@ parser.add_argument('--commit', action='store_true', help='Commit the prediction
 parser.add_argument('--deploy', action='store_true', help='Deploy the output files to the web folder')
 parser.add_argument('--dump', action='store_true', help='Dump the SQLite database to CSV format')
 parser.add_argument('--nn', action='store_true', help='Use neural network model(s) instead of XGBoost')
-
 args = parser.parse_args()
 
-# Deprecate --train option
-if args.train:
-    print("[WARNING] The --train option is deprecated and is no longer used. Training is now performed automatically during prediction.")
-
-# Configure pandas to display all rows
-pd.set_option('display.max_rows', None)
-
-# Set the global print option for float format
-pd.options.display.float_format = '{:.1f}'.format
-
-# Start with a timestamp intro to STDOUT, but not if we're here to dump the database as CSV
-if not args.dump:
-    print(datetime.now().strftime("[%Y-%m-%d %H:%M:%S]"), "Nordpool Predict FI")
-
+# -----------------------------------------------------------------------------------------------------------------------------
 # --dump: Dump the SQLite database as CSV to STDOUT
 if args.dump:
     dump_sqlite_db(data_folder_path)
     exit()
+else:
+    # Startup message
+    print(datetime.now().strftime("[%Y-%m-%d %H:%M:%S]"), "Nordpool Predict FI")
 
+# -----------------------------------------------------------------------------------------------------------------------------
+# Deprecate --train option
+if args.train:
+    print("[WARNING] The --train option is deprecated and is no longer used. Training is now performed automatically during prediction.")
+
+# -----------------------------------------------------------------------------------------------------------------------------
 if args.predict:
     print("* Loading data from the database...")
     df_full = db_query_all(db_path)
@@ -207,6 +210,7 @@ if args.predict:
         print(df_recent)
         print("* Predictions NOT committed to the database (no --commit).")
 
+# -----------------------------------------------------------------------------------------------------------------------------
 # --narrate: Generate narration
 if args.narrate:
     print("Narrating predictions...")
@@ -221,6 +225,7 @@ if args.narrate:
     else:
         print(narration)
 
+# -----------------------------------------------------------------------------------------------------------------------------
 # --deploy: Deploy the output files
 if args.deploy:
     print("Deploying the latest prediction data to:", deploy_folder_path, "...")
@@ -301,7 +306,8 @@ if args.deploy:
     with open(json_path, 'w') as f:
         f.write(json_data)
     print(f"→ Daily averages saved to {json_path}")
-
+    
+# -----------------------------------------------------------------------------------------------------------------------------
 if __name__ == "__main__":
     
     # If no arguments were given, print usage
