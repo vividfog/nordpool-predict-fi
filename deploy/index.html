@@ -30,8 +30,8 @@
         <p>Perustuu Pohjanlahden rannikon FMI-sääasemien tietoihin ja ennusteisiin. Yli 2...3 gigawatin tuuli on sähkön hinnan kannalta suotuisa, ja alle 1 gigawatin tuulella hinta voi nousta korkealle, jos samaan hetkeen osuu huoltotaukoja tai on kylmä.</p>
         <div id="windPowerChart" style="height: 40vh; width: 100%; max-width: 920px; margin: auto; box-sizing: border-box; padding-top: 32px;"></div>
         <h1>Hintaennusteen kehitys</h1>
-        <p>Graafi kertoo, miten mallin ennusteet ovat kehittyneet viime aikoina. Tämä saattaa auttaa hahmottamaan, mihin suuntaan ennuste on menossa. Isoja mielenmuutoksia voi tulla mm. jos sääennuste on muuttunut paljon, hintahäiriön syy on historiallisesti uudenlainen tai harvinainen, tai jos numeroiden taustalla olevaa avointa lähdekoodia on hiljattain muutettu.</p>
-        <p>Oranssi viiva on toteutunut Nordpool-hinta. Vahva sininen viiva on uusin ennuste. Ohenevat siniset viivat ovat aiempia ennusteita aiemmilta päiviltä.</p>
+        <p>Graafi kertoo, mitä Sähkövatkain on ennustanut viime aikoina. Tämä saattaa auttaa hahmottamaan, mihin suuntaan ennuste on menossa. Isoja mielenmuutoksia voi tulla mm. jos sääennuste on muuttunut paljon, jos tulee odottamaton tuotantokatko, jos hintahäiriön syy on historiallisesti uudenlainen tai harvinainen, tai jos ennustemallia on hiljattain päivitetty.</p>
+        <p>Ohenevat siniset viivat ovat ennusteparvi aiemmilta päiviltä, ennen kuin toteutunut hinta oli tiedossa. Oranssi viiva on lopullinen Nordpool-hinta. Optimaalisesti viivojen tulisi olla mahdollisimman paljon päällekkäin.</p>
         <div id="historyChart" style="height: 40vh; width: 100%; max-width: 920px; margin: auto; box-sizing: border-box; padding-top: 32px;"></div>
         <h1 style="padding-top: 32px">Mitä ennuste huomioi?</h1>
         <p>Kyseessä on koneoppimismalli, joka hakee korrelaatioita eri muuttujien välillä ja oppii, millaiseen hintaan kukin yhdistelmä historian perusteella johtaa. Tämä ei siis ole aikasarjaennuste, vaan jokainen tunti saa arvonsa itsenäisesti näiden tietojen perusteella:</p>
@@ -67,6 +67,8 @@
         <li>Tuulivoimaennuste käyttää nyt neuroverkkomallia (PyTorch).</li>
         <p><strong>24.12.2024:</strong></p>
         <li>Tieto <a href="https://pyhäpäivä.fi" target="_blank">juhlapyhistä</a> on nyt mukana mallin opetuksessa.</li>
+        <p><strong>25.12.2024:</strong></p>
+        <li>Historiagraafi ei enää näytä sellaisia vanhoja ennusteita, joiden kohdalla huomisen toteutuva Nordpool-hinta oli jo mallin opittavissa. Historiaa pidennetty 30 päivään.</li>
         <h1>Mitä ennuste ei huomioi?</h1>
         <p>Ennuste ei näe muuta kuin mitä yllä on mainittu. Esim. aurinkoenergia ja naapurimaiden tuulivoimatiedot puuttuvat. Opetuksessa käytetty data alkaa vuoden 2023 alusta.</p>
         <p style="padding-bottom: 24px;">Vaikka malli osaa "ennustaa" menneisyyttä ja historiallisesti tutun tyyppistä tulevaisuutta toisinaan oivasti, hinta-arviot uudenlaisissa poikkeustilanteissa voivat olla pielessä. Älä siis esim. säädä talosi lämmitystä näiden numeroiden perusteella, jos et ole kotona.</p>
