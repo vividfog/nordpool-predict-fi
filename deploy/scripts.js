@@ -396,7 +396,7 @@ fetch(windPowerUrl)
                 name: 'GW',
                 nameLocation: 'end',
                 nameGap: 20,
-                max: 7, // gigawatts
+                max: 8, // gigawatts
                 nameTextStyle: {
                     fontWeight: 'regular'
                 },
