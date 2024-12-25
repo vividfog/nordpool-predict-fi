@@ -248,10 +248,10 @@ Mainitse taulukon yläpuolella leipätekstinä, koska ennuste on päivitetty.
 
 Sitten näytä taulukko:
 
-| viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+| pv  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
 
-jossa "ka" tarkoittaa kyseisen viikonpäivän keskihintaa. Tasaa sarakkeet kuten esimerkissä ja käytä desimaaleja/kokonaislukuja kuten <data>:ssa.
+jossa "pv" tarkoittaa viikonpäivää ja "ka" tarkoittaa kyseisen viikonpäivän keskihintaa. Lyhennä viikonpäivät seuraavasti: ma, ti, ke, to, pe, la, su. Tasaa sarakkeet kuten esimerkissä ja käytä desimaaleja/kokonaislukuja kuten <data>:ssa. 
 
 ## 3. Kirjoita yleiskuvaus viikon hintakehityksestä, futuurissa.
 
