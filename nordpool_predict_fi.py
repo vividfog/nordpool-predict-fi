@@ -292,7 +292,7 @@ if args.deploy:
     create_prediction_snapshot(deploy_folder_path, json_data_list, "prediction_snapshot")
 
     # Rotate snapshots to maintain the latest X snapshots
-    rotate_snapshots(deploy_folder_path, pattern="prediction_snapshot*", max_files=14)
+    rotate_snapshots(deploy_folder_path, pattern="prediction_snapshot*", max_files=40)
 
     # Hourly Wind Power Predictions
     windpower_preds = deploy_df[['timestamp', 'WindPowerMW']].copy()
