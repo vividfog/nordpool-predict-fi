@@ -117,7 +117,7 @@ def preprocess_data(df: pd.DataFrame, fmisid_t: List[str]) -> Tuple[pd.DataFrame
         
     # Drop any remaining rows with NaN values in the target column
     df.dropna(subset=['Price_cpkWh'], inplace=True)
-    logger.info(f"Number of NaN values in 'Price_cpkWh' after forward-fill imputation: {df['Price_cpkWh'].isna().sum()}")
+    logger.debug(f"Number of NaN values in 'Price_cpkWh' after forward-fill imputation: {df['Price_cpkWh'].isna().sum()}")
 
     # Cyclical transformation
     df['day_of_week_sin'] = np.sin(2 * np.pi * df['day_of_week'] / 7)
@@ -129,12 +129,22 @@ def preprocess_data(df: pd.DataFrame, fmisid_t: List[str]) -> Tuple[pd.DataFrame
     # Calculate temp_mean and temp_variance from temperature features
     df['temp_mean'] = df[fmisid_t].mean(axis=1)
     df['temp_variance'] = df[fmisid_t].var(axis=1)
+    
+    # Take the int value of the 'holiday' column
+    # df['holiday'] = df['holiday'].astype(int)
 
     # Drop the original time features from training data
     feature_columns = [
         'year', 'day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos',
         'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW',
-        'temp_mean', 'temp_variance' ] + fmisid_t
+        'temp_mean', 'temp_variance', 'holiday' ] + fmisid_t
+
+    # Log the number of NaN values in the final feature columns
+    nan_count = df[feature_columns].isna().sum().sum()
+    logger.info(f"Number of NaN values in final feature columns: {nan_count}")
+    
+    # Drop the rows with NaN values in the feature columns
+    # df = df.dropna(subset=feature_columns)
 
     # Use forward-fill imputation to handle missing values
     df[feature_columns] = df[feature_columns].ffill()
