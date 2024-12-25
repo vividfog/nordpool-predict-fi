@@ -99,11 +99,11 @@ if args.predict:
     # Print the head of the DataFrame
     # print(df_full.head(48))
 
-    # Keep the original logic of setting index:
     df_full.set_index('timestamp', inplace=True)
     # print(df_full.head(48))
 
-    # Minimal fix: temporarily restore "timestamp" column so update_holidays() can find it
+    # Temporarily restore "timestamp" column so update_holidays() can find it
+    # TODO: Refactor to remove double set_index() calls
     df_full.reset_index(inplace=True)
     df_full = update_holidays(df_full)
     # Restore the index
