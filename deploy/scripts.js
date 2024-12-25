@@ -509,7 +509,7 @@ setInterval(updateWindMarkerPosition, 10000); // Update every 10 seconds
 // Make sure ECharts is loaded and the DOM element exists
 var historyChart = echarts.init(document.getElementById('historyChart'));
 
-// Utility function to generate date strings for the past 14 days
+// Utility function to generate date strings for the past X days
 function getPastDateStrings(count) {
     const dates = [];
     for (let i = 0; i < count; i++) {
@@ -521,27 +521,67 @@ function getPastDateStrings(count) {
 }
 
 // Construct URLs for fetching historical data
-const dateStrings = getPastDateStrings(14);
+const dateStrings = getPastDateStrings(35); // 30 days plus 5 days of prediction data
 const historicalUrls = dateStrings.map(date => `${baseUrl}/prediction_snapshot_${date}.json`);
 // console.log("Datestrings: ", historicalUrls);
 
-// Fetch and process historical data from the constructed URLs
+// Fetch and process historical data from the constructed URLs, filtering out data older than "day after tomorrow" at the time the snapshot was taken
 function fetchHistoricalData(urls) {
-    // console.log("fetchHistoricalData trying: ", urls);
-    return Promise.all(urls.map(url =>
-        fetch(url).then(response => {
-            if (!response.ok) {
-                // DEBUG only, not all files are supposed to exist
-                // throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
-            }
-            return response.json();
-        }).catch(error => {
-            // DEBUG only, not all files are supposed to exist
-            // console.error("Fetching error for URL:", url, error);
-            return null; // Return null for snapshots that don't (yet) exist
-        })
-    ));
+    const today = new Date();
+    const cutoffDate = new Date(today);
+    cutoffDate.setDate(today.getDate() - 30);
+    const cutoffTimestamp = cutoffDate.getTime();
+
+    return Promise.all(urls.map(url => {
+        console.log(`[fetchHistoricalData] Fetching URL: ${url}`);
+
+        return fetch(url)
+            .then(response => {
+                console.log(`[fetchHistoricalData] Response status: ${response.status} from ${url}`);
+                if (!response.ok) {
+                    console.warn(`[fetchHistoricalData] Failed to fetch or file not found: ${url}`);
+                }
+                return response.json();
+            })
+            .then(jsonData => {
+                if (!jsonData) {
+                    console.warn(`[fetchHistoricalData] No data returned for: ${url}`);
+                    return null;
+                }
+
+                console.log(`[fetchHistoricalData] Raw JSON length for ${url}: ${jsonData.length}`);
+
+                const match = url.match(/(\d{4}-\d{2}-\d{2})/);
+                if (match) {
+                    const snapshotDateString = match[1];
+                    const snapshotDateTime = new Date(`${snapshotDateString}T00:00:00Z`).getTime();
+                    console.log(`[fetchHistoricalData] Snapshot date: ${snapshotDateString}, which is ${snapshotDateTime} in ms UTC`);
+
+                    const skipDays = 2; 
+                    const cutoffMs = snapshotDateTime + skipDays * 24 * 60 * 60 * 1000;
+
+                    const originalCount = jsonData.length;
+                    // Filter out data older than the day after the snapshot and older than 30 days from today
+                    jsonData = jsonData.filter(item => item[0] >= cutoffMs && item[0] >= cutoffTimestamp);
+
+                    console.log(
+                        `[fetchHistoricalData] Filtered out ${originalCount - jsonData.length} of ${originalCount} entries for ${url}, 
+                         cutoffMs: ${cutoffMs}`
+                    );
+                } else {
+                    console.warn(`[fetchHistoricalData] No date found in filename: ${url}`);
+                }
+
+                console.log(`[fetchHistoricalData] Final JSON length for ${url}: ${jsonData.length}`);
+                return jsonData;
+            })
+            .catch(error => {
+                console.error(`[fetchHistoricalData] Error fetching or parsing ${url}:`, error);
+                return null;
+            });
+    }));
 }
+
 
 // Function to set up the history chart with fetched data
 function setupHistoryChart(data) {
@@ -589,6 +629,14 @@ function setupHistoryChart(data) {
             trigger: 'axis',
             formatter: function (params) {
                 var result = params[0].axisValueLabel + '<br/>';
+    
+                // Sort params such that 'Nordpool' data comes first
+                params.sort((a, b) => {
+                    if (a.seriesName === 'Nordpool') return -1;
+                    if (b.seriesName === 'Nordpool') return 1;
+                    return 0;
+                });
+    
                 params.forEach(function (item) {
                     if (item.seriesType === 'line') {
                         var valueRounded = item.value[1] ? item.value[1].toFixed(1) : '';
@@ -633,7 +681,7 @@ function setupHistoryChart(data) {
 }
 
 function setupSahkotinData(nrSeries) {
-    const startDate = getPastDateStrings(14).pop();
+    const startDate = getPastDateStrings(30).pop();
     var endDate = addDays(new Date(), 2).toISOString();
 
     const sahkotinUrl = 'https://sahkotin.fi/prices.csv';
