@@ -1,13 +1,13 @@
-Ennuste on päivitetty: keskiviikkona klo 03:04.
+Ennuste on päivitetty keskiviikkona klo 09:12.
 
 | viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **torstai**  |        0.5        |     -1.0 - 1.6    |   2736 - 6646 |      3.3      |
-| **perjantai**|        1.1        |     -0.3 - 3.1    |   4117 - 6353 |      2.8      |
-| **lauantai** |        1.0        |     0.0 - 1.8     |   3523 - 6462 |      2.4      |
-| **sunnuntai**|        0.8        |     -0.1 - 4.8    |   2628 - 6167 |      1.9      |
-| **maanantai**|        0.6        |     0.2 - 0.8     |   4756 - 5542 |      0.8      |
+| **torstai**  | 0,6              | -0,2 - 1,8       | 2747 - 6214   | 3,3           |
+| **perjantai**| 1,4              | 0,1 - 3,8        | 3728 - 6649   | 2,8           |
+| **lauantai** | 0,8              | 0,1 - 1,7        | 3276 - 6572   | 2,4           |
+| **sunnuntai**| 0,8              | -0,7 - 5,0       | 2421 - 5864   | 1,9           |
+| **maanantai**| 2,2              | 0,2 - 6,6        | 4011 - 5507   | 0,3           |
 
-Tulevien päivien pörssisähkön hinnat ovat pääosin alhaisia, vaihteluiden ollessa kuitenkin nähtävissä. **Torstai** erottuu pyhäpäivänä, mikä saattaa laskea sähkön kysyntää ja sen myötä hintaa. Tämän päivän keskihinta on 0.5 ¢/kWh, ja minimihinta laskee jopa negatiiviseksi, -1.0 ¢/kWh. **Perjantaina** ja **lauantaina** keskihinnat ovat melko samankaltaisia, 1.1 ¢/kWh ja 1.0 ¢/kWh vastaavasti. Näinä päivinä tuulivoiman tuotanto on korkealla tasolla, mikä osaltaan pitää hinnat maltillisina.
+Tulevien päivien pörssisähkön hinnat vaihtelevat jonkin verran. **Torstaina** on pyhäpäivä, jolloin keskihinta on 0,6 senttiä kilowattitunnilta, ja hinta vaihtelee miinusmerkkisestä 1,8 senttiin. Tämä voi selittyä alhaisemmalla kysynnällä. **Perjantaina** hinta kohoaa hieman, keskimäärin 1,4 senttiin, mutta maksimihinta nousee 3,8 senttiin kilowattitunnilta. **Lauantaina** hinta laskee jälleen, keskihinnan ollessa 0,8 senttiä, ja hinta pysyy suhteellisen tasaisena ilman suuria vaihteluita.
 
-**Sunnuntaina** sähkön hinta on keskimäärin 0.8 ¢/kWh. Tämän päivän maksimihinta nousee 4.8 ¢/kWh:iin, mikä on korkeampi kuin muina päivinä. Tämä voi selittyä päivän tuulivoiman tuotannon vaihteluilla, sillä minimituotanto on alhaisimmillaan 2628 MW. **Maanantai** tarjoaa viikon alhaisimmat hinnat keskihinnan ollessa 0.6 ¢/kWh. Kaiken kaikkiaan sähkömarkkinat näyttäytyvät tasapainoisina ilman suuria hintapiikkejä. Keskimääräiset hinnat pysyvät edullisina koko tarkasteluajanjakson ajan.
+**Sunnuntaina** on havaittavissa suurempi hintavaihtelu, sillä maksimihinta nousee 5,0 senttiin, vaikka keskihinta on vain 0,8 senttiä. Tämä voi osittain johtua alhaisesta tuulivoiman minimituotannosta, joka on 2421 MW. **Maanantaina** keskihinta nousee 2,2 senttiin, ja maksimihinta on viikon korkein, 6,6 senttiä kilowattitunnilta. Tämä voi viitata siihen, että tarjonta ei täysin vastaa kysyntään alkuviikosta, erityisesti kun keskilämpötila laskee lähelle nollaa astetta. Kaiken kaikkiaan sähkön hinnat pysyvät kuitenkin alle normaalin hintaherkkyysrajan.
