@@ -63,14 +63,14 @@ def get_forecast(fmisid, start_date, parameters, end_date=None):
         timestamp = member.find('.//BsWfs:Time', namespaces=root.nsmap).text
         parameter = member.find('.//BsWfs:ParameterName', namespaces=root.nsmap).text
         value = member.find('.//BsWfs:ParameterValue', namespaces=root.nsmap).text
-        data.append({'Timestamp': timestamp, 'Parameter': parameter, 'Value': value})
+        data.append({'timestamp': timestamp, 'Parameter': parameter, 'Value': value})
 
     # Convert list of dictionaries to DataFrame
     df = pd.DataFrame(data)
     
     try:
         df['Value'] = pd.to_numeric(df['Value'], errors='coerce')
-        df_pivot = df.pivot(index='Timestamp', columns='Parameter', values='Value').reset_index()
+        df_pivot = df.pivot(index='timestamp', columns='Parameter', values='Value').reset_index()
     except Exception as e:
         print(f"DataFrame operation failed with FMI data: {e}")
         sys.exit(1)
@@ -128,12 +128,12 @@ def get_history(fmisid, start_date, parameters, end_date=None):
         timestamp = member.find('.//BsWfs:Time', namespaces=root.nsmap).text
         parameter = member.find('.//BsWfs:ParameterName', namespaces=root.nsmap).text
         value = member.find('.//BsWfs:ParameterValue', namespaces=root.nsmap).text
-        data.append({'Timestamp': timestamp, 'Parameter': parameter, 'Value': value})
+        data.append({'timestamp': timestamp, 'Parameter': parameter, 'Value': value})
 
     # Convert list of dictionaries to DataFrame
     df = pd.DataFrame(data)
     df['Value'] = pd.to_numeric(df['Value'], errors='coerce')
-    df_pivot = df.pivot(index='Timestamp', columns='Parameter', values='Value').reset_index()
+    df_pivot = df.pivot(index='timestamp', columns='Parameter', values='Value').reset_index()
     return df_pivot
 
 def clean_up_df_after_merge(df):
@@ -174,12 +174,12 @@ def update_wind_speed(df):
     This function fetches wind speed forecasts up to 120 hours into the future and historical wind speed data from the past 7 days for each location specified in the input DataFrame. The locations are identified by 'fmisid' codes in the column names prefixed with 'ws_'. The function then interpolates missing values in both forecast and historical data, combines them while handling overlaps, and updates the original DataFrame with the combined wind speed data.
 
     Parameters:
-    - df (pd.DataFrame): The input DataFrame containing a 'Timestamp' column and one or more wind speed columns named with the pattern 'ws_{fmisid}', where '{fmisid}' is the location code.
+    - df (pd.DataFrame): The input DataFrame containing a 'timestamp' column and one or more wind speed columns named with the pattern 'ws_{fmisid}', where '{fmisid}' is the location code.
 
     Returns:
-    - pd.DataFrame: The updated DataFrame with combined forecast and historical wind speed data for each specified location. The wind speed data is merged into the original DataFrame based on the 'Timestamp' column, which is also made timezone-aware (UTC) if not already.
+    - pd.DataFrame: The updated DataFrame with combined forecast and historical wind speed data for each specified location. The wind speed data is merged into the original DataFrame based on the 'timestamp' column, which is also made timezone-aware (UTC) if not already.
 
-    The function ensures that the 'Timestamp' column in the input DataFrame and the index of the combined forecast and historical data are aligned and timezone-aware (UTC). It also removes potential duplicates after combining the forecast and historical data. After updating the wind speed data, the function performs a clean-up to handle any issues arising from the merge operation.
+    The function ensures that the 'timestamp' column in the input DataFrame and the index of the combined forecast and historical data are aligned and timezone-aware (UTC). It also removes potential duplicates after combining the forecast and historical data. After updating the wind speed data, the function performs a clean-up to handle any issues arising from the merge operation.
     """
     # Define the current date for fetching forecasts
     current_date = datetime.now(pytz.UTC).strftime("%Y-%m-%d")
@@ -187,8 +187,8 @@ def update_wind_speed(df):
     # 7 days earlier:
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
     
-    # 120 hours later:
-    end_date = (datetime.now(pytz.UTC) + timedelta(hours=120)).strftime("%Y-%m-%d")
+    # 6 days later:
+    end_date = (datetime.now(pytz.UTC) + timedelta(days=6)).strftime("%Y-%m-%d")
     
     print("* Fetching wind speed forecast and historical data between", history_date, "and", end_date)
     
@@ -208,16 +208,16 @@ def update_wind_speed(df):
         history_df[col] = history_df[col].interpolate(method='linear')
 
         # Combine forecast and history with overlap handling
-        combined_df = pd.concat([forecast_df.set_index('Timestamp'), history_df.set_index('Timestamp')]).sort_index()
+        combined_df = pd.concat([forecast_df.set_index('timestamp'), history_df.set_index('timestamp')]).sort_index()
         # Remove potential duplicates after combining
         combined_df = combined_df[~combined_df.index.duplicated(keep='first')]
 
-        # Ensure the 'Timestamp' column in df and the index of combined_df are timezone-aware and aligned
-        df['Timestamp'] = pd.to_datetime(df['Timestamp'], utc=True)
+        # Ensure the 'timestamp' column in df and the index of combined_df are timezone-aware and aligned
+        df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True)
         combined_df.index = pd.to_datetime(combined_df.index, utc=True).unique()
 
         # Update the original DataFrame with the combined data
-        df = pd.merge(df, combined_df[[col]], left_on='Timestamp', right_index=True, how='left')
+        df = pd.merge(df, combined_df[[col]], left_on='timestamp', right_index=True, how='left')
         
         # Merged data frame contains the old NaN column and the new column with the same name → remove the old one
         df = clean_up_df_after_merge(df)
@@ -232,17 +232,17 @@ def update_temperature(df):
     This function fetches temperature forecasts up to 120 hours into the future and historical temperature data from the past 7 days for each location specified in the input DataFrame. The locations are identified by 'fmisid' codes in the column names prefixed with 't_'. The function then interpolates missing values in both forecast and historical data, combines them while handling overlaps, and updates the original DataFrame with the combined temperature data.
 
     Parameters:
-    - df (pd.DataFrame): The input DataFrame containing a 'Timestamp' column and one or more temperature columns named with the pattern 't_{fmisid}', where '{fmisid}' is the location code.
+    - df (pd.DataFrame): The input DataFrame containing a 'timestamp' column and one or more temperature columns named with the pattern 't_{fmisid}', where '{fmisid}' is the location code.
 
     Returns:
-    - pd.DataFrame: The updated DataFrame with combined forecast and historical temperature data for each specified location. The temperature data is merged into the original DataFrame based on the 'Timestamp' column, which is also made timezone-aware (UTC) if not already.
+    - pd.DataFrame: The updated DataFrame with combined forecast and historical temperature data for each specified location. The temperature data is merged into the original DataFrame based on the 'timestamp' column, which is also made timezone-aware (UTC) if not already.
 
-    The function ensures that the 'Timestamp' column in the input DataFrame and the index of the combined forecast and historical data are aligned and timezone-aware (UTC). It also removes potential duplicates after combining the forecast and historical data. After updating the temperature data, the function performs a clean-up to handle any issues arising from the merge operation.
+    The function ensures that the 'timestamp' column in the input DataFrame and the index of the combined forecast and historical data are aligned and timezone-aware (UTC). It also removes potential duplicates after combining the forecast and historical data. After updating the temperature data, the function performs a clean-up to handle any issues arising from the merge operation.
     """
     # Define the current date and end date for fetching forecasts and historical data
     current_date = datetime.now(pytz.UTC).strftime("%Y-%m-%d")
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
-    end_date = (datetime.now(pytz.UTC) + timedelta(hours=120)).strftime("%Y-%m-%d")  # 120 hours later for forecasts
+    end_date = (datetime.now(pytz.UTC) + timedelta(days=6)).strftime("%Y-%m-%d")  # 120 hours later for forecasts
 
     print("* Fetching temperature forecast and historical data between", history_date, "and", end_date)
 
@@ -263,16 +263,16 @@ def update_temperature(df):
         history_df[col] = history_df[col].interpolate(method='linear')
 
         # Combine forecast and history with overlap handling
-        combined_df = pd.concat([forecast_df.set_index('Timestamp'), history_df.set_index('Timestamp')]).sort_index()
+        combined_df = pd.concat([forecast_df.set_index('timestamp'), history_df.set_index('timestamp')]).sort_index()
         # Remove potential duplicates after combining
         combined_df = combined_df[~combined_df.index.duplicated(keep='first')]
 
-        # Ensure the 'Timestamp' column in df and the index of combined_df are timezone-aware and aligned
-        df['Timestamp'] = pd.to_datetime(df['Timestamp'], utc=True)
+        # Ensure the 'timestamp' column in df and the index of combined_df are timezone-aware and aligned
+        df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True)
         combined_df.index = pd.to_datetime(combined_df.index, utc=True).unique()
 
         # Update the original DataFrame with the combined data
-        df = pd.merge(df, combined_df[[col]], left_on='Timestamp', right_index=True, how='left')
+        df = pd.merge(df, combined_df[[col]], left_on='timestamp', right_index=True, how='left')
         
         # Optionally, you can include the clean-up function here if necessary
         df = clean_up_df_after_merge(df)

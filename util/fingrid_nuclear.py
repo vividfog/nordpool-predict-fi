@@ -86,7 +86,7 @@ def update_nuclear(df, fingrid_api_key):
     This function fetches nuclear power production data for the past 7 days and up to 120 hours into the future, aggregates the data from 3-minute intervals to hourly averages, and updates the original DataFrame with the aggregated nuclear power data.
 
     Parameters:
-    - df (pd.DataFrame): The input DataFrame containing a 'Timestamp' column.
+    - df (pd.DataFrame): The input DataFrame containing a 'timestamp' column.
     - fingrid_api_key (str): The API key for accessing Fingrid data.
 
     Returns:
@@ -124,8 +124,8 @@ def update_nuclear(df, fingrid_api_key):
         if 'NuclearPowerMW' in df.columns:
             df.drop(columns=['NuclearPowerMW'], inplace=True)
         
-        df['Timestamp'] = pd.to_datetime(df['Timestamp'], utc=True)
-        merged_df = pd.merge(df, hourly_nuclear_df, left_on='Timestamp', right_on='startTime', how='left')
+        df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True)
+        merged_df = pd.merge(df, hourly_nuclear_df, left_on='timestamp', right_on='startTime', how='left')
         merged_df.drop(columns=['startTime'], inplace=True)
         
         # Combine the _x and _y columns after the merge operation back to the original column

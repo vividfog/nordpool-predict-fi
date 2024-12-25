@@ -146,14 +146,14 @@ def update_import_capacity(df):
     summed_capacity_df['TotalCapacityMW'] = summed_capacity_df['TotalCapacityMW'].ffill()
     
     # Prepare to merge with original DataFrame
-    df['Timestamp'] = pd.to_datetime(df['Timestamp'], utc=True)
+    df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True)
     
     # Drop the existing ImportCapacityMW column if it exists
     if 'ImportCapacityMW' in df.columns:
         df = df.drop(columns=['ImportCapacityMW'])
     
     # Merge import capacity
-    final_df = pd.merge(df, summed_capacity_df, left_on='Timestamp', right_on='startTime', how='left')
+    final_df = pd.merge(df, summed_capacity_df, left_on='timestamp', right_on='startTime', how='left')
     final_df.drop(columns=['startTime'], inplace=True)
     final_df.rename(columns={'TotalCapacityMW': 'ImportCapacityMW'}, inplace=True)
     
@@ -162,7 +162,7 @@ def update_import_capacity(df):
     
     # Calculate daily averages of ImportCapacityMW
     temp_df = final_df.copy()
-    temp_df['Date'] = temp_df['Timestamp'].dt.date
+    temp_df['Date'] = temp_df['timestamp'].dt.date
     daily_avg_df = temp_df.groupby('Date')['ImportCapacityMW'].mean().reset_index()
     daily_avg_df.rename(columns={'ImportCapacityMW': 'average_import_capacity_mw'}, inplace=True)
     
@@ -197,7 +197,7 @@ def update_import_capacity(df):
     max_capacity = total_capacity.max()
     min_capacity = total_capacity.min()
     
-    print(f"→ JAO: Avg: {avg_capacity:.1f} MW, Max: {max_capacity:.1f} MW, Min: {min_capacity:.1f} MW")
+    print(f"→ JAO imports: Avg: {avg_capacity:.1f} MW, Max: {max_capacity:.1f} MW, Min: {min_capacity:.1f} MW")
     
     return final_df
 
@@ -226,7 +226,7 @@ def main():
     
     # Add dummy columns to the DataFrame
     df = pd.DataFrame({
-        'Timestamp': timestamps, 
+        'timestamp': timestamps, 
         'DummyColumn1': range(len(timestamps)),
         'DummyColumn2': range(len(timestamps), 2 * len(timestamps))
     })

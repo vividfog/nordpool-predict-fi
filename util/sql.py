@@ -49,17 +49,17 @@ def db_update(db_path, df):
     inserted_rows = pd.DataFrame()
 
     # Normalize timestamp in the dataframe before processing
-    df['Timestamp'] = df['Timestamp'].apply(normalize_timestamp)
+    df['timestamp'] = df['timestamp'].apply(normalize_timestamp)
 
     for index, row in df.iterrows():
         # Timestamp is already normalized
-        cur.execute("SELECT * FROM prediction WHERE Timestamp=?", (row['Timestamp'],))
+        cur.execute("SELECT * FROM prediction WHERE timestamp=?", (row['timestamp'],))
         data = cur.fetchone()
         if data is not None:
             # Update existing row
             for col in df.columns:
                 if pd.notnull(row[col]):
-                    cur.execute(f"UPDATE prediction SET \"{col}\"=? WHERE timestamp=?", (row[col], row['Timestamp']))
+                    cur.execute(f"UPDATE prediction SET \"{col}\"=? WHERE timestamp=?", (row[col], row['timestamp']))
             updated_rows = pd.concat([updated_rows, df.loc[[index]]], ignore_index=True)
         else:
             # Insert new row
@@ -78,10 +78,10 @@ def db_query(db_path, df):
     Query the 'prediction' table in the specified SQLite database based on timestamps specified in the input DataFrame. Returns a DataFrame with the query results, sorted by timestamp.
     '''
     # Normalize timestamps in query dataframe
-    if 'Timestamp' not in df.columns:
+    if 'timestamp' not in df.columns:
         print("Timestamp is not a column in the DataFrame")
     else:
-        df['Timestamp'] = df['Timestamp'].apply(normalize_timestamp)
+        df['timestamp'] = df['timestamp'].apply(normalize_timestamp)
 
     try:
         conn = sqlite3.connect(db_path)
@@ -90,7 +90,7 @@ def db_query(db_path, df):
         sys.exit(1)
         
     result_frames = []  # List to store each chunk of dataframes
-    for timestamp in df['Timestamp']:
+    for timestamp in df['timestamp']:
         # Timestamp is already normalized
         data = pd.read_sql_query(f"SELECT * FROM prediction WHERE timestamp='{timestamp}'", conn)
         if not data.empty and not data.isna().all().all():  # Exclude empty dataframes and dataframes with all-NA entries

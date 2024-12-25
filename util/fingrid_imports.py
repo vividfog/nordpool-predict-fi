@@ -174,14 +174,14 @@ def update_import_capacity(df, fingrid_api_key):
         print(merged_df)
 
     # Prepare to merge with original DataFrame
-    df['Timestamp'] = pd.to_datetime(df['Timestamp'], utc=True)
+    df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True)
 
     # Drop the existing ImportCapacityMW column if it exists
     if 'ImportCapacityMW' in df.columns:
         df = df.drop(columns=['ImportCapacityMW'])
 
     # Merge import capacity
-    final_df = pd.merge(df, merged_df, left_on='Timestamp', right_on='startTime', how='left')
+    final_df = pd.merge(df, merged_df, left_on='timestamp', right_on='startTime', how='left')
     final_df.drop(columns=['startTime'], inplace=True)
     final_df.rename(columns={'TotalCapacityMW': 'ImportCapacityMW'}, inplace=True)
 
@@ -190,7 +190,7 @@ def update_import_capacity(df, fingrid_api_key):
 
     # Calculate daily averages of ImportCapacityMW
     temp_df = final_df.copy()
-    temp_df['Date'] = temp_df['Timestamp'].dt.date
+    temp_df['Date'] = temp_df['timestamp'].dt.date
     daily_avg_df = temp_df.groupby('Date')['ImportCapacityMW'].mean().reset_index()
     daily_avg_df.rename(columns={'ImportCapacityMW': 'average_import_capacity_mw'}, inplace=True)
 
@@ -253,7 +253,7 @@ def main():
     
     # Add dummy columns to the DataFrame
     df = pd.DataFrame({
-        'Timestamp': timestamps, 
+        'timestamp': timestamps, 
         'DummyColumn1': range(len(timestamps)),
         'DummyColumn2': range(len(timestamps), 2 * len(timestamps))
     })
