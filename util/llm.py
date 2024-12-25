@@ -34,7 +34,7 @@ def narrate_prediction():
 
     # Create a DataFrame with timestamps for up to the next 7 days starting from tomorrow
     df = pd.DataFrame({
-        'Timestamp': pd.date_range(
+        'timestamp': pd.date_range(
             start=tomorrow_start,
             periods=7 * 24,
             freq='H',
@@ -52,7 +52,7 @@ def narrate_prediction():
     # Keep timestamp, predicted price, wind power data, and temperature data
     temperature_ids = os.getenv('FMISID_T', "").split(',')
     temperature_columns = [f't_{temp_id}' for temp_id in temperature_ids]
-    df_result = df_result[['timestamp', 'PricePredict_cpkWh', 'WindPowerMW'] + temperature_columns]
+    df_result = df_result[['timestamp', 'PricePredict_cpkWh', 'WindPowerMW', 'holiday'] + temperature_columns]
 
     # Drop rows with missing values
     df_result = df_result.dropna()
@@ -62,17 +62,20 @@ def narrate_prediction():
 
     # Calculate average temperature
     df_result['Avg_Temperature'] = df_result[temperature_columns].mean(axis=1)
+    
+    df_result['holiday'] = df_result['holiday'].astype(int)
 
     # Group by the day in Helsinki timezone
     df_grouped = df_result.groupby(df_result['timestamp'].dt.floor('D')).agg({
         'PricePredict_cpkWh': ['min', 'max', 'mean'],
         'WindPowerMW': ['min', 'max', 'mean'],
-        'Avg_Temperature': 'mean'
+        'Avg_Temperature': 'mean',
+        'holiday': 'any'
     })
 
     # Rounding and conversion to ensure integer output for min and max
-    df_grouped[('PricePredict_cpkWh', 'min')] = df_grouped[('PricePredict_cpkWh', 'min')].round().astype(int)
-    df_grouped[('PricePredict_cpkWh', 'max')] = df_grouped[('PricePredict_cpkWh', 'max')].round().astype(int)
+    df_grouped[('PricePredict_cpkWh', 'min')] = df_grouped[('PricePredict_cpkWh', 'min')].round(1)
+    df_grouped[('PricePredict_cpkWh', 'max')] = df_grouped[('PricePredict_cpkWh', 'max')].round(1)
 
     # Keeping mean as a float rounded to 1 decimal place
     df_grouped[('PricePredict_cpkWh', 'mean')] = df_grouped[('PricePredict_cpkWh', 'mean')].round(1)
@@ -114,9 +117,11 @@ def send_to_gpt(df):
     # Iterate over each weekday and concatenate all relevant data
     for weekday, row in df.iterrows():
         prompt += f"\n**{weekday}**\n"
+        if row[('holiday', 'any')] is True:
+            prompt += "- Tämä on pyhäpäivä. Energian kysyntä voi olla normaalia alhaisempi, mikä saattaa pudottaa hintaa.\n"
         prompt += (
-            f"- Pörssisähkön hinta ¢/kWh: {int(row[('PricePredict_cpkWh', 'min')])} - "
-            f"{int(row[('PricePredict_cpkWh', 'max')])}, "
+            f"- Pörssisähkön hinta ¢/kWh: {row[('PricePredict_cpkWh', 'min')]} - "
+            f"{row[('PricePredict_cpkWh', 'max')]}, "
             f"päivän keskihinta {row[('PricePredict_cpkWh', 'mean')]} ¢/kWh.\n"
         )
         prompt += (
@@ -173,6 +178,7 @@ Olet sähkömarkkinoiden asiantuntija ja kirjoitat kohta uutisartikkelin hintaen
 - Onko tuulivoimaa eri päivinä paljon, vähän vai normaalisti? Erottuuko jokin päivä matalammalla keskituotannolla?
 - Onko jonkin päivän sisällä tuulivoimaa minimissään poikkeuksellisen vähän? Osuuko samalle päivälle korkea maksimihinta?
 - Onko lämpötila erityisen korkea tai matala tulevina päivinä? Erottuuko jokin päivä erityisesti?
+- Onko tiedoissa jonkin päivän kohdalla maininta pyhäpäivästä? Miten se vaikuttaa hintaan?
 - Jos jonkin päivän keskihinta tai maksimihinta on muita selvästi korkeampi, mikä voisi selittää sitä? Onko syynä tuulivoima, lämpötila vai jokin muu/tuntematon tekijä?
 
 ## 1.2. Sähkönkäyttäjien yleinen hintaherkkyys (keskihinta)
@@ -206,9 +212,10 @@ Olet sähkömarkkinoiden asiantuntija ja kirjoitat kohta uutisartikkelin hintaen
 - Älä lisää omia kommenttejasi, arvioita tai mielipiteitä. Älä käytä ilmauksia kuten 'mikä ei aiheuta erityistä lämmitystarvetta' tai 'riittävän korkea'.
 - Tarkista numerot huolellisesti ja varmista, että kaikki tiedot ja vertailut ovat oikein.
 - Tuulivoimasta voit puhua, jos on hyvin tyyntä tai tuulista ja se vaikuttaa hintaan. Muuten älä mainitse tuulivoimaa.
-- Älä mainitse lämpötilaa, ellei keskilämpötila ole alle -5 °C.
+- Älä puhu lämpötilasta mitään, ellei keskilämpötila ole alle -5 °C.
 - Sanoja 'halpa', 'kohtuullinen', 'kallis' tai 'hyvin kallis' saa käyttää vain yleiskuvauksessa, ei yksittäisten päivien kohdalla.
 - Jos päivän maksimihinta on korkea, sellaista päivää ei voi kutsua 'halvaksi', vaikka minimihinta olisi lähellä nollaa. Keskihinta ratkaisee.
+- Pyhäpäivät ovat harvinaisia. Jos <data> ei sisällä pyhäpäiviä, älä silloin puhu pyhäpäivistä ollenkaan. Jos yksittäinen päivä kuitenkin on pyhäpäivä, se on mainittava.
 - Käytä Markdown-muotoilua näin: **Vahvenna** viikonpäivien nimet, mutta vain kun mainitset ne ensi kertaa.
 - Älä puhu sähkön saatavuudesta.
 - Puhu aina tulevassa aikamuodossa.
@@ -244,9 +251,7 @@ Sitten näytä taulukko:
 | viikonpäivä  | keskihinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
 
-jossa "ka" tarkoittaa kyseisen viikonpäivän keskihintaa. Tasaa sarakkeet kuten esimerkissä.
-
-Huomaa että minimi- ja maksimihinnat ovat kokonaislukuja, mutta keskihinnassa on yksi desimaali. Hinnat on kirjattu tarkoituksella juuri näin.
+jossa "ka" tarkoittaa kyseisen viikonpäivän keskihintaa. Tasaa sarakkeet kuten esimerkissä ja käytä desimaaleja/kokonaislukuja kuten <data>:ssa.
 
 ## 3. Kirjoita yleiskuvaus viikon hintakehityksestä, futuurissa.
 
