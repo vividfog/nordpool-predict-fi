@@ -12,6 +12,7 @@ from util.sahkotin import update_spot
 from util.train_xgb import train_model
 from util.llm import narrate_prediction
 from util.entso_e import entso_e_nuclear
+from util.holidays import update_holidays
 from util.sql import db_update, db_query_all
 from util.dataframes import update_df_from_df
 from util.fingrid_nuclear import update_nuclear
@@ -94,6 +95,18 @@ if args.predict:
     print("* Loading data from the database...")
     df_full = db_query_all(db_path)
     df_full['timestamp'] = pd.to_datetime(df_full['timestamp'])
+    
+    # Print the head of the DataFrame
+    # print(df_full.head(48))
+
+    # Keep the original logic of setting index:
+    df_full.set_index('timestamp', inplace=True)
+    # print(df_full.head(48))
+
+    # Minimal fix: temporarily restore "timestamp" column so update_holidays() can find it
+    df_full.reset_index(inplace=True)
+    df_full = update_holidays(df_full)
+    # Restore the index
     df_full.set_index('timestamp', inplace=True)
 
     # Define 'now' and the recent period
@@ -113,15 +126,19 @@ if args.predict:
     future_index = pd.date_range(start=start_time, end=end_time, freq='h')
     df_recent = df_recent.reindex(df_recent.index.union(future_index))
 
-    # Since FMI can remove weather stations from their API without notice, we should rely on .env.local rather than the database as the source of truth. Filter df_recent to include only columns corresponding to specified FMI weather station and temperature IDs listed in .env.local, or columns that do not have the 'ws_'/'t_' prefix.
-    df_recent = df_recent[list(set(fmisid_ws + fmisid_t) | {col for col in set(df_recent.columns) if not col.startswith(('ws_', 't_'))})]
+    # Since FMI can remove weather stations from their API without notice, we should rely on .env.local
+    # rather than the database as the source of truth. Filter df_recent to include only columns
+    # corresponding to specified FMI weather station/temperature IDs, or columns that do not have
+    # the 'ws_'/'t_' prefix.
+    df_recent = df_recent[list(set(fmisid_ws + fmisid_t)
+                       | {col for col in set(df_recent.columns)
+                          if not col.startswith(('ws_', 't_'))})]
 
     # Reset the index to turn 'timestamp' back into a column before the update functions
     df_recent.reset_index(inplace=True)
-    df_recent.rename(columns={'index': 'Timestamp'}, inplace=True)
+    df_recent.rename(columns={'index': 'timestamp'}, inplace=True)
 
     # Update the recent data with latest information
-    print("* Gathering online data updates...")
     df_recent = update_wind_speed(df_recent)
     df_recent = update_temperature(df_recent)
     df_recent = update_nuclear(df_recent, fingrid_api_key=fingrid_api_key)
@@ -139,8 +156,11 @@ if args.predict:
     # Get the latest spot prices for the data frame, past and future if any
     df_recent = update_spot(df_recent)
 
-    # Set 'Timestamp' as index in df_recent
-    df_recent.set_index('Timestamp', inplace=True)
+    # Update holidays in the recent data
+    df_recent = update_holidays(df_recent)
+
+    # Set 'timestamp' as index in df_recent
+    df_recent.set_index('timestamp', inplace=True)
 
     # Update df_full with df_recent
     df_full.update(df_recent)
@@ -154,25 +174,26 @@ if args.predict:
     df_full['NuclearPowerMW'] = df_full['NuclearPowerMW'].ffill()
     df_full['ImportCapacityMW'] = df_full['ImportCapacityMW'].ffill()
 
-    required_columns = ['timestamp', 'NuclearPowerMW', 'ImportCapacityMW', 'Price_cpkWh', 'WindPowerMW'] + fmisid_t
+    required_columns = ['timestamp', 'NuclearPowerMW', 'ImportCapacityMW', 'Price_cpkWh', 'WindPowerMW', 'holiday'] + fmisid_t
     df_full = df_full.dropna(subset=required_columns)
 
     # Train the model
     print("Training the model with updated data...")
-    mae, mse, r2, samples_mae, samples_mse, samples_r2, model_trained = train_model(df_full, fmisid_ws=fmisid_ws, fmisid_t=fmisid_t)
+    mae, mse, r2, samples_mae, samples_mse, samples_r2, model_trained = train_model(
+        df_full, fmisid_ws=fmisid_ws, fmisid_t=fmisid_t
+    )
 
-    print(f"→ Training results:\n  MAE (vs test set): {mae}\n  MSE (vs test set): {mse}\n  R² (vs test set): {r2}\n  MAE (vs 10x500 randoms): {samples_mae}\n  MSE (vs 10x500 randoms): {samples_mse}\n  R² (vs 10x500 randoms): {samples_r2}")
+    print(f"→ Training results:\n  MAE (vs test set): {mae}\n  MSE (vs test set): {mse}\n  R² (vs test set): {r2}"
+          f"\n  MAE (vs 10x500 randoms): {samples_mae}\n  MSE (vs 10x500 randoms): {samples_mse}\n  R² (vs 10x500 randoms): {samples_r2}")
 
     # Prepare df_recent for prediction
     df_recent.reset_index(inplace=True)
-    df_recent.rename(columns={'index': 'Timestamp'}, inplace=True)
-
-    # Add features for prediction
-    df_recent['Timestamp'] = pd.to_datetime(df_recent['Timestamp'])
-    df_recent['month'] = df_recent['Timestamp'].dt.month
-    df_recent['day_of_week'] = df_recent['Timestamp'].dt.dayofweek + 1
-    df_recent['hour'] = df_recent['Timestamp'].dt.hour
-    df_recent['year'] = df_recent['Timestamp'].dt.year
+    df_recent.rename(columns={'index': 'timestamp'}, inplace=True)
+    df_recent['timestamp'] = pd.to_datetime(df_recent['timestamp'])
+    df_recent['month'] = df_recent['timestamp'].dt.month
+    df_recent['day_of_week'] = df_recent['timestamp'].dt.dayofweek + 1
+    df_recent['hour'] = df_recent['timestamp'].dt.hour
+    df_recent['year'] = df_recent['timestamp'].dt.year
 
     # Add cyclical transformations
     df_recent['day_of_week_sin'] = np.sin(2 * np.pi * df_recent['day_of_week'] / 7)
@@ -185,9 +206,11 @@ if args.predict:
     df_recent['temp_variance'] = df_recent[fmisid_t].var(axis=1)
 
     # Define prediction features
-    prediction_features = ['year', 'day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos',
-                        'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW',
-                        'temp_mean', 'temp_variance'] + fmisid_t
+    prediction_features = [
+        'year', 'day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos',
+        'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW',
+        'temp_mean', 'temp_variance', 'holiday'
+    ] + fmisid_t
 
     # Predict the prices
     print("Predicting prices with the trained model...")
@@ -195,17 +218,19 @@ if args.predict:
     df_recent['PricePredict_cpkWh'] = price_df
 
     # Clean up unnecessary columns before commit/display
-    df_recent = df_recent.drop(columns=['year', 'day_of_week', 'hour', 'month', 'day_of_week_sin',
-                                        'day_of_week_cos', 'hour_sin', 'hour_cos', 'temp_mean', 'temp_variance'])
+    df_recent = df_recent.drop(columns=[
+        'year', 'day_of_week', 'hour', 'month',
+        'day_of_week_sin', 'day_of_week_cos',
+        'hour_sin', 'hour_cos', 'temp_mean',
+        'temp_variance'
+    ])
 
     # --commit: Update the database with the final data
     if args.commit:
         print(df_recent)
         print("* Will add/update", len(df_recent), "predictions to the database... ", end="")
-        # df_recent['timestamp'] = df_recent['Timestamp']
         if db_update(db_path, df_recent):
             print("Database updated with new predictions. You may want to --deploy next if you need the JSON predictions for further use.")
-
     else:
         print(df_recent)
         print("* Predictions NOT committed to the database (no --commit).")
