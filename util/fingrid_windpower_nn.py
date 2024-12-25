@@ -15,7 +15,6 @@ Usage:
 - Run the script to test that it can infer missing wind power values from a synthetic test dataset.
 """
 
-
 import os
 import sys
 import time
@@ -114,11 +113,11 @@ def update_windpower(df, fingrid_api_key):
     wind_power_capacity_df.rename(columns={'value': 'WindPowerCapacityMW'}, inplace=True)
 
     # Ensure the Timestamp column is in datetime format
-    df['Timestamp'] = pd.to_datetime(df['Timestamp'], utc=True)
+    df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True)
 
     # Merge both wind power data and wind power capacity into input dataframe
-    merged_df = pd.merge(df, wind_power_df, left_on='Timestamp', right_on='startTime', how='left', suffixes=('', '_api'))
-    merged_df = pd.merge(merged_df, wind_power_capacity_df, left_on='Timestamp', right_on='startTime', how='left', suffixes=('', '_capacity_api'))
+    merged_df = pd.merge(df, wind_power_df, left_on='timestamp', right_on='startTime', how='left', suffixes=('', '_api'))
+    merged_df = pd.merge(merged_df, wind_power_capacity_df, left_on='timestamp', right_on='startTime', how='left', suffixes=('', '_capacity_api'))
 
     # Drop the API-specific timestamp columns
     merged_df.drop(columns=['startTime', 'startTime_capacity_api'], inplace=True)
@@ -150,7 +149,7 @@ def update_windpower(df, fingrid_api_key):
     features.update({f't_{t_id}': merged_df.loc[missing_wind_power, f't_{t_id}'] for t_id in t_ids})
     
     # Extract the hour from the Timestamp and create cyclic features dynamically
-    hour = merged_df.loc[missing_wind_power, 'Timestamp'].dt.hour
+    hour = merged_df.loc[missing_wind_power, 'timestamp'].dt.hour
     features['hour_sin'] = np.sin(2 * np.pi * hour / 24)
     features['hour_cos'] = np.cos(2 * np.pi * hour / 24)
 
@@ -166,8 +165,16 @@ def update_windpower(df, fingrid_api_key):
     X_missing_df = pd.DataFrame(features)
 
     if not X_missing_df.empty:
+        # Print the features before scaling for debugging
+        # print("Features before scaling:")
+        # print(X_missing_df)
+
         # Scale the features
         X_scaled = scaler_X.transform(X_missing_df)
+
+        # Print the features after scaling for debugging
+        # print("Features after scaling:")
+        # print(X_scaled)
 
         # Convert to torch tensor
         X_tensor = torch.tensor(X_scaled, dtype=torch.float32)
@@ -176,12 +183,24 @@ def update_windpower(df, fingrid_api_key):
         with torch.no_grad():
             predicted_wind_power = model(X_tensor).numpy().flatten()
 
+        # Print the raw predictions for debugging
+        # print("Raw predictions:")
+        # print(predicted_wind_power)
+
         # Inverse transform the predictions
         predicted_wind_power = scaler_y.inverse_transform(predicted_wind_power.reshape(-1, 1)).flatten()
         predicted_wind_power = np.round(predicted_wind_power, 1)
 
+        # Print the inverse-transformed and rounded predictions for debugging
+        # print("Inverse-transformed and rounded predictions:")
+        # print(predicted_wind_power)
+
         # Ensure no negative predictions
         predicted_wind_power[predicted_wind_power < 0] = 0
+
+        # Print the final predictions before updating the DataFrame
+        # print("Final predictions (non-negative):")
+        # print(predicted_wind_power)
 
         merged_df.loc[missing_wind_power, 'WindPowerMW'] = predicted_wind_power
     else:
@@ -194,9 +213,14 @@ def update_windpower(df, fingrid_api_key):
         avg_pred = np.mean(predicted_wind_power)
         median_pred = np.median(predicted_wind_power)
 
+        # Check if any of the statistics are NaN, and exit if so
+        if np.isnan(min_pred) or np.isnan(max_pred) or np.isnan(avg_pred) or np.isnan(median_pred):
+            print("→ Error: One or more statistics contain NaN values. Exiting.")
+            sys.exit(1)
+
         print(f"→ Inferred wind power values for {missing_wind_power.sum()} missing entries "
-              f"(Min: {min_pred:.1f}, Max: {max_pred:.1f}, "
-              f"Avg: {avg_pred:.1f}, Median: {median_pred:.1f}).")
+            f"(Min: {min_pred:.1f}, Max: {max_pred:.1f}, "
+            f"Avg: {avg_pred:.1f}, Median: {median_pred:.1f}).")
     else:
         print("→ No wind power values needed to be inferred.")
 
@@ -233,7 +257,7 @@ def main():
     
     # Add dummy columns including the ws_ and t_ columns based on FMISID
     df_data = {
-        'Timestamp': timestamps, 
+        'timestamp': timestamps, 
     }
 
     # Populate dummy data for ws_ columns with rounding to 1 decimal place
