@@ -37,7 +37,7 @@ def train_model(df, fmisid_ws, fmisid_t):
     # Feature selection
     X_filtered = df[['year', 'day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos', 
                      'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW', 
-                     'temp_mean', 'temp_variance'] + fmisid_t]
+                     'temp_mean', 'temp_variance', 'holiday'] + fmisid_t]
 
     # Target variable
     y_filtered = df['Price_cpkWh']
@@ -71,20 +71,58 @@ def train_model(df, fmisid_ws, fmisid_t):
     # xgb_model = XGBRegressor(**params)
     # xgb_model.fit(X_train, y_train)
 
-    # 2024-10-15: 400 rounds 5 fold CVE with early stopping of 50 rounds
-    # Best Parameters found for XGBoost: {'n_estimators': 11867, 'max_depth': 7, 'learning_rate': 0.028142731058495178, 'subsample': 0.20366946173978723, 'colsample_bytree': 0.7631260495996145, 'gamma': 0.06244658663024986, 'reg_alpha': 4.542768133426432, 'reg_lambda': 0.6949143888830083}
+    # # 2024-10-15: 400 rounds 5 fold CVE with early stopping of 50 rounds
+    # # Best Parameters found for XGBoost: {'n_estimators': 11867, 'max_depth': 7, 'learning_rate': 0.028142731058495178, 'subsample': 0.20366946173978723, 'colsample_bytree': 0.7631260495996145, 'gamma': 0.06244658663024986, 'reg_alpha': 4.542768133426432, 'reg_lambda': 0.6949143888830083}
+    # params = {
+    #     'early_stopping_rounds': 50,
+    #     'objective': 'reg:squarederror',
+    #     'eval_metric': 'rmse',
+    #     'n_estimators': 11867,
+    #     'max_depth': 7,
+    #     'learning_rate': 0.028142731058495178,
+    #     'subsample': 0.20366946173978723,
+    #     'colsample_bytree': 0.7631260495996145,
+    #     'gamma': 0.06244658663024986,
+    #     'reg_alpha': 4.542768133426432,
+    #     'reg_lambda': 0.6949143888830083,
+    #     'random_state': 42,
+    # }
+
+    # 2024-12-25: Updated parameters after adding 'holiday' column.
+    # -------------------------------------------------------------
+    # Best Parameters found for XGBoost: {'n_estimators': 11991, 'max_depth': 7, 'learning_rate': 0.007155246807962921, 'subsample': 0.5944788943642283, 'colsample_bytree': 0.509414975860466, 'gamma': 0.03235515429734633, 'reg_alpha': 4.57343806188102, 'reg_lambda': 0.7653266366537909}
+    #
+    #     Model Performance Comparison - Test Set Metrics
+    # ┏━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━┓
+    # ┃ Model   ┃    MAE ┃    MSE ┃   RMSE ┃     R² ┃   SMAPE ┃
+    # ┡━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━┩
+    # │ XGBoost │ 1.1055 │ 4.7161 │ 2.1717 │ 0.8961 │ 41.0325 │
+    # └─────────┴────────┴────────┴────────┴────────┴─────────┘
+    #             5-Fold Cross-Validation Results
+    # ┏━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┓
+    # ┃ Model   ┃ CV MAE ┃ CV MSE ┃ CV RMSE ┃  CV R² ┃ CV SMAPE ┃
+    # ┡━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━┩
+    # │ XGBoost │ 1.2218 │ 6.1046 │  2.4707 │ 0.9036 │  43.3068 │
+    # └─────────┴────────┴────────┴─────────┴────────┴──────────┘
+    #                     Autocorrelation Analysis
+    # ┏━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
+    # ┃ Model   ┃ Durbin-Watson ┃ ACF (Lag 1) ┃ ACF (Lag 2) ┃ ACF (Lag 3) ┃
+    # ┡━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
+    # │ XGBoost │        2.0105 │     -0.0053 │      0.0197 │      0.0139 │
+    # └─────────┴───────────────┴─────────────┴─────────────┴─────────────┘
+
     params = {
         'early_stopping_rounds': 50,
         'objective': 'reg:squarederror',
         'eval_metric': 'rmse',
-        'n_estimators': 11867,
+        'n_estimators': 11991,
         'max_depth': 7,
-        'learning_rate': 0.028142731058495178,
-        'subsample': 0.20366946173978723,
-        'colsample_bytree': 0.7631260495996145,
-        'gamma': 0.06244658663024986,
-        'reg_alpha': 4.542768133426432,
-        'reg_lambda': 0.6949143888830083,
+        'learning_rate': 0.007155246807962921,
+        'subsample': 0.5944788943642283,
+        'colsample_bytree': 0.509414975860466,
+        'gamma': 0.03235515429734633,
+        'reg_alpha': 4.57343806188102,
+        'reg_lambda': 0.7653266366537909,
         'random_state': 42,
     }
 
@@ -128,7 +166,7 @@ def train_model(df, fmisid_ws, fmisid_t):
     mse = mean_squared_error(y_test, y_pred_filtered)
     r2 = r2_score(y_test, y_pred_filtered)
 
-    # Initialize lists to store metrics for random sampling
+    # Initialize lists to store metrics for random sampling (sanity check)
     mae_list, mse_list, r2_list = [], [], []
 
     # Perform random sampling and evaluation 10 times
@@ -148,7 +186,7 @@ def train_model(df, fmisid_ws, fmisid_t):
         # Match the feature selection used for training
         X_random_sample = random_sample[['year','day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos',
                                         'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW',
-                                        'temp_mean', 'temp_variance'] + fmisid_t]
+                                        'temp_mean', 'temp_variance', 'holiday'] + fmisid_t]
         
         y_random_sample_true = random_sample['Price_cpkWh']
         y_random_sample_pred = xgb_model.predict(X_random_sample)
