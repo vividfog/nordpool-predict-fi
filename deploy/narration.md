@@ -1,13 +1,13 @@
-Ennuste on päivitetty torstaina klo 09:32.
+Ennuste päivitetty torstaina klo 09:37.
 
 | pv  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| pe  | 1,1 | -0,2 - 2,1 | 4505 - 5637 | 2,8 |
-| la  | 0,9 | -0,3 - 2,1 | 2863 - 7736 | 2,4 |
-| su  | 0,8 | -1,0 - 5,1 | 2595 - 6442 | 1,9 |
-| ma  | 4,2 | 0,0 - 8,5 | 1793 - 5970 | -0,3 |
-| ti  | 10,8 | 7,8 - 15,0 | 296 - 1753 | -3,5 |
+| pe | 1,0 | -0,3 - 2,1 | 5134 - 5637 | 2,8 |
+| la | 0,7 | 0,1 - 1,7 | 3056 - 7419 | 2,4 |
+| su | 0,7 | -0,9 - 4,4 | 2977 - 6088 | 1,9 |
+| ma | 4,4 | 0,4 - 8,5 | 2318 - 5875 | -0,3 |
+| ti | 9,6 | 6,7 - 14,2 | 571 - 2136 | -3,5 |
 
-Tulevalla viikolla sähkön hinta kehittyy vaihtelevasti. **Tiistai** erottuu korkeimmalla keskihinnallaan, joka on 10,8 ¢/kWh, ja maksimihinta nousee jopa 15,0 ¢/kWh. Tämä johtuu osittain siitä, että tuulivoiman tuotanto on tuolloin hyvin alhaisella tasolla, keskimäärin vain 926 MW. Maanantaina keskihinta on 4,2 ¢/kWh, mikä on selvästi korkeampi kuin viikonloppuna, mutta huomattavasti alhaisempi tiistaihin verrattuna. Myös maanantaina maksimihinta on korkeahko, 8,5 ¢/kWh. Tämä voi osittain selittyä tuulivoiman tuotannon vaihtelevuudella, sillä tuotanto laskee tuolloin jopa 1793 MW:iin.
+Alkuviikko näyttää hintojen osalta olevan vaihteleva. **Tiistai** erottuu korkealla keski- ja maksimihinnallaan, keskihinnan ollessa 9,6 ¢/kWh ja maksimihinnan 14,2 ¢/kWh. Tämä selittyy tuulivoiman matalalla tuotannolla, joka on tiistaina keskimäärin vain 1289 MW, mikä nostaa sähkön hintaa merkittävästi. **Maanantai** puolestaan näyttää keskihinnan nousua 4,4 ¢/kWh, mutta ei yhtä voimakkaasti kuin tiistaina. Tuulivoiman tuotanto maanantaina on keskimäärin 5130 MW, mikä ei selitä erityisesti hinnanvaihteluita.
 
-Viikonloppu, erityisesti **lauantai** ja **sunnuntai**, osoittaa matalia keskihintoja, jotka ovat 0,9 ¢/kWh ja 0,8 ¢/kWh. Näiden päivien hintojen alhaisuus liittyy osittain voimakkaaseen tuulivoiman tuotantoon, joka lauantaina nousee jopa 7736 MW:iin. Sunnuntaina sähkön minimihinta on poikkeuksellisen alhainen, jopa -1,0 ¢/kWh, mikä osoittaa, että ylituotantoa voi esiintyä. Perjantaina sähkön keskihinta on hieman korkeampi kuin viikonloppuna, ollen 1,1 ¢/kWh, mutta se pysyy silti edullisena. Viikon ensimmäiset päivät ovat siis selvästi hintaherkempiä, mutta merkittäviä hintavaihteluita esiintyy erityisesti tiistaina.
+Viikonloppuna hinnat ovat alhaisemmat, mikä näkyy erityisesti **perjantaina** ja **lauantaina**, jolloin keskihinnat ovat 1,0 ¢/kWh ja 0,7 ¢/kWh. Perjantaina ja lauantaina tuulivoiman tuotanto on keskimäärin korkeammalla tasolla, mikä vaikuttaa sähkön hintaan alentavasti. Sunnuntain keskihinta pysyy myös alhaisena 0,7 ¢/kWh, mutta maksimihinta nousee 4,4 ¢/kWh, mikä voi liittyä tuulivoiman tuotannon vaihteluihin. Yleisesti ottaen viikon aikana nähdään merkittäviä hintaeroja, joita selittävät erityisesti tuulivoiman tuotannon tasot ja niiden vaihtelut.
