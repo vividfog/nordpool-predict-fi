@@ -1,11 +1,13 @@
-Nyt on perjantai 03. tammikuu 2025 klo 03:08. Nordpool-sähköpörssin verolliset Suomen markkinan hintaennusteet lähipäiville ovat seuraavat:
+Ennuste on päivitetty perjantaina klo 09:08.
 
-|              | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|             | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **lauantai** |      10,8        |     7,8 - 14,9   |   642 - 1314  |     -8,1      |
-| **sunnuntai**|      10,0        |     4,8 - 13,3   |   298 - 2156  |     -7,3      |
-| **maanantai**|      7,9         |     1,4 - 10,9   |   653 - 5851  |     -8,2      |
-| **tiistai**  |      2,3         |     0,6 - 3,9    |   5208 - 6070 |     -5,4      |
-| **keskiviikko**|    0,0         |    -0,2 - 0,3    |   4475 - 4998 |     -1,4      |
+| **lauantai** |       10.9       |      7.8 - 14.8     |  696 - 1248   |     -8.1      |
+| **sunnuntai** |       9.4        |      4.8 - 12.5     |  537 - 2223   |     -7.3      |
+| **maanantai** |       8.3        |      1.3 - 12.3     |  792 - 5884   |     -8.2      |
+| **tiistai**   |       2.3        |      0.5 - 3.9      | 4953 - 6141   |     -5.4      |
+| **keskiviikko** |       2.4        |     -0.3 - 7.0      | 2444 - 5009   |     -1.4      |
 
-Viikon sähkömarkkinoiden ennuste osoittaa, että **lauantain** ja **sunnuntain** keskihinnat ovat korkeita, 10,8 ¢/kWh ja 10,0 ¢/kWh, mikä osittain selittyy alhaisella tuulivoiman tuotannolla. **Lauantaina** tuulivoiman keskimääräinen tuotanto on alle 1000 MW, mikä selittää osaltaan korkeampaa hintaa. **Sunnuntaina** tuulivoiman tuotanto vaihtelee suuresti, mikä saattaa vaikuttaa hintavaihteluihin päivän aikana. **Maanantai** on pyhäpäivä, jolloin sähkön kysyntä voi olla alhaisempi, mikä voi selittää keskihinnan laskun 7,9 ¢/kWh:iin. **Tiistaina** ja **keskiviikkona** tuulivoiman tuotanto on voimakasta, mikä näkyy sähkön hinnan laskuna. **Tiistai** osoittaa jo merkittävää hintojen laskua 2,3 ¢/kWh:n tasolle, ja **keskiviikkona** keskihinta on jopa nollassa, mikä on poikkeuksellista. Tämä hintakehitys heijastaa tuulivoiman voimakasta vaikutusta markkinoilla, erityisesti viikon jälkimmäisellä puoliskolla.
+Tuleva viikko näyttää sisältävän merkittäviä eroja sähkön hinnoissa. **Lauantai** ja **sunnuntai** erottuvat korkeampina keskihinnaltaan, mikä voidaan osittain selittää matalalla tuulivoimalla, joka on alle 1000 MW. Tämä tyyni säätilanne nostaa sähkön hintaa merkittävästi. **Tiistai** ja **keskiviikko** puolestaan näyttävät tarjoavan huomattavasti edullisempaa sähköä, sillä tuulivoimaa on runsaasti yli 3000 MW, mikä selittää matalaa hintatasoa. 
+
+**Maanantai** on pyhäpäivä, mikä saattaa laskea energian kysyntää ja siten vaikuttaa hintaan alentavasti. Keskihinta maanantaina on kuitenkin korkeampi kuin viikolla myöhemmin, mikä johtuu todennäköisesti alhaisemmasta tuulivoimasta. Korkein ennustettu maksimihinta osuu **lauantaille**, jolloin tuulivoiman minimituotanto on myös alhaisimmillaan, selittäen näin korkeamman hinnan. Lämpötilat pysyvät koko viikon ajan pakkasen puolella, mikä voi osaltaan tukea korkeampia hintoja alkuviikosta.
