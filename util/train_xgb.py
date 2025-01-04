@@ -7,9 +7,12 @@ from statsmodels.stats.stattools import durbin_watson
 from statsmodels.tsa.stattools import acf
 from rich import print
 from xgboost import XGBRegressor
+import pytz
 
 def train_model(df, fmisid_ws, fmisid_t):
         
+    print("* Training a pricing model")
+    
     # Drop the target column from training data
     df = df.drop(columns=['PricePredict_cpkWh'])
 
@@ -37,7 +40,9 @@ def train_model(df, fmisid_ws, fmisid_t):
     # Feature selection
     X_filtered = df[['year', 'day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos', 
                      'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW', 
-                     'temp_mean', 'temp_variance', 'holiday'] + fmisid_t]
+                     'temp_mean', 'temp_variance', 'holiday', 
+                     'sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance',
+                     'SE1_FI', 'SE3_FI', 'EE_FI'] + fmisid_t]
 
     # Target variable
     y_filtered = df['Price_cpkWh']
@@ -51,8 +56,8 @@ def train_model(df, fmisid_ws, fmisid_t):
         shuffle=True
     )
   
-    print("→ Data for training, sample:")
-    print(X_train.head())
+    print(f"→ Training data shape: {X_train.shape}, sample:")
+    print(X_train.sample(10, random_state=42))
 
     # 2024-10-01 with no early stopping
     # params = {
@@ -117,7 +122,7 @@ def train_model(df, fmisid_ws, fmisid_t):
         'eval_metric': 'rmse',
         'n_estimators': 11991,
         'max_depth': 7,
-        'learning_rate': 0.007155246807962921,
+        'learning_rate': 0.007155246807962921, # Much lower learning rate
         'subsample': 0.5944788943642283,
         'colsample_bytree': 0.509414975860466,
         'gamma': 0.03235515429734633,
@@ -126,12 +131,29 @@ def train_model(df, fmisid_ws, fmisid_t):
         'random_state': 42,
     }
 
+    # 2024-12-29: Updated parameters after adding 'holiday' column and irradiance features.
+    # But the slower learning rate above worked slightly better.
+    # params = {
+    #     'early_stopping_rounds': 50,
+    #     'objective': 'reg:squarederror',
+    #     'eval_metric': 'rmse',
+    #     'n_estimators': 8937,
+    #     'max_depth': 6,
+    #     'learning_rate': 0.0329467274396091,
+    #     'subsample': 0.35769629879510095,
+    #     'colsample_bytree': 0.4180410786793119,
+    #     'gamma': 0.017327325382759023,
+    #     'reg_alpha': 4.911148409481332,
+    #     'reg_lambda': 0.4064581682607894,
+    #     'random_state': 42,
+    # }
+
     # Train the model
     print("→ XGBoost: ", end="")
     print(", ".join(f"{k}={v}" for k, v in params.items()))
 
     xgb_model = XGBRegressor(**params)
-    xgb_model.fit(X_train, y_train, eval_set=[(X_test, y_test)], verbose=100)
+    xgb_model.fit(X_train, y_train, eval_set=[(X_test, y_test)], verbose=500)
 
     # SHAP analysis
     print("→ SHAP feature importances (Mean Absolute SHAP Values per Feature):")
@@ -186,7 +208,9 @@ def train_model(df, fmisid_ws, fmisid_t):
         # Match the feature selection used for training
         X_random_sample = random_sample[['year','day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos',
                                         'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW',
-                                        'temp_mean', 'temp_variance', 'holiday'] + fmisid_t]
+                                        'temp_mean', 'temp_variance', 'holiday',
+                                        'sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance',
+                                        'SE1_FI', 'SE3_FI', 'EE_FI'] + fmisid_t]
         
         y_random_sample_true = random_sample['Price_cpkWh']
         y_random_sample_pred = xgb_model.predict(X_random_sample)
