@@ -51,3 +51,4 @@ data/create/10_weather_fetch_history/2024-12-29.sql
 data/create/01_imports/imports.sql
 data/create/05_holidays/holidays.sql
 data/create/50_openmeteo/irradiance.sql
+deploy/transmission_outages.json
