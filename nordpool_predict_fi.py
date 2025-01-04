@@ -17,9 +17,13 @@ from util.sql import db_update, db_query_all
 from util.dataframes import update_df_from_df
 from util.fingrid_nuclear import update_nuclear
 from util.jao_imports import update_import_capacity
-from util.fingrid_windpower_nn import update_windpower
 from util.fmi import update_wind_speed, update_temperature
+from util.openmeteo_solar import update_solar
 from util.eval import create_prediction_snapshot, rotate_snapshots
+
+# Wind power model choices: nn vs xgb
+# from util.fingrid_windpower_nn import update_windpower
+from util.fingrid_windpower import update_windpower
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # Configure pandas to display all rows
@@ -92,20 +96,27 @@ if args.train:
 
 # -----------------------------------------------------------------------------------------------------------------------------
 if args.predict:
-    print("* Loading data from the database...")
+    print("Loading data from the database")
     df_full = db_query_all(db_path)
     df_full['timestamp'] = pd.to_datetime(df_full['timestamp'])
-    
+    df_full.set_index('timestamp', inplace=True)
+    df_full.reset_index(inplace=True)
+
     # Print the head of the DataFrame
     # print(df_full.head(48))
 
     df_full.set_index('timestamp', inplace=True)
-    # print(df_full.head(48))
 
-    # Temporarily restore "timestamp" column so update_holidays() can find it
-    # TODO: Refactor to remove double set_index() calls
+    # Temporarily restore "timestamp" column for the update functions
     df_full.reset_index(inplace=True)
+
+    # Update the DF with holiday indicators
     df_full = update_holidays(df_full)
+
+    # Update the DF with solar irradiation data
+    # The API call is quick, including for historical data; these won't be committed to the DB for now (2024-12-28)
+    df_full = update_solar(df_full)
+
     # Restore the index
     df_full.set_index('timestamp', inplace=True)
 
@@ -115,14 +126,18 @@ if args.predict:
         now = now.ceil('h')  # Rounds up to the nearest hour
 
     start_recent = now - pd.Timedelta(days=7)
-    end_recent = now + pd.Timedelta(days=5)
+    end_recent = now + pd.Timedelta(days=7)
 
     # Create df_recent for data updates and predictions
     df_recent = df_full.loc[start_recent:end_recent].copy()
 
     # Forward-fill the timestamp column for future dates
     start_time = now + pd.Timedelta(hours=1)  # Start from the next hour
-    end_time = now + pd.Timedelta(hours=120)  # 5 days ahead
+    end_time = now + pd.Timedelta(days=7)  # 7 days ahead
+
+    # Actually end_time should be now + 7 days, but to the end of the day
+    end_time = end_time.replace(hour=23, minute=59, second=59)
+
     future_index = pd.date_range(start=start_time, end=end_time, freq='h')
     df_recent = df_recent.reindex(df_recent.index.union(future_index))
 
@@ -158,6 +173,9 @@ if args.predict:
 
     # Update holidays in the recent data
     df_recent = update_holidays(df_recent)
+    
+    # Update solar irradiation data
+    df_recent = update_solar(df_recent)
 
     # Set 'timestamp' as index in df_recent
     df_recent.set_index('timestamp', inplace=True)
@@ -169,16 +187,16 @@ if args.predict:
     df_full.reset_index(inplace=True)
 
     # Prepare df_full for training
-    print("Preparing data for training...")
+    # print("Preparing data for training")
     df_full['WindPowerCapacityMW'] = df_full['WindPowerCapacityMW'].ffill()
     df_full['NuclearPowerMW'] = df_full['NuclearPowerMW'].ffill()
     df_full['ImportCapacityMW'] = df_full['ImportCapacityMW'].ffill()
 
-    required_columns = ['timestamp', 'NuclearPowerMW', 'ImportCapacityMW', 'Price_cpkWh', 'WindPowerMW', 'holiday'] + fmisid_t
+    required_columns = ['timestamp', 'NuclearPowerMW', 'ImportCapacityMW', 'Price_cpkWh', 'WindPowerMW', 'holiday', 'sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance'] + fmisid_t
     df_full = df_full.dropna(subset=required_columns)
 
     # Train the model
-    print("Training the model with updated data...")
+    # print("Training the model with updated data")
     mae, mse, r2, samples_mae, samples_mse, samples_r2, model_trained = train_model(
         df_full, fmisid_ws=fmisid_ws, fmisid_t=fmisid_t
     )
@@ -209,36 +227,41 @@ if args.predict:
     prediction_features = [
         'year', 'day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos',
         'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW',
-        'temp_mean', 'temp_variance', 'holiday'
+        'temp_mean', 'temp_variance', 'holiday', 
+        'sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance',
+        # Individual border capacities
+        'SE1_FI', 'SE3_FI', 'EE_FI'
     ] + fmisid_t
 
     # Predict the prices
-    print("Predicting prices with the trained model...")
+    print("Predicting prices with the trained model")
     price_df = model_trained.predict(df_recent[prediction_features])
     df_recent['PricePredict_cpkWh'] = price_df
 
-    # Clean up unnecessary columns before commit/display
+    # Clean up all unnecessary columns before DB commit or display
     df_recent = df_recent.drop(columns=[
         'year', 'day_of_week', 'hour', 'month',
         'day_of_week_sin', 'day_of_week_cos',
-        'hour_sin', 'hour_cos', 'temp_mean',
-        'temp_variance'
+        'hour_sin', 'hour_cos', 
+        'temp_mean', 'temp_variance'
     ])
+
+    # Describe the predictions
+    print(df_recent)
+    print(df_recent.describe())    
 
     # --commit: Update the database with the final data
     if args.commit:
-        print(df_recent)
-        print("* Will add/update", len(df_recent), "predictions to the database... ", end="")
+        print("* Will add/update", len(df_recent), "predictions to the database ", end="")
         if db_update(db_path, df_recent):
             print("Database updated with new predictions. You may want to --deploy next if you need the JSON predictions for further use.")
     else:
-        print(df_recent)
         print("* Predictions NOT committed to the database (no --commit).")
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # --narrate: Generate narration
 if args.narrate:
-    print("Narrating predictions...")
+    print("Narrating predictions")
     narration = narrate_prediction()
     if args.commit:
         # Create/update deploy/narration.md
