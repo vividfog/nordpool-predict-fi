@@ -70,7 +70,7 @@ load_dotenv()
 env_vars = dotenv_values(".env.local")
 
 # Get the FMISID features from environment variables
-WP_FMISID = env_vars["WP_FMISID"].split(',')
+FMISID_WS = env_vars["FMISID_WS"].split(',')
 
 # Configure logging
 logging.basicConfig(
@@ -82,16 +82,16 @@ logging.basicConfig(
 logger = logging.getLogger("rich")
 console = Console()
 
-logger.info(f"WP_FMISID: {WP_FMISID}")
+logger.info(f"FMISID_WS: {FMISID_WS}")
 
 def get_n_jobs() -> int:
     """Determine the number of jobs to run in parallel."""
     total_cores = multiprocessing.cpu_count()
-    return int(max(1, total_cores * 0.8))
+    return int(max(1, total_cores * 0.5))
 
-def preprocess_data(df: pd.DataFrame, wp_fmisid: List[str]) -> Tuple[pd.DataFrame, pd.Series]:
+def preprocess_data(df: pd.DataFrame, FMISID_WS: List[str]) -> Tuple[pd.DataFrame, pd.Series]:
     """Preprocess the input data for model training."""
-    logger.info("Starting data preprocessing with imputation...")
+    logger.info("Starting data preprocessing with dropping missing values...")
     
     # Convert the timestamp column to datetime format
     df['timestamp'] = pd.to_datetime(df['timestamp'])
@@ -107,46 +107,37 @@ def preprocess_data(df: pd.DataFrame, wp_fmisid: List[str]) -> Tuple[pd.DataFram
     df['WindPowerCapacityMW'] = df['WindPowerCapacityMW'].ffill()
 
     # Compute statistical features: Avg_WindSpeed and WindSpeed_Variance
-    ws_cols = [f"ws_{id}" for id in wp_fmisid]
+    ws_cols = [f"ws_{id}" for id in FMISID_WS]
     df['Avg_WindSpeed'] = df[ws_cols].mean(axis=1)
     df['WindSpeed_Variance'] = df[ws_cols].var(axis=1)
     
     # Drop the predictions column if it exists
     df = df.drop(columns=['WindPowerMW_predict'], errors='ignore')
     
-    # Define feature columns including WS and T columns based on WP_FMISID
+    # Define feature columns including WS and T columns based on FMISID_WS
     feature_columns = (
-        [f"ws_{id}" for id in wp_fmisid] + 
-        [f"t_{id}" for id in wp_fmisid] + 
+        [f"ws_{id}" for id in FMISID_WS] + 
+        [f"t_{id}" for id in FMISID_WS] + 
         ['hour_sin', 'hour_cos', 'WindPowerCapacityMW', 'Avg_WindSpeed', 'WindSpeed_Variance']
     )
+
+    # Log the initial number of rows
+    initial_row_count = df.shape[0]
+
+    # Drop rows with missing values in features or target variable
+    df = df.dropna(subset=feature_columns + ['WindPowerMW'])
+    
+    # Log the number of rows dropped
+    dropped_rows = initial_row_count - df.shape[0]
+    logger.info(f"Dropped {dropped_rows} rows due to missing data")
 
     # Separate features and target variable
     X = df[feature_columns]
     y = df['WindPowerMW']
     
-    # Impute missing values in features using mean strategy
-    imp = SimpleImputer(strategy='mean')
-    X_imputed = imp.fit_transform(X)
-    
-    # Log what was imputed
-    imputations = pd.DataFrame(imp.transform(X) - X.to_numpy(), columns=feature_columns)
-    for column in feature_columns:
-        imputed_values = imputations[column][imputations[column] != 0].count()
-        logger.info(f"Imputed {imputed_values} missing values in column: {column}")
-
-    # If there are missing values in y, we should consider imputation or report them
-    y_initial_missing = y.isna().sum()
-    if y_initial_missing > 0:
-        imp_y = SimpleImputer(strategy='mean')
-        y = imp_y.fit_transform(y.values.reshape(-1, 1)).ravel()
-        logger.info(f"Imputed {y_initial_missing} missing values in target variable 'WindPowerMW'.")
-
     # Log final shapes
-    X_imputed_df = pd.DataFrame(X_imputed, columns=feature_columns)
-    logger.info(f"Preprocessed data shape: X={X_imputed_df.shape}, y={y.shape}")
-    return X_imputed_df, y
-
+    logger.info(f"Preprocessed data shape: X={X.shape}, y={y.shape}")
+    return X, y
 
 def cross_validate(model, X, y, model_name, n_splits=5) -> Dict[str, float]:
     """Perform cross-validation on the model using KFold."""
@@ -327,7 +318,6 @@ def tune_model_with_optuna(model_class, X, y, model_name, timeout, n_trials):
                 'reg_alpha': trial.suggest_float('reg_alpha', 0, 1.0),
                 'reg_lambda': trial.suggest_float('reg_lambda', 0, 1.0),
                 'random_state': 42,
-                'n_jobs': -1,
                 'tree_method': 'auto'
             }
 
@@ -382,8 +372,8 @@ def tune_model_with_optuna(model_class, X, y, model_name, timeout, n_trials):
                 model.fit(X_train, y_train)
 
             y_pred = model.predict(X_val)
-            mse = mean_squared_error(y_val, y_pred)
-            cv_scores.append(mse)
+            rmse = np.sqrt(mean_squared_error(y_val, y_pred))
+            cv_scores.append(rmse)
             
         return np.mean(cv_scores)
 
@@ -422,9 +412,9 @@ def main():
         logger.error(f"Error loading the dataset: {str(e)}")
         return
 
-    # Preprocess data using the single list WP_FMISID
+    # Preprocess data using the single list FMISID_WS
     try:
-        X, y = preprocess_data(df, WP_FMISID)
+        X, y = preprocess_data(df, FMISID_WS)
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
         
         logger.info(
@@ -494,4 +484,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
