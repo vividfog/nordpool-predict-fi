@@ -43,3 +43,11 @@ data/prediction.db
 package-lock.json
 data/create/91_model_experiments/models/
 data/create/11_weather_csv_2_sql/*.sql
+data/create/91_model_experiments/windpower_xgboost.joblib
+data/create/91_model_experiments/XGBoost_model.pkl
+data/create/10_weather_fetch_history/2024-12-23_101783.sql
+data/create/10_weather_fetch_history/2024-12-23_101784.sql
+data/create/10_weather_fetch_history/2024-12-29.sql
+data/create/01_imports/imports.sql
+data/create/05_holidays/holidays.sql
+data/create/50_openmeteo/irradiance.sql
