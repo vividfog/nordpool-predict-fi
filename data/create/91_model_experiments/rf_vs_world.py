@@ -137,7 +137,11 @@ def preprocess_data(df: pd.DataFrame, fmisid_t: List[str]) -> Tuple[pd.DataFrame
     feature_columns = [
         'year', 'day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos',
         'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW',
-        'temp_mean', 'temp_variance', 'holiday' ] + fmisid_t
+        'temp_mean', 'temp_variance', 'holiday', 'sum_irradiance', 'mean_irradiance', 
+        'std_irradiance', 'min_irradiance', 'max_irradiance',
+        # Individual border capacities
+        'SE1_FI', 'SE3_FI', 'EE_FI'
+    ] + fmisid_t
 
     # Log the number of NaN values in the final feature columns
     nan_count = df[feature_columns].isna().sum().sum()
