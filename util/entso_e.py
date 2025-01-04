@@ -22,7 +22,7 @@ def entso_e_nuclear(entso_e_api_key, DEBUG=False):
 
         # Define the time window for data retrieval
         start_time = datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0) + timedelta(hours=1)
-        end_time = start_time + timedelta(days=6)
+        end_time = start_time + timedelta(days=8)
 
         # Convert to Helsinki timezone for accurate regional data
         start = pd.Timestamp(start_time).tz_convert('Europe/Helsinki')

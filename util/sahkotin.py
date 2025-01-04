@@ -98,9 +98,9 @@ def update_spot(df):
     """
     current_date = datetime.now(pytz.UTC).strftime("%Y-%m-%dT%H:%M:%S.000Z")
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
-    end_date = (datetime.now(pytz.UTC) + timedelta(hours=120)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+    end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
     
-    print(f"* Fetching electricity price data between {history_date[:10]} and {end_date[:10]}")
+    print(f"* Sähkötin: Fetching electricity price data between {history_date[:10]} and {end_date[:10]}")
     
     price_df = fetch_electricity_price_data(history_date, end_date)   
     

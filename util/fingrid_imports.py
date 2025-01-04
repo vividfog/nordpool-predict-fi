@@ -122,7 +122,7 @@ def update_import_capacity(df, fingrid_api_key):
     # Define the current date and adjust the start and end dates
     current_date = datetime.now(pytz.UTC).strftime("%Y-%m-%d")
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
-    end_date = (datetime.now(pytz.UTC) + timedelta(hours=120)).strftime("%Y-%m-%d")
+    end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
     
     print(f"* Fingrid: Fetching import capacities between {history_date} and {end_date}")
 
@@ -245,7 +245,7 @@ def main():
 
     # Define the date range: 7 days in the past to 5 days in the future
     start_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
-    end_date = (datetime.now(pytz.UTC) + timedelta(days=5)).strftime("%Y-%m-%d")
+    end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
 
     # Prepare a dummy DataFrame covering the entire period
     print(f"Prepare dummy data from {start_date} to {end_date}")

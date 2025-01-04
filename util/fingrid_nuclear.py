@@ -83,7 +83,7 @@ def update_nuclear(df, fingrid_api_key):
     """
     Updates the input DataFrame with nuclear power production data for a specified range.
 
-    This function fetches nuclear power production data for the past 7 days and up to 120 hours into the future, aggregates the data from 3-minute intervals to hourly averages, and updates the original DataFrame with the aggregated nuclear power data.
+    This function fetches nuclear power production data for the past 7 days and up to X days into the future, aggregates the data from 3-minute intervals to hourly averages, and updates the original DataFrame with the aggregated nuclear power data.
 
     Parameters:
     - df (pd.DataFrame): The input DataFrame containing a 'timestamp' column.
@@ -95,15 +95,15 @@ def update_nuclear(df, fingrid_api_key):
     # Define the current date and adjust the start date to look 7 days into the past
     current_date = datetime.now(pytz.UTC).strftime("%Y-%m-%d")
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
-    end_date = (datetime.now(pytz.UTC) + timedelta(hours=120)).strftime("%Y-%m-%d")
+    end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
     
-    print(f"* Fetching nuclear power production data between {history_date} and {end_date} and inferring missing values")
+    print(f"* Fingrid: Fetching nuclear power production data between {history_date} and {end_date} and inferring missing values")
     
     # Fetch nuclear power production data
     try:
         nuclear_df = fetch_nuclear_power_data(fingrid_api_key, history_date, end_date)
     except Exception as e:
-        print(f"Failed to fetch or process nuclear power data from Fingrid: {e}")
+        print(f"[ERROR] Failed to fetch or process nuclear power data from Fingrid: {e}")
         exit(1)
     
     if not nuclear_df.empty:
@@ -112,13 +112,13 @@ def update_nuclear(df, fingrid_api_key):
         hourly_nuclear_df = nuclear_df.resample('H').mean().reset_index()
 
         # Log the Fingrid data fetch and aggregation results        
-        print(f"* Fingrid: Fetched {len(nuclear_df)} rows, aggregated to {len(hourly_nuclear_df)} hourly averages spanning from {hourly_nuclear_df['startTime'].min().strftime('%Y-%m-%d')} to {hourly_nuclear_df['startTime'].max().strftime('%Y-%m-%d')}")
+        print(f"→ Fetched {len(nuclear_df)} rows, aggregated to {len(hourly_nuclear_df)} hourly averages spanning from {hourly_nuclear_df['startTime'].min().strftime('%Y-%m-%d')} to {hourly_nuclear_df['startTime'].max().strftime('%Y-%m-%d')}")
         
         # print("* Fingrid: DEBUG: Last few rows of nuclear power production data:\n", hourly_nuclear_df.tail())
         
         # Log the last known nuclear power production value
         last_known = hourly_nuclear_df['NuclearPowerMW'].dropna().iloc[-1]
-        print(f"→ Fingrid: Using last known nuclear power production value: {round(last_known)} MW")
+        print(f"→ Using last known nuclear power production value: {round(last_known)} MW")
         
         # Drop the past NuclearPowerMW column from the original DataFrame
         if 'NuclearPowerMW' in df.columns:

@@ -22,9 +22,9 @@ def get_forecast(fmisid, start_date, parameters, end_date=None):
     - pd.DataFrame: A pandas DataFrame with a row for each hour of the specified date range and columns for each of the requested parameters.
     """
     
-    # If end_date is not provided, use start_date as end_date
+    # If end_date is not provided, use start_date + 8 days as default range
     if end_date is None:
-        end_date = start_date
+        end_date = (datetime.strptime(start_date, '%Y-%m-%d') + timedelta(days=8)).strftime('%Y-%m-%d')
     
     base_url = "https://opendata.fmi.fi/wfs"
     common_params = {
@@ -42,9 +42,12 @@ def get_forecast(fmisid, start_date, parameters, end_date=None):
     try:
         response = requests.get(base_url, params=common_params)
         response.raise_for_status()
+        
+        if not response.content:
+            print(f"[WARNING] Empty response from FMI API for FMISID {fmisid} forecast ({start_date} to {end_date})")
+            
     except requests.RequestException as e:
-        print(f"Error fetching data from FMI: {e}")
-        sys.exit(1)
+        print(f"[WARNING] Error fetching forecast data from FMI for FMISID {fmisid} ({start_date} to {end_date}): {e}")
         
     # Let's not spam the FMI API
     time.sleep(.2)
@@ -54,9 +57,11 @@ def get_forecast(fmisid, start_date, parameters, end_date=None):
     
     try:
         root = etree.fromstring(response.content)
+        if len(root.findall('.//BsWfs:BsWfsElement', namespaces=root.nsmap)) == 0:
+            print(f"[WARNING] No forecast data found for FMISID {fmisid} ({start_date} to {end_date})")
+            sys.exit(1)
     except etree.XMLSyntaxError as e:
-        print(f"Error parsing XML from FMI response: {e}")
-        sys.exit(1)
+        print(f"[WARNING] Error parsing XML from FMI response for FMISID {fmisid}: {e}")
 
     data = []
     for member in root.findall('.//BsWfs:BsWfsElement', namespaces=root.nsmap):
@@ -73,7 +78,6 @@ def get_forecast(fmisid, start_date, parameters, end_date=None):
         df_pivot = df.pivot(index='timestamp', columns='Parameter', values='Value').reset_index()
     except Exception as e:
         print(f"DataFrame operation failed with FMI data: {e}")
-        sys.exit(1)
 
     return df_pivot
 
@@ -92,9 +96,9 @@ def get_history(fmisid, start_date, parameters, end_date=None):
     - pd.DataFrame: A pandas DataFrame with a row for each hour of the specified date range and columns for each of the requested parameters.
     """
     
-    # If end_date is not provided, use start_date as end_date
+    # If end_date is not provided, use start_date + 7 days as default range
     if end_date is None:
-        end_date = start_date
+        end_date = (datetime.strptime(start_date, '%Y-%m-%d') + timedelta(days=8)).strftime('%Y-%m-%d')
 
     # Define the start and end time for the specific day or range
     starttime = f"{start_date}T00:00:00Z"
@@ -113,16 +117,27 @@ def get_history(fmisid, start_date, parameters, end_date=None):
         'parameters': ",".join(parameters),
     }
 
-    # Make the request
-    response = requests.get(base_url, params=params)
-    if response.status_code != 200:
-        raise Exception(f"Failed to fetch data: {response.text}")
+    try:
+        response = requests.get(base_url, params=params)
+        if response.status_code != 200:
+            print(f"[WARNING] Failed to fetch historical data for FMISID {fmisid} ({start_date} to {end_date}): {response.text}")
+            
+        if not response.content:
+            print(f"[WARNING] Empty response from FMI API for FMISID {fmisid} history ({start_date} to {end_date})")
+            
+        root = etree.fromstring(response.content)
+        if len(root.findall('.//BsWfs:BsWfsElement', namespaces=root.nsmap)) == 0:
+            print(f"[WARNING] No historical data found for FMISID {fmisid} ({start_date} to {end_date})")
+            
+    except requests.RequestException as e:
+        print(f"[WARNING] Error fetching historical data from FMI for FMISID {fmisid} ({start_date} to {end_date}): {e}")
+        sys.exit(1)
+    except etree.XMLSyntaxError as e:
+        print(f"[WARNING] Error parsing XML from FMI response for FMISID {fmisid}: {e}")
 
     # Let's not spam the FMI API
     time.sleep(0.1)
 
-    # Parse the XML response
-    root = etree.fromstring(response.content)
     data = []
     for member in root.findall('.//BsWfs:BsWfsElement', namespaces=root.nsmap):
         timestamp = member.find('.//BsWfs:Time', namespaces=root.nsmap).text
@@ -187,10 +202,10 @@ def update_wind_speed(df):
     # 7 days earlier:
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
     
-    # 6 days later:
-    end_date = (datetime.now(pytz.UTC) + timedelta(days=6)).strftime("%Y-%m-%d")
+    # 8 days later:
+    end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
     
-    print("* Fetching wind speed forecast and historical data between", history_date, "and", end_date)
+    print("* FMI: Fetching wind speed forecast and historical data between", history_date, "and", end_date)
     
     for col in [c for c in df.columns if c.startswith('ws_')]:
         fmisid = int(col.split('_')[1])
@@ -222,6 +237,11 @@ def update_wind_speed(df):
         # Merged data frame contains the old NaN column and the new column with the same name → remove the old one
         df = clean_up_df_after_merge(df)
         
+        # Check for NaN values in the specific wind speed column
+        nan_count = df[col].isna().sum()
+        if nan_count > 0:
+            print(f"[WARNING] The final DataFrame contains {nan_count} NaN values in column '{col}'.")
+
     return df
 
 # TODO: Combine this with the other update function, they are almost identical
@@ -242,9 +262,9 @@ def update_temperature(df):
     # Define the current date and end date for fetching forecasts and historical data
     current_date = datetime.now(pytz.UTC).strftime("%Y-%m-%d")
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
-    end_date = (datetime.now(pytz.UTC) + timedelta(days=6)).strftime("%Y-%m-%d")  # 120 hours later for forecasts
+    end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")  # 120 hours later for forecasts
 
-    print("* Fetching temperature forecast and historical data between", history_date, "and", end_date)
+    print("* FMI: Fetching temperature forecast and historical data between", history_date, "and", end_date)
 
     for col in [c for c in df.columns if c.startswith('t_')]:
         fmisid = int(col.split('_')[1])
@@ -277,29 +297,61 @@ def update_temperature(df):
         # Optionally, you can include the clean-up function here if necessary
         df = clean_up_df_after_merge(df)
 
+        # Check for NaN values in the specific temperature column
+        nan_count = df[col].isna().sum()
+        if nan_count > 0:
+            print(f"[WARNING] The final DataFrame contains {nan_count} NaN values in column '{col}'.")
+
     return df
 
 # Main function for testing the FMI API functions
 if __name__ == "__main__":
-
-    # Comparing hourly forecast, same-day-history and ability to fetch data from way past
-
-    # Get forecast for a specific day and place
-    date = datetime.today().strftime('%Y-%m-%d')
-    fmisid = 101846 # Kemi Ajos
-    parameters_forecast = ['temperature', 'windspeedms']
-    forecast = get_forecast(fmisid, date, parameters_forecast)
-    print("Forecast:")
-    print(forecast)
-
-    # Get history for the same day, do they correlate?
-    parameters_history = ['TA_PT1H_AVG', 'WS_PT1H_AVG']
-    history = get_history(fmisid, date, parameters_history)
-    print("\nHistory:")
-    print(history)
-
-    # Get history from way past
-    date = "2023-01-01"
-    history = get_history(fmisid, date, parameters_history)
-    print("\nFrom way past:")
-    print(history)
+    import os
+    from dotenv import load_dotenv
+    
+    # Load environment variables
+    load_dotenv('.env.local')
+    
+    # Get FMISID lists from environment
+    ws_stations = os.getenv('FMISID_WS').split(',')
+    t_stations = os.getenv('FMISID_T').split(',')
+    
+    # Test dates
+    current_date = datetime.today().strftime('%Y-%m-%d')
+    past_date = "2024-12-20"
+    
+    print("\n=== Testing Wind Speed Stations ===")
+    for station in ws_stations:
+        print(f"\nTesting FMISID: {station}")
+        # Get current forecast
+        forecast = get_forecast(station, current_date, ['windspeedms'])
+        print(f"Current forecast sample ({current_date}):")
+        print(forecast.describe())
+        
+        # Get current history
+        history = get_history(station, current_date, ['WS_PT1H_AVG'])
+        print(f"\nCurrent history sample ({current_date}):")
+        print(history.describe())
+        
+        # Get past history
+        past_history = get_history(station, past_date, ['WS_PT1H_AVG'])
+        print(f"\nPast history sample ({past_date}):")
+        print(past_history.describe())
+    
+    print("\n=== Testing Temperature Stations ===")
+    for station in t_stations:
+        print(f"\nTesting FMISID: {station}")
+        # Get current forecast
+        forecast = get_forecast(station, current_date, ['temperature'])
+        print(f"Current forecast sample ({current_date}):")
+        print(forecast.describe())
+        
+        # Get current history
+        history = get_history(station, current_date, ['TA_PT1H_AVG'])
+        print(f"\nCurrent history sample ({current_date}):")
+        print(history.describe())
+        
+        # Get past history
+        past_history = get_history(station, past_date, ['TA_PT1H_AVG'])
+        print(f"\nPast history sample ({past_date}):")
+        print(past_history.describe())

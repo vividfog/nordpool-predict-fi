@@ -29,7 +29,7 @@ def _fetch_holidays():
     """
     global _holiday_cache
     if _holiday_cache is None:
-        print("* Fetching Finnish holiday data...")
+        print("* Pyhäpäivä: Fetching Finnish holiday data")
         try:
             response = requests.get("https://pyhäpäivä.fi/?output=json")
             response.raise_for_status()
@@ -166,7 +166,7 @@ def main():
 
     now_utc = now_helsinki.astimezone(pytz.UTC)
     start_utc = now_utc - timedelta(days=7)
-    end_utc = now_utc + timedelta(days=5)
+    end_utc = now_utc + timedelta(days=8)
 
     timestamps = pd.date_range(start=start_utc, end=end_utc, freq='h', tz='UTC')
     df_test = pd.DataFrame({'timestamp': timestamps})
