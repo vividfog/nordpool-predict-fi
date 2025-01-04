@@ -32,6 +32,9 @@ import joblib
 import json
 
 from util.train_windpower_nn import train_windpower_nn
+from util.sql import db_query_all
+
+pd.options.mode.copy_on_write = True
 
 # Load environment variables
 load_dotenv('.env.local')
@@ -100,7 +103,7 @@ def update_windpower(df, fingrid_api_key):
     # Define the current date and adjust the start and end dates
     current_date = datetime.now(pytz.UTC).strftime("%Y-%m-%d")
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
-    end_date = (datetime.now(pytz.UTC) + timedelta(hours=120)).strftime("%Y-%m-%d")
+    end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
 
     print(f"* Fingrid: Fetching wind power data between {history_date} and {end_date}")
 
@@ -133,6 +136,28 @@ def update_windpower(df, fingrid_api_key):
     # Drop redundant columns that originated from the API data
     merged_df.drop(columns=['datasetId', 'endTime', 'datasetId_capacity_api', 'endTime_capacity_api'], inplace=True)
 
+    # Fetch full historical data from SQL helper function
+    db_path = os.getenv('DB_PATH', 'data/prediction.db')
+    historical_df = db_query_all(db_path)
+
+    # Merge historical data with the latest Fingrid data, prioritizing Fingrid data for latest values
+    df_training = pd.concat([historical_df, merged_df]).drop_duplicates(subset=['timestamp'], keep='last').reset_index(drop=True)
+
+    # Ensure df_training contains timestamps only up to the last known value from the Fingrid API
+    last_known_timestamp = pd.to_datetime(wind_power_df['startTime'].max())
+    
+    # Print the last known timestamp for debugging
+    print(f"Last known timestamp from Fingrid wind power API: {last_known_timestamp}")
+    
+    # Ensure the timestamp column in df_training is of type Timestamp
+    df_training['timestamp'] = pd.to_datetime(df_training['timestamp'], utc=True)
+
+    df_training = df_training[df_training['timestamp'] <= last_known_timestamp]
+    
+    # Print the tail of the training DataFrame for debugging
+    print("Training DataFrame tail:")
+    print(df_training.tail())
+
     # Identify rows with missing WindPowerMW values
     missing_wind_power = merged_df['WindPowerMW'].isnull()
 
@@ -140,9 +165,8 @@ def update_windpower(df, fingrid_api_key):
     ws_ids = os.getenv('FMISID_WS').split(',')
     t_ids = os.getenv('FMISID_T').split(',')
 
-    # Train model on-demand using the merged_df
-    # This will return a model and scalers in memory (no loading from disk)
-    model, scaler_X, scaler_y = train_windpower_nn(target_col='WindPowerMW', wp_fmisid=ws_ids)
+    # Train model on-demand using the df_training
+    model, scaler_X, scaler_y = train_windpower_nn(df_training, target_col='WindPowerMW', wp_fmisid=ws_ids)
 
     # Construct the feature dictionary dynamically without adding columns to merged_df
     features = {f'ws_{ws_id}': merged_df.loc[missing_wind_power, f'ws_{ws_id}'] for ws_id in ws_ids}
@@ -166,15 +190,15 @@ def update_windpower(df, fingrid_api_key):
 
     if not X_missing_df.empty:
         # Print the features before scaling for debugging
-        # print("Features before scaling:")
-        # print(X_missing_df)
+        print("Features before scaling:")
+        print(X_missing_df)
 
         # Scale the features
         X_scaled = scaler_X.transform(X_missing_df)
 
         # Print the features after scaling for debugging
-        # print("Features after scaling:")
-        # print(X_scaled)
+        print("Features after scaling:")
+        print(X_scaled)
 
         # Convert to torch tensor
         X_tensor = torch.tensor(X_scaled, dtype=torch.float32)
@@ -184,23 +208,23 @@ def update_windpower(df, fingrid_api_key):
             predicted_wind_power = model(X_tensor).numpy().flatten()
 
         # Print the raw predictions for debugging
-        # print("Raw predictions:")
-        # print(predicted_wind_power)
+        print("Raw predictions:")
+        print(predicted_wind_power)
 
         # Inverse transform the predictions
         predicted_wind_power = scaler_y.inverse_transform(predicted_wind_power.reshape(-1, 1)).flatten()
         predicted_wind_power = np.round(predicted_wind_power, 1)
 
         # Print the inverse-transformed and rounded predictions for debugging
-        # print("Inverse-transformed and rounded predictions:")
-        # print(predicted_wind_power)
+        print("Inverse-transformed and rounded predictions:")
+        print(predicted_wind_power)
 
         # Ensure no negative predictions
         predicted_wind_power[predicted_wind_power < 0] = 0
 
         # Print the final predictions before updating the DataFrame
-        # print("Final predictions (non-negative):")
-        # print(predicted_wind_power)
+        print("Final predictions (non-negative):")
+        print(predicted_wind_power)
 
         merged_df.loc[missing_wind_power, 'WindPowerMW'] = predicted_wind_power
     else:
@@ -249,7 +273,7 @@ def main():
 
     # Define the date range: 7 days in the past to 5 days in the future
     start_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
-    end_date = (datetime.now(pytz.UTC) + timedelta(days=5)).strftime("%Y-%m-%d")
+    end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
 
     # Prepare a dummy DataFrame covering the entire period
     print(f"Prepare dummy data from {start_date} to {end_date}")
