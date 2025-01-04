@@ -2,7 +2,7 @@ type: custom:apexcharts-card
 now:
   show: true
   label: now
-graph_span: 5d
+graph_span: 8d
 experimental:
   color_threshold: true
 apex_config:

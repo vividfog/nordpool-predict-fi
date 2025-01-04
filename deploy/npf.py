@@ -74,7 +74,7 @@ df = fetch_data_from_github(url)
 if df is not None:
     # Define a start and end date for filtering
     start_date = datetime.now()
-    end_date = datetime.now() + timedelta(days=5)
+    end_date = datetime.now() + timedelta(days=7)
 
     # Filter the data based on the defined range
     filtered_df = date_range_filter(df, start_date, end_date)
