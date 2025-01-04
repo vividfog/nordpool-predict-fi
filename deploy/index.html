@@ -20,17 +20,16 @@
     <div id="topdisclaimer">Sivusta on alkanut ilmestyä kopioita. Tarkista että sivun osoite on https://sahkovatkain.web.app ja älä jaa muita linkkejä.</div>
     <div id="predictionText">
         <h1 style="padding-top: 16px">Pörssisähkön hintaennuste</h1>
-        <p><strong>Tämä kokeellinen koneoppimismalli haarukoi pörssisähkön kuluttajahintaa noin 5 pv eteenpäin. Malli peilaa mm. ennustettua säätä ja sähköntuotantoa aiempiin ajanjaksoihin, joissa nämä seikat olivat samankaltaiset.</strong></p>
+        <p><strong>Tämä kokeellinen koneoppimismalli haarukoi pörssisähkön kuluttajahintaa (sis. ALV 25,5%) noin viikon eteenpäin. Malli peilaa mm. ennustettua säätä ja sähköntuotantoa aiempiin ajanjaksoihin, joissa nämä seikat olivat samankaltaiset.</strong></p>
         <p>Vaikka malli on tavanomaisissa tilanteissa yllättävänkin tarkka, ennusteeseen tulee suhtautua varauksella. Se ei välttämättä arvaa poikkeustilanteiden hintavaikutuksia oikein. Tuuliennusteella on suuri vaikutus hintapiikkeihin, varsinkin jos samaan aikaan on huoltoja. Laskentamalli opetetaan ja ennuste päivitetään automaattisesti muutamia kertoja päivässä. Graafin alla on kielimallin tulkinta ennusteesta.</p>
-        <h1>Lähipäivien hintakehitys</h1>
-        <!-- <p id="llm">Teksti on luotu koneellisesti kielimallin avulla.</p> -->
+        <h1 style="padding-top: 32px">Lähipäivien hintakehitys</h1>
         <p id="predictionChart"></p>
         <p id="narration"></p>
         <h1>Tuulivoimaennuste</h1>
         <p>Perustuu Pohjanlahden rannikon FMI-sääasemien tietoihin ja ennusteisiin. Yli 2...3 gigawatin tuuli on sähkön hinnan kannalta suotuisa, ja alle 1 gigawatin tuulella hinta voi nousta korkealle, jos samaan hetkeen osuu huoltotaukoja tai on kylmä.</p>
         <div id="windPowerChart" style="height: 40vh; width: 100%; max-width: 920px; margin: auto; box-sizing: border-box; padding-top: 32px;"></div>
         <h1>Hintaennusteen kehitys</h1>
-        <p>Graafi kertoo, mitä Sähkövatkain on ennustanut viime aikoina. Tämä saattaa auttaa hahmottamaan, mihin suuntaan ennuste on menossa. Isoja mielenmuutoksia voi tulla mm. jos sääennuste on muuttunut paljon, jos tulee odottamaton tuotantokatko, jos hintahäiriön syy on historiallisesti uudenlainen tai harvinainen, tai jos ennustemallia on hiljattain päivitetty.</p>
+        <p>Graafi kertoo, mitä Sähkövatkain on ennustanut viime aikoina. Tämä saattaa auttaa hahmottamaan, mihin suuntaan ennuste on menossa. Isoja mielenmuutoksia voi tulla mm. jos sääennuste on muuttunut paljon, jos tulee odottamaton tuotantokatko, jos hintahäiriön syy on historiallisesti uudenlainen tai harvinainen, tai jos ennustemallia on hiljattain päivitetty. Kts. muutosloki alla.</p>
         <p>Ohenevat siniset viivat ovat ennusteparvi aiemmilta päiviltä, ennen kuin toteutunut hinta oli tiedossa. Oranssi viiva on lopullinen Nordpool-hinta. Optimaalisesti viivojen tulisi olla mahdollisimman paljon päällekkäin.</p>
         <div id="historyChart" style="height: 40vh; width: 100%; max-width: 920px; margin: auto; box-sizing: border-box; padding-top: 32px;"></div>
         <h1 style="padding-top: 32px">Mitä ennuste huomioi?</h1>
@@ -38,45 +37,61 @@
         <li><strong>Tuulivoima-alueiden tuuliennusteet:</strong> FMI-sääasemat, eli epäsuorasti tuulivoiman määrä</li>
         <li><strong>Lämpötilaennusteet:</strong> FMI-sääasemat, eli epäsuorasti lämmitystarve ja vuodenaika</li>
         <li><strong>Ydinvoimatuotanto:</strong> Fingrid (mallin opetus) ja ENTSO-E REMIT UMM (huoltoajankohdat)</li>
-        <li><strong>Juhlapyhät:</strong> Kansallisina vapaapäivinä energian kysyntä voi olla normaalia alempi</li>
-        <li><strong>Siirtokapasiteetti:</strong> Ruotsista ja Virosta Suomen suuntaan</li>
+        <li><strong>Siirtokapasiteetti:</strong> JAO: siirtokapasiteetti Ruotsista ja Virosta Suomen suuntaan</li>
+        <li><strong>Aurinkoenergia:</strong> Open-Meteo: säteilyenergia maanpinnan tasolla</li>
         <li><strong>Vuosi:</strong> 2023, 2024, ...</li>
         <li><strong>Viikonpäivä:</strong> ma-su</li>
         <li><strong>Kellonaika:</strong> 0-23</li>
+        <li><strong>Juhlapyhät:</strong> Kansallisina vapaapäivinä energian kysyntä voi olla normaalia alempi</li>
         <p>Nämä muuttujat on valittu intuitiolla ja kokeilemalla. Jokin toinen yhdistelmä voisi toimia paremmin tai huonommin. Lähdekoodi on avointa, ja olet tervetullut kokeilemaan erilaisia vaihtoehtoja näiden lisäksi tai sijaan.<p>
+        <h1>Muutokset</h1>
+        <p>Sähkövatkain on ollut linjoilla helmikuusta 2024. Tämän jälkeen on tehty seuraavat muutokset.</p>
         <p><strong>11.8.2024:</strong></p>
         <li>Poistettu ENTSO-E REMIT UMM -tuotantomuuttuja, koska rajapinnan mukaan OL3 olisi huollossa vuoden 2025 puolelle asti. Tämä ei onneksi ole totta, mutta sotkee ennusteen. Tutkimme asiaa ja palautamme ydinvoimaennusteen mukaan opetukseen, jos virheen syy löytyy. Ydinvoimaennuste olettaa nyt, että viimeisin tunnettu tuotantoluku pysyy seuraavat 5 vrk.</li>
         <li>Kuukausitieto (tammikuu-joulukuu) on poistettu mallin opetuksesta, koska takavuosien kk-keskiarvot voivat markkinatilanteen vuoksi olla hyvin erilaiset kuin tänä vuonna. Vuodenajan hintavaikutus käy opetuksessa ilmi myös säätilasta, kun lämpötilat menevät pakkaselle ja kulutus kasvaa.</li>
         <p><strong>19.8.2024:</strong></p>
         <li>Lisätty rajasiirtokapasiteetit Suomen suuntaan: Pohjois-Ruotsi, Keski-Ruotsi ja Viro. Tämän pitäisi tarkentaa ennustetta huoltojaksojen aikana. Laskenta olettaa, että huomisen ilmoitettu kapasiteetti pysyy samana 5 pv ennustejakson ajan.</li>
         <p><strong>31.8.2024:</strong></p>
-        <li>Vaihdettu ennustemallin tyyppi Random Forestista XGBoostiin grid search -vertailun perusteella.</li>
+        <li>Vaihdettu ennustemallin tyyppi Random Forestista XGBoostiin <a href="https://optuna.org" target="_blank">Optuna</a>-vertailun perusteella.</li>
         <p><strong>16.9.2024:</strong></p>
-        <li>Otettu käyttöön 20 sääaseman historia- ja ennustetietoihin perustuva oma tuulivoimamalli.</li>
+        <li>Otettu käyttöön 20 sääaseman historia- ja ennustetietoihin perustuva oma XGBoost-tuulivoimamalli.</li>
         <p><strong>22.9.2024:</strong></p>
-        <li>Suunniteltu tuontikapasiteetti (Fingrid) huomioidaan nyt siirtoennusteessa. Tuulivoimatiedot mukana kielimallin selosteessa. Tuulivoimamallia tuunattu.</li>
+        <li>Suunniteltu tuontikapasiteetti (Fingrid) huomioidaan nyt siirtoennusteessa.</li>
+        <li>Tuulivoimatiedot mukana kielimallin selosteessa.</li>
+        <li>Tuulivoimamallia tuunattu.</li>
         <p><strong>17.10.2024:</strong></p>
-        <li>Ydinvoimaloiden ilmoitetut huoltokatkot ja tulevat tuotantokapasiteetit (ENTSO-E) palautettu ennusteeseen. Hintaennuste vaihdettu pylväsgraafiksi.</li>
+        <li>Ydinvoimaloiden ilmoitetut huoltokatkot ja tulevat tuotantokapasiteetit (ENTSO-E) palautettu ennusteeseen.</li> 
+        <li>Hintaennuste vaihdettu pylväsgraafiksi.</li>
         <p><strong>20.10.2024:</strong></p>
         <li>Kielimalli näkee nyt siirtoyhteyksiä ja ydinvoimaloiden huoltoja koskevat ennakkotiedot.</li>
         <p><strong>10.11.2024:</strong></p>
         <li>Fingrid <a href="https://www.fingrid.fi/ajankohtaista/tiedotteet/2024/flow-based-kapasiteetinlaskentamenetelma-otettu-onnistuneesti-kayttoon/" target="_blank">ei enää ilmoita</a> siirtokapasiteettiennusteita. Flow-laskennassa käytetty uusi <a href="https://publicationtool.jao.eu/nordic/api" target="_blank">JAO-tietolähde</a> kertoo vain toteutuneen kapasiteetin. Ennuste olettaa (taas) jatkossa, että viimeisin toteutunut siirtokapasiteetti pysyy ennustejakson ajan.</li>
         <p><strong>17.11.2024:</strong></p>
-        <li>Kielimalli näkee nyt ydinvoimaloiden <a href="https://umm.nordpoolgroup.com/#/messages?publicationDate=all&eventDate=lastyear&areas=10YFI-1--------U&messageCategory=electricity&searchText=&messageTypes=production&unavailabilityType=unplanned&fuelTypes=nuclear" target="_blank">suunnittelemattomat tuotantokatkot</a>. Malliksi vaihdettu GPT-4o, aiempi oli GPT-4o-mini. Tämän pitäisi tuottaa selkeämpää suomea.</li>
+        <li>Kielimalli näkee nyt ydinvoimaloiden <a href="https://umm.nordpoolgroup.com/#/messages?publicationDate=all&eventDate=lastyear&areas=10YFI-1--------U&messageCategory=electricity&searchText=&messageTypes=production&unavailabilityType=unplanned&fuelTypes=nuclear" target="_blank">suunnittelemattomat tuotantokatkot</a>.</li>
+        <li>Kielimalliksi vaihdettu GPT-4o. Aiempi oli GPT-4o-mini. Tämän pitäisi tuottaa selkeämpää suomea.</li>
         <p><strong>23.11.2024:</strong></p>
-        <li>Tuulivoimaennuste käyttää nyt neuroverkkomallia (PyTorch).</li>
+        <li>Tuulivoimaennusteessa kokeillaan nyt neuroverkkomallia (PyTorch).</li>
         <p><strong>24.12.2024:</strong></p>
         <li>Tieto <a href="https://pyhäpäivä.fi" target="_blank">juhlapyhistä</a> on nyt mukana mallin opetuksessa.</li>
         <p><strong>25.12.2024:</strong></p>
-        <li>Historiagraafi ei enää näytä sellaisia vanhoja ennusteita, joiden kohdalla huomisen toteutuva Nordpool-hinta oli jo mallin opittavissa. Historiaa pidennetty 30 päivään.</li>
+        <li>Historiagraafi ei enää näytä sellaisia vanhoja ennusteita, joiden kohdalla huomisen toteutuva Nordpool-hinta oli jo mallin opittavissa.</li>
+        <li>Historiaa pidennetty 30 päivään.</li>
+        <p><strong>30.12.2024:</strong></p>
+        <li>Malli arvioi nyt <a href="https://open-meteo.com/en/docs" target="_blank">aurinkoenergian</a> vaikutuksen hintaan.</li>
+        <li>Tuulivoimaennuste käyttää jälleen XGBoostia.</li>
+        <p><strong>4.1.2025:</strong></p>
+        <li>Ennuste ulottuu nyt 7 päivää eteenpäin.</li>
+        <li>Ruotsin ja Viron tuontiyhteyksiä käsitellään nyt mallissa erillisinä, eikä vain summana. Viron siirtoyhteyden käyttökatko tyypillisesti alentaa hintaa ja Ruotsin taas nostaa.</li>
+        <p><strong>Suunnitteilla:</strong></p>
+        <li>Tuntikohtaisen hintavolatiliteetin tarkempi ennustaminen saattaa tarvita oman mallinsa ja menetelmänsä nykyisen rinnalle/päälle. Nykyinen menetelmä toimii paremmin vuorokauden hintatason arvioinnissa kuin aamun ja illan yksittäisten piikkihintojen dynamiikassa.</li>
         <h1>Mitä ennuste ei huomioi?</h1>
-        <p>Ennuste ei näe muuta kuin mitä yllä on mainittu. Esim. aurinkoenergia ja naapurimaiden tuulivoimatiedot puuttuvat. Opetuksessa käytetty data alkaa vuoden 2023 alusta.</p>
+        <p>Ennuste ei näe muuta kuin mitä yllä on mainittu. Esim. naapurimaiden tuulivoimatiedot puuttuvat. Opetuksessa käytetty data alkaa vuoden 2023 alusta.</p>
         <p style="padding-bottom: 24px;">Vaikka malli osaa "ennustaa" menneisyyttä ja historiallisesti tutun tyyppistä tulevaisuutta toisinaan oivasti, hinta-arviot uudenlaisissa poikkeustilanteissa voivat olla pielessä. Älä siis esim. säädä talosi lämmitystä näiden numeroiden perusteella, jos et ole kotona.</p>
         <div id="disclaimer" style="padding-bottom: 24px;"><a id="source-code-link" href="mailto:judo.farming0u@icloud.com" target="_blank">email</a></div>
 
     </div>
     </div>
-    <div id="disclaimer">Lähteet: <a href="https://transparency.entsoe.eu" target="_blank">ENTSO-E</a>, <a href="https://data.fingrid.fi" target="_blank">Fingrid</a>, <a href="https://www.ilmatieteenlaitos.fi/havaintojen-lataus" target="_blank">Ilmatieteen laitos</a>, <a href="https://publicationtool.jao.eu/nordic/maxBorderFlow" target="_blank">JAO</a>, <a href="https://pyhäpäivä.fi" target="_blank">pyhäpäivä.fi</a>, <a href="https://sahkotin.fi/api" target="_blank">sahkotin.fi</a>.</div>
+    <div id="disclaimer">Lähteet: <a href="https://transparency.entsoe.eu" target="_blank">ENTSO-E</a>, <a href="https://data.fingrid.fi" target="_blank">Fingrid</a>, <a href="https://www.ilmatieteenlaitos.fi/havaintojen-lataus" target="_blank">FMI</a>, <a href="https://publicationtool.jao.eu/nordic/maxBorderFlow" target="_blank">JAO</a>, <a href="https://open-meteo.com/en/docs" target="_blank">Open-Meteo</a>, <a href="https://pyhäpäivä.fi" target="_blank">Pyhäpäivä</a>, <a href="https://sahkotin.fi/api" target="_blank">Sähkötin</a></div>
     <div id="github-logo-container"><a href="https://github.com/vividfog/nordpool-predict-fi" target="_blank"><img src="https://nordpool-predict-fi.web.app/github-mark.png" alt="GitHub Repo" id="github-logo"></a></div>
     <div id="source-code-text"><a id="source-code-link" href="https://github.com/vividfog/nordpool-predict-fi" target="_blank">vividfog/nordpool-predict-fi</a></div>
     <script src="scripts.js"></script>
