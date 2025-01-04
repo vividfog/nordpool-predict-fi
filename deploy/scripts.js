@@ -10,6 +10,9 @@ switch (window.location.hostname) {
     case "localhost":
         baseUrl = "http://localhost:5005";
         break;
+    case "rpi4":
+        baseUrl = "http://rpi4:5000";
+        break;
     case "nordpool-predict-fi.web.app":
         baseUrl = "https://nordpool-predict-fi.web.app";
         break;
@@ -40,7 +43,7 @@ fetch(`${baseUrl}/narration.md`)
 var nfpChart = echarts.init(document.getElementById('predictionChart'));
 
 // Calculate start and end dates for Sähkötin
-var startDate = addDays(new Date(), -2).toISOString();
+var startDate = addDays(new Date(), -0).toISOString();
 var endDate = addDays(new Date(), 2).toISOString();
 
 // URLs for the datasets
@@ -161,6 +164,7 @@ Promise.all([
                 type: 'time',
                 boundaryGap: false,
                 axisLabel: {
+                    interval: 0,
                     formatter: function (value) {
                         // Convert the axis value to a Date object
                         // Implicit conversion from UTC to local time happens here
@@ -178,12 +182,16 @@ Promise.all([
                         // return weekday + ' ' + day + '.';
                         return weekday;
                     }
+                },
+                axisTick: {
+                    alignWithLabel: true, // Align ticks with labels
+                    interval: 0 // Show all ticks
                 }
             },
             // Configure the y-axis of the chart
             yAxis: {
                 type: 'value',
-                name: '¢/kWh (verollinen)',
+                name: '¢/kWh',
                 nameLocation: 'end',
                 nameGap: 20,
                 // Set the maximum value of the y-axis to the nearest higher multiple of 10
@@ -233,7 +241,7 @@ Promise.all([
                 {
                     name: 'Ennuste',
                     type: 'bar',
-                    barWidth: '50%',
+                    barWidth: '40%',
                     // barGap: '20%',
                     data: npfSeriesData,
                     symbol: 'none',
@@ -242,7 +250,7 @@ Promise.all([
                 {
                     name: 'Nordpool',
                     type: 'bar',
-                    barWidth: '50%',
+                    barWidth: '40%',
                     // barGap: '20%',
                     data: sahkotinSeriesData,
                     symbol: 'none',
@@ -261,8 +269,6 @@ Promise.all([
                                 let hours = currentTime.getHours();
                                 let minutes = currentTime.getMinutes();
 
-                                month = month < 10 ? '0' + month : month;
-                                day = day < 10 ? '0' + day : day;
                                 hours = hours < 10 ? '0' + hours : hours;
                                 minutes = minutes < 10 ? '0' + minutes : minutes;
 
@@ -338,8 +344,15 @@ fetch(windPowerUrl)
     .then(windPowerData => {
         console.log("Wind Power Data:", windPowerData); // Log the data for debugging
 
-        // Prepare wind power series data
-        var windPowerSeriesData = windPowerData.map(item => [item[0], item[1] / 1000]);
+        // Get start of today in local time
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const todayTimestamp = today.getTime();
+
+        // Filter and prepare wind power series data
+        var windPowerSeriesData = windPowerData
+            .filter(item => item[0] >= todayTimestamp) // Filter out data before today
+            .map(item => [item[0], item[1] / 1000]);
         console.log("Processed Wind Power Series Data:", windPowerSeriesData);
 
         // Set option for wind power chart
@@ -369,7 +382,7 @@ fetch(windPowerUrl)
                     
                     var result = formattedDateString + '<br/>';
                     params.forEach(function (item) {
-                        var valueRounded = item.value[1].toFixed(0); // Display integer GW values
+                        var valueRounded = item.value[1].toFixed(1); // Display 1 decimal place
                         result += item.marker + " " + item.seriesName + ': ' + valueRounded + ' GW<br/>';
                     });
 
@@ -380,6 +393,7 @@ fetch(windPowerUrl)
                 type: 'time',
                 boundaryGap: false,
                 axisLabel: {
+                    interval: 0,
                     formatter: function (value) {
                         var date = new Date(value);
                         var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
@@ -389,6 +403,10 @@ fetch(windPowerUrl)
                         // return `${weekday} ${day}.${month}.`;
                         return weekday;
                     }
+                },
+                axisTick: {
+                    alignWithLabel: true, // Align ticks with labels
+                    interval: 0 // Show all ticks
                 }
             },
             yAxis: {
@@ -656,11 +674,15 @@ function setupHistoryChart(data) {
                     return date.toLocaleDateString('fi-FI');
                 },
                 rotate: 45,
+            },
+            axisTick: {
+                alignWithLabel: true, // Align ticks with labels
+                interval: 0 // Show all ticks
             }
         },
         yAxis: {
             type: 'value',
-            name: '¢/kWh (verollinen)',
+            name: '¢/kWh',
             nameLocation: 'end',
             nameGap: 20,
             max: value => Math.ceil(value.max / 10) * 10,
