@@ -106,7 +106,8 @@ def send_to_gpt(df):
 
     today = datetime.date.today()
     weekday_today = today.strftime("%A")
-    date_today = today.strftime("%d. %B %Y")
+    # Format date with no leading zeros and proper Finnish month endings
+    date_today = f"{int(today.strftime('%d'))}. {today.strftime('%B').lower()}ta {today.strftime('%Y')}"
     time_now = datetime.datetime.now().strftime("%H:%M")
 
     prompt = "<data>\n"
@@ -248,10 +249,14 @@ Mainitse taulukon yläpuolella leipätekstinä, koska ennuste on päivitetty.
 
 Sitten näytä taulukko:
 
-| pv  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+| <pv>  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
 
-jossa "pv" tarkoittaa viikonpäivää ja "ka" tarkoittaa kyseisen viikonpäivän keskihintaa. Lyhennä viikonpäivät seuraavasti: ma, ti, ke, to, pe, la, su. Tasaa sarakkeet kuten esimerkissä ja käytä desimaaleja/kokonaislukuja kuten <data>:ssa. 
+jossa "<pv>" tarkoittaa viikonpäivää ja "ka" tarkoittaa kyseisen viikonpäivän keskihintaa. Lihavoi viikonpäivät taulukossa seuraavasti: esim. **maananatai**, **tiistai**, **keskiviikko**, **torstai**, **perjantai**, **lauantai**, **sunnuntai**.
+
+Tasaa sarakkeet kuten esimerkissä ja käytä dataa/desimaaleja/kokonaislukuja kuten <data>:ssa. 
+
+Otsikkorivillä jätä "<pv>" tyhjäksi: "". Riveillä näkyvät viikonpäivät tekevät käyttäjälle selväksi, minkä päivän tietoja taulukossa käsitellään.
 
 ## 3. Kirjoita yleiskuvaus viikon hintakehityksestä, futuurissa.
 
@@ -259,6 +264,7 @@ jossa "pv" tarkoittaa viikonpäivää ja "ka" tarkoittaa kyseisen viikonpäivän
 - Mainitse eniten erottuva päivä ja sen keski- ja maksimihinta, mutta vain jos korkeita maksimihintoja on. Tai voit sanoa, että päivät ovat keskenään hyvin samankaltaisia, jos näin on.
 - Älä kommentoi tuulivoimaa/keskilämpötilaa, jos se on keskimäärin normaalilla tasolla eikä vaikuta hintaan ylös- tai alaspäin.
 - Kuvaile hintakehitystä neutraalisti ja informatiivisesti.
+- Muotoile **viikonpäivät** lihavoinnilla: esim. **maananatai**, **tiistai**, **keskiviikko**, **torstai**, **perjantai**, **lauantai**, **sunnuntai** — mutta vain silloin kun mainitset ne tekstikappaleessa ensimmäisen kerran. Samaa päivää ei lihavoida kahdesti samassa tekstikappaleessa, koska se olisi toistoa.
 
 # Muista vielä nämä
 
