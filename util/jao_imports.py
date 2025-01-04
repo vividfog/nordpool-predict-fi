@@ -60,13 +60,20 @@ def fetch_transfer_capacity_data(start_date, end_date):
                     # Melt the DataFrame to have one row per time and border
                     df_melted = df.melt(id_vars=['dateTimeUtc'], var_name='border', value_name='CapacityMW')
                     
+                    # Modify the melted DataFrame to use simplified border names
+                    df_melted['border'] = df_melted['border'].map({
+                        'border_SE1_FI': 'SE1_FI',
+                        'border_SE3_FI': 'SE3_FI',
+                        'border_EE_FI': 'EE_FI'
+                    })
+                    
                     # Remove any missing data
                     df_melted.dropna(subset=['CapacityMW'], inplace=True)
     
                     if DEBUG:
                         print("Melted DataFrame:")
                         print(df_melted)
-                    return df_melted[['dateTimeUtc', 'CapacityMW']]
+                    return df_melted[['dateTimeUtc', 'border', 'CapacityMW']]
                 else:
                     raise ValueError("Empty DataFrame after fetching data")
             elif response.status_code == 429:
@@ -83,35 +90,33 @@ def fetch_transfer_capacity_data(start_date, end_date):
 
 def calculate_capacity_sums(df):
     """
-    This function calculates the sum of capacities for each time period,
-    replacing zero sums with the last known non-zero sum.
+    Calculates both individual border capacities and their sum for each time period.
     """
     if df.empty:
-        return pd.DataFrame(columns=['startTime', 'TotalCapacityMW'])
+        return pd.DataFrame(columns=['startTime', 'SE1_FI', 'SE3_FI', 'EE_FI', 'TotalCapacityMW'])
     
-    # Assuming df has 'dateTimeUtc', 'border', and 'CapacityMW'
+    # Pivot the data to get individual border columns
     df['startTime'] = df['dateTimeUtc']
-    # Sum only over 'CapacityMW'
-    summed_df = df.groupby('startTime')['CapacityMW'].sum().reset_index()
-    summed_df.rename(columns={'CapacityMW': 'TotalCapacityMW'}, inplace=True)
+    pivot_df = df.pivot(index='startTime', columns='border', values='CapacityMW').reset_index()
     
-    # Identify zero sums and replace them
+    # Calculate the sum
+    pivot_df['TotalCapacityMW'] = pivot_df[['SE1_FI', 'SE3_FI', 'EE_FI']].sum(axis=1)
+    
+    # Forward fill zero values in total capacity
+    last_non_zero_value = None
     edits_made = False
-    if not summed_df.empty:
-        # Forward fill zero values
-        last_non_zero_value = None
-        for index, row in summed_df.iterrows():
-            if row['TotalCapacityMW'] == 0:
-                if last_non_zero_value is not None:
-                    summed_df.at[index, 'TotalCapacityMW'] = last_non_zero_value
-                    edits_made = True
-            else:
-                last_non_zero_value = row['TotalCapacityMW']
+    for index, row in pivot_df.iterrows():
+        if row['TotalCapacityMW'] == 0:
+            if last_non_zero_value is not None:
+                pivot_df.at[index, 'TotalCapacityMW'] = last_non_zero_value
+                edits_made = True
+        else:
+            last_non_zero_value = row['TotalCapacityMW']
     
     if edits_made:
         print("[WARNING] Zero sums in JAO transfer data. Replaced with last known non-zero values.")
     
-    return summed_df
+    return pivot_df
 
 def update_import_capacity(df):
     """
@@ -120,7 +125,7 @@ def update_import_capacity(df):
     # Define the current date and adjust the start and end dates
     current_date = datetime.now(pytz.UTC).strftime("%Y-%m-%d")
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
-    end_date = (datetime.now(pytz.UTC) + timedelta(hours=120)).strftime("%Y-%m-%d")
+    end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
     
     print(f"* JAO: Fetching import capacities between {history_date} and {end_date}")
     
@@ -148,17 +153,28 @@ def update_import_capacity(df):
     # Prepare to merge with original DataFrame
     df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True)
     
-    # Drop the existing ImportCapacityMW column if it exists
-    if 'ImportCapacityMW' in df.columns:
-        df = df.drop(columns=['ImportCapacityMW'])
+    # Drop the existing capacity columns if they exist
+    columns_to_drop = ['ImportCapacityMW', 'SE1_FI', 'SE3_FI', 'EE_FI']
+    for col in columns_to_drop:
+        if col in df.columns:
+            df = df.drop(columns=[col])
     
-    # Merge import capacity
+    # Merge import capacity (now includes individual borders and total)
     final_df = pd.merge(df, summed_capacity_df, left_on='timestamp', right_on='startTime', how='left')
     final_df.drop(columns=['startTime'], inplace=True)
-    final_df.rename(columns={'TotalCapacityMW': 'ImportCapacityMW'}, inplace=True)
     
+    # Ensure all capacity columns exist with initial NaN values
+    capacity_columns = ['SE1_FI', 'SE3_FI', 'EE_FI', 'TotalCapacityMW']
+    for col in capacity_columns:
+        if col not in final_df.columns:
+            final_df[col] = pd.NA
+
     # Fill missing capacity data with forward and backward fill
-    final_df['ImportCapacityMW'] = final_df['ImportCapacityMW'].ffill().bfill()
+    for col in capacity_columns:
+        final_df[col] = final_df[col].ffill().bfill()
+    
+    # Rename only the total capacity column
+    final_df.rename(columns={'TotalCapacityMW': 'ImportCapacityMW'}, inplace=True)
     
     # Calculate daily averages of ImportCapacityMW
     temp_df = final_df.copy()
@@ -216,9 +232,9 @@ def main():
     # Configure pandas to display all rows
     pd.set_option('display.max_rows', None)
     
-    # Define the date range: 7 days in the past to 5 days in the future
+    # Define the date range: 7 days in the past to 8 days in the future
     start_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
-    end_date = (datetime.now(pytz.UTC) + timedelta(days=5)).strftime("%Y-%m-%d")
+    end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
 
     # Prepare a dummy DataFrame covering the entire period
     print(f"Prepare dummy data from {start_date} to {end_date}")
