@@ -1,7 +1,8 @@
 """
 ** This script needs to run at the project root folder for the util.fmi import to work. Sorry. **
 
-Fetch historical weather data for a specified date range and set of Finnish Meteorological Institute (FMI) station IDs (FMISIDs), and save the data incrementally to CSV files. Each FMISID will have its own CSV file containing the weather data for the given date range. The data fetched includes hourly average temperature ('TA_PT1H_AVG') and hourly average wind speed ('WS_PT1H_AVG').
+Fetch historical weather data for a specified date range and set of Finnish Meteorological Institute (FMI) station IDs (FMISIDs).
+Outputs SQL UPDATE statements for the prediction table to stdout.
 
 Usage:
     The script is executed from the command line, requiring three positional arguments:
@@ -10,12 +11,7 @@ Usage:
     3. fmisids: A comma-separated list of FMISIDs for which the historical weather data is to be fetched.
 
     Example command:
-    python fmi_fetch_history.py 2023-01-01 2024-02-29 "101673,101256,101846,101805,101267,101786,101118,100968,101065,101339"
-    
-    FMISDID list:
-    https://www.ilmatieteenlaitos.fi/havaintoasemat?filterKey=groups&filterQuery=sää
-
-After you have the data, you can append them to the training database.
+    python fmi_fetch_history.py 2023-01-01 2024-02-29 "101673,101256,101846,101805,101267,101786,101118,100968,101065,101339" > updates.sql
 """
 
 import argparse
@@ -34,33 +30,51 @@ def parse_args():
 def main():
     args = parse_args()
     start_date = datetime.strptime(args.start_date, '%Y-%m-%d')
-    end_date = datetime.strptime(args.end_date, '%Y-%m-%d') + timedelta(days=1)  # Include the end date in the range
+    end_date = datetime.strptime(args.end_date, '%Y-%m-%d') + timedelta(days=1)
     fmisids = [int(fmisid.strip()) for fmisid in args.fmisids.split(',')]
+    missing_data = []
 
-    # For each FMISID, fetch the historical weather data for the date range and save to CSV
-    for fmisid in fmisids:
-        csv_filename = f"{fmisid}.csv"
-        
-        # Determine if header should be written (i.e., if file is new)
-        write_header = True
-        
-        current_date = start_date
-        while current_date < end_date:
-            date_str = current_date.strftime('%Y-%m-%d')
-            print(f"Fetching data for {date_str} at FMISID {fmisid}...")
+    # Start transaction
+    print("BEGIN TRANSACTION;")
+    
+    # Process each date in the range
+    current_date = start_date
+    while current_date < end_date:
+        date_str = current_date.strftime('%Y-%m-%d')
 
-            # Fetch the data for the day
+        for fmisid in fmisids:
+            print(f"-- Processing date {date_str} for FMISID {fmisid}")
             day_data = get_history(fmisid, date_str, ['TA_PT1H_AVG', 'WS_PT1H_AVG'])
+            # print (day_data)
             
-            # Write the data for the day to CSV
-            day_data.to_csv(csv_filename, mode='a', header=write_header, index=False)
-            if write_header:  # Only write the header once
-                write_header = False
+            for _, row in day_data.iterrows():
+                # Format timestamp to match SQLite format exactly: YYYY-MM-DDTHH:MM:SS+00:00
+                timestamp = pd.to_datetime(row['Timestamp']).strftime('%Y-%m-%dT%H:%M:%S+00:00')
+                
+                if pd.isna(row['TA_PT1H_AVG']):
+                    missing_data.append(f"Missing TA_PT1H_AVG for FMISID {fmisid} at {timestamp}")
+                    print(f"UPDATE prediction SET t_{fmisid} = NULL WHERE timestamp = '{timestamp}';")
+                else:
+                    print(f"UPDATE prediction SET t_{fmisid} = {row['TA_PT1H_AVG']:.1f} "
+                          f"WHERE timestamp = '{timestamp}';")
+                if pd.isna(row['WS_PT1H_AVG']):
+                    missing_data.append(f"Missing WS_PT1H_AVG for FMISID {fmisid} at {timestamp}")
+                    print(f"UPDATE prediction SET ws_{fmisid} = NULL WHERE timestamp = '{timestamp}';")
+                else:
+                    print(f"UPDATE prediction SET ws_{fmisid} = {row['WS_PT1H_AVG']:.1f} "
+                          f"WHERE timestamp = '{timestamp}';")
             
-            current_date += timedelta(days=1)
-            time.sleep(0.2)  # Let's not spam the FMI API
+            time.sleep(0.2)
 
-        print(f"Data saved to {csv_filename}")
+        current_date += timedelta(days=1)
+
+    # End transaction
+    print("COMMIT;")
+    if missing_data:
+        print("-- Missing data details:")
+        for entry in missing_data:
+            print(f"-- {entry}")
+        print(f"-- Total missing entries: {len(missing_data)}")
 
 if __name__ == "__main__":
     main()
