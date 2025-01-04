@@ -8,7 +8,7 @@ body {
 
 #predictionChart {
     height: 40vh;
-    width: 95%;
+    width: 100%;
     max-width: 920px;
     margin: auto;
     box-sizing: border-box;
@@ -20,7 +20,7 @@ body {
     margin: auto;
     box-sizing: border-box;
     height: 40vh;
-    width: 95%;
+    width: 100%;
     padding-top: 24px;
 }
 
@@ -28,6 +28,7 @@ body {
     max-width: 920px;
     margin: auto;
     box-sizing: border-box;
+    padding-top: 12px;
 }
 
 #predictionText {
@@ -124,7 +125,6 @@ body {
 #source-code-text:hover {
     color: #666;
     text-decoration: none;
-    // font-size: 0.8em;
     opacity: 0.8;
 }
 
