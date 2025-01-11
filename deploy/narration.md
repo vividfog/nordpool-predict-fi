@@ -1,15 +1,15 @@
-Nyt on lauantai 11. tammikuuta 2025 klo 15:22. Nordpool-sähköpörssin verolliset Suomen markkinan hintaennusteet lähipäiville ovat seuraavat:
+Ennuste on päivitetty lauantaina klo 21:08.
 
 |             | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **sunnuntai**   |        7,7        |      3,2 - 13,1     |   2468 - 4507   |      -4,0      |
-| **maanantai**   |        4,0        |      1,9 - 6,1      |   3794 - 5566   |      -1,4      |
-| **tiistai**     |        5,1        |      0,9 - 8,9      |   2549 - 4204   |      -0,9      |
-| **keskiviikko** |        4,0        |      0,7 - 7,1      |   2417 - 5082   |      -0,5      |
-| **torstai**     |        3,6        |      0,5 - 8,3      |   2286 - 5033   |       1,5      |
-| **perjantai**   |        2,5        |      0,4 - 4,2      |   3068 - 5172   |       0,4      |
-| **lauantai**    |        3,8        |      0,1 - 9,2      |   1954 - 4974   |      -1,0      |
+| **sunnuntai** | 7,7              | 3,3 - 13,1      | 2397 - 4470   | -4,0          |
+| **maanantai** | 4,3              | 1,9 - 6,2       | 3794 - 5651   | -1,4          |
+| **tiistai**   | 5,2              | 1,6 - 9,1       | 2628 - 4081   | -0,9          |
+| **keskiviikko**| 4,0            | 0,6 - 8,0       | 2558 - 5278   | -0,5          |
+| **torstai**   | 3,3              | 0,3 - 7,4       | 2410 - 4960   | 1,5           |
+| **perjantai** | 2,4              | 0,3 - 4,1       | 3231 - 5213   | 0,4           |
+| **lauantai**  | 3,6              | -0,2 - 8,8      | 2170 - 5306   | -1,0          |
 
-Tulevien päivien hintaennusteissa nähdään vaihtelua etenkin sunnuntaina, jolloin pörssisähkön keskihinta on 7,7 ¢/kWh ja maksimihinta nousee 13,1 ¢/kWh. Tämä päivä erottuu viikosta korkeammalla hintatasollaan, mikä voi johtua alhaisemmasta tuulivoiman tuotannosta päivän alhaisimmillaan 2468 MW tasolla. Muina päivinä hinnat ovat edullisemmalla tasolla, erityisesti perjantaina, jolloin keskihinta on vain 2,5 ¢/kWh.
+Tulevalla viikolla sähkön hinnassa ei ole suuria poikkeamia. **Sunnuntai** erottuu hieman korkeammalla keskihinnalla, 7,7 ¢/kWh, ja maksimihinta nousee 13,1 ¢/kWh. Tämä voi johtua vähäisemmästä tuulivoiman tuotannosta, sillä päivän minimituotanto on 2397 MW. Viikon edullisin keskihinta saavutetaan **perjantaina**, jolloin keskihinta on 2,4 ¢/kWh. Muiden päivien keskihinnat ovat pääosin alle 5 ¢/kWh, mikä viittaa edulliseen hintatasoon.
 
-Viikon aikana sähkön hinnat ovat keskimäärin alhaisella tasolla. Hinta vaihtelee huomattavasti sunnuntain ja perjantain välillä, mutta pysyy pääosin kohtuullisena. Tuulivoiman tarjonta on enimmäkseen runsasta, mikä osaltaan vaikuttaa alhaisiin hintatasoihin. Lämpötilat vaihtelevat hieman, mutta pysyvät normaaleissa talvisissa lukemissa, eikä niillä oleteta olevan merkittävää vaikutusta sähkön hintaan.
+Lämpötilat pysyvät viikon aikana normaalin talvikelin rajoissa, eikä niiden odoteta vaikuttavan merkittävästi sähkön hintaan. Tuulivoiman tuotanto on suurimmaksi osaksi voimakasta, mikä osaltaan selittää alhaista hintatasoa useina päivinä. Yleisesti ottaen sähkön hinnassa ei ole odotettavissa suuria vaihteluita, ja hintataso pysyy maltillisena suurimman osan viikkoa.
