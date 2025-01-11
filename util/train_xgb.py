@@ -60,6 +60,7 @@ def train_model(df, fmisid_ws, fmisid_t):
     print(X_train.sample(10, random_state=42))
 
     # 2024-10-01 with no early stopping
+    # -------------------------------------------------------------------
     # params = {
     #     'objective': 'reg:squarederror', 
     #     'n_estimators': 8062,
@@ -73,10 +74,8 @@ def train_model(df, fmisid_ws, fmisid_t):
     #     'random_state': 42,
     # }
 
-    # xgb_model = XGBRegressor(**params)
-    # xgb_model.fit(X_train, y_train)
-
     # # 2024-10-15: 400 rounds 5 fold CVE with early stopping of 50 rounds
+    # -------------------------------------------------------------------
     # # Best Parameters found for XGBoost: {'n_estimators': 11867, 'max_depth': 7, 'learning_rate': 0.028142731058495178, 'subsample': 0.20366946173978723, 'colsample_bytree': 0.7631260495996145, 'gamma': 0.06244658663024986, 'reg_alpha': 4.542768133426432, 'reg_lambda': 0.6949143888830083}
     # params = {
     #     'early_stopping_rounds': 50,
@@ -115,38 +114,71 @@ def train_model(df, fmisid_ws, fmisid_t):
     # ┡━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
     # │ XGBoost │        2.0105 │     -0.0053 │      0.0197 │      0.0139 │
     # └─────────┴───────────────┴─────────────┴─────────────┴─────────────┘
+    # params = {
+    #     'early_stopping_rounds': 50,
+    #     'objective': 'reg:squarederror',
+    #     'eval_metric': 'rmse',
+    #     'n_estimators': 11991,
+    #     'max_depth': 7,
+    #     'learning_rate': 0.007155246807962921, # Much lower learning rate
+    #     'subsample': 0.5944788943642283,
+    #     'colsample_bytree': 0.509414975860466,
+    #     'gamma': 0.03235515429734633,
+    #     'reg_alpha': 4.57343806188102,
+    #     'reg_lambda': 0.7653266366537909,
+    #     'random_state': 42,
+    # }
+
+
+    # 2025-01-11: Updated parameters after adding 'irradiance' columns, separated transmission capacity columns
+    # -----------------------------------------------------------------------------------------------
+    #      Model Performance Comparison - Test Set Metrics
+    # ┏━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━┓
+    # ┃ Model   ┃    MAE ┃    MSE ┃   RMSE ┃     R² ┃   SMAPE ┃
+    # ┡━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━┩
+    # │ XGBoost │ 1.0448 │ 5.1560 │ 2.2707 │ 0.8966 │ 37.8587 │
+    # └─────────┴────────┴────────┴────────┴────────┴─────────┘
+    #               5-Fold Cross-Validation Results
+    # ┏━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┓
+    # ┃ Model   ┃ CV MAE ┃ CV MSE ┃ CV RMSE ┃  CV R² ┃ CV SMAPE ┃
+    # ┡━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━┩
+    # │ XGBoost │ 1.1349 │ 5.0967 │  2.2576 │ 0.9163 │  41.1458 │
+    # └─────────┴────────┴────────┴─────────┴────────┴──────────┘
+    #                       Autocorrelation Analysis
+    # ┏━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
+    # ┃ Model   ┃ Durbin-Watson ┃ ACF (Lag 1) ┃ ACF (Lag 2) ┃ ACF (Lag 3) ┃
+    # ┡━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
+    # │ XGBoost │        1.9981 │      0.0009 │      0.0115 │      0.0096 │
+    # └─────────┴───────────────┴─────────────┴─────────────┴─────────────┘
+    # params = {
+    #     'early_stopping_rounds': 50,
+    #     'objective': 'reg:squarederror',
+    #     'eval_metric': 'rmse',
+    #     'n_estimators': 10756,
+    #     'max_depth': 8,
+    #     'learning_rate': 0.030121586186802822,
+    #     'subsample': 0.7868573799621894,
+    #     'colsample_bytree': 0.6746460517400081,
+    #     'gamma': 0.036191390278440254,
+    #     'reg_alpha': 3.4645827367994606,
+    #     'reg_lambda': 0.4607137801805814,
+    #     'random_state': 42,
+    # }
 
     params = {
         'early_stopping_rounds': 50,
         'objective': 'reg:squarederror',
         'eval_metric': 'rmse',
-        'n_estimators': 11991,
-        'max_depth': 7,
-        'learning_rate': 0.007155246807962921, # Much lower learning rate
-        'subsample': 0.5944788943642283,
-        'colsample_bytree': 0.509414975860466,
-        'gamma': 0.03235515429734633,
-        'reg_alpha': 4.57343806188102,
-        'reg_lambda': 0.7653266366537909,
+        'n_estimators': 10756,
+        'max_depth': 8,
+        'learning_rate': 0.030121586186802822,
+        'subsample': 0.7868573799621894,
+        'colsample_bytree': 0.6746460517400081,
+        'gamma': 0.036191390278440254,
+        'reg_alpha': 3.4645827367994606,
+        'reg_lambda': 0.4607137801805814,
         'random_state': 42,
     }
-
-    # 2024-12-29: Updated parameters after adding 'holiday' column and irradiance features.
-    # But the slower learning rate above worked slightly better.
-    # params = {
-    #     'early_stopping_rounds': 50,
-    #     'objective': 'reg:squarederror',
-    #     'eval_metric': 'rmse',
-    #     'n_estimators': 8937,
-    #     'max_depth': 6,
-    #     'learning_rate': 0.0329467274396091,
-    #     'subsample': 0.35769629879510095,
-    #     'colsample_bytree': 0.4180410786793119,
-    #     'gamma': 0.017327325382759023,
-    #     'reg_alpha': 4.911148409481332,
-    #     'reg_lambda': 0.4064581682607894,
-    #     'random_state': 42,
-    # }
 
     # Train the model
     print("→ XGBoost: ", end="")
