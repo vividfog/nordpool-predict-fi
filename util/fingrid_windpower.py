@@ -129,6 +129,11 @@ def update_windpower(df, fingrid_api_key):
     merged_df['WindPowerCapacityMW'] = merged_df['WindPowerCapacityMW_capacity_api'].ffill()
     merged_df.drop(columns=['WindPowerCapacityMW_capacity_api'], inplace=True)
 
+    # Backfill the WindPowerCapacityMW column with the first known value, and print out how many values were backfilled
+    if merged_df['WindPowerCapacityMW'].isnull().any():
+        print(f"[WARNING] Backfilling {merged_df['WindPowerCapacityMW'].isnull().sum()} missing WindPowerCapacityMW values")
+        merged_df['WindPowerCapacityMW'] = merged_df['WindPowerCapacityMW'].bfill()
+
     # Drop redundant columns that originated from the API data
     merged_df.drop(columns=['datasetId', 'endTime', 'datasetId_capacity_api', 'endTime_capacity_api'], inplace=True)
 
