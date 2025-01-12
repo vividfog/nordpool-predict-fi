@@ -21,7 +21,8 @@
     <div id="predictionText">
         <h1 style="padding-top: 16px">Pörssisähkön hintaennuste</h1>
         <p><strong>Tämä kokeellinen koneoppimismalli haarukoi pörssisähkön kuluttajahintaa (sis. ALV 25,5%) noin viikon eteenpäin. Malli peilaa mm. ennustettua säätä ja sähköntuotantoa aiempiin ajanjaksoihin, joissa nämä seikat olivat samankaltaiset.</strong></p>
-        <p>Vaikka malli on tavanomaisissa tilanteissa yllättävänkin tarkka, ennusteeseen tulee suhtautua varauksella. Se ei välttämättä arvaa poikkeustilanteiden hintavaikutuksia oikein. Tuuliennusteella on suuri vaikutus hintapiikkeihin, varsinkin jos samaan aikaan on huoltoja. Laskentamalli opetetaan ja ennuste päivitetään automaattisesti muutamia kertoja päivässä. Graafin alla on kielimallin tulkinta ennusteesta.</p>
+        <p>Vaikka malli on tavanomaisissa tilanteissa yllättävänkin tarkka, ennusteeseen tulee suhtautua varauksella. Se ei välttämättä arvaa poikkeustilanteiden hintavaikutuksia oikein. Tuuliennusteella on suuri vaikutus hintapiikkeihin, varsinkin jos samaan aikaan on huoltoja.</p>
+        <p>Laskentamalli opetetaan ja ennuste päivitetään automaattisesti muutamia kertoja päivässä. Graafin alla on kielimallin tulkinta ennusteesta.</p>
         <h1 style="padding-top: 32px">Lähipäivien hintakehitys</h1>
         <p id="predictionChart"></p>
         <p id="narration"></p>
@@ -29,12 +30,13 @@
         <p>Perustuu Pohjanlahden rannikon FMI-sääasemien tietoihin ja ennusteisiin. Yli 2...3 gigawatin tuuli on sähkön hinnan kannalta suotuisa, ja alle 1 gigawatin tuulella hinta voi nousta korkealle, jos samaan hetkeen osuu huoltotaukoja tai on kylmä.</p>
         <div id="windPowerChart" style="height: 40vh; width: 100%; max-width: 920px; margin: auto; box-sizing: border-box; padding-top: 32px;"></div>
         <h1>Hintaennusteen kehitys</h1>
-        <p>Graafi kertoo, mitä Sähkövatkain on ennustanut viime aikoina. Tämä saattaa auttaa hahmottamaan, mihin suuntaan ennuste on menossa. Isoja mielenmuutoksia voi tulla mm. jos sääennuste on muuttunut paljon, jos tulee odottamaton tuotantokatko, jos hintahäiriön syy on historiallisesti uudenlainen tai harvinainen, tai jos ennustemallia on hiljattain päivitetty. Kts. muutosloki alla.</p>
-        <p>Ohenevat siniset viivat ovat ennusteparvi aiemmilta päiviltä, ennen kuin toteutunut hinta oli tiedossa. Oranssi viiva on lopullinen Nordpool-hinta. Optimaalisesti viivojen tulisi olla mahdollisimman paljon päällekkäin.</p>
+        <p>Graafi kertoo, mitä Sähkövatkain on ennustanut viime aikoina. Isoja mielenmuutoksia voi tulla mm. jos sääennuste on muuttunut paljon, jos tulee odottamaton tuotantokatko, jos hintahäiriön syy on historiallisesti uudenlainen tai harvinainen, tai jos ennustemallia on hiljattain päivitetty. Kts. muutosloki alla.</p>
+        <p>Oranssi viiva on lopullinen Nordpool-hinta. Ohenevat siniset viivat ovat ennusteparvi aiemmilta päiviltä, ennen kuin Nordpool-hinta oli tiedossa.</p>
         <div id="historyChart" style="height: 40vh; width: 100%; max-width: 920px; margin: auto; box-sizing: border-box; padding-top: 32px;"></div>
         <h1 style="padding-top: 32px">Mitä ennuste huomioi?</h1>
         <p>Kyseessä on koneoppimismalli, joka hakee korrelaatioita eri muuttujien välillä ja oppii, millaiseen hintaan kukin yhdistelmä historian perusteella johtaa. Tämä ei siis ole aikasarjaennuste, vaan jokainen tunti saa arvonsa itsenäisesti näiden tietojen perusteella:</p>
-        <li><strong>Tuulivoima-alueiden tuuliennusteet:</strong> FMI-sääasemat, eli epäsuorasti tuulivoiman määrä</li>
+        <li><strong>Suomen tuulivoima-alueiden ennusteet:</strong> FMI-sääasemat, eli epäsuorasti tuulivoiman määrä</li>
+        <li><strong>Itämeren alueen tuuliennusteet:</strong> Open-Meteo: Ruotsi, Tanska, Saksa ja Viro</li>
         <li><strong>Lämpötilaennusteet:</strong> FMI-sääasemat, eli epäsuorasti lämmitystarve ja vuodenaika</li>
         <li><strong>Ydinvoimatuotanto:</strong> Fingrid (mallin opetus) ja ENTSO-E REMIT UMM (huoltoajankohdat)</li>
         <li><strong>Siirtokapasiteetti:</strong> JAO: siirtokapasiteetti Ruotsista ja Virosta Suomen suuntaan</li>
@@ -43,7 +45,7 @@
         <li><strong>Viikonpäivä:</strong> ma-su</li>
         <li><strong>Kellonaika:</strong> 0-23</li>
         <li><strong>Juhlapyhät:</strong> Kansallisina vapaapäivinä energian kysyntä voi olla normaalia alempi</li>
-        <p>Nämä muuttujat on valittu intuitiolla ja kokeilemalla. Jokin toinen yhdistelmä voisi toimia paremmin tai huonommin. Lähdekoodi on avointa, ja olet tervetullut kokeilemaan erilaisia vaihtoehtoja näiden lisäksi tai sijaan.<p>
+        <p>Lähdekoodi on avointa, ja olet tervetullut kokeilemaan erilaisia vaihtoehtoja näiden lisäksi tai sijaan.<p>
         <h1>Muutokset</h1>
         <p>Sähkövatkain on ollut linjoilla helmikuusta 2024. Tämän jälkeen on tehty seuraavat muutokset.</p>
         <p><strong>11.8.2024:</strong></p>
@@ -82,12 +84,13 @@
         <p><strong>4.1.2025:</strong></p>
         <li>Ennuste ulottuu nyt 7 päivää eteenpäin.</li>
         <li>Ruotsin ja Viron tuontiyhteyksiä käsitellään nyt mallissa erillisinä, eikä vain summana. Viron siirtoyhteyden käyttökatko tyypillisesti alentaa hintaa ja Ruotsin taas nostaa.</li>
-        <p><strong>11.1.2025:</strong></p>
-        <li>Fingrid, tuulivoimakapasiteetti: Rajapinnasta puuttuu dataa vuoden alkupuolelta. Open-Meteo, auringonsäteily: Rajapinnan antamat ennustearvot (W/m2) olivat negatiivisia lähipäiville, puolen miljoonan Watin verran. Virheentarkistuksia parannettu tällaisten tilanteiden varalta.</li>
+        <p><strong>12.1.2025:</strong></p>
+        <li>Fingrid, tuulivoimakapasiteetti: Rajapinnasta puuttui dataa vuoden alkupuolelta. Open-Meteo, auringonsäteily: Rajapinnan antamat ennustearvot (W/m2) olivat negatiivisia lähipäiville, puolen miljoonan Watin verran. Tarkistuksia lisätty tällaisten tilanteiden varalta.</li>
+        <li>Itämeren tuulivoima-alueita lisätty hinnoittelumalliin. Vähäinen tuuli ulkomailla voi nostaa hintaa Suomessa, vaikka oma tuotanto olisi voimakasta.</li>
         <p><strong>Suunnitteilla:</strong></p>
         <li>Tuntikohtaisen hintavolatiliteetin tarkempi ennustaminen saattaa tarvita oman mallinsa ja menetelmänsä nykyisen rinnalle/päälle. Nykyinen menetelmä toimii paremmin vuorokauden hintatason arvioinnissa kuin aamun ja illan yksittäisten piikkihintojen dynamiikassa.</li>
         <h1>Mitä ennuste ei huomioi?</h1>
-        <p>Ennuste ei näe muuta kuin mitä yllä on mainittu. Esim. naapurimaiden tuulivoimatiedot puuttuvat. Opetuksessa käytetty data alkaa vuoden 2023 alusta.</p>
+        <p>Ennuste ei näe muuta kuin mitä yllä on mainittu. Opetuksessa käytetty data alkaa vuoden 2023 alusta.</p>
         <p style="padding-bottom: 24px;">Vaikka malli osaa "ennustaa" menneisyyttä ja historiallisesti tutun tyyppistä tulevaisuutta toisinaan oivasti, hinta-arviot uudenlaisissa poikkeustilanteissa voivat olla pielessä. Älä siis esim. säädä talosi lämmitystä näiden numeroiden perusteella, jos et ole kotona.</p>
         <div id="disclaimer" style="padding-bottom: 24px;"><a id="source-code-link" href="mailto:judo.farming0u@icloud.com" target="_blank">email</a></div>
 
