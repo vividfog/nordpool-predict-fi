@@ -149,10 +149,6 @@ def update_windpower(df, fingrid_api_key):
     last_known_timestamp = pd.to_datetime(wind_power_df['startTime'].max())
     df_training['timestamp'] = pd.to_datetime(df_training['timestamp'], utc=True)
     df_training = df_training[df_training['timestamp'] <= last_known_timestamp]
-
-    # Train an XGBoost model on the combined dataset
-    print(f"→ Training with Fingrid wind power data up to {last_known_timestamp}, with tail:")
-    print(df_training.tail())
     
     ws_ids = os.getenv('FMISID_WS').split(',')
     try:

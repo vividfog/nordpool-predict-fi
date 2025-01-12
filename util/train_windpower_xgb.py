@@ -102,6 +102,13 @@ def train_windpower_xgb(df: pd.DataFrame, target_col: str, wp_fmisid: List[str])
                                                         )
 
     print(f"→ Train set: {train_X.shape}, Test set: {test_X.shape}")
+    
+    # Print final training columns, sanity check
+    print(f"→ WS model features: {', '.join(X_features.columns)}")
+    
+    # Print tail of the training data
+    print(f"→ Training with Fingrid wind power data up to {df['timestamp'].max()}, with tail:")
+    print(X_features.tail())
    
     # print("→ X features description:")
     # print(X_features.describe())
