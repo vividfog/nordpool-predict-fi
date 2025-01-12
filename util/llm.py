@@ -245,7 +245,7 @@ Jos käynnissä ei ole ydinvoiman huoltokatkoja, jätä tämä osio kokonaan poi
 
 Muista, että jos käynnissä ei ole ydinvoiman huoltokatkoja, artikkeli alkaa suoraan taulukosta.
 
-Mainitse taulukon yläpuolella leipätekstinä, koska ennuste on päivitetty.
+Mainitse taulukon yläpuolella leipätekstinä, koska ennuste on päivitetty, mukaan viikonpäivä ja kellonaika.
 
 Sitten näytä taulukko:
 
@@ -260,8 +260,9 @@ Otsikkorivillä jätä "<pv>" tyhjäksi: "". Riveillä näkyvät viikonpäivät 
 
 ## 3. Kirjoita yleiskuvaus viikon hintakehityksestä, futuurissa.
 
-- Tavoitepituus on kaksi sujuvaa tekstikappaletta, yhteensä noin 200 sanaa.
+- Tavoitepituus on vähintään 2, max 5 sujuvaa lyhyttä tekstikappaletta, kaikki yhteensä noin 300 sanaa.
 - Mainitse eniten erottuva päivä ja sen keski- ja maksimihinta, mutta vain jos korkeita maksimihintoja on. Tai voit sanoa, että päivät ovat keskenään hyvin samankaltaisia, jos näin on.
+- Viikon edullisimmat ja kalleimmat ajankohdat ovat kiinnostavia tietoja, varsinkin jos hinta vaihtelee paljon.
 - Älä kommentoi tuulivoimaa/keskilämpötilaa, jos se on keskimäärin normaalilla tasolla eikä vaikuta hintaan ylös- tai alaspäin.
 - Kuvaile hintakehitystä neutraalisti ja informatiivisesti.
 - Muotoile **viikonpäivät** lihavoinnilla: esim. **maananatai**, **tiistai**, **keskiviikko**, **torstai**, **perjantai**, **lauantai**, **sunnuntai** — mutta vain silloin kun mainitset ne tekstikappaleessa ensimmäisen kerran. Samaa päivää ei lihavoida kahdesti samassa tekstikappaleessa, koska se olisi toistoa.
