@@ -16,6 +16,7 @@ from util.holidays import update_holidays
 from util.sql import db_update, db_query_all
 from util.dataframes import update_df_from_df
 from util.fingrid_nuclear import update_nuclear
+from util.openmeteo_windpower import update_eu_ws
 from util.jao_imports import update_import_capacity
 from util.fmi import update_wind_speed, update_temperature
 from util.openmeteo_solar import update_solar
@@ -176,6 +177,9 @@ if args.predict:
     
     # Update solar irradiation data
     df_recent = update_solar(df_recent)
+    
+    # Update Baltic Sea area wind speed data
+    df_recent = update_eu_ws(df_recent)
 
     # Set 'timestamp' as index in df_recent
     df_recent.set_index('timestamp', inplace=True)
@@ -229,8 +233,8 @@ if args.predict:
         'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW',
         'temp_mean', 'temp_variance', 'holiday', 
         'sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance',
-        # Individual border capacities
-        'SE1_FI', 'SE3_FI', 'EE_FI'
+        'SE1_FI', 'SE3_FI', 'EE_FI',
+        'eu_ws_EE01', 'eu_ws_EE02', 'eu_ws_DK01', 'eu_ws_DK02', 'eu_ws_DE01', 'eu_ws_DE02', 'eu_ws_SE01', 'eu_ws_SE02', 'eu_ws_SE03'
     ] + fmisid_t
 
     # Predict the prices

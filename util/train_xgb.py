@@ -42,7 +42,8 @@ def train_model(df, fmisid_ws, fmisid_t):
                      'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW', 
                      'temp_mean', 'temp_variance', 'holiday', 
                      'sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance',
-                     'SE1_FI', 'SE3_FI', 'EE_FI'] + fmisid_t]
+                     'SE1_FI', 'SE3_FI', 'EE_FI',
+                     'eu_ws_EE01', 'eu_ws_EE02', 'eu_ws_DK01', 'eu_ws_DK02', 'eu_ws_DE01', 'eu_ws_DE02', 'eu_ws_SE01', 'eu_ws_SE02', 'eu_ws_SE03'] + fmisid_t]
 
     # Target variable
     y_filtered = df['Price_cpkWh']
@@ -58,6 +59,10 @@ def train_model(df, fmisid_ws, fmisid_t):
   
     print(f"→ Training data shape: {X_train.shape}, sample:")
     print(X_train.sample(10, random_state=42))
+
+    # Print feature columns used in training
+    print("→ Feature columns used in training:")
+    print(", ".join(X_train.columns))
 
     # 2024-10-01 with no early stopping
     # -------------------------------------------------------------------
@@ -242,7 +247,8 @@ def train_model(df, fmisid_ws, fmisid_t):
                                         'NuclearPowerMW', 'ImportCapacityMW', 'WindPowerMW',
                                         'temp_mean', 'temp_variance', 'holiday',
                                         'sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance',
-                                        'SE1_FI', 'SE3_FI', 'EE_FI'] + fmisid_t]
+                                        'SE1_FI', 'SE3_FI', 'EE_FI',
+                                        'eu_ws_EE01', 'eu_ws_EE02', 'eu_ws_DK01', 'eu_ws_DK02', 'eu_ws_DE01', 'eu_ws_DE02', 'eu_ws_SE01', 'eu_ws_SE02', 'eu_ws_SE03'] + fmisid_t]
         
         y_random_sample_true = random_sample['Price_cpkWh']
         y_random_sample_pred = xgb_model.predict(X_random_sample)
