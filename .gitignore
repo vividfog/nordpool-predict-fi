@@ -53,3 +53,4 @@ data/create/05_holidays/holidays.sql
 data/create/50_openmeteo/irradiance.sql
 deploy/transmission_outages.json
 data/create/12_openmeteo_ws/eu_ws_2025-01-12.sql
+repomix-output.txt
