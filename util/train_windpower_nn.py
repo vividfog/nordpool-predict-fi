@@ -1,4 +1,6 @@
 """
+2025-01-12: DEPRECATED, not currently maintained; using XGB for now
+
 This module provides components and processes to train a neural network for predicting wind power output using
 meteorological and temporal data features.
 
