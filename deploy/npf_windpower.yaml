@@ -2,7 +2,7 @@ type: custom:apexcharts-card
 now:
   show: true
   label: now
-graph_span: 5d
+graph_span: 8d
 experimental:
   color_threshold: true
 apex_config:
@@ -45,8 +45,8 @@ series:
     float_precision: 0
     stroke_width: 2
     opacity: 1
-    unit: ¢/kWh
-    name: Nordpool ¢/kWh Prediction
+    unit: MW
+    name: Tuulivoima
     color_threshold:
       - value: 2000
         color: forestgreen
