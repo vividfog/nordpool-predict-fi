@@ -140,7 +140,9 @@ def preprocess_data(df: pd.DataFrame, fmisid_t: List[str]) -> Tuple[pd.DataFrame
         'temp_mean', 'temp_variance', 'holiday', 'sum_irradiance', 'mean_irradiance', 
         'std_irradiance', 'min_irradiance', 'max_irradiance',
         # Individual border capacities
-        'SE1_FI', 'SE3_FI', 'EE_FI'
+        'SE1_FI', 'SE3_FI', 'EE_FI',
+        # Baltic Sea wind speeds
+        'eu_ws_EE01', 'eu_ws_EE02', 'eu_ws_DK01', 'eu_ws_DK02', 'eu_ws_DE01', 'eu_ws_DE02', 'eu_ws_SE01', 'eu_ws_SE02', 'eu_ws_SE03'
     ] + fmisid_t
 
     # Log the number of NaN values in the final feature columns
