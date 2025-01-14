@@ -154,11 +154,17 @@ if args.predict:
     df_recent.reset_index(inplace=True)
     df_recent.rename(columns={'index': 'timestamp'}, inplace=True)
 
-    # Update the recent data with latest information
+    # Update wind speed and temperature data
     df_recent = update_wind_speed(df_recent)
     df_recent = update_temperature(df_recent)
+    
+    # Update nuclear power data
     df_recent = update_nuclear(df_recent, fingrid_api_key=fingrid_api_key)
+    
+    # Update import capacity data
     df_recent = update_import_capacity(df_recent)
+    
+    # Update wind power data
     df_recent = update_windpower(df_recent, fingrid_api_key=fingrid_api_key)
 
     # Fetch future nuclear downtime information from ENTSO-E unavailability data
@@ -201,12 +207,9 @@ if args.predict:
 
     # Train the model
     # print("Training the model with updated data")
-    mae, mse, r2, samples_mae, samples_mse, samples_r2, model_trained = train_model(
+    model_trained = train_model(
         df_full, fmisid_ws=fmisid_ws, fmisid_t=fmisid_t
     )
-
-    print(f"→ Training results:\n  MAE (vs test set): {mae}\n  MSE (vs test set): {mse}\n  R² (vs test set): {r2}"
-          f"\n  MAE (vs 10x500 randoms): {samples_mae}\n  MSE (vs 10x500 randoms): {samples_mse}\n  R² (vs 10x500 randoms): {samples_r2}")
 
     # Prepare df_recent for prediction
     df_recent.reset_index(inplace=True)
