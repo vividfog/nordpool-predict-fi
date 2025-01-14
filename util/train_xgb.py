@@ -64,7 +64,7 @@ def train_model(df, fmisid_ws, fmisid_t):
     print("→ Feature columns used in training:")
     print(", ".join(X_train.columns))
 
-    # See train_xgb.log for history of hyperparameter tuning
+    # See train_xgb.txt for history of hyperparameter tuning
     # Last update: 2025-01-14
     params = {
         'early_stopping_rounds': 50,
