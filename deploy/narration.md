@@ -1,19 +1,15 @@
-Ennuste on päivitetty keskiviikkona klo 12:15.
+Ennuste on päivitetty keskiviikkona klo 15:16.
 
-|            | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-----------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **torstai**  | 0,6              | -0,6 - 1,6       | 6094 - 6586   | 1,5           |
-| **perjantai**| 1,7              | -0,0 - 3,7       | 3606 - 6307   | 0,4           |
-| **lauantai** | 4,6              | -0,1 - 8,6       | 2697 - 6191   | -1,0          |
-| **sunnuntai**| 5,0              | 1,3 - 7,6        | 2048 - 4321   | 0,1           |
-| **maanantai**| 4,9              | 3,1 - 8,1        | 3951 - 5512   | 0,5           |
-| **tiistai**  | 6,2              | 2,7 - 8,4        | 2280 - 5413   | -1,8          |
-| **keskiviikko**| 11,6           | 5,0 - 16,8       | 1639 - 2286   | -6,7          |
+|             | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **torstai** |        0.2       |     -0.2 - 0.6   |   6106 - 6590 |       1.5     |
+| **perjantai** |        1.3       |     -0.1 - 3.4   |   3864 - 6305 |       0.4     |
+| **lauantai** |        4.0       |      0.0 - 8.2   |   2637 - 5990 |      -1.0     |
+| **sunnuntai** |        4.4       |      1.4 - 6.9   |   2262 - 4296 |       0.1     |
+| **maanantai** |        4.4       |      2.9 - 6.3   |   3901 - 5402 |       0.5     |
+| **tiistai** |        5.5       |      2.2 - 8.3   |   2571 - 5321 |      -1.8     |
+| **keskiviikko** |       12.2      |     3.9 - 19.7   |   1116 - 2614 |      -6.3     |
 
-Tulevien päivien sähkön hinnassa on havaittavissa merkittäviä vaihteluita. **Torstai** näyttää olevan viikon edullisin päivä, jolloin keskihinta on vain 0,6 senttiä kilowattitunnilta ja minimihinta jopa negatiivinen. Tämä johtuu osittain voimakkaasta tuulivoimasta, joka ennustetaan olevan korkealla tasolla. 
+Tuleva viikko tuo mukanaan mielenkiintoisia vaihteluita sähkön hinnoissa. **Torstai** on viikon edullisin päivä, jolloin pörssisähkön keskihinta on vain 0.2 ¢/kWh, ja päivän alin hinta laskee jopa negatiiviseksi. Tämä on seurausta voimakkaasta tuulivoimatuotannosta. **Perjantai** jatkaa vielä melko edullisena, mutta lauantaina hinnat nousevat korkeammalle tasolle, keskihinnan ollessa 4.0 ¢/kWh. Sunnuntaina ja maanantaina hinnat pysyvät samalla tasolla.
 
-Sen sijaan **keskiviikko** erottuu viikon kalleimpana päivänä, jolloin keskihinta nousee 11,6 senttiin kilowattitunnilta. Tänä päivänä tuulivoiman tuotanto on heikkoa, mikä yhdessä kovan pakkasen kanssa voi selittää korkeammat hinnat. **Keskiviikon** maksimihinta 16,8 senttiä kilowattitunnilta on selvästi viikon korkein, mikä osoittaa hintojen nousua erityisesti tuona päivänä.
-
-Viikonloppuna **lauantain** ja **sunnuntain** keskihinnat ovat kohtuullisia, mutta hintojen odotetaan nousevan viikkoa kohden. **Tiistai** näyttää myös olevan suhteellisen kallis päivä, kun keskihinta on 6,2 senttiä kilowattitunnilta, mikä on selvästi korkeampi verrattuna viikon alun edullisempiin hintoihin.
-
-Kokonaisuudessaan sähkön hinta vaihtelee viikon aikana huomattavasti, ja erityisesti **keskiviikon** korkea hinta tulee olemaan merkittävä tapahtuma. Keskimääräistä korkeammat hinnat alkuviikosta ja viikon puolivälin paikkeilla saattavat vaikuttaa kuluttajien päätöksiin sähkönkulutuksen ajoittamisesta.
+**Tiistai** tuo mukanaan hintojen nousua, keskihinnan noustessa 5.5 ¢/kWh:iin. Tuolloin tuulivoiman tuotanto on kuitenkin yhä kohtalaisen korkea, mutta viileämpi lämpötila saattaa vaikuttaa hintatasoon. Viikon erottuvin päivä on **keskiviikko**, jolloin keskihinta kohoaa 12.2 ¢/kWh:iin ja päivän maksimihinta on jopa 19.7 ¢/kWh. Tämä on selitettävissä erityisesti tuulivoiman tuotannon vähäisyydellä ja kylmällä säällä, sillä päivän keskilämpötila laskee -6.3 °C:een, mikä voi selittää korkeamman hintatason. Viikon aikana hinnat vaihtelevat merkittävästi, joten sähkönkuluttajien on hyvä seurata tilanteen kehitystä.
