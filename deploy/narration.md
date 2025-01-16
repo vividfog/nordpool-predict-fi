@@ -1,19 +1,17 @@
-Ennuste on päivitetty keskiviikkona klo 21:15.
+Ennuste on päivitetty torstaina klo 03:15.
 
-|          | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **torstai**  |       0.2        |     -0.2 - 0.5   |   5651 - 6585 |      1.5      |
-| **perjantai**|       1.3        |     -0.0 - 4.5   |   3568 - 6312 |      0.4      |
-| **lauantai** |       3.2        |     0.2 - 6.8    |   2643 - 5863 |     -1.0      |
-| **sunnuntai**|       5.0        |     0.9 - 7.7    |   2251 - 4389 |      0.1      |
-| **maanantai**|       4.4        |     1.6 - 7.5    |   4049 - 5295 |      0.5      |
-| **tiistai**  |       2.8        |     0.2 - 5.4    |   2531 - 5247 |     -1.8      |
-| **keskiviikko**|     10.1       |     2.0 - 15.8   |    881 - 2526 |     -6.3      |
+|             | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **perjantai** | 1,3              | -0,2 - 4,1       | 3727 - 6343   | 0,4           |
+| **lauantai** | 3,1              | -0,5 - 7,7       | 2875 - 5629   | -1,0          |
+| **sunnuntai** | 5,1              | 1,9 - 8,1        | 2169 - 4250   | 0,1           |
+| **maanantai** | 4,3              | 1,7 - 7,0        | 3896 - 5000   | 0,5           |
+| **tiistai**   | 3,0              | 0,3 - 5,3        | 2356 - 5008   | -1,8          |
+| **keskiviikko**| 9,6              | 2,1 - 14,6       | 974 - 2499    | -6,3          |
+| **torstai**   | 12,2             | 7,6 - 18,0       | 647 - 2386    | -6,5          |
 
-Tulevalla viikolla sähkön hinnassa nähdään merkittäviä vaihteluita. **Keskiviikko** erottuu selvästi korkeimmalla keskihinnalla 10,1 ¢/kWh ja maksimihinnalla 15,8 ¢/kWh. Tämä voi selittyä matalalla tuulivoiman tuotannolla, joka on kyseisen päivän osalta alhaisimmillaan 881 MW, kun taas keskilämpötila laskee -6,3 °C:seen. Kova pakkanen voi myös osaltaan nostaa hintaa.
+Tulevalla viikolla sähkön hinnat vaihtelevat merkittävästi eri päivinä. **Perjantai** erottuu viikon edullisimpana päivänä, sillä sen keskihinta on vain 1,3 ¢/kWh, ja päivän hinnat laskevat jopa negatiivisiksi yöllä. Tämä johtuu voimakkaasta tuulivoimasta, joka on yli 3000 MW, mikä selittää matalan hintatason.
 
-Viikon edullisimmat hinnat nähdään **torstaina**, jolloin keskihinta on vain 0,2 ¢/kWh ja päivän minimihinta laskee jopa negatiiviseksi -0,2 ¢/kWh. Tämä selittyy voimakkaalla tuulituotannolla, joka on keskimäärin korkealla tasolla.
+Viikon kalleimmat päivät ovat **keskiviikko** ja **torstai**. Keskiviikon keskihinta nousee 9,6 ¢/kWh, ja torstaina keskihinta on jopa 12,2 ¢/kWh. Torstaina maksimihinta kohoaa 18,0 ¢/kWh. Molempina päivinä alhainen tuulivoiman minimituotanto alle 2000 MW yhdistettynä kylmään säähän, jossa lämpötila laskee alle -5 °C, vaikuttaa hintojen nousuun.
 
-Hintakehitys on maltillisempaa **perjantaina** ja **lauantaina**, jolloin keskihinnat ovat vastaavasti 1,3 ¢/kWh ja 3,2 ¢/kWh. Näinä päivinä tuulivoiman tuotanto on vaihtelevaa, mutta ei vaikuta merkittävästi hintaan. **Sunnuntaina** ja **maanantaina** keskihinnat ovat korkeampia, 5,0 ¢/kWh ja 4,4 ¢/kWh, mutta eivät yllä keskiviikon tasolle.
-
-Lopuksi **tiistai** tuo mukanaan hieman matalamman hinnan, 2,8 ¢/kWh, verrattuna viikon keskivaiheen korkeampiin hinnoitteluihin. Kokonaisuutena viikko tarjoaa kuluttajille vaihtelevia hintatasoja, joissa erityisesti keskiviikko erottuu korkealla hinnallaan ja alhaisella tuulivoimatuotannolla.
+Muiden päivien hinnat pysyvät melko maltillisina, vaihdellen 3,0 ja 5,1 ¢/kWh välillä. **Sunnuntai** nousee esiin hieman kalliimpana päivänä, mikä johtuu alhaisemmasta tuulivoimatuotannosta. **Maanantai** ja **tiistai** ovat suhteellisen edullisia päiviä, vaikka niiden välillä on pieniä eroja keskihinnoissa. Viikon aikana sähkön hinta vaihtelee siis selvästi, ja erityisesti viikonloppuna on huomattavissa hintojen nousua.
