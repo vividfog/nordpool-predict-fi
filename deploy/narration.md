@@ -1,17 +1,17 @@
-Nyt on perjantai klo 09:13 ja Nordpool-sähköpörssin hintaennusteet on päivitetty.
+Ennuste on päivitetty perjantaina klo 12:14.
 
-|              | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|             | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **lauantai** | 1,5              | -0,5 - 3,5       | 3878 - 7024   | -1,0          |
-| **sunnuntai**| 3,4              | 0,4 - 6,5        | 3142 - 6005   | 0,1           |
-| **maanantai**| 3,9              | 2,1 - 6,3        | 4537 - 5967   | 0,5           |
-| **tiistai**  | 5,3              | 1,4 - 12,6       | 1987 - 6029   | -1,8          |
-| **keskiviikko**| 13,6           | 6,3 - 19,7       | 987 - 2132    | -6,3          |
-| **torstai**  | 14,5             | 10,3 - 21,4      | 800 - 2247    | -6,7          |
-| **perjantai**| 12,6             | 8,4 - 17,1       | 885 - 3068    | -7,5          |
+| **lauantai** |       1,8        |    -0,6 - 4,2    |   3218 - 7048 |      -1,0     |
+| **sunnuntai** |       3,2        |     0,7 - 4,9    |   3105 - 5906 |       0,1     |
+| **maanantai** |       3,9        |     1,9 - 6,5    |   4588 - 6069 |       0,5     |
+| **tiistai** |       4,8        |    1,3 - 10,5    |   1910 - 6259 |      -1,8     |
+| **keskiviikko** |      12,7        |    4,9 - 19,0    |    973 - 2092 |      -6,3     |
+| **torstai** |      15,0        |   10,6 - 21,5    |    780 - 2158 |      -6,7     |
+| **perjantai** |      12,9        |    8,4 - 17,7    |   1099 - 3088 |      -7,5     |
 
-Tulevan viikon aikana sähkön hinnassa on havaittavissa merkittäviä eroja päivien välillä. **Lauantai** aloittaa viikon edullisimmilla hinnoilla, keskihinnan ollessa 1,5 ¢/kWh. Tämä johtuu osittain runsaasta tuulivoimasta, jonka keskimääräinen tuotanto on huomattavan korkealla tasolla. **Sunnuntai** ja **maanantai** jatkavat maltillisilla hinnoilla, mutta **tiistai** tuo mukanaan selkeän muutoksen, kun keskihinta nousee 5,3 ¢/kWh tasolle. Tämä johtuu osittain tuulivoiman vaihtelusta, vaikka keskituotanto on tavanomaista.
+Tuleva viikko tuo mukanaan merkittäviä vaihteluita sähkön hinnoissa. **Lauantai** tarjoaa edullisinta sähköä, kun päivän keskihinta on 1,8 ¢/kWh ja minimi jopa negatiivinen, -0,6 ¢/kWh. Tämä johtuu osittain runsaasta tuulivoimatuotannosta. **Sunnuntai** ja **maanantai** jatkavat melko maltillisilla hinnoilla, keskihintojen ollessa 3,2 ¢/kWh ja 3,9 ¢/kWh. Näinä päivinä tuulivoiman tuotanto on kohtuullista eikä merkittäviä hintavaihteluita esiinny.
 
-Viikon kalleimmat päivät ovat **keskiviikko** ja **torstai**, jolloin keskihinnat nousevat merkittävästi 13,6 ¢/kWh ja 14,5 ¢/kWh tasolle. Näillä päivillä on myös alhaiset lämpötilat, jotka voivat osaltaan vaikuttaa korkeisiin hintoihin. **Keskiviikkona** tuulivoiman minimituotanto on poikkeuksellisen alhainen, mikä selittää korkeamman maksimihinnan. **Perjantai** seuraa hieman alhaisemmalla, mutta silti korkealla 12,6 ¢/kWh keskihinnalla.
+**Tiistai** tuo mukanaan hintojen nousua. Keskihinta on 4,8 ¢/kWh, mutta päivän maksimihinta nousee 10,5 ¢/kWh. Tämä voi osittain selittyä tuulivoiman vähäisellä minimituotannolla. **Keskiviikko** erottuu viikolla korkeimmilla hinnoilla, kun keskihinta nousee 12,7 ¢/kWh, ja maksimihinta jopa 19,0 ¢/kWh. Tämä johtuu matalasta tuulivoimatuotannosta sekä pakkaslukemista, jotka painuvat alle -6 °C.
 
-Viikon aikana lämpötilat laskevat alle -5 °C loppuviikosta, mikä voi osaltaan nostaa sähkön hintaa. Erityisesti **keskiviikosta** eteenpäin matalat lämpötilat saattavat lisätä kysyntää ja siten vaikuttaa hintatasoon. Keskimääräisesti viikko tarjoaa laajan hintaskaalan, jossa edullisimmat hinnat koetaan viikonloppuna ja korkeimmat keskellä viikkoa.
+Viikon kalleimmat päivät ovat **torstai** ja **perjantai**, jolloin keskihinnat ovat 15,0 ¢/kWh ja 12,9 ¢/kWh. Torstain hyvin korkea maksimihinta 21,5 ¢/kWh yhdistettynä tuulivoiman alhaiseen tuotantoon selittää osaltaan korkeita sähkön hintoja. Kova pakkanen jatkuu myös näinä päivinä, mikä vaikuttaa osaltaan hintojen nousuun.
