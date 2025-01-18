@@ -61,7 +61,7 @@ def train_model(df, fmisid_ws, fmisid_t):
     print(X_train.sample(10, random_state=42))
 
     # Print feature columns used in training
-    print("→ Feature columns used in training:")
+    print("→ Pricing model feature columns:")
     print(", ".join(X_train.columns))
 
     # See train_xgb.txt for history of hyperparameter tuning
@@ -89,18 +89,18 @@ def train_model(df, fmisid_ws, fmisid_t):
     xgb_model.fit(X_train, y_train, eval_set=[(X_test, y_test)], verbose=500)
 
     # SHAP analysis
-    print("→ SHAP feature importances (Mean Absolute SHAP Values per Feature):")
-    explainer = shap.TreeExplainer(xgb_model)
-    shap_values = explainer.shap_values(X_test, check_additivity=False)
+    # print("→ SHAP feature importances (Mean Absolute SHAP Values per Feature):")
+    # explainer = shap.TreeExplainer(xgb_model)
+    # shap_values = explainer.shap_values(X_test, check_additivity=False)
 
-    # Aggregate mean absolute SHAP values per feature for console display
-    shap_summary = np.abs(shap_values).mean(axis=0)
-    shap_summary_df = pd.DataFrame({
-        'Feature': X_test.columns,
-        'Mean |SHAP Value|': shap_summary
-    }).sort_values(by='Mean |SHAP Value|', ascending=False)
+    # # Aggregate mean absolute SHAP values per feature for console display
+    # shap_summary = np.abs(shap_values).mean(axis=0)
+    # shap_summary_df = pd.DataFrame({
+    #     'Feature': X_test.columns,
+    #     'Mean |SHAP Value|': shap_summary
+    # }).sort_values(by='Mean |SHAP Value|', ascending=False)
 
-    print(shap_summary_df.to_string(index=False))
+    # print(shap_summary_df.to_string(index=False))
 
     # Residual analysis
     y_pred_filtered = xgb_model.predict(X_test)
