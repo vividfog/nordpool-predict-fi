@@ -24,7 +24,7 @@ from util.eval import create_prediction_snapshot, rotate_snapshots
 
 # Wind power model choices: nn vs xgb
 # from util.fingrid_windpower_nn import update_windpower
-from util.fingrid_windpower import update_windpower
+from util.fingrid_windpower_xgb import update_windpower
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # Configure pandas to display all rows
@@ -163,7 +163,10 @@ if args.predict:
     
     # Update import capacity data
     df_recent = update_import_capacity(df_recent)
-    
+
+    # Update Baltic Sea area wind speed data
+    df_recent = update_eu_ws(df_recent)
+
     # Update wind power data
     df_recent = update_windpower(df_recent, fingrid_api_key=fingrid_api_key)
 
@@ -183,9 +186,6 @@ if args.predict:
     
     # Update solar irradiation data
     df_recent = update_solar(df_recent)
-    
-    # Update Baltic Sea area wind speed data
-    df_recent = update_eu_ws(df_recent)
 
     # Set 'timestamp' as index in df_recent
     df_recent.set_index('timestamp', inplace=True)
