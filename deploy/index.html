@@ -87,6 +87,9 @@
         <p><strong>12.1.2025:</strong></p>
         <li>Fingrid, tuulivoimakapasiteetti: rajapinnasta puuttui dataa vuoden alkupuolelta. Open-Meteo, auringonsäteily: tarjotut ennustearvot (W/m²) olivat <a href="https://github.com/open-meteo/open-meteo/issues/1184" target="_blank">negatiivisia</a> lähipäiville, puolen miljoonan Watin verran. Tarkistuksia lisätty tällaisten tilanteiden varalta.</li>
         <li>Itämeren tuulivoima-alueita lisätty hinnoittelumalliin. Vähäinen tuuli ulkomailla voi nostaa hintaa Suomessa, vaikka oma tuotanto olisi voimakasta.</li>
+        <p><strong>18.1.2025:</strong></p>
+        <li>Tuulivoimamallia tuunattu. Fingridin jatkuvasti päivittyvä <a href="https://data.fingrid.fi/datasets/245" target="">ennuste</a> kertoo ensimmäiset 36 tuntia päivityshetkestä alkaen, ja loput arvioidaan Itämeren ympäristön ja Suomen säätiedoista. Toteutuma päivittyy nyt <a href="https://data.fingrid.fi/datasets/181" target="_blank">takautuvasti</a>.</li>
+        <li>Kielimalli näkee nyt päivän sisäiset tiedot ja mahdolliset hintapiikkien riskit. Kielimalliksi vaihdettu <a href="https://huggingface.co/deepseek-ai/DeepSeek-V3" target="_blank">DeepSeek-V3</a>.</li>
         <p><strong>Suunnitteilla:</strong></p>
         <li>Tuntikohtaisen hintavolatiliteetin tarkempi ennustaminen saattaa tarvita oman mallinsa ja menetelmänsä nykyisen rinnalle/päälle. Nykyinen menetelmä toimii paremmin vuorokauden hintatason arvioinnissa kuin aamun ja illan yksittäisten piikkihintojen dynamiikassa.</li>
         <h1>Mitä ennuste ei huomioi?</h1>
