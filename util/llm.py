@@ -111,7 +111,6 @@ def send_to_gpt(df):
     time_now = datetime.datetime.now().strftime("%H:%M")
 
     prompt = "<data>\n"
-    prompt += f"Nyt on {weekday_today.lower()} {date_today.lower()} klo {time_now}. "
     prompt += f"Nordpool-sähköpörssin verolliset Suomen markkinan hintaennusteet lähipäiville ovat seuraavat (viimeksi päivitetty: {weekday_today.lower()}na klo {time_now}). "
     prompt += "Ole tarkkana että käytät näitä numeroita oikein ja lue ohjeet tarkasti:\n"
 
