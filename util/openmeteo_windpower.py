@@ -55,7 +55,7 @@ def fetch_historical_wind_data(locations, start_date, end_date):
     
     # Fetch data for each location separately, then merge into one wide DataFrame
     for code, lat, lon in locations:
-        print(f"→ Fetching historical data for {code} ({lat, lon})")
+        # print(f"→ Fetching historical data for {code} ({lat, lon})")
         response = requests.get(
             historical_url,
             params={
@@ -70,19 +70,19 @@ def fetch_historical_wind_data(locations, start_date, end_date):
         
         if response.status_code == 200:
             data = response.json()
-            print(f"  • Data shape: {len(data)}")
+            # print(f"  • Data shape: {len(data)}")
             # print(data)
             timestamps = data.get('hourly', {}).get('time', [])
-            print(f"  ✓ Got {len(timestamps)} timestamps for {code}")
-            if timestamps:
-                print(f"    First timestamp: {timestamps[0]}")
-                print(f"    Last timestamp: {timestamps[-1]}")
+            # print(f"  ✓ Got {len(timestamps)} timestamps for {code}")
+            # if timestamps:
+            #     print(f"    First timestamp: {timestamps[0]}")
+            #     print(f"    Last timestamp: {timestamps[-1]}")
             # Check for NaN or empty values
             if not timestamps or all(pd.isna(timestamps)):
                 print(f"  [WARNING] No valid timestamps for {code}")
             if "hourly" not in data or "time" not in data["hourly"]:
                 print(f"[ERROR] Malformed historical wind data for {code}: missing 'hourly/time'.")
-                exit(1)
+                raise ValueError(f"[ERROR] Malformed historical wind data for {code}: missing 'hourly/time'.")
             
             hourly_data = data["hourly"]
             df = pd.DataFrame({
@@ -90,14 +90,17 @@ def fetch_historical_wind_data(locations, start_date, end_date):
                 code: hourly_data["wind_speed_100m"],  # Rename to 120m for consistency
             }).rename(columns={code: code})  # Use the new code directly
             empty_values_count = df[code].isna().sum()
-            print(f"  • {empty_values_count} empty values for {code}")
+            # print(f"  • {empty_values_count} empty values for {code}")
             data_frames.append(df)
             
         else:
             print(f"  ✗ Failed with status {response.status_code}")
             print(f"[ERROR] Failed to fetch historical data for {code} ({lat, lon}): {response.status_code}")
             print(response.text)
-            exit(1)
+            raise ValueError(
+                f"[ERROR] Failed to fetch historical data for {code} ({lat, lon}): "
+                f"{response.status_code}, {response.text}"
+            )
     
     # If we got multiple data frames, merge them on 'time' to get a wide table
     if data_frames:
@@ -133,7 +136,7 @@ def fetch_forecast_wind_data(locations):
     data_frames = []
     
     for code, lat, lon in locations:
-        print(f"→ Fetching forecast data for {code} ({lat, lon})")
+        # print(f"→ Fetching forecast data for {code} ({lat, lon})")
         response = requests.get(
             forecast_url,
             params={
@@ -149,16 +152,16 @@ def fetch_forecast_wind_data(locations):
         if response.status_code == 200:
             data = response.json()
             timestamps = data.get('hourly', {}).get('time', [])
-            print(f"  ✓ Got {len(timestamps)} timestamps for {code}")
-            if timestamps:
-                print(f"    First timestamp: {timestamps[0]}")
-                print(f"    Last timestamp: {timestamps[-1]}")
+            # print(f"  ✓ Got {len(timestamps)} timestamps for {code}")
+            # if timestamps:
+            #     print(f"    First timestamp: {timestamps[0]}")
+            #     print(f"    Last timestamp: {timestamps[-1]}")
             # Check for NaN or empty values
             if not timestamps or all(pd.isna(timestamps)):
                 print(f"  [WARNING] No valid timestamps for {code}")
             if "hourly" not in data or "time" not in data["hourly"]:
                 print(f"[ERROR] Malformed forecast wind data for {code}: missing 'hourly/time'.")
-                exit(1)
+                raise ValueError(f"[ERROR] Malformed forecast wind data for {code}: missing 'hourly/time'.")
             
             hourly_data = data["hourly"]
             df = pd.DataFrame({
@@ -166,7 +169,7 @@ def fetch_forecast_wind_data(locations):
                 code: hourly_data["wind_speed_120m"],  # Rename to 120m for consistency
             }).rename(columns={code: code})  # Use the new code directly
             empty_values_count = df[code].isna().sum()
-            print(f"  • {empty_values_count} empty values for {code}")
+            # print(f"  • {empty_values_count} empty values for {code}")
             data_frames.append(df)
         else:
             print(f"  ✗ Failed with status {response.status_code}")
@@ -195,11 +198,11 @@ def fetch_forecast_wind_data(locations):
         raise ValueError("[ERROR] No forecast wind data available.")
 
 def combine_wind_data(historical_df, forecast_df):
-    print("\n→ Combining historical and forecast data")
-    if historical_df is not None:
-        print(f"  • Historical data shape: {historical_df.shape}")
-    if forecast_df is not None:
-        print(f"  • Forecast data shape: {forecast_df.shape}")
+    # print("\n→ Combining historical and forecast data")
+    # if historical_df is not None:
+    #     print(f"  • Historical data shape: {historical_df.shape}")
+    # if forecast_df is not None:
+    #     print(f"  • Forecast data shape: {forecast_df.shape}")
     
     if historical_df is None and forecast_df is None:
         raise ValueError("[ERROR] Both historical and forecast data are unavailable.")
@@ -241,15 +244,15 @@ def update_eu_ws(df):
     Returns:
     - pd.DataFrame: The updated DataFrame with columns for each location's wind speed at 100/120m.
     """
-    print("\n* Open-Meteo: Processing request...")
-    print(f"  • Input DataFrame shape: {df.shape}")
-    print(f"  • Date range: {df['timestamp'].min()} to {df['timestamp'].max()}")
+    # print("\n* Open-Meteo: Processing request...")
+    # print(f"  • Input DataFrame shape: {df.shape}")
+    # print(f"  • Date range: {df['timestamp'].min()} to {df['timestamp'].max()}")
     
     # Drop existing wind speed columns if they exist
     existing_codes = [loc[0] for loc in LOCATIONS]  # ["eu_ws_EE01", "eu_ws_EE02", ...]
     dropped_cols = [code for code in existing_codes if code in df.columns]
     if dropped_cols:
-        print(f"  • Dropping existing wind columns: {', '.join(dropped_cols)}")
+        # print(f"  • Dropping existing wind columns: {', '.join(dropped_cols)}")
         df = df.drop(columns=dropped_cols, errors='ignore')
     
     # Determine the overall date range from the incoming DataFrame
@@ -266,11 +269,11 @@ def update_eu_ws(df):
     combined_data = combine_wind_data(historical_data, forecast_data)
     
     # Merge with the original DataFrame
-    print("\n→ Starting data merge")
-    print(f"  • Wind data shape before merge: {combined_data.shape}")
+    # print("\n→ Starting data merge")
+    # print(f"  • Wind data shape before merge: {combined_data.shape}")
     df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True)  # Ensure timestamps are in UTC
     merged_df = pd.merge(df, combined_data, left_on='timestamp', right_on='time', how='left')
-    print(f"  • Final merged shape: {merged_df.shape}")
+    # print(f"  • Final merged shape: {merged_df.shape}")
     merged_df.drop(columns=['time'], inplace=True)
     
     # Check for missing values after merging
@@ -281,11 +284,11 @@ def update_eu_ws(df):
                 raise ValueError(f"[ERROR] {missing_count} values for {code} not available from Open-Meteo. Data is incomplete.")
     
     # Print a quick overview of the final wind speeds
-    print("→ Final wind data columns:", [c for c in merged_df.columns if c in existing_codes])
+    # print("→ Final wind data columns:", [c for c in merged_df.columns if c in existing_codes])
     
     # Print descriptive statistics for the merged wind columns
-    print("→ Combined wind speed stats:")
-    print(merged_df[existing_codes].describe())
+    # print("→ Combined wind speed stats:")
+    # print(merged_df[existing_codes].describe())
     
     return merged_df
 
