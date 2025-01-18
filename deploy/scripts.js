@@ -279,7 +279,7 @@ Promise.all([
                         },
                         lineStyle: {
                             type: 'dotted',
-                            color: 'skyblue',
+                            color: 'crimson',
                             width: 1.5
                         },
                         data: [
@@ -481,7 +481,7 @@ fetch(windPowerUrl)
                         },
                         lineStyle: {
                             type: 'dotted',
-                            color: 'skyblue',
+                            color: 'crimson',
                             width: 1.5
                         },
                         data: [
@@ -631,7 +631,7 @@ function setupHistoryChart(data) {
             },
             lineStyle: {
                 type: 'dotted',
-                color: 'skyblue',
+                color: 'crimson',
                 width: 1.5
             },
             data: [
