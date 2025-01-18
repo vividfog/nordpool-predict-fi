@@ -1,17 +1,19 @@
-Ennuste on päivitetty lauantaina klo 12:14.
+Ennuste on päivitetty lauantaina klo 15:14.
 
-|              | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **sunnuntai**  | 1,8            | 0,5 - 2,7          | 3008 - 6255   | 0,1           |
-| **maanantai**  | 4,2            | 1,8 - 6,5          | 4648 - 5454   | 0,5           |
-| **tiistai**    | 5,2            | 1,5 - 11,7         | 2135 - 5714   | -1,8          |
-| **keskiviikko**| 12,9           | 6,5 - 18,8         | 1064 - 2203   | -6,3          |
-| **torstai**    | 11,4           | 8,5 - 18,0         | 809 - 2182    | -6,7          |
-| **perjantai**  | 9,6            | 4,8 - 14,2         | 929 - 3154    | -7,6          |
-| **lauantai**   | 8,3            | 5,7 - 12,8         | 1100 - 1613   | -6,5          |
+|                | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:---------------|:----------------:|:----------------:|:--------------------:|:------------------:|
+| **sunnuntai**  |       0,7        |      0,1 - 2,8   |      2992 - 6263     |        0,1         |
+| **maanantai**  |       3,1        |      0,6 - 5,3   |      4412 - 5589     |        0,5         |
+| **tiistai**    |       5,0        |      1,0 - 13,1  |      1802 - 5579     |       -1,8         |
+| **keskiviikko**|      12,6        |      6,9 - 18,6  |       795 - 2025     |       -6,3         |
+| **torstai**    |      11,2        |      8,3 - 18,0  |       840 - 2241     |       -6,7         |
+| **perjantai**  |       9,3        |      4,5 - 13,0  |       881 - 3259     |       -7,6         |
+| **lauantai**   |       7,1        |      4,4 - 11,9  |       916 - 1612     |       -6,7         |
 
-Tuleva viikko tuo mukanaan merkittäviä vaihteluita pörssisähkön hinnoissa. **Keskiviikkona** sähkön keskihinta nousee korkeimmilleen 12,9 senttiin kilowattitunnilta ja päivän maksimihinta on 18,8 senttiä. Tämä hintataso saattaa osaltaan selittyä alhaisella tuulivoiman tuotannolla, joka on tuolloin minimissään vain 1064 MW. **Torstaina** ja **perjantaina** nähdään myös korkeita keskihintoja, 11,4 ja 9,6 senttiä, mikä liittyy osittain kylmään säähän, sillä keskilämpötila laskee molempina päivinä alle -5 asteeseen. 
+Ennusteen mukaan pörssisähkön hinta vaihtelee merkittävästi tulevalla viikolla. **Sunnuntai** näyttää olevan viikon edullisin päivä, jolloin sähkön keskihinta on vain 0,7 senttiä kilowattitunnilta. Tämä voi johtua korkeasta tuulivoiman tuotannosta, joka on keskimäärin 4747 MW. **Maanantai** jatkaa edullisten hintojen linjalla 3,1 sentin keskihinnalla.
 
-Viikon edullisimmat hinnat sijoittuvat **sunnuntaille**, jolloin pörssisähkön keskihinta on vain 1,8 senttiä kilowattitunnilta ja tuulivoiman tuotanto on voimakasta, keskimäärin 4748 MW. **Maanantai** ja **tiistai** tarjoavat myös kohtuullisia hintatasoja, mutta tiistain maksimihinta kohoaa hetkellisesti 11,7 senttiin.
+**Tiistai** tuo mukanaan hinnan nousun, keskihinnan ollessa 5,0 senttiä. **Keskiviikko** erottuu korkeimmalla keskihinnalla, joka on 12,6 senttiä. Samana päivänä on myös korkein maksimihinta 18,6 senttiä. Tämä voi liittyä alhaiseen tuulivoiman minimituotantoon, joka on vain 795 MW, sekä kovaan pakkaseen, kun keskilämpötila laskee -6,3 asteeseen.
 
-Kokonaisuutena viikko on hintakehitykseltään monipuolinen, ja erityisesti viikon puolivälin korkeat hinnat voivat kiinnittää kuluttajien huomion. Alhainen tuulivoiman tuotanto ja kylmemmät lämpötilat vaikuttavat osaltaan näihin hintavaihteluihin.
+**Torstai** ja **perjantai** jatkavat korkeammilla hinnoilla, mutta keskihinnat laskevat hieman keskiviikosta. **Torstain** keskihinta on 11,2 senttiä ja **perjantain** 9,3 senttiä. Tuulivoiman tuotanto pysyy alhaisena, mikä osaltaan vaikuttaa hintoihin. Viikon lopussa, **lauantaina**, hinnat laskevat jälleen, ja keskihinta on 7,1 senttiä kilowattitunnilta.
+
+Kokonaisuudessaan viikon hintakehitys on vaihteleva, ja erityisesti keskiviikko nousee esiin korkeiden hintojen päivänä. Pakkasen kiristyminen keskiviikosta perjantaihin vaikuttaa osaltaan hintojen nousuun.
