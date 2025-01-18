@@ -19,20 +19,39 @@ except locale.Error:
 
 load_dotenv('.env.local')
 
+def spike_price_risk(df):
+    """Calculate the risk of price spikes for each day."""
+    df['Price_Range'] = df['PricePredict_cpkWh_max'] - df['PricePredict_cpkWh_min']
+    df['Price_StdDev'] = df['PricePredict_cpkWh_mean'].rolling(window=2).std().fillna(0)
+
+    df['Spike_Risk'] = 0
+
+    # Price or range thresholds
+    df.loc[df['PricePredict_cpkWh_max'] > 15, 'Spike_Risk'] += 2
+    df.loc[df['Price_Range'] > 10, 'Spike_Risk'] += 1
+    df.loc[df['Price_StdDev'] > 4, 'Spike_Risk'] += 1
+
+    # Wind thresholds
+    df.loc[df['WindPowerMW_min'] < 1000, 'Spike_Risk'] += 1
+    df.loc[df['WindPowerMW_mean'] < 2500, 'Spike_Risk'] += 1
+    df.loc[df['WindPowerMW_mean'] > 3000, 'Spike_Risk'] -= 1  # Less likely to spike if wind is strong
+
+    # Temperature thresholds
+    df.loc[df['Avg_Temperature_mean'] < -5, 'Spike_Risk'] += 1
+    df.loc[df['Avg_Temperature_mean'] > 15, 'Spike_Risk'] -= 1
+
+    return df
+
 def narrate_prediction():
     """Fetch prediction data from the database and narrate it using an LLM."""
-    
-    # Determine the current time in Helsinki
     helsinki_tz = pytz.timezone('Europe/Helsinki')
     now_hel = datetime.datetime.now(helsinki_tz)
 
-    # Calculate tomorrow's date
+    # Calculate tomorrow's date, midnight
     tomorrow_date = now_hel.date() + datetime.timedelta(days=1)
-
-    # Get midnight of tomorrow in Helsinki time (should be DST aware)
     tomorrow_start = helsinki_tz.localize(datetime.datetime.combine(tomorrow_date, datetime.time(0, 0)))
 
-    # Create a DataFrame with timestamps for up to the next 7 days starting from tomorrow
+    # Create a DataFrame with timestamps for the next 7 days (hourly)
     df = pd.DataFrame({
         'timestamp': pd.date_range(
             start=tomorrow_start,
@@ -43,101 +62,151 @@ def narrate_prediction():
     })
 
     # Fetch data from the database
+    from .sql import db_query
     try:
         df_result = db_query('data/prediction.db', df)
     except Exception as e:
         print(f"Database query failed for OpenAI narration: {e}")
         sys.exit(1)
 
-    # Keep timestamp, predicted price, wind power data, and temperature data
+    # Keep needed columns
     temperature_ids = os.getenv('FMISID_T', "").split(',')
     temperature_columns = [f't_{temp_id}' for temp_id in temperature_ids]
-    df_result = df_result[['timestamp', 'PricePredict_cpkWh', 'WindPowerMW', 'holiday'] + temperature_columns]
+    cols_needed = ['timestamp', 'PricePredict_cpkWh', 'WindPowerMW', 'holiday'] + temperature_columns
+    df_result = df_result[cols_needed].dropna()
 
-    # Drop rows with missing values
-    df_result = df_result.dropna()
-
-    # Ensure timestamp is a datetime object with Helsinki timezone
+    # Convert timestamp to Helsinki time
     df_result['timestamp'] = pd.to_datetime(df_result['timestamp'], utc=True).dt.tz_convert(helsinki_tz)
 
-    # Calculate average temperature
+    # Compute average temperature
     df_result['Avg_Temperature'] = df_result[temperature_columns].mean(axis=1)
-    
     df_result['holiday'] = df_result['holiday'].astype(int)
 
-    # Group by the day in Helsinki timezone
-    df_grouped = df_result.groupby(df_result['timestamp'].dt.floor('D')).agg({
+    # Prepare daily DataFrame
+    df_daily = df_result.groupby(df_result['timestamp'].dt.floor('D')).agg({
         'PricePredict_cpkWh': ['min', 'max', 'mean'],
         'WindPowerMW': ['min', 'max', 'mean'],
         'Avg_Temperature': 'mean',
         'holiday': 'any'
     })
+    df_daily.columns = [f"{col[0]}_{col[1]}" for col in df_daily.columns.values]
+    df_daily.reset_index(inplace=True)
+    df_daily.rename(columns={'timestamp_': 'timestamp'}, inplace=True)
 
-    # Rounding and conversion to ensure integer output for min and max
-    df_grouped[('PricePredict_cpkWh', 'min')] = df_grouped[('PricePredict_cpkWh', 'min')].round(1)
-    df_grouped[('PricePredict_cpkWh', 'max')] = df_grouped[('PricePredict_cpkWh', 'max')].round(1)
+    df_daily = df_daily.rename(columns={
+        'PricePredict_cpkWh_min': 'PricePredict_cpkWh_min',
+        'PricePredict_cpkWh_max': 'PricePredict_cpkWh_max',
+        'PricePredict_cpkWh_mean': 'PricePredict_cpkWh_mean',
+        'WindPowerMW_min': 'WindPowerMW_min',
+        'WindPowerMW_max': 'WindPowerMW_max',
+        'WindPowerMW_mean': 'WindPowerMW_mean',
+        'Avg_Temperature_mean': 'Avg_Temperature_mean',
+        'holiday_any': 'holiday_any'
+    })
 
-    # Keeping mean as a float rounded to 1 decimal place
-    df_grouped[('PricePredict_cpkWh', 'mean')] = df_grouped[('PricePredict_cpkWh', 'mean')].round(1)
+    # Apply spike risk logic to daily
+    df_daily = spike_price_risk(df_daily)
 
-    # Ensure WindPowerMW is integer and Avg_Temperature one decimal float
-    df_grouped[('WindPowerMW', 'min')] = df_grouped[('WindPowerMW', 'min')].round().astype(int)
-    df_grouped[('WindPowerMW', 'max')] = df_grouped[('WindPowerMW', 'max')].round().astype(int)
-    df_grouped[('WindPowerMW', 'mean')] = df_grouped[('WindPowerMW', 'mean')].round().astype(int)
-    df_grouped[('Avg_Temperature', 'mean')] = df_grouped[('Avg_Temperature', 'mean')].round(1)
+    # Round columns
+    df_daily['PricePredict_cpkWh_min'] = df_daily['PricePredict_cpkWh_min'].round(1)
+    df_daily['PricePredict_cpkWh_max'] = df_daily['PricePredict_cpkWh_max'].round(1)
+    df_daily['PricePredict_cpkWh_mean'] = df_daily['PricePredict_cpkWh_mean'].round(1)
 
-    # Convert the date index to weekday names
-    df_grouped.index = pd.to_datetime(df_grouped.index).strftime('%A')
-    
-    narrative = send_to_gpt(df_grouped)
+    df_daily['WindPowerMW_min'] = df_daily['WindPowerMW_min'].round().astype(int)
+    df_daily['WindPowerMW_max'] = df_daily['WindPowerMW_max'].round().astype(int)
+    df_daily['WindPowerMW_mean'] = df_daily['WindPowerMW_mean'].round().astype(int)
+    df_daily['Avg_Temperature_mean'] = df_daily['Avg_Temperature_mean'].round(1)
 
+    df_daily['weekday'] = df_daily['timestamp'].dt.strftime('%A')
+    df_daily.set_index('weekday', inplace=True)
+
+    # Include daily average wind
+    df_daily['WindPowerMW_avg'] = df_daily['WindPowerMW_mean']
+
+    # Intraday DataFrame can remain in hourly format
+    # Round columns to match daily's style
+    df_result['PricePredict_cpkWh'] = df_result['PricePredict_cpkWh'].round(1)
+    df_result['WindPowerMW'] = df_result['WindPowerMW'].round().astype(int)
+    df_result['Avg_Temperature'] = df_result['Avg_Temperature'].round(1)
+
+    # Send both dataframes to GPT
+    narrative = send_to_gpt(df_daily, df_result)
     return narrative
 
-def send_to_gpt(df):
-    # Load nuclear outage data from JSON
+def send_to_gpt(df_daily, df_intraday):
+    # Load nuclear outage data
     try:
         with open('deploy/nuclear_outages.json', 'r') as file:
-            NUCLEAR_OUTAGE_DATA = json.load(file)['nuclear_outages']
+            NUCLEAR_OUTAGE_DATA = json.load(file).get('nuclear_outages', [])
     except (FileNotFoundError, json.JSONDecodeError) as e:
         print(f"! [WARNING] Loading nuclear outage data failed: {e}. Narration will be incomplete.")
-        NUCLEAR_OUTAGE_DATA = None
+        NUCLEAR_OUTAGE_DATA = []
 
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    # client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    client = OpenAI(api_key=os.getenv("DEEPSEEK_API_KEY"),
+                    base_url="https://api.deepseek.com/v1")
 
     today = datetime.date.today()
     weekday_today = today.strftime("%A")
-    # Format date with no leading zeros and proper Finnish month endings
     date_today = f"{int(today.strftime('%d'))}. {today.strftime('%B').lower()}ta {today.strftime('%Y')}"
     time_now = datetime.datetime.now().strftime("%H:%M")
 
+    # Build the prompt
     prompt = "<data>\n"
-    prompt += f"Nordpool-sähköpörssin verolliset Suomen markkinan hintaennusteet lähipäiville ovat seuraavat (viimeksi päivitetty: {weekday_today.lower()}na klo {time_now}). "
-    prompt += "Ole tarkkana että käytät näitä numeroita oikein ja lue ohjeet tarkasti:\n"
+    prompt += f"Nordpool-sähköpörssin verolliset Suomen markkinan hintaennusteet lähipäiville ovat seuraavat (viimeksi päivitetty: {weekday_today.lower()}na klo {time_now}).\n"
 
-    # Iterate over each weekday and concatenate all relevant data
-    for weekday, row in df.iterrows():
+    # Daily rows
+    for weekday, row in df_daily.iterrows():
         prompt += f"\n**{weekday}**\n"
-        if row[('holiday', 'any')] is True:
+        if row['holiday_any']:
             prompt += "- Tämä on pyhäpäivä. Energian kysyntä voi olla normaalia alhaisempi, mikä saattaa pudottaa hintaa.\n"
         prompt += (
-            f"- Pörssisähkön hinta ¢/kWh: {row[('PricePredict_cpkWh', 'min')]} - "
-            f"{row[('PricePredict_cpkWh', 'max')]}, "
-            f"päivän keskihinta {row[('PricePredict_cpkWh', 'mean')]} ¢/kWh.\n"
+            f"- Pörssisähkön hinta ¢/kWh: {row['PricePredict_cpkWh_min']} - "
+            f"{row['PricePredict_cpkWh_max']}, "
+            f"päivän keskihinta {row['PricePredict_cpkWh_mean']} ¢/kWh.\n"
         )
         prompt += (
-            f"- Tuulivoima MW: {int(row[('WindPowerMW', 'min')])} - "
-            f"{int(row[('WindPowerMW', 'max')])}, "
-            f"keskimäärin {int(row[('WindPowerMW', 'mean')])} MW.\n"
+            f"- Tuulivoima MW: {row['WindPowerMW_min']} - "
+            f"{row['WindPowerMW_max']}, "
+            f"keskimäärin {row['WindPowerMW_mean']} MW.\n"
         )
-        prompt += f"- Päivän keskilämpötila: {row[('Avg_Temperature', 'mean')]} °C.\n"
+        prompt += f"- Päivän keskilämpötila: {row['Avg_Temperature_mean']} °C.\n"
+
+        # Spike risk note
+        if row['Spike_Risk'] >= 3:
+            prompt += "- Korkea riski hintapiikeille yksittäisinä tunteina: tarkastele päivän sisäistä dataa.\n"
+        elif row['Spike_Risk'] >= 1:
+            prompt += "- Kohtalainen riski hintapiikeille yksittäisinä tunteina: tarkastele päivän sisäistä dataa.\n"
+
+    # Intraday data
+    prompt += "\n<päivän_sisäinen_data>\n"
+    helsinki_tz = pytz.timezone('Europe/Helsinki')
+    
+    # Create an actual date column for grouping
+    df_intraday['date'] = df_intraday['timestamp'].dt.date
+    # Sort by timestamp so everything is strictly chronological
+    df_intraday.sort_values('timestamp', inplace=True)
+
+    # Now group by each distinct date in ascending order
+    for date_value, group_df in df_intraday.groupby('date', sort=False):
+        # Pick the weekday name (e.g. 'Maanantai') from the first row in this group
+        weekday_name = group_df['timestamp'].dt.strftime('%A').iloc[0]
         
-    # Add a single section for nuclear outages
-    if NUCLEAR_OUTAGE_DATA is not None:
+        prompt += f"  <päivä viikonpäivä='{weekday_name}'>\n"
+        compact_data = []
+        for _, hour_row in group_df.iterrows():
+            compact_data.append(
+                f"{hour_row['timestamp'].strftime('%H:%M')} | {hour_row['PricePredict_cpkWh']} c | {hour_row['WindPowerMW']} MW\n   "
+            )
+        prompt += "    " + " ".join(compact_data) + "\n"
+        prompt += "  </päivä>\n"
+    prompt += "</päivän_sisäinen_data>\n"
+
+    # Add nuclear outages if any
+    if NUCLEAR_OUTAGE_DATA:
         nuclear_outage_section = "\n**Ydinvoimalat**\n"
-        section_empty = True  # Flag to check if any entry is added
-        
-        helsinki_tz = pytz.timezone('Europe/Helsinki')
-        
+        section_empty = True
+
         for outage in NUCLEAR_OUTAGE_DATA:
             start_date_utc = pd.to_datetime(outage['start'])
             end_date_utc = pd.to_datetime(outage['end'])
@@ -145,21 +214,20 @@ def send_to_gpt(df):
             start_date_hel = start_date_utc.tz_convert(helsinki_tz)
             end_date_hel = end_date_utc.tz_convert(helsinki_tz)
 
-            # Assuming today is defined earlier in the code using dt.date.today()
             if start_date_hel.date() <= today <= end_date_hel.date():
-                availability = outage['availability'] * 100  # Convert to percentage
-                if availability < 70:  # Only include rows with availability below 70%
-                    section_empty = False  # Mark that the section is not empty
-                    nominal_power = outage['nominal_power']
-                    avail_qty = outage['avail_qty']
-                    resource_name = outage['production_resource_name']
-                    start_date_str = start_date_hel.strftime('%A %Y-%m-%d %H:%M')  # %A for full weekday name
+                availability = outage.get('availability', 1) * 100
+                if availability < 70:
+                    section_empty = False
+                    nominal_power = outage.get('nominal_power')
+                    avail_qty = outage.get('avail_qty')
+                    resource_name = outage.get('production_resource_name', 'Tuntematon voimala')
+                    start_date_str = start_date_hel.strftime('%A %Y-%m-%d %H:%M')
                     end_date_str = end_date_hel.strftime('%A %Y-%m-%d %H:%M')
                     nuclear_outage_section += (
                         f"- {resource_name}: Nimellisteho {nominal_power} MW, "
                         f"käytettävissä oleva teho {avail_qty} MW, "
                         f"käytettävyys-% {availability:.1f}. Alkaa - loppuu: "
-                        f"{start_date_str} - {end_date_str}. Päättymisaika on ennuste, joka voi muuttua.\n"
+                        f"{start_date_str} - {end_date_str}. Päättymisaika on ennuste.\n"
                     )
 
         if not section_empty:
@@ -168,7 +236,7 @@ def send_to_gpt(df):
     prompt += "</data>\n"
 
     prompt += f"""
-<instructions>
+<ohjeet>
 # 1. Miten pörssisähkön hinta muodostuu
 
 Olet sähkömarkkinoiden asiantuntija ja kirjoitat kohta uutisartikkelin hintaennusteista lähipäiville. Seuraa näitä ohjeita tarkasti.
@@ -183,7 +251,7 @@ Olet sähkömarkkinoiden asiantuntija ja kirjoitat kohta uutisartikkelin hintaen
 
 ## 1.2. Sähkönkäyttäjien yleinen hintaherkkyys (keskihinta)
 - Edullinen keskihinta: alle 5 senttiä/kilowattitunti.
-- Normaali keskihinta: 5-8 ¢/kWh. Normaalia keskihintaa ei tarvitse selittää.
+- Normaalia keskihintaa ei tarvitse selittää.
 - Kallis keskihinta: 9 ¢ tai yli.
 - Hyvin kallis keskihinta: 15 senttiä tai enemmän.
 - Minimihinnat voivat olla negatiivisia, tavallisesti yöllä. Mainitse ne, jos niitä on.
@@ -207,6 +275,10 @@ Olet sähkömarkkinoiden asiantuntija ja kirjoitat kohta uutisartikkelin hintaen
 - Näet listan poikkeuksellisen suurista ydinvoimaloiden tuotantovajauksista.
 - Jos käyttöaste on nolla prosenttia, silloin käytä termiä huoltokatko. Muuten kyseessä on tuotantovajaus.
 - Huoltokatko tai tuotantovajaus voi vaikuttaa hintaennusteen tarkkuuteen. Tämän vuoksi älä koskaan spekuloi ydinvoiman mahdollisella hintavaikutuksella, vaan raportoi tiedot sellaisenaan, ja kerro myös että opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
+
+## 1.6. Piikkihintojen riski yksittäisille tunneille
+- Yli 15 c/kWh max ja selvästi alle 1000 MW tuulivoiman min voi olla riski: maksimihinta voi olla selvästi korkeampi kuin ennuste. Tällöin yksittäisten tuntien maksimihinnat voivat olla 2-kertaisia ennustettuun nähden.
+- Saat puhua hintapiikeistä vain, jos <data> mainitsee niistä, yksittäisten päivin kohdalla. Älä spekuloi, jos riskiä ei erikseen ole tietyn päivän kohdalla mainittu. Normaalisti viittaat maksimihintaan.
 
 ## 1.7. Muita ohjeita
 - Älä lisää omia kommenttejasi, arvioita tai mielipiteitä. Älä käytä ilmauksia kuten 'mikä ei aiheuta erityistä lämmitystarvetta' tai 'riittävän korkea'.
@@ -264,6 +336,8 @@ Otsikkorivillä jätä "<pv>" tyhjäksi: "". Riveillä näkyvät viikonpäivät 
 - Viikon edullisimmat ja kalleimmat ajankohdat ovat kiinnostavia tietoja, varsinkin jos hinta vaihtelee paljon.
 - Älä kommentoi tuulivoimaa/keskilämpötilaa, jos se on keskimäärin normaalilla tasolla eikä vaikuta hintaan ylös- tai alaspäin.
 - Kuvaile hintakehitystä neutraalisti ja informatiivisesti.
+- Voit luoda vaihtelua käyttämällä päivän sisäistä dataa: Voit mainita muutaman yksittäisen tunnin, jos ne korostuvat jonkin päivän sisällä. Tai voit viitata ajankohtaan päivän sisällä.
+- Mahdolliset hintapiikit sijoittuvat tyypillisesti aamun (noin klo 8) tai illan (noin klo 18) tunneille, ja silloin yksittäisten tuntien hinta voi olla jopa 2-3-kertainen ennusteen laskemaan maksimiin nähden. Tarkista korkeimpien hintojen sijainnit päivän sisäisestä datasta.
 - Muotoile **viikonpäivät** lihavoinnilla: esim. **maananatai**, **tiistai**, **keskiviikko**, **torstai**, **perjantai**, **lauantai**, **sunnuntai** — mutta vain silloin kun mainitset ne tekstikappaleessa ensimmäisen kerran. Samaa päivää ei lihavoida kahdesti samassa tekstikappaleessa, koska se olisi toistoa.
 
 # Muista vielä nämä
@@ -275,21 +349,20 @@ Otsikkorivillä jätä "<pv>" tyhjäksi: "". Riveillä näkyvät viikonpäivät 
 - Keskity vain poikkeuksellisiin tilanteisiin, jotka vaikuttavat hintaan. Älä mainitse normaaleja olosuhteita.
 - Älä koskaan kirjoita, että 'poikkeamia ei ole' tai 'ei ilmene hintaa selittäviä poikkeamia'. Jos poikkeamia ei ole, jätä tämä mainitsematta. Kirjoita vain poikkeuksista, jotka vaikuttavat hintaan.
 - Älä koskaan spekuloi ydinvoiman mahdollisella hintavaikutuksella. Kerro vain, että huoltokatko voi vaikuttaa ennusteen tarkkuuteen ja raportoi annetut tiedot sellaisenaan, kuten yllä on ohjeistettu.
+- TÄRKEÄÄ: Suomessa viikko alkaa maanantaista ja päättyy sunnuntaihin. Muista tämä, jos puhut viikonlopun päivistä tai viittaat viikon alkuun.
 
 Lue ohjeet vielä kerran, jotta olet varma että muistat ne. Nyt voit kirjoittaa valmiin tekstin. Älä kirjoita mitään muuta kuin valmis teksti. Kiitos!
-</instructions>
+</ohjeet>
 """
 
     print(prompt)
 
-    # Wrap the prompt into a user message payload
-    messages = [
-        {"role": "user", "content": f"{prompt}"},
-    ]
+    messages = [{"role": "user", "content": prompt}]
 
     try:
         response = client.chat.completions.create(
-            model="gpt-4o",
+            # model="gpt-4o",
+            model="deepseek-chat",
             messages=messages,
             temperature=0.7,
             max_tokens=1024,
@@ -299,22 +372,16 @@ Lue ohjeet vielä kerran, jotta olet varma että muistat ne. Nyt voit kirjoittaa
         print(f"OpenAI API call failed: {e}")
         sys.exit(1)
 
-    # Append the assistant's message content to the messages list
-    narration_json = { "content": response.choices[0].message.content }
-
-    # Save the messages to a JSON file in deploy/narration.json
+    # Save to narration.json
+    narration_json = {"content": response.choices[0].message.content}
     with open('deploy/narration.json', 'w', encoding='utf-8') as file:
         json.dump(narration_json, file, indent=2, ensure_ascii=False)
 
     return response.choices[0].message.content
 
 def test_llm():
-    # This is to test that the function works as expected   
-    # Fetch the data from the beginning of today
-    now = datetime.datetime.now(pytz.utc).replace(minute=0, second=0, microsecond=0)
-    narration = narrate_prediction(now)
-    print(narration)
-    return narration
+    print("This is a test function, not meant to be called directly.")
+    return ""
 
 if __name__ == "__main__":
     print("This is not meant to be executed directly.")
