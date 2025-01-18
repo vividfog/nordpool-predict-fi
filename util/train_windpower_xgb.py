@@ -1,8 +1,9 @@
 """
 Trains an XGBoost model for wind power prediction using meteorological features.
 
-- Reads hyperparameters from a JSON file set by WIND_POWER_XGB_HYPERPARAMS in the environment.
-- Trains XGBoost with early stopping and returns the trained model
+Functions:
+- preprocess_data: Preprocesses the input DataFrame for training.
+- train_windpower_xgb: Trains an XGBoost model with the preprocessed data.
 
 """
 
@@ -18,7 +19,7 @@ import xgboost as xgb
 
 pd.options.mode.copy_on_write = True
 
-def preprocess_data(df: pd.DataFrame, target_col: str, wp_fmisid: List[str]) -> Tuple[np.ndarray, np.ndarray]:
+def preprocess_data(df: pd.DataFrame) -> Tuple[np.ndarray, np.ndarray]:
     # print("→ Preprocess: Starting data preprocessing")
 
     df['timestamp'] = pd.to_datetime(df['timestamp'])
@@ -32,8 +33,14 @@ def preprocess_data(df: pd.DataFrame, target_col: str, wp_fmisid: List[str]) -> 
         print("[ERROR] 'WindPowerCapacityMW' column not found.")
         sys.exit(1)
 
-    ws_cols = [f"ws_{id}" for id in wp_fmisid]
-    t_cols = [f"t_{id}" for id in wp_fmisid]
+    if 'WindPowerMW' in df.columns and 'WindPowerCapacityMW' in df.columns:
+        df['WindProductionPercent'] = df['WindPowerMW'] / df['WindPowerCapacityMW']
+    else:
+        print("[ERROR] 'WindPowerMW' or 'WindPowerCapacityMW' column not found.")
+        sys.exit(1)
+
+    ws_cols = [col for col in df.columns if col.startswith("ws_") or col.startswith("eu_ws_")]
+    t_cols = [col for col in df.columns if col.startswith("t_")]
 
     if not all(col in df.columns for col in ws_cols):
         missing_ws_cols = [col for col in ws_cols if col not in df.columns]
@@ -47,6 +54,8 @@ def preprocess_data(df: pd.DataFrame, target_col: str, wp_fmisid: List[str]) -> 
         'Avg_WindSpeed',
         'WindSpeed_Variance'
     ]
+
+    target_col = 'WindProductionPercent'
 
     missing_cols = [col for col in feature_columns if col not in df.columns]
     if missing_cols:
@@ -66,7 +75,7 @@ def preprocess_data(df: pd.DataFrame, target_col: str, wp_fmisid: List[str]) -> 
 
     return X, y
 
-def train_windpower_xgb(df: pd.DataFrame, target_col: str, wp_fmisid: List[str]):
+def train_windpower_xgb(df: pd.DataFrame):
     # print("→ Train model: Reading hyperparameters")
 
     try:
@@ -90,7 +99,10 @@ def train_windpower_xgb(df: pd.DataFrame, target_col: str, wp_fmisid: List[str])
     test_size = hyperparams.get("test_size", 0.1) # Use nearly all data for live training
 
     # print("→ Train model: Preprocessing wind power data")
-    X_features, y_target = preprocess_data(df, target_col, wp_fmisid)
+    X_features, y_target = preprocess_data(df)
+
+    # Sort the feature columns to ensure predictable order
+    X_features = X_features[sorted(X_features.columns)]
 
     # print(f"→ Input data shape: {X_features.shape}, Target shape: {y_target.shape}")
 
@@ -109,12 +121,6 @@ def train_windpower_xgb(df: pd.DataFrame, target_col: str, wp_fmisid: List[str])
     # Print tail of the training data
     print(f"→ Training with Fingrid wind power data up to {df['timestamp'].max()}, with tail:")
     print(X_features.tail())
-   
-    # print("→ X features description:")
-    # print(X_features.describe())
-    
-    # print("→ Y target description:")
-    # print(y_target.describe())
     
     # Train the model
     print("→ XGBoost for wind power: ", end="")
