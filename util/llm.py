@@ -394,10 +394,10 @@ def send_to_gpt(df_daily, df_intraday, helsinki_tz):
     try:
         response = client.chat.completions.create(
             # model="gpt-4o",
-            model="deepseek-chat",
+            model="deepseek-chat", # DeepSeek-V3
             messages=messages,
             temperature=0.7,
-            max_tokens=1024,
+            max_tokens=1536,
             stream=False,
         )
     except Exception as e:
@@ -410,10 +410,6 @@ def send_to_gpt(df_daily, df_intraday, helsinki_tz):
         json.dump(narration_json, file, indent=2, ensure_ascii=False)
 
     return response.choices[0].message.content
-
-def test_llm():
-    print("This is a test function, not meant to be called directly.")
-    return ""
 
 if __name__ == "__main__":
     print("This is not meant to be executed directly.")
