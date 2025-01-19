@@ -229,7 +229,7 @@ def send_to_gpt(df_daily, df_intraday, helsinki_tz):
                 risk_upper_boundary = int(math.ceil(row['PricePredict_cpkWh_mean'] * 2 / 10.0) * 10)
                 prompt += f"  - HUOM: Riski hintapiikeille yllä ennustettuun verrattuna {weekday}na, jopa {risk_upper_boundary} ¢ yksittäisinä tunteina.\n"
             else:
-                prompt += f"  - Hintapiikkien riski tälle päivälle on niin, pieni, että älä puhu hintapiikeistä artikkelissa ollenkaan, kun puhut {weekday}sta.\n\n"
+                prompt += f"  - Hintapiikkien riski tälle päivälle on niin pieni, että älä puhu hintapiikeistä artikkelissa ollenkaan, kun puhut {weekday}sta.\n\n"
 
     # Add nuclear outages if any
     if NUCLEAR_OUTAGE_DATA:
@@ -351,7 +351,7 @@ def send_to_gpt(df_daily, df_intraday, helsinki_tz):
 
   Sitten näytä taulukko:
 
-  | <pv>  | keski-<br>hinta<br>¢/kWh | vaihteluväli<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+  | <pv>  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
   |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
 
   jossa "<pv>" tarkoittaa viikonpäivää ja "ka" tarkoittaa kyseisen viikonpäivän odotettua keskihintaa. Lihavoi viikonpäivät taulukossa seuraavasti: esim. **maananatai**, **tiistai**, **keskiviikko**, **torstai**, **perjantai**, **lauantai**, **sunnuntai**.
