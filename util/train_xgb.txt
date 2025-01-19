@@ -144,3 +144,37 @@ Top 10 Feature Importance for XGBoost:
 29         t_101673    0.034676
 Best Parameters found for XGBoost: {'n_estimators': 10154, 'max_depth': 7, 'learning_rate': 0.008926322040774757, 'subsample': 0.6367540027840868, 'colsample_bytree': 0.7606764054526783, 'gamma': 0.05918514181937828, 'reg_alpha': 4.077909792951195, 'reg_lambda': 0.523842297681886}
 
+2025-01-19: With WS columns:
+     Model Performance Comparison - Test Set Metrics
+┏━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━┓
+┃ Model   ┃    MAE ┃    MSE ┃   RMSE ┃     R² ┃   SMAPE ┃
+┡━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━┩
+│ XGBoost │ 1.0759 │ 3.8133 │ 1.9528 │ 0.9119 │ 41.8702 │
+└─────────┴────────┴────────┴────────┴────────┴─────────┘
+              5-Fold Cross-Validation Results
+┏━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┓
+┃ Model   ┃ CV MAE ┃ CV MSE ┃ CV RMSE ┃  CV R² ┃ CV SMAPE ┃
+┡━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━┩
+│ XGBoost │ 1.2177 │ 5.4889 │  2.3428 │ 0.9005 │  42.4835 │
+└─────────┴────────┴────────┴─────────┴────────┴──────────┘
+                      Autocorrelation Analysis
+┏━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
+┃ Model   ┃ Durbin-Watson ┃ ACF (Lag 1) ┃ ACF (Lag 2) ┃ ACF (Lag 3) ┃
+┡━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
+│ XGBoost │        1.9647 │      0.0169 │      0.0126 │     -0.0090 │
+└─────────┴───────────────┴─────────────┴─────────────┴─────────────┘
+
+Top 10 Feature Importance for XGBoost:
+        Feature  Importance
+23     t_101661    0.098836
+12      holiday    0.069686
+20        EE_FI    0.059029
+31     t_101256    0.053148
+38     t_100932    0.041374
+42    ws_101673    0.038327
+7   WindPowerMW    0.037399
+4      hour_cos    0.036582
+19       SE3_FI    0.034805
+10      ws_mean    0.032043
+
+Best Parameters found for XGBoost: {'n_estimators': 11655, 'max_depth': 6, 'learning_rate': 0.012158906047644169, 'subsample': 0.6717186457667352, 'colsample_bytree': 0.5938032371628845, 'gamma': 0.02297259369577767, 'reg_alpha': 1.4624622196040324, 'reg_lambda': 0.09870580997491653}
