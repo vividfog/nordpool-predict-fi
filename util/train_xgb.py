@@ -24,8 +24,12 @@ def train_model(df, fmisid_ws, fmisid_t):
 
     # Cap extreme outliers based on percentiles and filter the DataFrame
     upper_limit = df['Price_cpkWh'].quantile(0.9995)
-    lower_limit = df['Price_cpkWh'].quantile(0.0008)
+
+    # lower_limit = df['Price_cpkWh'].quantile(0.0008) # 2024
+    lower_limit = df['Price_cpkWh'].quantile(0.004) # 2025-01-18 optimized?
+
     df['Price_cpkWh'] = np.clip(df['Price_cpkWh'], lower_limit, upper_limit)
+    print(f"→ Capped 'Price_cpkWh' at lower_limit: {lower_limit} and upper_limit: {upper_limit}")
 
     # Preprocess cyclical time-based features
     df['day_of_week_sin'] = np.sin(2 * np.pi * df['day_of_week'] / 7)
