@@ -47,7 +47,7 @@ def train_model(df, fmisid_ws, fmisid_t):
                      'temp_mean', 'temp_variance', 'holiday', 
                      'sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance',
                      'SE1_FI', 'SE3_FI', 'EE_FI',
-                     'eu_ws_EE01', 'eu_ws_EE02', 'eu_ws_DK01', 'eu_ws_DK02', 'eu_ws_DE01', 'eu_ws_DE02', 'eu_ws_SE01', 'eu_ws_SE02', 'eu_ws_SE03'] + fmisid_t]
+                     'eu_ws_EE01', 'eu_ws_EE02', 'eu_ws_DK01', 'eu_ws_DK02', 'eu_ws_DE01', 'eu_ws_DE02', 'eu_ws_SE01', 'eu_ws_SE02', 'eu_ws_SE03'] + fmisid_t + fmisid_ws]
 
     # Target variable
     y_filtered = df['Price_cpkWh']
@@ -69,19 +69,19 @@ def train_model(df, fmisid_ws, fmisid_t):
     print(", ".join(X_train.columns))
 
     # See train_xgb.txt for history of hyperparameter tuning
-    # Last update: 2025-01-14
+    # Last update: 2025-01-19
     params = {
         'early_stopping_rounds': 50,
         'objective': 'reg:squarederror',
         'eval_metric': 'rmse',
-        'n_estimators': 10154,
-        'max_depth': 7,
-        'learning_rate': 0.008926322040774757,
-        'subsample': 0.6367540027840868,
-        'colsample_bytree': 0.7606764054526783,
-        'gamma': 0.05918514181937828,
-        'reg_alpha': 4.077909792951195,
-        'reg_lambda': 0.523842297681886,
+        'n_estimators': 11655,
+        'max_depth': 6,
+        'learning_rate': 0.012158906047644169,
+        'subsample': 0.6717186457667352,
+        'colsample_bytree': 0.5938032371628845,
+        'gamma': 0.02297259369577767,
+        'reg_alpha': 1.4624622196040324,
+        'reg_lambda': 0.09870580997491653,
         'random_state': 42,
     }
 
@@ -148,7 +148,7 @@ def train_model(df, fmisid_ws, fmisid_t):
                                         'temp_mean', 'temp_variance', 'holiday',
                                         'sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance',
                                         'SE1_FI', 'SE3_FI', 'EE_FI',
-                                        'eu_ws_EE01', 'eu_ws_EE02', 'eu_ws_DK01', 'eu_ws_DK02', 'eu_ws_DE01', 'eu_ws_DE02', 'eu_ws_SE01', 'eu_ws_SE02', 'eu_ws_SE03'] + fmisid_t]
+                                        'eu_ws_EE01', 'eu_ws_EE02', 'eu_ws_DK01', 'eu_ws_DK02', 'eu_ws_DE01', 'eu_ws_DE02', 'eu_ws_SE01', 'eu_ws_SE02', 'eu_ws_SE03'] + fmisid_t + fmisid_ws]
         
         y_random_sample_true = random_sample['Price_cpkWh']
         y_random_sample_pred = xgb_model.predict(X_random_sample)
