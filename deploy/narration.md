@@ -1,21 +1,21 @@
-Nordpool-sähköpörssin hintatiedot on päivitetty sunnuntaina klo 13:26. Seuraavassa tarkastellaan sähkön hintaennusteita lähipäiville.
+Nordpool-sähköpörssin hintaennuste on päivitetty sunnuntaina klo 14:17. Seuraavassa taulukossa on viikon hintakehitys:
 
 |        | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **maanantai** | 7,3 | 0,6 - 12,8 | 1492 - 5036 | 0,5 |
-| **tiistai** | 3,9 | 1,3 - 6,9 | 2367 - 5091 | -1,8 |
-| **keskiviikko** | 9,7 | 4,5 - 15,0 | 1315 - 2773 | -6,3 |
-| **torstai** | 11,5 | 6,8 - 19,0 | 330 - 2482 | -6,7 |
-| **perjantai** | 8,2 | 4,6 - 11,3 | 1295 - 3562 | -7,6 |
-| **lauantai** | 6,6 | 3,1 - 11,3 | 1346 - 3660 | -6,7 |
-| **sunnuntai** | 5,5 | 3,3 - 7,4 | 1333 - 3915 | -4,6 |
+| **maanantai** | 17,2 | 1,1 - 43,2 | 1491 - 5050 | 0,5 |
+| **tiistai** | 4,6 | 2,1 - 8,2 | 2368 - 5091 | -1,8 |
+| **keskiviikko** | 10,1 | 4,6 - 16,2 | 1254 - 2756 | -6,3 |
+| **torstai** | 12,0 | 7,0 - 19,4 | 328 - 2416 | -6,7 |
+| **perjantai** | 8,5 | 4,8 - 12,2 | 1339 - 3663 | -7,6 |
+| **lauantai** | 6,8 | 3,1 - 11,7 | 1365 - 3874 | -6,7 |
+| **sunnuntai** | 4,6 | 1,5 - 7,9 | 1337 - 4183 | -3,9 |
 
-Viikon hintakehitys näyttää vaihtelevan merkittävästi päivien välillä. **Keskiviikko** ja **torstai** erottuvat korkeimmilla keskihinnoillaan, 9,7 ¢/kWh ja 11,5 ¢/kWh. **Torstain** maksimihinta nousee jopa 19,0 ¢/kWh:iin, mikä on viikon korkein. Tämä selittyy osittain alhaisella tuulivoiman tuotannolla, joka on keskimäärin vain 1047 MW ja minimissään vain 330 MW. Lisäksi **torstain** keskilämpötila on -6,7 °C, mikä voi lisätä sähkön kysyntää.
+Viikon hintakehitys vaihtelee merkittävästi päivien välillä. **Maanantai** erottuu korkeimmalla keskihinnalla (17,2 ¢/kWh) ja korkeimmalla maksimihinnalla (43,2 ¢/kWh). Tuntikohtaisen ennusteen mukaan huippuhinta osuu maanantaina noin klo 9, jolloin hinta voi nousta jopa 43,2 ¢/kWh:een. Tuulivoiman tuotanto on maanantaina vaihtelevaa, ja alhainen minimituotanto (1491 MW) selittää osaltaan korkeaa hintaa.
 
-**Keskiviikkona** on myös korkea riski hintapiikeille, erityisesti iltapäivällä klo 16–18, jolloin hinta voi nousta jopa 15,0 ¢/kWh:iin. Samoin **torstaina** on korkea riski hintapiikeille, erityisesti aamupäivällä klo 8–10, jolloin hinta voi nousta jopa 19,0 ¢/kWh:iin.
+**Torstai** on myös hintatasoltaan korkea, keskihinnan ollessa 12,0 ¢/kWh. Tuulivoiman tuotanto on torstaina erityisen alhaista, keskimäärin vain 971 MW, mikä vaikuttaa hintaan. Tuntikohtaisen ennusteen mukaan huippuhinta torstaina on noin klo 9, jolloin hinta voi nousta 19,4 ¢/kWh:een.
 
-Viikon alku on kuitenkin edullisempi. **Tiistaina** keskihinta on vain 3,9 ¢/kWh, ja tuulivoimaa on saatavilla runsaasti, keskimäärin 3601 MW. Myös **sunnuntaina** keskihinta pysyy alhaalla, 5,5 ¢/kWh, ja tuulivoiman tuotanto on tasaisesti korkealla.
+**Keskiviikko** ja **perjantai** ovat hintatasoltaan kohtalaisia, keskihintojen ollessa 10,1 ¢/kWh ja 8,5 ¢/kWh. Keskiviikkona tuulivoiman tuotanto on alhaista, mikä selittää osaltaan hintapiikkien riskin. Perjantaina tuulivoimaa on enemmän saatavilla, mikä pitää hinnat maltillisempina.
 
-**Maanantaina** ja **lauantaina** hinnat ovat kohtalaisia, mutta **lauantaina** on kohtalainen riski hintapiikeille iltapäivällä klo 17–19, jolloin hinta voi nousta jopa 11,3 ¢/kWh:iin.
+Viikon edullisimmat päivät ovat **tiistai** ja **sunnuntai**, jolloin keskihinnat ovat 4,6 ¢/kWh. Tuulivoiman tuotanto on näinä päivinä runsasta, mikä selittää alhaiset hinnat. **Lauantai** on myös edullinen, keskihinnan ollessa 6,8 ¢/kWh.
 
-Viikonlopun hinnat ovat yleensä alhaisempia, ja **sunnuntaina** hinta pysyy tasaisesti alhaalla ilman merkittäviä piikkejä. Viikon korkeimmat hinnat keskittyvät siis keskiviikkoon ja torstaihin, kun taas viikonlopun hinnat ovat edullisempia.
+Viikon kylmimmät päivät ovat **perjantai** ja **torstai**, jolloin keskilämpötilat ovat -7,6 °C ja -6,7 °C. Kylmä sää vaikuttaa osaltaan hintojen nousuun näinä päivinä.
