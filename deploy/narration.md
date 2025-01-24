@@ -1,19 +1,19 @@
-Nordpool-sähköpörssin viimeisin hintatieto on päivitetty perjantaina kello 03:12. Seuraavassa on tuntikohtainen hintaennuste lähipäiville.
+Nordpool-sähköpörssin hintatiedot on päivitetty **perjantaina** klo 09:00. Seuraavassa on tuntikohtainen hintaennuste lähipäiville.
 
-|        | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|       | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **lauantai** | 3,4 | 0,7 - 6,0 | 3817 - 6602 | -6,7 |
-| **sunnuntai** | 2,5 | 0,3 - 5,6 | 3711 - 4881 | -3,9 |
-| **maanantai** | 1,7 | -0,8 - 3,9 | 3506 - 4996 | -0,8 |
-| **tiistai** | 1,7 | -2,4 - 5,8 | 4060 - 5003 | -0,2 |
-| **keskiviikko** | 4,2 | 0,4 - 8,0 | 3776 - 4740 | 0,8 |
-| **torstai** | 6,9 | 1,9 - 11,2 | 2979 - 4579 | 1,0 |
-| **perjantai** | 6,8 | 0,3 - 14,1 | 1371 - 4533 | -0,9 |
+| **lauantai** | 3,1 | 0,5 - 5,1 | 4484 - 6932 | -6,7 |
+| **sunnuntai** | 2,4 | 0,4 - 4,3 | 3819 - 4506 | -3,9 |
+| **maanantai** | 2,1 | -0,4 - 4,3 | 2631 - 5013 | -0,8 |
+| **tiistai** | 1,5 | -2,1 - 3,9 | 4452 - 4978 | -0,2 |
+| **keskiviikko** | 8,8 | 1,7 - 15,6 | 1862 - 4394 | 0,8 |
+| **torstai** | 5,4 | 2,4 - 9,6 | 3240 - 4757 | 1,0 |
+| **perjantai** | 4,6 | 0,6 - 8,5 | 3822 - 4860 | -0,9 |
 
-Viikon sähkön hintaennuste vaihtelee merkittävästi päivien ja tuntien välillä. **Torstai** ja **perjantai** erottuvat korkeimmilla keskihinnoilla, 6,9 ¢/kWh ja 6,8 ¢/kWh. **Perjantain** maksimihinta nousee jopa 14,1 ¢/kWh:iin, mikä on viikon korkein. Tuulivoiman tuotanto on **perjantaina** alhaisimmillaan, 1371 MW, mikä selittää osaltaan korkeampia hintoja.
+Viikon hintakehitys on vaihteleva, ja erityisesti **keskiviikko** erottuu korkeilla hinnoilla. Keskiviikkona sähkön keskihinta on 8,8 ¢/kWh, ja maksimihinta voi nousta jopa 15,6 ¢/kWh. Tämä johtuu osittain tuulivoiman vähäisestä tuotannosta, joka on keskimäärin 3190 MW ja minimissään vain 1862 MW. Hintapiikkien riski on keskiviikkona korkea, ja yksittäisten tuntien hinnat voivat nousta jopa 20–40 ¢/kWh välille, erityisesti iltapäivällä noin klo 16–18.
 
-Viikon alku on edullisempi, erityisesti **maanantaina** ja **tiistaina**, jolloin keskihinnat ovat 1,7 ¢/kWh. Näinä päivinä hinnat voivat laskea jopa negatiiviselle tasolle, erityisesti yöaikaan. **Lauantai** ja **sunnuntai** ovat myös kohtuuhintaisia, keskihinnoilla 3,4 ¢/kWh ja 2,5 ¢/kWh.
+Muut päivät ovat edullisempia. **Tiistai** on viikon halvin päivä, jolloin keskihinta on 1,5 ¢/kWh ja minimihinta jopa -2,1 ¢/kWh. **Lauantai** ja **sunnuntai** ovat myös kohtuuhintaisia, keskihinnoilla 3,1 ¢/kWh ja 2,4 ¢/kWh. **Maanantaina** ja **perjantaina** hinnat pysyvät maltillisina, keskihinnoilla 2,1 ¢/kWh ja 4,6 ¢/kWh.
 
-Tuulivoiman tuotanto on viikolla vaihtelevaa. **Lauantaina** tuulivoimaa on saatavilla eniten, jopa 6602 MW, mikä pitää hinnat alhaisina. **Perjantaina** tuulivoiman minimituotanto on alhaisimmillaan, mikä vaikuttaa hintatason nousuun.
+Viikonlopun tuulivoima on voimakasta, erityisesti **lauantaina**, jolloin tuotanto vaihtelee 4484–6932 MW välillä. Tämä selittää osittain alhaiset hinnat viikonloppuna. **Keskiviikkona** tuulivoiman vähäinen tuotanto taas korostuu, mikä vaikuttaa hintojen nousuun.
 
-Viikon keskilämpötilat pysyvät talvisella tasolla, eikä niiden odoteta vaikuttavan merkittävästi sähkön hintaan. Yleisesti ottaen viikon hintaennuste on vaihteleva, ja erityisesti **torstain** ja **perjantain** korkeammat hinnat voivat kiinnittää kuluttajien huomion.
+Lämpötilat pysyvät viikon ajan talvisella tasolla, mutta ne eivät vaikuta merkittävästi sähkön hintaan. **Lauantaina** keskilämpötila on -6,7 °C, mikä on viikon kylmin päivä, mutta hintaan se ei näy erityisesti.
