@@ -1,19 +1,19 @@
-Ennuste on päivitetty lauantaina klo 12:00.
+Ennuste on päivitetty lauantaina klo 14:18.
 
-|        | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|       | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **sunnuntai** | 2,1 | 0,0 - 4,3 | 3896 - 6866 | -3,9 |
-| **maanantai** | 4,3 | 0,6 - 7,2 | 2825 - 5300 | -0,8 |
-| **tiistai** | 4,7 | -0,9 - 10,2 | 2362 - 4114 | -0,2 |
-| **keskiviikko** | 17,0 | 5,1 - 26,1 | 1088 - 3579 | 0,8 |
-| **torstai** | 8,1 | 4,2 - 15,7 | 1582 - 2697 | 1,0 |
-| **perjantai** | 9,4 | 3,0 - 15,8 | 856 - 2222 | -1,0 |
-| **lauantai** | 9,1 | 2,0 - 17,2 | 1332 - 2499 | -1,1 |
+| **sunnuntai**  | 1,7 | -0,1 - 5,6 | 3203 - 6816 | -3,9 |
+| **maanantai**  | 4,6 | -0,2 - 7,3 | 2345 - 5064 | -0,8 |
+| **tiistai**  | 4,4 | -0,6 - 9,0 | 2219 - 4181 | -0,2 |
+| **keskiviikko**  | 16,3 | 4,0 - 24,4 | 1217 - 3607 | 0,8 |
+| **torstai**  | 8,4 | 3,9 - 16,4 | 1602 - 2716 | 1,0 |
+| **perjantai**  | 9,0 | 2,0 - 15,3 | 861 - 2252 | -1,0 |
+| **lauantai**  | 7,5 | 1,6 - 13,8 | 1202 - 2330 | -1,7 |
 
-Viikon sähkön hintaennuste näyttää merkittävää vaihtelua päivien välillä. **Keskiviikko** erottuu selvästi korkeimmalla keskihinnalla, 17,0 ¢/kWh, ja korkeimmalla maksimihinnalla, 26,1 ¢/kWh. Tämä johtuu alhaisesta tuulivoiman tuotannosta, joka on keskimäärin vain 2064 MW, ja päivän minimituotanto on vain 1088 MW. Lisäksi on korkea riski hintapiikeille, jopa 40-60 ¢ yksittäisinä tunteina, erityisesti aamupäivällä noin klo 8-10.
+Viikon sähkön hintakehitys on odotettavissa vaihtelevaa, ja erityisesti **keskiviikko** erottuu korkeilla hinnoilla. Keskiviikkona sähkön keskihinta on ennustettu 16,3 ¢/kWh, ja maksimihinta voi nousta jopa 24,4 ¢/kWh. Tuulivoiman tuotanto on keskiviikkona odotettavissa alhaisimmillaan 1217 MW, mikä selittää osaltaan korkeita hintoja. Lisäksi on korkea riski hintapiikeille, jolloin yksittäisten tuntien hinnat voivat nousta jopa 40-60 ¢/kWh välillä, erityisesti aamupäivällä klo 8-10 ja iltapäivällä klo 16-18.
 
-**Torstai**, **perjantai** ja **lauantai** ovat myös kalliimpia päiviä, joiden keskihinnat ovat 8,1 ¢/kWh, 9,4 ¢/kWh ja 9,1 ¢/kWh. Näillä päivillä on myös korkea riski hintapiikeille, erityisesti iltapäivällä noin klo 16-18. Tuulivoiman tuotanto on näinä päivinä keskimäärin alhaisempaa, mikä selittää korkeampia hintoja.
+**Torstai** ja **perjantai** seuraavat keskiviikkoa korkeilla hinnoilla, vaikkakin hieman maltillisemmilla tasoilla. Torstaina keskihinta on 8,4 ¢/kWh, ja maksimihinta voi nousta 16,4 ¢/kWh. Perjantaina keskihinta on 9,0 ¢/kWh, ja maksimihinta voi olla 15,3 ¢/kWh. Molemmilla päivillä on myös merkittävä riski hintapiikeille, erityisesti aamupäivisin ja iltapäivisin.
 
-**Sunnuntai**, **maanantai** ja **tiistai** ovat edullisimpia päiviä, joiden keskihinnat ovat 2,1 ¢/kWh, 4,3 ¢/kWh ja 4,7 ¢/kWh. Näinä päivinä tuulivoiman tuotanto on keskimäärin korkeampaa, mikä pitää hinnat alhaisina. **Tiistaina** on jopa negatiivinen minimihinta -0,9 ¢/kWh, mikä on tyypillistä yöaikaan.
+Viikon alku on odotettavissa edullisempi. **Sunnuntain** keskihinta on ennustettu 1,7 ¢/kWh, ja hinta pysyy alhaisena koko päivän ajan. **Maanantaina** ja **tiistaina** hinnat nousevat hieman, mutta pysyvät kohtuullisilla tasoilla. Maanantaina keskihinta on 4,6 ¢/kWh, ja tiistaina 4,4 ¢/kWh. Tuulivoiman tuotanto on näinä päivinä odotettavissa keskimääräistä korkeammalla tasolla, mikä pitää hinnat alhaisina.
 
-Viikon edullisimmat tunnit ovat sunnuntain yöllä, jolloin hinta on 0,0 ¢/kWh. Kalleimmat tunnit ovat keskiviikolla aamupäivällä, jolloin hinta voi nousta jopa 26,1 ¢/kWh. Tuulivoiman vaihtelu vaikuttaa merkittävästi hintojen muutoksiin, erityisesti keskiviikolla ja viikonloppuna.
+Viikonlopun **lauantai** on odotettavissa hieman kalliimpi kuin viikon alku, mutta edullisempi kuin viikon keskivaiheet. Lauantaina keskihinta on 7,5 ¢/kWh, ja maksimihinta voi nousta 13,8 ¢/kWh. Tuulivoiman tuotanto on odotettavissa alhaisimmillaan 1202 MW, mikä selittää osaltaan korkeampia hintoja.
