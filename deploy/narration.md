@@ -1,19 +1,21 @@
-Ennuste on päivitetty maanantaina klo 09:00.
+Nordpool-sähköpörssin viimeisimmät hintaennusteet ovat päivitetty maanantaina klo 12:00. Seuraavassa taulukossa on esitetty viikon hintakehitys:
 
-|        | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|       | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **tiistai**  | 7,8 | 0,8 - 17,2 | 1741 - 4342 | -0,2 |
-| **keskiviikko** | 8,4 | 3,5 - 14,0 | 2161 - 3637 | 0,8 |
-| **torstai** | 3,2 | 1,8 - 5,3 | 4063 - 4899 | 1,0 |
-| **perjantai** | 5,7 | 1,0 - 9,5 | 2940 - 4712 | -1,0 |
-| **lauantai** | 5,7 | 1,7 - 9,5 | 2269 - 4925 | -1,7 |
-| **sunnuntai** | 7,3 | 4,9 - 11,2 | 438 - 2193 | -3,5 |
-| **maanantai** | 8,5 | 5,1 - 12,7 | 353 - 3155 | -3,3 |
+| **tiistai**  | 4,5 | -1,3 - 8,7 | 2060 - 5282 | -0,2 |
+| **keskiviikko** | 7,6 | 2,5 - 12,1 | 1819 - 3906 | 0,8 |
+| **torstai**  | 3,2 | 1,1 - 6,3 | 4094 - 4683 | 1,0 |
+| **perjantai** | 5,0 | 0,0 - 8,6 | 3409 - 4850 | -1,0 |
+| **lauantai** | 6,4 | 2,7 - 11,1 | 2137 - 4131 | -1,7 |
+| **sunnuntai** | 7,2 | 4,8 - 11,0 | 452 - 2226 | -3,5 |
+| **maanantai** | 8,7 | 4,2 - 12,4 | 371 - 3337 | -3,3 |
 
-Viikon sähkön hintaennuste vaihtelee merkittävästi päivien välillä. **Tiistai** nousee viikon kalleimmaksi päiväksi, jolloin keskihinta on 7,8 ¢/kWh ja maksimihinta 17,2 ¢/kWh. Korkeimmat hinnat odotetaan iltapäivällä klo 15-17, jolloin hinta voi nousta jopa 20 ¢/kWh yksittäisinä tunteina. **Keskiviikko** seuraa tiiviisti perässä keskihinnalla 8,4 ¢/kWh, ja myös tänä päivänä on riski hintapiikeille, erityisesti aamupäivällä klo 8-10.
+Viikon hintakehitys näyttää vaihtelevan merkittävästi päivien välillä. **Keskiviikko** ja **maanantai** erottuvat korkeimmilla keskihinnoilla, 7,6 ¢/kWh ja 8,7 ¢/kWh. Näiden päivien maksimihinnat ovat myös viikon korkeimmat, 12,1 ¢/kWh keskiviikkona ja 12,4 ¢/kWh maanantaina. **Torstai** puolestaan on viikon edullisin päivä keskihinnalla 3,2 ¢/kWh, ja sen maksimihinta pysyy alhaisena 6,3 ¢/kWh.
 
-**Torstai** tarjoaa viikon edullisimman sähkön keskihinnalla 3,2 ¢/kWh. Tuulivoiman tuotanto on tänä päivänä voimakasta, mikä selittää alhaiset hinnat. **Perjantai** ja **lauantai** ovat hintatasoltaan samankaltaisia, molemmien keskihinta on 5,7 ¢/kWh. Näinä päivinä hintapiikkien riski on pieni.
+Viikonlopun hintataso on keskimäärin korkeampi kuin viikon alussa. **Lauantaina** keskihinta on 6,4 ¢/kWh, ja **sunnuntaina** 7,2 ¢/kWh. Sunnuntaina on myös riski hintapiikeille, jolloin yksittäisten tuntien hinnat voivat nousta jopa 20 ¢/kWh. Tämä johtuu erityisen alhaisesta tuulivoiman tuotannosta, joka on keskimäärin vain 1292 MW.
 
-**Sunnuntai** ja **maanantai** ovat viikon viileimpiä päiviä, ja niiden keskihinnat ovat 7,3 ¢/kWh ja 8,5 ¢/kWh. Tuulivoiman tuotanto on näinä päivinä heikkoa, mikä vaikuttaa hintatason nousuun. Sunnuntaina hintapiikkien riski on korkein iltapäivällä klo 16-18, kun taas maanantaina riski on suurin aamupäivällä klo 8-10.
+**Tiistai** ja **torstai** ovat viikon tuulisimpia päiviä, jolloin tuulivoiman keskituotanto on 3881 MW ja 4443 MW. Tämä selittää näiden päivien alhaisemmat hinnat. **Sunnuntaina** ja **maanantaina** tuulivoima on puolestaan heikkoa, mikä vaikuttaa hintojen nousuun.
 
-Viikon edullisimmat tunnit odotetaan torstaina yöllä ja aamupäivällä, kun taas kalleimmat tunnit sijoittuvat tiistaille ja keskiviikolle iltapäivisin. Tuulivoiman vaihtelu vaikuttaa merkittävästi hintojen muutoksiin, erityisesti viikon alussa ja lopussa.
+Lämpötilat pysyvät viikon ajan talvisella tasolla, ja erityisesti **sunnuntain** ja **maanantain** keskilämpötilat ovat alle -3 °C. Kylmä sää voi lisätä sähkön kysyntää, mikä vaikuttaa hintojen nousuun näinä päivinä.
+
+Viikon edullisimmat tunnit sijoittuvat yöaikaan, kun taas kalleimmat ajankohdat ovat tyypillisesti aamupäivällä ja iltapäivällä. Erityisesti **sunnuntaina** ja **maanantaina** on syytä varautua mahdollisiin hintapiikkeihin noin klo 12-14 välisenä aikana.
