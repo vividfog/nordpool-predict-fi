@@ -1,17 +1,19 @@
-Nordpool-sähköpörssin hintaennuste on päivitetty **keskiviikkona** klo 12:00. Seuraavassa taulukossa on viikonpäivien keskeiset tiedot:
+Nordpool-sähköpörssin verolliset Suomen markkinan hintaennusteet on päivitetty **keskiviikkona** klo 14:18. Seuraavassa taulukossa on yhteenveto lähipäivien odotetuista hinnoista, tuulivoiman tuotannosta ja keskilämpötiloista.
 
 |        | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **torstai**  | 3,2 | -0,1 - 5,4 | 3134 - 5230 | 1,0 |
-| **perjantai** | 3,6 | 0,5 - 7,8 | 3024 - 4521 | -1,0 |
-| **lauantai** | 2,8 | 0,2 - 6,5 | 3838 - 4888 | -1,7 |
-| **sunnuntai** | 8,6 | 4,2 - 13,5 | 1555 - 3738 | -3,5 |
-| **maanantai** | 11,3 | 6,1 - 15,6 | 1341 - 2638 | -3,3 |
-| **tiistai**  | 12,6 | 5,5 - 19,4 | 876 - 2727 | -4,6 |
-| **keskiviikko** | 9,3 | 6,3 - 11,5 | 1782 - 2950 | -3,4 |
+| **torstai**  | 3,2 | 0,1 - 7,6 | 3160 - 5197 | 1,0 |
+| **perjantai** | 3,5 | 0,3 - 7,1 | 3121 - 4483 | -1,0 |
+| **lauantai** | 2,8 | 0,4 - 6,7 | 3805 - 4816 | -1,7 |
+| **sunnuntai** | 8,8 | 4,9 - 13,6 | 1574 - 3656 | -3,5 |
+| **maanantai** | 11,5 | 6,1 - 16,1 | 1332 - 2651 | -3,3 |
+| **tiistai** | 12,7 | 5,2 - 19,5 | 891 - 2704 | -4,6 |
+| **keskiviikko** | 8,0 | 6,0 - 10,6 | 1803 - 3880 | -3,3 |
 
-Viikon alku on edullinen, mutta hinnat nousevat merkittävästi viikonloppuna ja seuraavalla viikolla. **Torstai**, **perjantai** ja **lauantai** ovat viikon edullisimpia päiviä, jolloin keskihinnat pysyvät alle 4 ¢/kWh. **Lauantaina** sähkön keskihinta on ennusteen mukaan vain 2,8 ¢/kWh, mikä tekee siitä viikon edullisimman päivän. Tuulivoiman tuotanto on näinä päivinä runsasta, keskimäärin yli 3800 MW, mikä selittää alhaiset hinnat.
+Viikon hintaennusteet vaihtelevat merkittävästi päivien välillä. **Torstai** ja **perjantai** ovat edullisimpia päiviä, jolloin keskihinta pysyy alle 4 ¢/kWh. **Lauantaina** hinta on vieläkin alhaisempi, keskimäärin 2,8 ¢/kWh, mikä tekee siitä viikon edullisimman päivän. Tuulivoiman tuotanto on näinä päivinä runsasta, keskimäärin yli 3800 MW, mikä selittää alhaiset hinnat.
 
-Viikonloppuna hinnat nousevat selvästi. **Sunnuntaina** keskihinta on 8,6 ¢/kWh, ja tuulivoiman tuotanto laskee alle 2000 MW:n. Lisäksi on riski hintapiikeille, jolloin yksittäisten tuntien hinnat voivat nousta jopa 20 ¢/kWh:n. **Maanantaina** ja **tiistaina** hinnat nousevat entisestään, ja keskihinnat ovat yli 11 ¢/kWh. Tuulivoiman tuotanto on näinä päivinä erityisen heikkoa, keskimäärin alle 1700 MW, mikä selittää korkeat hinnat. **Tiistaina** on korkea riski hintapiikeille, jolloin yksittäisten tuntien hinnat voivat nousta jopa 30-50 ¢/kWh:n.
+Viikonlopun jälkeen hinnat nousevat selvästi. **Sunnuntaina** keskihinta on 8,8 ¢/kWh, ja tuulivoiman tuotanto laskee huomattavasti, keskimäärin 2422 MW. Lisäksi on riski hintapiikeille, jotka voivat nousta jopa 20 ¢/kWh yksittäisinä tunteina. **Maanantaina** ja **tiistaina** hinnat nousevat entisestään, keskihinnat ovat 11,5 ¢/kWh ja 12,7 ¢/kWh. Näinä päivinä tuulivoiman tuotanto on erityisen heikkoa, keskimäärin alle 2000 MW, mikä selittää korkeat hinnat. Lisäksi on korkea riski hintapiikeille, jotka voivat nousta jopa 30-50 ¢/kWh yksittäisinä tunteina.
 
-**Keskiviikkona** hinnat laskevat hieman, ja keskihinta on 9,3 ¢/kWh. Tuulivoiman tuotanto on keskiviikkona kohtuullista, keskimäärin noin 2700 MW, mikä vaikuttaa hintoihin alentavasti. Viikon kalleimmat tunnit sijoittuvat **tiistaina** aamupäivällä, jolloin hinta voi nousta jopa 19,4 ¢/kWh:n.
+**Keskiviikkona** hinnat laskevat hieman, keskihinta on 8,0 ¢/kWh, ja tuulivoiman tuotanto nousee jälleen yli 2900 MW:n. Hintapiikkien riski on tällä päivällä pieni.
+
+Viikon kalleimmat ajankohdat sijoittuvat **maanantaille** ja **tiistaille**, erityisesti aamupäivän ja iltapäivän tunteille. **Lauantai** puolestaan tarjoaa viikon edullisimmat hinnat, erityisesti yö- ja aamutunneilla. Tuulivoiman vaihtelut ja kovat pakkaset vaikuttavat merkittävästi hintojen muutoksiin viikon mittaan.
