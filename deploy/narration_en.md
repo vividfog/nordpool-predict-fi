@@ -1,19 +1,21 @@
-*Electricity prices will rise above 10 ¢ on Monday and Tuesday as wind power remains weak. Wednesday and Saturday offer the cheapest prices below 5 ¢.*
+*Electricity prices will rise on Monday and Tuesday, with an increased risk of price spikes – Wednesday offers the cheapest prices of the week.*
 
-Nordpool's electricity price forecast has been updated on Saturday at 03:13. The table below shows the key details for each day of the week:
+The forecast was updated on Saturday at 09:00.
 
-|       | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|        | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday**  | 5.6 | 2.0 - 10.7 | 1344 - 3720 | -3.5 |
-| **Monday**  | 11.3 | 7.3 - 15.6 | 656 - 2175 | -3.3 |
-| **Tuesday**    | 10.9 | 3.7 - 18.1 | 535 - 3254 | -4.6 |
-| **Wednesday**| 4.8 | 1.5 - 8.0 | 3444 - 4717 | -3.3 |
-| **Thursday**    | 7.4 | 4.0 - 11.8 | 2669 - 3731 | -2.9 |
-| **Friday**  | 10.2 | 5.4 - 16.4 | 659 - 3103 | -2.5 |
-| **Saturday**   | 4.8 | 3.0 - 7.5 | 1717 - 4081 | -3.2 |
+| **Sunday** | 5.2 | 2.0 - 9.5 | 2478 - 3708 | -3.5 |
+| **Monday** | 11.0 | 6.8 - 15.7 | 739 - 2172 | -3.3 |
+| **Tuesday** | 10.5 | 3.3 - 18.2 | 553 - 3260 | -4.6 |
+| **Wednesday** | 4.6 | 1.4 - 9.1 | 2810 - 4790 | -3.3 |
+| **Thursday** | 9.0 | 4.8 - 15.5 | 1295 - 2585 | -2.9 |
+| **Friday** | 9.4 | 6.2 - 13.8 | 1262 - 2213 | -2.5 |
+| **Saturday** | 6.3 | 3.7 - 10.5 | 2083 - 3608 | -3.2 |
 
-The week's price development varies significantly between days. **Monday** and **Tuesday** stand out with the highest average prices, exceeding 10 ¢/kWh. The maximum prices on these days may rise to around 15–18 ¢, and the risk of price spikes is high, especially during morning and evening hours. **Friday** follows a similar pattern, with an average price of 10.2 ¢/kWh and a maximum price of 16.4 ¢/kWh.
+The electricity price forecast shows significant fluctuations during the week. **Monday** and **Tuesday** stand out with high average prices exceeding 10 ¢/kWh. On Monday, prices could rise to as much as 15.7 ¢/kWh, while on Tuesday, the maximum price could reach 18.2 ¢/kWh. Both days carry a high risk of price spikes, which could rise to 30–40 ¢/kWh during individual hours. On Monday, price spikes are most likely in the morning between 8–10 AM and in the evening between 5–7 PM, while on Tuesday, the risk is highest in the morning between 8–10 AM.
 
-**Wednesday** and **Saturday** are the cheapest days of the week, with average prices below 5 ¢/kWh. On Wednesday, wind power is particularly strong, which explains the low prices. **Sunday** and **Thursday** are mid-range in terms of prices, with average prices of 5.6 ¢/kWh and 7.4 ¢/kWh, respectively.
+**Wednesday** offers the cheapest prices of the week, with an average price of just 4.6 ¢/kWh and a maximum price staying below 10 ¢/kWh. Wind power production is exceptionally high on Wednesday, explaining the low prices. **Thursday** and **Friday** are average in terms of price levels, but Thursday also carries a high risk of price spikes, which could rise to 20–40 ¢/kWh. On Friday, the risk of price spikes is slightly lower, but prices could still rise to around 20 ¢/kWh.
 
-Wind power production varies significantly throughout the week. On **Monday** and **Tuesday**, wind power is weak, which explains the higher prices. On **Wednesday**, wind power is strong, keeping prices low. Temperatures remain at normal winter levels throughout the week, with no significant impact on price trends.
+Weekend prices are more moderate. On **Saturday**, the average price is 6.3 ¢/kWh, with prices generally staying below 10 ¢/kWh. On **Sunday**, prices are even lower, with an average price of 5.2 ¢/kWh. Wind power production is abundant on Sunday, keeping prices low.
+
+In summary, the week offers both high and low prices, and electricity consumers should particularly prepare for high prices and potential price spikes on Monday and Tuesday. Wednesday is the cheapest day of the week for electricity buyers.
