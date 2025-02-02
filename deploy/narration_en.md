@@ -1,23 +1,23 @@
-*Electricity prices will rise on Monday and Thursday, with a high risk of price spikes. On Wednesday, wind power keeps prices low, while weekend prices remain moderate.*
+*The week's electricity price forecast varies significantly, with the most expensive electricity expected on Friday and the cheapest on Wednesday. The risk of price spikes is high on Monday, Tuesday, and Friday.*
 
-Nordpool's electricity price forecast has been updated on **Saturday** at 12:00. Below is a table showing the week's price trends, wind power production, and average temperatures.
+The forecast was updated on Sunday at 03:13.
 
-|       | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|        | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday**  | 5.4 | 1.9 - 8.7 | 2744 - 4105 | -3.5 |
-| **Monday**  | 10.2 | 5.7 - 15.2 | 749 - 3530 | -3.3 |
-| **Tuesday**    | 8.1 | 2.2 - 16.2 | 630 - 4046 | -4.6 |
-| **Wednesday**| 2.6 | 0.2 - 5.3 | 4027 - 5169 | -3.3 |
-| **Thursday**    | 8.4 | 2.8 - 15.1 | 1411 - 3965 | -2.9 |
-| **Friday**  | 9.5 | 6.0 - 13.7 | 1298 - 2211 | -2.5 |
-| **Saturday**   | 7.0 | 3.6 - 12.9 | 2064 - 3614 | -2.9 |
+| **Monday** | 8.6 | 3.9 - 13.0 | 675 - 4807 | -3.3 |
+| **Tuesday** | 7.6 | 2.4 - 14.2 | 640 - 3851 | -4.6 |
+| **Wednesday** | 3.6 | 1.2 - 5.3 | 3059 - 3794 | -3.3 |
+| **Thursday** | 6.5 | 3.3 - 10.6 | 2758 - 3825 | -2.9 |
+| **Friday** | 11.5 | 6.5 - 17.5 | 661 - 3059 | -2.5 |
+| **Saturday** | 7.4 | 4.5 - 13.1 | 1386 - 3044 | -2.9 |
+| **Sunday** | 9.0 | 6.7 - 12.9 | 837 - 1677 | -3.3 |
 
-Prices vary significantly throughout the week. On **Wednesday**, electricity is at its cheapest, with an average price of only 2.6 ¢/kWh and a maximum price staying below 5.5 ¢. Wind power production is exceptionally high on Wednesday, explaining the low prices.
+The week's electricity price forecast varies significantly between days. **Wednesday** is expected to have the cheapest electricity, with an average price of only 3.6 ¢/kWh and a maximum price staying below 5.5 ¢. Wind power is abundant on Wednesday, explaining the low price.
 
-On **Monday** and **Thursday**, prices rise significantly, with a high risk of price spikes on both days. On Monday, the average price is 10.2 ¢/kWh, and hourly prices could rise to 30-40 ¢. On Thursday, the risk is 20-30 ¢ for hourly prices. Wind power production is low on both days, contributing to the price increases.
+The most expensive electricity is expected on **Friday**, with an average price of 11.5 ¢/kWh and a maximum price potentially rising to 17.5 ¢. Friday's minimum wind power production is particularly low, increasing the risk of price spikes. The actual maximum price could rise to 30-50 ¢ during individual hours, especially in the morning or evening.
 
-On **Tuesday**, prices fluctuate sharply, with the daily maximum potentially reaching 16.2 ¢. Wind power production is variable on Tuesday, explaining the price volatility. On **Friday**, the average price is 9.5 ¢/kWh, with a risk of price spikes up to 20 ¢.
+On **Monday** and **Tuesday**, the risk of price spikes is also high, and the actual maximum price could rise to 20-30 ¢. On Monday, the average price is 8.6 ¢/kWh, while on Tuesday, it drops to 7.6 ¢. Wind power is variable on both days, explaining the price fluctuations.
 
-Weekend prices are more moderate. On **Saturday**, the average price is 7.0 ¢/kWh, and wind power production remains at a reasonable level. On **Sunday**, prices are at their lowest, with no risk of price spikes. Wind power is abundantly available, keeping prices low.
+On **Saturday** and **Sunday**, prices remain moderate, but the risk of price spikes still exists. On Saturday, the average price is 7.4 ¢/kWh, while on Sunday, it rises to 9.0 ¢. On Sunday, wind power is weak, explaining the slightly higher price.
 
-The cheapest hours of the week are on Wednesday, when prices remain below 3 ¢ for most hours. The most expensive hours occur on Monday and Thursday mornings, when the risk of price spikes is highest.
+The lowest prices of the week are expected on Wednesday, while the highest prices are on Friday. The risk of price spikes is particularly high on Monday, Tuesday, and Friday.
