@@ -1,21 +1,19 @@
-*Sähkön hinnassa on odotettavissa vaihtelevaa kehitystä tulevalla viikolla, kun edullinen lauantai kohtaa tiistain hintapiikkien riskin. Torstain ja perjantain kohtuulliset hinnat tarjoavat myös yllätyksiä piikkiriskien muodossa.*
+*Pörssisähkön hinnat vaihtelevat tulevina päivinä merkittävästi, erityisesti torstaina ja keskiviikkona, jolloin maksimit kohoavat korkealle. Lauantai puolestaan tarjoaa edullisimmat keskihinnat, mutta tiistaina piikkihintojen riski on huomattava.*
 
-Ennuste on päivitetty keskiviikkona klo 14:18.
+Ennuste on päivitetty keskiviikkona klo 21:00.
 
-|                  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-----------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **torstai**      |       7,1        |      0,4 - 24,6  |   2031 - 5276 |      -2,9     |
-| **perjantai**    |       7,8        |      0,4 - 11,9  |    956 - 5309 |      -2,5     |
-| **lauantai**     |       3,9        |      2,1 - 6,4   |   1219 - 4243 |      -2,9     |
-| **sunnuntai**    |       6,0        |      2,8 - 8,2   |   2859 - 3311 |      -3,0     |
-| **maanantai**    |       6,4        |      3,7 - 11,1  |   2656 - 3272 |      -2,0     |
-| **tiistai**      |       9,2        |      3,0 - 14,5  |    867 - 3012 |      -2,2     |
-| **keskiviikko**  |       9,3        |      6,5 - 12,5  |    840 - 2805 |      -1,7     |
+|            | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:-----------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **torstai**    |       7,1       |     0,4 - 24,8     |  1986 - 5284  |      -2,9      |
+| **perjantai**  |       6,9       |     0,4 - 12,6     |  1381 - 5316  |      -2,5      |
+| **lauantai**   |       3,9       |     1,3 - 7,3      |  2846 - 4649  |      -2,9      |
+| **sunnuntai**  |       5,9       |     3,8 - 7,6      |  2706 - 3125  |      -3,0      |
+| **maanantai**  |       7,0       |     3,4 - 11,1     |  2072 - 3165  |      -2,0      |
+| **tiistai**    |       7,5       |     3,4 - 12,0     |  1000 - 3160  |      -2,2      |
+| **keskiviikko**|       9,4       |     6,0 - 14,7     |   627 - 2535  |      -1,7      |
 
-Tulevalla viikolla sähkön hinnassa on odotettavissa huomattavaa vaihtelua. **Torstaina** ja **perjantaina** hinnat ovat kohtuullisia, noin 7-8 ¢/kWh, mutta **torstain** korkea maksimihinta, lähes 25 ¢, voi yllättää. **Perjantaina** puolestaan on ennustettu riski hintapiikeille, jotka voivat nousta jopa 20 senttiin yksittäisinä tunteina. Tämä piikkiriski sijoittuu iltapäivän tunteihin, noin klo 16-18 välillä.
+Tulevalla viikolla pörssisähkön hintaodotukset vaihtelevat päivittäin. **Torstai** erottuu korkeimmalla ennustetulla maksimihinnalla, joka nousee 24,8 senttiin kilowattitunnilta, vaikka päivän keskihinta pysyy kohtuullisempana 7,1 sentissä. Tämä voi johtua alhaisesta tuulivoiman minimituotannosta, joka on vain 1986 MW. **Perjantaina** ja **lauantaina** hintataso pysyy maltillisena, ja perjantain keskihinta on 6,9 senttiä ilman merkittäviä hintapiikkien riskejä.
 
-**Lauantai** erottuu edullisimpana päivänä, keskihinnan ollessa alle neljä senttiä. Tuulivoiman runsas tuotanto nostaa tarjontaa ja laskee hintoja, eikä hintapiikkien riskiä ole odotettavissa. **Sunnuntaina** hinnat nousevat hieman, mutta pysyvät edelleen maltillisina.
+**Lauantai** tarjoaa viikon edullisimman keskihinnan, 3,9 senttiä, kun tuulivoiman keskimääräinen tuotanto on korkealla tasolla. **Sunnuntaina** hinnat ovat hieman korkeammat, mutta pysyvät kuitenkin alle 8 sentissä. **Maanantai** tuo mukanaan hieman korkeamman keskihinnan, 7,0 senttiä, mutta hintavaihtelu on rajallisempaa.
 
-**Maanantai** tuo mukanaan pienen nousun keskihintaan, mutta hintataso pysyy edelleen kohtuullisena. **Tiistaina** ja **keskiviikkona** hinnat ovat korkeammat, keskihinnan ollessa lähellä 9-10 ¢. **Tiistaina** on korkea riski hintapiikeille, erityisesti illalla klo 18-20, jolloin hinnat voivat nousta jopa 40 senttiin. **Keskiviikkona** hintapiikit ovat mahdollisia iltapäivällä, klo 14-16.
-
-Kokonaisuutena viikko tuo mukanaan vaihtelevia hintoja, mutta erityisesti viikonlopun edullisuus ja tiistain mahdolliset hintapiikit kiinnittävät huomiota. 🌦️
+**Tiistaina** ja **keskiviikkona** hintojen odotetaan nousevan, erityisesti keskiviikkona, jolloin keskihinta kohoaa 9,4 senttiin ja maksimihinta 14,7 senttiin. Tiistaina on kuitenkin merkittävä riski hintapiikeille, ja yksittäisten tuntien hinnat voivat nousta jopa 20 senttiin. Tämä riski on erityisesti aamun ja illan tunteina. Viikon kallein päivä näyttäisi olevan **keskiviikko**, kun taas edullisimmat hetket koetaan **lauantaina**. 🔮

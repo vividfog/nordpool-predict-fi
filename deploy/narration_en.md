@@ -1,21 +1,19 @@
-*Electricity prices are expected to show fluctuating trends in the upcoming week, with an affordable Saturday meeting the risk of price spikes on Tuesday. Thursday and Friday's moderate prices also present surprises in the form of spike risks.*
+*Electricity market prices will fluctuate significantly in the coming days, especially on Thursday and Wednesday when maximums rise sharply. Saturday, on the other hand, offers the lowest average prices, but Tuesday poses a significant risk for price spikes.*
 
-The forecast was updated on Wednesday at 14:18.
+The forecast was updated on Wednesday at 9:00 PM.
 
-|                  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:-----------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday**     |       7.1        |      0.4 - 24.6  |   2031 - 5276 |      -2.9     |
-| **Friday**       |       7.8        |      0.4 - 11.9  |    956 - 5309 |      -2.5     |
-| **Saturday**     |       3.9        |      2.1 - 6.4   |   1219 - 4243 |      -2.9     |
-| **Sunday**       |       6.0        |      2.8 - 8.2   |   2859 - 3311 |      -3.0     |
-| **Monday**       |       6.4        |      3.7 - 11.1  |   2656 - 3272 |      -2.0     |
-| **Tuesday**      |       9.2        |      3.0 - 14.5  |    867 - 3012 |      -2.2     |
-| **Wednesday**    |       9.3        |      6.5 - 12.5  |    840 - 2805 |      -1.7     |
+|            | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:-----------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Thursday**    |       7.1       |     0.4 - 24.8     |  1986 - 5284  |      -2.9      |
+| **Friday**  |       6.9       |     0.4 - 12.6     |  1381 - 5316  |      -2.5      |
+| **Saturday**   |       3.9       |     1.3 - 7.3      |  2846 - 4649  |      -2.9      |
+| **Sunday**  |       5.9       |     3.8 - 7.6      |  2706 - 3125  |      -3.0      |
+| **Monday**  |       7.0       |     3.4 - 11.1     |  2072 - 3165  |      -2.0      |
+| **Tuesday**    |       7.5       |     3.4 - 12.0     |  1000 - 3160  |      -2.2      |
+| **Wednesday**|       9.4       |     6.0 - 14.7     |   627 - 2535  |      -1.7      |
 
-In the coming week, significant fluctuations in electricity prices are anticipated. **Thursday** and **Friday** will see moderate prices around 7-8 ¢/kWh, but Thursday's high maximum price, nearly 25 ¢, might surprise. On **Friday**, there is a predicted risk of price spikes, which could rise to 20 cents during specific hours. This spike risk is expected in the afternoon hours, around 16:00-18:00.
+In the coming week, electricity market price expectations will vary daily. **Thursday** stands out with the highest predicted maximum price, rising to 24.8 cents per kilowatt-hour, although the day's average price remains more moderate at 7.1 cents. This could be due to the low wind power minimum production, which is only 1986 MW. On **Friday** and **Saturday**, price levels remain moderate, with Friday's average price at 6.9 cents without significant risks of price spikes.
 
-**Saturday** stands out as the most affordable day, with an average price of under four cents. The abundant wind power increases supply and lowers prices, with no expected risk of price spikes. **Sunday** sees a slight rise in prices but remains moderate.
+**Saturday** offers the week's lowest average price at 3.9 cents, with average wind power production at a high level. **Sunday** sees slightly higher prices but remains below 8 cents. **Monday** brings a slightly higher average price of 7.0 cents, but price variation is limited.
 
-**Monday** brings a slight increase in the average price, yet remains reasonable. **Tuesday** and **Wednesday** feature higher prices, with averages close to 9-10 ¢. **Tuesday** poses a high risk of price spikes, especially in the evening between 18:00-20:00, when prices could soar to 40 cents. **Wednesday** may also see price spikes in the afternoon, around 14:00-16:00.
-
-Overall, the week presents variable prices, with the weekend's affordability and Tuesday's potential price spikes drawing attention. 🌦️
+**Tuesday** and **Wednesday** are expected to see rising prices, particularly on Wednesday, when the average price reaches 9.4 cents and the maximum price 14.7 cents. However, Tuesday poses a significant risk for price spikes, with individual hourly prices potentially rising to 20 cents. This risk is particularly present during morning and evening hours. The most expensive day appears to be **Wednesday**, while the most affordable moments occur on **Saturday**. 🔮
