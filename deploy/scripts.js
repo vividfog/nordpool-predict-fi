@@ -25,7 +25,9 @@ switch (window.location.hostname) {
 
 //////////////////////////////////////////////////////////////////////////
 // Fetch the narration text from the Markdown file
-fetch(`${baseUrl}/narration.md`)
+const narrationFile = window.location.pathname.includes('index_en') ? 'narration_en.md' : 'narration.md';
+
+fetch(`${baseUrl}/${narrationFile}`)
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
