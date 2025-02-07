@@ -17,7 +17,7 @@
     <title>Pörssisähkön hintaennuste</title>
 </head>
 <body>
-    <div id="topdisclaimer">Sivusta on alkanut ilmestyä kopioita. Tarkista että sivun osoite on https://sahkovatkain.web.app ja älä jaa muita linkkejä.</div>
+    <div id="topdisclaimer">FI | <a href="index_en.html">EN</a> </div>
     <div id="predictionText">
         <h1 style="padding-top: 16px">Pörssisähkön hintaennuste</h1>
         <p><strong>Tämä kokeellinen koneoppimismalli haarukoi pörssisähkön kuluttajahintaa (sis. ALV 25,5%) noin viikon eteenpäin. Malli peilaa mm. ennustettua säätä ja sähköntuotantoa aiempiin ajanjaksoihin, joissa nämä seikat olivat samankaltaiset.</strong></p>
@@ -46,7 +46,7 @@
         <li><strong>Kellonaika:</strong> 0-23</li>
         <li><strong>Juhlapyhät:</strong> Kansallisina vapaapäivinä energian kysyntä voi olla normaalia alempi</li>
         <p>Lähdekoodi on avointa, ja olet tervetullut kokeilemaan erilaisia vaihtoehtoja näiden lisäksi tai sijaan.<p>
-        <h1>Muutokset</h1>
+        <h1 style="padding-top: 32px">Muutokset</h1>
         <p>Sähkövatkain on ollut linjoilla helmikuusta 2024. Tämän jälkeen on tehty seuraavat muutokset.</p>
         <p><strong>11.8.2024:</strong></p>
         <li>Poistettu ENTSO-E REMIT UMM -tuotantomuuttuja, koska rajapinnan mukaan OL3 olisi huollossa vuoden 2025 puolelle asti. Tämä ei onneksi ole totta, mutta sotkee ennusteen. Tutkimme asiaa ja palautamme ydinvoimaennusteen mukaan opetukseen, jos virheen syy löytyy. Ydinvoimaennuste olettaa nyt, että viimeisin tunnettu tuotantoluku pysyy seuraavat 5 vrk.</li>
@@ -90,6 +90,12 @@
         <p><strong>18.1.2025:</strong></p>
         <li>Tuulivoimamallia tuunattu. Fingridin jatkuvasti päivittyvä <a href="https://data.fingrid.fi/datasets/245" target="">ennuste</a> kertoo ensimmäiset 36 tuntia päivityshetkestä alkaen, ja loput arvioidaan Itämeren ympäristön ja Suomen säätiedoista. Toteutuma päivittyy nyt <a href="https://data.fingrid.fi/datasets/181" target="_blank">takautuvasti</a>.</li>
         <li>Kielimalli näkee nyt päivän sisäiset tiedot ja mahdolliset hintapiikkien riskit. Kielimalliksi vaihdettu <a href="https://huggingface.co/deepseek-ai/DeepSeek-V3" target="_blank">DeepSeek-V3</a>.</li>
+        <p><strong>30.1.2025:</strong></p>
+        <li>Etusivu muodostuu nyt <a href="index.html">suomeksi</a> ja <a href="index_en.html">englanniksi.</a></li>
+        <li>Markdown-muotoinen versio löytyy Githubista <a href="https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/refs/heads/main/deploy/narration.md" target="_blank">suomeksi</a> ja <a href="https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/refs/heads/main/deploy/narration_en.md" target="_blank">englanniksi</a>. Kts. myös kaksikielinen <a href="https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/refs/heads/main/deploy/narration_full.json" target="_blank">JSON-versio</a>. Näistä voi olla iloa esim. kotiautomaation rakentajille.</li>
+        <li>DeepSeek API on ollut nyt paljon <a href="https://status.deepseek.com" target="_blank">jumissa</a>, eikä aina suostu kirjoittamaan tekstejä. Jos tilanne jatkuu pitkään, niin palaamme GPT-4o-malliin, mutta samalla kieliversioita tod näk jää vain yksi.</li>
+        <p><strong>5.2.2025:</strong></p>
+        <li>Kielimalli saattaa ilmoittamatta vaihtua akselilla DeepSeek-V3, GPT-4o ja Gemini 2.0 Pro.</li>
         <p><strong>Suunnitteilla:</strong></p>
         <li>Tuntikohtaisen hintavolatiliteetin tarkempi ennustaminen saattaa tarvita oman mallinsa ja menetelmänsä nykyisen rinnalle/päälle. Nykyinen menetelmä toimii paremmin vuorokauden hintatason arvioinnissa kuin aamun ja illan yksittäisten piikkihintojen dynamiikassa. Kielimalli kuitenkin kommentoi hintapiikkejä jo nyt, jos olosuhteet niihin ovat olemassa, esim. korkea ennustettu hinta ja matala tuuli samaan aikaan.</li>
         <h1>Mitä ennuste ei huomioi?</h1>
