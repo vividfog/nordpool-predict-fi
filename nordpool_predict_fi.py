@@ -65,10 +65,6 @@ except ValueError as e:
     print(f"Error: {e}")
     exit(1)
 
-# Optional env variables for --narrate:
-openai_api_key = os.getenv('OPENAI_API_KEY')  # OpenAI API key, used by --narrate
-narration_file = os.getenv('NARRATION_FILE')  # used by --narrate
-
 # -----------------------------------------------------------------------------------------------------------------------------
 # Command line arguments
 parser = argparse.ArgumentParser()
@@ -257,28 +253,20 @@ if args.predict:
     print(df_recent)
     print(df_recent.describe())    
 
-    # --commit: Update the database with the final data
+# --commit: Update the database with the final data
     if args.commit:
         print("* Will add/update", len(df_recent), "predictions to the database ", end="")
         if db_update(db_path, df_recent):
             print("Database updated with new predictions. You may want to --deploy next if you need the JSON predictions for further use.")
+
     else:
-        print("* Predictions NOT committed to the database (no --commit).")
+        print("* Predictions NOT committed to the database or 'deploy' folder (no --commit).")
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # --narrate: Generate narration
 if args.narrate:
-    print("Narrating predictions")
-    narration = narrate_prediction()
-    if args.commit:
-        # Create/update deploy/narration.md
-        narration_path = os.path.join(deploy_folder_path, narration_file)
-        with open(narration_path, 'w') as f:
-            f.write(narration)
-        print(narration)
-        print(f"Narration saved to {narration_path}")
-    else:
-        print(narration)
+    print("* Narrating predictions")
+    narration = narrate_prediction(deploy=args.deploy, commit=args.commit)
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # --deploy: Deploy the output files
@@ -342,6 +330,12 @@ if args.deploy:
     # Convert timestamps to Helsinki timezone
     deploy_df['timestamp'] = deploy_df['timestamp'].dt.tz_convert(helsinki_tz)
 
+    # Save the full prediction data to a JSON file in the deploy folder
+    prediction_full_json = deploy_df.to_json(orient='records', date_format='iso', indent=2)
+    with open(os.path.join(deploy_folder_path,'prediction_full.json'), 'w') as f:
+        f.write(prediction_full_json)
+    print("→ Full prediction data saved to deploy/prediction_full.json")
+
     # Normalize 'timestamp' to set the time to 00:00:00 for daily average grouping in local time
     deploy_df['timestamp'] = deploy_df['timestamp'].dt.normalize()
 
@@ -352,6 +346,7 @@ if args.deploy:
     daily_averages['timestamp'] = daily_averages['timestamp'].dt.tz_convert(pytz.utc)
     daily_averages['timestamp'] = daily_averages['timestamp'].apply(
         lambda x: int((x - pd.Timestamp("1970-01-01", tz='utc')) // pd.Timedelta('1ms'))
+        
     )
 
     # Save the daily averages to a JSON file in the deploy folder
