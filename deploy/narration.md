@@ -1,31 +1,27 @@
-*'Pörssisähkön hinta pysyttelee alkuviikosta vielä maltillisena, mutta nousee loppuviikkoa kohden selvästi. Keskiviikosta lauantaihin on olemassa myös kohonnut riski hintapiikeille, jolloin yksittäisten tuntien hinnat voivat nousta jopa 50 senttiin kilowattitunnilta.'*
+*'Pörssisähkön hinta on nousemassa ensi viikolla, ja erityisesti loppuviikosta on luvassa kalliita päiviä. Keskiviikosta lauantaihin on olemassa jopa 30-50 sentin hintapiikkien riski yksittäisille tunneille. Alkuviikko on edullisempi, mutta sähkön hinta nousee tasaisesti.'*
 
 
-Pörssisähkön hintaennuste on päivitetty lauantaina klo 03:13.
+Pörssisähkön hintaennuste on päivitetty lauantaina klo 09:01.
 
-|     | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:----|:----------------:|:----------------:|:-------------:|:-------------:|
-| **sunnuntai**   | 5.2  | 3.3 - 8.9  | 2295 - 4443  | -3.0 |
-| **maanantai**  | 5.2  | 2.0 - 7.6  | 3335 - 3932  | -2.0 |
-| **tiistai**  | 7.1  | 3.3 - 10.0 | 1652 - 3895  | -2.2 |
-| **keskiviikko** | 10.6 | 5.0 - 17.2 | 900 - 3030   | -1.7 |
-| **torstai** | 9.9 | 2.4 - 21.5 | 1103 - 3953   | -3.6 |
-| **perjantai**    | 14.2 | 7.8 - 20.3 | 930 - 2527   | -5.6 |
-| **lauantai**   | 10.2 | 5.2 - 18.3 | 2444 - 3235  | -7.1 |
+|   | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **sunnuntai** | 4.4 | 0.8 - 6.6  | 2291 - 5185 | -3.0 |
+| **maanantai** | 5.8 | 2.6 - 9.6  | 2231 - 3744 | -2.0 |
+| **tiistai**  | 6.7 | 3.1 - 9.9  | 3146 - 3629 | -2.2 |
+| **keskiviikko** | 10.3 | 4.4 - 16.5 | 1061 - 3522 | -1.7 |
+| **torstai**  | 12.6 | 7.0 - 21.2 | 1042 - 2457 | -3.6 |
+| **perjantai** | 12.7 | 7.4 - 18.2 |  900 - 1742 | -5.6 |
+| **lauantai**  | 11.8 | 6.0 - 19.6 |  684 - 3498 | -7.1 |
 
-Pörssisähkön hinta kohoaa tulevalla viikolla selvästi. Hintaodotukset ovat alkuviikolla vielä maltillisia, mutta loppuviikkoa kohden keskihinnat nousevat, ja perjantaina keskihinta on jo hyvin kallis.
+Pörssisähkön hinta nousee tulevalla viikolla. Hintaodotukset ovat maltillisia alkuviikosta, mutta **keskiviikko**na hinta kohoaa selvästi. Keskiviikon keskihinnaksi on ennustettu 10.3 ¢, ja vuorokauden korkein hinta voi nousta 16.5 senttiin kilowattitunnilta.
 
-**Sunnuntaina** ja **maanantaina** pörssisähkön keskihinta asettuu 5.2 senttiin kilowattitunnilta. Sunnuntaina hinta vaihtelee 3.3 ja 8.9 sentin välillä, kun taas maanantaina hinta on edullisimmillaan vain 2.0 ¢, mutta voi nousta illalla 7.6 senttiin. Sunnuntaina tuulivoimaa on saatavilla runsaasti, maanantaina jopa erittäin runsaasti.
+Keskiviikkona ja torstaina tuulivoiman ennustetaan olevan heikkoa, mikä osaltaan selittää hintojen nousua. Keskiviikon tuntikohtaisessa ennusteessa tuulivoiman tuotanto painuu alimmillaan vain hieman yli tuhanteen megawattiin. Keskiviikkona on myös ennustettu korkea riski hintapiikeille. Yksittäisten tuntien hinnat voivat kohota jopa 30-40 senttiin kilowattitunnilta.
 
-**Tiistaina** keskihinta nousee 7.1 senttiin. Päivän sisäinen vaihtelu on suurta: hinta on alimmillaan 3.3 ¢, mutta voi nousta iltapäivällä jo 10.0 senttiin. Tuulivoiman tuotanto on tiistaina vaihtelevaa, ja sen minimituotanto jää alle 2000 megawatin, mikä osaltaan selittää korkeampaa maksimihintaa.
+Ensi **torstai**na hinta jatkaa nousuaan. Päivän keskihinnaksi odotetaan 12.6 ¢, ja vuorokauden korkein hinta voi nousta jopa 21.2 senttiin. Torstainakin tuulivoimaa on luvassa niukasti, mikä todennäköisesti pitää hinnat korkealla. Torstaille ennustetaan keskiviikon tapaan korkeaa riskiä hintapiikeille, jopa 50 senttiin kilowattitunnilta yksittäisinä tunteina. Tuntikohtaisen ennusteen mukaan hintapiikki ajoittuisi alkuiltaan, noin kello 17-19.
 
-Ensi **keskiviikkona** pörssisähkön keskihinta nousee jo 10.6 senttiin kilowattitunnilta. Hinta on edullisimmillaan 5.0 ¢/kWh, mutta voi nousta aamulla kello 7-9 jopa 17.2 senttiin. Keskiviikkona on odotettavissa myös hintapiikkien riski: yksittäisten tuntien hinnat voivat nousta jopa 30-40 senttiin. Tuulivoimaa on keskiviikkona tarjolla hyvin vähän.
+**Perjantai**na ja ensi **lauantai**na sähkön hinta pysyttelee korkealla. Perjantain keskihinnaksi odotetaan 12.7 ¢ ja lauantain 11.8 ¢. Perjantain korkein hinta voi nousta 18.2 senttiin ja lauantain 19.6 senttiin kilowattitunnilta. Molempina päivinä on myös korkea riski hintapiikeille, jopa 50 senttiin yksittäisille tunneille. Perjantaina hintapiikin riski on suurin aamulla, noin kello 8-10. Lauantaina piikki ajoittuisi iltaan, noin kello 17-19. Perjantaina ja lauantaina myös pakkanen kiristyy, mikä lisää sähkönkulutusta.
 
-**Torstain** keskihinnaksi on ennustettu 9.9 ¢. Hinta on edullisimmillaan aamuyön tunteina 2.4 ¢, mutta illalla kello 19-21 hinta voi nousta 21.5 senttiin kilowattitunnilta. Torstaina on keskiviikon tapaan olemassa hintapiikkien riski: yksittäisten tuntien hinnat voivat nousta jopa 20-40 senttiin.
+Viikon korkeimpien hintojen taustalla on vähäisen tuulivoiman lisäksi siis myös sään kylmeneminen. Lauantain keskilämpötilaksi ennustetaan -7.1 astetta. Koska tulevina päivinä on odotettavissa suuria eroja vuorokauden sisäisissä hinnoissa, sähkönkäyttäjien kannattaa seurata tuntikohtaisia ennusteita ja ajoittaa kulutustaan edullisimmille tunneille.
 
-Ensi **perjantaina** pörssisähkön keskihinta nousee peräti 14.2 senttiin, mikä on viikon korkein lukema. Perjantain hinta on edullisimmillaan 7.8 ¢, mutta voi nousta aamulla kello 7-9 jopa 20.3 senttiin. Perjantaille on ennustettu erittäin korkeaa hintapiikkien riskiä, jopa 50 senttiin asti yksittäisinä tunteina. Kova, -5.6 asteen pakkanen ja viikon vähäisin tuulivoiman tuotanto nostavat hintaa.
-
-**Lauantaina** pörssisähkön keskihinta laskee 10.2 senttiin. Hinta on edullisimmillaan 5.2 ¢, mutta voi nousta illalla kello 17-19 jo 18.3 senttiin kilowattitunnilta. Lauantaina on edelleen olemassa hintapiikkien riski, jopa 30-40 senttiin yksittäisinä tunteina. Lauantain keskilämpötila laskee -7.1 asteeseen.
-
-*Teidän hintatietonne, gemini-2.0-pro-exp-02-05.* ⚡️
+*Pörssiguru gemini-2.0-pro-exp-02-05.* ⚡️
 
