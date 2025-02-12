@@ -1,28 +1,28 @@
-*'The price of exchange electricity will fluctuate during the coming week. High prices and even price spikes of 30-40 cents for individual hours are expected on Wednesday and Monday. On other days, prices will be more moderate, and the cheapest electricity is expected on Sunday.'*
+'*The price of exchange electricity will fluctuate over the coming week, with both cheaper and more expensive days expected. Especially on **Monday**, **Sunday**, **Wednesday** and **Thursday**, high price peaks are anticipated. Prices for individual hours could rise as high as 30-50 cents.*'
 
-Olkiluoto 1 nuclear power plant will have a production outage on Wednesday, February 12, 2025, between 10:00 and 14:00. 475 MW of the nominal power of 890 MW will be available, i.e. 53.4%. The end time of the production outage is a forecast. Because teaching data is limited during production outages, this may affect the accuracy of the forecast.
+There is a production outage at the Olkiluoto 1 nuclear power plant on Wednesday, February 12, 2025, from 10:00 AM to 2:00 PM. 475 MW of the nominal power of 890 MW will be available, meaning the utilization rate is 53.4%. The end time of the production outage is a forecast. Because limited training data is available for periods of production outages, this may affect the accuracy of the forecast.
 
-The exchange electricity price forecast has been updated on Wednesday at 03:13.
+The forecast has been updated on Wednesday at 9:00 AM.
 
 |   | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday**  | 6.8 | 2.2 - 11.2  | 1014 - 5541 | -3.6 |
-| **Friday** | 7.8 | 3.4 - 12.1  | 2938 - 3752 | -5.6 |
-| **Saturday** | 6.3 | 3.6 - 9.6   | 3228 - 3930 | -7.6 |
-| **Sunday**| 5.6 | 2.4 - 9.4   | 3496 - 4198 | -8.8 |
-| **Monday**| 10.0| 4.4 - 17.0  | 2156 - 4386 | -8.0 |
-| **Tuesday**  | 8.0 | 4.7 - 10.7  | 2846 - 3743 | -8.3 |
-| **Wednesday**| 11.0| 3.8 - 17.6  | 1038 - 2952 | -9.2 |
+| **Thursday**  | 7.8              | 2.3 - 17.0       | 1013 - 5611   | -3.6          |
+| **Friday**    | 8.0              | 3.4 - 11.9       | 2750 - 4256   | -5.6          |
+| **Saturday**  | 6.0              | 3.7 - 9.2        | 2142 - 3729   | -7.6          |
+| **Sunday**    | 9.7              | 4.0 - 17.3       | 581 - 2205    | -8.8          |
+| **Monday**    | 13.0             | 7.8 - 18.4       | 579 - 2613    | -8.0          |
+| **Tuesday**   | 8.9              | 4.2 - 13.3       | 2664 - 3871   | -8.3          |
+| **Wednesday** | 9.7              | 3.0 - 17.9       | 1331 - 3354   | -9.2          |
 
-Exchange electricity price expectations will vary in the coming week. The most expensive electricity will be next Wednesday, when the average daily price is forecast to be 11.0 ¢/kWh. Wednesday's maximum price will rise to 17.6 cents per kilowatt-hour, but during individual hours the price of electricity may rise to as much as 30-40 cents.
+The price forecast for exchange electricity for the coming week shows variation. Both cheaper and more expensive days are in store.
 
-The risk of a price spike is highest in the afternoon and evening, around 5-7 PM. On Wednesday, wind power will be scarce, with an average of only 1663 MW. The day's lowest wind power production, 1038 MW, will be in the evening. The cold weather, -9.2 degrees, will also increase the price of electricity.
+On **Monday**, the average price of electricity will rise to 13 cents per kilowatt-hour, and the intraday variation will be large: at its cheapest, electricity will cost less than 8 cents, but at its most expensive, the price will rise above 18 cents. There are also individual hours forecast for Monday when the price of electricity could rise as high as 30-50 cents. The risk of a price spike is located in the evening, around 5-7 PM. Monday's price will be driven up particularly by the forecast very low wind power production, which will remain below 600 megawatts at its lowest during the day. The severe frost, almost -8 degrees, will also contribute to the price.
 
-**Monday** is expected to have the second highest average price, 10.0 ¢/kWh. Monday's highest price, 17.0 ¢, will be in the evening between 5 PM and 7 PM. At that time, the prices of individual hours can rise to as much as 20-40 cents. The risk of a price spike on Monday is partly explained by the rather low wind power production, 2156 MW, in the early evening.
+On **Sunday** and next **Wednesday**, average prices will be close to 10 cents. Sunday's high price peaks could rise as high as 20-40 cents during individual hours. This is due to very low wind power production, which will remain below 600 megawatts at its lowest. The risk of a price spike is located in the evening, around 6-8 PM. For Wednesday, the risk of price spikes is located in the early evening, around 5-7 PM. Wednesday's severe frost, -9.2 degrees, will further increase the demand for electricity and raise the price.
 
-On other days, the price of electricity will settle at a more moderate level. Price expectations for **Thursday**, **Friday**, **Saturday** and **Tuesday** are similar, with average prices ranging from 6.3 cents to 8.0 cents.
+On **Thursday**, high price peaks are expected, even 20-30 cents during single hours. The risk of price peak is during the afternoon and evening, approximately at 4-6 PM. On other days, the price of electricity is expected to settle at a more moderate level, typically fluctuating between about 3 and 13 cents per kilowatt-hour.
 
-The cheapest electricity of the week will be available on **Sunday**, when the average price is forecast to be 5.6 ¢/kWh. During Sunday, the price of electricity will fall to a low of 2.4 cents per kilowatt-hour. At that time, wind power will be abundant, with an average of 3814 MW.
+The cheapest hours of the week will be during the nights and early morning hours, when demand is at its lowest. Electricity will typically be most expensive in the evenings, when consumption is at its highest.
 
-*The numbers were read today by gemini-2.0-pro-exp-02-05.* ⚡️
+*Interpretation assisted by gemini-2.0-pro-exp-02-05.* ⚡
 
