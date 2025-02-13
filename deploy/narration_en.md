@@ -1,26 +1,26 @@
-*'The price of electricity on the power exchange will fluctuate significantly over the coming week. Electricity will be cheap during the weekend, but next week will bring more expensive days and even price spikes of 30-50 cents for individual hours. Severe frost will raise prices on several days.'*
+*'The price of electricity on the power exchange fluctuates wildly in the coming days: on Friday, the price will skyrocket, but the weekend promises significantly cheaper electricity, even though the freezing temperatures will tighten. Next week, Monday, Wednesday and Thursday are more expensive days, and they include a risk of price spikes.'*
 
-The forecast has been updated on Thursday at 12:00.
+The Sähkövatkain forecast has been updated on Thursday at 2:17 PM.
 
-|    | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday** | 13.5 | 7.9 - 20.3 | 304 - 1295 | -5.6 |
-| **Saturday** | 5.8 | 3.6 - 8.5 | 1148 - 4095 | -7.6 |
-| **Sunday** | 5.6 | 3.1 - 8.5 | 3666 - 4270 | -8.8 |
-| **Monday** | 9.7 | 3.6 - 16.3 | 2580 - 4417 | -8.0 |
-| **Tuesday** | 9.7 | 5.2 - 13.2 | 2566 - 4172 | -8.3 |
-| **Wednesday** | 10.6 | 4.2 - 14.6 | 1458 - 3920 | -9.3 |
-| **Thursday** | 10.2 | 2.8 - 17.5 | 640 - 4383 | -9.1 |
+|                    | Average<br>price<br>¢/kWh | Min - Max<br>¢/kWh | Wind power<br>Min - Max<br>MW | Average<br>temperature<br>°C |
+|:-------------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Friday**         | 20.1             | 9.2 - 36.8       | 302 - 1386    | -5.6          |
+| **Saturday**       | 6.3              | 3.3 - 9.1        | 1166 - 3855   | -7.6          |
+| **Sunday**         | 5.8              | 2.5 - 9.4        | 3623 - 4341   | -8.8          |
+| **Monday**         | 10.8             | 4.0 - 17.8       | 2643 - 4330   | -8.0          |
+| **Tuesday**        | 10.4             | 5.6 - 14.2       | 2647 - 3997   | -8.3          |
+| **Wednesday**      | 10.4             | 4.7 - 14.0       | 1560 - 3885   | -9.3          |
+| **Thursday**       | 9.6              | 4.3 - 15.1       | 678 - 3012    | -9.3          |
 
-The price of electricity on the power exchange will vary during the coming week. The cheapest days will be **Saturday** and **Sunday**, when the average daily price will remain below six cents per kilowatt-hour. On Saturday and Sunday, there will be plenty of wind power available, which will push prices down. On Sunday, the intraday variation is small, and the price of electricity will remain between 3.1 and 8.5 cents throughout the day.
+The price of electricity on the power exchange will fluctuate significantly during the coming week. On **Friday**, the price will rise to a very expensive level, with an average price of 20.1 ¢/kWh. Friday's maximum price, 36.8 ¢, will occur in the evening between 5 PM and 7 PM. Friday's price is explained by the low wind power production, which will remain at a minimum of only 302 MW during the day.
 
-The most expensive day will be **Friday**, when the average price will rise to 13.5 cents. Friday's maximum price will climb to 20.3 cents per kilowatt-hour. There is also a risk on Friday that the prices of individual hours will rise to as much as 30-50 cents. The highest prices will likely be in the evening between 5 PM and 7 PM, when wind power production is lower. Friday's price is also raised by the severe frost: the average daily temperature is -5.6 degrees.
+Prices will fall significantly for the weekend. On **Saturday** and Sunday, the average prices of electricity will already be significantly cheaper. Saturday's average price will be 6.3 ¢ and Sunday's 5.8 ¢. However, on Saturday there is a risk of individual price spikes, even up to 20 cents. On Sunday, prices are expected to remain stable. The low prices of the weekend are explained by abundant wind power production, which is expected to be on average 3200 MW on Saturday and even 3992 MW on Sunday. The freezing temperatures will tighten during the weekend, but there will be so much wind power that it will keep the price of electricity low.
 
-On Monday, Tuesday, Wednesday, and Thursday, average prices will settle around 9.7–10.6 cents. However, on **Monday**, high price spikes are expected, even 20-40 cents for individual hours. The price spikes will probably occur in the afternoon and evening between 3 PM and 7 PM. On Tuesday, there is no risk of price spikes, and the price will otherwise remain moderate.
+Next **Monday**, the price of electricity will rise again, with an average price of 10.8 ¢. Monday also has a high risk of price spikes, with prices for individual hours potentially rising to 30-40 cents. Wind power will be abundantly available on Monday, but the freezing temperatures will become even more intense.
 
-Next **Wednesday** and next **Thursday**, one should also prepare for high price spikes, even 30-40 cents for individual hours. On Wednesday, the spikes will probably occur in the morning between 7 AM and 9 AM and in the evening between 6 PM and 8 PM. On Thursday, price spikes may occur in the morning between 7 AM and 9 AM. The average temperatures on Wednesday and Thursday will fall well below freezing, which partly explains the rise in prices.
+On **Tuesday** and Wednesday, average prices will remain high, at around 10.4 cents per kilowatt-hour. On Wednesday, however, there is a risk that the prices of individual hours will rise up to 30 cents.
 
-During the week, the price of electricity on the power exchange will be at its cheapest on Sunday night between 1 AM and 2 AM, when the price will fall to 3.4 cents per kilowatt-hour.
+Next **Thursday**, the average price of electricity will decrease slightly, to 9.6 cents. Wind power production will decrease on Thursday, and there is a high risk of price spikes, even 20-40 cents per kilowatt-hour. The most likely time for a price spike is in the morning between 7 AM and 9 AM.
 
-*The numbers were interpreted today by gemini-2.0-pro-exp-02-05.* ⚡️
+*Prices interpreted by gemini-2.0-pro-exp-02-05.* ⚡️
 
