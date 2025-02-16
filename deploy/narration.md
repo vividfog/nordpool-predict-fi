@@ -1,33 +1,29 @@
-*'Pörssisähkön hinta vaihtelee tulevalla viikolla merkittävästi: alkuviikosta on odotettavissa korkeita hintoja ja jopa 40-60 sentin hintapiikkejä yksittäisinä tunteina, mutta loppuviikkoa kohden hinta laskee ja viikonloppuna sähkö on jo hyvin edullista, jopa lähellä nollaa.'*
+*'Pörssisähkön hinta vaihtelee tulevalla viikolla rajusti: alkuviikosta on odotettavissa korkeita hintoja ja jopa 40-60 sentin hintapiikkejä, mutta loppuviikkoa kohden hinta painuu erittäin alas, ja lauantaina sähköä saa jopa ilmaiseksi.'*
 
 
-Ennuste on päivitetty sunnuntaina klo 03:13.
+Pörssisähkön hintaennuste on päivitetty sunnuntaina klo 12:00.
 
-|   | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-|   **maanantai**   |      15.8       |    9.6 - 21.3    |   273 - 2148  |      -8.0       |
-|    **tiistai**    |      11.2       |    7.7 - 15.9    |  2289 - 2937  |      -8.3       |
-|  **keskiviikko**  |      12.3       |    5.6 - 18.0    |  1243 - 2828  |      -9.3       |
-|   **torstai**    |      9.3       |    5.3 - 14.2    |   887 - 2517  |      -9.3       |
-|   **perjantai**   |       3.8       |    1.8 - 6.3    |  2525 - 5314  |      -3.4       |
-|   **lauantai**   |       2.5      |    0.1 - 4.4    |  2896 - 4548  |      -0.6       |
-|   **sunnuntai**   |      2.9       |    0.6 - 4.6    |  3271 - 5026  |      0.3       |
+|    | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:---|:---:|:---:|:---:|:---:|
+| **maanantai** | 16.6 | 10.1 - 23.7 | 214 - 1927 | -8.0 |
+| **tiistai** | 12.1 | 8.0 - 16.6 | 2065 - 2501 | -8.3 |
+| **keskiviikko** | 11.8 | 5.6 - 16.0 | 1031 - 2224 | -9.3 |
+| **torstai** | 10.7 | 5.4 - 16.2 | 754 - 2708 | -9.3 |
+| **perjantai** | 3.3 | 1.4 - 5.1 | 2816 - 5068 | -3.4 |
+| **lauantai** | 1.2 | -0.2 - 2.1 | 3477 - 4918 | -0.6 |
+| **sunnuntai** | 1.5 | 0.3 - 3.0 | 3845 - 5396 | 0.4 |
 
-Pörssisähkön hintaodotukset vaihtelevat tulevan viikon aikana merkittävästi. Viikon alkupuolella hinnat ovat korkeammalla, mutta loppuviikkoa kohden hintataso laskee selvästi.
+Pörssisähkön hinta on tulevalla viikolla vaihtelevaa. Edessä on sekä kalliimpia että halvempia päiviä.
 
-**Maanantaina** sähkön keskihinta on 15.8 ¢/kWh, mikä on koko viikon korkein lukema. Maanantain korkeimman hinnan odotetaan asettuvan 21.3 senttiin kilowattitunnilta. Maanantaille on ennustettu myös korkeaa riskiä hintapiikeille, jolloin yksittäisten tuntien hinnat voivat nousta jopa 40-60 senttiin. Hintapiikin todennäköisin ajankohta sijoittuu iltaan, noin klo 17-19.
+**Maanantaina** sähkön keskihinta nousee korkealle, 16.6 senttiin kilowattitunnilta. Maanantain ennustettu maksimihinta on 23.7 ¢/kWh, mutta yksittäisten tuntien hinnat voivat nousta jopa 40-60 senttiin, erityisesti iltatuntien aikana klo 17-19. Tämä johtuu osin vähäisestä tuulivoimasta, jota on maanantaina tarjolla vain 214-1927 MW. Myös kova pakkanen, -8.0 astetta, vaikuttaa hintaan nostavasti.
 
-**Tiistaina** sähkön keskihinnaksi odotetaan 11.2 ¢/kWh. Tiistain ennustettu maksimihinta on 15.9 ¢, mutta tiistainakin on korkea riski hintapiikeille. Yksittäisten tuntien hinnat voivat nousta jopa 30-40 senttiin kilowattitunnilta.
+**Tiistaina** ja **keskiviikkona** keskihinnat pysyttelevät edelleen korkealla, yli 10 sentissä. Tiistain maksimihinta on 16.6 ¢, ja keskiviikon 16.0 ¢. Tiistaina on kuitenkin odotettavissa yksittäisiä hintapiikkejä, jopa 30-50 senttiä kilowattitunnilta, todennäköisimmin aamulla klo 8-10. Keskiviikkona vastaava riski on iltapäivällä klo 15-17. Tuulivoimaa on tiistaina ja keskiviikkona saatavilla niukasti, mikä osaltaan selittää hintojen kohoamista. Keskiviikon keskilämpötila laskee -9.3 asteeseen.
 
-**Keskiviikkona** keskihinnan odotetaan olevan 12.3 ¢/kWh, ja korkeimman hinnan arvioidaan kohoavan 18.0 senttiin. Keskiviikollekin ennustetaan korkeaa hintapiikkien riskiä, jopa 30-50 senttiin kilowattitunnilta. Hintapiikkien mahdollisuus ajoittuu todennäköisesti alkuiltaan, noin kello 17-19.
+**Torstaina** sähkön keskihinta asettunee 10.7 senttiin, mutta päivän maksimihinta voi nousta 16.2 senttiin. Hintapiikkien riski on edelleen olemassa, ja yksittäiset tunnit voivat maksaa jopa 30-40 senttiä, erityisesti aamulla klo 7-9. Tuulivoiman vähäinen määrä, vain 754 MW alimmillaan, on yksi syy hintojen nousuun. Torstain keskilämpötila on -9.3 astetta.
 
-Ensi **torstaina** keskihinta laskee 9.3 senttiin kilowattitunnilta. Torstain korkein hinta jää ennusteen mukaan 14.2 senttiin, mutta silloinkin on olemassa korkea riski, että yksittäisten tuntien hinnat voivat nousta jopa 20-40 senttiin kilowattitunnilta.
+Loppuviikkoa kohti mentäessä sähkön hinta kääntyy selvään laskuun. **Perjantaina** keskihinta putoaa jo 3.3 senttiin, ja viikonlopun päivinä hinnat ovat erittäin edullisia. Perjantain korkein hinta on vain 5.1 ¢/kWh.
 
-**Perjantaina** sähkön hinta kääntyy selvään laskuun. Perjantain keskihinnaksi odotetaan 3.8 ¢/kWh, ja päivän korkein hinta jää 6.3 senttiin. Perjantain alhaisimman hinnan odotetaan olevan vain 1.8 ¢ kilowattitunnilta.
+**Lauantaina** ja **sunnuntaina** sähkö on hyvin halpaa. Lauantain keskihinta painuu 1.2 senttiin, ja yön pimeinä tunteina hinta käväisee jopa -0.2 sentissä. Sunnuntain keskihinta on 1.5 ¢. Viikonlopun aikana tuulivoimaa on runsaasti saatavilla, mikä selittää osaltaan edullisia hintoja.
 
-Viikonloppuna sähkö on edullista. **Lauantaina** keskihinnaksi ennustetaan 2.5 ¢/kWh ja **sunnuntaina** 2.9 ¢/kWh. Lauantain alhaisimman tuntihinnan odotetaan olevan lähellä nollaa, vain 0.1 ¢/kWh. Sunnuntain alhaimmaksi hinnaksi odotetaan 0.6 ¢.
-
-Koko viikon hintatasoa tarkasteltaessa voidaan todeta, että alkuviikon päivät ovat selvästi kalliimpia kuin loppuviikon päivät. Alkuviikon korkeat hinnat selittyvät osin alhaisilla lämpötiloilla, jotka lisäävät sähkön kulutusta. Lisäksi alkuviikon päivinä tuulivoiman tuotanto jää ennusteen mukaan vähäisemmäksi, mikä osaltaan nostaa hintaa.
-
-*Tarkastelija tänään: gemini-2.0-pro-exp-02-05.* 📊
+*Tulkkina tänään gemini-2.0-pro-exp-02-05.* ⚡
 
