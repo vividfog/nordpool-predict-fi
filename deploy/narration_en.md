@@ -1,26 +1,28 @@
-*'The price of exchange electricity will fluctuate wildly over the coming week: On Monday, the price will skyrocket, but by the weekend, electricity will be almost free. On Tuesday, Wednesday, and Thursday, severe price spikes are expected, up to 30-40 cents per kilowatt-hour. Weekend wind power will override the effect of freezing temperatures.'*
+*'The price of electricity on the exchange will fluctuate wildly this week: Tuesday, Wednesday, and Thursday will be expensive days, but towards the end of the week, the price will fall, and on Sunday, electricity will even be free. There is a high risk of price spikes on Wednesday and Thursday.'*
 
-The electricity price forecast has been updated on Sunday at 9:14 PM.
+The forecast has been updated on Monday at 03:13 AM.
 
-|    | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|   | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday**   | 16.0  | 7.7 - 27.6  | 214 - 1944  | -8.0  |
-| **Tuesday**    | 10.9  | 6.2 - 16.3  | 1895 - 3984 | -8.3  |
-| **Wednesday** | 11.2  | 6.2 - 15.4  | 1256 - 2228 | -9.3  |
-| **Thursday**   | 9.7   | 5.0 - 15.3  | 1138 - 2606 | -9.3  |
-| **Friday**  | 4.1   | 0.6 - 9.1   | 2132 - 4987 | -3.4  |
-| **Saturday**   | 2.0   | 0.4 - 3.7   | 1955 - 4788 | -0.6  |
-| **Sunday**  | -0.1  | -1.0 - 0.4  | 4879 - 5682 | 0.4   |
+| **Tuesday**  | 9.8 | 5.9 - 13.8  | 2046 - 4274 | -8.3 |
+| **Wednesday**  | 11.5 | 5.8 - 15.4  | 1301 - 2325 | -9.3 |
+| **Thursday**  | 10.3 | 5.3 - 16.2 | 902 - 2371 | -9.3 |
+| **Friday**  | 4.1  | 1.0 - 7.9  | 2173 - 4789 | -3.4 |
+| **Saturday**  | 2.0  | 0.4 - 3.6  | 2078 - 4761 | -0.6 |
+| **Sunday**  | -0.2 | -1.0 - 0.5 | 4813 - 5536 |  0.4 |
+| **Monday**  | 1.1 | -0.9 - 2.0 | 5210 - 5568 |  1.9 |
 
-Next week, the price expectations for exchange electricity will vary greatly. On **Monday**, the price of electricity will rise high, and the average price for the day is expected to be as much as 16.0 ¢/kWh. Monday's maximum price could rise up to 27.6 cents per kilowatt-hour, partly due to the low amount of wind power, which is predicted to be at its lowest at only 214 MW during the day. Monday's highest price is likely to be during the morning hours, around 8-10 AM.
+The price of electricity on the exchange will vary significantly in the coming days. There will be both more expensive and cheaper days ahead.
 
-On **Tuesday**, the average price of electricity will fall to 10.9 cents, but the forecast includes a significant risk of price spikes. Prices for individual hours could rise up to 30-40 cents. The risk of price spikes is related to the morning and early evening hours, when electricity consumption is at its highest. Wednesday's and Thursday's price expectations are similar to Tuesday's.
+On **Tuesday**, the average price of exchange electricity will be 9.8 ¢/kWh, and the price will vary between 5.9 ¢ and 13.8 ¢. The average price is therefore higher than usual. The average temperature on Tuesday will be -8.3 °C.
 
-On **Wednesday**, the average price of electricity is estimated to be 11.2 cents per kilowatt-hour. A high risk of price spikes is also predicted for Wednesday, up to 30-40 cents for individual hours. On **Thursday**, the average price is 9.7 ¢/kWh, but the risk of price spikes still exists: the prices of individual hours can rise up to 20-40 cents per kilowatt-hour. The possibility of peak prices is typically during the morning and evening hours.
+On **Wednesday**, the average price will rise to 11.5 cents per kilowatt-hour. The price will be at its highest at 15.4 ¢ and at its lowest at 5.8 ¢. There is a high risk of price spikes during Wednesday and Thursday. The prices of individual hours can rise up to 30-50 cents on Wednesday and 30-40 cents on **Thursday**. Price peaks are likely to occur on Wednesday and Thursday in the morning around 7-9 AM and in the evening around 5-7 PM. The average temperatures on Wednesday and Thursday will be -9.3 degrees.
 
-On **Friday**, the price of electricity will fall significantly. The average price for the day is expected to be only 4.1 ¢/kWh. As the weekend approaches, the price of electricity will fall even further. On **Saturday**, the average price will be only 2.0 ¢/kWh, and on **Sunday**, it will go below zero, to -0.1 cents per kilowatt-hour. On Sunday, electricity will therefore be almost free, and during the night hours, the price will even become negative.
+The average price for Thursday is forecast to be 10.3 ¢/kWh. The price will be at its lowest at 5.3 ¢ and at its highest at 16.2 ¢. The minimum wind power production will remain low on these days, which partly explains the rise in prices.
 
-The low prices of the weekend are explained by the high production of wind power. On Friday, wind power will be available on average 3786 MW, on Saturday 3552 MW, and on Sunday as much as 5289 MW. On Sunday night, wind power will be produced at a maximum of over 5600 MW. Compared to Monday, the difference is huge, as on Monday, the average production of wind power will remain at only 628 MW.
+On **Friday**, the price will drop significantly, and the average price will be 4.1 ¢/kWh. Friday's maximum price will remain at 7.9 cents, while the lowest price will be 1.0 cent per kilowatt-hour.
 
-*Exchange electricity was whisked by gemini-2.0-pro-exp-02-05.* 🌬️
+On **Saturday** and **Sunday**, exchange electricity will be very cheap. Saturday's average price will be only 2.0 ¢/kWh, and the price will vary between 0.4 ¢ and 3.6 ¢. On Sunday, the average price will even drop to -0.2 cents, and the price will be at its lowest at -1.0 cent. During Sunday, the price of electricity will be negative for several consecutive hours from early morning to late morning. Next **Monday**, the price will remain low, at 1.1 cents per kilowatt-hour. Even on Monday, the price will not rise above 2.0 cents.
+
+*Behind the numbers: gemini-2.0-pro-exp-02-05.* ⚡️
 
