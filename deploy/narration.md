@@ -1,33 +1,29 @@
-*'Pörssisähkön hinta vaihtelee rajusti tällä viikolla. Keskiviikkona ja torstaina on odotettavissa hyvin kallista sähköä ja jopa 30-50 sentin hintapiikkejä yksittäisinä tunteina, mutta viikonloppuna ja ensi maanantaina sähkö on erittäin halpaa, ja hinta painuu sunnuntaina jopa negatiiviseksi.'*
+*'Sähkövatkain' ennakoi pörssisähkön hinnan heilahtelevan rajusti lähipäivinä: tiistai, keskiviikko ja torstai ovat kalliimpia, mutta loppuviikkoa ja viikonloppua kohti hinta painuu erittäin alas — sunnuntaina ja maanantaina jopa negatiiviseksi. Keskiviikkona ja torstaina kannattaa varautua hintapiikkeihin.*
 
 
-Pörssisähkön hintaennuste on päivitetty maanantaina klo 09:00.
+Sähkövatkaimen ennuste on päivitetty maanantaina klo 12:15.
 
-|      | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-----|:----------------:|:----------------:|:-------------:|:-------------:|
-| **tiistai**     | 8.9  | 6.1 - 11.7  | 2022 - 4536 | -8.3 |
-| **keskiviikko** | 12.2 | 6.2 - 16.6  | 1171 - 2484 | -9.3 |
-| **torstai**    | 8.8  | 3.3 - 15.3  | 1039 - 3794 | -9.3 |
-| **perjantai**  | 2.9  | -0.1 - 6.1  | 2279 - 5786 | -3.4 |
-| **lauantai**   | 4.3  | 2.2 - 7.7   | 1728 - 3272 | -0.6 |
-| **sunnuntai**  | 0.3  | -0.8 - 1.5  | 2519 - 5483 |  0.4 |
-| **maanantai**  | 0.7  | -0.7 - 1.7  | 5243 - 5859 |  1.9 |
+|     | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:----|:----------------:|:----------------:|:-------------:|:-------------:|
+| **tiistai**   | 9.0  | 6.1 - 11.4  | 2015 - 4508 | -8,3 |
+| **keskiviikko** | 12.8 | 4.8 - 18.7  | 1116 - 3607 | -9,3 |
+| **torstai**  | 9.7  | 4.1 - 16.3  | 1101 - 3443 | -9,3 |
+| **perjantai** | 2.8  | 0.5 - 5.5   | 2766 - 5118 | -3,4 |
+| **lauantai** | 4.2  | 1.8 - 7.8   | 1864 - 4012 | -0,6 |
+| **sunnuntai** | 0.2  | -0.5 - 1.2  | 2641 - 5397 | 0,4  |
+| **maanantai** | 0.7  | -0.7 - 1.6  | 5115 - 5748 | 1,9  |
 
-Pörssisähkön hinta tulee vaihtelemaan tulevalla viikolla huomattavasti. Edessä on sekä kalliimpia että halvempia päiviä.
+Pörssisähkön hinta tulee vaihtelemaan huomattavasti lähipäivinä. Edessä on sekä kalliimpia että halvempia päiviä.
 
-**Tiistaina** pörssisähkön keskihinta asettuu 8.9 ¢/kWh tasolle. Hinta tulee olemaan alimmillaan 6.1 ¢ ja korkeimmillaan 11.7 ¢. Keskihinta on hieman kalliimpi, koska tiistaina on kova pakkanen, -8.3 astetta.
+**Tiistaina** sähkön keskihinnaksi odotetaan 9,0 ¢/kWh. Hinta tulee pysymään melko tasaisena läpi vuorokauden, vaihdellen 6,1 sentistä 11,4 senttiin kilowattitunnilta. Tiistain keskilämpötila tulee olemaan -8,3 astetta.
 
-**Keskiviikko** on viikon kallein päivä. Pörssisähkön keskihinta nousee peräti 12.2 senttiin kilowattitunnilta. Keskiviikon hinta on korkea, koska tuulivoimaa on tarjolla vähän, vain 1171-2484 MW. Vuorokauden sisällä hinta vaihtelee 6.2 sentistä 16.6 senttiin. Keskiviikkona on myös riski hintapiikeille. Yksittäisten tuntien hinnat voivat nousta jopa 30-50 senttiin. Hintapiikit ajoittuvat todennäköisimmin klo 17-19 väliselle ajalle.
+**Keskiviikkona** sähkön hinta nousee, ja keskihinnaksi odotetaan 12,8 ¢/kWh. Keskiviikkona on myös korkea riski hintapiikeille. Yksittäisten tuntien hinnat voivat nousta jopa 30-50 senttiin. Hintapiikkien riski on suurin aamulla seitsemän ja yhdeksän välillä, sekä illalla kuuden ja kahdeksan välillä. Päivän aikana tuulivoiman tuotanto painuu ajoittain hyvin alas, mikä osaltaan selittää hintojen nousua. Keskiviikon keskilämpötilaksi on ennustettu -9,3 astetta.
 
-**Torstai** on hieman edullisempi, mutta silloinkin keskihinta on vielä 8.8 ¢. Hinta on korkea, koska torstainakin tuulivoimaa on saatavilla vähän, vain 1039-3794 MW, ja samaan aikaan on kova pakkanen, -9.3 astetta. Torstainakin on olemassa riski, että yksittäisten tuntien hinnat nousevat selvästi ennustettua korkeammiksi, jopa 20-40 senttiin kilowattitunnilta. Nämä hintapiikit osuvat todennäköisesti klo 7-9 väliselle ajalle.
+**Torstaina** keskihinta laskee hieman keskiviikosta, asettuen 9,7 senttiin kilowattitunnilta. Torstainakin on kuitenkin odotettavissa hintapiikkejä, jolloin yksittäisten tuntien hinnat voivat nousta jopa 20-40 senttiin. Hintapiikit ajoittuvat todennäköisimmin aamuun seitsemän ja yhdeksän välille, sekä iltapäivään neljän ja kuuden välille. Tuulivoiman tuotanto jää torstainakin ajoittain vähäiseksi. Keskilämpötila pysyy -9,3 asteessa.
 
-**Perjantaina** pörssisähkön hinta laskee jo selvästi, keskihinnan ollessa vain 2.9 ¢. Perjantain aikana hinta tulee olemaan alimmillaan jopa -0.1 ¢ ja korkeimmillaan 6.1 ¢. Perjantaina tuulivoimaa on tarjolla runsaasti, 2279-5786 MW.
+**Perjantaina** sähkön hinta kääntyy selvään laskuun. Keskihinnaksi odotetaan 2,8 ¢/kWh, ja hinta tulee vaihtelemaan 0,5 sentin ja 5,5 sentin välillä. Perjantaina tuulivoimaa on luvassa runsaasti, mikä painaa hintaa alas.
 
-**Lauantaina** hinta nousee hieman, keskihinnan ollessa 4.3 ¢. Hinta tulee vaihtelemaan 2.2 sentistä 7.7 senttiin kilowattitunnilta. Lauantaille on ennustettu pientä riskiä, että yksittäisten tuntien hinnat voivat nousta jopa 10 senttiä ennustettua korkeammiksi.
+Viikonloppuna sähkö on edullista. **Lauantaina** keskihinta nousee hieman perjantaista, 4,2 senttiin kilowattitunnilta. **Sunnuntaina** mentäessä mennään jo lähelle nollaa, sillä päivän keskihinnaksi odotetaan vain 0,2 ¢/kWh. Sunnuntaina sähkön hinta painuu aamuyön ja iltapäivän tunteina jopa negatiiviseksi. Ensi **maanantaina** hinta pysyy edelleen hyvin alhaisena, keskihinnan ollessa 0,7 ¢/kWh. Tuulivoimaa on viikonloppuna ja ensi maanantaina tarjolla erittäin runsaasti, mikä selittää alhaisia hintoja.
 
-**Sunnuntai** on viikon halvin päivä. Pörssisähkön keskihinta tulee olemaan vain 0.3 ¢/kWh. Sunnuntaina hinta on alimmillaan -0.8 ¢ ja korkeimmillaan 1.5 ¢. Sunnuntaina tuulivoimaa on tarjolla erittäin runsaasti, 2519-5483 MW.
-
-Ensi **maanantai**na hinta pysyy edelleen hyvin alhaisena, keskihinnan ollessa 0.7 ¢. Maanantain aikana hinta tulee olemaan alimmillaan -0.7 ¢ ja korkeimmillaan 1.7 ¢. Tuulivoimaa on maanantaina tarjolla erittäin runsaasti, 5243-5859 MW.
-
-*Tehtävää suoritti tänään gemini-2.0-pro-exp-02-05.* ⚡
+*Hintoja luki tänään gemini-2.0-pro-exp-02-05.* ⚡️
 
