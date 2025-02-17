@@ -1,26 +1,26 @@
-*'The price of electricity on the exchange market will fluctuate dramatically over the coming week. Wednesday and Thursday will be expensive days, with the possibility of exceptionally high price spikes. On other days, the price will be affordable, and even free on Sunday. Electricity will be cheap at the beginning of next week.'*
+*The price of electricity on the Nord Pool spot market will fluctuate wildly this week: In contrast to the affordable prices on Tuesday and the weekend, very high price spikes are expected on Wednesday and Thursday, up to 30-40 cents per kilowatt-hour, warns the _Sähkövatkain_ service.*
 
-The forecast has been updated on Monday at 2:18 PM.
+The forecast has been updated on Monday at 9:00 PM.
 
-|    | Average<br>Price<br>¢/kWh | Min - Max<br>¢/kWh | Wind Power<br>Min - Max<br>MW | Average<br>Temperature<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **Tuesday**     | 2.9  | 0.3 - 6.2   | 1992 - 4497  | -8.3  |
-| **Wednesday** | 11.8 | 3.6 - 17.8  | 1014 - 3596  | -9.3  |
-| **Thursday**    | 8.8  | 2.8 - 15.3  | 1216 - 3448  | -9.3  |
-| **Friday**  | 2.6  | 0.9 - 5.6   | 2942 - 5116  | -3.4  |
-| **Saturday**   | 3.9  | 1.2 - 8.0   | 1788 - 4048  | -0.6  |
-| **Sunday**  | 0.0  | -0.5 - 1.0  | 2547 - 5316  | 0.4   |
-| **Monday**  | 0.4  | -0.9 - 1.3  | 5290 - 5985  | 2.0   |
+|        | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Tuesday**   | 2.9              | 0.3 - 6.2       | 1820 - 4482   | -8.3          |
+| **Wednesday** | 11.2             | 3.6 - 17.7      | 993 - 3586    | -9.3          |
+| **Thursday**  | 10.0             | 2.3 - 17.7      | 1069 - 3481   | -9.3          |
+| **Friday**    | 2.3              | 0.5 - 5.6       | 3085 - 5633   | -3.4          |
+| **Saturday**  | 3.4              | 1.7 - 5.5       | 2561 - 3195   | -0.6          |
+| **Sunday**    | 2.7              | 0.4 - 4.5       | 2405 - 4478   | 0.4           |
+| **Monday**    | 0.7             | -0.6 - 1.6       | 4565 - 5937   | 2.0           |
 
-The price of electricity on the exchange will rise tonight, but the average price for **Tuesday** will remain below three cents per kilowatt-hour. Tuesday is the only day of the week when the temperature drops below -8 degrees. As wind power production on Tuesday remains high, the price differences within the day will remain small.
+The price expectations for electricity on the Nord Pool spot market show large variations for the coming week. On **Tuesday**, the average price of electricity is expected to be around 2.9 cents per kilowatt-hour. Tuesday is a fairly typical day in terms of price, and the price will remain affordable throughout the day. During the cheapest hours of the night, the price is expected to fall below half a cent.
 
-On Wednesday and Thursday, the price of electricity will rise significantly. The average price for **Wednesday** will rise to nearly 12 cents per kilowatt-hour. However, the forecasts for Wednesday and Thursday include a risk of price spikes, which could push the prices of individual hours significantly higher than predicted. On Wednesday, the prices of individual hours could rise up to 30-50 cents, and on Thursday to 20-40 cents per kilowatt-hour.
+**Wednesday** and **Thursday** look to be significantly more expensive days. The average price on Wednesday is expected to rise to 11.2 cents, and on Thursday the average price is expected to be 10.0 cents per kilowatt-hour. On both days, the price of electricity will rise to a maximum of 17.7 cents. There is also a high risk of price spikes on Wednesday and Thursday. Prices for individual hours can rise up to 30-40 cents per kilowatt-hour.
 
-The risk of price spikes on Wednesday is during the morning hours, around 8-10 AM, when wind power production drops very low, to only about a thousand megawatts. On **Thursday**, the highest peak prices are most likely to occur during the morning hours, around 7-9 AM. The rise in prices on Wednesday and Thursday is also explained by the freezing temperatures. The average temperature on Wednesday and Thursday is -9.3 degrees Celsius.
+The risk of price spikes is highest on Wednesday evening, around 5-7 PM. On Thursday, the risk of price spikes is greatest in the morning, around 7-9 AM. The high prices are due to low wind power production. Between Wednesday and Thursday, wind power is forecast to be at its lowest, at only around 1000 megawatts. The hard frost on Wednesday and Thursday, with an average temperature of -9.3 degrees Celsius, can also partly explain the high prices.
 
-On **Friday**, the price of electricity will fall again, and the average price for the day is predicted to be 2.6 cents per kilowatt-hour. On Friday, there will be plenty of wind power available, which will push the price down. The price of electricity will also remain low during the weekend.
+On **Friday**, the average price of electricity on the Nord Pool spot market returns to a very affordable level, around 2.3 cents per kilowatt-hour. The price fluctuation on Friday will remain small, with the price of the most expensive hour being 5.6 cents. On Friday, there will be plenty of wind power available, which will lower the price of electricity.
 
-The average price for **Saturday** will rise slightly, but will remain below four cents per kilowatt-hour. On Saturday, wind power production will be at a somewhat lower level than on Friday. On **Sunday**, the average price of electricity will fall to zero, and during the night hours, the price may even dip below zero. Next **Monday**, the price will remain close to zero. During the weekend and next Monday, there will be a very large amount of wind power available.
+Next weekend (**Saturday** and **Sunday**), the price of electricity will remain affordable, with average prices of 3.4 and 2.7 cents per kilowatt-hour. Next **Monday**, the price will be the cheapest of the week, with the average price falling to 0.7 cents. On Monday night, the price will even fall into negative territory.
 
-*Bit energy interpreter: gemini-2.0-pro-exp-02-05.* 🌬️
+*Interpreted by gemini-2.0-pro-exp-02-05.* ⚡️
 
