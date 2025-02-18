@@ -1,29 +1,27 @@
-*Sähkövatkain-verkkopalvelun tuoreen ennusteen mukaan pörssisähkön hinta vaihtelee tulevalla viikolla rajusti: Keskiviikkona ja torstaina on odotettavissa korkeita hintoja ja jopa 30-40 sentin hintapiikkejä, kun taas loppuviikosta ja ensi viikon alussa sähkö on huomattavasti edullisempaa.*
+*'Sähkövatkain' ennakoi pörssisähkön hinnan merkittävää vaihtelua tulevalle viikolle: Keskiviikkona ja torstaina hinnat ovat korkealla ja hintapiikkien riski on suuri, mutta perjantaista alkaen sähkö on erittäin edullista, ja hinta painuu jopa negatiiviseksi.*
 
 
-Sähkövatkaimen ennuste on päivitetty tiistaina klo 03:13.
+Sähkövatkaimen ennuste on päivitetty tiistaina klo 09:14.
 
 |    | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **keskiviikko** | 11.2 | 3.2 - 17.3 | 1074 - 3472 | -9.3 |
-| **torstai**     | 9.6  | 2.4 - 15.2 | 1208 - 2935 | -9.3 |
-| **perjantai**    | 3.5  | 1.4 - 6.4  | 2158 - 4824 | -3.4 |
-| **lauantai**    | 2.3  | 0.9 - 3.6  | 2188 - 3889 | -0.6 |
-| **sunnuntai**   | 2.7  | 0.5 - 4.4  | 2453 - 4348 |  0.4 |
-| **maanantai**   | 0.7  | -0.5 - 1.6 | 4431 - 6044 |  2.0 |
-| **tiistai**     | 9.7  | 2.2 - 18.4 | 1772 - 4740 |  1.5 |
+| **keskiviikko** | 9.7 | 3.6 - 17.4 | 1058 - 4280 | -9.3 |
+| **torstai** | 8.2 | 2.5 - 14.1 | 1597 - 3424 | -9.3 |
+| **perjantai** | 2.8 | 0.8 - 6.0 | 2842 - 5371 | -3.4 |
+| **lauantai** | 1.7 | 0.5 - 2.9 | 2668 - 4131 | -0.6 |
+| **sunnuntai** | 1.1 | -0.2 - 3.2 | 3422 - 5383 | 0.4 |
+| **maanantai** | 0.3 | -1.0 - 1.3 | 4738 - 5947 | 2.0 |
+| **tiistai** | 6.4 | 0.3 - 11.3 | 2197 - 5185 | 1.5 |
 
-Pörssisähkön hintaodotukset vaihtelevat tulevan viikon aikana merkittävästi. Keskiviikkona ja torstaina hinnat ovat selvästi korkeammalla, kun taas loppuviikkoa ja ensi viikon alkua kohti mentäessä hintojen odotetaan laskevan huomattavasti.
+Pörssisähkön hintaodotukset vaihtelevat tulevan viikon aikana merkittävästi. Kalleinta sähkö on **keskiviikkona**, jolloin päivän keskihinnaksi ennakoidaan 9,7 ¢/kWh. Keskiviikon maksimihinta, 17,4 ¢, ajoittuu aamupäivän tunneille 8-10. Keskiviikkona ja torstaina on olemassa riski, että yksittäisten tuntien hinnat nousevat selvästi korkeammiksi, jopa 20-40 senttiin kilowattitunnilta. Hintapiikkien todennäköisin ajankohta on aamulla kahdeksan ja kymmenen välillä, sekä illalla kuuden ja kahdeksan välillä.
 
-**Keskiviikko** alkaa vielä kohtuullisen edullisilla hinnoilla, mutta aamupäivää kohden hinta nousee, ja korkeimmillaan sen odotetaan olevan 17.3 ¢/kWh. Keskiviikon keskihinnaksi on ennustettu 11.2 ¢, ja päivän aikana on olemassa korkea riski jopa 30-40 sentin hintapiikeille yksittäisinä tunteina. Hintapiikin todennäköisin ajankohta on aamulla kello 7–9. Keskiviikon hintatasoa selittää osaltaan alhainen, jopa alle -9 asteen keskilämpötila. Myös tuulivoiman tuotanto jää keskiviikkona matalaksi, mikä osaltaan nostaa hintaa.
+**Torstain** keskihinta, 8,2 ¢, on myös lähellä kymmentä senttiä. Tuolloin ennustettu maksimihinta on 14,1 ¢/kWh aamulla kahdeksan ja kymmenen välillä. Keskiviikon ja torstain korkeita hintoja selittää poikkeuksellisen kova pakkanen, sillä päivien keskilämpötila on -9,3 astetta. Lisäksi tuulivoiman tuotanto jää keskiviikkona ja torstaina matalalle tasolle. Esimerkiksi keskiviikon minimituotanto, 1058 MW, ajoittuu iltapäivän tunneille.
 
-**Torstai**na sähkön hinnan odotetaan pysyvän korkealla, ja keskihinnaksi ennustetaan 9.6 ¢/kWh. Hintojen vaihteluväli on laaja, alimmillaan 2.4 ¢ ja korkeimmillaan 15.2 ¢ kilowattitunnilta. Myös torstaina on olemassa korkea riski hintapiikeille, jolloin yksittäisten tuntien hinnat voivat nousta jopa 20-40 senttiin. Todennäköisimmin korkeita piikkihintoja nähdään aamulla kello 7–9. Keskiviikon tapaan torstainkin hintaa selittävät matala keskilämpötila ja vähäinen tuulivoimatuotanto.
+**Perjantaista** alkaen sähkön hinta laskee selvästi. Perjantain keskihinta on 2,8 ¢, ja viikonlopun aikana hinta painuu vieläkin alemmaksi. **Lauantaina** keskihinta on 1,7 ¢ ja **sunnuntaina** enää 1,1 ¢. Sunnuntaina on myös odotettavissa negatiivisia tuntihintoja: -0,1 ¢/kWh aamuyöllä kahden ja kolmen välillä, ja -0,2 ¢/kWh myöhään illalla yhdentoista ja kahdentoista välillä.
 
-**Perjantai**sta alkaen sähkön hinnan odotetaan laskevan selvästi. Perjantain keskihinnaksi ennustetaan enää 3.5 ¢/kWh, ja hinta vaihtelee 1.4 ja 6.4 sentin välillä. Tuulivoiman tuotannon odotetaan kasvavan perjantaina, mikä laskee hintaa.
+Ensi **maanantaina** sähkön keskihinta on vain 0,3 ¢/kWh. Maanantain ja sitä seuraavan yön aikana on odotettavissa useita tunteja, jolloin sähkön hinta painuu nollan alapuolelle. Alimmillaan hinta on -1,0 ¢/kWh aamuyöllä kahden ja neljän välillä. Edullisia päiviä maanantaista eteenpäin selittää runsas tuulivoiman tuotanto. Esimerkiksi maanantaina tuulivoimaa on tarjolla keskimäärin 5559 MW, mikä on erittäin paljon.
 
-Viikonloppuna, **lauantai**na ja **sunnuntai**na, sähkön hinnan odotetaan pysyvän edullisena. Lauantain keskihinnaksi ennustetaan 2.3 ¢ ja sunnuntain keskihinnaksi 2.7 ¢. Ensi **maanantai**na hinta laskee entisestään, ja keskihinnaksi odotetaan vain 0.7 ¢/kWh. Maanantaina on jopa mahdollista, että sähkön hinta painuu hetkellisesti negatiiviseksi aamuyön tunteina.
+Ensi **tiistaina** pörssisähkön keskihinta nousee 6,4 senttiin kilowattitunnilta, mutta hinta on silti selvästi edullisempi kuin viikon kahtena ensimmäisenä päivänä. Tiistain maksimihinta, 11,3 ¢, ajoittuu iltaan seitsemän ja yhdeksän välille. Tuolloin tuulivoiman tuotanto on matalimmillaan, 2197 MW, mikä selittää korkeampaa maksimihintaa. Tiistaina on olemassa riski, että yksittäisten tuntien hinnat nousevat korkeammiksi, jopa 20 senttiin kilowattitunnilta.
 
-Ensi **tiistai**na sähkön hinta nousee jälleen, ja päivän keskihinnaksi odotetaan 9.7 ¢/kWh. Tiistaina hintojen vaihteluväli on suuri, alimmillaan 2.2 ¢ ja korkeimmillaan 18.4 ¢. Tiistaille ennustetaan myös korkeaa riskiä hintapiikeille, jopa 20-40 senttiin yksittäisillä tunneilla. Hintapiikin todennäköisin ajankohta sijoittuu iltaan, noin kello 18–20.
-
-*Hintoja vatkasi tänään gemini-2.0-pro-exp-02-05.* ⚡
+*Ennusteen laati tänään gemini-2.0-pro-exp-02-05.* 📊
 
