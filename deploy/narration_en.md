@@ -1,26 +1,26 @@
-*'Sähkövatkain' (Electric Mixer) predicts significant fluctuations in the price of electricity on the Nordpool exchange for the coming week: On Wednesday and Thursday, prices will be high and the risk of price spikes is significant, but from Friday onwards, electricity will be very cheap, with prices even falling below zero.*
+*'The price of exchange electricity will fluctuate dramatically in the coming days: On Wednesday and Thursday, average prices will be high and the risk of price spikes is significant, but from Friday onwards the price will fall and on Monday, consumers may even be paid for electricity, predicts Sähkövatkain.'*
 
-The Sähkövatkain forecast was updated on Tuesday at 09:14.
+The forecast has been updated on Tuesday at 12:00 PM.
 
-|    | Average<br>price<br>¢/kWh | Min - Max<br>¢/kWh | Wind power<br>Min - Max<br>MW | Average<br>temperature<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **Wednesday** | 9.7 | 3.6 - 17.4 | 1058 - 4280 | -9.3 |
-| **Thursday** | 8.2 | 2.5 - 14.1 | 1597 - 3424 | -9.3 |
-| **Friday** | 2.8 | 0.8 - 6.0 | 2842 - 5371 | -3.4 |
-| **Saturday** | 1.7 | 0.5 - 2.9 | 2668 - 4131 | -0.6 |
-| **Sunday** | 1.1 | -0.2 - 3.2 | 3422 - 5383 | 0.4 |
-| **Monday** | 0.3 | -1.0 - 1.3 | 4738 - 5947 | 2.0 |
-| **Tuesday** | 6.4 | 0.3 - 11.3 | 2197 - 5185 | 1.5 |
+|    | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Wednesday** | 9.5 | 3.6 - 16.9 | 1140 - 4500 | -9.3 |
+| **Thursday** | 7.2 | 2.9 - 13.7 | 1579 - 4502 | -9.3 |
+| **Friday** | 3.4 | 0.9 - 7.2  | 2695 - 5298 | -3.4 |
+| **Saturday** | 1.9 | 0.5 - 3.1  | 3083 - 4308 | -0.6 |
+| **Sunday** | 1.6 | 0.1 - 3.2  | 3430 - 4807 |  0.4 |
+| **Monday** | 0.4 | -0.9 - 1.5 | 4857 - 5859 |  2.0 |
+| **Tuesday** | 5.8 | 0.3 - 9.5  | 2391 - 5283 |  1.5 |
 
-Electricity price expectations will vary significantly over the next week. Electricity will be most expensive on **Wednesday**, when the average daily price is predicted to be 9.7 ¢/kWh. Wednesday's maximum price, 17.4 ¢, will occur during the morning hours between 8 and 10. On Wednesday and Thursday, there is a risk that the prices of individual hours will rise significantly higher, even up to 20-40 cents per kilowatt-hour. The most likely time for price spikes is in the morning between eight and ten, and in the evening between six and eight.
+Exchange electricity price expectations will vary significantly over the coming week. On **Wednesday** and **Thursday**, the average price of electricity is expected to be higher, while towards the end of the week prices are expected to fall significantly.
 
-The average price for **Thursday**, 8.2 ¢, is also close to ten cents. The predicted maximum price is 14.1 ¢/kWh in the morning between eight and ten. The high prices on Wednesday and Thursday are explained by the exceptionally cold weather, as the average daily temperature is -9.3 degrees Celsius. In addition, wind power production will remain at a low level on Wednesday and Thursday. For example, Wednesday's minimum production, 1058 MW, will occur during the afternoon hours.
+The forecast average prices for Wednesday and Thursday, 9.5 ¢ and 7.2 ¢ per kilowatt-hour, are significantly more expensive than on other days. Wednesday's maximum price, 16.9 ¢, will be higher than on other days. According to the hourly forecast, the most expensive moment is expected to be during the morning hours, around 8-10 AM. There is also a high risk of price spikes on Wednesday and Thursday, with prices for individual hours potentially rising to 20-40 cents per kilowatt-hour.
 
-From **Friday** onwards, the price of electricity will fall significantly. Friday's average price will be 2.8 ¢, and during the weekend the price will fall even lower. On **Saturday**, the average price will be 1.7 ¢ and on **Sunday** only 1.1 ¢. On Sunday, negative hourly prices are also expected: -0.1 ¢/kWh in the early morning between two and three, and -0.2 ¢/kWh late in the evening between eleven and twelve.
+From Friday onwards, the price of electricity is expected to turn downwards. The average price for **Friday** is forecast to be 3.4 ¢, and prices will continue to fall over the weekend. On **Saturday**, the average price is expected to fall to 1.9 cents and on Sunday to 1.6 cents per kilowatt-hour.
 
-Next **Monday**, the average price of electricity will be only 0.3 ¢/kWh. During Monday and the following night, several hours are expected when the price of electricity will fall below zero. The lowest price will be -1.0 ¢/kWh in the early morning between two and four. The cheap days from Monday onwards are explained by the abundant wind power production. For example, on Monday, wind power will be available at an average of 5559 MW, which is very high.
+The price of electricity is expected to be particularly cheap next **Monday**, with an average price forecast of only 0.4 ¢ per kilowatt-hour. Monday's forecast even includes negative hourly prices, as low as -0.9 ¢. This means that consumers may be paid for using electricity. Next Tuesday's average price, 5.8 ¢, will be slightly higher again.
 
-Next **Tuesday**, the average price of electricity will rise to 6.4 cents per kilowatt-hour, but the price will still be clearly cheaper than on the first two days of the week. Tuesday's maximum price, 11.3 ¢, will occur in the evening between seven and nine. At that time, wind power production will be at its lowest, 2197 MW, which explains the higher maximum price. On Tuesday, there is a risk that the prices of individual hours will rise higher, up to 20 cents per kilowatt-hour.
+The higher prices on Wednesday and Thursday are likely to be partly explained by the cold weather. The average temperature for Wednesday and Thursday is forecast to be -9.3 degrees Celsius. On other days, the temperature will remain around zero or slightly above freezing. In addition, the minimum wind power production on Wednesday and Thursday will remain low, which partly explains the higher prices. For example, Wednesday's minimum production is only 1140 MW.
 
-*The forecast was prepared today by gemini-2.0-pro-exp-02-05.* 📊
+*Stock market figures interpreted by gemini-2.0-pro-exp-02-05.* ⚡️
 
