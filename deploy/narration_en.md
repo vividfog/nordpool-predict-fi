@@ -1,26 +1,30 @@
-*'The price of electricity on the exchange market will fluctuate dramatically over the coming week: On Wednesday, the average price will climb close to ten cents, but next Monday the price will even fall below zero. Towards the end of the week, the weather will become milder, which, together with abundant wind power, will significantly lower prices.'*
+*'The price of electricity on the power exchange will fluctuate over the coming week: On Wednesday, the price will rise sharply, but during the weekend and next Monday, we will enjoy very low prices, with electricity even being free at times. On Tuesday, the price will rise again.'*
 
-The electricity price forecast has been updated on Tuesday at 2:18 PM.
+The electricity price forecast has been updated on Tuesday at 9:00 PM.
 
-|     | Average<br>Price<br>¢/kWh | Min - Max<br>¢/kWh | Wind Power<br>Min - Max<br>MW | Average<br>Temperature<br>°C |
-|:----|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 9.7 | 1.4 - 23.1 | 1135 - 4494 | -9.3 |
-| **Thursday**     | 6.1 | 0.7 - 12.8 | 1736 - 4489 | -9.3 |
-| **Friday**   | 3.2 | 0.4 - 6.9  | 2689 - 5283 | -3.4 |
-| **Saturday**    | 2.0 | 0.6 - 3.4  | 3029 - 4170 | -0.6 |
-| **Sunday**   | 1.3 | 0.1 - 3.7  | 3384 - 4862 |  0.4 |
-| **Monday**   | 0.6 | -0.6 - 1.3 | 4933 - 5910 |  2.0 |
-| **Tuesday**     | 6.8 | 0.1 - 12.2 | 1739 - 5297 |  1.4 |
+|   | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Wednesday** | 9.7 | 1.6 - 23.1 | 1101 - 4459 | -9.3 |
+| **Thursday**    | 5.9 | 0.8 - 10.5 | 1875 - 4432 | -9.3 |
+| **Friday**     | 3.2 | 0.7 - 6.5  | 2189 - 5296 | -3.4 |
+| **Saturday**    | 2.9 | 1.7 - 4.2  | 1949 - 4139 | -0.6 |
+| **Sunday**   | 1.7 | -0.1 - 3.2 | 3411 - 5071 |  0.4 |
+| **Monday**   | 0.6 | -0.8 - 2.0 | 5093 - 5798 |  2.0 |
+| **Tuesday**     | 5.4 | -0.4 - 11.3| 2133 - 5418 |  1.4 |
 
-The price of electricity on the exchange will be variable in the coming week. The most expensive day will be **Wednesday**, when the average price will rise to 9.7 cents per kilowatt-hour. Wednesday's highest price, 23.1 ¢, will likely be during the morning hours between 7 and 9 AM. The price will remain high even after noon, but will decrease towards the evening. Wednesday's lowest price of the day, 1.4 ¢, will be during the late evening hours.
+The price of electricity on the power exchange is expected to fluctuate during the coming week. On Wednesday, the price will rise, but towards the end of the week and next week, the price level will fall significantly.
 
-After Wednesday, the price level will drop significantly. On **Thursday**, the average price will be 6.1 ¢, and from Friday onwards, the price of electricity will settle at a fairly affordable level. Thursday's highest price, 12.8 ¢, is expected in the morning between eight and ten o'clock. However, there is a risk that the prices of individual hours could rise up to 20 cents.
+On **Wednesday**, the average price of electricity will rise to 9.7 cents per kilowatt-hour. The highest price of the day will rise to 23.1 cents, partly due to the severe frost, as the average daily temperature is predicted to be -9.3 degrees Celsius. The low amount of wind power, at a minimum of only 1101 MW, may also contribute to the higher price. The highest price will occur in the morning between 7-9 AM. At night, the price will fall significantly cheaper, even below two cents.
 
-From **Friday** onwards, the price of electricity will fall well below four cents per kilowatt-hour. Friday's average price will be 3.2 ¢, and during the weekend the price will continue to fall. On Friday, electricity will be at its cheapest during the early morning hours, when the price will be only 0.4 ¢. **Saturday**'s average price will be 2.0 ¢, and on **Sunday** only 1.3 ¢. On Sunday, the price will even dip to 0.1 cents in the evening between 9 and 11 PM.
+On **Thursday**, the average price will fall to 5.9 cents. The price will remain below ten cents for most of the day, except for the morning hours. At its lowest, the price will be less than one cent. The frost will continue as severe as on Wednesday.
 
-Next **Monday**, the average price of electricity will fall further, being only 0.6 ¢ per kilowatt-hour. During Monday, the price will even go below zero, at its lowest -0.6 cents during the early morning hours. Next **Tuesday**, the price will rise again, and Tuesday's average price will be 6.8 ¢. Tuesday's highest price (12.2 ¢) will be in the early evening between 6 and 8 PM. On Tuesday, there is a risk that prices for individual hours could reach up to 20 cents.
+On **Friday**, the average price of electricity will fall to 3.2 cents per kilowatt-hour. The price will remain quite low throughout the day and will not rise above 6.5 cents at any time. The average temperature on Friday is -3.4 degrees Celsius.
 
-On Wednesday and Thursday, there will be severe frost, which may partly explain the higher prices. From Friday onwards, the weather will become milder, which, together with abundant wind power generation, will lower prices.
+During the weekend, electricity on the power exchange will be cheap. The average price on **Saturday** will be 2.9 ¢ and on **Sunday** only 1.7 ¢. On Sunday, the price will even fall slightly below zero (-0.1 ¢) in the evening at 9 PM. On Saturday, less wind power is available than on other days, but on Sunday, wind power is predicted to increase.
 
-*Interpreted by gemini-2.0-pro-exp-02-05.* ⚡️
+Next **Monday**, the average price of electricity will fall to 0.6 cents per kilowatt-hour. The price will even go down to -0.8 cents during the night hours. Very high wind power production, up to 5798 MW, is predicted for Monday, which partly explains the low price.
+
+Next **Tuesday**, the average price of electricity will rise to 5.4 cents. The lowest price of the day will fall below zero (-0.4 ¢), but the highest price will rise to 11.3 cents per kilowatt-hour.
+
+*Interpreted by gemini-2.0-pro-exp-02-05.* 📊
 

@@ -1,27 +1,31 @@
-*'Pörssisähkön hinta vaihtelee tulevalla viikolla rajusti: Keskiviikkona keskihinta kipuaa lähelle kymmentä senttiä, mutta ensi maanantaina hinta painuu jopa nollan alapuolelle. Loppuviikkoa kohden mentäessä sää leudontuu, mikä yhdessä runsaan tuulivoiman kanssa laskee hintoja merkittävästi.'*
+*'Pörssisähkön hinta heilahtelee tulevalla viikolla: Keskiviikkona hinta nousee korkealle, mutta viikonloppuna ja ensi maanantaina päästään nauttimaan erittäin edullisista hinnoista, jolloin sähkö on ajoittain jopa ilmaista. Tiistaina hinta nousee jälleen.'*
 
 
-Pörssisähkön hintaennuste on päivitetty tiistaina klo 14:18.
+Pörssisähkön hintaennuste on päivitetty tiistaina klo 21:00.
 
-|     | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:----|:----------------:|:----------------:|:-------------:|:-------------:|
-| **keskiviikko** | 9.7 | 1.4 - 23.1 | 1135 - 4494 | -9.3 |
-| **torstai**     | 6.1 | 0.7 - 12.8 | 1736 - 4489 | -9.3 |
-| **perjantai**   | 3.2 | 0.4 - 6.9  | 2689 - 5283 | -3.4 |
-| **lauantai**    | 2.0 | 0.6 - 3.4  | 3029 - 4170 | -0.6 |
-| **sunnuntai**   | 1.3 | 0.1 - 3.7  | 3384 - 4862 |  0.4 |
-| **maanantai**   | 0.6 | -0.6 - 1.3 | 4933 - 5910 |  2.0 |
-| **tiistai**     | 6.8 | 0.1 - 12.2 | 1739 - 5297 |  1.4 |
+|   | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **keskiviikko** | 9.7 | 1.6 - 23.1 | 1101 - 4459 | -9.3 |
+| **torstai**     | 5.9 | 0.8 - 10.5 | 1875 - 4432 | -9.3 |
+| **perjantai**    | 3.2 | 0.7 - 6.5  | 2189 - 5296 | -3.4 |
+| **lauantai**    | 2.9 | 1.7 - 4.2  | 1949 - 4139 | -0.6 |
+| **sunnuntai**   | 1.7 | -0.1 - 3.2 | 3411 - 5071 |  0.4 |
+| **maanantai**   | 0.6 | -0.8 - 2.0 | 5093 - 5798 |  2.0 |
+| **tiistai**     | 5.4 | -0.4 - 11.3| 2133 - 5418 |  1.4 |
 
-Pörssisähkön hinta on tulevalla viikolla vaihtelevaa. Kallein päivä on **keskiviikko**, jolloin keskihinta nousee 9.7 senttiin kilowattitunnilta. Keskiviikon korkein hinta, 23.1 ¢, ajoittunee aamun tunneille 7–9. Hinta pysyttelee korkealla vielä puolenpäivän jälkeenkin, mutta laskee iltaa kohden. Keskiviikon vuorokauden alhaisin hinta, 1.4 ¢, ajoittuu myöhäisillan tunneille.
+Pörssisähkön hintaodotukset vaihtelevat tulevan viikon aikana. Keskiviikkona hinta nousee, mutta loppuviikkoa ja ensi viikkoa kohti mentäessä hintataso laskee selvästi.
 
-Keskiviikon jälkeen hintataso laskee selvästi. **Torstai**na keskihinta on 6.1 ¢, ja perjantaista alkaen sähkön hinta asettuu jo varsin edulliselle tasolle. Torstain korkein hinta, 12.8 ¢, on odotettavissa aamulla kahdeksan ja kymmenen välillä. On kuitenkin olemassa riski, että yksittäisten tuntien hinnat voivat nousta jopa 20 senttiin.
+**Keskiviikkona** pörssisähkön keskihinta kohoaa 9.7 senttiin kilowattitunnilta. Päivän ylin hinta nousee peräti 23.1 senttiin, mikä johtuu osittain kireästä pakkasesta, sillä vuorokauden keskilämpötilaksi on ennustettu -9.3 astetta. Myös tuulivoiman vähäinen määrä, minimissään vain 1101 MW, voi osaltaan nostaa hintaa. Korkein hinta ajoittuu aamulle kello 7-9 välille. Yöllä hinta painuu selvästi halvemmaksi, jopa alle kahden sentin.
 
-**Perjantai**sta alkaen sähkön hinta painuu selvästi alle neljän sentin kilowattitunnilta. Perjantain keskihinta on 3.2 ¢, ja viikonlopun aikana hinta laskee edelleen. Perjantaina sähkö on halvimmillaan aamuyön tunteina, jolloin hinta on vain 0.4 ¢. **Lauantai**n keskihinta on 2.0 ¢, ja **sunnuntai**na enää 1.3 ¢. Sunnuntaina hinta käväisee jopa 0.1 sentissä illalla kello 21–23.
+**Torstaina** keskihinta laskee 5.9 senttiin. Hinta pysyttelee alle kymmenessä sentissä lähes koko päivän, lukuun ottamatta aamupäivän tunteja. Alimmillaan hinta käy alle yhdessä sentissä. Pakkanen jatkuu yhtä kireänä kuin keskiviikkona.
 
-Ensi **maanantai**na sähkön keskihinta laskee entisestään, ollen vain 0.6 ¢ kilowattitunnilta. Maanantain aikana hinta käy jopa nollan alapuolella, alimmillaan -0.6 sentissä aamuyön tunteina. Ensi **tiistai**na hinta nousee jälleen, ja tiistain keskihinta on 6.8 ¢. Tiistain korkein hinta (12.2 ¢) ajoittuu alkuiltaan klo 18–20. Tiistaina on olemassa riski, että yksittäisten tuntien hinnat voivat nousta jopa 20 senttiin.
+**Perjantaina** pörssisähkön keskihinta painuu jo 3.2 senttiin kilowattitunnilta. Hinta pysyttelee koko päivän varsin matalalla, eikä nouse yli 6.5 sentin missään vaiheessa. Perjantain keskilämpötila on -3.4 astetta.
 
-Keskiviikkona ja torstaina on kova pakkanen, mikä osaltaan selittänee korkeampia hintoja. Perjantaista alkaen sää leudontuu, mikä yhdessä runsaan tuulivoimatuotannon kanssa laskee hintoja.
+Viikonloppuna pörssisähkö on edullista. **Lauantain** keskihinta on 2.9 ¢ ja **sunnuntaina** vain 1.7 ¢. Sunnuntaina hinta painuu jopa hieman pakkasen puolelle (-0.1 ¢) illalla kello 21. Lauantaina tuulivoimaa on tarjolla vähemmän kuin muina päivinä, mutta sunnuntaina tuulivoiman ennustetaan nousevan.
 
-*Tulkinnasta vastasi gemini-2.0-pro-exp-02-05.* ⚡️
+Ensi **maanantaina** pörssisähkön keskihinta laskee peräti 0.6 senttiin kilowattitunnilta. Hinta käy yön tunteina jopa -0.8 sentissä. Maanantaille ennustetaan erittäin runsasta tuulivoimatuotantoa, jopa 5798 MW, mikä selittää osaltaan edullista hintaa.
+
+Ensi **tiistaina** pörssisähkön keskihinta nousee 5.4 senttiin. Päivän alhaisin hinta painuu pakkaselle (-0.4 ¢), mutta korkein hinta nousee 11.3 senttiin kilowattitunnilta.
+
+*Tulkinnasta vastasi gemini-2.0-pro-exp-02-05.* 📊
 
