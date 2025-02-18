@@ -1,26 +1,28 @@
-*The price of electricity on the Nord Pool spot market will fluctuate wildly this week: In contrast to the affordable prices on Tuesday and the weekend, very high price spikes are expected on Wednesday and Thursday, up to 30-40 cents per kilowatt-hour, warns the _Sähkövatkain_ service.*
+*According to the latest forecast from the Sähkövatkain online service, the price of exchange electricity will fluctuate drastically over the coming week: High prices and even price spikes of 30-40 cents are expected on Wednesday and Thursday, while electricity will be significantly cheaper at the end of the week and early next week.*
 
-The forecast has been updated on Monday at 9:00 PM.
+The Sähkövatkain forecast has been updated on Tuesday at 03:13.
 
-|        | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday**   | 2.9              | 0.3 - 6.2       | 1820 - 4482   | -8.3          |
-| **Wednesday** | 11.2             | 3.6 - 17.7      | 993 - 3586    | -9.3          |
-| **Thursday**  | 10.0             | 2.3 - 17.7      | 1069 - 3481   | -9.3          |
-| **Friday**    | 2.3              | 0.5 - 5.6       | 3085 - 5633   | -3.4          |
-| **Saturday**  | 3.4              | 1.7 - 5.5       | 2561 - 3195   | -0.6          |
-| **Sunday**    | 2.7              | 0.4 - 4.5       | 2405 - 4478   | 0.4           |
-| **Monday**    | 0.7             | -0.6 - 1.6       | 4565 - 5937   | 2.0           |
+|    | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:---|:---:|:---:|:---:|:---:|
+| **Wednesday** | 11.2 | 3.2 - 17.3 | 1074 - 3472 | -9.3 |
+| **Thursday**     | 9.6  | 2.4 - 15.2 | 1208 - 2935 | -9.3 |
+| **Friday**    | 3.5  | 1.4 - 6.4  | 2158 - 4824 | -3.4 |
+| **Saturday**    | 2.3  | 0.9 - 3.6  | 2188 - 3889 | -0.6 |
+| **Sunday**   | 2.7  | 0.5 - 4.4  | 2453 - 4348 |  0.4 |
+| **Monday**   | 0.7  | -0.5 - 1.6 | 4431 - 6044 |  2.0 |
+| **Tuesday**     | 9.7  | 2.2 - 18.4 | 1772 - 4740 |  1.5 |
 
-The price expectations for electricity on the Nord Pool spot market show large variations for the coming week. On **Tuesday**, the average price of electricity is expected to be around 2.9 cents per kilowatt-hour. Tuesday is a fairly typical day in terms of price, and the price will remain affordable throughout the day. During the cheapest hours of the night, the price is expected to fall below half a cent.
+The price expectations for exchange electricity will vary significantly during the coming week. On Wednesday and Thursday, prices are expected to be clearly higher, while towards the end of the week and the beginning of next week, prices are expected to fall considerably.
 
-**Wednesday** and **Thursday** look to be significantly more expensive days. The average price on Wednesday is expected to rise to 11.2 cents, and on Thursday the average price is expected to be 10.0 cents per kilowatt-hour. On both days, the price of electricity will rise to a maximum of 17.7 cents. There is also a high risk of price spikes on Wednesday and Thursday. Prices for individual hours can rise up to 30-40 cents per kilowatt-hour.
+**Wednesday** will start with reasonably affordable prices, but the price will rise towards the morning, and at its highest, it is expected to be 17.3 ¢/kWh. The average price for Wednesday is forecast to be 11.2 ¢, and during the day there is a high risk of price spikes of up to 30-40 cents in individual hours. The most likely time for a price spike is in the morning between 7 and 9 am. Wednesday's price level is partly explained by the low average temperature, even below -9 degrees Celsius. Wind power production will also remain low on Wednesday, which will contribute to higher prices.
 
-The risk of price spikes is highest on Wednesday evening, around 5-7 PM. On Thursday, the risk of price spikes is greatest in the morning, around 7-9 AM. The high prices are due to low wind power production. Between Wednesday and Thursday, wind power is forecast to be at its lowest, at only around 1000 megawatts. The hard frost on Wednesday and Thursday, with an average temperature of -9.3 degrees Celsius, can also partly explain the high prices.
+On **Thursday**, the price of electricity is expected to remain high, and the average price is forecast to be 9.6 ¢/kWh. The price range is wide, from a low of 2.4 ¢ to a high of 15.2 ¢ per kilowatt-hour. There is also a high risk of price spikes on Thursday, with prices for individual hours potentially rising to 20-40 cents. High peak prices are most likely to be seen in the morning between 7 and 9 am. Similar to Wednesday, Thursday's price is explained by the low average temperature and low wind power production.
 
-On **Friday**, the average price of electricity on the Nord Pool spot market returns to a very affordable level, around 2.3 cents per kilowatt-hour. The price fluctuation on Friday will remain small, with the price of the most expensive hour being 5.6 cents. On Friday, there will be plenty of wind power available, which will lower the price of electricity.
+From **Friday** onwards, the price of electricity is expected to fall significantly. The average price for Friday is forecast to be only 3.5 ¢/kWh, and the price will vary between 1.4 and 6.4 cents. Wind power production is expected to increase on Friday, which will lower the price.
 
-Next weekend (**Saturday** and **Sunday**), the price of electricity will remain affordable, with average prices of 3.4 and 2.7 cents per kilowatt-hour. Next **Monday**, the price will be the cheapest of the week, with the average price falling to 0.7 cents. On Monday night, the price will even fall into negative territory.
+During the weekend, on **Saturday** and **Sunday**, the price of electricity is expected to remain affordable. The average price for Saturday is forecast to be 2.3 ¢ and for Sunday 2.7 ¢. Next **Monday**, the price will fall further, and the average price is expected to be only 0.7 ¢/kWh. On Monday, it is even possible that the price of electricity will temporarily fall into negative territory during the early morning hours.
 
-*Interpreted by gemini-2.0-pro-exp-02-05.* ⚡️
+Next **Tuesday**, the price of electricity will rise again, and the average price for the day is expected to be 9.7 ¢/kWh. On Tuesday, the price range is wide, from a low of 2.2 ¢ to a high of 18.4 ¢. A high risk of price spikes is also forecast for Tuesday, up to 20-40 cents for individual hours. The most likely time for a price spike is in the evening, around 6–8 pm.
+
+*The numbers were whisked today by gemini-2.0-pro-exp-02-05.* ⚡
 
