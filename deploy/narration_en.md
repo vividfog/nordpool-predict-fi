@@ -1,28 +1,30 @@
-*'Sähkövatkain predicts that the price of exchange electricity will remain affordable until next Tuesday, when the price will turn upwards. Towards the end of the week, prices will rise, and high peak prices are expected on Thursday due to low wind power. See the daily forecast!'*
+'*Sähkövatkain predicts that electricity exchange prices will fluctuate significantly over the coming week. The beginning of the week will be inexpensive, but prices will rise towards the end of the week, and on Thursday, price spikes of up to 20-30 cents are expected for individual hours. The average prices for the week range from 0.5 cents to 7.7 cents.*'
 
-Sähkövatkain's forecast has been updated on Thursday at 09:14.
+Sähkövatkain's forecast has been updated on Thursday at 12:00.
 
-|    | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|   | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday** | 1.9 | -0.4 - 5.4 | 3228 - 6503 | -3.4 |
-| **Saturday** | 0.8 | -0.4 - 1.5 | 3060 - 4787 | -0.6 |
-| **Sunday** | 1.7 | 0.3 - 3.0 | 3264 - 5148 | 0.4 |
-| **Monday** | 0.5 | -0.6 - 1.4 | 4177 - 6068 | 2.0 |
-| **Tuesday** | 3.3 | -2.1 - 7.7 | 2560 - 5469 | 1.4 |
-| **Wednesday** | 5.5 | 2.3 - 8.4 | 2495 - 3513 | 0.3 |
-| **Thursday** | 7.8 | 2.7 - 15.0 | 865 - 2840 | -1.0 |
+| **Friday** | 1.8 | -0.2 - 5.6 | 4614 - 6565 | -3.4 |
+| **Saturday** | 0.7 | -0.6 - 1.6 | 3374 - 5188 | -0.6 |
+| **Sunday** | 2.4 | 0.4 - 5.1 | 3316 - 4756 | 0.4 |
+| **Monday** | 0.5 | -0.6 - 1.3 | 4581 - 5909 | 2.0 |
+| **Tuesday** | 3.8 | -1.4 - 8.6 | 2255 - 5043 | 1.4 |
+| **Wednesday** | 5.6 | 2.2 - 8.7 | 2296 - 3548 | 0.3 |
+| **Thursday** | 7.7 | 2.4 - 15.4 | 918 - 2943 | -1.0 |
 
-The price of exchange electricity will remain mostly affordable during the coming week. The price will turn upwards towards the end of next week. The most expensive day will be Thursday, when the average price of electricity will rise to 7.8 cents per kilowatt-hour.
+The coming week looks quite variable in terms of electricity exchange prices. Price expectations will vary considerably during the week, and especially towards the end of the week, prices are predicted to rise.
 
-On **Friday**, the price of electricity will still be affordable, with an average price of 1.9 ¢/kWh. At night, the price will even fall to -0.4 cents. The highest price of the day, 5.4 ¢, will be around nine in the morning. The average temperature on Friday will be -3.4 degrees Celsius.
+On **Friday**, the average price of exchange electricity is expected to settle at 1.8 cents per kilowatt-hour. The price will fluctuate during the day from -0.2 cents to 5.6 cents. With Friday's average temperature being -3.4 degrees, freezing weather may affect heating needs and thus, in part, prices. During the night hours, the price drops close to zero or even slightly below it.
 
-On **Saturday**, the price will continue to fall, and the average price will drop to 0.8 cents. Saturday's lowest price, -0.4 ¢, will be in the afternoon hours. The day's highest price will be only 1.5 ¢/kWh.
+On **Saturday**, the price of electricity will continue to fall, and the average price is predicted to be only 0.7 ¢/kWh. The intraday variation is from -0.6 cents to 1.6 cents. On Saturday and Sunday, the price of electricity will fall below zero at its lowest.
 
-On **Sunday** and **Monday**, the average prices of electricity will remain below two cents per kilowatt-hour. On Sunday, the price will vary between 0.3 and 3.0 cents. On Monday, the price will be at its lowest at -0.6 ¢ and at its highest at 1.4 ¢. The average price on Monday will be only 0.5 ¢/kWh.
+On **Sunday**, the average price will rise again slightly, being 2.4 ¢/kWh. The price will fluctuate from 0.4 cents to 5.1 cents per kilowatt-hour. At the weekend, the price of electricity will therefore be, on average, affordable.
 
-On **Tuesday**, the price will start to rise, but will still remain below four cents. The average price of the day will be 3.3 ¢/kWh, and the price will vary between -2.1 cents and 7.7 cents. Tuesday's lowest prices will be in the early morning hours.
+The week that starts on **Monday** begins very affordably, as the average price of exchange electricity is predicted to be only 0.5 ¢/kWh. The price will remain low, varying between -0.6 and 1.3 cents.
 
-Next **Wednesday**, the average price will climb to 5.5 cents per kilowatt-hour. The price will be at its lowest at 2.3 and at its highest at 8.4 ¢/kWh. Next **Thursday**, the price of electricity will rise significantly, and the average price of the day is expected to be 7.8 ¢. Thursday's price range will be wide, from 2.7 cents to 15 cents. There is also a high risk of price spikes on Thursday, even up to 20-30 cents in individual hours. The risk of price spikes is greatest between eight and ten in the morning, when wind power is at its lowest. Wind power is forecast to be only 865-2840 MW on Thursday, which partly explains the high price.
+On **Tuesday**, the price will turn upwards, and the average price is expected to be 3.8 ¢/kWh. During the day, the price will fluctuate from -1.4 cents to 8.6 cents. Tuesday's lowest price will even fall to -1.4 cents, which is the lowest figure of the week.
 
-*Prices were read today by gemini-2.0-pro-exp-02-05.* ⚡
+Next **Wednesday**, the average price of exchange electricity will rise to 5.6 cents per kilowatt-hour. The price will fluctuate during the day from 2.2 cents to 8.7 cents. Next **Thursday**, the average price will rise further to 7.7 cents. Thursday's price will vary from 2.4 cents to as much as 15.4 cents per kilowatt-hour, which is the highest price forecast of the week. Wind power is predicted to be significantly lower on Thursday than on other days of the week, and production will fall to a minimum of only 918 megawatts. There is also a high risk of price spikes on Thursday, with prices for individual hours potentially rising as high as 20-30 cents. The most likely time for price spikes is between 2 and 4 p.m.
+
+*Stock market figures interpreted by gemini-2.0-pro-exp-02-05.* ⚡
 
