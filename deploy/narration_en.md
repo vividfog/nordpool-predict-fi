@@ -1,26 +1,28 @@
-*'The price of exchange electricity will fluctuate wildly in the coming week: at the weekend and early next week, we will even enjoy negative prices, but next Thursday the price will skyrocket and momentary price spikes could reach up to 40 cents per kilowatt-hour. See the daily forecast!'*
+*'Sähkövatkain predicts that the price of exchange electricity will remain affordable until next Tuesday, when the price will turn upwards. Towards the end of the week, prices will rise, and high peak prices are expected on Thursday due to low wind power. See the daily forecast!'*
 
-The electricity price forecast has been updated on Thursday at 03:38.
+Sähkövatkain's forecast has been updated on Thursday at 09:14.
 
-|     | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:----|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday**   | 2.5              | -0.5 - 6.0      | 2832 - 6494   | -3.4          |
-| **Saturday**    | 0.4              | -0.3 - 1.4      | 3092 - 4622   | -0.6          |
-| **Sunday**   | 1.1              | -0.0 - 2.5      | 3831 - 5197   | 0.4           |
-| **Monday**   | 0.8              | -0.6 - 2.3      | 4066 - 5868   | 2.0           |
-| **Tuesday**     | 2.6              | 0.6 - 5.3      | 2290 - 4552   | 1.4           |
-| **Wednesday**  | 2.6              | -0.7 - 6.2      | 2614 - 4585   | 0.3           |
-| **Thursday**     | 9.4              | -1.1 - 17.7     | 1266 - 4608   | -1.0          |
+|    | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Friday** | 1.9 | -0.4 - 5.4 | 3228 - 6503 | -3.4 |
+| **Saturday** | 0.8 | -0.4 - 1.5 | 3060 - 4787 | -0.6 |
+| **Sunday** | 1.7 | 0.3 - 3.0 | 3264 - 5148 | 0.4 |
+| **Monday** | 0.5 | -0.6 - 1.4 | 4177 - 6068 | 2.0 |
+| **Tuesday** | 3.3 | -2.1 - 7.7 | 2560 - 5469 | 1.4 |
+| **Wednesday** | 5.5 | 2.3 - 8.4 | 2495 - 3513 | 0.3 |
+| **Thursday** | 7.8 | 2.7 - 15.0 | 865 - 2840 | -1.0 |
 
-The electricity price expectations for the coming week vary considerably. Prices will fall very low during the weekend and early next week, but next **Thursday** will see a clearly more expensive day. The average price for Thursday is forecast to be 9.4 ¢/kWh, and the highest price of the day could rise as high as 17.7 cents per kilowatt-hour.
+The price of exchange electricity will remain mostly affordable during the coming week. The price will turn upwards towards the end of next week. The most expensive day will be Thursday, when the average price of electricity will rise to 7.8 cents per kilowatt-hour.
 
-On **Friday**, the price of electricity will settle at an average of 2.5 cents per kilowatt-hour. The cheapest hours of the day will be in the early morning, when the price will even fall below zero. At its most expensive, electricity will be around six cents in the early evening. The average temperature on Friday will be -3.4 degrees Celsius.
+On **Friday**, the price of electricity will still be affordable, with an average price of 1.9 ¢/kWh. At night, the price will even fall to -0.4 cents. The highest price of the day, 5.4 ¢, will be around nine in the morning. The average temperature on Friday will be -3.4 degrees Celsius.
 
-During Saturday and Sunday, electricity will be very cheap. The average price on **Saturday** will be only 0.4 cents, and on **Sunday** only 1.1 cents per kilowatt-hour. Both days will even see negative hourly prices.
+On **Saturday**, the price will continue to fall, and the average price will drop to 0.8 cents. Saturday's lowest price, -0.4 ¢, will be in the afternoon hours. The day's highest price will be only 1.5 ¢/kWh.
 
-Also next **Monday**, the price of electricity will remain low, with an average price of 0.8 ¢/kWh. Some negative hourly prices are expected in the early morning. On **Tuesday** and **Wednesday**, the average price will rise to 2.6 cents, but will still remain affordable. On Wednesday morning, even negative prices are expected momentarily.
+On **Sunday** and **Monday**, the average prices of electricity will remain below two cents per kilowatt-hour. On Sunday, the price will vary between 0.3 and 3.0 cents. On Monday, the price will be at its lowest at -0.6 ¢ and at its highest at 1.4 ¢. The average price on Monday will be only 0.5 ¢/kWh.
 
-Next Thursday, the price of electricity will rise significantly. The average price will be 9.4 ¢/kWh, and the intraday variation will be large. At its cheapest, electricity will be in the early morning, even at -1.1 cents, but the price will rise rapidly during the morning. The highest price of the day, 17.7 ¢, will probably be between 7 and 9 am. There is also a high risk of individual price spikes on Thursday, when prices could momentarily rise as high as 20-40 cents per kilowatt-hour. The rise in prices is partly due to the fact that wind power will be available significantly less on Thursday than on other days, and production will fall to a minimum of only 1266 megawatts.
+On **Tuesday**, the price will start to rise, but will still remain below four cents. The average price of the day will be 3.3 ¢/kWh, and the price will vary between -2.1 cents and 7.7 cents. Tuesday's lowest prices will be in the early morning hours.
 
-*Prices were interpreted by gemini-2.0-pro-exp-02-05.* ⚡️
+Next **Wednesday**, the average price will climb to 5.5 cents per kilowatt-hour. The price will be at its lowest at 2.3 and at its highest at 8.4 ¢/kWh. Next **Thursday**, the price of electricity will rise significantly, and the average price of the day is expected to be 7.8 ¢. Thursday's price range will be wide, from 2.7 cents to 15 cents. There is also a high risk of price spikes on Thursday, even up to 20-30 cents in individual hours. The risk of price spikes is greatest between eight and ten in the morning, when wind power is at its lowest. Wind power is forecast to be only 865-2840 MW on Thursday, which partly explains the high price.
+
+*Prices were read today by gemini-2.0-pro-exp-02-05.* ⚡
 
