@@ -1,6 +1,14 @@
 {
     "nuclear_outages": [
         {
+            "start": "2025-03-01T14:00:00.000Z",
+            "end": "2025-04-25T13:00:00.000Z",
+            "avail_qty": 0,
+            "nominal_power": 1600.0,
+            "production_resource_name": "Olkiluoto 3",
+            "availability": 0.0
+        },
+        {
             "start": "2025-01-21T00:00:00.000Z",
             "end": "2025-02-28T23:00:00.000Z",
             "avail_qty": 1480,
