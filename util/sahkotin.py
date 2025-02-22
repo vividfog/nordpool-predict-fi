@@ -117,3 +117,53 @@ def update_spot(df):
     else:
         print("Warning: No electricity price data fetched; unable to update DataFrame.")
         return df
+
+def sahkotin_tomorrow():
+    tz = pytz.timezone("Europe/Helsinki")
+    tomorrow = datetime.now(tz) + timedelta(days=1)
+    start_dt = tomorrow.replace(hour=0, minute=0, second=0, microsecond=0)
+    end_dt = tomorrow.replace(hour=23, minute=59, second=59, microsecond=0)
+    # Convert Helsinki times to UTC for the API request
+    start_utc = start_dt.astimezone(pytz.UTC)
+    end_utc = end_dt.astimezone(pytz.UTC)
+    start_str = start_utc.strftime("%Y-%m-%dT%H:%M:%S.000Z")
+    end_str = end_utc.strftime("%Y-%m-%dT%H:%M:%S.000Z")
+    
+    df = fetch_electricity_price_data(start_str, end_str)
+    if df.empty:
+        return df, None, start_dt
+
+    # Convert timestamp to Helsinki time and resample to hourly data.
+    df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True).dt.tz_convert(tz)
+    df.set_index('timestamp', inplace=True)
+    hourly_df = df.resample("h").mean()
+    daily_avg = df["Price_cpkWh"].mean()
+    
+    return hourly_df, daily_avg, start_dt
+
+def main():
+    tz = pytz.timezone("Europe/Helsinki")
+    hourly_df, daily_avg, start_dt = sahkotin_tomorrow()
+    
+    if hourly_df.empty:
+        print("[red]No pricing data available for tomorrow.")
+        return
+
+    print(f"[bold blue]* Sähkötin: Fetched tomorrow's prices for {start_dt.strftime('%Y-%m-%d')} (Helsinki Time)")
+    
+    from rich.table import Table
+    table = Table(title=f"Electricity Prices for {start_dt.strftime('%Y-%m-%d')} (Hourly in Helsinki Time) and Daily Average")
+    table.add_column("Hour (Helsinki)", justify="center")
+    table.add_column("Price cpkWh", justify="center")
+    
+    for timestamp, row in hourly_df.iterrows():
+        hour_str = timestamp.strftime('%H:%M')
+        price = row["Price_cpkWh"]
+        value_str = f"{price:.2f}" if not pd.isna(price) else "N/A"
+        table.add_row(hour_str, value_str)
+    
+    table.add_row("[bold]Daily Average[/bold]", f"[bold]{daily_avg:.2f}[/bold]")
+    print(table)
+
+if __name__ == '__main__':
+    main()
