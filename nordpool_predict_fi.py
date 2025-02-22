@@ -65,6 +65,7 @@ except ValueError as e:
     print(f"Error: {e}")
     exit(1)
 
+# region args
 # -----------------------------------------------------------------------------------------------------------------------------
 # Command line arguments
 parser = argparse.ArgumentParser()
@@ -91,6 +92,7 @@ else:
 if args.train:
     print("[WARNING] The --train option is deprecated and is no longer used. Training is now performed automatically during prediction.")
 
+# region predict
 # -----------------------------------------------------------------------------------------------------------------------------
 if args.predict:
     print("Loading data from the database")
@@ -150,6 +152,7 @@ if args.predict:
     df_recent.reset_index(inplace=True)
     df_recent.rename(columns={'index': 'timestamp'}, inplace=True)
 
+    # region [updates]
     # Update wind speed and temperature data
     df_recent = update_wind_speed(df_recent)
     df_recent = update_temperature(df_recent)
@@ -192,6 +195,7 @@ if args.predict:
     # Reset the index of df_full
     df_full.reset_index(inplace=True)
 
+    # region [train]
     # Prepare df_full for training
     # print("Preparing data for training")
     df_full['WindPowerCapacityMW'] = df_full['WindPowerCapacityMW'].ffill()
@@ -226,6 +230,7 @@ if args.predict:
     df_recent['temp_mean'] = df_recent[fmisid_t].mean(axis=1)
     df_recent['temp_variance'] = df_recent[fmisid_t].var(axis=1)
 
+    # region [predict]
     # Define prediction features
     prediction_features = [
         'year', 'day_of_week_sin', 'day_of_week_cos', 'hour_sin', 'hour_cos',
@@ -253,6 +258,7 @@ if args.predict:
     print(df_recent)
     print(df_recent.describe())    
 
+# region commit
 # --commit: Update the database with the final data
     if args.commit:
         print("* Will add/update", len(df_recent), "predictions to the database ", end="")
@@ -262,12 +268,14 @@ if args.predict:
     else:
         print("* Predictions NOT committed to the database or 'deploy' folder (no --commit).")
 
+# region narrate
 # -----------------------------------------------------------------------------------------------------------------------------
 # --narrate: Generate narration
 if args.narrate:
     print("* Narrating predictions")
     narration = narrate_prediction(deploy=args.deploy, commit=args.commit)
 
+# region deploy
 # -----------------------------------------------------------------------------------------------------------------------------
 # --deploy: Deploy the output files
 if args.deploy:
@@ -356,7 +364,8 @@ if args.deploy:
     with open(json_path, 'w') as f:
         f.write(json_data)
     print(f"→ Daily averages saved to {json_path}")
-    
+
+# region end
 # -----------------------------------------------------------------------------------------------------------------------------
 if __name__ == "__main__":
     
