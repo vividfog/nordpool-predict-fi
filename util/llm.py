@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 from openai import OpenAI
 from datetime import datetime as dt
 from .sql import db_query
+from .sahkotin import sahkotin_tomorrow
 from .logger import logger
 
 # Attempt to set the locale to Finnish for day names
@@ -32,7 +33,7 @@ if None in (LLM_API_BASE, LLM_API_KEY, LLM_MODEL):
 
 logger.debug(f"LLM conf: '{LLM_API_BASE}': '{LLM_MODEL}'")
 
-
+# region spike risk
 def spike_price_risk(df):
     """Calculate the risk of price spikes for each day."""
     df["Price_Range"] = df["PricePredict_cpkWh_max"] - df["PricePredict_cpkWh_min"]
@@ -58,7 +59,7 @@ def spike_price_risk(df):
 
     return df
 
-
+# region fetch data
 def narrate_prediction(deploy=False, commit=False):
     """Fetch prediction data from the database and narrate it using an LLM."""
     helsinki_tz = pytz.timezone("Europe/Helsinki")
@@ -160,14 +161,14 @@ def narrate_prediction(deploy=False, commit=False):
     df_result["Avg_Temperature"] = df_result["Avg_Temperature"].round(1)
 
     # Send both dataframes to GPT
-    narrative = send_to_gpt(
+    narrative = llm_generate(
         df_daily, df_result, helsinki_tz, deploy=deploy, commit=commit
     )
 
     return narrative
 
-
-def send_to_gpt(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False):
+# region generate
+def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False):
     # Load nuclear outage data
     try:
         with open("deploy/nuclear_outages.json", "r") as file:
@@ -466,7 +467,12 @@ def send_to_gpt(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False):
             "content": "Nyt luo tälle artikkelille yhden rivin, noin 20-40 sanan ingressi. Älä kirjoita mitään muuta kuin ingressi. Kirjoita kursiivilla, eli rivin alkuun ja loppuun '*'. Kiitos!",
         }
     )
+
     ingress = llm_call(messages)
+    
+    # Strip off any quotes from around the ingress
+    ingress = ingress.strip("\"'")
+    
     messages.append({"role": "assistant", "content": ingress})
 
     # Full narration with Markdown formatting
