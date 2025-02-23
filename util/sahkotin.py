@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 import pytz
 import sys
 from rich import print
+from .logger import logger
 
 def fetch_electricity_price_data(start_date, end_date):
     """
@@ -26,17 +27,17 @@ def fetch_electricity_price_data(start_date, end_date):
         response = requests.get(api_url, params=params)
         response.raise_for_status() 
     except requests.exceptions.HTTPError as e:
-        print(f"HTTP error occurred while fetching data from Sähkötin API: {e}")
+        logger.info(f"HTTP error occurred while fetching data from Sähkötin API: {e}")
         sys.exit(1)
     except requests.exceptions.RequestException as e:
-        print(f"Error occurred during request to Sähkötin API: {e}")
+        logger.info(f"Error occurred during request to Sähkötin API: {e}")
         sys.exit(1)
 
     if response.status_code == 200:
         try:
             data = response.json().get('prices', [])
         except ValueError as e:  # Includes simplejson.decoder.JSONDecodeError
-            print(f"Error decoding JSON from Sähkötin API response: {e}")
+            logger.info(f"Error decoding JSON from Sähkötin API response: {e}")
             sys.exit(1)
         df = pd.DataFrame(data)
         if not df.empty:
@@ -45,14 +46,14 @@ def fetch_electricity_price_data(start_date, end_date):
                 df['value'] = df['value'] / 10
                 df.rename(columns={'date': 'timestamp', 'value': 'Price_cpkWh'}, inplace=True)
             except Exception as e:
-                print(f"Error processing data from Sähkötin API: {e}")
+                logger.info(f"Error processing data from Sähkötin API: {e}")
                 sys.exit(1)
             return df
         else:
-            print("No data returned from the API.")
+            logger.info(f"No data returned from the API.")
             return pd.DataFrame(columns=['timestamp', 'Price_cpkWh'])
     else:
-        print(f"Failed to fetch electricity price data: {response.text}")
+        logger.info(f"Failed to fetch electricity price data: {response.text}")
         return pd.DataFrame(columns=['timestamp', 'Price_cpkWh'])
 
 
@@ -100,7 +101,7 @@ def update_spot(df):
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
     end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
     
-    print(f"* Sähkötin: Fetching electricity price data between {history_date[:10]} and {end_date[:10]}")
+    logger.info(f"Sähkötin: Fetching electricity price data between {history_date[:10]} and {end_date[:10]}")
     
     price_df = fetch_electricity_price_data(history_date, end_date)   
     
@@ -115,7 +116,7 @@ def update_spot(df):
 
         return merged_df
     else:
-        print("Warning: No electricity price data fetched; unable to update DataFrame.")
+        logger.warning("No electricity price data fetched; unable to update DataFrame.")
         return df
 
 def sahkotin_tomorrow():
@@ -146,10 +147,10 @@ def main():
     hourly_df, daily_avg, start_dt = sahkotin_tomorrow()
     
     if hourly_df.empty:
-        print("[red]No pricing data available for tomorrow.")
+        logger.info(f"[red]No pricing data available for tomorrow.")
         return
 
-    print(f"[bold blue]* Sähkötin: Fetched tomorrow's prices for {start_dt.strftime('%Y-%m-%d')} (Helsinki Time)")
+    logger.info(f"[bold blue]* Sähkötin: Fetched tomorrow's prices for {start_dt.strftime('%Y-%m-%d')} (Helsinki Time)")
     
     from rich.table import Table
     table = Table(title=f"Electricity Prices for {start_dt.strftime('%Y-%m-%d')} (Hourly in Helsinki Time) and Daily Average")
@@ -163,7 +164,7 @@ def main():
         table.add_row(hour_str, value_str)
     
     table.add_row("[bold]Daily Average[/bold]", f"[bold]{daily_avg:.2f}[/bold]")
-    print(table)
+    logger.info(table)
 
 if __name__ == '__main__':
     main()

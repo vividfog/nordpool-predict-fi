@@ -8,10 +8,11 @@ from statsmodels.tsa.stattools import acf
 from rich import print
 from xgboost import XGBRegressor
 import pytz
+from .logger import logger
 
 def train_model(df, fmisid_ws, fmisid_t):
         
-    print("* Training a pricing model")
+    logger.info(f"Training a pricing model")
     
     # Drop the target column from training data
     df = df.drop(columns=['PricePredict_cpkWh'])
@@ -57,12 +58,12 @@ def train_model(df, fmisid_ws, fmisid_t):
         shuffle=True
     )
   
-    print(f"→ Training data shape: {X_train.shape}, sample:")
+    logger.info(f"Training data shape: {X_train.shape}, sample:")
     print(X_train.sample(10, random_state=42))
 
     # Print feature columns used in training
-    print("→ Pricing model feature columns:")
-    print(", ".join(X_train.columns))
+    logger.info(f"Pricing model feature columns:")
+    logger.info(f", ".join(X_train.columns))
 
     # See train_xgb.txt for history of hyperparameter tuning
     # Last update: 2025-01-19
@@ -82,14 +83,14 @@ def train_model(df, fmisid_ws, fmisid_t):
     }
 
     # Train the model
-    print("→ XGBoost: ", end="")
-    print(", ".join(f"{k}={v}" for k, v in params.items()))
+    logger.info(f"XGBoost: ")
+    logger.info(f", ".join(f"{k}={v}" for k, v in params.items()))
 
     xgb_model = XGBRegressor(**params)
     xgb_model.fit(X_train, y_train, eval_set=[(X_test, y_test)], verbose=500)
 
     # SHAP analysis
-    # print("→ SHAP feature importances (Mean Absolute SHAP Values per Feature):")
+    # logger.info(f"SHAP feature importances (Mean Absolute SHAP Values per Feature):")
     # explainer = shap.TreeExplainer(xgb_model)
     # shap_values = explainer.shap_values(X_test, check_additivity=False)
 
@@ -100,7 +101,7 @@ def train_model(df, fmisid_ws, fmisid_t):
     #     'Mean |SHAP Value|': shap_summary
     # }).sort_values(by='Mean |SHAP Value|', ascending=False)
 
-    # print(shap_summary_df.to_string(index=False))
+    # logger.info(shap_summary_df.to_string(index=False))
 
     # Residual analysis
     y_pred_filtered = xgb_model.predict(X_test)
@@ -108,13 +109,13 @@ def train_model(df, fmisid_ws, fmisid_t):
     
     # Durbin-Watson test for autocorrelation
     dw_stat = durbin_watson(residuals)
-    print(f"→ Durbin-Watson autocorrelation test: {dw_stat:.2f}")
+    logger.info(f"Durbin-Watson autocorrelation test: {dw_stat:.2f}")
     
     # Autocorrelation Function for the first 5 lags
     acf_values = acf(residuals, nlags=5, fft=False)
-    print("→ ACF values for the first 5 lags:")
+    logger.info(f"ACF values for the first 5 lags:")
     for lag, value in enumerate(acf_values, start=1):
-        print(f"  Lag {lag}: {value:.4f}")
+        logger.info(f"  Lag {lag}: {value:.4f}")
     
     # Calculate metrics
     mae = mean_absolute_error(y_test, y_pred_filtered)
@@ -158,7 +159,7 @@ def train_model(df, fmisid_ws, fmisid_t):
     samples_mse = np.mean(mse_list)
     samples_r2 = np.mean(r2_list)
 
-    print(f"→ Training results:\n  MAE (vs test set): {mae}\n  MSE (vs test set): {mse}\n  R² (vs test set): {r2}"
+    logger.info(f"Training results:\n  MAE (vs test set): {mae}\n  MSE (vs test set): {mse}\n  R² (vs test set): {r2}"
           f"\n  MAE (vs 10x500 randoms): {samples_mae}\n  MSE (vs 10x500 randoms): {samples_mse}\n  R² (vs 10x500 randoms): {samples_r2}")
 
     return xgb_model

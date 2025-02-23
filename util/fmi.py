@@ -6,6 +6,7 @@ import pytz
 import sys
 from rich import print
 import time
+from .logger import logger
 
 def get_forecast(fmisid, start_date, parameters, end_date=None):
     """
@@ -44,10 +45,10 @@ def get_forecast(fmisid, start_date, parameters, end_date=None):
         response.raise_for_status()
         
         if not response.content:
-            print(f"[WARNING] Empty response from FMI API for FMISID {fmisid} forecast ({start_date} to {end_date})")
+            logger.info(f"[WARNING] Empty response from FMI API for FMISID {fmisid} forecast ({start_date} to {end_date})")
             
     except requests.RequestException as e:
-        print(f"[WARNING] Error fetching forecast data from FMI for FMISID {fmisid} ({start_date} to {end_date}): {e}")
+        logger.info(f"[WARNING] Error fetching forecast data from FMI for FMISID {fmisid} ({start_date} to {end_date}): {e}")
         
     # Let's not spam the FMI API
     time.sleep(.2)
@@ -58,10 +59,10 @@ def get_forecast(fmisid, start_date, parameters, end_date=None):
     try:
         root = etree.fromstring(response.content)
         if len(root.findall('.//BsWfs:BsWfsElement', namespaces=root.nsmap)) == 0:
-            print(f"[WARNING] No forecast data found for FMISID {fmisid} ({start_date} to {end_date})")
+            logger.info(f"[WARNING] No forecast data found for FMISID {fmisid} ({start_date} to {end_date})")
             sys.exit(1)
     except etree.XMLSyntaxError as e:
-        print(f"[WARNING] Error parsing XML from FMI response for FMISID {fmisid}: {e}")
+        logger.info(f"[WARNING] Error parsing XML from FMI response for FMISID {fmisid}: {e}")
 
     data = []
     for member in root.findall('.//BsWfs:BsWfsElement', namespaces=root.nsmap):
@@ -77,7 +78,7 @@ def get_forecast(fmisid, start_date, parameters, end_date=None):
         df['Value'] = pd.to_numeric(df['Value'], errors='coerce')
         df_pivot = df.pivot(index='timestamp', columns='Parameter', values='Value').reset_index()
     except Exception as e:
-        print(f"DataFrame operation failed with FMI data: {e}")
+        logger.info(f"DataFrame operation failed with FMI data: {e}")
 
     return df_pivot
 
@@ -120,20 +121,20 @@ def get_history(fmisid, start_date, parameters, end_date=None):
     try:
         response = requests.get(base_url, params=params)
         if response.status_code != 200:
-            print(f"[WARNING] Failed to fetch historical data for FMISID {fmisid} ({start_date} to {end_date}): {response.text}")
+            logger.info(f"[WARNING] Failed to fetch historical data for FMISID {fmisid} ({start_date} to {end_date}): {response.text}")
             
         if not response.content:
-            print(f"[WARNING] Empty response from FMI API for FMISID {fmisid} history ({start_date} to {end_date})")
+            logger.info(f"[WARNING] Empty response from FMI API for FMISID {fmisid} history ({start_date} to {end_date})")
             
         root = etree.fromstring(response.content)
         if len(root.findall('.//BsWfs:BsWfsElement', namespaces=root.nsmap)) == 0:
-            print(f"[WARNING] No historical data found for FMISID {fmisid} ({start_date} to {end_date})")
+            logger.info(f"[WARNING] No historical data found for FMISID {fmisid} ({start_date} to {end_date})")
             
     except requests.RequestException as e:
-        print(f"[WARNING] Error fetching historical data from FMI for FMISID {fmisid} ({start_date} to {end_date}): {e}")
+        logger.info(f"[WARNING] Error fetching historical data from FMI for FMISID {fmisid} ({start_date} to {end_date}): {e}")
         sys.exit(1)
     except etree.XMLSyntaxError as e:
-        print(f"[WARNING] Error parsing XML from FMI response for FMISID {fmisid}: {e}")
+        logger.info(f"[WARNING] Error parsing XML from FMI response for FMISID {fmisid}: {e}")
 
     # Let's not spam the FMI API
     time.sleep(0.1)
@@ -205,7 +206,7 @@ def update_wind_speed(df):
     # 8 days later:
     end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
     
-    print("* FMI: Fetching wind speed forecast and historical data between", history_date, "and", end_date)
+    logger.info(f"FMI: Fetching wind speed forecast and historical data between {history_date} and {end_date}")
     
     for col in [c for c in df.columns if c.startswith('ws_')]:
         fmisid = int(col.split('_')[1])
@@ -240,7 +241,7 @@ def update_wind_speed(df):
         # Check for NaN values in the specific wind speed column
         nan_count = df[col].isna().sum()
         if nan_count > 0:
-            print(f"[WARNING] The final DataFrame contains {nan_count} NaN values in column '{col}'.")
+            logger.info(f"[WARNING] The final DataFrame contains {nan_count} NaN values in column '{col}'.")
 
     return df
 
@@ -264,7 +265,7 @@ def update_temperature(df):
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
     end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")  # 120 hours later for forecasts
 
-    print("* FMI: Fetching temperature forecast and historical data between", history_date, "and", end_date)
+    logger.info(f"FMI: Fetching temperature forecast and historical data between {history_date} and {end_date}")
 
     for col in [c for c in df.columns if c.startswith('t_')]:
         fmisid = int(col.split('_')[1])
@@ -300,7 +301,7 @@ def update_temperature(df):
         # Check for NaN values in the specific temperature column
         nan_count = df[col].isna().sum()
         if nan_count > 0:
-            print(f"[WARNING] The final DataFrame contains {nan_count} NaN values in column '{col}'.")
+            logger.info(f"[WARNING] The final DataFrame contains {nan_count} NaN values in column '{col}'.")
 
     return df
 
@@ -320,38 +321,38 @@ if __name__ == "__main__":
     current_date = datetime.today().strftime('%Y-%m-%d')
     past_date = "2024-12-20"
     
-    print("\n=== Testing Wind Speed Stations ===")
+    logger.info(f"\n=== Testing Wind Speed Stations ===")
     for station in ws_stations:
-        print(f"\nTesting FMISID: {station}")
+        logger.info(f"\nTesting FMISID: {station}")
         # Get current forecast
         forecast = get_forecast(station, current_date, ['windspeedms'])
-        print(f"Current forecast sample ({current_date}):")
-        print(forecast.describe())
+        logger.info(f"Current forecast sample ({current_date}):")
+        logger.info(forecast.describe())
         
         # Get current history
         history = get_history(station, current_date, ['WS_PT1H_AVG'])
-        print(f"\nCurrent history sample ({current_date}):")
-        print(history.describe())
+        logger.info(f"\nCurrent history sample ({current_date}):")
+        logger.info(history.describe())
         
         # Get past history
         past_history = get_history(station, past_date, ['WS_PT1H_AVG'])
-        print(f"\nPast history sample ({past_date}):")
-        print(past_history.describe())
+        logger.info(f"\nPast history sample ({past_date}):")
+        logger.info(past_history.describe())
     
-    print("\n=== Testing Temperature Stations ===")
+    logger.info(f"\n=== Testing Temperature Stations ===")
     for station in t_stations:
-        print(f"\nTesting FMISID: {station}")
+        logger.info(f"\nTesting FMISID: {station}")
         # Get current forecast
         forecast = get_forecast(station, current_date, ['temperature'])
-        print(f"Current forecast sample ({current_date}):")
-        print(forecast.describe())
+        logger.info(f"Current forecast sample ({current_date}):")
+        logger.info(forecast.describe())
         
         # Get current history
         history = get_history(station, current_date, ['TA_PT1H_AVG'])
-        print(f"\nCurrent history sample ({current_date}):")
-        print(history.describe())
+        logger.info(f"\nCurrent history sample ({current_date}):")
+        logger.info(history.describe())
         
         # Get past history
         past_history = get_history(station, past_date, ['TA_PT1H_AVG'])
-        print(f"\nPast history sample ({past_date}):")
-        print(past_history.describe())
+        logger.info(f"\nPast history sample ({past_date}):")
+        logger.info(past_history.describe())

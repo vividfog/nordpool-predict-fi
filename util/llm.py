@@ -368,6 +368,7 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
     narration_en = llm_call(messages)
     messages.append({"role": "assistant", "content": narration_en})
 
+    # region commit
     def archive(content, filename, folders, is_json=True, indent=2):
         """Save content as JSON or markdown to specified folders."""
         for folder in folders:
@@ -377,13 +378,13 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
                     json.dump(content, file, indent=indent, ensure_ascii=False)
                 else:
                     file.write(content + "\n")
-            logger.info(f"→ {filename} saved to {path}")
+            logger.info(f"{filename} saved to {path}")
 
     if deploy and commit:
         DEPLOY_FOLDER_PATH = os.getenv("DEPLOY_FOLDER_PATH", "deploy")
         ARCHIVE_FOLDER_PATH = os.getenv("ARCHIVE_FOLDER_PATH", "archive")
 
-        archive_dir = os.path.join(ARCHIVE_FOLDER_PATH, dt.now().strftime("%Y-%m-%d-%H%M%S"))
+        archive_dir = os.path.join(ARCHIVE_FOLDER_PATH, dt.now().strftime('%Y-%m-%d_%H%M%S'))
         os.makedirs(archive_dir, exist_ok=True)
 
         folders = [DEPLOY_FOLDER_PATH, archive_dir]
@@ -401,5 +402,5 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
     return narration
 
 if __name__ == "__main__":
-    logger.info("This is not meant to be executed directly.")
+    logger.info(f"This is not meant to be executed directly.")
     exit()

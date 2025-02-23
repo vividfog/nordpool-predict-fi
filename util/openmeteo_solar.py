@@ -4,6 +4,7 @@ import numpy as np
 from datetime import datetime, timedelta
 import pytz
 from rich import print
+from .logger import logger
 
 # FMI's solar irradiation monitoring stations, supposedly well-distributed across Finland
 # Helsinki Kumpula, Jokioinen Ilmala, Jyväskylä lentoasema, Kuopio Savilahti, Parainen Utö, Sodankylä Tähtelä, Sotkamo Kuolaniemi
@@ -56,21 +57,20 @@ def fetch_historical_irradiation_data(latitudes, longitudes, start_date, end_dat
             # Open-Meteo had a bug where it returned negative values for irradiance; this is a workaround
             neg_values = df[df['global_tilted_irradiance'] < 0]
             if not neg_values.empty:
-                print(f"[WARNING] Found and replaced negative irradiance values for {lat}, {lon}:")
+                logger.info(f"[WARNING] Found and replaced negative irradiance values for {lat}, {lon}:")
                 for _, row in neg_values.iterrows():
-                    print(f"  Time: {row['time']}, Value: {row['global_tilted_irradiance']} → 0")
+                    logger.info(f"  Time: {row['time']}, Value: {row['global_tilted_irradiance']} → 0")
                 df['global_tilted_irradiance'] = df['global_tilted_irradiance'].clip(lower=0)
 
             data_frames.append(df)
             
-            # DEBUG:
-            # print(f"Fetched historical data for {lat}, {lon}, from {start_date} to {end_date}: {len(df)} hourly values:")
-            # print(df)
-            # print(df.describe())
+            logger.debug(f"Fetched historical data for {lat}, {lon}, from {start_date} to {end_date}: {len(df)} hourly values:")
+            logger.debug(df)
+            logger.debug(df.describe())
             
         else:
-            print(f"[ERROR] Failed to fetch historical data for {lat}, {lon}: {response.status_code}")
-            print(response.text)
+            logger.error(f"Failed to fetch historical data for {lat}, {lon}: {response.status_code}", exc_info=True)
+            logger.info(response.text)
             exit(1)
 
     if data_frames:
@@ -79,8 +79,8 @@ def fetch_historical_irradiation_data(latitudes, longitudes, start_date, end_dat
             "global_tilted_irradiance": ["sum", "mean", "std", "min", "max"]
         }).reset_index()
         combined_df.columns = ["time", "sum_irradiance", "mean_irradiance", "std_irradiance", "min_irradiance", "max_irradiance"]
-        # print(f"Fetched historical data for {len(data_frames)} locations:")
-        # print(combined_df)
+        logger.debug(f"Fetched historical data for {len(data_frames)} locations:")
+        logger.debug(combined_df)
         return combined_df
     else:
         raise ValueError(f"[ERROR] No historical irradiation data available for {start_date} to {end_date}: {response.status_code}, {response.text}")
@@ -122,17 +122,17 @@ def fetch_forecast_irradiation_data(latitudes, longitudes):
             # Open-Meteo had a bug where it returned negative values for irradiance; this is a workaround
             neg_values = df[df['global_tilted_irradiance'] < 0]
             if not neg_values.empty:
-                print(f"[WARNING] Found and replaced negative irradiance values for {lat}, {lon}:")
+                logger.info(f"[WARNING] Found and replaced negative irradiance values for {lat}, {lon}:")
                 for _, row in neg_values.iterrows():
-                    print(f"  Time: {row['time']}, Value: {row['global_tilted_irradiance']} → 0")
+                    logger.info(f"  Time: {row['time']}, Value: {row['global_tilted_irradiance']} → 0")
                 df['global_tilted_irradiance'] = df['global_tilted_irradiance'].clip(lower=0)
 
             data_frames.append(df)
 
             # DEBUG:
-            # print(f"Fetched forecast data for {lat}, {lon}, from {df['time'].min()} to {df['time'].max()}: {len(df)} hourly values:")
-            # print(df)
-            # print(df.describe())
+            logger.debug(f"Fetched forecast data for {lat}, {lon}, from {df['time'].min()} to {df['time'].max()}: {len(df)} hourly values:")
+            logger.debug(df)
+            logger.debug(df.describe())
             
         else:
             raise ValueError(f"[ERROR] Failed to fetch forecast data for {lat}, {lon}: {response.status_code}, {response.text}")
@@ -145,7 +145,7 @@ def fetch_forecast_irradiation_data(latitudes, longitudes):
         combined_df.columns = ["time", "sum_irradiance", "mean_irradiance", "std_irradiance", "min_irradiance", "max_irradiance"]
         
         # Print out the last forecasted timestamp for debugging
-        print(f"→ Last irradiation forecast timestamp: {combined_df['time'].max()}")
+        logger.info(f"Last irradiation forecast timestamp: {combined_df['time'].max()}")
         
         return combined_df
 
@@ -166,17 +166,17 @@ def combine_irradiation_data(historical_df, forecast_df):
     if historical_df is None and forecast_df is None:
         raise ValueError("Both historical and forecast data are unavailable.")
     elif historical_df is None:
-        print("→ Historical data is unavailable, using forecast data only.")
+        logger.info(f"Historical data is unavailable, using forecast data only.")
         combined_df = forecast_df
     elif forecast_df is None:
-        print("→ Forecast data is unavailable, using historical data only.")
+        logger.info(f"Forecast data is unavailable, using historical data only.")
         combined_df = historical_df
     else:
         combined_df = pd.concat([historical_df, forecast_df], ignore_index=True)
         
     # Debugging information
-    # print("Combined data before processing:")
-    # print(combined_df.head())
+    logger.debug("Combined data before processing:")
+    logger.debug(combined_df.head())
     
     combined_df = combined_df.sort_values(by="time").reset_index(drop=True)
     
@@ -188,8 +188,8 @@ def combine_irradiation_data(historical_df, forecast_df):
     
     # Print out the time stamps with missing values
     if missing_values > 0:
-        print(f"[WARNING] Missing sum_irradiance values in the following timestamps:")
-        print(combined_df[combined_df["sum_irradiance"].isna()]["time"])
+        logger.info(f"[WARNING] Missing sum_irradiance values in the following timestamps:")
+        logger.info(combined_df[combined_df["sum_irradiance"].isna()]["time"])
     
     if missing_values > 24:
         raise ValueError("[ERROR] More than 24 hourly values are missing from irradiation data, stopping execution.")
@@ -230,24 +230,24 @@ def update_solar(df):
     # Revisit the end date: make it 8 days in the future from now, end of day
     # end_date = (datetime.now(pytz.timezone('Europe/Helsinki')).replace(hour=23, minute=59, second=59) + timedelta(days=8)).strftime("%Y-%m-%d")
     
-    print(f"* Open-Meteo: Fetching solar irradiation data between {start_date} and {end_date} and inferring missing values")
-    # print(f"→ Initial DataFrame:\n{df.head()}")
+    logger.info(f"Open-Meteo: Fetching solar irradiation data between {start_date} and {end_date} and inferring missing values")
+    logger.debug(f"→ Initial DataFrame:\n{df.head()}")
     
     # Fetch historical and forecasted irradiation data
     historical_data = fetch_historical_irradiation_data(LATITUDES, LONGITUDES, start_date, end_date)
     forecast_data = fetch_forecast_irradiation_data(LATITUDES, LONGITUDES)
     
     # Debugging information
-    # print("→ Historical data tail:")
-    # print(historical_data.tail() if historical_data is not None else "None")
-    # print("→ Forecast data tail:")
-    # print(forecast_data.tail() if forecast_data is not None else "None")
+    logger.debug("→ Historical data tail:")
+    logger.debug(historical_data.tail() if historical_data is not None else "None")
+    logger.debug("→ Forecast data tail:")
+    logger.debug(forecast_data.tail() if forecast_data is not None else "None")
     
     # Combine the data
     combined_data = combine_irradiation_data(historical_data, forecast_data)
-    # print("→ Combined data head and tail after processing:")
-    # print(combined_data.head())
-    # print(combined_data.tail())
+    logger.debug("→ Combined data head and tail after processing:")
+    logger.debug(combined_data.head())
+    logger.debug(combined_data.tail())
     
     # Merge the irradiation data with the input DataFrame
     df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True)
@@ -255,22 +255,22 @@ def update_solar(df):
     merged_df.drop(columns=['time'], inplace=True)
 
     # Print the updated DataFrame
-    # print("→ Merged DataFrame description:")
-    # print(merged_df.describe())
+    logger.debug("→ Merged DataFrame description:")
+    logger.debug(merged_df.describe())
 
     # Ensure 'sum_irradiance' column is filled at the end with the last known value; warn if filling had to be done
     if 'sum_irradiance' in merged_df.columns:
         nr_missing_irradiance = merged_df['sum_irradiance'].isnull().sum()
         if nr_missing_irradiance > 0:
-            print(f"→ {nr_missing_irradiance} values not available from Open-Meteo. Will fill with last known value.")
+            logger.info(f"{nr_missing_irradiance} values not available from Open-Meteo. Will fill with last known value.")
         merged_df['sum_irradiance'] = merged_df['sum_irradiance'].ffill()
     else:
         raise ValueError("[ERROR] 'sum_irradiance' column not found after merge. Check data integration logic.")
 
     # Print the statistics of the irradiation data for sanity check
     if all(col in merged_df.columns for col in ['sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance']):
-        # print("→ Irradiation stats:")
-        # print(merged_df[['sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance']].describe())
+        logger.debug("→ Irradiation stats:")
+        logger.debug(merged_df[['sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance']].describe())
         pass
     else:
         raise ValueError("[ERROR] Irradiation statistics not found after merge. Check data integration logic.")
@@ -279,7 +279,7 @@ def update_solar(df):
     avg_irradiance = merged_df['sum_irradiance'].mean()
     max_irradiance = merged_df['sum_irradiance'].max()
     min_irradiance = merged_df['sum_irradiance'].min()
-    print(f"→ Irradiance stats: Avg: {avg_irradiance:.0f} W/m², Max: {max_irradiance:.0f} W/m², Min: {min_irradiance:.0f} W/m²")
+    logger.info(f"Irradiance stats: Avg: {avg_irradiance:.0f} W/m², Max: {max_irradiance:.0f} W/m², Min: {min_irradiance:.0f} W/m²")
 
     return merged_df
 
@@ -298,10 +298,10 @@ def main():
     #     'random_data2': np.random.rand(len(pd.date_range(start=start_date_1, end=end_date_1, freq='h')))
     # })
     # updated_df1 = update_solar(df1)
-    # print("Data frame from 2023-01-01 onwards:")
-    # print(updated_df1)
-    # print("Irradiation stats (2023-01-01 onwards):")
-    # print(updated_df1['sum_irradiance'].describe().apply(lambda x: f"{x:.0f}"))
+    logger.debug("Data frame from 2023-01-01 onwards:")
+    logger.debug(updated_df1)
+    logger.debug("Irradiation stats (2023-01-01 onwards):")
+    logger.debug(updated_df1['sum_irradiance'].describe().apply(lambda x: f"{x:.0f}"))
 
     # Test with data frame from -7 to +8 days
     start_date_2 = (datetime.now(helsinki_tz) - timedelta(days=7))
@@ -316,10 +316,10 @@ def main():
     pd.set_option("display.max_columns", None)
     pd.set_option("display.max_rows", None)
     
-    print("Data frame from -7 to +8 days:")
-    print(updated_df2)
-    print("Irradiation stats (-7 to +8 days):")
-    print(updated_df2['sum_irradiance'].describe().apply(lambda x: f"{x:.0f}"))
+    logger.info(f"Data frame from -7 to +8 days:")
+    logger.info(updated_df2)
+    logger.info(f"Irradiation stats (-7 to +8 days):")
+    logger.info(updated_df2['sum_irradiance'].describe().apply(lambda x: f"{x:.0f}"))
 
 if __name__ == "__main__":
     main()

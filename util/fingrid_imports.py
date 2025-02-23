@@ -14,6 +14,7 @@ import pytz
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from rich import print
+from .logger import logger
 
 # Define the DEBUG variable
 DEBUG = False
@@ -54,9 +55,8 @@ def fetch_transfer_capacity_data(fingrid_api_key, dataset_ids, start_date, end_d
                 if 'data' not in response.json():
                     raise ValueError("Unexpected response structure: " + str(response.json()))
 
-                if DEBUG:
-                    print(f"Fetched data from {'backup' if backup else 'primary'} sets:")
-                    print(data)
+                logger.debug(f"Fetched data from {'backup' if backup else 'primary'} sets:")
+                logger.debug(data)
 
                 df = pd.DataFrame(data)
                 if not df.empty:
@@ -68,18 +68,17 @@ def fetch_transfer_capacity_data(fingrid_api_key, dataset_ids, start_date, end_d
                     df_pivot.ffill(inplace=True)
                     df_unpivot = df_pivot.reset_index().melt(id_vars='startTime', var_name='datasetId', value_name='CapacityMW')
 
-                    if DEBUG:
-                        print("Pivoted and unpivoted DataFrame:")
-                        print(df_unpivot.sort_values(by='startTime'))
+                    logger.debug("Pivoted and unpivoted DataFrame:")
+                    logger.debug(df_unpivot.sort_values(by='startTime'))
                     return df_unpivot[['startTime', 'CapacityMW']]
             elif response.status_code == 429:
                 retry_after = int(response.headers.get('Retry-After', 60))
-                print(f"Rate limited! Waiting for {retry_after} seconds.")
+                logger.info(f"Rate limited! Waiting for {retry_after} seconds.")
                 time.sleep(retry_after)
             else:
-                print(f"Failed to fetch data: {response.text}")
+                logger.info(f"Failed to fetch data: {response.text}")
         except requests.exceptions.RequestException as e:
-            print(f"Error occurred while requesting Fingrid data: {e}")
+            logger.info(f"Error occurred while requesting Fingrid data: {e}")
             time.sleep(5)
     
     raise RuntimeError("Failed to fetch data after 3 attempts")
@@ -110,7 +109,7 @@ def calculate_capacity_sums(df):
                 last_non_zero_value = row['TotalCapacityMW']
     
     if edits_made:
-        print("[WARNING] Zero sums in Fingrid planned transfer data. Replaced with last known non-zero values.")
+        logger.warning("Zero sums in Fingrid planned transfer data. Replaced with last known non-zero values.")
 
     return summed_df
 
@@ -124,27 +123,27 @@ def update_import_capacity(df, fingrid_api_key):
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
     end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
     
-    print(f"* Fingrid: Fetching import capacities between {history_date} and {end_date}")
+    logger.info(f"Fingrid: Fetching import capacities between {history_date} and {end_date}")
 
     # Fetch primary and backup import capacity data
     primary_df = fetch_transfer_capacity_data(fingrid_api_key, PRIMARY_DATASET_IDS, history_date, end_date)
     backup_df = fetch_transfer_capacity_data(fingrid_api_key, BACKUP_DATASET_IDS, history_date, end_date, backup=True)
 
     if DEBUG:
-        print("Primary DataFrame:")
-        print(primary_df)
-        print("Backup DataFrame:")
-        print(backup_df)
+        logger.info(f"Primary DataFrame:")
+        logger.info(primary_df)
+        logger.info(f"Backup DataFrame:")
+        logger.info(backup_df)
 
     # Calculate summed import capacities
     summed_primary_df = calculate_capacity_sums(primary_df)
     summed_backup_df = calculate_capacity_sums(backup_df)
 
     if DEBUG:
-        print("Summed Primary DataFrame:")
-        print(summed_primary_df)
-        print("Summed Backup DataFrame:")
-        print(summed_backup_df)
+        logger.info(f"Summed Primary DataFrame:")
+        logger.info(summed_primary_df)
+        logger.info(f"Summed Backup DataFrame:")
+        logger.info(summed_backup_df)
 
     # Check if the backup dataset is completely zero and set it to None for forward filling
     if summed_backup_df['TotalCapacityMW'].eq(0).all():
@@ -170,8 +169,8 @@ def update_import_capacity(df, fingrid_api_key):
     merged_df['TotalCapacityMW'] = merged_df['TotalCapacityMW'].ffill()
 
     if DEBUG:
-        print("Merged DataFrame:")
-        print(merged_df)
+        logger.info(f"Merged DataFrame:")
+        logger.info(merged_df)
 
     # Prepare to merge with original DataFrame
     df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True)
@@ -217,7 +216,7 @@ def update_import_capacity(df, fingrid_api_key):
     with open('deploy/import_capacity_daily_average.json', 'w') as json_file:
         json.dump(output_data, json_file, indent=4, default=str)
 
-    print("→ Daily average import capacity data saved to deploy/import_capacity_daily_average.json")
+    logger.info(f"Daily average import capacity data saved to deploy/import_capacity_daily_average.json")
 
     return final_df
 
@@ -248,7 +247,7 @@ def main():
     end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
 
     # Prepare a dummy DataFrame covering the entire period
-    print(f"Prepare dummy data from {start_date} to {end_date}")
+    logger.info(f"Prepare dummy data from {start_date} to {end_date}")
     timestamps = pd.date_range(start=start_date, end=end_date, freq='h', tz=pytz.UTC)
     
     # Add dummy columns to the DataFrame
@@ -259,22 +258,22 @@ def main():
     })
     
     # Output the initial DataFrame
-    print("Initial DataFrame:")
-    print(df)
+    logger.info(f"Initial DataFrame:")
+    logger.info(df)
     
     # Update the DataFrame with import capacity
     updated_df = update_import_capacity(df, fingrid_api_key)
 
     # Output the DataFrame after updating with import capacity
-    print("DataFrame After Import Capacity Update:")
-    print(updated_df)
+    logger.info(f"DataFrame After Import Capacity Update:")
+    logger.info(updated_df)
 
     # Drop rows with any NaN values before printing
     cleaned_df = updated_df.dropna()
 
     # Output the cleaned DataFrame
-    print("Updated and Cleaned DataFrame:")
-    print(cleaned_df)
+    logger.info(f"Updated and Cleaned DataFrame:")
+    logger.info(cleaned_df)
 
 if __name__ == "__main__":
     main()

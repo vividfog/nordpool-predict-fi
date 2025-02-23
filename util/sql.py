@@ -2,6 +2,7 @@ import sqlite3
 import pandas as pd
 import sys
 from rich import print
+from .logger import logger
 
 # A set of functions to work with the predictions SQLite database
 
@@ -42,7 +43,7 @@ def db_update(db_path, df):
         conn = sqlite3.connect(db_path)
         cur = conn.cursor()
     except sqlite3.Error as e:
-        print(f"SQLite connection error: {e}")
+        logger.info(f"SQLite connection error: {e}", exc_info=True)
         sys.exit(1)
 
     updated_rows = pd.DataFrame()
@@ -79,14 +80,14 @@ def db_query(db_path, df):
     '''
     # Normalize timestamps in query dataframe
     if 'timestamp' not in df.columns:
-        print("Timestamp is not a column in the DataFrame")
+        logger.info(f"Timestamp is not a column in the DataFrame")
     else:
         df['timestamp'] = df['timestamp'].apply(normalize_timestamp)
 
     try:
         conn = sqlite3.connect(db_path)
     except Exception as e:
-        print(f"Error preparing for SQLite query: {e}")
+        logger.info(f"Error preparing for SQLite query: {e}")
         sys.exit(1)
         
     result_frames = []  # List to store each chunk of dataframes
@@ -97,7 +98,7 @@ def db_query(db_path, df):
             result_frames.append(data)
 
     result = pd.concat(result_frames, ignore_index=True) if result_frames else pd.DataFrame()
-    # print(result)
+    # logger.info(result)
     result = result.sort_values(by='timestamp', ascending=True)
 
     conn.close()

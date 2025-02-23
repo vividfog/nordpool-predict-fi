@@ -40,6 +40,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 import pytz
+from .logger import logger
 
 pd.options.mode.copy_on_write = True
 
@@ -73,15 +74,15 @@ class WindPowerNN(nn.Module):
         return x
 
 def preprocess_data(df, target_col: str, wp_fmisid: list) -> Tuple[np.ndarray, np.ndarray, StandardScaler, StandardScaler]:
-    print("→ Preprocess: Starting data preprocessing")
+    logger.info(f"Preprocess: Starting data preprocessing")
 
     df['timestamp'] = pd.to_datetime(df['timestamp'])
 
     # Drop time stamps that are part yesterday and beyond
-    # print(f"→ Dropping rows with timestamps beyond yesterday: {pd.Timestamp.now(tz=pytz.timezone('Europe/Helsinki')).replace(hour=0, minute=0, second=0, microsecond=0)}")
+    # logger.info(f"Dropping rows with timestamps beyond yesterday: {pd.Timestamp.now(tz=pytz.timezone('Europe/Helsinki')).replace(hour=0, minute=0, second=0, microsecond=0)}")
     # df = df[df['timestamp'] < pd.Timestamp.now(tz=pytz.timezone('Europe/Helsinki')).replace(hour=0, minute=0, second=0, microsecond=0)]
     
-    print(f"→ Last time stamp in the dataset: {df['timestamp'].max()}")
+    logger.info(f"Last time stamp in the dataset: {df['timestamp'].max()}")
 
     df['hour'] = df['timestamp'].dt.hour
     df['hour_sin'] = np.sin(2 * np.pi * df['hour'] / 24)
@@ -90,32 +91,32 @@ def preprocess_data(df, target_col: str, wp_fmisid: list) -> Tuple[np.ndarray, n
     if 'WindPowerCapacityMW' in df.columns:
         df['WindPowerCapacityMW'] = df['WindPowerCapacityMW'].ffill()
     else:
-        print("[ERROR] 'WindPowerCapacityMW' column not found, this would cause missing features.")
+        logger.error(f"'WindPowerCapacityMW' column not found, this would cause missing features.", exc_info=True)
         sys.exit(1)
 
     ws_cols = [f"ws_{id}" for id in wp_fmisid]
     t_cols = [f"t_{id}" for id in wp_fmisid if f"t_{id}" in df.columns]
 
-    print("→ Preprocess: Checking for wind speed columns")
+    logger.info(f"Preprocess: Checking for wind speed columns")
     if all(col in df.columns for col in ws_cols):
         df['Avg_WindSpeed'] = df[ws_cols].mean(axis=1)
         df['WindSpeed_Variance'] = df[ws_cols].var(axis=1)
     else:
         missing_ws_cols = [col for col in ws_cols if col not in df.columns]
-        print(f"→ Missing wind speed columns: {missing_ws_cols}")
+        logger.info(f"Missing wind speed columns: {missing_ws_cols}")
         raise KeyError(f"[ERROR] Missing columns: {missing_ws_cols}")
 
     feature_columns = ws_cols + t_cols + ['hour_sin', 'hour_cos', 'WindPowerCapacityMW', 'Avg_WindSpeed', 'WindSpeed_Variance']
-    print("→ Preprocess: Required feature columns:")
-    print(feature_columns)
+    logger.info(f"Preprocess: Required feature columns:")
+    logger.info(feature_columns)
 
     missing_cols = [col for col in feature_columns if col not in df.columns]
     if missing_cols:
-        print(f"→ Missing feature columns: {missing_cols}")
+        logger.info(f"Missing feature columns: {missing_cols}")
         raise KeyError(f"[ERROR] Missing feature columns: {missing_cols}")
 
     if target_col not in df.columns:
-        print(f"→ Target column '{target_col}' not found. This will cause an error.")
+        logger.info(f"Target column '{target_col}' not found. This will cause an error.")
         raise KeyError(f"[ERROR] Target column '{target_col}' not found in dataframe.")
 
     # Drop rows with missing feature or target values
@@ -123,36 +124,36 @@ def preprocess_data(df, target_col: str, wp_fmisid: list) -> Tuple[np.ndarray, n
     df.dropna(subset=feature_columns + [target_col], inplace=True)
     dropped_row_count = initial_row_count - df.shape[0]
     if dropped_row_count > 0:
-        print(f"→ Nr of dropped rows with NaN values: {dropped_row_count}")
+        logger.info(f"Nr of dropped rows with NaN values: {dropped_row_count}")
 
     # Describe the dataset after dropping NaN values
-    print("→ Preprocess: Dataset description after dropping NaN values")
-    print(df.describe())
+    logger.info(f"Preprocess: Dataset description after dropping NaN values")
+    logger.info(df.describe())
     
     # Print the head and tail of the dataset
-    print("→ Preprocess: Dataset head")
-    print(df.head())
-    print("→ Preprocess: Dataset tail")
-    print(df.tail())
+    logger.info(f"Preprocess: Dataset head")
+    logger.info(df.head())
+    logger.info(f"Preprocess: Dataset tail")
+    logger.info(df.tail())
 
     X = df[feature_columns]
     y = df[target_col]
 
     # Print the head and tail of X and Y
-    print("→ Preprocess: Features (X) head")
-    print(X.head())
-    print("→ Preprocess: Features (X) tail")
-    print(X.tail())
-    print("→ Preprocess: Target (y) head")
-    print(y.head())
-    print("→ Preprocess: Target (y) tail")
-    print(y.tail())
+    logger.info(f"Preprocess: Features (X) head")
+    logger.info(X.head())
+    logger.info(f"Preprocess: Features (X) tail")
+    logger.info(X.tail())
+    logger.info(f"Preprocess: Target (y) head")
+    logger.info(y.head())
+    logger.info(f"Preprocess: Target (y) tail")
+    logger.info(y.tail())
 
     # Print X column and Y column names
-    print("→ Preprocess: Features (X) columns")
-    print(X.columns)
-    print("→ Preprocess: Target (y) column")
-    print(y.name)
+    logger.info(f"Preprocess: Features (X) columns")
+    logger.info(X.columns)
+    logger.info(f"Preprocess: Target (y) column")
+    logger.info(y.name)
 
     # Sanity check: ensure that X and y have the same number of rows and there are no NaN values
     if X.shape[0] != y.shape[0]:
@@ -160,36 +161,36 @@ def preprocess_data(df, target_col: str, wp_fmisid: list) -> Tuple[np.ndarray, n
     if X.isnull().any().any() or y.isnull().any():
         raise ValueError("NaN values found in features (X) or target (y)")
 
-    print("→ Preprocess: Scaling features and target")
+    logger.info(f"Preprocess: Scaling features and target")
     scaler_X = StandardScaler()
     scaler_y = StandardScaler()
     X_scaled = scaler_X.fit_transform(X)
     y_scaled = scaler_y.fit_transform(y.values.reshape(-1, 1)).flatten()
 
-    # print("* Fingrid: Windpower: Preprocess: Finished preprocessing")
-    print(f"→ Training feature matrix shape: {X_scaled.shape}, Target vector shape: {y_scaled.shape}")
+    # logger.info(f"Fingrid: Windpower: Preprocess: Finished preprocessing")
+    logger.info(f"Training feature matrix shape: {X_scaled.shape}, Target vector shape: {y_scaled.shape}")
 
     return X_scaled, y_scaled, scaler_X, scaler_y
 
 def train_windpower_nn(df: pd.DataFrame, target_col: str, wp_fmisid: list):
-    print("→ Train model: Starting training process: Reading hyperparameters")
+    logger.info(f"Train model: Starting training process: Reading hyperparameters")
 
     try:
         WIND_POWER_NN_HYPERPARAMS = os.getenv("WIND_POWER_NN_HYPERPARAMS")
         if WIND_POWER_NN_HYPERPARAMS is None:
             raise ValueError("[ERROR] Environment variable WIND_POWER_NN_HYPERPARAMS is not set.")
     except ValueError as e:
-        print("[ERROR] Wind power .env.local variables are not set correctly. See .env.local.template for reference.")
+        logger.error("Wind power .env.local variables are not set correctly. See .env.local.template for reference.", exc_info=True)
         sys.exit(1)
 
     try:
         with open(WIND_POWER_NN_HYPERPARAMS, 'r') as f:
             hyperparams = json.load(f)
     except FileNotFoundError:
-        print(f"[ERROR] Hyperparameters file not found at {WIND_POWER_NN_HYPERPARAMS}.")
+        logger.error(f"Hyperparameters file not found at {WIND_POWER_NN_HYPERPARAMS}.", exc_info=True)
         sys.exit(1)
     except json.JSONDecodeError as e:
-        print(f"[ERROR] Decoding JSON from {WIND_POWER_NN_HYPERPARAMS}: {e}")
+        logger.error(f"Decoding JSON from {WIND_POWER_NN_HYPERPARAMS}: {e}", exc_info=True)
         sys.exit(1)
 
     hidden_size_1 = hyperparams.get("hidden_size_1", 256)
@@ -199,14 +200,14 @@ def train_windpower_nn(df: pd.DataFrame, target_col: str, wp_fmisid: list):
     batch_size = hyperparams.get("batch_size", 64)
     epochs = hyperparams.get("epochs", 200)
 
-    print("→ Train model: Reading data")
-    print(f"→ Training: Input data shape: {df.shape}")
-    print(df.describe())
+    logger.info(f"Train model: Reading data")
+    logger.info(f"Training: Input data shape: {df.shape}")
+    logger.info(df.describe())
 
     X_scaled, y_scaled, scaler_X, scaler_y = preprocess_data(df, target_col, wp_fmisid)
 
     # Training data description:
-    print(f"→ Training data: X_scaled shape: {X_scaled.shape}, y_scaled shape: {y_scaled.shape}")
+    logger.info(f"Training data: X_scaled shape: {X_scaled.shape}, y_scaled shape: {y_scaled.shape}")
 
     # Sanity check: ensure that X and y have the same number of rows and there are no NaN values
     if X_scaled.shape[0] != y_scaled.shape[0]:
@@ -214,18 +215,18 @@ def train_windpower_nn(df: pd.DataFrame, target_col: str, wp_fmisid: list):
     if np.isnan(X_scaled).any() or np.isnan(y_scaled).any():
         raise ValueError("NaN values found in features (X) or target (y)")
 
-    print("* Fingrid: Windpower: Train model: Splitting data into train and test sets")
+    logger.info(f"Fingrid: Windpower: Train model: Splitting data into train and test sets")
     train_X, test_X, train_y, test_y = train_test_split(X_scaled, y_scaled, test_size=0.2, random_state=42)
     # Additional split for validation
     train_X, val_X, train_y, val_y = train_test_split(train_X, train_y, test_size=0.25, random_state=42)
     input_size = train_X.shape[1]
-    print(f"→ Input size: {input_size}")
+    logger.info(f"Input size: {input_size}")
 
-    print("* Fingrid: Windpower: Train model: Initializing model")
+    logger.info(f"Fingrid: Windpower: Train model: Initializing model")
     model = WindPowerNN(input_size, hidden_size_1, hidden_size_2, dropout_rate)
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model.to(device)
-    print(f"→ Using device: {device}")
+    logger.info(f"Using device: {device}")
 
     criterion = nn.MSELoss()
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
@@ -240,7 +241,7 @@ def train_windpower_nn(df: pd.DataFrame, target_col: str, wp_fmisid: list):
     best_val_loss = float('inf')
     no_improvement = 0
 
-    print(f"→ Fingrid: Wind power model: Training with {device}...")
+    logger.info(f"Fingrid: Wind power model: Training with {device}...")
     for epoch in range(epochs):
         model.train()
         epoch_loss = 0.0
@@ -270,15 +271,15 @@ def train_windpower_nn(df: pd.DataFrame, target_col: str, wp_fmisid: list):
         else:
             no_improvement += 1
             if no_improvement >= patience:
-                print(f"→ Early stopping after round {epoch+1}, validation loss: {val_loss:.4f}")
+                logger.info(f"Early stopping after round {epoch+1}, validation loss: {val_loss:.4f}")
                 break
 
         if (epoch+1) % 10 == 0:
-            print(f"Epoch {epoch+1}/{epochs}, Train Loss: {epoch_loss:.4f}, Val Loss: {val_loss:.4f}")
+            logger.info(f"Epoch {epoch+1}/{epochs}, Train Loss: {epoch_loss:.4f}, Val Loss: {val_loss:.4f}")
 
-    print("* Fingrid: Windpower: Train model: Training completed")
+    logger.info(f"Fingrid: Windpower: Train model: Training completed")
 
     model.eval()
-    print("* Fingrid: Windpower: Train model: Returning trained model and scalers")
+    logger.info(f"Fingrid: Windpower: Train model: Returning trained model and scalers")
 
     return model, scaler_X, scaler_y

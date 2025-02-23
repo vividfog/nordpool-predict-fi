@@ -33,6 +33,7 @@ import json
 
 from util.train_windpower_nn import train_windpower_nn
 from util.sql import db_query_all
+from .logger import logger
 
 pd.options.mode.copy_on_write = True
 
@@ -84,12 +85,12 @@ def fetch_fingrid_data(fingrid_api_key, dataset_id, start_date, end_date):
                     return df
             elif response.status_code == 429:
                 retry_after = int(response.headers.get('Retry-After', 60))
-                print(f"Rate limited! Waiting for {retry_after} seconds.")
+                logger.info(f"Rate limited! Waiting for {retry_after} seconds.")
                 time.sleep(retry_after)
             else:
                 raise requests.exceptions.RequestException(f"Failed to fetch data: {response.text}")
         except requests.exceptions.RequestException as e:
-            print(f"Error occurred while requesting Fingrid data: {e}")
+            logger.info(f"Error occurred while requesting Fingrid data: {e}")
             time.sleep(5)
     
     raise RuntimeError("Failed to fetch data after 3 attempts")
@@ -105,7 +106,7 @@ def update_windpower(df, fingrid_api_key):
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
     end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
 
-    print(f"* Fingrid: Fetching wind power data between {history_date} and {end_date}")
+    logger.info(f"Fingrid: Fetching wind power data between {history_date} and {end_date}")
 
     # Fetch wind power data
     wind_power_df = fetch_fingrid_data(fingrid_api_key, WIND_POWER_DATASET_ID, history_date, end_date)
@@ -147,7 +148,7 @@ def update_windpower(df, fingrid_api_key):
     last_known_timestamp = pd.to_datetime(wind_power_df['startTime'].max())
     
     # Print the last known timestamp for debugging
-    print(f"Last known timestamp from Fingrid wind power API: {last_known_timestamp}")
+    logger.info(f"Last known timestamp from Fingrid wind power API: {last_known_timestamp}")
     
     # Ensure the timestamp column in df_training is of type Timestamp
     df_training['timestamp'] = pd.to_datetime(df_training['timestamp'], utc=True)
@@ -155,8 +156,8 @@ def update_windpower(df, fingrid_api_key):
     df_training = df_training[df_training['timestamp'] <= last_known_timestamp]
     
     # Print the tail of the training DataFrame for debugging
-    print("Training DataFrame tail:")
-    print(df_training.tail())
+    logger.info(f"Training DataFrame tail:")
+    logger.info(df_training.tail())
 
     # Identify rows with missing WindPowerMW values
     missing_wind_power = merged_df['WindPowerMW'].isnull()
@@ -190,15 +191,15 @@ def update_windpower(df, fingrid_api_key):
 
     if not X_missing_df.empty:
         # Print the features before scaling for debugging
-        print("Features before scaling:")
-        print(X_missing_df)
+        logger.info(f"Features before scaling:")
+        logger.info(X_missing_df)
 
         # Scale the features
         X_scaled = scaler_X.transform(X_missing_df)
 
         # Print the features after scaling for debugging
-        print("Features after scaling:")
-        print(X_scaled)
+        logger.info(f"Features after scaling:")
+        logger.info(X_scaled)
 
         # Convert to torch tensor
         X_tensor = torch.tensor(X_scaled, dtype=torch.float32)
@@ -208,27 +209,27 @@ def update_windpower(df, fingrid_api_key):
             predicted_wind_power = model(X_tensor).numpy().flatten()
 
         # Print the raw predictions for debugging
-        print("Raw predictions:")
-        print(predicted_wind_power)
+        logger.info(f"Raw predictions:")
+        logger.info(predicted_wind_power)
 
         # Inverse transform the predictions
         predicted_wind_power = scaler_y.inverse_transform(predicted_wind_power.reshape(-1, 1)).flatten()
         predicted_wind_power = np.round(predicted_wind_power, 1)
 
         # Print the inverse-transformed and rounded predictions for debugging
-        print("Inverse-transformed and rounded predictions:")
-        print(predicted_wind_power)
+        logger.info(f"Inverse-transformed and rounded predictions:")
+        logger.info(predicted_wind_power)
 
         # Ensure no negative predictions
         predicted_wind_power[predicted_wind_power < 0] = 0
 
         # Print the final predictions before updating the DataFrame
-        print("Final predictions (non-negative):")
-        print(predicted_wind_power)
+        logger.info(f"Final predictions (non-negative):")
+        logger.info(predicted_wind_power)
 
         merged_df.loc[missing_wind_power, 'WindPowerMW'] = predicted_wind_power
     else:
-        print("→ No missing wind power values found, no predictions needed.")
+        logger.info(f"No missing wind power values found, no predictions needed.")
 
     # Calculate statistics for the inferred values
     if 'predicted_wind_power' in locals() and len(predicted_wind_power) > 0:
@@ -239,14 +240,14 @@ def update_windpower(df, fingrid_api_key):
 
         # Check if any of the statistics are NaN, and exit if so
         if np.isnan(min_pred) or np.isnan(max_pred) or np.isnan(avg_pred) or np.isnan(median_pred):
-            print("→ Error: One or more statistics contain NaN values. Exiting.")
+            logger.info(f"Error: One or more statistics contain NaN values. Exiting.")
             sys.exit(1)
 
-        print(f"→ Inferred wind power values for {missing_wind_power.sum()} missing entries "
+        logger.info(f"Inferred wind power values for {missing_wind_power.sum()} missing entries "
             f"(Min: {min_pred:.1f}, Max: {max_pred:.1f}, "
             f"Avg: {avg_pred:.1f}, Median: {median_pred:.1f}).")
     else:
-        print("→ No wind power values needed to be inferred.")
+        logger.info(f"No wind power values needed to be inferred.")
 
     return merged_df
 
@@ -276,7 +277,7 @@ def main():
     end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
 
     # Prepare a dummy DataFrame covering the entire period
-    print(f"Prepare dummy data from {start_date} to {end_date}")
+    logger.info(f"Prepare dummy data from {start_date} to {end_date}")
     timestamps = pd.date_range(start=start_date, end=end_date, freq='h', tz=pytz.UTC)
     
     # Add dummy columns including the ws_ and t_ columns based on FMISID
@@ -303,15 +304,15 @@ def main():
     df = pd.DataFrame(df_data)
     
     # Output the initial DataFrame
-    print("Initial DataFrame:")
-    print(df)
+    logger.info(f"Initial DataFrame:")
+    logger.info(df)
     
     # Update the DataFrame with wind power data
     updated_df = update_windpower(df, fingrid_api_key)
 
     # Output the DataFrame after updating with wind power data
-    print("DataFrame After Wind Power Update:")
-    print(updated_df)
+    logger.info(f"DataFrame After Wind Power Update:")
+    logger.info(updated_df)
 
 if __name__ == "__main__":
     main()

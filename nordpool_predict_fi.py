@@ -21,6 +21,7 @@ from util.jao_imports import update_import_capacity
 from util.fmi import update_wind_speed, update_temperature
 from util.openmeteo_solar import update_solar
 from util.eval import create_prediction_snapshot, rotate_snapshots
+from util.logger import logger
 
 # Wind power model choices: nn vs xgb
 # from util.fingrid_windpower_nn import update_windpower
@@ -38,7 +39,7 @@ pd.options.display.float_format = '{:.1f}'.format
 try:
     load_dotenv('.env.local')
 except Exception as e:
-    print(f"[ERROR] Can't find .env.local. Did you create one? See README.md.")
+    logger.error(f"Can't find .env.local. Did you create one? See README.md.")
 
 # Fetch mandatory environment variables and raise exceptions if they are missing
 def get_mandatory_env_variable(name):
@@ -62,7 +63,7 @@ try:
     fmisid_t = ['t_' + id for id in fmisid_t_env.split(',')]
 
 except ValueError as e:
-    print(f"Error: {e}")
+    logger.error(f"Error: {e}", exc_info=True)
     exit(1)
 
 # region args
@@ -85,24 +86,24 @@ if args.dump:
     exit()
 else:
     # Startup message
-    print(datetime.now().strftime("[%Y-%m-%d %H:%M:%S]"), "Nordpool Predict FI")
+    logger.info(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Nordpool Predict FI")
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # Deprecate --train option
 if args.train:
-    print("[WARNING] The --train option is deprecated and is no longer used. Training is now performed automatically during prediction.")
+    logger.warning("The --train option is deprecated and is no longer used. Training is now performed automatically during --prediction.")
 
 # region predict
 # -----------------------------------------------------------------------------------------------------------------------------
 if args.predict:
-    print("Loading data from the database")
+    logger.info(f"Loading training data from '{db_path}'")
     df_full = db_query_all(db_path)
     df_full['timestamp'] = pd.to_datetime(df_full['timestamp'])
     df_full.set_index('timestamp', inplace=True)
     df_full.reset_index(inplace=True)
 
     # Print the head of the DataFrame
-    # print(df_full.head(48))
+    logger.debug(df_full.head(48))
 
     df_full.set_index('timestamp', inplace=True)
 
@@ -175,7 +176,8 @@ if args.predict:
         # Refresh the previously inferred nuclear power numbers with the ENTSO-E data
         df_recent = update_df_from_df(df_recent, df_entso_e)
     else:
-        print("[WARNING] ENTSO-E data is unavailable. Using last known nuclear production value for predictions.")
+        logger.error("ENTSO-E data is unavailable. Will exit.", exc_info=True)
+        exit(1)
 
     # Get the latest spot prices for the data frame, past and future if any
     df_recent = update_spot(df_recent)
@@ -197,7 +199,7 @@ if args.predict:
 
     # region [train]
     # Prepare df_full for training
-    # print("Preparing data for training")
+    logger.debug("Preparing data for training")
     df_full['WindPowerCapacityMW'] = df_full['WindPowerCapacityMW'].ffill()
     df_full['NuclearPowerMW'] = df_full['NuclearPowerMW'].ffill()
     df_full['ImportCapacityMW'] = df_full['ImportCapacityMW'].ffill()
@@ -206,7 +208,7 @@ if args.predict:
     df_full = df_full.dropna(subset=required_columns)
 
     # Train the model
-    # print("Training the model with updated data")
+    logger.debug("Training the model with updated data")
     model_trained = train_model(
         df_full, fmisid_ws=fmisid_ws, fmisid_t=fmisid_t
     )
@@ -242,7 +244,7 @@ if args.predict:
     ] + fmisid_t + fmisid_ws
 
     # Predict the prices
-    print("Predicting prices with the trained model")
+    logger.info("Predicting prices with the trained model")
     price_df = model_trained.predict(df_recent[prediction_features])
     df_recent['PricePredict_cpkWh'] = price_df
 
@@ -261,25 +263,25 @@ if args.predict:
 # region commit
 # --commit: Update the database with the final data
     if args.commit:
-        print("* Will add/update", len(df_recent), "predictions to the database ", end="")
+        logger.info(f"* Will add/update {len(df_recent)} predictions to the database ")
         if db_update(db_path, df_recent):
-            print("Database updated with new predictions. You may want to --deploy next if you need the JSON predictions for further use.")
+            logger.info("Database updated with new predictions. You may want to --deploy next if you need the JSON predictions for further use.")
 
     else:
-        print("* Predictions NOT committed to the database or 'deploy' folder (no --commit).")
+        logger.info("* Predictions NOT committed to the database or 'deploy' folder (no --commit).")
 
 # region narrate
 # -----------------------------------------------------------------------------------------------------------------------------
 # --narrate: Generate narration
 if args.narrate:
-    print("* Narrating predictions")
+    logger.info("* Narrating predictions")
     narration = narrate_prediction(deploy=args.deploy, commit=args.commit)
 
 # region deploy
 # -----------------------------------------------------------------------------------------------------------------------------
 # --deploy: Deploy the output files
 if args.deploy:
-    print("Deploying the latest prediction data to:", deploy_folder_path, "...")
+    logger.info(f"Deploying the latest prediction data to: '{deploy_folder_path}' ...")
 
     deploy_df = db_query_all(db_path)
     deploy_df['timestamp'] = pd.to_datetime(deploy_df['timestamp'])
@@ -312,7 +314,7 @@ if args.deploy:
     json_path = os.path.join(deploy_folder_path, predictions_file)
     with open(json_path, 'w') as f:
         f.write(json_data)
-    print(f"→ Hourly price predictions saved to {json_path}")
+    logger.info(f"→ Hourly price predictions saved to '{json_path}'")
 
     # Create/update the snapshot JSON file for today's predictions
     create_prediction_snapshot(deploy_folder_path, json_data_list, "prediction_snapshot")
@@ -333,7 +335,7 @@ if args.deploy:
     json_path_wind = os.path.join(deploy_folder_path, 'windpower.json')
     with open(json_path_wind, 'w') as f:
         f.write(json_data)
-    print(f"→ Hourly wind power predictions saved to {json_path_wind}")
+    logger.info(f"→ Hourly wind power predictions saved to '{json_path_wind}'")
 
     # Convert timestamps to Helsinki timezone
     deploy_df['timestamp'] = deploy_df['timestamp'].dt.tz_convert(helsinki_tz)
@@ -342,7 +344,7 @@ if args.deploy:
     prediction_full_json = deploy_df.to_json(orient='records', date_format='iso', indent=2)
     with open(os.path.join(deploy_folder_path,'prediction_full.json'), 'w') as f:
         f.write(prediction_full_json)
-    print("→ Full prediction data saved to deploy/prediction_full.json")
+        logger.info(f"→ Full prediction data saved to '{prediction_full_json}'")
 
     # Normalize 'timestamp' to set the time to 00:00:00 for daily average grouping in local time
     deploy_df['timestamp'] = deploy_df['timestamp'].dt.normalize()
@@ -363,7 +365,7 @@ if args.deploy:
     json_path = os.path.join(deploy_folder_path, averages_file)
     with open(json_path, 'w') as f:
         f.write(json_data)
-    print(f"→ Daily averages saved to {json_path}")
+    logger.info(f"→ Daily averages saved to '{json_path}'")
 
 # region end
 # -----------------------------------------------------------------------------------------------------------------------------
@@ -371,5 +373,5 @@ if __name__ == "__main__":
     
     # If no arguments were given, print usage
     if not any(vars(args).values()):
-        print("No arguments given.")
+        logger.error("No arguments given.")
         parser.print_help()

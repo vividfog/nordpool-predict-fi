@@ -4,6 +4,7 @@ import requests
 import pytz
 from datetime import datetime, timedelta
 from rich import print
+from .logger import logger
 
 def fetch_nuclear_power_data(fingrid_api_key, start_date, end_date):
     dataset_id = 188  # Nuclear power production dataset ID
@@ -24,14 +25,14 @@ def fetch_nuclear_power_data(fingrid_api_key, start_date, end_date):
             response = requests.get(api_url, headers=headers, params=params)
             response.raise_for_status()  # Raises an HTTPError for bad responses
         except requests.exceptions.RequestException as e:
-            print(f"Error occurred while requesting Fingrid data: {e}")
+            logger.info(f"Error occurred while requesting Fingrid data: {e}")
             exit(1)
 
         if response.status_code == 200:
             try:
                 data = response.json().get('data', [])
             except ValueError:
-                print("Failed to decode JSON from response from Fingrid")
+                logger.info(f"Failed to decode JSON from response from Fingrid")
                 exit(1)
 
             df = pd.DataFrame(data)
@@ -41,10 +42,10 @@ def fetch_nuclear_power_data(fingrid_api_key, start_date, end_date):
                 return df[['startTime', 'NuclearPowerMW']]
         elif response.status_code == 429:
             retry_after = int(response.headers.get('Retry-After', 60))
-            print(f"Rate limited! Waiting for {retry_after} seconds.")
+            logger.info(f"Rate limited! Waiting for {retry_after} seconds.")
             time.sleep(retry_after)
         else:
-            print(f"Failed to fetch data: {response.text}")
+            logger.info(f"Failed to fetch data: {response.text}")
             break
 
     return pd.DataFrame(columns=['startTime', 'NuclearPowerMW'])
@@ -97,13 +98,13 @@ def update_nuclear(df, fingrid_api_key):
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
     end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
     
-    print(f"* Fingrid: Fetching nuclear power production data between {history_date} and {end_date} and inferring missing values")
+    logger.info(f"Fingrid: Fetching nuclear power production data between {history_date} and {end_date} and inferring missing values")
     
     # Fetch nuclear power production data
     try:
         nuclear_df = fetch_nuclear_power_data(fingrid_api_key, history_date, end_date)
     except Exception as e:
-        print(f"[ERROR] Failed to fetch or process nuclear power data from Fingrid: {e}")
+        logger.error(f"Failed to fetch or process nuclear power data from Fingrid: {e}", exc_info=True)
         exit(1)
     
     if not nuclear_df.empty:
@@ -112,13 +113,13 @@ def update_nuclear(df, fingrid_api_key):
         hourly_nuclear_df = nuclear_df.resample('H').mean().reset_index()
 
         # Log the Fingrid data fetch and aggregation results        
-        print(f"→ Fetched {len(nuclear_df)} rows, aggregated to {len(hourly_nuclear_df)} hourly averages spanning from {hourly_nuclear_df['startTime'].min().strftime('%Y-%m-%d')} to {hourly_nuclear_df['startTime'].max().strftime('%Y-%m-%d')}")
+        logger.info(f"Fetched {len(nuclear_df)} rows, aggregated to {len(hourly_nuclear_df)} hourly averages spanning from {hourly_nuclear_df['startTime'].min().strftime('%Y-%m-%d')} to {hourly_nuclear_df['startTime'].max().strftime('%Y-%m-%d')}")
         
-        # print("* Fingrid: DEBUG: Last few rows of nuclear power production data:\n", hourly_nuclear_df.tail())
+        # logger.info(f"Fingrid: DEBUG: Last few rows of nuclear power production data:\n", hourly_nuclear_df.tail())
         
         # Log the last known nuclear power production value
         last_known = hourly_nuclear_df['NuclearPowerMW'].dropna().iloc[-1]
-        print(f"→ Using last known nuclear power production value: {round(last_known)} MW")
+        logger.info(f"Using last known nuclear power production value: {round(last_known)} MW")
         
         # Drop the past NuclearPowerMW column from the original DataFrame
         if 'NuclearPowerMW' in df.columns:
@@ -135,11 +136,11 @@ def update_nuclear(df, fingrid_api_key):
         if 'NuclearPowerMW' in merged_df.columns:
             merged_df['NuclearPowerMW'] = merged_df['NuclearPowerMW'].fillna(method='ffill')
         else:
-            print("Warning: 'NuclearPowerMW' column not found after merge. Check data integration logic.")
+            logger.warning("'NuclearPowerMW' column not found after merge. Check data integration logic.")
         
         return merged_df
     else:
-        print("Warning: No data fetched for nuclear power production; unable to update DataFrame.")
+        logger.warning("No data fetched for nuclear power production; unable to update DataFrame.")
         return df
 
 

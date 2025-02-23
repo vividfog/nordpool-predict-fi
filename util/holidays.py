@@ -17,6 +17,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 from rich import print
+from .logger import logger
 
 _holiday_cache = None  # Will hold a DataFrame with UTC hour + holiday_fetched=int(kind_id)
 
@@ -29,7 +30,7 @@ def _fetch_holidays():
     """
     global _holiday_cache
     if _holiday_cache is None:
-        print("* Pyhäpäivä: Fetching Finnish holiday data")
+        logger.info(f"Pyhäpäivä: Fetching Finnish holiday data")
         try:
             response = requests.get("https://pyhäpäivä.fi/?output=json")
             response.raise_for_status()
@@ -65,13 +66,13 @@ def _fetch_holidays():
             holiday_df.sort_values('timestamp', inplace=True, ignore_index=True)
 
             _holiday_cache = holiday_df
-            print(f"→ Total holiday hours: {len(_holiday_cache)}")
+            logger.info(f"Total holiday hours: {len(_holiday_cache)}")
 
         except requests.exceptions.RequestException as e:
-            print(f"[ERROR] Unable to fetch or process holiday data: {e}")
+            logger.error(f"Unable to fetch or process holiday data: {e}", exc_info=True)
             sys.exit(1)
     else:
-        print(f"→ Using cached Finnish holiday data. Total holiday hours in cache: {_holiday_cache.shape[0]}")
+        logger.info(f"Using cached Finnish holiday data. Total holiday hours in cache: {_holiday_cache.shape[0]}")
 
     return _holiday_cache
 
@@ -88,22 +89,22 @@ def update_holidays(df):
     4. Converts the final 'holiday' column to integer (fill leftover NaNs with 0).
     """
 
-    # print(f"[DEBUG] Initial DataFrame shape: {df.shape}")
-    # print(f"[DEBUG] DataFrame columns: {df.columns}")
+    logger.debug(f"Initial DataFrame shape: {df.shape}")
+    logger.debug(f"DataFrame columns: {df.columns}")
 
     if 'timestamp' not in df.columns:
-        print("[ERROR] Holidays: No 'timestamp' column found in input data frame. Exiting.")
+        logger.error(f"Holidays: No 'timestamp' column found in input data frame. Exiting.", exc_info=True)
         sys.exit(1)
 
     df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True, errors='coerce')
     min_dt = df['timestamp'].min()
     max_dt = df['timestamp'].max()
 
-    # print(f"[DEBUG] Min timestamp in DataFrame: {min_dt}")
-    # print(f"[DEBUG] Max timestamp in DataFrame: {max_dt}")
+    logger.debug(f"Min timestamp in DataFrame: {min_dt}")
+    logger.debug(f"Max timestamp in DataFrame: {max_dt}")
 
     if pd.isnull(min_dt) or pd.isnull(max_dt):
-        print("[WARNING] DF has no valid timestamps. Marking 'holiday' as 0 for all.")
+        logger.warning("DF has no valid timestamps. Marking 'holiday' as 0 for all.")
         if 'holiday' not in df.columns:
             df['holiday'] = 0
         else:
@@ -112,10 +113,10 @@ def update_holidays(df):
 
     # Fetch or use cached holiday DataFrame
     holiday_df = _fetch_holidays()
-    # print(f"[DEBUG] Sample holiday rows:\n{holiday_df.head(5)}")
+    logger.debug(f"Sample holiday rows:\n{holiday_df.head(5)}")
 
     # Merge on timestamp
-    # print("[DEBUG] Merging holiday data back into the main DataFrame on an hourly basis...")
+    # logger.info(f"[DEBUG] Merging holiday data back into the main DataFrame on an hourly basis...")
     merged_df = pd.merge(
         df,
         holiday_df,
@@ -124,20 +125,20 @@ def update_holidays(df):
         suffixes=('', '_fetched')
     )
 
-    # print(f"[DEBUG] Merged DataFrame shape: {merged_df.shape}")
+    logger.debug(f"Merged DataFrame shape: {merged_df.shape}")
 
     # If 'holiday' doesn't exist, create it
     if 'holiday' not in merged_df.columns:
-        print("[DEBUG] 'holiday' column does not exist. Creating with NaNs.")
+        logger.info(f"[DEBUG] 'holiday' column does not exist. Creating with NaNs.")
         merged_df['holiday'] = pd.NA
 
     pre_fill_na_count = merged_df['holiday'].isna().sum()
-    # print(f"[DEBUG] 'holiday' column NaNs before fill: {pre_fill_na_count}")
+    logger.debug(f"'holiday' column NaNs before fill: {pre_fill_na_count}")
 
     # Fill NaN values with 'holiday_fetched'
     merged_df['holiday'] = merged_df['holiday'].fillna(merged_df['holiday_fetched'])
     post_fill_na_count = merged_df['holiday'].isna().sum()
-    # print(f"[DEBUG] 'holiday' column NaNs after fill: {post_fill_na_count}")
+    logger.debug(f"'holiday' column NaNs after fill: {post_fill_na_count}")
 
     # Convert to integer, filling leftover NaNs with 0
     merged_df['holiday'] = merged_df['holiday'].fillna(0).astype(int)
@@ -145,10 +146,10 @@ def update_holidays(df):
     # Remove the helper column
     merged_df.drop(columns=['holiday_fetched'], inplace=True, errors='ignore')
 
-    # print("[DEBUG] Holiday column updated in DataFrame.")
-    # print(merged_df.head(72))
-    # print("[DEBUG] Rows where holiday > 0 (first 72):")
-    # print(merged_df[merged_df['holiday'] > 0].head(72))
+    # logger.info(f"[DEBUG] Holiday column updated in DataFrame.")
+    # logger.info(merged_df.head(72))
+    # logger.info(f"[DEBUG] Rows where holiday > 0 (first 72):")
+    # logger.info(merged_df[merged_df['holiday'] > 0].head(72))
 
     return merged_df
 
@@ -158,7 +159,7 @@ def main():
     to 5 days in the future, partially populates a holiday column, then
     calls update_holidays. Prints debug info.
     """
-    print("=== Holiday Updater Test Routine ===")
+    logger.info(f"=== Holiday Updater Test Routine ===")
 
     # Set "now" to December 30, 2024, midnight Helsinki time
     helsinki_tz = pytz.timezone('Europe/Helsinki')
@@ -187,15 +188,15 @@ def main():
 
     pd.set_option('display.max_rows', None)
 
-    print("Initial DF:")
-    print(df_test)
+    logger.info(f"Initial DF:")
+    logger.info(df_test)
 
     df_test['timestamp'] = df_test['timestamp'].dt.strftime('%Y-%m-%dT%H:%M:%SZ')
     updated_df = update_holidays(df_test)
 
-    print("Updated DF:")
-    print(updated_df)
-    print("=== End of Holiday Updater Test ===")
+    logger.info(f"Updated DF:")
+    logger.info(updated_df)
+    logger.info(f"=== End of Holiday Updater Test ===")
 
 if __name__ == "__main__":
     main()

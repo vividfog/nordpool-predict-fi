@@ -14,6 +14,7 @@ import numpy as np
 from datetime import datetime, timedelta
 import pytz
 from rich import print
+from .logger import logger
 
 # --- Location data ---
 # Each tuple is (code, latitude, longitude).
@@ -55,7 +56,7 @@ def fetch_historical_wind_data(locations, start_date, end_date):
     
     # Fetch data for each location separately, then merge into one wide DataFrame
     for code, lat, lon in locations:
-        # print(f"→ Fetching historical data for {code} ({lat, lon})")
+        # logger.info(f"Fetching historical data for {code} ({lat, lon})")
         response = requests.get(
             historical_url,
             params={
@@ -70,18 +71,18 @@ def fetch_historical_wind_data(locations, start_date, end_date):
         
         if response.status_code == 200:
             data = response.json()
-            # print(f"  • Data shape: {len(data)}")
-            # print(data)
+            # logger.info(f"  • Data shape: {len(data)}")
+            # logger.info(data)
             timestamps = data.get('hourly', {}).get('time', [])
-            # print(f"  ✓ Got {len(timestamps)} timestamps for {code}")
+            # logger.info(f"  ✓ Got {len(timestamps)} timestamps for {code}")
             # if timestamps:
-            #     print(f"    First timestamp: {timestamps[0]}")
-            #     print(f"    Last timestamp: {timestamps[-1]}")
+            #     logger.info(f"    First timestamp: {timestamps[0]}")
+            #     logger.info(f"    Last timestamp: {timestamps[-1]}")
             # Check for NaN or empty values
             if not timestamps or all(pd.isna(timestamps)):
-                print(f"  [WARNING] No valid timestamps for {code}")
+                logger.info(f"  [WARNING] No valid timestamps for {code}")
             if "hourly" not in data or "time" not in data["hourly"]:
-                print(f"[ERROR] Malformed historical wind data for {code}: missing 'hourly/time'.")
+                logger.error(f"Malformed historical wind data for {code}: missing 'hourly/time'.", exc_info=True)
                 raise ValueError(f"[ERROR] Malformed historical wind data for {code}: missing 'hourly/time'.")
             
             hourly_data = data["hourly"]
@@ -90,13 +91,13 @@ def fetch_historical_wind_data(locations, start_date, end_date):
                 code: hourly_data["wind_speed_100m"],  # Rename to 120m for consistency
             }).rename(columns={code: code})  # Use the new code directly
             empty_values_count = df[code].isna().sum()
-            # print(f"  • {empty_values_count} empty values for {code}")
+            # logger.info(f"  • {empty_values_count} empty values for {code}")
             data_frames.append(df)
             
         else:
-            print(f"  ✗ Failed with status {response.status_code}")
-            print(f"[ERROR] Failed to fetch historical data for {code} ({lat, lon}): {response.status_code}")
-            print(response.text)
+            logger.info(f"  ✗ Failed with status {response.status_code}")
+            logger.error(f"Failed to fetch historical data for {code} ({lat, lon}): {response.status_code}", exc_info=True)
+            logger.info(response.text)
             raise ValueError(
                 f"[ERROR] Failed to fetch historical data for {code} ({lat, lon}): "
                 f"{response.status_code}, {response.text}"
@@ -136,7 +137,7 @@ def fetch_forecast_wind_data(locations):
     data_frames = []
     
     for code, lat, lon in locations:
-        # print(f"→ Fetching forecast data for {code} ({lat, lon})")
+        # logger.info(f"Fetching forecast data for {code} ({lat, lon})")
         response = requests.get(
             forecast_url,
             params={
@@ -152,15 +153,15 @@ def fetch_forecast_wind_data(locations):
         if response.status_code == 200:
             data = response.json()
             timestamps = data.get('hourly', {}).get('time', [])
-            # print(f"  ✓ Got {len(timestamps)} timestamps for {code}")
+            # logger.info(f"  ✓ Got {len(timestamps)} timestamps for {code}")
             # if timestamps:
-            #     print(f"    First timestamp: {timestamps[0]}")
-            #     print(f"    Last timestamp: {timestamps[-1]}")
+            #     logger.info(f"    First timestamp: {timestamps[0]}")
+            #     logger.info(f"    Last timestamp: {timestamps[-1]}")
             # Check for NaN or empty values
             if not timestamps or all(pd.isna(timestamps)):
-                print(f"  [WARNING] No valid timestamps for {code}")
+                logger.info(f"  [WARNING] No valid timestamps for {code}")
             if "hourly" not in data or "time" not in data["hourly"]:
-                print(f"[ERROR] Malformed forecast wind data for {code}: missing 'hourly/time'.")
+                logger.error(f"Malformed forecast wind data for {code}: missing 'hourly/time'.", exc_info=True)
                 raise ValueError(f"[ERROR] Malformed forecast wind data for {code}: missing 'hourly/time'.")
             
             hourly_data = data["hourly"]
@@ -169,10 +170,10 @@ def fetch_forecast_wind_data(locations):
                 code: hourly_data["wind_speed_120m"],  # Rename to 120m for consistency
             }).rename(columns={code: code})  # Use the new code directly
             empty_values_count = df[code].isna().sum()
-            # print(f"  • {empty_values_count} empty values for {code}")
+            # logger.info(f"  • {empty_values_count} empty values for {code}")
             data_frames.append(df)
         else:
-            print(f"  ✗ Failed with status {response.status_code}")
+            logger.info(f"  ✗ Failed with status {response.status_code}")
             raise ValueError(
                 f"[ERROR] Failed to fetch forecast data for {code} ({lat, lon}): "
                 f"{response.status_code}, {response.text}"
@@ -191,18 +192,18 @@ def fetch_forecast_wind_data(locations):
         combined_df = combined_df.sort_values(by="time").reset_index(drop=True)
         
         # Print out the last forecasted timestamp for debugging
-        print(f"→ Last wind forecast timestamp: {combined_df['time'].max()}")
+        logger.info(f"Last wind forecast timestamp: {combined_df['time'].max()}")
         
         return combined_df
     else:
         raise ValueError("[ERROR] No forecast wind data available.")
 
 def combine_wind_data(historical_df, forecast_df):
-    # print("\n→ Combining historical and forecast data")
+    # logger.info(f"\n→ Combining historical and forecast data")
     # if historical_df is not None:
-    #     print(f"  • Historical data shape: {historical_df.shape}")
+    #     logger.info(f"  • Historical data shape: {historical_df.shape}")
     # if forecast_df is not None:
-    #     print(f"  • Forecast data shape: {forecast_df.shape}")
+    #     logger.info(f"  • Forecast data shape: {forecast_df.shape}")
     
     if historical_df is None and forecast_df is None:
         raise ValueError("[ERROR] Both historical and forecast data are unavailable.")
@@ -226,7 +227,7 @@ def combine_wind_data(historical_df, forecast_df):
     if total_missing > 24:
         raise ValueError(f"[ERROR] Combined EU wind power data has {total_missing} missing values, which exceeds the threshold of 24.")
     elif total_missing > 0:
-        print(f"→ Imputing {total_missing} missing values in the combined data.")
+        logger.info(f"Imputing {total_missing} missing values in the combined data.")
         combined_df = combined_df.interpolate(method='linear').ffill().bfill()
     
     return combined_df
@@ -244,22 +245,22 @@ def update_eu_ws(df):
     Returns:
     - pd.DataFrame: The updated DataFrame with columns for each location's wind speed at 100/120m.
     """
-    # print("\n* Open-Meteo: Processing request...")
-    # print(f"  • Input DataFrame shape: {df.shape}")
-    # print(f"  • Date range: {df['timestamp'].min()} to {df['timestamp'].max()}")
+    # logger.info(f"\n* Open-Meteo: Processing request...")
+    # logger.info(f"  • Input DataFrame shape: {df.shape}")
+    # logger.info(f"  • Date range: {df['timestamp'].min()} to {df['timestamp'].max()}")
     
     # Drop existing wind speed columns if they exist
     existing_codes = [loc[0] for loc in LOCATIONS]  # ["eu_ws_EE01", "eu_ws_EE02", ...]
     dropped_cols = [code for code in existing_codes if code in df.columns]
     if dropped_cols:
-        # print(f"  • Dropping existing wind columns: {', '.join(dropped_cols)}")
+        # logger.info(f"  • Dropping existing wind columns: {', '.join(dropped_cols)}")
         df = df.drop(columns=dropped_cols, errors='ignore')
     
     # Determine the overall date range from the incoming DataFrame
     start_date = df['timestamp'].min().strftime("%Y-%m-%d")
     end_date = df['timestamp'].max().strftime("%Y-%m-%d")
     
-    print(f"* Open-Meteo: Fetching EU wind speed data between {start_date} and {end_date}")
+    logger.info(f"Open-Meteo: Fetching EU wind speed data between {start_date} and {end_date}")
     
     # Fetch historical and forecasted wind data
     historical_data = fetch_historical_wind_data(LOCATIONS, start_date, end_date)
@@ -269,11 +270,11 @@ def update_eu_ws(df):
     combined_data = combine_wind_data(historical_data, forecast_data)
     
     # Merge with the original DataFrame
-    # print("\n→ Starting data merge")
-    # print(f"  • Wind data shape before merge: {combined_data.shape}")
+    # logger.info(f"\n→ Starting data merge")
+    # logger.info(f"  • Wind data shape before merge: {combined_data.shape}")
     df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True)  # Ensure timestamps are in UTC
     merged_df = pd.merge(df, combined_data, left_on='timestamp', right_on='time', how='left')
-    # print(f"  • Final merged shape: {merged_df.shape}")
+    # logger.info(f"  • Final merged shape: {merged_df.shape}")
     merged_df.drop(columns=['time'], inplace=True)
     
     # Check for missing values after merging
@@ -284,11 +285,11 @@ def update_eu_ws(df):
                 raise ValueError(f"[ERROR] {missing_count} values for {code} not available from Open-Meteo. Data is incomplete.")
     
     # Print a quick overview of the final wind speeds
-    # print("→ Final wind data columns:", [c for c in merged_df.columns if c in existing_codes])
+    # logger.info(f"Final wind data columns:", [c for c in merged_df.columns if c in existing_codes])
     
     # Print descriptive statistics for the merged wind columns
-    # print("→ Combined wind speed stats:")
-    # print(merged_df[existing_codes].describe())
+    # logger.info(f"Combined wind speed stats:")
+    # logger.info(merged_df[existing_codes].describe())
     
     return merged_df
 
@@ -322,8 +323,8 @@ def main():
     # Print final results for the first date range
     pd.set_option("display.max_columns", None)
     pd.set_option("display.max_rows", 60)  # just as an example
-    print("Data frame with wind speeds from 2023-01-01 to today + 8 days UTC:")
-    print(updated_df_1)
+    logger.info(f"Data frame with wind speeds from 2023-01-01 to today + 8 days UTC:")
+    logger.info(updated_df_1)
     
     # Second date range: from -7 days to +8 days using UTC
     start_date_2 = (datetime.now(pytz.UTC) - timedelta(days=7)).replace(hour=0, minute=0, second=0, microsecond=0)
@@ -340,18 +341,18 @@ def main():
     updated_df_2 = update_eu_ws(df_test_2)
     
     # Print final results for the second date range
-    print("Data frame with wind speeds from -7 to +8 days UTC:")
-    print(updated_df_2)
+    logger.info(f"Data frame with wind speeds from -7 to +8 days UTC:")
+    logger.info(updated_df_2)
     
     # Optionally, show statistics for each location for both date ranges
     location_codes = [loc[0] for loc in LOCATIONS]  # e.g. ['eu_ws_EE01','eu_ws_EE02','eu_ws_DK01','...']
     for code in location_codes:
         if code in updated_df_1.columns:
-            print(f"— {code} wind speed stats for first date range —")
-            print(updated_df_1[code].describe())
+            logger.info(f"— {code} wind speed stats for first date range —")
+            logger.info(updated_df_1[code].describe())
         if code in updated_df_2.columns:
-            print(f"— {code} wind speed stats for second date range —")
-            print(updated_df_2[code].describe())
+            logger.info(f"— {code} wind speed stats for second date range —")
+            logger.info(updated_df_2[code].describe())
 
 if __name__ == "__main__":
     main()

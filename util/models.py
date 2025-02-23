@@ -3,6 +3,7 @@ import json
 import os
 from datetime import datetime
 from rich import print
+from .logger import logger
 
 # Database file path
 DB_FILE = 'model/models.db'
@@ -13,7 +14,7 @@ def create_connection(db_file):
         conn = sqlite3.connect(db_file)
         return conn
     except sqlite3.Error as e:
-        print(e)
+        logger.error(e, exc_info=True)
     return None
 
 def write_model_stats(training_timestamp, MAE, MSE, R2, samples_MAE, samples_MSE, samples_R2, model_path):
@@ -88,16 +89,16 @@ if __name__ == "__main__":
     # write_model_stats(training_timestamp, 1.5, 2.3, 0.9, 1.2, 2.1, 0.95, "model/example_model.joblib")
     
     # Example of listing all model timestamps
-    # print("All model timestamps:")
+    # logger.info(f"All model timestamps:")
     # for timestamp in list_models():
-    #     print(timestamp)
+    #     logger.info(timestamp)
     
     # Example of retrieving stats for a specific model
     # model_path = "model/example_model.joblib"
-    # print(f"Stats for {model_path}:", stats(model_path))
+    # logger.info(f"Stats for {model_path}:", stats(model_path))
     
     # Example of saving stats to JSON
     # stats_json('path_to_your_folder')  # Ensure the folder exists
 
-    print("This feature is meant to be used as a module. It is not meant to be run as a standalone script.")
+    logger.info(f"This feature is meant to be used as a module. It is not meant to be run as a standalone script.")
     exit(0)

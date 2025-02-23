@@ -19,6 +19,7 @@ from dotenv import load_dotenv
 from rich import print
 from util.sql import db_query_all
 from util.train_windpower_xgb import train_windpower_xgb
+from .logger import logger
 
 # Load environment variables
 load_dotenv('.env.local')
@@ -67,12 +68,12 @@ def fetch_fingrid_data(fingrid_api_key, dataset_id, start_date, end_date):
                     return df
             elif response.status_code == 429:
                 retry_after = int(response.headers.get('Retry-After', 60))
-                print(f"Rate limited! Waiting for {retry_after} seconds.")
+                logger.info(f"Rate limited! Waiting for {retry_after} seconds.")
                 time.sleep(retry_after)
             else:
                 raise requests.exceptions.RequestException(f"Failed to fetch data: {response.text}")
         except requests.exceptions.RequestException as e:
-            print(f"Error occurred while requesting Fingrid data: {e}")
+            logger.info(f"Error occurred while requesting Fingrid data: {e}")
             time.sleep(5)
     
     raise RuntimeError("Failed to fetch data after 3 attempts")
@@ -91,7 +92,7 @@ def update_windpower(df, fingrid_api_key):
     history_date = (current_utc - timedelta(days=7)).strftime("%Y-%m-%d")
     end_date = (current_utc + timedelta(days=8)).strftime("%Y-%m-%d")
 
-    print(f"* Fingrid: Fetching history data (ID 181) between {history_date} and {end_date}")
+    logger.info(f"Fingrid: Fetching history data (ID 181) between {history_date} and {end_date}")
     real_data_df = fetch_fingrid_data(fingrid_api_key, WIND_POWER_REAL_DATASET_ID, history_date, end_date)
     real_data_df.rename(columns={'value': 'WindPowerMW_Real'}, inplace=True)
     if not real_data_df.empty:
@@ -99,9 +100,9 @@ def update_windpower(df, fingrid_api_key):
         min_real = real_data_df['WindPowerMW_Real'].min()
         max_real = real_data_df['WindPowerMW_Real'].max()
         avg_real = real_data_df['WindPowerMW_Real'].mean()
-        print(f"→ Last real timestamp: {last_real_ts}, Min: {min_real:.0f}, Max: {max_real:.0f}, Avg: {avg_real:.0f}")
+        logger.info(f"Last real timestamp: {last_real_ts}, Min: {min_real:.0f}, Max: {max_real:.0f}, Avg: {avg_real:.0f}")
 
-    print(f"* Fingrid: Fetching forecast (ID 245) between {history_date} and {end_date}")
+    logger.info(f"Fingrid: Fetching forecast (ID 245) between {history_date} and {end_date}")
     forecast_data_df = fetch_fingrid_data(fingrid_api_key, WIND_POWER_FORECAST_DATASET_ID, history_date, end_date)
     forecast_data_df.rename(columns={'value': 'WindPowerMW_Forecast'}, inplace=True)
     if not forecast_data_df.empty:
@@ -109,9 +110,9 @@ def update_windpower(df, fingrid_api_key):
         min_fcst = forecast_data_df['WindPowerMW_Forecast'].min()
         max_fcst = forecast_data_df['WindPowerMW_Forecast'].max()
         avg_fcst = forecast_data_df['WindPowerMW_Forecast'].mean()
-        print(f"→ Last forecast timestamp: {last_fcst_ts}, Min: {min_fcst:.0f}, Max: {max_fcst:.0f}, Avg: {avg_fcst:.0f}")
+        logger.info(f"Last forecast timestamp: {last_fcst_ts}, Min: {min_fcst:.0f}, Max: {max_fcst:.0f}, Avg: {avg_fcst:.0f}")
 
-    print(f"* Fingrid: Fetching wind power capacity (ID 268) between {history_date} and {end_date}")
+    logger.info(f"Fingrid: Fetching wind power capacity (ID 268) between {history_date} and {end_date}")
     wind_power_capacity_df = fetch_fingrid_data(fingrid_api_key, WIND_POWER_CAPACITY_DATASET_ID, history_date, end_date)
     wind_power_capacity_df.rename(columns={'value': 'WindPowerCapacityMW'}, inplace=True)
     if not wind_power_capacity_df.empty:
@@ -119,7 +120,7 @@ def update_windpower(df, fingrid_api_key):
         min_capacity = wind_power_capacity_df['WindPowerCapacityMW'].min()
         max_capacity = wind_power_capacity_df['WindPowerCapacityMW'].max()
         avg_capacity = wind_power_capacity_df['WindPowerCapacityMW'].mean()
-        print(f"→ Last capacity timestamp: {last_capacity_ts}, Min: {min_capacity:.0f}, Max: {max_capacity:.0f}, Avg: {avg_capacity:.0f}")
+        logger.info(f"Last capacity timestamp: {last_capacity_ts}, Min: {min_capacity:.0f}, Max: {max_capacity:.0f}, Avg: {avg_capacity:.0f}")
 
     # Ensure the timestamp column is datetime with UTC
     df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True)
@@ -167,7 +168,7 @@ def update_windpower(df, fingrid_api_key):
     merged_df['WindPowerCapacityMW'] = merged_df['WindPowerCapacityMW'].ffill()
     if merged_df['WindPowerCapacityMW'].isnull().any():
         missing_count = merged_df['WindPowerCapacityMW'].isnull().sum()
-        print(f"[WARNING] Backfilling {missing_count} missing WindPowerCapacityMW values")
+        logger.info(f"[WARNING] Backfilling {missing_count} missing WindPowerCapacityMW values")
         merged_df['WindPowerCapacityMW'] = merged_df['WindPowerCapacityMW'].bfill()
 
     # Prepare historic data for training from the database
@@ -181,7 +182,7 @@ def update_windpower(df, fingrid_api_key):
         df_training['timestamp'] = pd.to_datetime(df_training['timestamp'], utc=True)
         df_training = df_training[df_training['timestamp'] <= max_real_ts]
     else:
-        print("[ERROR] No history data returned. Skipping model training.")
+        logger.error(f"No history data returned. Skipping model training.", exc_info=True)
         # We'll just return the partial merges as-is
         raise RuntimeError("No history data returned from Fingrid API.")
 
@@ -191,7 +192,7 @@ def update_windpower(df, fingrid_api_key):
         ws_model = train_windpower_xgb(df_training)
         trained_columns = list(df_training.columns)  # Save the trained column order
     except Exception as e:
-        print(f"[ERROR] XGBoost training failed: {e}")
+        logger.error(f"XGBoost training failed: {e}", exc_info=True)
         raise RuntimeError("XGBoost training for a wind power model failed.")
 
     # Identify the hour at which Fingrid’s forecast ends
@@ -274,10 +275,10 @@ def update_windpower(df, fingrid_api_key):
                 merged_df.loc[ramp_mask, 'WindPowerMW'] = blended
 
                 # Debug prints
-                print(f"→ Blending {ramp_mask.sum()} rows from Fingrid to XGB between {last_fc_ts} and {ramp_end_ts}")
+                logger.info(f"Blending {ramp_mask.sum()} rows from Fingrid to XGB between {last_fc_ts} and {ramp_end_ts}")
                 for idx in merged_df.loc[ramp_mask].index:
                     ts = merged_df.loc[idx, 'timestamp']
-                    print(
+                    logger.info(
                         f"  {ts}: "
                         f"time_frac={time_frac.loc[idx]:.3f}, alpha={alpha.loc[idx]:.3f}, "
                         f"fc_last={fc_vals.loc[idx]:.2f}, xgb={xgb_vals.loc[idx]:.2f}, "
@@ -290,13 +291,13 @@ def update_windpower(df, fingrid_api_key):
             max_pred = predicted_wind_power.max()
             avg_pred = predicted_wind_power.mean()
             median_pred = predicted_wind_power.median()
-            print(f"→ Inferred wind power for {missing_mask.sum()} entries "
+            logger.info(f"Inferred wind power for {missing_mask.sum()} entries "
                   f"(Min: {min_pred:.0f}, Max: {max_pred:.0f}, "
                   f"Avg: {avg_pred:.0f}, Median: {median_pred:.0f}).")
         else:
-            print("→ No rows need inference after filtering.")
+            logger.info(f"No rows need inference after filtering.")
     else:
-        print("→ No missing wind power values found, no predictions needed.")
+        logger.info(f"No missing wind power values found, no predictions needed.")
 
     # Free up memory
     del ws_model
@@ -305,7 +306,7 @@ def update_windpower(df, fingrid_api_key):
     # Keep only the original columns plus the new wind power columns
     final_df = cols_cleanup(df, merged_df)
 
-    print(f"→ Returning wind power data with shape {final_df.shape}.")
+    logger.info(f"Returning wind power data with shape {final_df.shape}.")
     return final_df
 
 

@@ -11,12 +11,13 @@ import os
 import json
 import fnmatch
 from rich import print
+from .logger import logger
 
 def eval(db_path, plot=False):
     # Load the data
     data = db_query_all(db_path)
     data_clean = data.dropna(subset=['Price_cpkWh', 'PricePredict_cpkWh']).copy()
-    print(data_clean)
+    logger.info(data_clean)
 
     # Ensure timestamp is a datetime object
     data_clean['timestamp'] = pd.to_datetime(data_clean['timestamp'])
@@ -116,10 +117,10 @@ def create_prediction_snapshot(folder_path, data, file_prefix, file_extension=".
         with open(file_path, 'w') as f:
             json.dump(data, f, ensure_ascii=False)
     except Exception as e:
-        print(f"Exception: Eval: Failed to write a snapshot file: {str(e)}")
+        logger.info(f"Exception: Eval: Failed to write a snapshot file: {str(e)}")
         return None
     else:
-        print(f"→ Eval: Past-prediction-file for today saved to {file_path}")
+        logger.info(f"Eval: Past-prediction-file for today saved to {file_path}")
         return file_path
       
 def rotate_snapshots(folder_path, pattern, max_files):
@@ -135,9 +136,9 @@ def rotate_snapshots(folder_path, pattern, max_files):
        
         for file in files_to_remove:
             os.remove(file)
-            print(f"→ Eval: Removed old past-prediction-file: {file}")
+            logger.info(f"Eval: Removed old past-prediction-file: {file}")
         
     except OSError as e:
-        print("Exception: Eval: %s : %s" % (file, e.strerror))
+        logger.info(f"Exception: Eval: %s : %s" % (file, e.strerror))
     except Exception as e:
-        print("Exception: Eval: An unexpected error occurred: ", e)
+        logger.info(f"Exception: Eval: An unexpected error occurred: ", e)

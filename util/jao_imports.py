@@ -8,6 +8,7 @@ import pytz
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from rich import print
+from .logger import logger
 
 # Define the DEBUG variable
 DEBUG = False
@@ -44,10 +45,9 @@ def fetch_transfer_capacity_data(start_date, end_date):
                 if not data:
                     raise ValueError("No data returned from JAO API")
     
-                if DEBUG:
-                    print(f"Fetched data from JAO API:")
-                    print(data)
-    
+                logger.debug(f"Fetched data from JAO API:")
+                logger.debug(data)
+
                 # Convert data to DataFrame
                 df = pd.DataFrame(data)
                 if not df.empty:
@@ -70,20 +70,21 @@ def fetch_transfer_capacity_data(start_date, end_date):
                     # Remove any missing data
                     df_melted.dropna(subset=['CapacityMW'], inplace=True)
     
-                    if DEBUG:
-                        print("Melted DataFrame:")
-                        print(df_melted)
+                    logger.debug("Melted DataFrame:")
+                    logger.debug(df_melted)
+
                     return df_melted[['dateTimeUtc', 'border', 'CapacityMW']]
+
                 else:
                     raise ValueError("Empty DataFrame after fetching data")
             elif response.status_code == 429:
                 retry_after = int(response.headers.get('Retry-After', 60))
-                print(f"[WARNING] Rate limited! Waiting for {retry_after} seconds.")
+                logger.info(f"[WARNING] Rate limited! Waiting for {retry_after} seconds.")
                 time.sleep(retry_after)
             else:
-                print(f"[ERROR] Failed to fetch data: {response.text}")
+                logger.error(f"Failed to fetch data: {response.text}", exc_info=True)
         except requests.exceptions.RequestException as e:
-            print(f"[ERROR] Error occurred while requesting JAO data: {e}")
+            logger.error(f"Error occurred while requesting JAO data: {e}", exc_info=True)
             time.sleep(5)
         
     raise RuntimeError("Failed to fetch data after 3 attempts")
@@ -114,7 +115,7 @@ def calculate_capacity_sums(df):
             last_non_zero_value = row['TotalCapacityMW']
     
     if edits_made:
-        print("[WARNING] Zero sums in JAO transfer data. Replaced with last known non-zero values.")
+        logger.warning("Zero sums in JAO transfer data. Replaced with last known non-zero values.")
     
     return pivot_df
 
@@ -127,25 +128,23 @@ def update_import_capacity(df):
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
     end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
     
-    print(f"* JAO: Fetching import capacities between {history_date} and {end_date}")
+    logger.info(f"JAO: Fetching import capacities between {history_date} and {end_date}")
     
     try:
         # Fetch import capacity data
         capacity_df = fetch_transfer_capacity_data(history_date, end_date)
     except Exception as e:
-        print(f"[ERROR] Failed to fetch import capacities: {e}")
+        logger.warning(f"Failed to fetch import capacities: {e}", exc_info=True)
         return df  # Return the original DataFrame if fetching fails
     
-    if DEBUG:
-        print("Capacity DataFrame:")
-        print(capacity_df)
+    logger.debug("Capacity DataFrame:")
+    logger.debug(capacity_df)
     
     # Calculate summed import capacities
     summed_capacity_df = calculate_capacity_sums(capacity_df)
     
-    if DEBUG:
-        print("Summed Capacity DataFrame:")
-        print(summed_capacity_df)
+    logger.debug("Summed Capacity DataFrame:")
+    logger.debug(summed_capacity_df)
     
     # Forward fill any missing TotalCapacityMW values
     summed_capacity_df['TotalCapacityMW'] = summed_capacity_df['TotalCapacityMW'].ffill()
@@ -205,7 +204,7 @@ def update_import_capacity(df):
     with open('deploy/import_capacity_daily_average.json', 'w') as json_file:
         json.dump(output_data, json_file, indent=4, default=str)
     
-    print("→ Daily average import capacity data saved to deploy/import_capacity_daily_average.json")
+    logger.info(f"Daily average import capacity data saved to deploy/import_capacity_daily_average.json")
     
     # Produce a one-liner report
     total_capacity = final_df['ImportCapacityMW']
@@ -213,7 +212,7 @@ def update_import_capacity(df):
     max_capacity = total_capacity.max()
     min_capacity = total_capacity.min()
     
-    print(f"→ JAO imports: Avg: {avg_capacity:.1f} MW, Max: {max_capacity:.1f} MW, Min: {min_capacity:.1f} MW")
+    logger.info(f"JAO imports: Avg: {avg_capacity:.1f} MW, Max: {max_capacity:.1f} MW, Min: {min_capacity:.1f} MW")
     
     return final_df
 
@@ -237,7 +236,7 @@ def main():
     end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
 
     # Prepare a dummy DataFrame covering the entire period
-    print(f"Prepare dummy data from {start_date} to {end_date}")
+    logger.info(f"Prepare dummy data from {start_date} to {end_date}")
     timestamps = pd.date_range(start=start_date, end=end_date, freq='h', tz=pytz.UTC)
     
     # Add dummy columns to the DataFrame
@@ -248,25 +247,22 @@ def main():
     })
     
     # Output the initial DataFrame
-    if DEBUG:
-        print("Initial DataFrame:")
-        print(df)
+    logger.debug("Initial DataFrame:")
+    logger.debug(df)
     
     # Update the DataFrame with import capacity
     updated_df = update_import_capacity(df)
 
     # Output the DataFrame after updating with import capacity
-    if DEBUG:
-        print("DataFrame After Import Capacity Update:")
-        print(updated_df)
+    logger.debug("DataFrame After Import Capacity Update:")
+    logger.debug(updated_df)
         
     # Drop rows with any NaN values before printing
     cleaned_df = updated_df.dropna()
 
     # Output the cleaned DataFrame
-    if DEBUG:
-        print("Updated and Cleaned DataFrame:")
-        print(cleaned_df)
+    logger.debug("Updated and Cleaned DataFrame:")
+    logger.debug(cleaned_df)
 
 if __name__ == "__main__":
     main()

@@ -1,6 +1,7 @@
 import sqlite3
 import pandas as pd
 import sys
+from .logger import logger
 
 def dump_sqlite_db(data_folder_path):
     # Connect to the SQLite database
@@ -19,5 +20,5 @@ def dump_sqlite_db(data_folder_path):
     sys.stdout.write(df.to_csv(index=False))
 
 if __name__ == "__main__":
-    print("This is not meant to be executed directly.")
+    logger.info(f"This is not meant to be executed directly.")
     exit()
