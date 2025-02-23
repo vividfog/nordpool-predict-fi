@@ -378,7 +378,7 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
                     json.dump(content, file, indent=indent, ensure_ascii=False)
                 else:
                     file.write(content + "\n")
-            logger.info(f"{filename} saved to {path}")
+            logger.info(f"{filename} saved to '{path}'")
 
     if deploy and commit:
         DEPLOY_FOLDER_PATH = os.getenv("DEPLOY_FOLDER_PATH", "deploy")

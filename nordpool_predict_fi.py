@@ -342,9 +342,10 @@ if args.deploy:
 
     # Save the full prediction data to a JSON file in the deploy folder
     prediction_full_json = deploy_df.to_json(orient='records', date_format='iso', indent=2)
-    with open(os.path.join(deploy_folder_path,'prediction_full.json'), 'w') as f:
+    full_json_path = os.path.join(deploy_folder_path, 'prediction_full.json')
+    with open(full_json_path, 'w') as f:
         f.write(prediction_full_json)
-        logger.info(f"→ Full prediction data saved to '{prediction_full_json}'")
+        logger.info(f"→ Full prediction data saved to '{full_json_path}'")
 
     # Normalize 'timestamp' to set the time to 00:00:00 for daily average grouping in local time
     deploy_df['timestamp'] = deploy_df['timestamp'].dt.normalize()
