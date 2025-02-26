@@ -1,28 +1,26 @@
-*'The price of exchange electricity will fluctuate wildly this week: high prices and even price spikes of 20-40 cents for individual hours are expected on Thursday and Friday, but at the weekend and early next week electricity will be cheap again, even close to zero on Tuesday.'*
+*'The price of exchange electricity will remain mostly affordable or moderate, but on Thursday and Friday there is a risk of high price spikes, when the prices of individual hours may rise up to 20-30 cents per kilowatt-hour – however, on the weekend and next week, electricity will be significantly cheaper.'*
 
-The electricity price forecast has been updated on Tuesday at 9:12 PM.
+The price forecast for exchange electricity has been updated on Wednesday at 03:13 AM.
 
-|   | Average<br>Price<br>¢/kWh | Min - Max<br>¢/kWh | Wind Power<br>Min - Max<br>MW | Average<br>Temperature<br>°C |
+|        | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 3.9 | 0.7 - 11.3 | 1838 - 3202 | 0.3 |
-| **Thursday** | 9.7 | 0.8 - 16.4 | 1195 - 3015 | -0.9 |
-| **Friday** | 8.6 | 4.5 - 12.5 | 1584 - 3216 | -0.9 |
-| **Saturday** | 4.7 | 2.0 - 7.4 | 1634 - 5047 | -1.1 |
-| **Sunday** | 4.2 | 1.3 - 7.9 | 4467 - 5226 | -1.4 |
-| **Monday** | 3.1 | 0.6 - 5.3 | 4362 - 5553 | 0.7 |
-| **Tuesday** | 2.0 | 0.4 - 4.2 | 4582 - 5584 | 0.6 |
+| **Thursday**  | 8.4 | 1.0 - 15.2 | 1501 - 3075 | -0.9 |
+| **Friday**    | 9.5 | 4.4 - 13.6 | 1462 - 2444 | -0.9 |
+| **Saturday**  | 5.5 | 2.2 - 9.6  | 1225 - 4164 | -1.1 |
+| **Sunday**    | 4.0 | 0.9 - 7.7  | 3567 - 5007 | -1.4 |
+| **Monday**    | 2.9 | 0.2 - 4.7  | 4392 - 5522 | 0.7  |
+| **Tuesday**   | 1.9 | 0.0 - 4.3  | 4602 - 5597 | 0.6  |
+| **Wednesday** | 2.6 | 0.8 - 4.1  | 2595 - 4948 | 0.6  |
 
-The price of exchange electricity will rise towards the end of the week, and the most expensive electricity will be on **Thursday**. Thursday's average price, 9.7 ¢/kWh, will be clearly the highest of the week. Thursday's maximum price, 16.4 ¢, will be during the morning hours of 8-10. At that time, there will be little wind power available, at its lowest 1195 MW.
+The price of exchange electricity will remain mostly affordable or moderate during the coming week. The most expensive day will be **Friday**, when the average price will rise to 9.5 cents per kilowatt-hour. Friday's maximum price, 13.6 ¢, is significantly higher than on other days.
 
-On Thursday, there is a risk that the prices of individual hours will rise to as much as 20-40 cents per kilowatt-hour. It is possible that Thursday's price peak will be in the evening at 5-7 PM.
+However, on **Thursday** and Friday, there is a risk of higher price spikes than predicted. On Thursday, the prices of individual hours may rise up to 20-30 cents, and on Friday up to 20 cents. The most likely time for the spikes is in the morning between 7-9 AM and in the evening between 5-7 PM. The risk of price spikes is partly due to the fact that wind power production will remain at a low level on Thursday and Friday. On Thursday, the minimum wind power available will be only 1501 MW and on Friday 1462 MW.
 
-Also on **Friday**, the average price of exchange electricity, 8.6 ¢, will be close to Thursday's figures. Friday's highest price, 12.5 ¢, will be in the morning at 7-9 AM. Also on Friday, there is a risk that the prices of individual hours will rise to as much as 20 cents per kilowatt-hour. The most likely time for a price peak is in the evening at 6-8 PM.
+From Saturday onwards, the price of exchange electricity will fall significantly, and the weekend is expected to be cheap. The average price for **Saturday** is forecast to be 5.5 ¢/kWh, and the average price for **Sunday** will fall further to 4.0 cents per kilowatt-hour. On Sunday, the price of electricity will fall below one cent (0.9 ¢/kWh) in the early morning. The low prices on Sunday are explained by the very abundant wind power production, as wind power will be available on Sunday at an average of 4285 MW.
 
-On **Saturday**, the price will turn downward. The average prices for Saturday and Sunday will be around 4-5 cents. On **Sunday**, there will be plenty of wind power available, which will push the price down.
+Next **Monday** and **Tuesday**, electricity will be even cheaper. The average price for Monday is expected to be 2.9 ¢ and for Tuesday only 1.9 ¢. On Tuesday, the price of electricity may even temporarily drop to zero. On Monday and Tuesday, wind power will be very abundant, averaging over 5000 MW.
 
-Next **Monday** and **Tuesday**, the price of electricity will continue to fall. The average price for Monday is forecast to be 3.1 ¢ and for Tuesday only 2.0 ¢ per kilowatt-hour. On Tuesday night, the price will fall close to zero. On Tuesday morning hours, electricity will be very cheap.
+Next **Wednesday**, the average price of exchange electricity will remain low, at 2.6 cents per kilowatt-hour. Wednesday's price expectations are very similar to Tuesday's, although wind power production is forecast to decline somewhat.
 
-This coming week, the price of electricity will therefore vary considerably. On Wednesday, Saturday, Sunday, Monday and Tuesday, electricity will be cheap, but on Thursday and Friday, more expensive days are expected.
-
-*Exchange rates interpreted by gemini-2.0-pro-exp-02-05.* ⚡
+*Interpretation by gemini-2.0-pro-exp-02-05.* ⚡️
 
