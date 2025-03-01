@@ -1,28 +1,30 @@
-*The price of exchange electricity will remain mostly affordable, but on Friday there is a risk of price spikes, when the prices of individual hours can rise up to 20-30 cents per kilowatt-hour. On other days, the price will be moderate, and at times even negative.*
+*'The price of electricity on the Nordpool exchange will remain mostly low at the beginning of the week, but significantly higher prices and even price spikes of 20 cents are expected for Friday. The maintenance outage at Olkiluoto 3 starting on Saturday may affect the accuracy of the forecast.'*
 
-Olkiluoto 3's maintenance outage will begin on Saturday at 03:00 and end on Friday at 02:00. Because teaching data is limited during maintenance outages, the outage may affect the accuracy of the forecast.
+The maintenance outage at Olkiluoto 3 will begin on **Saturday**, 2025-03-01 at 03:00 and end on Friday, 2025-05-02 at 02:00. The end time is a forecast. Because teaching data is available only to a limited extent during maintenance outages, the outage may affect the accuracy of the forecast.
 
-The electricity mixer forecast has been updated on Saturday at 12:00.
+The forecast has been updated on Saturday at 14:18.
 
-|    | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **Sunday**  | 3.5 | 0.2 - 6.0  | 3072 - 5321 | -1.4 |
-| **Monday** | 2.8 | -0.3 - 5.4 | 4269 - 5692 | 0.7  |
-| **Tuesday**   | 2.0 | -1.0 - 4.1 | 3590 - 5041 | 0.6  |
-| **Wednesday**| 2.3 | 0.2 - 4.0  | 2881 - 5579 | 0.6  |
-| **Thursday**  | 3.8 | 1.8 - 6.6  | 2771 - 4395 | 0.5  |
-| **Friday** | 7.0 | 1.9 - 15.3 | 1168 - 4181 | 0.1  |
-| **Saturday**  | 4.4 | 1.9 - 9.1  | 1268 - 4588 | 0.4  |
+|     | Average<br>price<br>¢/kWh | min - max<br>¢/kWh | Wind power<br>min - max<br>MW | Average<br>temperature<br>°C |
+|:----|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Sunday**   | 0.3              | -0.0 - 0.6        | 3084 - 5330   | -1.4          |
+| **Monday**  | 2.1              | -0.5 - 4.0       | 2946 - 5778   | 0.7           |
+| **Tuesday**    | 1.5              | -1.0 - 3.9      | 3575 - 5279   | 0.6           |
+| **Wednesday** | 2.0              | 0.6 - 3.9      | 2963 - 5570   | 0.6           |
+| **Thursday**    | 3.3              | 1.5 - 6.5       | 2791 - 4278   | 0.5           |
+| **Friday**  | 6.9              | 2.1 - 14.8      | 1177 - 4093   | 0.1           |
+| **Saturday**   | 4.8              | 1.9 - 10.8     | 1219 - 4493  | -0.0          |
 
-Price expectations for exchange electricity are mostly affordable for the coming week. Only **Friday's** average price, 7.0 ¢/kWh, will rise clearly higher than other days. The highest maximum price, 15.3 ¢, is also expected for Friday. On other days, the price will remain below 10 cents.
+The price expectations for electricity on the Nordpool exchange will vary during the coming week. The price level, which has remained mostly affordable, will rise towards the end of the week.
 
-Wind power is forecast to be abundant during the week, which partly explains the affordable prices. Only on Friday will the average wind power production remain below 3000 megawatts, and the minimum wind power available will be only 1168 MW. This coincides with the time when the price of electricity rises to its highest. On Friday, it is advisable to prepare for the risk of price spikes: the prices of individual hours can rise up to 20-30 cents per kilowatt-hour.
+On **Sunday**, the average price of electricity will settle at 0.3 cents per kilowatt-hour. The hours of the night and morning are very affordable, even close to zero. At its most expensive, electricity will be in the early evening, around 0.6 cents per kilowatt-hour. Sunday's average temperature will fall to -1.4 degrees Celsius.
 
-The price of electricity will occasionally fall below zero. On the night before next Tuesday, hourly prices of -1.0 cents are expected for hours 00-02. Also on the night before Monday, hourly prices may fall below zero.
+Next **Monday**, the price will rise slightly, with the average price being 2.1 ¢/kWh. Electricity will be cheap at night and in the morning, but in the afternoon and evening the price will rise close to four cents. Monday's most expensive hour will be in the early evening between 5 and 6 PM.
 
-Friday's price spikes are forecast to occur in the evening around 6-8 PM. On other days, the price of electricity will remain moderate, and no major price fluctuations are expected if the wind power forecasts hold true.
+On **Tuesday** and Wednesday, the average prices of electricity will remain below two cents per kilowatt-hour. On Tuesday, the price will fall as low as -1.0 cents per kilowatt-hour during the night. Negative prices are therefore expected during the night between Tuesday and Wednesday.
 
-The average temperatures of the week will remain around zero, so the temperature is not expected to significantly affect the price of electricity.
+On **Thursday**, the average price will rise to 3.3 cents per kilowatt-hour. The variation within the day will be small. On **Friday**, the price will rise clearly, with the average price being 6.9 ¢/kWh. Friday's highest price, 14.8 ¢, will be in the evening between 6 and 8 PM. Price spikes of up to 20 cents are forecast for individual hours on Friday.
 
-*Power and turbines were monitored by gemini-2.0-pro-exp-02-05.* ⚡
+Next **Saturday**, the average price will decrease slightly from Friday, being 4.8 ¢/kWh. Saturday's most expensive hours will be in the evening between 5 and 7 PM, when the price will rise above ten cents.
+
+*Interpretations by gemini-2.0-pro-exp-02-05.* ⚡️
 
