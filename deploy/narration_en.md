@@ -1,28 +1,28 @@
-*'The price of electricity on the power exchange will fluctuate wildly next week: the beginning of the week will be very cheap, but on Sunday the price will multiply and could even reach 20 cents during individual hours. Also on Saturday, electricity will be more expensive towards the evening.*'
+*'The price of exchange electricity will fluctuate next week: the beginning of the week is cheap, but towards the end of the week the price will rise significantly. Price spikes are expected on Sunday, when electricity could cost up to 20 cents per kilowatt-hour. Next Monday, the average price will climb to over eight cents.'*
 
-Olkiluoto 3's maintenance outage will begin on Saturday at 03:00 and end on Friday, 2025-05-02 at 02:00. Because teaching data is limited during maintenance outages, the outage may affect the accuracy of the forecast.
+Olkiluoto 3's maintenance outage, which began on Saturday 2025-03-01 at 03:00, continues, and is predicted to end on Friday 2025-05-02 at 02:00. Because teaching data is limited during maintenance outages, the outage may affect the accuracy of the forecast.
 
-The forecast has been updated on Sunday at 21:00.
+The forecast has been updated on Monday at 03:13.
 
-|    | Average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | Average<br>temperature<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **Monday** | 0.5 | -0.7 - 1.8 | 2191 - 5584 | 0.7 |
-| **Tuesday** | 0.7 | -1.0 - 2.6 | 4069 - 5209 | 0.6 |
-| **Wednesday** | 1.5 | -0.6 - 4.0 | 3724 - 4216 | 0.6 |
-| **Thursday** | 2.0 | 0.6 - 4.9 | 2726 - 5781 | 0.5 |
-| **Friday** | 2.1 | 0.4 - 4.4 | 4480 - 5663 | 0.1 |
-| **Saturday** | 2.8 | 0.7 - 5.4 | 3718 - 5301 | -0.0 |
-| **Sunday** | 6.6 | 2.8 - 11.7 | 1463 - 3633 | 0.9 |
+|   | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Tuesday**     | 1.3              | -1.3 - 3.1       | 3077 - 5482   | 0.6              |
+| **Wednesday**  | 0.6              | -1.4 - 2.5       | 3747 - 5697   | 0.6              |
+| **Thursday**    | 1.7              | -0.1 - 4.8       | 3149 - 5554   | 0.5              |
+| **Friday**   | 5.0              | 1.4 - 11.4      | 1813 - 5102   | 0.1              |
+| **Saturday**   | 2.9              | 0.9 - 5.1       | 3591 - 5220   | -0.0             |
+| **Sunday**  | 6.3              | 2.7 - 10.5      | 1555 - 3512   | 0.9              |
+| **Monday**  | 8.2             | 5.0 - 11.8    | 1486 - 3598 | -1.2             |
 
-Next week, the price expectations for exchange electricity will vary considerably. The beginning of the week looks very affordable, but towards the end of the week, average prices will rise. **Sunday**, in particular, stands out as a clearly more expensive day. Sunday's average price, 6.6 ¢/kWh, is many times higher than other days. The maximum price on Sunday may rise to 11.7 cents per kilowatt-hour.
+The price of exchange electricity will be variable next week. At the beginning of the week, the price of electricity will remain low, but towards the end of the week, the price will rise.
 
-The price development next week will be characterized by large differences between the days. During **Monday** and **Tuesday**, the price of electricity may even go below zero. The average price for Monday is expected to be 0.5 ¢ and for Tuesday 0.7 ¢. On Wednesday, the average price will rise to 1.5 cents. As we move towards the end of the week, average prices will continue to rise.
+On **Tuesday**, the average price of exchange electricity is expected to settle at 1.3 cents per kilowatt-hour. At night, the price will even fall below zero, at its lowest -1.3 cents. On Wednesday, the average price will fall further, to only 0.6 ¢/kWh. Also on **Wednesday**, during the night hours, electricity will be very cheap, even -1.4 ¢/kWh.
 
-The average prices for **Thursday** and **Friday** will settle around 2.0 and 2.1 cents. On Saturday, the average price will already be 2.8 ¢. On Sunday, wind power is predicted to be low, averaging 2326 MW. The scarcity of wind power on Sunday partly explains the high price of the day. On Sunday, price spikes of up to 20 cents are expected during individual hours.
+**Thursday's** average price will be slightly higher, 1.7 ¢/kWh, but the price will still remain affordable. The cheapest price at night will be -0.1 ¢. On **Friday**, the price will start to rise, and the average price is predicted to be 5.0 ¢/kWh. Friday's highest price, 11.4 ¢, will be around 6 pm.
 
-In addition to Sunday, **Saturday** also contributes to the rise in prices over the weekend. On Saturday, the price of electricity will rise from the cheap hours of the early morning towards the evening. On Saturday, the hours of the afternoon and early evening may be more expensive. Saturday's highest price, 5.4 ¢, will be in the early evening, around 6-8 PM.
+During the weekend, the price will continue to rise. On **Saturday**, the average price will be 2.9 ¢ and on **Sunday** already 6.3 ¢. On Sunday, there is a risk of price spikes, when the prices of individual hours can rise up to 20 cents. Especially in the evening, between 7 pm and 9 pm, high prices should be expected. On Sunday, less wind power than usual will be available, which partly explains the rise in prices.
 
-On Sunday, the minimum wind power production will remain at only 1463 megawatts. Sunday's price spikes will likely be in the early evening, around 6-8 PM. On other days of the week, wind power will be available much more, and there is no mention of price spikes.
+Next **Monday**, the average price of exchange electricity will rise to 8.2 cents. Monday's highest price, 11.8 ¢, will be in the morning around 8 am. Wind power production will remain at a low level on Monday, which is one reason for the higher price level. In addition, it will be chilly on Monday, as the average temperature will fall below zero, to -1.2 degrees.
 
-*Interpreted today by gemini-2.0-pro-exp-02-05.* ⚡️
+*This interpretation was provided by gemini-2.0-pro-exp-02-05.* ⚡
 
