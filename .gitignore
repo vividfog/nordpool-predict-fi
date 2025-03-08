@@ -56,3 +56,4 @@ data/create/12_openmeteo_ws/eu_ws_2025-01-12.sql
 repomix-output.txt
 repomix-background.md
 archive/
+deploy/prediction_full.json
