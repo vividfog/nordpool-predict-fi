@@ -274,7 +274,7 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
 
     # Add nuclear outages if any
     if NUCLEAR_OUTAGE_DATA:
-        nuclear_outage_section = "\n**Ydinvoimalat**\n"
+        nuclear_outage_section = "  **Ydinvoimalat**\n"
         section_empty = True
 
         for outage in NUCLEAR_OUTAGE_DATA:
@@ -293,13 +293,21 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
                     resource_name = outage.get(
                         "production_resource_name", "Tuntematon voimala"
                     )
-                    start_date_str = start_date_hel.strftime("%A %Y-%m-%d %H:%M")
-                    end_date_str = end_date_hel.strftime("%A %Y-%m-%d %H:%M")
+
+                    # Format the dates for Finland
+                    start_date_str = start_date_hel.strftime("%d.%m.%Y %H:%M")
+                    end_date_str = end_date_hel.strftime("%d.%m.%Y %H:%M")
+
+                    # Did the outage already begin?
+                    start_phrase = "Alkoi" if start_date_hel < pd.Timestamp.now(helsinki_tz) else "Alkaa"
+
                     nuclear_outage_section += (
-                        f"- {resource_name}: Nimellisteho {nominal_power} MW, "
+                        f"  - {resource_name}: Nimellisteho {nominal_power} MW, "
                         f"käytettävissä oleva teho {avail_qty} MW, "
-                        f"käytettävyys-% {availability:.1f}. Alkaa - loppuu: "
-                        f"{start_date_str} - {end_date_str}. Päättymisaika on ennuste.\n"
+                        f"käytettävyys-% {availability:.1f}. {start_phrase} - loppuu: "
+                        f"{start_date_str} - {end_date_str}. Päättymisaika on ennuste. "
+                        f"Päivämäärät ovat suomalaisessa muodossa: päivä, kuukausi, vuosi.\n"
+                        f"\n"
                     )
 
         if not section_empty:
@@ -340,11 +348,10 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
     narration = llm_call(messages)
     messages.append({"role": "assistant", "content": narration})
 
-    # Get an ingress
     messages.append(
         {
             "role": "user",
-            "content": "Nyt luo tälle artikkelille yhden rivin, noin 20-40 sanan ingressi. Älä kirjoita mitään muuta kuin ingressi. Kirjoita kursiivilla, eli rivin alkuun ja loppuun '*'. Kiitos!",
+            "content": "Nyt luo tälle artikkelille yhden rivin ingressi (noin 20-40 sanaa). Älä kirjoita mitään muuta kuin ingressi. Muotoile ingressi kursiivilla käyttämällä markdown-syntaksia. Kiitos!",
         }
     )
 
