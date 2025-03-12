@@ -1,28 +1,28 @@
-*The price of exchange electricity will fluctuate wildly in the coming days: Thursday will see expensive electricity, but the price will drop very low during the weekend. On Friday, however, one should be prepared for price spikes of up to 30-40 cents.*
+*The price of electricity on the exchange market will fluctuate wildly in the coming days: very expensive on Thursday, very cheap on the weekend. Price spikes are forecast for Friday and next Wednesday, but on the weekend, electricity is even free on Sunday.*
 
-Olkiluoto 3's maintenance outage began on March 1, 2025, at 03:00 and is predicted to end on May 2, 2025, at 02:00. The maintenance outage may affect the accuracy of the forecast, as there is limited training data available for the periods of maintenance outages.
+There is currently a maintenance outage at the Olkiluoto 3 nuclear power plant, which began on 1 March 2025 at 03:00 and is estimated to end on 2 May 2025 at 02:00. The maintenance outage may affect the accuracy of the forecast, as there is limited training data available for the period of maintenance outages.
 
-The forecast has been updated on Wednesday at 14:18.
+The forecast has been updated on Wednesday at 21:00.
 
 |     | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:----|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday**   | 21.8  | 11.4 - 31.1  | 87 - 792  | -3.3 |
-| **Friday** | 10.5  | 3.9 - 18.1  | 588 - 4378  | -1.8  |
-| **Saturday**  | 2.8  | -0.4 - 4.5 | 3228 - 6206  | -1.8  |
-| **Sunday** | 2.7  | 0.4 - 5.9  | 3982 - 5230  | -2.2 |
-| **Monday** | 3.0  | 1.3 - 7.7  | 4429 - 5348  | -1.6  |
-| **Tuesday**  | 3.3  | 1.1 - 6.6  | 4104 - 5432  | 0.8  |
-| **Wednesday**  | 2.6  | 0.4 - 5.0  | 3062 - 5239  | 1.6  |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Thursday**  | 21.8             | 11.4 - 31.1      | 80 - 723      | -3.3          |
+| **Friday**    | 10.5             | 4.8 - 18.2       | 580 - 4343    | -1.8          |
+| **Saturday**  | 2.8              | -0.1 - 5.1       | 3685 - 6229   | -1.8          |
+| **Sunday**    | 2.5              | -0.5 - 4.4       | 3459 - 4837   | -2.2          |
+| **Monday**    | 4.9              | 2.5 - 8.9        | 3108 - 4791   | -1.6          |
+| **Tuesday**   | 2.8              | 0.8 - 5.6        | 3389 - 4679   | 0.8           |
+| **Wednesday** | 4.9             | 0.9 - 12.3       | 1747 - 4889   | 1.6           |
 
-The exchange electricity price forecast for the coming week shows varying figures. On **Thursday**, the price will rise high, and the average price for the day is expected to be as high as 21.8 ¢/kWh. Thursday's highest price, 31.1 ¢, is likely to occur during the morning hours of 9-11. Very little wind power will be available on Thursday, only 430 MW on average.
+Electricity price expectations will vary considerably over the coming week. On **Thursday**, the price will rise to a very expensive level, with the average daily price forecast to be as high as 21.8 ¢. The maximum price on Thursday could rise to 31.1 cents per kilowatt-hour, with the peak price expected in the morning hours, around 10-12 am. Thursday's high price is explained by weak wind power production, which is forecast to remain very low during the day, at only 80 megawatts. The severe frost, -3.3 degrees, will also increase the price.
 
-On **Friday**, the price of electricity will fall significantly, with an average price of 10.5 ¢. Friday's wind power production will be many times higher than Thursday's, averaging 1788 MW, but still at a low level. The price of electricity on Friday is subject to a high risk of price spikes, up to 30-40 cents in individual hours. The most likely high price peaks will occur in the morning hours 7-9.
+On **Friday**, price expectations are already significantly lower, with an average price of 10.5 ¢. However, a high risk of price spikes is forecast for Friday, up to 30-40 cents in individual hours. The risk of a price spike is during the morning hours.
 
-On **Saturday**, the price will drop very low, and the average price is expected to be only 2.8 ¢. During Saturday, there will be a very large amount of wind power, an average of 4902 MW. On Saturday afternoon and early evening, the price of electricity will even dip below zero.
+On **Saturday**, the price of electricity will fall to a very affordable level, with an average daily price of only 2.8 ¢ expected. During Saturday, the price may even go below zero, to -0.1 cents. On Sunday, the price will remain very low, with an average price of 2.5 ¢. Also on **Sunday**, the price will temporarily fall below zero, to -0.5 cents in the afternoon.
 
-On **Sunday**, **Monday**, next **Tuesday**, and next **Wednesday**, the price of electricity is expected to settle very close to each other, below five cents per kilowatt-hour. On all of these days, there will be a very large amount of wind power available, over 4400 MW on average. Sunday and Monday's average temperatures will remain below zero, but on Tuesday and Wednesday the temperature will rise slightly above zero.
+At the beginning of next week, on **Monday** and **Tuesday**, electricity prices will continue to be affordable. Average prices will be less than five cents per kilowatt-hour. Next Tuesday, the price may temporarily fall to less than one cent per kilowatt-hour.
 
-After the weekend, the price of electricity will therefore remain affordable, and the weekend will offer downright cheap electricity. The most expensive electricity will be on Thursday, when wind power is at its lowest and the average temperature is at its lowest.
+Next **Wednesday**, the price of electricity will rise slightly higher, with the average daily price being 4.9 ¢. A small risk of price spikes is also forecast for Wednesday, and the prices for individual hours may be up to 10 cents higher than the maximum price of 12.3 ¢ forecast in the table.
 
-*Interpretations by gemini-2.0-pro-exp-02-05.* 🌬️
+*Interpreted by gemini-2.0-pro-exp-02-05.* ⚡
 
