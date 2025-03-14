@@ -1,26 +1,28 @@
-*The price of exchange electricity will remain low next week, although a slight increase is expected on Monday. During the weekend and at the end of next week, the price will occasionally fall below zero. Olkiluoto 3's maintenance outage continues.*
+*The price of exchange electricity will remain mostly affordable throughout the week, but next Monday the price will rise higher than other days. Wind power is predicted to be at a lower level than other days, which partly explains the price increase.*
 
-Olkiluoto 3's maintenance outage began on 1.3.2025 at 03:00 and is predicted to end on 2.5.2025 at 02:00. Because there is limited teaching data available from the time of maintenance outages, the maintenance outage may affect the accuracy of the forecast.
+Olkiluoto 3's maintenance outage began on 1.3.2025 at 03:00 and is predicted to end on 2.5.2025 at 02:00. The maintenance outage may affect the accuracy of the forecast, as there is limited teaching data available during maintenance outages.
 
-The forecast has been updated on Friday at 09:00.
+The forecast has been updated on Friday at 12:01.
 
 |   | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday**  | 1.1 | -1.0 - 2.7  | 3379 - 6162 | -1.8 |
-| **Sunday** | 0.6 | -0.7 - 2.0  | 3433 - 5617 | -2.2 |
-| **Monday** | 3.7 | 0.8 - 9.4  | 2592 - 5143 | -1.6 |
-| **Tuesday**   | 1.7 | 0.6 - 3.8  | 4536 - 5751 | 0.8  |
-| **Wednesday**| 2.7 | 1.0 - 4.9  | 2915 - 5551 | 1.6  |
-| **Thursday**  | 1.1 | -0.5 - 4.3 | 4860 - 5814 | 1.1  |
-| **Friday** | 2.2 | -0.3 - 4.7 | 4304 - 5513 | 2.2  |
+| **Saturday**  | 1.1  | -0.9 - 2.6  | 3682 - 6422 | -1.8 |
+| **Sunday** | 1.1  | -0.3 - 3.1  | 3184 - 5015 | -2.2 |
+| **Monday** | 3.6  | 1.1 - 10.1 | 2039 - 5360 | -1.6 |
+| **Tuesday**   | 1.2  | -0.0 - 3.0  | 4626 - 5847 |  0.8 |
+| **Wednesday**| 1.5  | -0.1 - 3.2  | 5012 - 5661 |  1.6 |
+| **Thursday**   | 1.1  | -0.6 - 4.3  | 4958 - 5747 |  1.1 |
+| **Friday** | 1.9  | -0.1 - 4.5  | 4302 - 5288 |  2.2 |
 
-The price of exchange electricity will be low next week. Of the coming days, **Monday's** price expectations are the highest, as the average price for the day is predicted to be 3.7 ¢ and at its highest, the price is expected to rise to 9.4 cents per kilowatt-hour. The other days are close to each other in price.
+The exchange electricity price forecast for the coming week looks mostly affordable. Only next **Monday** will the price rise higher than other days. The average price for Monday is expected to be 3.6 ¢, and the highest price of the day may rise to 10.1 cents per kilowatt-hour.
 
-During the weekend, the price of electricity will fall very low. On **Saturday** and **Sunday**, even negative prices are expected. On Saturday, the price is expected to fall below zero in the afternoon between 2 pm and 4 pm, and on Sunday, negative prices may occur in the early morning and around noon. Sunday's average price will remain at only 0.6 cents.
+The higher prices on Monday are partly explained by the fact that wind power is predicted to be at a lower level than other days. Monday's wind power production is predicted to remain at a minimum of only 2039 megawatts.
 
-At the beginning of next week, the price of electricity will rise, but will still remain low. The higher prices on Monday may be partly due to the fact that wind power is predicted to be weaker than on other days. After Monday, the price will fall again on Tuesday, and remain fairly stable for the rest of the week.
+On other days, the price of electricity will remain fairly stable and affordable. On **Saturday** and **Sunday**, the average price is predicted to be 1.1 ¢/kWh. Also on Tuesday, Wednesday and Thursday, the average price will be close to one cent per kilowatt-hour. The average price for next week's Friday is slightly higher, 1.9 ¢.
 
-Between Wednesday and Thursday night, the price will temporarily rise to close to five cents, but will then fall rapidly. Towards the end of the week, the price will remain mostly below three cents, and on Thursday and Friday, even negative prices are again expected at times.
+Negative hourly prices are also expected during the week. On Saturday afternoon and early evening, the price is expected to fall below zero for a few hours. On Sunday, negative prices are expected during the early morning and morning hours. Also on Tuesday, Wednesday, Thursday and Friday, occasional negative hourly prices are expected.
 
-*The forecast was prepared by gemini-2.0-pro-exp-02-05.* 🌬️
+Although Monday's maximum price will be higher than other days, the risk of price spikes is not considered high on any day. The prices of individual hours may vary, but large fluctuations are not expected.
+
+*Interpreting the numbers today, gemini-2.0-pro-exp-02-05.* 🍃
 
