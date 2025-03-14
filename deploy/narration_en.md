@@ -1,26 +1,26 @@
-*The price of electricity on the power exchange fluctuates dramatically: on Friday the price will rise significantly, but on the weekend and next week price expectations are very moderate, and electricity will even be free at times. Olkiluoto nuclear power plant is undergoing a long maintenance outage.*
+*The price of exchange electricity will remain mostly affordable in the coming week, although there will be some daily variation. On Sunday, the price will even dip into negative territory, but on Monday and Friday, the price will temporarily rise higher in the morning.*
 
-Olkiluoto 3's maintenance outage began on March 1, 2025, at 03:00 and is estimated to end on May 2, 2025, at 02:00. Because there is limited teaching data available for the period of maintenance outages, the outage may affect the accuracy of the forecast.
+Olkiluoto 3's maintenance outage began on 1.3.2025 at 03:00 and is predicted to end on 2.5.2025 at 02:00. The maintenance outage may affect the accuracy of the forecast, as there is limited teaching data available for the period of maintenance outages.
 
-The forecast has been updated on Thursday at 21:00.
+The forecast has been updated on Friday at 03:13.
 
 |    | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday**  | 11.5 | 3.9 - 17.7  | 418 - 4615  | -1.8 |
-| **Saturday**  | 1.1  | -0.7 - 2.4 | 3755 - 6253 | -1.8 |
-| **Sunday** | 0.6  | -1.4 - 3.7 | 2392 - 6230 | -2.2 |
-| **Monday** | 2.4  | 0.3 - 8.4  | 4199 - 5438 | -1.6 |
-| **Tuesday**   | 2.6  | 1.1 - 5.2  | 3022 - 5841 | 0.8  |
-| **Wednesday**| 1.8  | 0.7 - 4.1  | 4913 - 5837 | 1.6  |
-| **Thursday**  | 1.0  | 0.0 - 3.7  | 3878 - 5212 | 1.1  |
+| **Saturday**  | 1.4 | -0.0 - 3.2  | 3368 - 6169 | -1.8 |
+| **Sunday** | 0.4 | -1.4 - 2.0  | 3394 - 5586 | -2.2 |
+| **Monday** | 2.8 | 0.3 - 7.4  | 2933 - 4632 | -1.6 |
+| **Tuesday**   | 2.1 | 0.6 - 4.6  | 2912 - 5668 | 0.8  |
+| **Wednesday**| 1.9 | 0.5 - 4.2  | 4810 - 5618 | 1.6  |
+| **Thursday**   | 0.9 | 0.1 - 3.8  | 3866 - 5293 | 1.1  |
+| **Friday**  | 3.0 | 1.1 - 7.4  | 3123 - 4815 | 2.2  |
 
-The electricity price forecast for the coming week shows a rather variable picture. On **Friday**, the price will rise significantly higher than on other days. The average price on Friday will be 11.5 cents per kilowatt-hour, and the highest price of the day will rise to 17.7 cents. Friday's price peak is expected to occur in the evening, between approximately 6 and 8 PM. The price is pushed up especially by the low amount of wind power during the day: on Friday, wind power will only be available between 418-4615 MW, with an average of 1795 MW.
+The price of exchange electricity will remain mostly affordable in the coming week. The price expectations for the coming week will vary clearly from day to day, but will remain on average below four cents per kilowatt-hour.
 
-On other days, the price of electricity will be significantly cheaper. During the period from Saturday to Thursday, the average price of electricity will remain below three cents, and on most days even below two cents. For example, on **Sunday**, the average price is expected to be only 0.6 ¢/kWh, and the lowest prices of the day will even fall below zero.
+On **Sunday**, the average price of exchange electricity will fall very low, to only 0.4 cents. During the day, the price will even dip into negative territory, at its lowest -1.4 cents. On Sunday, there will be a very large amount of wind power available, which partly explains the affordable price level. During the night and morning, the temperature will drop clearly below freezing.
 
-During the weekend and next week, wind power is expected to be abundant, which will push prices down. For example, on **Saturday**, wind power will be available up to 3755-6253 MW, with an average of 5498 MW. Also on **Monday**, **Tuesday**, **Wednesday** and next **Thursday**, wind power production will remain at a high level.
+On **Monday**, the price will rise slightly, but will still remain reasonable, with an average price of 2.8 ¢. Monday's highest price, 7.4 ¢, will occur during the morning hours. A similar price level is also expected for **Friday**. Friday's average price is predicted to be exactly three cents, and the day's highest price, 7.4 ¢, will also occur during the morning hours.
 
-During the weekend and next week, the price of electricity will fall at times below zero during the nights and mornings, while during the days and evenings the price will rise slightly higher. In general, however, price expectations are very moderate, and no major price spikes are in sight after Friday.
+On **Tuesday** and **Wednesday**, the prices of exchange electricity will be slightly more affordable than on Monday and Friday, but will remain below three cents per kilowatt-hour. **Thursday** will be the most affordable day of the week, right after Sunday; the average price will remain below one cent.
 
-*Prices were interpreted by gemini-2.0-pro-exp-02-05.* 🌬️
+*Exchange figures were interpreted by gemini-2.0-pro-exp-02-05.* 🌬️
 
