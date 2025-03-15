@@ -62,11 +62,11 @@ narration_prompt = """
 
   # 2. Tehtäväsi
 
-  Kirjoita tiivis, rikasta suomen kieltä käyttävä UUTISARTIKKELI saamiesi tietojen pohjalta. Vältä kliseitä ja turhaa draamaa. Älä puhu huolista tai tunteista. Keskity faktoihin ja hintoihin.
+  Kirjoita tiivis, rikasta suomen kieltä käyttävä UUTISARTIKKELI saamiesi tietojen pohjalta. Vältä kliseitä ja turhaa draamaa. Älä puhu huolista tai käytä tunneilmaisuja. Keskity faktoihin ja hintoihin.
 
   - Artikkelia ei tule otsikoida.
 
-  - Älä koskaan mainitse päivämääriä (kuukausi, vuosi). Käytä vain viikonpäiviä.
+  - Älä koskaan mainitse ennusteessa (taulukko, artikkeli) päivämääriä (kuukausi, vuosi). Käytä vain viikonpäiviä. Poikkeuksena mahdolliset ydinvoimaloiden huoltokatkot: niissä päivämäärät tulee mainita, koska huoltojaksot saattavat olla pitkiä.
 
   Artikkelin rakenne on kolmiosainen:
 
@@ -106,7 +106,7 @@ narration_prompt = """
   - Voit luoda vaihtelua käyttämällä tuntikohtaista ennustetta: Voit mainita muutaman yksittäisen tunnin, jos ne korostuvat jonkin päivän sisällä. Tai voit viitata ajankohtaan päivän sisällä.
   - Sinun ei ole pakko käyttää ¢/kWh-lyhennettä joka kerta. Voit luoda vaihtelua käyttämällä kansankielisiä ilmaisuja kuten "alle neljän sentin" tai "yli 15 ¢". kWh-lyhenteen voi usein jättää pois. Sentit voit lyhentää myös ¢:ksi.
   - Mahdolliset hintapiikit sijoittuvat tyypillisesti aamun (noin klo 8) tai illan (noin klo 18) tunneille. Tarkista mahdollisten hintapiikkien ajankohdat tuntikohtaisesta ennusteesta, ja riskit päiväkohtaisesta datasta.
-  - Muotoile **viikonpäivät** lihavoinnilla: esim. **maananatai**, **tiistai**, **keskiviikko**, **torstai**, **perjantai**, **lauantai**, **sunnuntai** — mutta vain silloin kun mainitset ne tekstikappaleessa ensimmäisen kerran. Samaa päivää ei lihavoida kahdesti samassa tekstikappaleessa, koska se olisi toistoa.
+  - Muotoile **viikonpäivät** sijapäätteineen lihavoinnilla: esim. **maananatai**, **keskiviikkona**, **perjantain** — mutta vain silloin kun mainitset ne tekstikappaleessa ensimmäisen kerran. Samaa päivää ei lihavoida kahdesti samassa tekstikappaleessa, koska se olisi toistoa.
   - Kevennyksenä: Viimeisen kappaleen alle tulee lyhyt "allekirjoituksesi", kursiivilla, esim. tähän tapaan: \n*Numeroita tulkitsi tänään {LLM_MODEL}.* 💡
     ... ja päätä rivi tulevan viikon ennusteita parhaiten kuvaavaan tai hauskaan emojiin. Ethän kuitenkaan käytä yo. esimerkkiä täysin sellaisenaan, vaan tee allekirjoituksestasi **persoonallinen**. Allekirjoitus on pituudeltaan lyhyt, vain 2-4 sanaa, ja siinä pitää aina mainita {LLM_MODEL}.
 
