@@ -1,29 +1,27 @@
-*This week's electricity prices will fluctuate significantly, with Monday seeing the week's highest prices and Wednesday and Sunday even featuring negative hourly rates; the ongoing maintenance outage at the Olkiluoto 3 nuclear power plant may affect forecast accuracy.*
+*Electricity prices will fluctuate significantly during the coming week: high prices at the start of the week will give way to affordable periods on Wednesday and Sunday, but occasional price spikes may occur on Tuesday, Friday, and Saturday.*
 
-The Olkiluoto 3 nuclear power plant is currently undergoing a maintenance outage, which began on March 1, 2025, at 03:00 and is expected to end on May 2, 2025, at 02:00. This maintenance outage may affect the accuracy of the price forecast, as training data during such outages is limited.
+The Olkiluoto 3 nuclear power plant is currently undergoing maintenance. The outage started on 1 March 2025 at 03:00 and is anticipated to end on 2 May 2025 at 02:00. The maintenance outage may affect the accuracy of the electricity price forecast, as training data from periods of maintenance outages is limited.
 
-Forecast updated on Sunday at 14:18:
+The forecast below was updated on Sunday at 21:00.
 
-|          | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday**    | 7,8 | 1,2 - 18,0 | 2362 - 4033 | -1,6 |
-| **Tuesday**   | 3,9 | 0,4 - 11,3 | 606 - 7142  | 0,8  |
-| **Wednesday** | 1,9 | -0,1 - 3,9 | 4856 - 7138 | 1,6  |
-| **Thursday**  | 5,5 | 1,8 - 8,4  | 2962 - 4799 | 1,1  |
-| **Friday**    | 6,7 | 5,1 - 10,4 | 1432 - 3259 | 2,2  |
-| **Saturday**  | 5,2 | 3,7 - 8,0  | 1232 - 2959 | 1,6  |
-| **Sunday**    | 1,6 | -0,1 - 3,5 | 2807 - 4820 | 3,1  |
+|             | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|:------------|:----------------------:|:-------------------:|:----------------------------:|:-------------------------:|
+| **Monday**      |          7,7           |     1,3 - 17,8     |         2373 - 4356          |           -1,6            |
+| **Tuesday**     |          4,0           |     0,6 - 11,3     |          615 - 7142          |            0,8            |
+| **Wednesday**   |          2,3           |    -0,1 - 4,4      |         4843 - 7140          |            1,6            |
+| **Thursday**    |          4,4           |     2,0 - 7,1      |         2773 - 4875          |            1,1            |
+| **Friday**      |          6,6           |     3,4 - 11,5     |         1726 - 3585          |            2,2            |
+| **Saturday**    |          5,1           |     2,5 - 8,1      |         1504 - 3226          |            1,6            |
+| **Sunday**      |          2,5           |    -0,8 - 6,1      |         1791 - 4343          |            3,1            |
 
-This week's electricity prices will experience notable daily fluctuations. The highest average price of the week is expected on **Monday**, reaching 7.8 cents. Monday will also see the week's highest hourly price, up to 18 cents, between 18:00 and 20:00.
+During the upcoming week, electricity prices will vary considerably from day to day. Prices will peak on **Monday**, when the average daily price will rise to 7.7 cents per kilowatt-hour. On Monday, the highest prices will occur in the evening from 18:00 to 20:00, reaching almost 18 cents.
 
-On **Tuesday**, the average electricity price will decrease significantly to approximately four cents, but there is a considerable risk of price spikes during the day. Price spikes on Tuesday could be up to 10 cents higher than the forecasted maximum price of 11.3 cents, particularly in the morning between 06:00 and 08:00.
+The most affordable days will be **Wednesday** and **Sunday**, when the average electricity price will be clearly below three cents. On Wednesday, prices will even dip slightly negative early in the morning between 03:00 and 05:00, reaching as low as -0.1 cents. On Sunday afternoon between 13:00 and 15:00, prices will also become negative, dropping as low as -0.8 cents per kilowatt-hour.
 
-On **Wednesday**, prices will continue to fall to the week's lowest level, with an average price below two cents. Negative hourly prices will also occur in the early morning between 03:00 and 06:00, dipping as low as -0.1 cents.
+Wind power generation will see significant variations during the week. On Wednesday, abundant wind energy will keep prices low. The wind production on Wednesday will not drop below 4800 MW, and the average wind power availability will be nearly 5800 MW, explaining the day's low price level.
 
-On **Thursday** and **Friday**, prices will begin to rise again. Friday's forecasted maximum price is 10.4 cents, expected in the evening between 18:00 and 20:00. A significant risk of price spikes also exists on Friday, potentially pushing prices up to 20 cents higher than the current forecast maximum.
+On **Tuesday**, **Friday**, and **Saturday**, forecasts include risks of price spikes. On Tuesday, electricity prices may momentarily rise up to 10 cents higher than the forecasted maximum price of 11.3 cents. On Friday and Saturday, the risk is even higher, with electricity prices potentially spiking up to 20 cents per kilowatt-hour during certain hours.
 
-On **Saturday**, the average price will remain moderate at just above five cents, but there is again a risk of high price spikes, possibly up to 20 cents higher than currently forecast. Such spikes would likely occur during evening hours.
+Towards the end of the week, prices will stabilize somewhat, but during the weekend, prices may still occasionally rise high, particularly on Saturday morning and evening.
 
-On **Sunday**, prices will again drop significantly to an affordable level, with an average price around one and a half cents. Negative hourly prices will also appear briefly on Sunday afternoon between 13:00 and 15:00.
-
-*Numbers crunched by gpt-4.5-preview.* ⚡
+*Forecast sketched by gpt-4.5-preview.* 🌬️
