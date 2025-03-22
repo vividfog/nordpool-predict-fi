@@ -1,25 +1,27 @@
-*Next week's electricity market prices will fluctuate significantly: Wednesday will see notably higher prices during morning hours, whereas the start and end of the week will feature even negative hourly electricity rates.*
+*Electricity prices will vary significantly in the coming week: Wednesday may see temporary price peaks exceeding 20 cents, while negative prices are expected on Sunday and Tuesday; the maintenance outage at Olkiluoto 3 continues.*
 
-Forecast updated on Saturday at 14:18.
+The Olkiluoto 3 nuclear power plant is currently undergoing a maintenance outage. The outage began on March 1, 2025, at 03:00, and is estimated to continue until May 2, 2025, at 02:00. This maintenance outage may affect the accuracy of the forecast, as training data from periods with nuclear plant outages is limited.
+
+The forecast was updated on Saturday at 21:00.
 
 |              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday**   |        0,6       |    -0,4 - 2,3    |       2659 - 6178       |        3,1        |
-| **Monday**   |        2,6       |     0,6 - 6,0    |       2508 - 5257       |        3,3        |
-| **Tuesday**     |        0,8       |    -1,4 - 2,7    |       4367 - 5621       |        2,8        |
-| **Wednesday** |        8,6       |    1,6 - 15,1    |        930 - 4034       |        1,2        |
-| **Thursday**     |        6,0       |     2,7 - 12,1   |       1402 - 3948       |       -0,1        |
-| **Friday**   |        3,1       |    -0,2 - 7,2    |       2696 - 3831       |        0,4        |
-| **Saturday**    |        0,9       |    -0,3 - 2,8    |       2582 - 4780       |        2,4        |
+|:-------------|:----------------------:|:------------------:|:-----------------------------:|:-------------------------:|
+| **Sunday**   |          0,5           |    -0,6 - 2,4      |         2436 - 5884           |           3,1             |
+| **Monday**   |          2,3           |     0,4 - 5,4      |         2412 - 5217           |           3,3             |
+| **Tuesday**  |          0,8           |    -1,6 - 3,2      |         4301 - 5484           |           2,8             |
+| **Wednesday**|          7,5           |     0,6 - 13,7     |         1193 - 4241           |           1,2             |
+| **Thursday** |          1,5           |    -0,3 - 2,7      |         3255 - 4579           |          -0,1             |
+| **Friday**   |          1,1           |    -0,2 - 4,1      |         3306 - 4729           |           0,4             |
+| **Saturday** |          2,1           |    -0,2 - 4,8      |         2156 - 4341           |           2,4             |
 
-The Olkiluoto 3 nuclear power plant is currently undergoing maintenance. The maintenance began on 1 March 2025 at 03:00 and is estimated to end on 2 May 2025 at 02:00. This maintenance outage may affect the accuracy of electricity price forecasts, as training data from similar periods is limited.
+Electricity price expectations for the coming days will vary significantly. The most expensive day of the week will be **Wednesday**, with an expected average electricity price of around 7.5 cents per kilowatt-hour. High prices are also forecasted for individual hours; in the evening between 18:00 and 20:00, electricity prices could rise as high as 13.7 cents. The forecast indicates a high risk of price spikes on Wednesday, during which prices could temporarily surge to 20–30 cents per kWh for individual hours.
 
-Next week's electricity market prices will vary noticeably from day to day. Prices will remain relatively low at the start of the week, but midweek will bring a considerable increase.
+Wednesday's exceptionally high maximum price clearly relates to the forecasted lower wind power production. Wind power generation will drop to as low as 1193 megawatts. This low wind power minimum production explains the higher expected prices on Wednesday.
 
-The lowest electricity prices of the week will occur on **Sunday**, **Tuesday**, and next **Saturday**. On these days, average prices will remain clearly below one cent per kilowatt-hour. **Tuesday** will also see the week's lowest hourly rate, dipping as low as -1.4 cents during the early morning hours between 01:00 and 03:00. Negative hourly prices will also occur on **Sunday**, Friday, and next Saturday, especially during nighttime.
+The cheapest days of the week will be **Sunday** and **Tuesday**, when average electricity prices will remain clearly below one cent. Negative hourly prices are also expected on both days. Early Sunday night from 00:00 to 01:00, prices could even reach -0.6 cents. On Tuesday night between 02:00 and 03:00, the electricity price is predicted to drop as low as -1.6 cents.
 
-A significant exception to these low prices will be **Wednesday**, when the expected average electricity price will rise to 8.6 cents. Wednesday will experience an exceptionally wide price range: the lowest hourly price at night will be just 1.6 cents, but prices may peak around 15.1 ¢ between 07:00 and 09:00 in the morning. Additionally, Wednesday carries a significant risk of price spikes, potentially driving hourly prices up to 20–40 cents.
+Prices will also remain moderate on **Thursday**, **Friday**, and **Saturday**. The average prices for these days will all be below three cents. Price fluctuations will also remain relatively small, and no significant price increases are expected.
 
-On **Thursday**, prices will decrease slightly from Wednesday's levels but remain relatively high, averaging around 6 cents. The highest prices on Thursday are expected between 08:00 and 10:00 in the morning, reaching approximately 12 cents. By **Friday**, average electricity prices will drop significantly from Thursday, settling around 3 cents. Approaching the weekend, price levels will stabilize further.
+The weekly price peak will thus clearly occur during Wednesday evening hours. On other days, electricity prices will remain moderate or even very affordable. Consumers should pay particular attention to price developments on Wednesday due to the heightened risk of price spikes.
 
-*Sparks analyzed by gpt-4.5-preview.* ⚡
+*Analyzed and forecasted by gpt-4.5-preview.* ⚡
