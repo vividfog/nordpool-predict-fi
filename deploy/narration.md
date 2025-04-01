@@ -1,27 +1,29 @@
-*Pörssisähkön hinta pysyttelee maltillisena lähipäivinä, viikonlopun ollessa erityisen edullinen runsaiden tuulien ansiosta; ensi viikon alussa hinnat kuitenkin nousevat selvästi korkeammalle, tiistaina jopa mahdollisiin hintapiikkeihin asti.*
+*Sähkön hinta pysyttelee lähipäivinä pääosin edullisena runsaan tuulivoiman ansiosta, mutta ensi tiistaina tuulien heikentyessä hinnat voivat nousta jopa 15–20 senttiin kilowattitunnilta.*
 
-Ennuste päivitetty tiistaina klo 09:00.
+Olkiluoto 3 -ydinvoimalassa on meneillään huoltokatko. Huoltokatko alkoi 01.03.2025 kello 03:00 ja sen arvioitu päättymisaika on 02.05.2025 kello 02:00. Tämä huoltokatko voi vaikuttaa hintaennusteen tarkkuuteen, koska opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
 
-|              | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **keskiviikko** | 2,7 | -0,6 - 5,3 | 2139 - 5644 | 1,9 |
-| **torstai**     | 2,9 | -0,4 - 9,5 | 2542 - 7022 | 1,9 |
-| **perjantai**   | 0,2 | -0,9 - 1,7 | 4949 - 7030 | 2,2 |
-| **lauantai**    | 0,9 | -1,2 - 5,1 | 1935 - 5785 | 0,3 |
-| **sunnuntai**   | 1,1 | -1,1 - 2,9 | 3490 - 5393 | 0,3 |
-| **maanantai**   | 5,7 | 0,9 - 11,2 | 1968 - 5324 | 0,1 |
-| **tiistai**     | 8,0 | 5,4 - 15,3 | 1620 - 2837 | 0,5 |
+Sähköpörssin hintaennuste on päivitetty tiistaina klo 12:00.
 
-Olkiluoto 3 -ydinvoimalassa on käynnissä huoltokatko. Katko alkoi 1.3.2025 klo 03:00 ja sen arvioidaan päättyvän 2.5.2025 klo 02:00. Huoltokatko saattaa vaikuttaa ennusteen tarkkuuteen, sillä opetusdataa tällaisilta jaksoilta on rajallisesti.
+|             | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:------------|:------------------------:|:------------------:|:----------------------------:|:-------------------------:|
+| **keskiviikko** |           2,8            |    -0,8 - 5,8     |        2126 - 5628          |             1,9           |
+| **torstai**     |           2,9            |   -0,6 - 11,4     |        2821 - 7028          |             1,9           |
+| **perjantai**   |           0,2            |    -0,9 - 1,8     |        4888 - 7022          |             2,2           |
+| **lauantai**    |           1,0            |    -1,1 - 5,0     |        1945 - 5801          |             0,3           |
+| **sunnuntai**   |           0,9            |    -1,1 - 2,7     |        3470 - 5468          |             0,3           |
+| **maanantai**   |           5,5            |    0,8 - 10,8     |        2145 - 5371          |             0,1           |
+| **tiistai**     |           7,9            |    4,9 - 14,9     |        1622 - 2898          |             0,5           |
 
-Sähkön hinta pysyttelee maltillisena lähipäivinä. Viikon edullisimmat päivät tulevat olemaan **perjantai** ja **lauantai**, jolloin hinnat pysyvät keskimäärin alle yhden sentin. Perjantaina hinta painuu jopa negatiiviseksi usean tunnin ajan aamuyöllä ja iltapäivällä, alimmillaan -0,9 senttiin klo 15 tienoilla. Lauantainakin sähkön hinta käy yön tunteina alimmillaan -1,2 sentissä.
+Sähkön hinta pysyy kuluvalla viikolla pääosin edullisella tasolla. Päivien keskihinnat vaihtelevat enimmäkseen alle neljässä sentissä kilowattitunnilta, ja useiden päivien aikana sähkön hinta käy jopa negatiivisena.
 
-Myös **sunnuntai** on edullinen, keskihinnaltaan vain hieman yli sentin. Sunnuntaina hintataso laskee keskipäivän aikaan jopa -1,1 senttiin. Viikonlopun päivien edullisuus johtuu osittain runsaasta tuulivoimasta, jota on tarjolla molempina päivinä paljon.
+Viikon edullisin päivä on **perjantai**, jolloin sähkön keskihinta jää vain 0,2 senttiin kilowattitunnilta. Perjantain alin tuntihinta on -0,9 senttiä yön tunteina.
 
-Viikon korkeimmat hinnat nähdään ensi viikon puolella. **Maanantaina** keskihinta kohoaa jo lähes kuuteen senttiin. Päivän aikana hinta vaihtelee voimakkaasti: aamuyöllä alimmillaan 0,9 senttiä, kun taas iltayhdeksän ja -kymmenen välillä hinta nousee 11,2 senttiin.
+Myös **lauantaina** ja **sunnuntaina** sähkön hinta pysyttelee matalalla, noin yhden sentin tuntumassa. Näinä päivinä negatiivisia hintoja esiintyy etenkin aamuyön tunteina. Viikonvaihteen edullisuus johtuu osaltaan runsaasta tuulivoiman tarjonnasta, jonka tuotanto nousee ajoittain yli 5000 megawattiin.
 
-Viikon selvästi kallein päivä tulee olemaan **tiistai**, jolloin keskihinta nousee kahdeksaan senttiin. Hintojen odotetaan vaihtelevan tiistaina 5,4 ja 15,3 sentin välillä. Hintapiikkien riski on tiistaina selvästi koholla, ja yksittäisillä tunneilla hinnat voivat nousta jopa 20–30 senttiin. Korkeimmat hinnat ajoittunevat aamukahdeksaan.
+Viikon alussa **maanantaina** sähkön hinta alkaa nousta hieman korkeammalle. Päivän keskihinta kohoaa yli viiteen senttiin, ja korkeimmillaan hinta käy illan tunteina noin 11 sentissä. Tämä pieni nousu liittyy ainakin osittain siihen, että tuulivoiman tuotanto jää ajoittain melko matalaksi.
 
-**Keskiviikko** ja **torstai** ovat hinnaltaan tasaisesti edullisempia. Molempina päivinä keskihinta pysyttelee hieman alle kolmen sentin ja hinnanvaihtelu on maltillista. Tuulivoiman runsas tarjonta selittää osaltaan alhaista hintatasoa. Negatiivisia sähkön hintoja esiintyy myös näinä päivinä lyhyinä jaksoina yön tunteina.
+Selvästi viikon kallein päivä on kuitenkin ensi **tiistai**, jolloin sähkön keskihinta on lähes kahdeksan senttiä. Aamulla kahdeksan ja yhdeksän välillä sähkön hinta kohoaa korkeimmillaan lähes 15 senttiin. Tiistain hintapiikkien riski on kohonnut, ja yksittäisillä tunneilla saatetaan nähdä jopa 20 sentin hintoja. Tuulivoiman tuotanto jää tiistaina selvästi viikon matalimmalle tasolle, minkä vuoksi korkeat hinnat ovat todennäköisiä.
 
-*Hintanäkymiä pohti gpt-4.5-preview.* 🌬️
+Viikon vaihtelevaa hintakuviota selittääkin pääosin tuulivoiman tarjonnan vaihtelu. Korkeina tuulipäivinä hinnat pysyvät erityisen edullisina, kun taas tuulivoiman hiipuessa hinnat lähtevät kohti korkeampia lukemia.
+
+*Tuulista tulkintaa, gpt-4.5-preview.* 🌬️
