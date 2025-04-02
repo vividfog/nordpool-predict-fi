@@ -1,27 +1,27 @@
-*Sähkön hinta pysyy tulevina päivinä pääosin edullisena, mutta ensi maanantaina hinnat kohoavat selvästi – yksittäisten tuntien hintapiikit voivat nousta jopa 30 senttiin kilowattitunnilta Olkiluoto 3:n huoltokatkon aikana.*
+*Loppuviikko tuo mukanaan erittäin edullista sähköä jopa negatiivisine hintoineen, mutta ensi maanantaina sähkön hinta kohoaa selvästi ja mahdolliset hintapiikit voivat nostaa yksittäisten tuntien hinnan jopa yli 20 senttiin kilowattitunnilta.*
 
-Olkiluoto 3 -ydinvoimala on huoltokatkolla 1.3.2025 klo 03:00 alkaen, ja katkon odotetaan kestävän 2.5.2025 klo 02:00 asti. Koska opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti, tämä voi vaikuttaa ennusteen tarkkuuteen.
+Olkiluoto 3 -ydinvoimalassa on käynnissä huoltokatko, joka alkoi 1.3.2025 klo 03:00 ja päättyy ennusteen mukaan 2.5.2025 klo 02:00. Tämä huoltokatko voi vaikuttaa ennusteen tarkkuuteen, sillä opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
 
-Sähköpörssin hintaennuste on päivitetty tiistaina klo 21:08.
+Ennuste päivitettiin keskiviikkona klo 03:27.
 
-|            | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-----------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **keskiviikko** | 0,2 | -0,4 - 1,1 | 1541 - 5117 | 1,9 |
-| **torstai**     | 1,3 | -1,3 - 6,5 | 2845 - 7042 | 1,9 |
-| **perjantai**   | -0,2 | -1,4 - 1,2 | 4451 - 7038 | 2,2 |
-| **lauantai**    | 2,1 | -1,4 - 7,1 | 1718 - 5476 | 0,3 |
-| **sunnuntai**   | 1,3 | -1,6 - 3,1 | 3280 - 4602 | 0,3 |
-| **maanantai**   | 8,2 | 3,2 - 13,6 | 1157 - 4162 | 0,1 |
-| **tiistai**     | 5,2 | 2,6 - 9,1 | 2092 - 3824 | 0,6 |
+|           | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **torstai**    |       1,3        |    -0,8 - 6,2     |     2696 - 7054     |       1,9       |
+| **perjantai**  |      -0,0        |    -1,4 - 1,2     |     3668 - 7058     |       2,2       |
+| **lauantai**   |       1,4        |    -0,8 - 6,1     |     2178 - 4949     |       0,3       |
+| **sunnuntai**  |       1,2        |    -1,5 - 4,3     |     2590 - 4818     |       0,3       |
+| **maanantai**  |       8,2        |     2,9 - 13,8    |     1250 - 4136     |       0,1       |
+| **tiistai**    |       5,2        |     2,6 - 8,7     |     2139 - 3764     |       0,6       |
+| **keskiviikko**|       3,2        |     1,1 - 10,3    |     2069 - 5221     |       1,6       |
 
-Tulevan viikon aikana sähkön hinnassa nähdään selvää vaihtelua päivästä riippuen. Pääosin sähkö on melko edullista, ja joinain päivinä nähdään jopa negatiivisia hintoja. Suurimman osan ajasta keskihinnat pysyvät alle kahdessa sentissä kilowattitunnilta.
+Tulevien päivien sähkön hintaennusteessa on selkeitä eroja päivien välillä. Loppuviikko näyttää hintatasoltaan hyvin edulliselta. Esimerkiksi **perjantain** keskihinta jää jopa hieman negatiiviseksi, noin nolla senttiä, ja päivän alin tuntihinta on jopa -1,4 ¢. Myös **torstaina**, **lauantaina** ja **sunnuntaina** sähkön hinta pysyy erittäin matalana, keskihintojen ollessa hieman yli sentin kilowattitunnilta. Näinä päivinä nähdään myös useita tunteja, jolloin sähkön hinta painuu negatiiviseksi.
 
-Erityisen edullinen päivä on **perjantai**, jolloin keskihinta painuu jopa negatiiviseksi (-0,2 ¢). Päivän aikana nähdään useita tunteja, jolloin sähkön hinta on negatiivinen, halvimmillaan -1,4 ¢:n tasolla. Myös **keskiviikko** ja **torstai** ovat varsin edullisia, keskihintojen ollessa selvästi alle kahden sentin.
+Selkeä käänne tapahtuu ensi **maanantaina**, jolloin sähkön hinnan odotetaan nousevan huomattavasti. Maanantain keskihinta kohoaa yli kahdeksan sentin, ja päivän ennustettu maksimihinta nousee jopa 13,8 senttiin. Lisäksi maanantaille on ennustettu selkeä riski hintapiikeille, jolloin yksittäisten tuntien hinta voi nousta jopa 20-30 senttiin. Tällainen suuri hintavaihtelu selittyy ainakin osin maanantain huomattavan vähäisellä tuulivoiman tuotannolla, joka käy ajoittain vain hieman yli tuhannessa megawatissa.
 
-Viikon kallein päivä on odotettavissa ensi **maanantaina**, jolloin keskihinta nousee selvästi muihin päiviin verrattuna ja yltää 8,2 senttiin. Myös päivän sisällä nähdään viikon korkeimmat hinnat, korkeimmillaan 13,6 ¢ aamulla klo 8 tuntumassa (klo 7-9). Lisäksi ensi maanantaille ennustetaan riskiä poikkeuksellisen korkealle hintapiikille. Tämä tarkoittaa, että yksittäisten tuntien hinnat voivat ponnahtaa jopa 20–30 senttiin kilowattitunnilta, erityisesti aamun ja illan kulutushuippujen aikana.
+**Tiistaina** sähkön hinnan odotetaan tasaantuvan hieman maanantaista, mutta keskihinta pysyy silti selvästi korkeampana kuin loppuviikolla, noin viidessä sentissä. Hintavaihtelut tiistaina jäävät kuitenkin maltillisiksi, eikä piikkihintojen riskiä ole ennustettu.
 
-**Lauantaina** nähdään viikon toiseksi korkein keskihinta, noin 2,1 senttiä. Päivän aikana sähkön hinta vaihtelee laajasti, alimmillaan -1,4 sentistä aina 7,1 senttiin. Muina päivinä sähkön hinta pysyy melko maltillisena, eikä niille ole ennustettu erityisiä hintariskejä.
+Ensi **keskiviikon** hintaennuste laskee edelleen tiistaista, keskihinnan ollessa hieman yli kolme senttiä. Päivän hintavaihtelu on kuitenkin merkittävä, sillä ennustettu maksimihinta ylittää kymmenen senttiä aamupäivän aikana, noin kello 8-10 välillä. Tämä korkeampi hintajakso voi liittyä aamun kulutushuippuun.
 
-Viikon aikana tuulivoimaa on tarjolla runsaasti useimpina päivinä, mikä osaltaan selittää matalia ja jopa negatiivisia sähkön hintoja. Maanantain kallis hintataso selittyy osin tuulivoiman vähäisellä tuotannolla, joka jää päivän aikana selvästi muita viikonpäiviä alemmaksi.
+Kaiken kaikkiaan viikonloppu tarjoaa erittäin matalien sähkönhintojen jakson, kun taas ensi viikon alku tuo mukanaan selkeän hinnannousun ja erityisesti maanantaina mahdollisuuden korkeisiin hintapiikkeihin.
 
-*Dataa analysoi gpt-4.5-preview.* 🔌
+*Dataa analysoimassa gpt-4.5-preview.* 🚀
