@@ -1,29 +1,27 @@
-*Pörssisähkön hinta vaihtelee tulevalla viikolla voimakkaasti, keskiviikkona jopa negatiivisiin lukemiin, mutta torstaina on riski yli 20 sentin hintapiikeille; Olkiluoto 3:n huoltokatko voi vaikuttaa ennusteen tarkkuuteen.*
+*Pörssisähkön hinta heilahtelee lähipäivinä selvästi: torstaina ja ensi tiistaina varauduttava mahdollisiin yli 15 sentin hintapiikkeihin, kun taas keskiviikkona ja lauantaina sähkö on erittäin edullista, jopa negatiivista.*
 
-Olkiluoto 3 -ydinvoimalassa on käynnissä huoltokatko. Huoltokatko alkoi 1.3.2025 klo 03:00 ja sen ennustettu päättymisaika on 2.5.2025 klo 02:00. Huoltokatko voi vaikuttaa tämän hintaennusteen tarkkuuteen, koska dataa vastaavista tilanteista on käytettävissä rajallisesti.
+Olkiluoto 3 -ydinvoimalayksikössä on käynnissä huoltokatko, joka on alkanut 1.3.2025 klo 03:00 ja jonka arvioidaan jatkuvan 2.5.2025 klo 02:00 asti. Huoltokatko voi vaikuttaa hintaennusteen tarkkuuteen, koska opetusdataa huoltokatkojen ajalta on rajallisesti saatavilla.
 
-Ennuste on päivitetty maanantaina klo 21:01.
+Ennuste on päivitetty tiistaina klo 03:20.
 
 |              | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **tiistai**      |        6,5       |    0,1 - 22,8     |      786 - 4219      |       0,6       |
-| **keskiviikko**  |        0,3       |   -1,6 - 2,4      |     3312 - 6846      |       1,4       |
-| **torstai**      |        5,5       |   -0,1 - 17,5     |      425 - 5697      |       0,2       |
-| **perjantai**    |        3,8       |    1,5 - 9,0      |     1186 - 3443      |       2,5       |
-| **lauantai**     |        2,7       |    0,1 - 6,8      |      930 - 5205      |       1,3       |
-| **sunnuntai**    |        3,0       |   -1,1 - 10,5     |     1136 - 5002      |       2,1       |
-| **maanantai**    |        5,8       |    0,5 - 9,8      |     1032 - 3975      |       3,2       |
+| **keskiviikko** | 0,4            | -1,3 – 2,2       | 3194 – 6831   | 1,4           |
+| **torstai**     | 4,3            | -1,0 – 15,9      | 606 – 5936    | 0,2           |
+| **perjantai**   | 0,9            | -1,2 – 5,6       | 1074 – 4655   | 2,5           |
+| **lauantai**    | 0,4            | -1,2 – 1,8       | 3587 – 5428   | 1,3           |
+| **sunnuntai**   | 2,8            | -1,0 – 9,6       | 1200 – 5159   | 2,1           |
+| **maanantai**   | 5,3            | 0,2 – 8,8        | 1069 – 4006   | 3,2           |
+| **tiistai**     | 7,4            | 5,5 – 14,2       | 1203 – 1860   | 4,0           |
 
-Tulevan viikon aikana pörssisähkön hintataso vaihtelee päivittäin merkittävästi. Selkeimmin joukosta erottuu **tiistai**, jolloin sähkön keskihinta nousee 6,5 senttiin kilowattitunnilta ja päivän korkein hinta yltää 22,8 senttiin klo 7–9. Tiistaina aamun korkeimpien hintojen jälkeen sähkön hinta laskee nopeasti, ja illalla hinta painuu alle senttiin klo 18–23. Iltatunnit ovatkin tiistaina erityisen edullisia.
+Sähkön hintataso vaihtelee tulevina päivinä selvästi. Sähkömarkkinoilla nähdään matalia, jopa negatiivisia hintoja useina öinä. Päivien keskihinnat pysyvät kuitenkin pääosin maltillisina.
 
-**Keskiviikkona** sähkön hinta painuu poikkeuksellisen alas, ja yöllä hinnat käyvät jopa negatiivisina. Alimmillaan hinta on klo 0–2 välillä -1,6 senttiä. Keskiviikon keskihinta pysyttelee hyvin matalana, vain 0,3 sentissä. Tämä johtuu voimakkaasta tuulesta, joka pitää tuulivoiman tuotannon korkealla tasolla koko päivän ajan.
+Keskimäärin edullisinta sähköä saadaan **keskiviikkona** ja **lauantaina**. Molempina päivinä keskihinta jää alle puolen sentin kilowattitunnilta, ja matalimmillaan hinnat painuvat jopa alle nollan. Viikon edullisin hetki osuu keskiviikon vastaisen yön varhaisille tunneille klo 00–02, jolloin sähköstä maksetaan parhaimmillaan -1,3 senttiä tunnilta.
 
-**Torstaina** hintataso nousee jälleen korkeammaksi; päivän keskihinta on 5,5 senttiä. Torstaina sähkön hinta heilahtelee voimakkaasti, ja aamulla klo 8–10 välillä hinta saavuttaa jopa 17,5 senttiä. Torstaille on myös annettu erityinen varoitus mahdollisista hintapiikeistä, jolloin hinnat voivat hetkellisesti nousta jopa yli 20 senttiin. Tämä riski liittyy erittäin matalaan tuulivoiman tuotantoon aamun tunteina.
+Torstaina sähkön hinnassa on huomattavaa vaihtelua, mikä näkyy korkeana maksimihintana. Päivän keskihinta on 4,3 senttiä, mutta aamupäivällä klo 8–10 sähkön hinta kohoaa ennusteen mukaan lähes 16 senttiin. Torstain aikana on myös riski yksittäisten tuntien hintapiikeille, jolloin hinta voi nousta jopa 10–20 senttiin.
 
-**Perjantaina** sähkön hinta rauhoittuu jonkin verran, päivän keskihinnan ollessa 3,8 senttiä. Hintapiikkien mahdollisuus on kuitenkin olemassa, ja hetkellisesti hinnat voivat nousta jopa 10 senttiin. Korkeimmat hinnat ajoittuvat perjantai-iltana klo 20–22 välille.
+Myös sunnuntaina ja ensi tiistaina hintapiikkeihin on varauduttava. Sunnuntain korkein ennustettu tuntihinta on hieman alle 10 ¢, mutta yksittäisinä tunteina hinta voi nousta jopa yli 10 senttiin. Tiistaina keskihinta on viikon korkein, 7,4 senttiä, ja ennustettu maksimihinta kohoaa yli 14 senttiin aamulla klo 7–9. Lisäksi tiistaina on riski jopa 20 sentin hintapiikille.
 
-Viikonloppuna sähkön hinta pysyttelee maltillisena. **Lauantain** keskihinta on vain 2,7 senttiä, vaikka pieni riski korkeammille, noin 10 sentin hintapiikeille säilyy. **Sunnuntaina** keskihinta on lähellä lauantain tasoa, kolmen sentin tuntumassa, ja myös silloin on pieni riski noin 10 sentin hintapiikkeihin.
+Perjantaina ja maanantaina sähkön keskihinta pysyy melko alhaisena, eikä hintavaihtelu yllä kovinkaan korkeaksi. Perjantaina keskihinta jää hieman alle senttiin, ja maanantaina keskihinta on hieman yli viisi senttiä.
 
-Ensi **maanantaina** sähkön hinta nousee jälleen hieman korkeammaksi, päivän keskihinnan ollessa 5,8 senttiä. Hintapiikkien riskiä ei tuolloin ole ennakoitu, joten hinnat pysyvät tasaisempina kuin viikon alkupuolella.
-
-*Ennusteen kokosi gpt-4.5-preview.* 🍃
+*Lukemia analysoi gpt-4.5-preview.* ⚡
