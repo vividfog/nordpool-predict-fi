@@ -1,27 +1,27 @@
-*Electricity market prices will vary significantly in the coming days: on Sunday electricity will be nearly free, while on Monday prices may peak at over 15 cents in the morning; the maintenance outage at Olkiluoto 3 continues.*
+*Electricity prices in Finland will fluctuate significantly in the coming days: negative prices expected during the weekend, while Thursday and Monday mornings will see the week's highest peaks, according to the forecast updated on Wednesday.*
 
-Forecast updated on Wednesday at 14:19.
+Forecast updated on Wednesday at 21:00.
 
 |              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
-|:-------------|:----------------------:|:------------------:|:-----------------------------:|:-------------------------:|
-| **Thursday** |          4.9           |     0.4 - 22.4     |           505 - 5966          |            0.2            |
-| **Friday**   |          2.3           |    -0.6 - 7.5      |          1227 - 4114          |            2.5            |
-| **Saturday** |          1.2           |    -0.8 - 5.3      |          1362 - 5401          |            1.3            |
-| **Sunday**   |          -0.1          |    -2.0 - 1.2      |          3109 - 4926          |            2.1            |
-| **Monday**   |          5.0           |    -0.3 - 14.8     |          1523 - 3467          |            3.2            |
-| **Tuesday**  |          2.6           |    -1.0 - 9.4      |          1743 - 4631          |            4.2            |
-| **Wednesday**|          2.5           |     0.4 - 6.0      |          1931 - 4562          |            4.8            |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Thursday**      |        4,9       |     0,4 - 22,5    |     502 - 5923    |        0,2        |
+| **Friday**        |        2,4       |    -1,2 - 8,3     |    1254 - 4061    |        2,5        |
+| **Saturday**      |        1,2       |    -0,6 - 4,7     |    1412 - 5444    |        1,3        |
+| **Sunday**        |        0,0       |    -1,5 - 1,1     |    2017 - 4487    |        2,1        |
+| **Monday**        |        4,8       |    -0,3 - 13,1    |    1548 - 3823    |        3,2        |
+| **Tuesday**       |        4,0       |     0,1 - 8,6     |    1655 - 3934    |        4,2        |
+| **Wednesday**     |        1,2       |    -0,5 - 4,1     |    2231 - 4746    |        4,8        |
 
-The Olkiluoto 3 nuclear power plant is currently undergoing a maintenance outage. The outage began on March 1, 2025 at 03:00 and is forecasted to end on May 2, 2025 at 02:00. This outage may affect the accuracy of the forecast, as historical data during maintenance outages is limited.
+The Olkiluoto 3 nuclear power plant is currently undergoing a maintenance outage. The outage started on 1 March 2025 at 03:00 and is expected to end on 2 May 2025 at 02:00. The maintenance outage may affect the accuracy of the forecast, as historical training data during such outages is limited.
 
-The electricity price forecasts for the upcoming days show considerable variations. Significant differences appear in the average daily prices throughout the week. The cheapest day will be **Sunday**, when the average price drops into negative territory (-0.1 ¢). Conversely, **Monday** stands out as the most expensive day of the week, with an average price of around five cents per kilowatt-hour.
+Electricity prices in Finland will experience notable fluctuations in the coming days. Especially **Thursday** and next **Monday** stand out with significantly higher peak prices compared to other days. Thursday's average price is estimated at 4.9 cents per kWh, but in the morning (between 7–9), prices will rise considerably, reaching up to 22.5 cents. This is primarily due to low wind power production during morning hours.
 
-The highest hourly price of the week will occur on **Thursday** morning between 7:00 and 9:00, reaching up to 22.4 cents. The price spike on Thursday morning is primarily due to wind power production dropping to very low levels (only about 505 MW). However, prices will quickly fall after the morning hours, making electricity significantly cheaper by the afternoon.
+On **Friday**, **Saturday**, and **Sunday**, prices will remain moderate. Among these days, Sunday is exceptionally affordable, as the day's average price is expected to be practically zero. Negative prices are anticipated during the weekend, meaning electricity prices will temporarily drop below zero. For instance, on Sunday afternoon and early evening (between 16–20), prices are forecasted to be negative.
 
-The weekend days, **Saturday** and Sunday, will be very affordable. Both days feature negative minimum prices during the night and early morning hours. This is primarily because of abundant wind power production, significantly lowering the price. Saturday’s average price will be only around 1.2 cents, and on Sunday electricity will be practically free with an average price slightly below zero.
+Starting from next **Monday**, prices will rise again. Monday's average is forecasted at 4.8 cents, with single high-price peaks occurring in the morning between 8–10, rising above 13 cents. Additionally, there is a risk of price spikes on Monday, meaning that the price during individual hours might potentially rise up to ten cents higher than currently forecasted.
 
-On **Monday**, however, prices will rise again. The day's peak price is forecasted around 15 cents, with a considerable risk of price spikes. Individual hourly prices may rise up to 10 cents higher than the forecasted maximum. This risk particularly affects the morning hours between 8:00 and 10:00, when electricity might become substantially more expensive for brief periods.
+Similarly, next **Tuesday** prices are predicted to remain around four cents on average, but the day also involves a risk of potential price spikes. Thus, individual hourly prices might increase by up to 10 cents more than the current forecast suggests.
 
-Prices for Tuesday and Wednesday return to more moderate levels. Average daily prices for both days will remain below three cents, and there is no risk of price spikes. Thus, the middle of next week again appears as an affordable period for electricity users.
+On **Wednesday**, prices will drop again to more moderate levels, with the day's average at 1.2 cents. The price variation throughout Wednesday will be minimal, and there is no risk of price spikes.
 
-*Prices interpreted by gpt-4.5-preview.* ⚡
+*GPT-4.5-preview, your price oracle.* 🔌
