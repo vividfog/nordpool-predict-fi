@@ -8,6 +8,7 @@ body {
 
 #predictionChart {
     height: 40vh;
+    min-height: 400px;
     width: 100%;
     max-width: 920px;
     margin: auto;
@@ -20,12 +21,16 @@ body {
     margin: auto;
     box-sizing: border-box;
     height: 40vh;
+    min-height: 400px;
     width: 100%;
     padding-top: 24px;
 }
 
 #chart {
     max-width: 920px;
+    height: 40vh;
+    min-height: 400px;
+    width: 100%;
     margin: auto;
     box-sizing: border-box;
     padding-top: 12px;
@@ -67,12 +72,22 @@ body {
 
 #pastPredictions {
     height: 40vh;
+    min-height: 400px;
     width: 100%;
     max-width: 920px;
     margin: auto;
     box-sizing: border-box;
     padding-bottom: 24px;
     padding-top: 24px;
+}
+
+#historyChart {
+    height: 40vh;
+    min-height: 400px;
+    width: 100%;
+    max-width: 920px;
+    margin: auto;
+    box-sizing: border-box;
 }
 
 #disclaimer {
@@ -215,11 +230,19 @@ th, td {
     }
 
     #predictionChart {
-        height: 60vh;
+        height: 240px;
     }
 
     #pastPredictions {
-        height: 60vh;
+        height: 300px;
+    }
+
+    #windPowerChart {
+        height: 300px;
+    }
+
+    #historyChart {
+        height: 300px;
     }
 
     #disclaimer {

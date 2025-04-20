@@ -103,7 +103,9 @@ function createXAxisFormatter(showFullDate = false) {
         var weekday = weekdays[date.getDay()];
         
         if (showFullDate) {
-            return date.toLocaleDateString('fi-FI');
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            return day + '.' + month + '.';
         }
         return weekday;
     };
