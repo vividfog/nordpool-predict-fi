@@ -2,8 +2,9 @@ if (window.location.hostname === "nordpool-predict-fi.web.app") {
     window.location.href = "https://sahkovatkain.web.app" + window.location.pathname + window.location.search;
 }
 
+//#region conf
 // ==========================================================================
-// UTILITIES AND CONFIGURATION
+// Base configuration and environment detection
 // ==========================================================================
 
 // Determine base URL based on hosting environment
@@ -23,7 +24,11 @@ var baseUrl = (function() {
     }
 })();
 
-// Date and time utilities
+//#region utils
+// ==========================================================================
+// Date and time handling utilities
+// ==========================================================================
+
 function addDays(date, days) {
     var result = new Date(date);
     result.setHours(0, 0, 0, 0);
@@ -54,7 +59,10 @@ function formatCurrentTimeLabel() {
     return day + '.' + month + '. klo ' + hours + ':' + minutes;
 }
 
-// Chart utilities
+// ==========================================================================
+// Chart construction and formatting utilities
+// ==========================================================================
+
 function createTooltipFormatter(seriesNameMappings = {}) {
     return function(params) {
         var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
@@ -117,7 +125,11 @@ function createCurrentTimeMarkLine() {
     };
 }
 
-// Common chart configuration creator
+//#region options
+// ==========================================================================
+// Chart base configuration builder
+// ==========================================================================
+
 function createBaseChartOptions(config) {
     return {
         title: { text: ' ' },
@@ -158,7 +170,11 @@ function createBaseChartOptions(config) {
     };
 }
 
-// Generic marker position updater for any chart
+//#region markers
+// ==========================================================================
+// Chart update and marker position utilities
+// ==========================================================================
+
 function updateMarkerPosition(chart) {
     var currentTime = new Date().getTime();
     var option = chart.getOption();
@@ -172,8 +188,9 @@ function updateMarkerPosition(chart) {
     chart.setOption(option, false, false);
 }
 
+//#region narration
 // ==========================================================================
-// FETCH NARRATION TEXT
+// Fetch and display narration text
 // ==========================================================================
 
 const narrationFile = window.location.pathname.includes('index_en') ? 'narration_en.md' : 'narration.md';
@@ -190,8 +207,9 @@ fetch(`${baseUrl}/${narrationFile}`)
     })
     .catch(error => console.error('Fetching Markdown failed:', error));
 
+//#region prediction
 // ==========================================================================
-// PREDICTION CHART
+// Spot price prediction chart initialization and data handling
 // ==========================================================================
 
 var nfpChart = echarts.init(document.getElementById('predictionChart'));
@@ -210,7 +228,10 @@ var sahkotinParams = new URLSearchParams({
     end: endDate,
 });
 
-// Fetch data for prediction chart
+// ==========================================================================
+// Fetching and processing prediction data
+// ==========================================================================
+
 Promise.all([
     fetch(npfUrl).then(r => r.json()),
     fetch(`${sahkotinUrl}?${sahkotinParams}`).then(r => r.text())
@@ -298,12 +319,17 @@ Promise.all([
 // Setup interval for marker updates
 setInterval(() => updateMarkerPosition(nfpChart), 10000);
 
+//#region windpower
 // ==========================================================================
-// WIND POWER CHART
+// Wind power generation chart and data handling
 // ==========================================================================
 
 var windPowerChart = echarts.init(document.getElementById('windPowerChart'));
 var windPowerUrl = `${baseUrl}/windpower.json`;
+
+// ==========================================================================
+// Fetching and processing wind power data
+// ==========================================================================
 
 fetch(windPowerUrl)
     .then(response => {
@@ -376,8 +402,9 @@ fetch(windPowerUrl)
 // Setup interval for marker updates
 setInterval(() => updateMarkerPosition(windPowerChart), 10000);
 
+//#region history
 // ==========================================================================
-// HISTORY CHART
+// Historical price chart initialization
 // ==========================================================================
 
 var historyChart = echarts.init(document.getElementById('historyChart'));
@@ -386,7 +413,10 @@ var historyChart = echarts.init(document.getElementById('historyChart'));
 const dateStrings = getPastDateStrings(35); // 30 days plus 5 days of prediction data
 const historicalUrls = dateStrings.map(date => `${baseUrl}/prediction_snapshot_${date}.json`);
 
-// Fetch and process historical data
+// ==========================================================================
+// Historical data fetching and processing
+// ==========================================================================
+
 function fetchHistoricalData(urls) {
     const today = new Date();
     const cutoffDate = new Date(today);
@@ -443,7 +473,6 @@ function fetchHistoricalData(urls) {
     }));
 }
 
-// Process Sähkötin CSV data
 function processSahkotinCsv(csvData) {
     const lines = csvData.split('\n').slice(1); // Skip header
     return lines.map(line => {
@@ -452,7 +481,11 @@ function processSahkotinCsv(csvData) {
     });
 }
 
-// Set up history chart with fetched data
+//#region histchart
+// ==========================================================================
+// Historical chart presentation setup
+// ==========================================================================
+
 function setupHistoryChart(data) {
     const cleanedData = data.filter(item => item !== null).slice(1);
     console.log("setupHistoryChart found these snapshots: ", cleanedData);
@@ -489,7 +522,6 @@ function setupHistoryChart(data) {
     return series.length;
 }
 
-// Add Sähkötin data to the history chart
 function addSahkotinDataToChart(sahkotinData) {
     const sahkotinSeries = {
         name: 'Nordpool',
@@ -504,13 +536,17 @@ function addSahkotinDataToChart(sahkotinData) {
         color: 'orange',
         opacity: 0.9
     };
-
+    
     historyChart.setOption({
         series: historyChart.getOption().series.concat(sahkotinSeries)
     });
 }
 
-// Fetch Sähkötin data for history chart
+//#region sahkotin
+// ==========================================================================
+// Sähkötin data fetching and chart integration
+// ==========================================================================
+
 function setupSahkotinData() {
     const startDate = getPastDateStrings(30).pop();
     var endDate = addDays(new Date(), 2).toISOString();
@@ -532,7 +568,11 @@ function setupSahkotinData() {
         .catch(error => console.error("Error fetching Sähkötin data:", error));
 }
 
-// Fetch historical data and set up the history chart
+//#region init
+// ==========================================================================
+// Initialize history chart with fetched data
+// ==========================================================================
+
 fetchHistoricalData(historicalUrls)
     .then(data => {
         setupHistoryChart(data);
@@ -543,8 +583,9 @@ fetchHistoricalData(historicalUrls)
 // Setup interval for marker updates
 setInterval(() => updateMarkerPosition(historyChart), 10000);
 
+//#region layout
 // ==========================================================================
-// WINDOW RESIZE HANDLER
+// Window resize handling and chart adjustments
 // ==========================================================================
 
 window.onresize = function() {
