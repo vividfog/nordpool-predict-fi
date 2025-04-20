@@ -331,14 +331,23 @@ var windPowerUrl = `${baseUrl}/windpower.json`;
 // Fetching and processing wind power data
 // ==========================================================================
 
-fetch(windPowerUrl)
-    .then(response => {
+Promise.all([
+    fetch(windPowerUrl).then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok: ' + response.statusText);
         }
         return response.json();
-    })
-    .then(windPowerData => {
+    }),
+    fetch(`${sahkotinUrl}?${sahkotinParams}`).then(r => r.text()).then(text => {
+        const sahkotinData = text.split('\n').slice(1).map(line => {
+            const [timestamp, price] = line.split(',');
+            return [new Date(timestamp).getTime(), parseFloat(price)];
+        });
+        return sahkotinData;
+    }),
+    fetch(npfUrl).then(r => r.json()) // Add prediction data
+])
+    .then(([windPowerData, sahkotinData, npfData]) => {
         console.log("Wind Power Data:", windPowerData);
 
         // Get start of today in local time
@@ -353,29 +362,146 @@ fetch(windPowerUrl)
         
         console.log("Processed Wind Power Series Data:", windPowerSeriesData);
 
-        // Create wind power chart options
-        const windChartOptions = createBaseChartOptions({
-            yAxisName: 'GW',
-            yAxisMax: 8,  // Fixed max for GW scale
-            tooltipFormatter: createTooltipFormatter({ 'Tuulivoima (GW)': 'GW' }),
-            visualMap: {
-                show: false,
-                seriesIndex: 0,
-                pieces: [
-                    { lte: 1, color: 'red' },
-                    { gt: 1, lte: 2, color: 'skyblue' },
-                    { gt: 2, lte: 3, color: 'deepskyblue' },
-                    { gt: 3, lte: 4, color: 'dodgerblue' },
-                    { gt: 4, lte: 5, color: 'blue' },
-                    { gt: 5, lte: 6, color: 'mediumblue' },
-                    { gt: 6, lte: 7, color: 'darkblue' },
-                    { gt: 7, color: 'midnightblue' }
-                ],
-                outOfRange: {
-                    color: '#999'
+        // Find the last timestamp in Sähkötin data (actual prices)
+        var lastSahkotinTimestamp = Math.max(...sahkotinData.map(item => item[0]));
+        console.log("End of Sähkötin data; next showing prediction data from:", 
+            new Date(lastSahkotinTimestamp).toString());
+            
+        // Prepare the prediction data for dates after Sähkötin data ends
+        var npfSeriesData = npfData
+            .map(item => [item[0], item[1]])
+            .filter(item => item[0] > lastSahkotinTimestamp);
+
+        // Filter Sähkötin data for the same time range as windPowerData
+        var sahkotinPriceData = sahkotinData.filter(item => item[0] >= todayTimestamp);
+        
+        // Combine Sähkötin (actual) and NPF (predicted) price data
+        var combinedPriceData = [...sahkotinPriceData, ...npfSeriesData];
+
+        // Create custom options for wind power chart
+        windPowerChart.setOption({
+            title: { text: ' ' },
+            legend: { show: false },
+            tooltip: {
+                trigger: 'axis',
+                formatter: function(params) {
+                    var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
+                    var date = new Date(params[0].axisValue);
+                    
+                    var weekday = weekdays[date.getDay()];
+                    var day = date.getDate();
+                    var month = date.getMonth() + 1;
+                    var hours = ("0" + date.getHours()).slice(-2);
+                    var minutes = ("0" + date.getMinutes()).slice(-2);
+                    
+                    var formattedDateString = `${weekday} ${day}.${month}. klo ${hours}:${minutes}`;
+                    var result = formattedDateString + '<br/>';
+                    
+                    params.forEach(function(item) {
+                        if (item.seriesType !== 'line' && item.seriesType !== 'bar') return;
+                        
+                        var valueRounded = item.value[1] !== undefined ? item.value[1].toFixed(1) : '';
+                        var unitLabel = item.seriesName === 'Tuulivoima (GW)' ? 'GW' : '¢/kWh';
+                        result += item.marker + " " + item.seriesName + ': ' + valueRounded + ' ' + unitLabel + '<br/>';
+                    });
+                    
+                    return result;
                 }
             },
+            xAxis: {
+                type: 'time',
+                boundaryGap: false,
+                axisLabel: {
+                    interval: 0,
+                    formatter: function(value) {
+                        var date = new Date(value);
+                        var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
+                        var weekday = weekdays[date.getDay()];
+                        return weekday;
+                    }
+                },
+                axisTick: {
+                    alignWithLabel: true,
+                    interval: 0
+                }
+            },
+            yAxis: [
+                {
+                    type: 'value',
+                    name: 'GW',
+                    nameLocation: 'end',
+                    nameGap: 20,
+                    max: 8,
+                    min: 0,
+                    nameTextStyle: {
+                        fontWeight: 'regular'
+                    },
+                    axisLabel: {
+                        formatter: function(value) {
+                            return value.toFixed(0);
+                        }
+                    }
+                },
+                {
+                    type: 'value',
+                    name: '¢/kWh',
+                    nameLocation: 'end',
+                    nameGap: 20,
+                    min: 0,
+                    splitLine: { show: false },
+                    nameTextStyle: {
+                        fontWeight: 'regular'
+                    },
+                    axisLabel: {
+                        formatter: function(value) {
+                            return value.toFixed(0);
+                        }
+                    }
+                }
+            ],
+            visualMap: [
+                {
+                    // For wind power
+                    show: false,
+                    seriesIndex: 1,
+                    pieces: [
+                        { lte: 1, color: 'red' },
+                        { gt: 1, lte: 2, color: 'skyblue' },
+                        { gt: 2, lte: 3, color: 'deepskyblue' },
+                        { gt: 3, lte: 4, color: 'dodgerblue' },
+                        { gt: 4, lte: 5, color: 'blue' },
+                        { gt: 5, lte: 6, color: 'mediumblue' },
+                        { gt: 6, lte: 7, color: 'darkblue' },
+                        { gt: 7, color: 'midnightblue' }
+                    ],
+                    outOfRange: {
+                        color: '#999'
+                    }
+                },
+                {
+                    // For price
+                    show: false,
+                    seriesIndex: 0,
+                    pieces: [
+                        { gt: 0, color: '#AEB6BF' }
+                    ],
+                    outOfRange: {
+                        color: '#999'
+                    }
+                }
+            ],
             series: [
+                {
+                    name: 'Hinta',
+                    type: 'bar',
+                    barWidth: '40%',
+                    data: combinedPriceData,
+                    yAxisIndex: 1,
+                    z: 1,
+                    itemStyle: {
+                        opacity: 0.3
+                    }
+                },
                 {
                     name: 'Tuulivoima (GW)',
                     type: 'line',
@@ -390,12 +516,11 @@ fetch(windPowerUrl)
                         color: 'rgba(135, 206, 250, 0.2)' // skyblue
                     },
                     opacity: 0.9,
+                    z: 2,
                     markLine: createCurrentTimeMarkLine()
                 }
             ]
         });
-
-        windPowerChart.setOption(windChartOptions);
     })
     .catch(error => console.error('Error fetching wind power data:', error));
 
