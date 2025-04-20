@@ -195,11 +195,6 @@ def update_windpower(df, fingrid_api_key):
         logger.error(f"XGBoost training failed: {e}", exc_info=True)
         raise RuntimeError("XGBoost training for a wind power model failed.")
 
-    # Identify the hour at which Fingrid’s forecast ends
-    last_fc_ts = forecast_data_df['startTime'].max()
-    ramp_hours = 6  # How many hours of ramping to blend Fingrid forecast with XGBoost
-    ramp_end_ts = last_fc_ts + timedelta(hours=ramp_hours)
-
     # Inference for missing rows
     missing_mask = merged_df['WindPowerMW'].isnull()
     if missing_mask.any():
@@ -226,64 +221,15 @@ def update_windpower(df, fingrid_api_key):
             # Predict with XGB
             raw_preds = ws_model.predict(X_missing_df)
 
-            # Exponential smoothing to tame hour-to-hour jumps
-            # We'll smooth in chronological order of the missing timestamps
-            def smooth_exponential(arr, alpha=0.4):
-                if len(arr) < 2:
-                    return arr
-                smoothed = [arr[0]]
-                for i in range(1, len(arr)):
-                    smoothed_val = alpha * arr[i] + (1 - alpha) * smoothed[i - 1]
-                    smoothed.append(smoothed_val)
-                return np.array(smoothed)
-
-            # Sort the missing timestamps so we can smooth them in ascending time
+            # Sort the missing timestamps for chronological processing
             missing_idx = merged_df.loc[missing_mask].index
-            missing_ts_sorted = merged_df.loc[missing_idx, 'timestamp'].sort_values()
-            # We'll reindex raw_preds to that sorted order
-            raw_preds_series = pd.Series(raw_preds, index=missing_idx).reindex(missing_ts_sorted.index)
-
-            # Smooth the raw predictions
-            smoothed_preds = smooth_exponential(raw_preds_series.values)
-
-            # Scale smoothed predictions by capacity
-            capacity_vals = merged_df.loc[missing_ts_sorted.index, 'WindPowerCapacityMW']
-            final_vals = smoothed_preds * capacity_vals.values
+            
+            # Scale predictions by capacity
+            capacity_vals = merged_df.loc[missing_idx, 'WindPowerCapacityMW']
+            final_vals = raw_preds * capacity_vals.values
 
             # Put them back into merged_df
-            merged_df.loc[missing_ts_sorted.index, 'WindPowerMW'] = final_vals
-
-            # Identify final non-null Fingrid forecast value
-            last_fc_value = forecast_data_df['WindPowerMW_Forecast'].dropna().iloc[-1]
-
-            # Blend Fingrid forecast with XGBoost predictions at the border
-            k = 2.5  # adjust for faster or slower snapping
-            ramp_mask = (merged_df['timestamp'] > last_fc_ts) & (merged_df['timestamp'] <= ramp_end_ts)
-            if ramp_mask.any():
-                # Calculate how far (in hours) each timestamp is from last_fc_ts
-                time_diffs = (merged_df.loc[ramp_mask, 'timestamp'] - last_fc_ts).dt.total_seconds() / 3600.0
-                time_frac = time_diffs / ramp_hours  # goes from 0.0 at last_fc_ts up to 1.0 at ramp_end_ts
-
-                # Use a log-like curve that quickly ramps from 0 toward 1
-                alpha = 1 - np.exp(-k * time_frac)
-
-                fc_vals = pd.Series(last_fc_value, index=merged_df.loc[ramp_mask].index)
-                xgb_vals = merged_df.loc[ramp_mask, 'WindPowerMW']
-
-                # Blend
-                blended = (1 - alpha) * fc_vals + alpha * xgb_vals
-                merged_df.loc[ramp_mask, 'WindPowerMW'] = blended
-
-                # Debug prints
-                logger.info(f"Blending {ramp_mask.sum()} rows from Fingrid to XGB between {last_fc_ts} and {ramp_end_ts}")
-                for idx in merged_df.loc[ramp_mask].index:
-                    ts = merged_df.loc[idx, 'timestamp']
-                    logger.info(
-                        f"  {ts}: "
-                        f"time_frac={time_frac.loc[idx]:.3f}, alpha={alpha.loc[idx]:.3f}, "
-                        f"fc_last={fc_vals.loc[idx]:.2f}, xgb={xgb_vals.loc[idx]:.2f}, "
-                        f"blended={blended.loc[idx]:.2f}"
-                    )
+            merged_df.loc[missing_idx, 'WindPowerMW'] = final_vals
 
             # Stats
             predicted_wind_power = merged_df.loc[missing_mask, 'WindPowerMW']
