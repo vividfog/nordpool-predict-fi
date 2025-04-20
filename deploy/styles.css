@@ -177,9 +177,16 @@ a:hover {
 li {
     line-height: 1.6;
     margin-bottom: 8px;
-    margin-left: 16px;
-    padding-left: 16px;
-    text-indent: -16px;
+    position: relative;
+    padding-left: 0.4em;
+    margin-left: 32px;
+}
+
+li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    color: inherit;
 }
 
 table {
