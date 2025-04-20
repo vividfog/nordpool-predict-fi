@@ -2,29 +2,180 @@ if (window.location.hostname === "nordpool-predict-fi.web.app") {
     window.location.href = "https://sahkovatkain.web.app" + window.location.pathname + window.location.search;
 }
 
-// Hosted on GitHub, Firebase Hosting, or locally?
-var baseUrl;
+// ==========================================================================
+// UTILITIES AND CONFIGURATION
+// ==========================================================================
 
-switch (window.location.hostname) {
-    case "":
-    case "localhost":
-        baseUrl = "http://localhost:5005";
-        break;
-    case "rpi4":
-        baseUrl = "http://rpi4:5000";
-        break;
-    case "nordpool-predict-fi.web.app":
-        baseUrl = "https://nordpool-predict-fi.web.app";
-        break;
-    case "sahkovatkain.web.app":
-        baseUrl = "https://sahkovatkain.web.app";
-        break;
-    default:
-        baseUrl = "https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/main/deploy";
+// Determine base URL based on hosting environment
+var baseUrl = (function() {
+    switch (window.location.hostname) {
+        case "":
+        case "localhost":
+            return "http://localhost:5005";
+        case "rpi4":
+            return "http://rpi4:5000";
+        case "nordpool-predict-fi.web.app":
+            return "https://nordpool-predict-fi.web.app";
+        case "sahkovatkain.web.app":
+            return "https://sahkovatkain.web.app";
+        default:
+            return "https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/main/deploy";
+    }
+})();
+
+// Date and time utilities
+function addDays(date, days) {
+    var result = new Date(date);
+    result.setHours(0, 0, 0, 0);
+    result.setDate(result.getDate() + days);
+    return result;
 }
 
-//////////////////////////////////////////////////////////////////////////
-// Fetch the narration text from the Markdown file
+function getPastDateStrings(count) {
+    const dates = [];
+    for (let i = 0; i < count; i++) {
+        const d = new Date();
+        d.setDate(d.getDate() - i);
+        dates.push(d.toISOString().split('T')[0]); // Format YYYY-MM-DD
+    }
+    return dates;
+}
+
+function formatCurrentTimeLabel() {
+    let currentTime = new Date();
+    let month = currentTime.getMonth() + 1;
+    let day = currentTime.getDate();
+    let hours = currentTime.getHours();
+    let minutes = currentTime.getMinutes();
+
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+
+    return day + '.' + month + '. klo ' + hours + ':' + minutes;
+}
+
+// Chart utilities
+function createTooltipFormatter(seriesNameMappings = {}) {
+    return function(params) {
+        var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
+        var date = new Date(params[0].axisValue);
+        
+        var weekday = weekdays[date.getDay()];
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var hours = ("0" + date.getHours()).slice(-2);
+        var minutes = ("0" + date.getMinutes()).slice(-2);
+        
+        var formattedDateString = `${weekday} ${day}.${month}. klo ${hours}:${minutes}`;
+        var result = formattedDateString + '<br/>';
+        
+        // Sort params to show Nordpool data first if it exists
+        params.sort((a, b) => {
+            if (a.seriesName === 'Nordpool') return -1;
+            if (b.seriesName === 'Nordpool') return 1;
+            return 0;
+        });
+        
+        params.forEach(function(item) {
+            if (item.seriesType !== 'line' && item.seriesType !== 'bar') return;
+            
+            var valueRounded = item.value[1] !== undefined ? item.value[1].toFixed(1) : '';
+            var unitLabel = seriesNameMappings[item.seriesName] || '¢/kWh';
+            result += item.marker + " " + item.seriesName + ': ' + valueRounded + ' ' + unitLabel + '<br/>';
+        });
+        
+        return result;
+    };
+}
+
+function createXAxisFormatter(showFullDate = false) {
+    return function(value) {
+        var date = new Date(value);
+        var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
+        var weekday = weekdays[date.getDay()];
+        
+        if (showFullDate) {
+            return date.toLocaleDateString('fi-FI');
+        }
+        return weekday;
+    };
+}
+
+function createCurrentTimeMarkLine() {
+    return {
+        symbol: 'none',
+        label: {
+            formatter: formatCurrentTimeLabel,
+            position: 'end'
+        },
+        lineStyle: {
+            type: 'dotted',
+            color: 'crimson',
+            width: 1.5
+        },
+        data: [{ xAxis: new Date().getTime() }]
+    };
+}
+
+// Common chart configuration creator
+function createBaseChartOptions(config) {
+    return {
+        title: { text: ' ' },
+        legend: config.legend || { show: false },
+        tooltip: {
+            trigger: 'axis',
+            formatter: config.tooltipFormatter || createTooltipFormatter()
+        },
+        xAxis: {
+            type: 'time',
+            boundaryGap: false,
+            axisLabel: {
+                interval: 0,
+                formatter: config.xAxisFormatter || createXAxisFormatter()
+            },
+            axisTick: {
+                alignWithLabel: true,
+                interval: 0
+            }
+        },
+        yAxis: {
+            type: 'value',
+            name: config.yAxisName || '¢/kWh',
+            nameLocation: 'end',
+            nameGap: 20,
+            max: config.yAxisMax || (value => Math.ceil(value.max / 10) * 10),
+            nameTextStyle: {
+                fontWeight: 'regular'
+            },
+            axisLabel: {
+                formatter: function(value) {
+                    return value.toFixed(0);
+                }
+            }
+        },
+        visualMap: config.visualMap || [],
+        series: config.series || []
+    };
+}
+
+// Generic marker position updater for any chart
+function updateMarkerPosition(chart) {
+    var currentTime = new Date().getTime();
+    var option = chart.getOption();
+    
+    option.series.forEach((series) => {
+        if (series.markLine) {
+            series.markLine.data = [{ xAxis: currentTime }];
+        }
+    });
+    
+    chart.setOption(option, false, false);
+}
+
+// ==========================================================================
+// FETCH NARRATION TEXT
+// ==========================================================================
+
 const narrationFile = window.location.pathname.includes('index_en') ? 'narration_en.md' : 'narration.md';
 
 fetch(`${baseUrl}/${narrationFile}`)
@@ -35,16 +186,17 @@ fetch(`${baseUrl}/${narrationFile}`)
         return response.text();
     })
     .then(text => {
-        // LLM generated text in quotes
         document.getElementById('narration').innerHTML = marked.parse(text);
     })
     .catch(error => console.error('Fetching Markdown failed:', error));
 
-//////////////////////////////////////////////////////////////////////////
-// eCharts code for PREDICTION chart, including data from Sähkötin.fi
+// ==========================================================================
+// PREDICTION CHART
+// ==========================================================================
+
 var nfpChart = echarts.init(document.getElementById('predictionChart'));
 
-// Calculate start and end dates for Sähkötin
+// Calculate dates for API requests
 var startDate = addDays(new Date(), -0).toISOString();
 var endDate = addDays(new Date(), 2).toISOString();
 
@@ -58,193 +210,65 @@ var sahkotinParams = new URLSearchParams({
     end: endDate,
 });
 
-// Helper function to calculate date ranges
-function addDays(date, days) {
-    var result = new Date(date);
-    result.setHours(0, 0, 0, 0);
-    result.setDate(result.getDate() + days);
-    return result;
-}
-
-// Fetch the data from both the prediction and Sähkötin sources and display the chart
+// Fetch data for prediction chart
 Promise.all([
-    // Fetch the prediction data from the specified URL and parse it as JSON
-    // Note: Prediction data is in UTC
     fetch(npfUrl).then(r => r.json()),
-    // Fetch the Sähkötin data, which is in CSV format, and retrieve it as text
-    // Note: Sähkötin data is in UTC
     fetch(`${sahkotinUrl}?${sahkotinParams}`).then(r => r.text())
 ])
     .then(([npfData, sahkotinCsv]) => {
-        // Prepare the Sähkötin series data for the chart
-        // Split the CSV data into lines, skip the header, and map each line to a data point
+        // Process Sähkötin data
         var sahkotinSeriesData = sahkotinCsv.split('\n').slice(1).map(line => {
-            // Split each line by comma to separate timestamp and price
             var [timestamp, price] = line.split(',');
-            // Parse the timestamp into a JavaScript Date object and convert it to milliseconds
-            // Implicit time zone interpretation happens here; assuming UTC
             var parsedTime = new Date(timestamp).getTime();
-            // Convert the parsed time to a human-readable string for logging
-            // Implicit conversion from UTC to local time happens here
             var localTime = new Date(parsedTime).toString();
-            // Log the timestamp and price for debugging purposes
             console.log(`Sähkötin timestamp: ${localTime}, Price: ${parseFloat(price)} ¢/kWh`);
-            // Return the parsed time and price as a data point
             return [parsedTime, parseFloat(price)];
         });
 
-        // Align the Sähkötin data to the Nordpool data
-        // Determine the last timestamp in the Sähkötin data and subtract 25 hours for overlap (the price data contains the 00-01 hour too)
-        // var lastSahkotinTimestamp = Math.max(...sahkotinSeriesData.map(item => item[0])) - (25 * 60 * 60 * 1000);
+        // No overlap for bar chart experiment
+        var lastSahkotinTimestamp = Math.max(...sahkotinSeriesData.map(item => item[0]));
+        console.log("End of Sähkötin data for today; displaying the Nordpool prediction data from:", 
+            new Date(lastSahkotinTimestamp).toString());
 
-        // 2024-10-19: No overlap for bar chart experiment
-        var lastSahkotinTimestamp = Math.max(...sahkotinSeriesData.map(item => item[0])) - (0 * 60 * 60 * 1000);
-
-        // Log the adjusted last timestamp for debugging
-        // Implicit conversion from UTC to local time happens here
-        console.log("End of Sähkötin data for today; displaying the Nordpool prediction data from:", new Date(lastSahkotinTimestamp).toString());
-
-        // Prepare the NPF series data, with one overlapping 24 hour period
+        // Prepare NPF series data
         var npfSeriesData = npfData
-            // Map each item in the NPF data to a data point
             .map(item => [item[0], item[1]])
-            // Filter out data points that are older than the adjusted last Sähkötin timestamp
             .filter(item => item[0] > lastSahkotinTimestamp);
 
-        // Log each prediction timestamp and price for debugging
+        // Debug logs
         npfSeriesData.forEach(item => {
-            // Implicit conversion from UTC to local time happens here
             var localTime = new Date(item[0]).toString();
             console.log(`Prediction timestamp: ${localTime}, Price: ${item[1]} ¢/kWh`);
         });
 
-        // Define the chart options, including both the prediction and Sähkötin series
-        nfpChart.setOption({
-            // Set the chart title (currently empty)
-            title: {
-                text: ' '
-            },
-            // Define the legend for the chart, specifying the series names and position
+        // Create chart options
+        const chartOptions = createBaseChartOptions({
             legend: {
                 data: ['Nordpool', 'Ennuste'],
                 right: 16
             },
-            // Configure the tooltip to display information when hovering over the chart
-            tooltip: {
-                trigger: 'axis',
-                formatter: function (params) {
-                    // Define an array of weekday abbreviations for formatting dates
-                    var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
-                    // Convert the axis value to a Date object
-                    // Implicit conversion from UTC to local time happens here
-                    var date = new Date(params[0].axisValue);
-
-                    // Extract and format the date components for display
-                    var weekday = weekdays[date.getDay()];
-                    var year = date.getFullYear();
-                    var month = date.getMonth() + 1;
-                    var day = date.getDate();
-                    var hours = ("0" + date.getHours()).slice(-2);
-                    var minutes = ("0" + date.getMinutes()).slice(-2);
-                    var formattedDateString = `${weekday} ${day}.${month}. klo ${hours}:${minutes}`;
-
-                    // Initialize the result string with the formatted date
-                    var result = formattedDateString + '<br/>';
-                    // Append each series' data to the result string
-                    params.forEach(function (item) {
-                        var valueRounded = item.value[1].toFixed(1);
-                        result += item.marker + " " + item.seriesName + ': ' + valueRounded + ' ¢/kWh<br/>';
-                    });
-
-                    // Return the formatted result string for the tooltip
-                    return result;
-                }
-            },
-
-            // Configure the x-axis of the chart
-            xAxis: {
-                type: 'time',
-                boundaryGap: false,
-                axisLabel: {
-                    interval: 0,
-                    formatter: function (value) {
-                        // Convert the axis value to a Date object
-                        // Implicit conversion from UTC to local time happens here
-                        var date = new Date(value);
-
-                        // Define an array of weekday abbreviations for formatting dates
-                        var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
-                        // Extract and format the date components for display
-                        var year = date.getFullYear();
-                        var day = ("0" + date.getDate()).slice(-2);
-                        var month = date.getMonth() + 1;
-                        var weekday = weekdays[date.getDay()];
-
-                        // Return the formatted date string for the axis label
-                        // return weekday + ' ' + day + '.';
-                        return weekday;
-                    }
+            tooltipFormatter: createTooltipFormatter(),
+            visualMap: [
+                {
+                    // For realized price
+                    show: false,
+                    seriesIndex: [1],
+                    pieces: [{ lte: 10000, color: 'limegreen' }],
+                    outOfRange: { color: '#999' }
                 },
-                axisTick: {
-                    alignWithLabel: true, // Align ticks with labels
-                    interval: 0 // Show all ticks
+                {
+                    // For predicted price
+                    show: false,
+                    seriesIndex: [0],
+                    pieces: [{ lte: 10000, color: 'dodgerblue' }],
+                    outOfRange: { color: '#999' }
                 }
-            },
-            // Configure the y-axis of the chart
-            yAxis: {
-                type: 'value',
-                name: '¢/kWh',
-                nameLocation: 'end',
-                nameGap: 20,
-                // Set the maximum value of the y-axis to the nearest higher multiple of 10
-                max: value => Math.ceil(value.max / 10) * 10,
-                nameTextStyle: {
-                    fontWeight: 'regular'
-                },
-                axisLabel: {
-                    formatter: function (value) {
-                        // Format the axis label value to have no decimal places
-                        return value.toFixed(0);
-                    }
-                }
-            },
-
-            // Define the visual map for setting gradient colors based on price ranges
-            // This visual map applies to the realized price series
-            visualMap: [{
-                show: false,
-                seriesIndex: [1],
-                // top: 50,
-                // right: 10,
-                pieces: [
-                    { lte: 10000, color: 'limegreen' },
-                ],
-                outOfRange: {
-                    color: '#999'
-                }
-            },
-
-            // This visual map applies to the predicted price series
-            {
-                show: false,
-                seriesIndex: [0],
-                // top: 50,
-                // right: 10,
-                pieces: [
-                    { lte: 10000, color: 'dodgerblue' }
-                ],
-                outOfRange: {
-                    color: '#999'
-                }
-            }],
-
-            // Define the series for the chart, including both prediction and Sähkötin data
+            ],
             series: [
                 {
                     name: 'Ennuste',
                     type: 'bar',
                     barWidth: '40%',
-                    // barGap: '20%',
                     data: npfSeriesData,
                     symbol: 'none',
                     opacity: 1.0
@@ -253,7 +277,6 @@ Promise.all([
                     name: 'Nordpool',
                     type: 'bar',
                     barWidth: '40%',
-                    // barGap: '20%',
                     data: sahkotinSeriesData,
                     symbol: 'none',
                     step: 'middle',
@@ -261,79 +284,25 @@ Promise.all([
                 },
                 {
                     type: 'line',
-                    markLine: {
-                        symbol: 'none',
-                        label: {
-                            formatter: function () {
-                                let currentTime = new Date();
-                                let month = currentTime.getMonth() + 1;
-                                let day = currentTime.getDate();
-                                let hours = currentTime.getHours();
-                                let minutes = currentTime.getMinutes();
-
-                                hours = hours < 10 ? '0' + hours : hours;
-                                minutes = minutes < 10 ? '0' + minutes : minutes;
-
-                                return day + '.' + month + '. klo ' + hours + ':' + minutes;
-                            },
-
-                            position: 'end'
-                        },
-                        lineStyle: {
-                            type: 'dotted',
-                            color: 'crimson',
-                            width: 1.5
-                        },
-                        data: [
-                            {
-                                // Set the x-axis position of the mark line to the current time
-                                // Implicit conversion from local time to UTC happens here
-                                xAxis: new Date().getTime()
-                            }
-                        ]
-                    }
+                    markLine: createCurrentTimeMarkLine()
                 }
             ]
         });
+
+        nfpChart.setOption(chartOptions);
     })
     .catch(error => {
-        // Log an error message if there is an issue fetching or processing the data
         console.error('Error fetching or processing data:', error);
     });
 
-// Function to update the vertical marker position
-function updateMarkerPosition() {
-    console.log('marker position update...');
-    var currentTime = new Date().getTime(); // Get current time in milliseconds
+// Setup interval for marker updates
+setInterval(() => updateMarkerPosition(nfpChart), 10000);
 
-    // Update the markLine data for the current time marker
-    var option = nfpChart.getOption(); // Get the current chart options to overwrite
-    option.series.forEach((series) => {
-        if (series.markLine) {
-            series.markLine.data = [
-                {
-                    xAxis: currentTime
-                }
-            ];
-        }
-    });
+// ==========================================================================
+// WIND POWER CHART
+// ==========================================================================
 
-    // Set the updated option to the chart without not merging
-    nfpChart.setOption(option, false, false);
-}
-
-// Call the updateMarkerPosition function to update the marker
-setInterval(updateMarkerPosition, 10000); // 10000 milliseconds = check every 10 seconds
-
-// END: eCharts code predictions
-
-//////////////////////////////////////////////////////////////////////////
-// START: eCharts code for windPowerChart
-
-// Initialize the wind power chart
 var windPowerChart = echarts.init(document.getElementById('windPowerChart'));
-
-// Fetch the wind power data from the URL
 var windPowerUrl = `${baseUrl}/windpower.json`;
 
 fetch(windPowerUrl)
@@ -344,90 +313,25 @@ fetch(windPowerUrl)
         return response.json();
     })
     .then(windPowerData => {
-        console.log("Wind Power Data:", windPowerData); // Log the data for debugging
+        console.log("Wind Power Data:", windPowerData);
 
         // Get start of today in local time
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         const todayTimestamp = today.getTime();
 
-        // Filter and prepare wind power series data
+        // Filter and prepare wind power series data (convert to GW)
         var windPowerSeriesData = windPowerData
-            .filter(item => item[0] >= todayTimestamp) // Filter out data before today
+            .filter(item => item[0] >= todayTimestamp)
             .map(item => [item[0], item[1] / 1000]);
+        
         console.log("Processed Wind Power Series Data:", windPowerSeriesData);
 
-        // Set option for wind power chart
-        windPowerChart.setOption({
-            title: {
-                text: ' '  // Clear the title
-            },
-            legend: {
-                show: false,
-                data: ['Tuulivoima (GW)'],
-                right: 16
-            },
-            tooltip: {
-                trigger: 'axis',
-                formatter: function (params) {
-                    var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la']; // Finnish weekdays
-                    var date = new Date(params[0].axisValue);
-
-                    var weekday = weekdays[date.getDay()];
-                    var day = date.getDate();
-                    var month = date.getMonth() + 1; // Month is zero-based
-
-                    var hours = ("0" + date.getHours()).slice(-2);
-                    var minutes = ("0" + date.getMinutes()).slice(-2);
-
-                    var formattedDateString = `${weekday} ${day}.${month}. klo ${hours}:${minutes}`;
-                    
-                    var result = formattedDateString + '<br/>';
-                    params.forEach(function (item) {
-                        var valueRounded = item.value[1].toFixed(1); // Display 1 decimal place
-                        result += item.marker + " " + item.seriesName + ': ' + valueRounded + ' GW<br/>';
-                    });
-
-                    return result;
-                }
-            },
-            xAxis: {
-                type: 'time',
-                boundaryGap: false,
-                axisLabel: {
-                    interval: 0,
-                    formatter: function (value) {
-                        var date = new Date(value);
-                        var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
-                        var weekday = weekdays[date.getDay()];
-                        var day = date.getDate();
-                        var month = date.getMonth() + 1;  // add 1 since getMonth() starts from 0
-                        // return `${weekday} ${day}.${month}.`;
-                        return weekday;
-                    }
-                },
-                axisTick: {
-                    alignWithLabel: true, // Align ticks with labels
-                    interval: 0 // Show all ticks
-                }
-            },
-            yAxis: {
-                type: 'value',
-                name: 'GW',
-                nameLocation: 'end',
-                nameGap: 20,
-                max: 8, // gigawatts
-                nameTextStyle: {
-                    fontWeight: 'regular'
-                },
-                axisLabel: {
-                    formatter: function (value) {
-                        return value.toFixed(0); // Display without any decimal places
-                    }
-                }
-            },
-
-            // Set wind power gradient colors
+        // Create wind power chart options
+        const windChartOptions = createBaseChartOptions({
+            yAxisName: 'GW',
+            yAxisMax: 8,  // Fixed max for GW scale
+            tooltipFormatter: createTooltipFormatter({ 'Tuulivoima (GW)': 'GW' }),
             visualMap: {
                 show: false,
                 seriesIndex: 0,
@@ -445,7 +349,6 @@ fetch(windPowerUrl)
                     color: '#999'
                 }
             },
-
             series: [
                 {
                     name: 'Tuulivoima (GW)',
@@ -461,91 +364,29 @@ fetch(windPowerUrl)
                         color: 'rgba(135, 206, 250, 0.2)' // skyblue
                     },
                     opacity: 0.9,
-                    markLine: {
-                        symbol: 'none',
-                        label: {
-                            formatter: function () {
-                                let currentTime = new Date();
-                                let month = currentTime.getMonth() + 1;
-                                let day = currentTime.getDate();
-                                let hours = currentTime.getHours();
-                                let minutes = currentTime.getMinutes();
-
-                                // Lisää etunollat vain tunneille ja minuuteille, jos tarpeen
-                                hours = hours < 10 ? '0' + hours : hours;
-                                minutes = minutes < 10 ? '0' + minutes : minutes;
-
-                                // Palauta muotoiltu päivämäärä ja aika
-                                return day + '.' + month + '. klo ' + hours + ':' + minutes;
-                            },
-
-                            position: 'end'
-                        },
-                        lineStyle: {
-                            type: 'dotted',
-                            color: 'crimson',
-                            width: 1.5
-                        },
-                        data: [
-                            {
-                                xAxis: new Date().getTime()
-                            }
-                        ]
-                    }
+                    markLine: createCurrentTimeMarkLine()
                 }
             ]
         });
+
+        windPowerChart.setOption(windChartOptions);
     })
     .catch(error => console.error('Error fetching wind power data:', error));
 
-// Function to update the vertical marker position for windPowerChart
-function updateWindMarkerPosition() {
-    var currentTime = new Date().getTime(); // Get current time in milliseconds
+// Setup interval for marker updates
+setInterval(() => updateMarkerPosition(windPowerChart), 10000);
 
-    // Update the markLine data for the current time marker
-    var option = windPowerChart.getOption(); // Get the current chart options to modify
-    option.series.forEach((series) => {
-        if (series.markLine) {
-            series.markLine.data = [
-                {
-                    xAxis: currentTime
-                }
-            ];
-        }
-    });
+// ==========================================================================
+// HISTORY CHART
+// ==========================================================================
 
-    // Update the chart with the new option
-    windPowerChart.setOption(option, false, false);
-}
-
-// Call the update function periodically to update the marker
-setInterval(updateWindMarkerPosition, 10000); // Update every 10 seconds
-
-// END: eCharts code for windPowerChart
-
-//////////////////////////////////////////////////////////////////////////
-// START: eCharts code for historyChart
-
-// Make sure ECharts is loaded and the DOM element exists
 var historyChart = echarts.init(document.getElementById('historyChart'));
-
-// Utility function to generate date strings for the past X days
-function getPastDateStrings(count) {
-    const dates = [];
-    for (let i = 0; i < count; i++) {
-        const d = new Date();
-        d.setDate(d.getDate() - i);
-        dates.push(d.toISOString().split('T')[0]); // Format YYYY-MM-DD
-    }
-    return dates;
-}
 
 // Construct URLs for fetching historical data
 const dateStrings = getPastDateStrings(35); // 30 days plus 5 days of prediction data
 const historicalUrls = dateStrings.map(date => `${baseUrl}/prediction_snapshot_${date}.json`);
-// console.log("Datestrings: ", historicalUrls);
 
-// Fetch and process historical data from the constructed URLs, filtering out data older than "day after tomorrow" at the time the snapshot was taken
+// Fetch and process historical data
 function fetchHistoricalData(urls) {
     const today = new Date();
     const cutoffDate = new Date(today);
@@ -602,8 +443,16 @@ function fetchHistoricalData(urls) {
     }));
 }
 
+// Process Sähkötin CSV data
+function processSahkotinCsv(csvData) {
+    const lines = csvData.split('\n').slice(1); // Skip header
+    return lines.map(line => {
+        const [timestamp, price] = line.split(',');
+        return [new Date(timestamp).getTime(), parseFloat(price)];
+    });
+}
 
-// Function to set up the history chart with fetched data
+// Set up history chart with fetched data
 function setupHistoryChart(data) {
     const cleanedData = data.filter(item => item !== null).slice(1);
     console.log("setupHistoryChart found these snapshots: ", cleanedData);
@@ -624,120 +473,24 @@ function setupHistoryChart(data) {
     // Add a separate series item for the markLine
     series.push({
         type: 'line',
-        data: [], // No line data needed, markLine will be used instead
-        markLine: {
-            symbol: 'none',
-            label: {
-                formatter: 'Nyt',
-                position: 'end'
-            },
-            lineStyle: {
-                type: 'dotted',
-                color: 'crimson',
-                width: 1.5
-            },
-            data: [
-                {
-                    xAxis: new Date().getTime()
-                }
-            ]
-        }
+        data: [],
+        markLine: createCurrentTimeMarkLine()
     });
 
-    historyChart.setOption({
-        tooltip: {
-            trigger: 'axis',
-            formatter: function (params) {
-                var result = params[0].axisValueLabel + '<br/>';
-    
-                // Sort params such that 'Nordpool' data comes first
-                params.sort((a, b) => {
-                    if (a.seriesName === 'Nordpool') return -1;
-                    if (b.seriesName === 'Nordpool') return 1;
-                    return 0;
-                });
-    
-                params.forEach(function (item) {
-                    if (item.seriesType === 'line') {
-                        var valueRounded = item.value[1] ? item.value[1].toFixed(1) : '';
-                        result += item.marker + " " + item.seriesName + ': ' + valueRounded + ' ¢/kWh<br/>';
-                    }
-                });
-                return result;
-            }
-        },
-        xAxis: {
-            type: 'time',
-            boundaryGap: false,
-            axisLabel: {
-                interval: 0,
-                formatter: function (value) {
-                    var date = new Date(value);
-                    return date.toLocaleDateString('fi-FI');
-                },
-                rotate: 45,
-            },
-            axisTick: {
-                alignWithLabel: true, // Align ticks with labels
-                interval: 0 // Show all ticks
-            }
-        },
-        yAxis: {
-            type: 'value',
-            name: '¢/kWh',
-            nameLocation: 'end',
-            nameGap: 20,
-            max: value => Math.ceil(value.max / 10) * 10,
-            nameTextStyle: {
-                fontWeight: 'regular'
-            },
-            axisLabel: {
-                formatter: function (value) {
-                    return value.toFixed(0);
-                }
-            }
-        },
+    // Create history chart options
+    const historyChartOptions = createBaseChartOptions({
+        tooltipFormatter: createTooltipFormatter(),
+        xAxisFormatter: createXAxisFormatter(true),
         series: series
     });
 
+    historyChart.setOption(historyChartOptions);
     console.log("setupHistoryChart found", series.length, "snapshots");
     return series.length;
 }
 
-function setupSahkotinData(nrSeries) {
-    const startDate = getPastDateStrings(30).pop();
-    var endDate = addDays(new Date(), 2).toISOString();
-
-    const sahkotinUrl = 'https://sahkotin.fi/prices.csv';
-    const sahkotinParams = new URLSearchParams({
-        fix: 'true',
-        vat: 'true',
-        start: startDate,
-        end: endDate,
-    });
-
-    // Fetch Sähkötin data
-    fetch(`${sahkotinUrl}?${sahkotinParams}`)
-        .then(response => response.text())
-        .then(csvData => {
-            const sahkotinData = processSahkotinCsv(csvData);
-            // Add Sähkötin data to chart
-            addSahkotinDataToChart(sahkotinData, nrSeries);
-        })
-        .catch(error => console.error("Error fetching Sähkötin data:", error));
-}
-
-function processSahkotinCsv(csvData) {
-    // Convert CSV to format expected by ECharts ([date, value] pairs)
-    const lines = csvData.split('\n').slice(1); // Skip header
-    return lines.map(line => {
-        const [timestamp, price] = line.split(',');
-        // Convert timestamp to time and price to float
-        return [new Date(timestamp).getTime(), parseFloat(price)];
-    });
-}
-
-function addSahkotinDataToChart(sahkotinData, nrSeries) {
+// Add Sähkötin data to the history chart
+function addSahkotinDataToChart(sahkotinData) {
     const sahkotinSeries = {
         name: 'Nordpool',
         type: 'line',
@@ -757,19 +510,46 @@ function addSahkotinDataToChart(sahkotinData, nrSeries) {
     });
 }
 
+// Fetch Sähkötin data for history chart
+function setupSahkotinData() {
+    const startDate = getPastDateStrings(30).pop();
+    var endDate = addDays(new Date(), 2).toISOString();
 
-// Fetch historical data and set up the chart
-fetchHistoricalData(historicalUrls).then(data => {
-    var nrSeries = setupHistoryChart(data);
-    setupSahkotinData(nrSeries);
-}).catch(error => console.error("Error in chart setup:", error));
+    const sahkotinUrl = 'https://sahkotin.fi/prices.csv';
+    const sahkotinParams = new URLSearchParams({
+        fix: 'true',
+        vat: 'true',
+        start: startDate,
+        end: endDate,
+    });
 
-// END: eCharts code for historyChart
+    fetch(`${sahkotinUrl}?${sahkotinParams}`)
+        .then(response => response.text())
+        .then(csvData => {
+            const sahkotinData = processSahkotinCsv(csvData);
+            addSahkotinDataToChart(sahkotinData);
+        })
+        .catch(error => console.error("Error fetching Sähkötin data:", error));
+}
 
-// Resize the chart when the window is resized
-window.onresize = function () {
+// Fetch historical data and set up the history chart
+fetchHistoricalData(historicalUrls)
+    .then(data => {
+        setupHistoryChart(data);
+        setupSahkotinData();
+    })
+    .catch(error => console.error("Error in chart setup:", error));
+
+// Setup interval for marker updates
+setInterval(() => updateMarkerPosition(historyChart), 10000);
+
+// ==========================================================================
+// WINDOW RESIZE HANDLER
+// ==========================================================================
+
+window.onresize = function() {
     nfpChart.resize();
     historyChart.resize();
     windPowerChart.resize();
-}
+};
 
