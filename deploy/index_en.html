@@ -28,7 +28,7 @@
         <p id="narration"></p>
         <h1>Wind power forecast</h1>
         <p>Based on data and forecasts from FMI weather stations on the coast of the Gulf of Bothnia. Wind over 2...3 gigawatts is favorable for the electricity price, and with wind below 1 gigawatt, the price can rise high if there are maintenance outages or it is cold at the same time.</p>
-        <div id="windPowerChart" style="height: 40vh; width: 100%; max-width: 920px; margin: auto; box-sizing: border-box; padding-top: 32px;"></div>
+                <div id="windPowerChart" style="height: 40vh; width: 100%; max-width: 920px; margin: auto; box-sizing: border-box; padding-top: 32px;"></div>
         <h1>Historical forecasts</h1>
         <p>The graph shows a 30-day history of previous forecasts. Major changes of mind can occur, for example, if the weather forecast changes significantly, if there is an unexpected production outage, if the cause of the price disturbance is historically new or rare, or if the model has been recently updated. See the change log below.</p>
         <p>The orange line is the final Nordpool price. The fading blue lines are the forecast ensemble from previous days, before the Nordpool price was known.</p>
@@ -96,6 +96,8 @@
         <li>The DeepSeek API has recently been quite <a href="https://status.deepseek.com" target="_blank">jammed</a>, and it doesn't always agree to generate texts. If this situation continues for a longer period, we'll revert to the GPT-4o model, although in that case we'll likely only provide a single language version.</li>
         <p><strong>February 5, 2025:</strong></p>
         <li>The language model may change without notice between DeepSeek-V3, GPT-4o and Gemini 2.0 Pro.</li>
+        <p><strong>April 20, 2025:</strong></p>
+        <li>Wind power chart now shows the possible correlation between wind power and price.</li>
         <p><strong>Planned:</strong></p>
         <li>More accurate prediction of hourly price volatility may require its own model and method in addition to/on top of the current one. The current method works better for estimating the daily price level than the dynamics of individual peak prices in the morning and evening. However, the language model already comments on price spikes if the conditions for them exist, e.g., high predicted price and low wind at the same time.</li>
         <h1>What does the forecast not consider?</h1>
