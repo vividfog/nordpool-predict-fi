@@ -75,7 +75,7 @@ The main script is one flow with multiple optional stops, and you can choose one
 
 Examples:
 
-- **Simple usage**: `python nordpool_predict_fi.py --predict` will train a model and display price predictions for 7 days into the past and 7 days into the future, with no commit back to the database. Training happens in-memory and the model file is not saved. This should take a minute or two on a modern CPU. Even a Raspberry Pi is fine for predictions, if model hyperparameter search is done elsewhere.
+- **Simple usage**: `python nordpool_predict_fi.py --predict` will train a model and display price predictions for 7 days into the past and 7 days into the future, with no commit back to the database. Training happens in-memory and the model file is not saved. This should take a minute or two on a modern CPU. Even a Raspberry Pi is fine for predictions, if hyperparameter search is done elsewhere.
 
 - **Longer pipeline**: `python nordpool_predict_fi.py --predict --narrate --commit --deploy` will:
   1. Train a new model (in memory) and print evaluation stats,
@@ -92,7 +92,7 @@ Examples:
 
 ## How does the model work?
 
-Surprisingly for many, the model (or problem) is **not** a pure time-series forecast in the usual sense. Price “now” doesn't say much about price “next hour” in a direct ARIMA-like manner, because the intraday spikes often come from weather or external factors. Instead, we treat each hour’s price as a function of weather, supply, demand, and calendar. That is, the model sees each hour in 2023–2024 as a separate data point with various features (wind speed, nuclear capacity, etc.). This approach is effective in normal circumstances, though outliers can always surprise the model.
+Surprisingly for many, the model (or problem) is **not** a pure time-series forecast in the usual sense. Price "now" doesn't say much about price "next hour" in a direct ARIMA-like manner, because the intraday spikes often come from weather or external factors. Instead, we treat each hour's price as a function of weather, supply, demand, and calendar. That is, the model sees each hour in 2023–2024 as a separate data point with various features (wind speed, nuclear capacity, etc.). This approach is effective in normal circumstances, though outliers can always surprise the model.
 
 Currently, the training data set includes:
 
@@ -152,12 +152,12 @@ df = update_eu_ws(df)
 
 Each function merges data for the next 7 days (and some historical range) onto the same DataFrame. The final combined DataFrame is passed to the training and prediction routine.
 
-1. **Add your new column** (e.g. “SomeExternalFactorMW”) to the `prediction.db` file for all past timestamps.
+1. **Add your new column** (e.g., "SomeExternalFactorMW") to the `prediction.db` file for all past timestamps.
 2. **Create** a function that fetches or infers future data for that column, so that the model can use it in the next 7 days as well.
 3. **Add** that function to the chain so that your new column is filled before the training and prediction. 
 4. **Retune** hyperparameters if you want the best accuracy.
 
-If you need more detail, see the example code in `util/fingrid_windpower.py`, `util/openmeteo_solar.py`, etc.
+If you need more details, see the example code in `util/fingrid_windpower.py`, `util/openmeteo_solar.py`, etc.
 
 ## License
 
