@@ -7,7 +7,7 @@ body {
 }
 
 #predictionChart {
-    height: 66vh;
+    height: 50vh;
     min-height: 400px;
     width: 100%;
     max-width: 920px;
@@ -20,7 +20,7 @@ body {
     max-width: 920px;
     margin: auto;
     box-sizing: border-box;
-    height: 66vh;
+    height: 50vh;
     min-height: 400px;
     width: 100%;
     padding-top: 24px;
@@ -28,7 +28,7 @@ body {
 
 #chart {
     max-width: 920px;
-    height: 66vh;
+    height: 50vh;
     min-height: 400px;
     width: 100%;
     margin: auto;
@@ -71,7 +71,7 @@ body {
 }
 
 #pastPredictions {
-    height: 66vh;
+    height: 50vh;
     min-height: 400px;
     width: 100%;
     max-width: 920px;
@@ -82,7 +82,7 @@ body {
 }
 
 #historyChart {
-    height: 66vh;
+    height: 50vh;
     min-height: 400px;
     width: 100%;
     max-width: 920px;
