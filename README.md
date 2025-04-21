@@ -4,19 +4,30 @@
 
 Live version: https://sahkovatkain.web.app
 
-If you just want the predictions as raw data, you'll find them in the [deploy](deploy) folder. See [below](#home-assistant-chart) for Home Assistant instructions.
+If you just want the predictions as raw data, you'll find them in the [deploy](deploy) folder. See [below](#home-assistant) for Home Assistant instructions.
 
 This repository contains all the code and most of the data to train the 2 required models, generate the predictions, and optionally provide an LLM-based narration of the results.
 
-[TOC]
-
 <img src="data/home_assistant_sample_plot.png" alt="Predictions shown inside Home Assistant using ApexCharts" style="zoom:50%;" />
+
+## Table of Contents
+- [Background](#background)
+- [Major updates](#major-updates)
+- [Installation](#installation)
+- [Usage](#usage)
+- [How does the model work?](#how-does-the-model-work)
+- [How long will this repository/data be updated?](#how-long-will-this-repositorydata-be-updated)
+- [How to use the data in your apps](#how-to-use-the-data-in-your-apps)
+  - [Python sample script](#python-sample-script)
+  - [Home Assistant](#home-assistant)
+- [Adding a new data source](#adding-a-new-data-source)
+- [License](#license)
 
 ## Background
 
-The repository began as a personal [Autogen](https://github.com/microsoft/autogen) + LLM pair programming evaluation/trial/learning/hobby, written over some weekends. 
+The repository began as a personal [Autogen](https://github.com/microsoft/autogen) + LLM pair programming evaluation/trial/learning/hobby, written over some weekends, and has since then grown and morphed a lot.
 
-All of the code is curated by an actual person, but there may be some AI commentary left in the code. The repository remains an evaluation tool for testing new LLMs and what can be done with them in ML projects. When the output is useful for price prediction, that is definitely a bonus, but this is primarily a playground for tracking the evolution of AI pair programming.
+The repository remains an evaluation tool for testing new LLMs and what can be done with them in ML projects. When the output is useful for price prediction, that is definitely a bonus, but this is primarily a playground for tracking the evolution of AI pair programming.
 
 [Continue.dev](https://github.com/continuedev/continue) was and remains the primary tool of choice for AI pair programming. The choice of LLMs is a range of locally running and commercial models, typically the latest available or currently under evaluation.
 
@@ -32,7 +43,7 @@ All of the code is curated by an actual person, but there may be some AI comment
 
 For details, see [CHANGELOG.md](CHANGELOG.md).
 
-## Usage
+## Installation
 
 Clone the repository, `pip install -r requirements.txt` in a dedicated Python environment:
 
@@ -44,7 +55,7 @@ pip install -r requirements.txt
 
 The repo uses environment variables for configuration. These can be set in a file called `.env.local`. Check  `.env.local.template` [and the comments](.env.local.template) on what the variables are. Most of the defaults should be OK.
 
-How to use:
+## Usage
 
 ```shell
 usage: nordpool_predict_fi.py [-h] [--predict] [--narrate] [--commit] [--deploy] [--dump]
@@ -60,9 +71,7 @@ options:
 
 See the `data/create` folders for a set of DB initialization scripts if you need them. You may need to fetch some of the data sets from their original sources. The CSV and SQL database dumps are updated from time to time.
 
-### How to use
-
-First make sure you've installed the requirements from `requirements.txt`. The main script is one flow with multiple optional stops, and you can choose one or many of them in almost any combination.
+The main script is one flow with multiple optional stops, and you can choose one or many of them in almost any combination.
 
 Examples:
 
@@ -154,4 +163,4 @@ If you need more detail, see the example code in `util/fingrid_windpower.py`, `u
 
 This project is licensed under the MIT License. It is a hobby project, offered as-is.  
 
-Please feel free to copy or adapt. A mention or link back here is always appreciated, but not required.  
+Feel free to copy or adapt. A mention or link back here is always appreciated, but not required.
