@@ -42,7 +42,7 @@ body {
     box-sizing: border-box;
     margin: auto;
     margin-top: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     padding-left: 60px;
     padding-right: 60px;
