@@ -16,9 +16,11 @@ This repository contains all the code and most of the data to train the 2 requir
 
 The repository began as a personal [Autogen](https://github.com/microsoft/autogen) + LLM pair programming evaluation/trial/learning/hobby, written over some weekends. 
 
-All of the code is curated by an actual person, but there may be some AI commentary left in the code. The repository remains an evaluation tool for testing new LLMs and what can be done with them in ML projects. If the output is useful for price prediction, that is definitely a bonus, but this is primarily a playground for tracking the evolution of AI pair programming.
+All of the code is curated by an actual person, but there may be some AI commentary left in the code. The repository remains an evaluation tool for testing new LLMs and what can be done with them in ML projects. When the output is useful for price prediction, that is definitely a bonus, but this is primarily a playground for tracking the evolution of AI pair programming.
 
-## Updates
+[Continue.dev](https://github.com/continuedev/continue) was and remains the primary tool of choice for AI pair programming. The choice of LLMs is a range of locally running and commercial models, typically the latest available or currently under evaluation.
+
+## Major updates
 
 **Aug 31, 2024:** After hyperparameter optimization [experiments](data/create/91_model_experiments/) measuring Random Forest, XGBoost, Gradient Boosting, and Light GBM, we're currently running XGBoost by default.
 
@@ -28,7 +30,7 @@ All of the code is curated by an actual person, but there may be some AI comment
 
 **Dec 21, 2024:** Wind power model now uses in-memory live training for a hands-free model update just before prediction. For hyperparameter optimization, the older [routines](https://github.com/vividfog/nordpool-predict-fi/tree/main/data/create/91_model_experiments) are still valid.
 
-[Continue.dev](https://github.com/continuedev/continue) was and remains the tool of choice for AI pair programming. The choice of LLMs is a range of locally running and commercial models, typically the latest available and currently under evaluation.
+For details, see [CHANGELOG.md](CHANGELOG.md).
 
 ## Usage
 
