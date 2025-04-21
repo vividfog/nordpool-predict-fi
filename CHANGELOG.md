@@ -14,6 +14,7 @@ All notable changes will be documented in this file.
 ### Added
 - Price data backdrop for wind power chart for better context
 - Pyhäpäivä (Finnish holiday) fallback option
+- History chart: 3, 6 hour average price bins
 
 ### Removed
 - Smoothing/ramping functionality for cleaner predictions
