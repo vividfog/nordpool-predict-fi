@@ -89,6 +89,49 @@ function calculateMovingAverage(data, hours) {
     return result;
 }
 
+// Group time series data into time bins (1h, 6h, 12h) 
+function calculateTimeBins(data, binSizeHours) {
+    if (!data || !data.length || binSizeHours <= 0) return data;
+    
+    // Return original data if bin size is 1 hour or less
+    if (binSizeHours <= 1) return data;
+    
+    const result = [];
+    const bins = {};
+    
+    // Group data points into bins
+    data.forEach(([timestamp, value]) => {
+        // Create bin key by flooring to the nearest bin boundary
+        const date = new Date(timestamp);
+        const hours = date.getHours();
+        // Calculate which bin this timestamp belongs to
+        const binHour = Math.floor(hours / binSizeHours) * binSizeHours;
+        
+        // Create a new date with the bin boundary hour
+        const binDate = new Date(date);
+        binDate.setHours(binHour, 0, 0, 0);
+        const binKey = binDate.getTime();
+        
+        // Add to bin
+        if (!bins[binKey]) {
+            bins[binKey] = { sum: 0, count: 0, timestamp: binKey };
+        }
+        bins[binKey].sum += value;
+        bins[binKey].count += 1;
+    });
+    
+    // Calculate average for each bin
+    Object.values(bins).forEach(bin => {
+        const avg = bin.count > 0 ? bin.sum / bin.count : 0;
+        result.push([bin.timestamp, avg]);
+    });
+    
+    // Sort by timestamp
+    result.sort((a, b) => a[0] - b[0]);
+    
+    return result;
+}
+
 // ==========================================================================
 // Chart construction and formatting utilities
 // ==========================================================================
@@ -593,35 +636,35 @@ document.addEventListener('DOMContentLoaded', function() {
             // Get the moving average period from data attribute
             currentAveragePeriod = parseInt(this.getAttribute('data-period'));
             
-            // Apply moving average to chart data
+            // Apply time binning to chart data
             applyMovingAverageToChart(currentAveragePeriod);
         });
     });
 });
 
-// Function to apply moving average to all series in the chart
+// Function to apply time binning to all series in the chart
 function applyMovingAverageToChart(hours) {
     // Skip if no original data available yet
     if (!originalData.length) return;
 
     const option = historyChart.getOption();
     
-    // Apply moving average to each series except the last one (which is the marker)
+    // Apply time binning to each series except the last one (which is the marker)
     for (let i = 0; i < originalData.length; i++) {
-        // Apply moving average to the series data
-        const averagedData = calculateMovingAverage(originalData[i], hours);
+        // Apply time binning to the series data
+        const binnedData = calculateTimeBins(originalData[i], hours);
         
         // Update the series data in the chart
         if (option.series[i]) {
-            option.series[i].data = averagedData;
+            option.series[i].data = binnedData;
         }
     }
     
-    // Apply moving average specifically to the Nordpool series
+    // Apply time binning specifically to the Nordpool series
     const seriesIndex = option.series.findIndex(s => s.name === 'Nordpool');
     if (seriesIndex >= 0) {
-        const averagedData = calculateMovingAverage(sahkotinOriginalData, hours);
-        option.series[seriesIndex].data = averagedData;
+        const binnedData = calculateTimeBins(sahkotinOriginalData, hours);
+        option.series[seriesIndex].data = binnedData;
     }
 
     // Update the chart with the new data
@@ -710,6 +753,7 @@ function setupHistoryChart(data) {
         type: 'line',
         data: seriesData.map(item => [item[0], item[1]]),
         symbol: 'none',
+        step: 'start',  // Use step interpolation with 'start' style
         lineStyle: {
             width: index === 0 ? 1.5 : 1,
             type: index === 0 ? 'solid' : 'dotted'
@@ -747,7 +791,7 @@ function addSahkotinDataToChart(sahkotinData) {
         type: 'line',
         data: sahkotinData,
         symbol: 'none',
-        step: 'middle',
+        step: 'start',  // Use step interpolation with 'start' style
         lineStyle: {
             type: 'solid',
             width: 1.5
@@ -767,9 +811,9 @@ function addSahkotinDataToChart(sahkotinData) {
         const seriesIndex = options.series.findIndex(s => s.name === 'Nordpool');
         
         if (seriesIndex >= 0) {
-            // Apply moving average only to the Nordpool series
-            const averagedData = calculateMovingAverage(originalSahkotinData, currentAveragePeriod);
-            options.series[seriesIndex].data = averagedData;
+            // Apply time binning only to the Nordpool series
+            const binnedData = calculateTimeBins(originalSahkotinData, currentAveragePeriod);
+            options.series[seriesIndex].data = binnedData;
             historyChart.setOption(options, false, false);
         }
     }
