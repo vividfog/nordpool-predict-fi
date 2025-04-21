@@ -294,9 +294,9 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
                         "production_resource_name", "Tuntematon voimala"
                     )
 
-                    # Format the dates for Finland
-                    start_date_str = start_date_hel.strftime("%d.%m.%Y %H:%M")
-                    end_date_str = end_date_hel.strftime("%d.%m.%Y %H:%M")
+                    # Format the dates for Finland without leading zeros
+                    start_date_str = f"{int(start_date_hel.strftime('%d'))}.{int(start_date_hel.strftime('%m'))}.{start_date_hel.year} klo {start_date_hel.strftime('%H')}"
+                    end_date_str = f"{int(end_date_hel.strftime('%d'))}.{int(end_date_hel.strftime('%m'))}.{end_date_hel.year} klo {end_date_hel.strftime('%H')}"
 
                     # Did the outage already begin?
                     start_phrase = "Alkoi" if start_date_hel < pd.Timestamp.now(helsinki_tz) else "Alkaa"
@@ -351,7 +351,7 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
     messages.append(
         {
             "role": "user",
-            "content": "Nyt luo tälle artikkelille yhden rivin ingressi (noin 20-40 sanaa). Älä kirjoita mitään muuta kuin ingressi. Muotoile ingressi kursiivilla käyttämällä markdown-syntaksia. Kiitos!",
+            "content": "Nyt luo tälle artikkelille yhden rivin ingressi (noin 20-40 sanaa). Vältä toistoa ja pysy ylätasolla: esim. mahdollisia huoltokatkoja ei ole tarpeen toistaa ingressissä. Älä kirjoita mitään muuta kuin ingressi. Muotoile ingressi kursiivilla käyttämällä markdown-syntaksia. Kiitos!",
         }
     )
 
