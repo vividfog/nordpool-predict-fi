@@ -90,6 +90,44 @@ body {
     box-sizing: border-box;
 }
 
+.history-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    max-width: 920px;
+    margin: 0 auto 10px auto;
+}
+
+.history-toggle button {
+    background-color: #f0f2f5;
+    border: 1px solid #ddd;
+    color: #666;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9em;
+    transition: all 0.2s ease;
+}
+
+.history-toggle button:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.history-toggle button:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+.history-toggle button.active {
+    background-color: #3498db;
+    color: white;
+    border-color: #3498db;
+    font-weight: 500;
+}
+
+.history-toggle button:hover:not(.active) {
+    background-color: #ddd;
+}
+
 #disclaimer {
     position: relative;
     max-width: 512px;
@@ -244,5 +282,10 @@ th, td {
         max-width: 320px;
         padding: 8px;
         padding-bottom: 4px;
+    }
+
+    .history-toggle button {
+        padding: 4px 8px;
+        font-size: 0.8em;
     }
 }

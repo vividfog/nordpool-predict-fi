@@ -59,6 +59,36 @@ function formatCurrentTimeLabel() {
     return day + '.' + month + '. klo ' + hours + ':' + minutes;
 }
 
+// Calculate moving average of a time series
+function calculateMovingAverage(data, hours) {
+    if (!data || !data.length || hours <= 0) return data;
+    
+    const result = [];
+    const windowSize = hours * 1; // Assuming 1 data point per hour
+    
+    // Return original data if moving average period is 0 or undefined
+    if (hours === 0) return data;
+    
+    for (let i = 0; i < data.length; i++) {
+        let sum = 0;
+        let count = 0;
+        
+        // Look back for previous values
+        for (let j = 0; j < windowSize; j++) {
+            if (i - j >= 0) {
+                sum += data[i - j][1];
+                count++;
+            }
+        }
+        
+        // Calculate the average
+        const avg = count > 0 ? sum / count : data[i][1];
+        result.push([data[i][0], avg]);
+    }
+    
+    return result;
+}
+
 // ==========================================================================
 // Chart construction and formatting utilities
 // ==========================================================================
@@ -540,6 +570,64 @@ var historyChart = echarts.init(document.getElementById('historyChart'));
 const dateStrings = getPastDateStrings(35); // 30 days plus 5 days of prediction data
 const historicalUrls = dateStrings.map(date => `${baseUrl}/prediction_snapshot_${date}.json`);
 
+// Variables to store original chart data
+let originalData = [];
+let currentAveragePeriod = 0;
+let sahkotinOriginalData = [];
+
+// ==========================================================================
+// Toggle button event handlers
+// ==========================================================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleButtons = document.querySelectorAll('.history-toggle button');
+    
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            toggleButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Get the moving average period from data attribute
+            currentAveragePeriod = parseInt(this.getAttribute('data-period'));
+            
+            // Apply moving average to chart data
+            applyMovingAverageToChart(currentAveragePeriod);
+        });
+    });
+});
+
+// Function to apply moving average to all series in the chart
+function applyMovingAverageToChart(hours) {
+    // Skip if no original data available yet
+    if (!originalData.length) return;
+
+    const option = historyChart.getOption();
+    
+    // Apply moving average to each series except the last one (which is the marker)
+    for (let i = 0; i < originalData.length; i++) {
+        // Apply moving average to the series data
+        const averagedData = calculateMovingAverage(originalData[i], hours);
+        
+        // Update the series data in the chart
+        if (option.series[i]) {
+            option.series[i].data = averagedData;
+        }
+    }
+    
+    // Apply moving average specifically to the Nordpool series
+    const seriesIndex = option.series.findIndex(s => s.name === 'Nordpool');
+    if (seriesIndex >= 0) {
+        const averagedData = calculateMovingAverage(sahkotinOriginalData, hours);
+        option.series[seriesIndex].data = averagedData;
+    }
+
+    // Update the chart with the new data
+    historyChart.setOption(option, false, false);
+}
+
 // ==========================================================================
 // Historical data fetching and processing
 // ==========================================================================
@@ -646,10 +734,14 @@ function setupHistoryChart(data) {
 
     historyChart.setOption(historyChartOptions);
     console.log("setupHistoryChart found", series.length, "snapshots");
+    originalData = cleanedData.map(seriesData => seriesData.map(item => [item[0], item[1]]));
     return series.length;
 }
 
 function addSahkotinDataToChart(sahkotinData) {
+    // Store original data for rolling average calculations
+    const originalSahkotinData = [...sahkotinData];
+    
     const sahkotinSeries = {
         name: 'Nordpool',
         type: 'line',
@@ -667,6 +759,23 @@ function addSahkotinDataToChart(sahkotinData) {
     historyChart.setOption({
         series: historyChart.getOption().series.concat(sahkotinSeries)
     });
+    
+    // Apply the current average period if one is already selected
+    if (currentAveragePeriod > 0) {
+        // Find the Nordpool series in the chart options
+        const options = historyChart.getOption();
+        const seriesIndex = options.series.findIndex(s => s.name === 'Nordpool');
+        
+        if (seriesIndex >= 0) {
+            // Apply moving average only to the Nordpool series
+            const averagedData = calculateMovingAverage(originalSahkotinData, currentAveragePeriod);
+            options.series[seriesIndex].data = averagedData;
+            historyChart.setOption(options, false, false);
+        }
+    }
+    
+    // Store the original Sähkötin data for future toggle operations
+    sahkotinOriginalData = originalSahkotinData;
 }
 
 //#region sahkotin

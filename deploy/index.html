@@ -33,6 +33,11 @@
         <p>Graafi kertoo, mitä Sähkövatkain on ennustanut viime aikoina. Isoja mielenmuutoksia voi tulla mm. jos sääennuste on muuttunut paljon, jos tulee odottamaton tuotantokatko, jos hintahäiriön syy on historiallisesti uudenlainen tai harvinainen, tai jos ennustemallia on hiljattain päivitetty. Kts. muutosloki alla.</p>
         <p>Oranssi viiva on lopullinen Nordpool-hinta. Ohenevat siniset viivat ovat ennusteparvi aiemmilta päiviltä, ennen kuin Nordpool-hinta oli tiedossa.</p>
         <div id="historyChart" style="width: 100%; max-width: 920px; margin: auto; box-sizing: border-box; padding-top: 32px;"></div>
+        <div class="history-toggle">
+            <button class="active" data-period="0">1h</button>
+            <button data-period="6">6h</button>
+            <button data-period="12">12h</button>
+        </div>
         <h1 style="padding-top: 32px">Mitä ennuste huomioi?</h1>
         <p>Kyseessä on koneoppimismalli, joka hakee korrelaatioita eri muuttujien välillä ja oppii, millaiseen hintaan kukin yhdistelmä historian perusteella johtaa. Tämä ei siis ole aikasarjaennuste, vaan jokainen tunti saa arvonsa itsenäisesti näiden tietojen perusteella:</p>
         <ul>
@@ -73,7 +78,7 @@
         <p><strong>24.12.2024:</strong></p>
         <p>Tieto <a href="https://pyhäpäivä.fi" target="_blank">juhlapyhistä</a> on nyt mukana mallin opetuksessa.</p>
         <p><strong>25.12.2024:</strong></p>
-        <p>Historiagraafi ei enää näytä sellaisia vanhoja ennusteita, joiden kohdalla huomisen toteutuva Nordpool-hinta oli jo mallin opittavissa. Historiaa pidennetty 30 päivään.</p>
+        <p>Historiograafi ei enää näytä sellaisia vanhoja ennusteita, joiden kohdalla huomisen toteutuva Nordpool-hinta oli jo mallin opittavissa. Historiaa pidennetty 30 päivään.</p>
         <p><strong>30.12.2024:</strong></p>
         <p>Malli arvioi nyt <a href="https://open-meteo.com/en/docs" target="_blank">aurinkoenergian</a> vaikutuksen hintaan. Tuulivoimaennuste käyttää jälleen XGBoostia.</p>
         <p><strong>4.1.2025:</strong></p>

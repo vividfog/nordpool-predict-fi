@@ -33,6 +33,11 @@
         <p>The graph shows a 30-day history of previous forecasts. Major changes of mind can occur, for example, if the weather forecast changes significantly, if there is an unexpected production outage, if the cause of the price disturbance is historically new or rare, or if the model has been recently updated. See the change log below.</p>
         <p>The orange line is the final Nordpool price. The fading blue lines are the forecast ensemble from previous days, before the Nordpool price was known.</p>
         <div id="historyChart" style="width: 100%; max-width: 920px; margin: auto; box-sizing: border-box; padding-top: 32px;"></div>
+        <div class="history-toggle">
+            <button class="active" data-period="0">1h</button>
+            <button data-period="6">6h</button>
+            <button data-period="12">12h</button>
+        </div>
         <h1 style="padding-top: 32px">What does the forecast consider?</h1>
         <p>This is a machine learning model that seeks correlations between different variables and learns what price each combination leads to based on history. This is not a time series forecast, but each hour gets its value independently based on this data:</p>
         <ul>
