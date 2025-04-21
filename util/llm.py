@@ -61,7 +61,7 @@ def spike_price_risk(df):
 
     return df
 
-# region data prep
+# region df
 def narrate_prediction(deploy=False, commit=False):
     """Fetch prediction data from the database and narrate it using an LLM."""
     helsinki_tz = pytz.timezone("Europe/Helsinki")
@@ -169,7 +169,7 @@ def narrate_prediction(deploy=False, commit=False):
 
     return narrative
 
-# region generate
+# region generate()
 def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False):
     # Load nuclear outage data
     try:
@@ -195,6 +195,7 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
     prompt = "<data>\n"
     prompt += f"  Olet osa Sähkövatkain-nimistä verkkopalvelua, joka arvioi pörssisähkön hintaa noin viikon verran eteenpäin. Nordpool-sähköpörssin verolliset Suomen markkinan hintaennusteet lähipäiville ovat seuraavat (viimeksi päivitetty: {weekday_today.lower()}na klo {time_now}).\n"
 
+    # region _hourly
     prompt += f"  <tuntikohtainen_ennuste huom='Yksityiskohdat tiedoksi sinulle — mutta huomaathan että lopulliseen artikkeliin tulee *päiväkohtainen* ennuste, ei tuntikohtainen. Kts. alempana.'>\n"
     for date_value, group_df in df_intraday.groupby("date", sort=False):
         # Pick the weekday name (e.g. 'Maanantai') from the first row in this group
@@ -228,6 +229,7 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
     now_hel = datetime.datetime.now(helsinki_tz)
     tomorrow_date = (now_hel + datetime.timedelta(days=1)).date()
 
+    # region _daily
     # Daily rows
     for weekday, row in df_daily.iterrows():
         weekday = weekday.lower()
@@ -272,6 +274,7 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
             else:
                 prompt += f"  - Hintapiikkien riski tälle päivälle on niin pieni, että älä puhu hintapiikeistä artikkelissa ollenkaan, kun puhut {weekday}sta.\n\n"
 
+    # region _nuclear
     # Add nuclear outages if any
     if NUCLEAR_OUTAGE_DATA:
         nuclear_outage_section = "  **Ydinvoimalat**\n"
@@ -321,6 +324,7 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
 
     messages = [{"role": "user", "content": prompt}]
 
+    # region _llm()
     def llm_call(messages):
 
         # Avoid rate limits on free APIs
@@ -348,6 +352,7 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
     narration = llm_call(messages)
     messages.append({"role": "assistant", "content": narration})
 
+    # region _ingress
     messages.append(
         {
             "role": "user",
@@ -375,7 +380,7 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
     narration_en = llm_call(messages)
     messages.append({"role": "assistant", "content": narration_en})
 
-    # region commit
+    # region _commit
     def archive(content, filename, folders, is_json=True, indent=2):
         """Save content as JSON or markdown to specified folders."""
         for folder in folders:
