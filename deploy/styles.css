@@ -93,9 +93,8 @@ body {
 .history-toggle {
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
     max-width: 920px;
-    margin: 0 auto 10px auto;
+    margin: 48px auto 0px auto;
 }
 
 .history-toggle button {

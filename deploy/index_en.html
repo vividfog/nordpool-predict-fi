@@ -32,12 +32,12 @@
         <h1>Historical forecasts</h1>
         <p>The graph shows a 30-day history of previous forecasts. Major changes of mind can occur, for example, if the weather forecast changes significantly, if there is an unexpected production outage, if the cause of the price disturbance is historically new or rare, or if the model has been recently updated. See the change log below.</p>
         <p>The orange line is the final Nordpool price. The fading blue lines are the forecast ensemble from previous days, before the Nordpool price was known.</p>
-        <div id="historyChart" style="width: 100%; max-width: 920px; margin: auto; box-sizing: border-box; padding-top: 32px;"></div>
         <div class="history-toggle">
-            <button class="active" data-period="0">1 h</button>
-            <button data-period="3">avg 3 h</button>
+            <button data-period="0">1 h</button>
+            <button class="active" data-period="3">avg 3 h</button>
             <button data-period="6">avg 6 h</button>
         </div>
+        <div id="historyChart" style="width: 100%; max-width: 920px; margin: auto; box-sizing: border-box;"></div>
         <h1 style="padding-top: 32px">What does the forecast consider?</h1>
         <p>This is a machine learning model that seeks correlations between different variables and learns what price each combination leads to based on history. This is not a time series forecast, but each hour gets its value independently based on this data:</p>
         <ul>
@@ -92,8 +92,8 @@
         <p>The main page is now available in <a href="index.html">Finnish</a> and <a href="index_en.html">English</a>. A Markdown-formatted version can be found on GitHub <a href="https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/refs/heads/main/deploy/narration.md" target="_blank">in Finnish</a> and <a href="https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/refs/heads/main/deploy/narration_en.md" target="_blank">in English</a>. See also the bilingual <a href="https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/refs/heads/main/deploy/narration_full.json" target="_blank">JSON version</a>. These may be useful, for example, for those building home automation systems. The DeepSeek API has recently been quite <a href="https://status.deepseek.com" target="_blank">jammed</a>, and it doesn't always agree to generate texts. If this situation continues for a longer period, we'll revert to the GPT-4o model, although in that case we'll likely only provide a single language version.</p>
         <p><strong>February 5, 2025:</strong></p>
         <p>Language model selection may now change dynamically based on model availability.</p>
-        <p><strong>April 20, 2025:</strong></p>
-        <p>Wind power chart now visualizes the possible correlation between wind power and price. History chart can now visualize 3 and 6 hour mean price values.</p>        
+        <p><strong>April 25, 2025:</strong></p>
+        <p>Wind power chart now visualizes the possible correlation between wind power and price. History chart can now visualize 3 and 6 hour mean price values, and has a zoom control.</p>        
         <p><strong>Planned:</strong></p>
         <p>More accurate prediction of hourly price volatility may require its own model and method in addition to/on top of the current one. The current method works better for estimating the daily price level than the dynamics of individual peak prices in the morning and evening. However, the language model already comments on price spikes if the conditions for them exist, e.g., high predicted price and low wind at the same time.</p>
         <h1>What does the forecast not consider?</h1>

@@ -375,7 +375,7 @@ Promise.all([
                     barWidth: '40%',
                     data: sahkotinSeriesData,
                     symbol: 'none',
-                    step: 'middle',
+                    step: 'start',
                     opacity: 1.0
                 },
                 {
@@ -586,7 +586,7 @@ Promise.all([
                         type: 'solid',
                         width: 1.5
                     },
-                    step: 'end',
+                    step: 'start',
                     areaStyle: { 
                         color: 'rgba(135, 206, 250, 0.2)' // skyblue
                     },
@@ -615,7 +615,7 @@ const historicalUrls = dateStrings.map(date => `${baseUrl}/prediction_snapshot_$
 
 // Variables to store original chart data
 let originalData = [];
-let currentAveragePeriod = 0;
+let currentAveragePeriod = 3;
 let sahkotinOriginalData = [];
 
 // ==========================================================================
@@ -748,19 +748,25 @@ function setupHistoryChart(data) {
     const cleanedData = data.filter(item => item !== null).slice(1);
     console.log("setupHistoryChart found these snapshots: ", cleanedData);
 
-    const series = cleanedData.map((seriesData, index) => ({
-        name: index === 0 ? "Uusin" : `${0 - index} pv sitten`,
-        type: 'line',
-        data: seriesData.map(item => [item[0], item[1]]),
-        symbol: 'none',
-        step: 'start',  // Use step interpolation with 'start' style
-        lineStyle: {
-            width: index === 0 ? 1.5 : 1,
-            type: index === 0 ? 'solid' : 'dotted'
-        },
-        color: 'dodgerblue',
-        opacity: Math.pow(0.95, index)-.1
-    }));
+    const series = cleanedData.map((seriesData, index) => {
+        // Calculate opacity with a more dramatic fade for older predictions
+        // const opacityValue = index === 0 ? 0.9 : Math.max(0.5, 0.95 - (index * 0.1));
+        const opacityValue = index === 0 ? 0.8 : 0.15;
+        
+        return {
+            name: index === 0 ? "Uusin" : `${0 - index} pv sitten`,
+            type: 'line',
+            data: seriesData.map(item => [item[0], item[1]]),
+            symbol: 'none',
+            step: 'start',
+            lineStyle: {
+                width: index === 0 ? 2 : 2,
+                type: index === 0 ? 'solid' : 'solid',
+                opacity: opacityValue
+            },
+            color: 'dodgerblue'
+        };
+    });
 
     // Add a separate series item for the markLine
     series.push({
@@ -775,6 +781,24 @@ function setupHistoryChart(data) {
         xAxisFormatter: createXAxisFormatter(true),
         series: series
     });
+    
+    // Add zoom controls to the history chart
+    historyChartOptions.dataZoom = [
+        {
+            type: 'slider',
+            xAxisIndex: 0,
+            start: 25,
+            end: 100,
+            bottom: 10,
+            height: 30
+        },
+        {
+            type: 'inside',
+            xAxisIndex: 0,
+            start: 25,
+            end: 100
+        }
+    ];
 
     historyChart.setOption(historyChartOptions);
     console.log("setupHistoryChart found", series.length, "snapshots");
@@ -791,13 +815,13 @@ function addSahkotinDataToChart(sahkotinData) {
         type: 'line',
         data: sahkotinData,
         symbol: 'none',
-        step: 'start',  // Use step interpolation with 'start' style
+        step: 'start',
         lineStyle: {
             type: 'solid',
-            width: 1.5
+            width: 2,
+            opacity: 0.9
         },
         color: 'orange',
-        opacity: 0.9
     };
     
     historyChart.setOption({
@@ -844,6 +868,9 @@ function setupSahkotinData() {
         .then(csvData => {
             const sahkotinData = processSahkotinCsv(csvData);
             addSahkotinDataToChart(sahkotinData);
+            
+            // Apply the default binning after adding Sahkotin data
+            applyMovingAverageToChart(currentAveragePeriod);
         })
         .catch(error => console.error("Error fetching Sähkötin data:", error));
 }
