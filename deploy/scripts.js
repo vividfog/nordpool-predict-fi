@@ -349,33 +349,58 @@ Promise.all([
                     // For realized price
                     show: false,
                     seriesIndex: [1],
-                    pieces: [{ lte: 10000, color: 'limegreen' }],
+                    top: 50,
+                    right: 10,
+                    pieces: [
+                        { lte: 5, color: 'lime' },
+                        { gt: 5, lte: 10, color: 'limegreen' },
+                        { gt: 10, lte: 15, color: 'gold' },
+                        { gt: 15, lte: 20, color: 'darkorange' },
+                        { gt: 20, lte: 30, color: 'red' },
+                        { gt: 30, color: 'darkred' }
+                    ],
                     outOfRange: { color: '#999' }
                 },
                 {
                     // For predicted price
                     show: false,
                     seriesIndex: [0],
-                    pieces: [{ lte: 10000, color: 'dodgerblue' }],
+                    top: 50,
+                    right: 10,
+                    pieces: [
+                        { lte: 5, color: 'skyblue' },
+                        { gt: 5, lte: 10, color: 'deepskyblue' },
+                        { gt: 10, lte: 15, color: 'dodgerblue' },
+                        { gt: 15, lte: 20, color: 'blue' },
+                        { gt: 20, lte: 30, color: 'darkblue' },
+                        { gt: 30, color: 'midnightblue' }
+                    ],
                     outOfRange: { color: '#999' }
                 }
             ],
             series: [
                 {
                     name: 'Ennuste',
-                    type: 'bar',
-                    barWidth: '40%',
+                    type: 'line',
                     data: npfSeriesData,
                     symbol: 'none',
+                    step: 'start',
+                    lineStyle: {
+                        width: 2,
+                        type: 'solid'
+                    },
                     opacity: 1.0
                 },
                 {
                     name: 'Nordpool',
-                    type: 'bar',
-                    barWidth: '40%',
+                    type: 'line',
                     data: sahkotinSeriesData,
                     symbol: 'none',
                     step: 'start',
+                    lineStyle: {
+                        width: 2,
+                        type: 'solid'
+                    },
                     opacity: 1.0
                 },
                 {
