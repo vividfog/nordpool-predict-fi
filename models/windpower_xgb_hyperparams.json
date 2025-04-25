@@ -1,13 +1,14 @@
 {
-    "max_depth": 6,
-    "n_estimators": 11686,
-    "learning_rate": 0.013570984895073438,
-    "subsample": 0.3316427519913445,
-    "colsample_bytree": 0.827599041831827,
-    "gamma": 0.05284185782198264,
-    "reg_alpha": 0.16692537415276604,
-    "reg_lambda": 0.908763441001726,
-    "random_state": 42,
-    "test_size": 0.1,
-    "early_stopping_rounds": 50
+  "n_estimators": 10152,
+  "max_depth": 7,
+  "learning_rate": 0.012306686046473433,
+  "subsample": 0.45174366271033056,
+  "colsample_bytree": 0.8487652907358256,
+  "gamma": 0.06459392522812063,
+  "reg_alpha": 0.716917288760144,
+  "reg_lambda": 0.8811717304833411,
+  "random_state": 42,
+  "early_stopping_rounds": 200,
+  "objective": "reg:squarederror",
+  "eval_metric": "rmse"
 }
