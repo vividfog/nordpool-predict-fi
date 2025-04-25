@@ -321,15 +321,20 @@ Promise.all([
             return [parsedTime, parseFloat(price)];
         });
 
-        // No overlap for bar chart experiment
+        // Find the last timestamp in Sähkötin data
         var lastSahkotinTimestamp = Math.max(...sahkotinSeriesData.map(item => item[0]));
         console.log("End of Sähkötin data for today; displaying the Nordpool prediction data from:", 
             new Date(lastSahkotinTimestamp).toString());
+        
+        // Include one hour from the prediction data that overlaps with the last hour of Sähkötin data
+        // to ensure continuity in the chart
+        const oneHourInMilliseconds = 60 * 60 * 1000;
+        const overlapThreshold = lastSahkotinTimestamp - oneHourInMilliseconds;
 
         // Prepare NPF series data
         var npfSeriesData = npfData
             .map(item => [item[0], item[1]])
-            .filter(item => item[0] > lastSahkotinTimestamp);
+            .filter(item => item[0] > overlapThreshold); // Include one overlapping hour
 
         // Debug logs
         npfSeriesData.forEach(item => {
@@ -348,64 +353,99 @@ Promise.all([
                 {
                     // For realized price
                     show: false,
-                    seriesIndex: [1],
+                    seriesIndex: [3],
                     top: 50,
                     right: 10,
                     pieces: [
-                        { lte: 5, color: 'lime' },
-                        { gt: 5, lte: 10, color: 'limegreen' },
-                        { gt: 10, lte: 15, color: 'gold' },
-                        { gt: 15, lte: 20, color: 'darkorange' },
-                        { gt: 20, lte: 30, color: 'red' },
-                        { gt: 30, color: 'darkred' }
+                        { lte: 5, color: 'lime', opacity: 1.0 },
+                        { gt: 5, lte: 10, color: 'limegreen', opacity: 1.0 },
+                        { gt: 10, lte: 15, color: 'gold', opacity: 1.0 },
+                        { gt: 15, lte: 20, color: 'darkorange', opacity: 1.0 },
+                        { gt: 20, lte: 30, color: 'red', opacity: 1.0 },
+                        { gt: 30, color: 'darkred', opacity: 1.0 }
                     ],
-                    outOfRange: { color: '#999' }
+                    outOfRange: { color: '#999', opacity: 1.0 }
                 },
                 {
                     // For predicted price
                     show: false,
-                    seriesIndex: [0],
+                    seriesIndex: [1],
                     top: 50,
                     right: 10,
                     pieces: [
-                        { lte: 5, color: 'skyblue' },
-                        { gt: 5, lte: 10, color: 'deepskyblue' },
-                        { gt: 10, lte: 15, color: 'dodgerblue' },
-                        { gt: 15, lte: 20, color: 'blue' },
-                        { gt: 20, lte: 30, color: 'darkblue' },
-                        { gt: 30, color: 'midnightblue' }
+                        { lte: 5, color: 'skyblue', opacity: 1.0 },
+                        { gt: 5, lte: 10, color: 'deepskyblue', opacity: 1.0 },
+                        { gt: 10, lte: 15, color: 'dodgerblue', opacity: 1.0 },
+                        { gt: 15, lte: 20, color: 'blue', opacity: 1.0 },
+                        { gt: 20, lte: 30, color: 'darkblue', opacity: 1.0 },
+                        { gt: 30, color: 'midnightblue', opacity: 1.0 }
                     ],
-                    outOfRange: { color: '#999' }
+                    outOfRange: { color: '#999', opacity: 1.0 }
                 }
             ],
             series: [
+                {
+                    // Background bar for prediction data
+                    name: 'Ennuste BG',
+                    type: 'bar',
+                    data: npfSeriesData,
+                    barWidth: '40%',
+                    itemStyle: {
+                        color: 'deepskyblue',
+                        opacity: 0.10
+                    },
+                    silent: true,
+                    z: 1,
+                    tooltip: {
+                        show: false
+                    }
+                },
                 {
                     name: 'Ennuste',
                     type: 'line',
                     data: npfSeriesData,
                     symbol: 'none',
-                    step: 'start',
+                    step: 'middle',
                     lineStyle: {
-                        width: 2,
+                        width: 1.5,
                         type: 'solid'
                     },
-                    opacity: 1.0
+                    opacity: 1.0,
+                    z: 3
+                },
+                {
+                    // Background bar for realized price data
+                    name: 'Nordpool BG',
+                    type: 'bar',
+                    data: sahkotinSeriesData,
+                    barWidth: '40%',
+                    itemStyle: {
+                        color: 'lime',
+                        opacity: 0.10
+                    },
+                    silent: true,
+                    z: 1,
+                    tooltip: {
+                        show: false
+                    }
                 },
                 {
                     name: 'Nordpool',
                     type: 'line',
                     data: sahkotinSeriesData,
                     symbol: 'none',
-                    step: 'start',
+                    step: 'middle',
                     lineStyle: {
-                        width: 2,
+                        width: 1.5,
                         type: 'solid'
                     },
-                    opacity: 1.0
+                    opacity: 1.0,
+                    z: 3
                 },
                 {
                     type: 'line',
-                    markLine: createCurrentTimeMarkLine()
+                    markLine: createCurrentTimeMarkLine(),
+                    z: 4
                 }
             ]
         });
@@ -611,7 +651,7 @@ Promise.all([
                         type: 'solid',
                         width: 1.5
                     },
-                    step: 'start',
+                    step: 'middle',
                     areaStyle: { 
                         color: 'rgba(135, 206, 250, 0.2)' // skyblue
                     },
@@ -776,14 +816,14 @@ function setupHistoryChart(data) {
     const series = cleanedData.map((seriesData, index) => {
         // Calculate opacity with a more dramatic fade for older predictions
         // const opacityValue = index === 0 ? 0.9 : Math.max(0.5, 0.95 - (index * 0.1));
-        const opacityValue = index === 0 ? 0.8 : 0.15;
+        const opacityValue = index === 0 ? 0.16 : 0.16;
         
         return {
             name: index === 0 ? "Uusin" : `${0 - index} pv sitten`,
             type: 'line',
             data: seriesData.map(item => [item[0], item[1]]),
             symbol: 'none',
-            step: 'start',
+            step: 'middle',
             lineStyle: {
                 width: index === 0 ? 2 : 2,
                 type: index === 0 ? 'solid' : 'solid',
@@ -840,7 +880,7 @@ function addSahkotinDataToChart(sahkotinData) {
         type: 'line',
         data: sahkotinData,
         symbol: 'none',
-        step: 'start',
+        step: 'middle',
         lineStyle: {
             type: 'solid',
             width: 2,
