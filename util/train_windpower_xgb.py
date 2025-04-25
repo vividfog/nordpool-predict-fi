@@ -97,8 +97,6 @@ def train_windpower_xgb(df: pd.DataFrame):
         logger.error(f"Decoding JSON: {e}", exc_info=True)
         sys.exit(1)
 
-    test_size = hyperparams.get("test_size", 0.1) # Use nearly all data for live training
-
     # logger.info(f"Train model: Preprocessing wind power data")
     X_features, y_target = preprocess_data(df)
 
@@ -107,12 +105,13 @@ def train_windpower_xgb(df: pd.DataFrame):
 
     # logger.info(f"Input data shape: {X_features.shape}, Target shape: {y_target.shape}")
 
-    train_X, test_X, train_y, test_y = train_test_split(X_features, 
-                                                        y_target, 
-                                                        test_size=test_size, 
-                                                        shuffle=True, 
-                                                        random_state=42
-                                                        )
+    train_X, test_X, train_y, test_y = train_test_split(
+        X_features, 
+        y_target, 
+        test_size=0.1, 
+        shuffle=False, 
+        random_state=42
+    )
 
     logger.info(f"Train set: {train_X.shape}, Test set: {test_X.shape}")
     
@@ -126,13 +125,27 @@ def train_windpower_xgb(df: pd.DataFrame):
     # Train the model
     logger.info(f"XGBoost for wind power: ")
     logger.info(f", ".join(f"{k}={v}" for k, v in hyperparams.items()))
-    xgb_model = xgb.XGBRegressor(**{k: v for k, v in hyperparams.items() if k not in ["test_size"]})
 
-    xgb_model.fit(
-        train_X, train_y,
-        eval_set=[(test_X, test_y)],
-        verbose=500
-    )
+    # First, create a model with early stopping to find the optimal number of trees
+    logger.info(f"Fitting model with early stopping...")
+    early_stopping_model = xgb.XGBRegressor(**hyperparams)
+    early_stopping_model.fit(train_X, train_y, eval_set=[(test_X, test_y)], verbose=500)
 
-    # logger.info(f"Wind power model training complete.")
+    # Get the best iteration from early stopping
+    best_iteration = early_stopping_model.best_iteration
+    logger.info(f"Best iteration from early stopping: {best_iteration}")
+
+    # Create a copy of hyperparams without early_stopping_rounds for the final fit
+    training_params = {k: v for k, v in hyperparams.items() if k not in ["test_size", "early_stopping_rounds"]}
+
+    # Set the optimal number of trees and refit on all data without early stopping
+    final_model = xgb.XGBRegressor(**training_params)
+    final_model.set_params(n_estimators=best_iteration)
+    logger.info(f"Refitting model on all data with optimal n_estimators={best_iteration}...")
+    final_model.fit(X_features, y_target, verbose=500)
+
+    # Use the final model (trained on all data) for further evaluation
+    xgb_model = final_model
+
+    logger.info(f"Wind power model training complete.")
     return xgb_model

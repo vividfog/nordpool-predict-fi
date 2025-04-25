@@ -53,9 +53,9 @@ def train_model(df, fmisid_ws, fmisid_t):
     X_train, X_test, y_train, y_test = train_test_split(
         X_filtered, 
         y_filtered, 
-        test_size=0.10, # Using almost all data, as the model is used instantly and evaluation has its own routines elsewhere
+        test_size=0.10,
         random_state=42,
-        shuffle=True
+        shuffle=False
     )
   
     logger.info(f"Training data shape: {X_train.shape}, sample:")
@@ -68,7 +68,7 @@ def train_model(df, fmisid_ws, fmisid_t):
     # See train_xgb.txt for history of hyperparameter tuning
     # Last update: 2025-01-19
     params = {
-        'early_stopping_rounds': 50,
+        'early_stopping_rounds': 200,
         'objective': 'reg:squarederror',
         'eval_metric': 'rmse',
         'n_estimators': 11655,
@@ -83,11 +83,29 @@ def train_model(df, fmisid_ws, fmisid_t):
     }
 
     # Train the model
-    logger.info(f"XGBoost: ")
+    logger.info(f"XGBoost for price prediction: ")
     logger.info(f", ".join(f"{k}={v}" for k, v in params.items()))
 
-    xgb_model = XGBRegressor(**params)
-    xgb_model.fit(X_train, y_train, eval_set=[(X_test, y_test)], verbose=500)
+    # First, create a model with early stopping to find the optimal number of trees
+    logger.info(f"Fitting model with early stopping...")
+    early_stopping_model = XGBRegressor(**params)
+    early_stopping_model.fit(X_train, y_train, eval_set=[(X_test, y_test)], verbose=500)
+    
+    # Get the best iteration from early stopping
+    best_iteration = early_stopping_model.best_iteration
+    logger.info(f"Best iteration from early stopping: {best_iteration}")
+    
+    # Create a copy of params without early_stopping_rounds for the final fit
+    training_params = {k: v for k, v in params.items() if k != 'early_stopping_rounds'}
+    
+    # Set the optimal number of trees and refit on all data without early stopping
+    final_model = XGBRegressor(**training_params)
+    final_model.set_params(n_estimators=best_iteration)
+    logger.info(f"Refitting model on all data with optimal n_estimators={best_iteration}...")
+    final_model.fit(X_filtered, y_filtered, verbose=500)
+    
+    # Use the final model (trained on all data) for further evaluation
+    xgb_model = final_model
 
     # SHAP analysis
     # logger.info(f"SHAP feature importances (Mean Absolute SHAP Values per Feature):")
