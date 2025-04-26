@@ -144,7 +144,9 @@ Top 10 Feature Importance for XGBoost:
 29         t_101673    0.034676
 Best Parameters found for XGBoost: {'n_estimators': 10154, 'max_depth': 7, 'learning_rate': 0.008926322040774757, 'subsample': 0.6367540027840868, 'colsample_bytree': 0.7606764054526783, 'gamma': 0.05918514181937828, 'reg_alpha': 4.077909792951195, 'reg_lambda': 0.523842297681886}
 
+---
 2025-01-19: With WS columns:
+
      Model Performance Comparison - Test Set Metrics
 ┏━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━┓
 ┃ Model   ┃    MAE ┃    MSE ┃   RMSE ┃     R² ┃   SMAPE ┃
@@ -178,3 +180,39 @@ Top 10 Feature Importance for XGBoost:
 10      ws_mean    0.032043
 
 Best Parameters found for XGBoost: {'n_estimators': 11655, 'max_depth': 6, 'learning_rate': 0.012158906047644169, 'subsample': 0.6717186457667352, 'colsample_bytree': 0.5938032371628845, 'gamma': 0.02297259369577767, 'reg_alpha': 1.4624622196040324, 'reg_lambda': 0.09870580997491653}
+
+---
+2025-04-26: With more data:
+
+     Model Performance Comparison - Test Set Metrics
+┏━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━┓
+┃ Model   ┃    MAE ┃    MSE ┃   RMSE ┃     R² ┃   SMAPE ┃
+┡━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━┩
+│ XGBoost │ 1.1392 │ 7.1008 │ 2.6647 │ 0.9066 │ 41.2635 │
+└─────────┴────────┴────────┴────────┴────────┴─────────┘
+              5-Fold Cross-Validation Results
+┏━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┓
+┃ Model   ┃ CV MAE ┃ CV MSE ┃ CV RMSE ┃  CV R² ┃ CV SMAPE ┃
+┡━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━┩
+│ XGBoost │ 1.1939 │ 5.6315 │  2.3731 │ 0.8909 │  43.1443 │
+└─────────┴────────┴────────┴─────────┴────────┴──────────┘
+                      Autocorrelation Analysis
+┏━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
+┃ Model   ┃ Durbin-Watson ┃ ACF (Lag 1) ┃ ACF (Lag 2) ┃ ACF (Lag 3) ┃
+┡━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
+│ XGBoost │        2.0051 │     -0.0026 │      0.0079 │      0.0161 │
+└─────────┴───────────────┴─────────────┴─────────────┴─────────────┘
+
+Top 10 Feature Importance for XGBoost:
+            Feature  Importance
+17           SE3_FI    0.061874
+8         temp_mean    0.051493
+1   day_of_week_sin    0.043897
+7       WindPowerMW    0.042895
+40         t_101485    0.038139
+18            EE_FI    0.034682
+47         t_101851    0.032829
+10          holiday    0.032328
+39         t_101268    0.031800
+29         t_101673    0.031365
+Best Parameters found for XGBoost: {'n_estimators': 10008, 'max_depth': 8, 'learning_rate': 0.011111581384641077, 'subsample': 0.2595010482958277, 'colsample_bytree': 0.7990130938235963, 'gamma': 0.06644512037658934, 'reg_alpha': 4.000875485782931, 'reg_lambda': 0.33415021423968366}
