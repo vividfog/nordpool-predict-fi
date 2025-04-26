@@ -10,7 +10,7 @@
         },
         {
             "start": "2025-03-01T01:00:00.000Z",
-            "end": "2025-04-26T20:00:00.000Z",
+            "end": "2025-04-27T09:00:00.000Z",
             "avail_qty": 0,
             "nominal_power": 1600.0,
             "production_resource_name": "Olkiluoto 3",
