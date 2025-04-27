@@ -816,7 +816,7 @@ function setupHistoryChart(data) {
     const series = cleanedData.map((seriesData, index) => {
         // Calculate opacity with a more dramatic fade for older predictions
         // const opacityValue = index === 0 ? 0.9 : Math.max(0.5, 0.95 - (index * 0.1));
-        const opacityValue = index === 0 ? 0.16 : 0.16;
+        const opacityValue = index === 0 ? 0.5 : 0.5;
         
         return {
             name: index === 0 ? "Uusin" : `${0 - index} pv sitten`,
@@ -825,8 +825,8 @@ function setupHistoryChart(data) {
             symbol: 'none',
             step: 'middle',
             lineStyle: {
-                width: index === 0 ? 2 : 2,
-                type: index === 0 ? 'solid' : 'solid',
+                width: index === 0 ? 1.5 : 1.5,
+                type: index === 0 ? 'dotted' : 'dotted',
                 opacity: opacityValue
             },
             color: 'dodgerblue'
@@ -883,10 +883,10 @@ function addSahkotinDataToChart(sahkotinData) {
         step: 'middle',
         lineStyle: {
             type: 'solid',
-            width: 2,
-            opacity: 0.9
+            width: 1.5,
+            opacity: 0.6
         },
-        color: 'orange',
+        color: 'limegreen',
     };
     
     historyChart.setOption({
