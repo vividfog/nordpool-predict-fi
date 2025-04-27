@@ -30,6 +30,39 @@ WIND_POWER_FORECAST_DATASET_ID = 245  # Fingrid dataset ID for forecast
 WIND_POWER_CAPACITY_DATASET_ID = 268
 
 def fetch_fingrid_data(fingrid_api_key, dataset_id, start_date, end_date):
+    """
+    Fetches data from the Fingrid API for a specific dataset within a date range.
+    This function makes HTTP requests to the Fingrid API with appropriate authentication
+    and parameters, handling rate limiting and retry logic. It returns the data
+    as a pandas DataFrame with properly formatted datetime index.
+    Parameters
+    ----------
+    fingrid_api_key : str
+        API key for authentication with the Fingrid API
+    dataset_id : int or str
+        ID of the dataset to fetch from Fingrid
+    start_date : str
+        Start date in the format 'YYYY-MM-DD'
+    end_date : str
+        End date in the format 'YYYY-MM-DD'
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame containing the fetched data with 'startTime' column converted to datetime
+    Raises
+    ------
+    ValueError
+        If the response JSON structure is unexpected or cannot be decoded
+    RuntimeError
+        If data fetch fails after 3 attempts
+    requests.exceptions.RequestException
+        If HTTP request fails with non-retryable error
+    Notes
+    -----
+    - Implements basic rate limiting with 3-second delays between requests
+    - Handles 429 (Too Many Requests) responses by respecting the Retry-After header
+    - Attempts up to 3 retries for failed requests
+    """
     api_url = "https://data.fingrid.fi/api/data"
     headers = {'x-api-key': fingrid_api_key}
     params = {
@@ -80,11 +113,37 @@ def fetch_fingrid_data(fingrid_api_key, dataset_id, start_date, end_date):
 
 def update_windpower(df, fingrid_api_key):
     """
-    Updates the input DataFrame with wind power data using:
-      1) Dataset 181 (history data) for past timestamps if available
-      2) Dataset 245 (forecast) for future timestamps
-      3) XGBoost to infer any remaining gaps
-      4) Optionally smooths the XGB output to avoid sudden hour-to-hour jumps
+    Updates the input DataFrame with wind power data from Fingrid API and predictions.
+    This function fetches wind power historical data, forecasts, and capacity from Fingrid's API,
+    then fills any missing values using an XGBoost model trained on historical data.
+    The process follows these steps:
+    1. Fetch historical wind power data (Dataset 181) for the past 7 days
+    2. Fetch wind power forecasts (Dataset 245) for future periods (up to 8 days)
+    3. Fetch wind power capacity data (Dataset 268)
+    4. For timestamps up to current time:
+       - Use historical data where available
+       - Fall back to forecast data where historical data is missing
+    5. For future timestamps:
+       - Use forecast data
+    6. Train an XGBoost model on available historical data
+    7. Use the model to predict any remaining missing wind power values
+    8. Scale predictions based on wind power capacity
+    Parameters:
+    -----------
+    df : pandas.DataFrame
+        Input DataFrame containing timestamp column and weather features
+        (columns starting with 'ws_', 'eu_ws_', and 't_')
+    fingrid_api_key : str
+        API key for accessing Fingrid data
+    Returns:
+    --------
+    pandas.DataFrame
+        Updated DataFrame with wind power data in the 'WindPowerMW' column
+    Raises:
+    -------
+    RuntimeError
+        If no historical wind power data is returned from Fingrid API
+        or if XGBoost model training fails
     """
     
     current_utc = datetime.now(pytz.UTC)
