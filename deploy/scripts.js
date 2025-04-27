@@ -152,7 +152,7 @@ function getLocalizedText(key) {
         'forecast': isEnglish ? 'Forecast' : 'Ennuste',
         'price': isEnglish ? 'Price' : 'Hinta',
         'windPower': isEnglish ? 'Wind Power (GW)' : 'Tuulivoima (GW)',
-        'latest': isEnglish ? 'Latest' : 'Uusin',
+        'latest': isEnglish ? 'Latest' : 'Viimeisin',
         'daysAgo': isEnglish ? 'd ago' : 'pv sitten',
         'weekdays': isEnglish ? 
             ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] : 
@@ -925,7 +925,7 @@ function setupHistoryChart(data) {
         const opacityValue = index === 0 ? 0.5 : 0.5;
         
         return {
-            name: index === 0 ? getLocalizedText('latest') : `${0 - index} ${getLocalizedText('daysAgo')}`,
+            name: index === 0 ? getLocalizedText('latest') : `${index} ${getLocalizedText('daysAgo')}`,
             type: 'line',
             data: seriesData.map(item => [item[0], item[1]]),
             symbol: 'none',
