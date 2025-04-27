@@ -144,6 +144,33 @@ function getTimePrefix() {
     return window.location.pathname.includes('index_en') ? 'at' : 'klo';
 }
 
+// Create vertical gridlines for day or week boundaries
+function createTimeGrids(isWeekOnly = false) {
+    return {
+        xAxis: {
+            splitLine: {
+                show: true,
+                lineStyle: {
+                    color: 'silver',
+                    width: 0.5,
+                    type: 'dashed',
+                    opacity: 0.40
+                },
+                interval: function(index, value) {
+                    const date = new Date(value);
+                    if (isWeekOnly) {
+                        // For weekly grid (Monday), day of week is 1 for Monday
+                        return date.getDay() === 1;
+                    } else {
+                        // For daily grid, hours and minutes should be 0
+                        return date.getHours() === 0 && date.getMinutes() === 0;
+                    }
+                }
+            }
+        }
+    };
+}
+
 function createTooltipFormatter(seriesNameMappings = {}) {
     return function(params) {
         var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
@@ -200,13 +227,14 @@ function createCurrentTimeMarkLine() {
         label: {
             formatter: formatCurrentTimeLabel,
             position: 'end',
-            color: 'DimGray',
+            color: 'Black',
             fontSize: 11
         },
         lineStyle: {
-            type: 'dashed',
-            color: 'LightGray',
-            width: 1
+            type: 'dotted',
+            color: 'rgba(51, 51, 51, 0.9)',
+            width: 2,
+            opacity: 0.5
         },
         data: [{ xAxis: new Date().getTime() }]
     };
@@ -218,7 +246,8 @@ function createCurrentTimeMarkLine() {
 // ==========================================================================
 
 function createBaseChartOptions(config) {
-    return {
+    // Create base options
+    const baseOptions = {
         title: { text: ' ' },
         legend: config.legend || { show: false },
         tooltip: {
@@ -235,6 +264,19 @@ function createBaseChartOptions(config) {
             axisTick: {
                 alignWithLabel: true,
                 interval: 0
+            },
+            splitLine: {
+                show: !config.isHistoryChart, // Show day boundaries for regular charts
+                lineStyle: {
+                    color: 'silver',
+                    width: 0.5,
+                    type: 'dashed',
+                    opacity: 0.40
+                },
+                interval: function(index, value) {
+                    const date = new Date(value);
+                    return date.getHours() === 0 && date.getMinutes() === 0;
+                }
             }
         },
         yAxis: {
@@ -255,6 +297,25 @@ function createBaseChartOptions(config) {
         visualMap: config.visualMap || [],
         series: config.series || []
     };
+
+    // History chart gets week-based grid
+    if (config.isHistoryChart) {
+        baseOptions.xAxis.splitLine = {
+            show: true,
+            lineStyle: {
+                color: 'silver',
+                width: 0.5,
+                type: 'dashed',
+                opacity: 0.40
+            },
+            interval: function(index, value) {
+                const date = new Date(value);
+                return date.getDay() === 1; // Monday
+            }
+        };
+    }
+
+    return baseOptions;
 }
 
 //#region markers
@@ -577,6 +638,19 @@ Promise.all([
                 axisTick: {
                     alignWithLabel: true,
                     interval: 0
+                },
+                splitLine: {
+                    show: true,
+                    lineStyle: {
+                        color: 'silver',
+                        width: 0.5,
+                        type: 'dashed',
+                        opacity: 0.40
+                    },
+                    interval: function(index, value) {
+                        const date = new Date(value);
+                        return date.getHours() === 0 && date.getMinutes() === 0;
+                    }
                 }
             },
             yAxis: [
@@ -858,7 +932,8 @@ function setupHistoryChart(data) {
     const historyChartOptions = createBaseChartOptions({
         tooltipFormatter: createTooltipFormatter(),
         xAxisFormatter: createXAxisFormatter(true),
-        series: series
+        series: series,
+        isHistoryChart: true // Flag to use weekly grid lines
     });
     
     // Add zoom controls to the history chart
