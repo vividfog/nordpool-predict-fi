@@ -47,16 +47,19 @@ function getPastDateStrings(count) {
 }
 
 function formatCurrentTimeLabel() {
-    let currentTime = new Date();
-    let month = currentTime.getMonth() + 1;
-    let day = currentTime.getDate();
-    let hours = currentTime.getHours();
-    let minutes = currentTime.getMinutes();
+    // Use the new utility function
+    const prefix = getTimePrefix();
+
+    const now = new Date();
+    const day = now.getDate();
+    const month = now.getMonth() + 1;
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
 
     hours = hours < 10 ? '0' + hours : hours;
     minutes = minutes < 10 ? '0' + minutes : minutes;
 
-    return day + '.' + month + '. klo ' + hours + ':' + minutes;
+    return `${day}.${month}. ${prefix} ${hours}:${minutes}`;
 }
 
 // Calculate moving average of a time series
@@ -136,6 +139,11 @@ function calculateTimeBins(data, binSizeHours) {
 // Chart construction and formatting utilities
 // ==========================================================================
 
+// Get language-specific time prefix based on current pathname
+function getTimePrefix() {
+    return window.location.pathname.includes('index_en') ? 'at' : 'klo';
+}
+
 function createTooltipFormatter(seriesNameMappings = {}) {
     return function(params) {
         var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
@@ -147,7 +155,9 @@ function createTooltipFormatter(seriesNameMappings = {}) {
         var hours = ("0" + date.getHours()).slice(-2);
         var minutes = ("0" + date.getMinutes()).slice(-2);
         
-        var formattedDateString = `${weekday} ${day}.${month}. klo ${hours}:${minutes}`;
+        // Use dynamic time prefix
+        var timePrefix = getTimePrefix();
+        var formattedDateString = `${weekday} ${day}.${month}. ${timePrefix} ${hours}:${minutes}`;
         var result = formattedDateString + '<br/>';
         
         // Sort params to show Nordpool data first if it exists
@@ -189,12 +199,14 @@ function createCurrentTimeMarkLine() {
         symbol: 'none',
         label: {
             formatter: formatCurrentTimeLabel,
-            position: 'end'
+            position: 'end',
+            color: 'DimGray',
+            fontSize: 11
         },
         lineStyle: {
-            type: 'dotted',
-            color: 'crimson',
-            width: 1.5
+            type: 'dashed',
+            color: 'LightGray',
+            width: 1
         },
         data: [{ xAxis: new Date().getTime() }]
     };
@@ -534,7 +546,9 @@ Promise.all([
                     var hours = ("0" + date.getHours()).slice(-2);
                     var minutes = ("0" + date.getMinutes()).slice(-2);
                     
-                    var formattedDateString = `${weekday} ${day}.${month}. klo ${hours}:${minutes}`;
+                    // Use dynamic time prefix
+                    var timePrefix = getTimePrefix();
+                    var formattedDateString = `${weekday} ${day}.${month}. ${timePrefix} ${hours}:${minutes}`;
                     var result = formattedDateString + '<br/>';
                     
                     params.forEach(function(item) {
