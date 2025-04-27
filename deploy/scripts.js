@@ -144,6 +144,24 @@ function getTimePrefix() {
     return window.location.pathname.includes('index_en') ? 'at' : 'klo';
 }
 
+// Get localized text based on current pathname
+function getLocalizedText(key) {
+    const isEnglish = window.location.pathname.includes('index_en');
+    
+    const translations = {
+        'forecast': isEnglish ? 'Forecast' : 'Ennuste',
+        'price': isEnglish ? 'Price' : 'Hinta',
+        'windPower': isEnglish ? 'Wind Power (GW)' : 'Tuulivoima (GW)',
+        'latest': isEnglish ? 'Latest' : 'Uusin',
+        'daysAgo': isEnglish ? 'd ago' : 'pv sitten',
+        'weekdays': isEnglish ? 
+            ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] : 
+            ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la']
+    };
+    
+    return translations[key] || key;
+}
+
 // Create vertical gridlines for day or week boundaries
 function createTimeGrids(isWeekOnly = false) {
     return {
@@ -173,7 +191,7 @@ function createTimeGrids(isWeekOnly = false) {
 
 function createTooltipFormatter(seriesNameMappings = {}) {
     return function(params) {
-        var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
+        var weekdays = getLocalizedText('weekdays');
         var date = new Date(params[0].axisValue);
         
         var weekday = weekdays[date.getDay()];
@@ -209,7 +227,7 @@ function createTooltipFormatter(seriesNameMappings = {}) {
 function createXAxisFormatter(showFullDate = false) {
     return function(value) {
         var date = new Date(value);
-        var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
+        var weekdays = getLocalizedText('weekdays');
         var weekday = weekdays[date.getDay()];
         
         if (showFullDate) {
@@ -418,7 +436,7 @@ Promise.all([
         // Create chart options
         const chartOptions = createBaseChartOptions({
             legend: {
-                data: ['Nordpool', 'Ennuste'],
+                data: ['Nordpool', getLocalizedText('forecast')],
                 right: 16
             },
             tooltipFormatter: createTooltipFormatter(),
@@ -474,7 +492,7 @@ Promise.all([
                     }
                 },
                 {
-                    name: 'Ennuste',
+                    name: getLocalizedText('forecast'),
                     type: 'line',
                     data: npfSeriesData,
                     symbol: 'none',
@@ -598,7 +616,7 @@ Promise.all([
             tooltip: {
                 trigger: 'axis',
                 formatter: function(params) {
-                    var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
+                    var weekdays = getLocalizedText('weekdays');
                     var date = new Date(params[0].axisValue);
                     
                     var weekday = weekdays[date.getDay()];
@@ -616,7 +634,7 @@ Promise.all([
                         if (item.seriesType !== 'line' && item.seriesType !== 'bar') return;
                         
                         var valueRounded = item.value[1] !== undefined ? item.value[1].toFixed(1) : '';
-                        var unitLabel = item.seriesName === 'Tuulivoima (GW)' ? 'GW' : '¢/kWh';
+                        var unitLabel = item.seriesName === getLocalizedText('windPower') ? 'GW' : '¢/kWh';
                         result += item.marker + " " + item.seriesName + ': ' + valueRounded + ' ' + unitLabel + '<br/>';
                     });
                     
@@ -630,7 +648,7 @@ Promise.all([
                     interval: 0,
                     formatter: function(value) {
                         var date = new Date(value);
-                        var weekdays = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
+                        var weekdays = getLocalizedText('weekdays');
                         var weekday = weekdays[date.getDay()];
                         return weekday;
                     }
@@ -720,7 +738,7 @@ Promise.all([
             ],
             series: [
                 {
-                    name: 'Hinta',
+                    name: getLocalizedText('price'),
                     type: 'bar',
                     barWidth: '40%',
                     data: combinedPriceData,
@@ -731,7 +749,7 @@ Promise.all([
                     }
                 },
                 {
-                    name: 'Tuulivoima (GW)',
+                    name: getLocalizedText('windPower'),
                     type: 'line',
                     data: windPowerSeriesData,
                     symbol: 'none',
@@ -907,7 +925,7 @@ function setupHistoryChart(data) {
         const opacityValue = index === 0 ? 0.5 : 0.5;
         
         return {
-            name: index === 0 ? "Uusin" : `${0 - index} pv sitten`,
+            name: index === 0 ? getLocalizedText('latest') : `${0 - index} ${getLocalizedText('daysAgo')}`,
             type: 'line',
             data: seriesData.map(item => [item[0], item[1]]),
             symbol: 'none',
