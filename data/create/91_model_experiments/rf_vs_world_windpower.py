@@ -60,7 +60,7 @@ from rich.table import Table
 from sklearn.impute import SimpleImputer
 from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from sklearn.model_selection import train_test_split, KFold
+from sklearn.model_selection import train_test_split, TimeSeriesSplit
 from xgboost import XGBRegressor
 from statsmodels.stats.stattools import durbin_watson
 from statsmodels.tsa.stattools import acf
@@ -105,6 +105,9 @@ def preprocess_data(df: pd.DataFrame, FMISID_WS: List[str]) -> Tuple[pd.DataFram
 
     # Forward fill missing values for WindPowerCapacityMW
     df['WindPowerCapacityMW'] = df['WindPowerCapacityMW'].ffill()
+    
+    # Calculate wind production percentage
+    df['WindProductionPercent'] = df['WindPowerMW'] / df['WindPowerCapacityMW']
 
     # Compute statistical features: Avg_WindSpeed and WindSpeed_Variance
     ws_cols = [f"ws_{id}" for id in FMISID_WS]
@@ -125,7 +128,7 @@ def preprocess_data(df: pd.DataFrame, FMISID_WS: List[str]) -> Tuple[pd.DataFram
     initial_row_count = df.shape[0]
 
     # Drop rows with missing values in features or target variable
-    df = df.dropna(subset=feature_columns + ['WindPowerMW'])
+    df = df.dropna(subset=feature_columns + ['WindProductionPercent'])
     
     # Log the number of rows dropped
     dropped_rows = initial_row_count - df.shape[0]
@@ -133,22 +136,22 @@ def preprocess_data(df: pd.DataFrame, FMISID_WS: List[str]) -> Tuple[pd.DataFram
 
     # Separate features and target variable
     X = df[feature_columns]
-    y = df['WindPowerMW']
+    y = df['WindProductionPercent']
     
     # Log final shapes
     logger.info(f"Preprocessed data shape: X={X.shape}, y={y.shape}")
     return X, y
 
-def cross_validate(model, X, y, model_name, n_splits=5) -> Dict[str, float]:
-    """Perform cross-validation on the model using KFold."""
-    logger.info(f"Starting cross-validation for {model_name}...")
+def cross_validate(model, X, y, model_name, n_splits=3) -> Dict[str, float]:
+    """Perform cross-validation on the model using TimeSeriesSplit."""
+    logger.info(f"Starting time series cross-validation for {model_name} with {n_splits} splits...")
 
-    # Use KFold with shuffle for cross-validation
-    kf = KFold(n_splits=n_splits, shuffle=True, random_state=42) 
+    # Use TimeSeriesSplit which respects the temporal order of observations
+    tscv = TimeSeriesSplit(n_splits=n_splits)
     mae_scores, mse_scores, r2_scores = [], [], []
 
     # Iterate over each fold and calculate metrics
-    for fold, (train_index, test_index) in enumerate(kf.split(X)):
+    for fold, (train_index, test_index) in enumerate(tscv.split(X)):
         X_train, X_val = X.iloc[train_index], X.iloc[test_index]
         y_train, y_val = y.iloc[train_index], y.iloc[test_index]
         model.fit(X_train, y_train)
@@ -156,6 +159,8 @@ def cross_validate(model, X, y, model_name, n_splits=5) -> Dict[str, float]:
         mae_scores.append(mean_absolute_error(y_val, y_pred))
         mse_scores.append(mean_squared_error(y_val, y_pred))
         r2_scores.append(r2_score(y_val, y_pred))
+        
+        logger.info(f"Fold {fold+1}/{n_splits} - MAE: {mae_scores[-1]:.4f}, MSE: {mse_scores[-1]:.4f}, R²: {r2_scores[-1]:.4f}")
 
     # Calculate mean metrics across all folds
     mae = np.mean(mae_scores)
@@ -252,7 +257,7 @@ def display_results(results, mode):
 
     tables = {
         "main": Table(title="Model Performance Comparison - Test Set Metrics"),
-        "cv": Table(title="5-Fold Cross-Validation Results"),
+        "cv": Table(title="3-Fold Cross-Validation Results"),
         "autocorr": Table(title="Autocorrelation Analysis")
     }
 
@@ -350,10 +355,11 @@ def tune_model_with_optuna(model_class, X, y, model_name, timeout, n_trials):
             return float('inf')
 
         model = model_class(**params)
-        inner_kf = KFold(n_splits=3, shuffle=True, random_state=42)
+        # Use TimeSeriesSplit which respects the temporal order of observations
+        tscv = TimeSeriesSplit(n_splits=3)
         cv_scores = []
 
-        for train_idx, val_idx in inner_kf.split(X):
+        for train_idx, val_idx in tscv.split(X):
             X_train, X_val = X.iloc[train_idx], X.iloc[val_idx]
             y_train, y_val = y.iloc[train_idx], y.iloc[val_idx]
 
@@ -415,7 +421,7 @@ def main():
     # Preprocess data using the single list FMISID_WS
     try:
         X, y = preprocess_data(df, FMISID_WS)
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42)
         
         logger.info(
             f"Data splits: "
