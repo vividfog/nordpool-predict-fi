@@ -71,7 +71,7 @@ def train_model(df, fmisid_ws, fmisid_t):
         'early_stopping_rounds': 50,
         'objective': 'reg:squarederror',
         'eval_metric': 'rmse',
-        'n_estimators': 10000,
+        'n_estimators': 11655,
         'max_depth': 6,
         'learning_rate': 0.012158906047644169,
         'subsample': 0.6717186457667352,
