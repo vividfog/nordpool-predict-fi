@@ -44,7 +44,7 @@ def train_model(df, fmisid_ws, fmisid_t):
                      'temp_mean', 'temp_variance', 'holiday', 
                      'sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance',
                      'SE1_FI', 'SE3_FI', 'EE_FI',
-                     'eu_ws_EE01', 'eu_ws_EE02', 'eu_ws_DK01', 'eu_ws_DK02', 'eu_ws_DE01', 'eu_ws_DE02', 'eu_ws_SE01', 'eu_ws_SE02', 'eu_ws_SE03'] + fmisid_t + fmisid_ws]
+                     'eu_ws_EE01', 'eu_ws_EE02', 'eu_ws_DK01', 'eu_ws_DK02', 'eu_ws_DE01', 'eu_ws_DE02', 'eu_ws_SE01', 'eu_ws_SE02', 'eu_ws_SE03', 'volatile_likelihood'] + fmisid_t + fmisid_ws]
 
     # Target variable
     y_filtered = df['Price_cpkWh']
@@ -163,7 +163,7 @@ def train_model(df, fmisid_ws, fmisid_t):
                                         'temp_mean', 'temp_variance', 'holiday',
                                         'sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance',
                                         'SE1_FI', 'SE3_FI', 'EE_FI',
-                                        'eu_ws_EE01', 'eu_ws_EE02', 'eu_ws_DK01', 'eu_ws_DK02', 'eu_ws_DE01', 'eu_ws_DE02', 'eu_ws_SE01', 'eu_ws_SE02', 'eu_ws_SE03'] + fmisid_t + fmisid_ws]
+                                        'eu_ws_EE01', 'eu_ws_EE02', 'eu_ws_DK01', 'eu_ws_DK02', 'eu_ws_DE01', 'eu_ws_DE02', 'eu_ws_SE01', 'eu_ws_SE02', 'eu_ws_SE03', 'volatile_likelihood'] + fmisid_t + fmisid_ws]
         
         y_random_sample_true = random_sample['Price_cpkWh']
         y_random_sample_pred = xgb_model.predict(X_random_sample)

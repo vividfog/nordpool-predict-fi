@@ -41,6 +41,8 @@ The repository remains an evaluation tool for testing new LLMs and what can be d
 
 **Dec 21, 2024:** Wind power model now uses in-memory live training for a hands-free model update just before prediction. For hyperparameter optimization, the older [routines](https://github.com/vividfog/nordpool-predict-fi/tree/main/data/create/91_model_experiments) are still valid.
 
+**May 1, 2025:** Added an experimental price volatility model ([util/volatility_xgb.py](util/volatility_xgb.py)) to identify days with a higher risk of significant price fluctuations. This model is still under development and currently provides an extra input feature for the main price prediction, not a direct scaling factor.
+
 For details, see [CHANGELOG.md](CHANGELOG.md).
 
 ## Installation

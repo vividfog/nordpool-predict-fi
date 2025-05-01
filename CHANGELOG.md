@@ -2,6 +2,11 @@
 
 All notable changes will be documented in this file.
 
+
+## [2025-05-01] - Volatility Model Experiment
+### Added
+- Experimental price volatility model to identify days with higher risk of significant price fluctuations.
+
 ## [2025-04-21] - UI Improvements
 ### Changed
 - Refactored ingress length for better readability

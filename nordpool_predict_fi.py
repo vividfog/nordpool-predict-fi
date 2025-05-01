@@ -15,12 +15,13 @@ from util.entso_e import entso_e_nuclear
 from util.holidays import update_holidays
 from util.sql import db_update, db_query_all
 from util.dataframes import update_df_from_df
+from util.openmeteo_solar import update_solar
 from util.fingrid_nuclear import update_nuclear
 from util.openmeteo_windpower import update_eu_ws
 from util.jao_imports import update_import_capacity
 from util.fmi import update_wind_speed, update_temperature
-from util.openmeteo_solar import update_solar
 from util.eval import create_prediction_snapshot, rotate_snapshots
+from util.volatility_xgb import train_volatility_model, predict_daily_volatility
 from util.logger import logger
 
 # Wind power model choices: nn vs xgb
@@ -32,7 +33,7 @@ from util.fingrid_windpower_xgb import update_windpower
 pd.set_option('display.max_rows', None)
 
 # Set the global print option for float format
-pd.options.display.float_format = '{:.1f}'.format
+pd.options.display.float_format = '{:.2f}'.format
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # Fetch environment variables from .env.local (create yours from .env.template)
@@ -194,29 +195,41 @@ if args.predict:
     # Update df_full with df_recent
     df_full.update(df_recent)
 
+    # Train volatility prediction model
+    volatility_model = train_volatility_model(df_full)
+    
+    # Apply volatile_likelihood to the full data for pricing model training
+    logger.info("Predicting price volatility likelihood for training data")
+    df_full = predict_daily_volatility(df_full, volatility_model)
+
+    # Apply volatile_likelihood to the recent data for price prediction
+    logger.info("Predicting price volatility likelihood for recent/future data")
+    df_recent = predict_daily_volatility(df_recent, volatility_model)
+
     # Reset the index of df_full
     df_full.reset_index(inplace=True)
 
     # region [train]
-    # Prepare df_full for training
+    # Prepare df_full for pricing model training
     logger.debug("Preparing data for training")
     df_full['WindPowerCapacityMW'] = df_full['WindPowerCapacityMW'].ffill()
     df_full['NuclearPowerMW'] = df_full['NuclearPowerMW'].ffill()
     df_full['ImportCapacityMW'] = df_full['ImportCapacityMW'].ffill()
 
-    required_columns = ['timestamp', 'NuclearPowerMW', 'ImportCapacityMW', 'Price_cpkWh', 'WindPowerMW', 'holiday', 'sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance'] + fmisid_t + fmisid_ws
+    required_columns = ['timestamp', 'NuclearPowerMW', 'ImportCapacityMW', 'Price_cpkWh', 'WindPowerMW', 'holiday', 'sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance', 'volatile_likelihood'] + fmisid_t + fmisid_ws
     df_full = df_full.dropna(subset=required_columns)
 
-    # Train the model
+    # Train the pricing model
     logger.debug("Training the model with updated data")
     model_trained = train_model(
         df_full, fmisid_ws=fmisid_ws, fmisid_t=fmisid_t
     )
 
-    # Prepare df_recent for prediction
-    df_recent.reset_index(inplace=True)
-    df_recent.rename(columns={'index': 'timestamp'}, inplace=True)
-    df_recent['timestamp'] = pd.to_datetime(df_recent['timestamp'])
+    # Prepare df_recent for price prediction
+    # Convert timestamp to datetime if it's not already
+    if not pd.api.types.is_datetime64_any_dtype(df_recent['timestamp']):
+        df_recent['timestamp'] = pd.to_datetime(df_recent['timestamp'])
+        
     df_recent['month'] = df_recent['timestamp'].dt.month
     df_recent['day_of_week'] = df_recent['timestamp'].dt.dayofweek + 1
     df_recent['hour'] = df_recent['timestamp'].dt.hour
@@ -240,9 +253,10 @@ if args.predict:
         'temp_mean', 'temp_variance', 'holiday', 
         'sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance',
         'SE1_FI', 'SE3_FI', 'EE_FI',
-        'eu_ws_EE01', 'eu_ws_EE02', 'eu_ws_DK01', 'eu_ws_DK02', 'eu_ws_DE01', 'eu_ws_DE02', 'eu_ws_SE01', 'eu_ws_SE02', 'eu_ws_SE03'
+        'eu_ws_EE01', 'eu_ws_EE02', 'eu_ws_DK01', 'eu_ws_DK02', 'eu_ws_DE01', 'eu_ws_DE02', 'eu_ws_SE01', 'eu_ws_SE02', 'eu_ws_SE03',
+        'volatile_likelihood'
     ] + fmisid_t + fmisid_ws
-
+    
     # Predict the prices
     logger.info("Predicting prices with the trained model")
     price_df = model_trained.predict(df_recent[prediction_features])
@@ -253,7 +267,8 @@ if args.predict:
         'year', 'day_of_week', 'hour', 'month',
         'day_of_week_sin', 'day_of_week_cos',
         'hour_sin', 'hour_cos', 
-        'temp_mean', 'temp_variance'
+        'temp_mean', 'temp_variance',
+        'volatile_likelihood'
     ])
 
     # Describe the predictions

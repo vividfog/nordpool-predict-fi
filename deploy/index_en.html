@@ -94,6 +94,10 @@
         <p>Language model selection may now change dynamically based on model availability.</p>
         <p><strong>April 25, 2025:</strong></p>
         <p>Line chart included in the forecast. Wind power chart now visualizes the possible correlation between wind power and price. History chart can now visualize 3 and 6 hour mean price values, and has a zoom control.</p>        
+        <p><strong>May 1, 2025:</strong></p>
+        <p>Added an experimental price volatility model that identifies days with a higher risk of strong price fluctuations.</p>
+        <p><strong>Planned:</strong></p>
+        <p>More accurate prediction of hourly price volatility requires its own model for scaling price spikes. Initial experiments for this have begun. The model aims to identify so-called spike days, but prices are not yet scaled using this information. Development will continue during May-June.</p>
         <p><strong>Planned:</strong></p>
         <p>More accurate prediction of hourly price volatility may require its own model and method in addition to/on top of the current one. The current method works better for estimating the daily price level than the dynamics of individual peak prices in the morning and evening. However, the language model already comments on price spikes if the conditions for them exist, e.g., high predicted price and low wind at the same time.</p>
         <h1>What does the forecast not consider?</h1>
