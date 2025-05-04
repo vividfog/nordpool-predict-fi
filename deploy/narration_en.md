@@ -1,25 +1,25 @@
-*Electricity market prices are expected to remain mostly moderate next week, though temporary price spikes are possible during individual hours. On Sunday, prices may briefly dip into negative territory, while the most expensive hours of the week are anticipated for early week evenings.*
+*Electricity market prices are expected to remain moderate for most of the coming week, though individual hours may see potential price spikes. Sunday stands out as the clear cheapest day, while low wind power during weekdays temporarily pushes prices higher.*
 
-The forecast was updated on Sunday at 14:24.
+The forecast was updated on Sunday at 21:06.
 
-|              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday**      |      3.5         |   0.4 - 10.8     | 1033 - 4481   |     4.1       |
-| **Tuesday**     |      2.9         |   1.6 - 5.8      | 1391 - 3246   |     3.7       |
-| **Wednesday**   |      3.3         |   1.6 - 5.6      | 1384 - 2819   |     5.1       |
-| **Thursday**    |      4.3         |   2.0 - 7.7      | 1160 - 1411   |     5.0       |
-| **Friday**      |      4.1         |   2.7 - 6.3      | 1115 - 1981   |     5.1       |
-| **Saturday**    |      2.9         |   1.7 - 4.1      | 1201 - 2216   |     5.6       |
-| **Sunday**      |      1.5         |  -0.4 - 4.9      | 1010 - 2410   |     6.7       |
+| **Monday**      |       3.4        |   0.3 - 10.7     | 1000 - 4552   |      4.1      |
+| **Tuesday**     |       2.9        |   1.2 - 5.8      | 1345 - 3197   |      3.7      |
+| **Wednesday**   |       3.1        |   1.8 - 5.2      | 1457 - 2818   |      5.1      |
+| **Thursday**    |       3.7        |   2.2 - 5.7      | 1226 - 1653   |      5.0      |
+| **Friday**      |       4.3        |   2.6 - 6.5      | 1187 - 1768   |      5.1      |
+| **Saturday**    |       3.9        |   2.3 - 5.2      | 1151 - 1732   |      5.6      |
+| **Sunday**      |       1.6        |  -0.1 - 3.2      | 1478 - 2259   |      6.7      |
 
-In the coming week, market electricity prices are expected to remain moderate, with only minor day-to-day fluctuations. The highest average price of the week is forecast for Thursday, when the daily average rises to 4.3 cents per kilowatt-hour. On Friday, the price is also expected to stay just above four cents on average. On these days, wind power production remains at relatively low levels throughout the day, which explains the higher price expectations.
+During the upcoming week, the electricity market price is expected to remain at a moderate level. The most affordable day of the week is anticipated to be Sunday, when the average price is forecast to stay at 1.6 cents per kilowatt-hour. Sunday will also see the only negative hourly price of the week, occurring in the afternoon hours. The impact of the public holiday is clearly visible in the electricity market, as demand is expected to be lower than usual throughout the day.
 
-Monday will see the week’s highest single hourly price, as prices are forecast to surge to 10.8 cents between 8 and 10 pm. This is due to a clear drop in wind power production towards the evening, pushing up electricity prices during these hours. On other days, maximum prices remain much lower, but for Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday, there is a noted risk of temporary price spikes, with rates potentially reaching 10 cents during individual hours. According to the forecast, these possible spikes most often occur during the morning (7–9 am) or evening (6–8 pm) hours.
+The highest expected price peak of the week falls on Monday evening between 20:00 and 22:00, when the price is projected to momentarily reach 10.7 cents. This is due to exceptionally low wind power production during the evening hours, dropping to the day's minimum of 1000 megawatts at the time of the peak price. On other weekdays, wind power remains below 2500 megawatts, which also raises average prices, especially on Thursday, Friday, and Saturday.
 
-The lowest prices of the week are expected for Sunday, which is a public holiday. Demand for electricity is typically lower on such days, and the average price is projected to stay at 1.5 cents. The lowest hourly price on Sunday will even dip into negative values between 4 and 6 pm, when electricity generation momentarily exceeds consumption. Saturday is also among the most affordable days of the week, with the average price remaining below three cents.
+In the middle of the week, from Tuesday to Thursday, the market price is expected to stay between three and four cents on average. On these days, there is also a risk of individual price spikes, when the price could momentarily rise up to 10 cents per kilowatt-hour. Such peaks typically occur in the morning or evening, for example, on Tuesday between 8:00 and 10:00 and on Wednesday between 20:00 and 22:00.
 
-Wind power production will stay somewhat below typical levels throughout the week, especially on Thursday and Friday, when daily variation is also minimal. This is reflected in higher average prices on those days. On Monday, wind production varies widely and influences the hourly price swings.
+On Friday, the average electricity price will climb to the highest of the week at 4.3 cents, as wind power production remains among the lowest for the week. On Saturday, the price level will remain similar, but the risk of higher hourly prices is present, especially in the evening.
 
-Overall, the week is expected to be rather steady for electricity users, with no single exceptionally expensive days anticipated. Price differences are mainly tied to fluctuations in wind power production and possible temporary spikes during individual hours.
+For nuclear power, the Loviisa 2 plant will have a production shortfall from 4 May 2025 at 17:00 to 6 May 2025 at 20:00. Such an outage may affect forecast accuracy, as training data from outage periods is limited.
 
-*Numbers interpreted by gpt-4.1 as your energy watch.* ⚡
+*Numbers processed by gpt-4.1 with a spark.* ⚡
