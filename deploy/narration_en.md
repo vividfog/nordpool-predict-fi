@@ -1,25 +1,25 @@
-*The spot electricity price is expected to remain moderate next week, though individual hours may see potential price spikes, especially during weekday evenings. The public holiday on Sunday is forecast to bring clearly the cheapest electricity of the week.*
+*Electricity market prices are expected to remain moderate next week, although Thursday will see the highest price peak. The public holiday on Sunday is set to bring prices down, but several days could feature unusually large fluctuations during individual hours.*
 
-The forecast was updated on Sunday at 09:06.
+The forecast was last updated on Sunday at 12:06.
 
-|               | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday**     |       2.6        |   0.1 - 5.5      |  934 - 4377   |     4.1       |
-| **Tuesday**    |       2.5        |   1.2 - 4.7      | 1226 - 2939   |     3.7       |
-| **Wednesday**  |       3.0        |   1.2 - 5.6      | 1477 - 2410   |     5.1       |
-| **Thursday**   |       4.0        |   2.2 - 7.4      | 1184 - 1804   |     5.0       |
-| **Friday**     |       3.8        |   1.9 - 6.5      | 1104 - 2014   |     5.1       |
-| **Saturday**   |       2.9        |   1.8 - 4.2      | 1154 - 2262   |     5.6       |
-| **Sunday**     |       1.5        |  -0.8 - 4.8      |  911 - 2293   |     6.9       |
+|            | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|:-----------|:----------------------:|:-------------------:|:----------------------------:|:-------------------------:|
+| **Monday**    | 2.9                   | -0.2 - 5.7           | 1025 - 4480                  | 4.1                      |
+| **Tuesday**   | 2.7                   | 1.2 - 4.7            | 1383 - 3224                  | 3.7                      |
+| **Wednesday** | 3.3                   | 1.5 - 5.7            | 1463 - 2607                  | 5.1                      |
+| **Thursday**  | 4.1                   | 2.4 - 7.7            | 1179 - 1827                  | 5.0                      |
+| **Friday**    | 3.8                   | 2.1 - 6.6            | 1116 - 1991                  | 5.1                      |
+| **Saturday**  | 2.9                   | 1.9 - 4.1            | 1155 - 2157                  | 5.6                      |
+| **Sunday**    | 1.5                   | -0.6 - 4.4           | 961 - 2404                   | 6.7                      |
 
-The outlook for spot electricity prices remains moderate for the upcoming week, with no exceptionally high average daily prices expected. According to the forecast, Sunday will be the most affordable day of the week, with the average price dropping to 1.5 cents per kilowatt-hour and the lowest hourly price even turning negative during the early afternoon between 15:00 and 17:00. Sunday is a public holiday, which typically leads to reduced electricity consumption and supports lower price expectations.
+The electricity price outlook for the week shows a fairly steady trend, but **Thursday** stands out with the highest average price of 4.1 cents per kilowatt hour. Thursday’s maximum price reaches 7.7 cents between 8–10 a.m., while minimum wind power output drops to the lowest level of the week, around 1,200 megawatts during the early morning hours. This explains both the price increase and greater volatility for that day.
 
-The start of the week, Monday and Tuesday, is projected to be comparatively inexpensive, with average daily prices staying below three cents. Hourly prices during these days fluctuate widely, but the highest prices do not exceed the 5.5 cent level. Both days are also forecast to carry a risk of significant price spikes during individual hours, when the price may momentarily rise to as much as 10 cents, for example during the evening peak between 20:00 and 22:00.
+**Friday** and **Wednesday** also see peak hourly prices exceeding six cents, particularly during morning and midday hours, but their daily averages remain below Thursday’s. On Saturday and Tuesday, price levels fluctuate less and stay lower, with no significant high hourly prices anticipated.
 
-On Wednesday and Thursday, the price level is expected to rise somewhat. Thursday stands out as the most expensive day of the week, with the average price reaching four cents and the daily maximum price peaking at 7.4 cents between 09:00 and 11:00. Wind power production will remain clearly lower throughout Thursday compared to the start of the week, explaining the higher peak price. On Friday, the price level remains elevated, with the average daily price at 3.8 cents and the maximum price reaching 6.5 cents during the morning hours between 08:00 and 11:00. These days also come with a risk of price spikes, which could push hourly prices higher than forecast.
+**Monday** features the week’s widest price range: the lowest hourly price dips into negative territory at -0.2 cents during the night, while the evening hours rise to 5.7 cents. The forecast highlights a risk for Monday and Tuesday that, on individual hours, prices could deviate significantly from estimates and reach up to 10 cents, especially during morning and evening peaks.
 
-As the weekend approaches, the price level drops noticeably. On Saturday, the average price falls below three cents, and even the highest hourly prices do not exceed 4.2 cents. On Sunday, the electricity price remains low throughout the day, with the lowest hourly price of the week expected in the afternoon, possibly dipping below zero. The public holiday status of Sunday, combined with reasonably consistent wind power production, supports the expected price decrease.
+The lowest prices of the week are expected on **Sunday**, which is a public holiday. Electricity demand is projected to be low, and the average price is estimated at 1.5 cents. Sunday’s lowest hourly price falls to -0.6 cents during the late morning. There is also a risk of exceptionally high price spikes on Sunday, so individual evening hours from 10 p.m. to midnight could see higher prices than forecast.
 
-Wind power production will stay mostly at a low level throughout the week, especially from Thursday to Friday. As a result, these days will also see the highest peak prices of the week. The risk of price spikes during individual hours is highlighted for each day, and these spikes may occur especially during morning and evening demand peaks.
+Across the week, price levels remain well below five cents throughout the entire period; no day is expensive on average. The greatest variation occurs on Thursday and Friday, when wind power remains below normal and prices temporarily rise, but during the weekend and public holiday, prices are expected to return to low levels.
 
-*Analysis by gpt-4.1 – voltage and vocabulary.* ⚡
+*Forecast prepared by gpt-4.1 at the table.* ⚡
