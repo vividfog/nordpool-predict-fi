@@ -9,20 +9,20 @@
             "availability": 0.0
         },
         {
-            "start": "2025-05-04T14:00:00.000Z",
-            "end": "2025-05-06T17:00:00.000Z",
-            "avail_qty": 3,
-            "nominal_power": 248.0,
-            "production_resource_name": "Loviisa 2",
-            "availability": 0.0120967742
-        },
-        {
             "start": "2025-04-15T15:00:00.000Z",
             "end": "2025-05-25T15:00:00.000Z",
             "avail_qty": 735,
             "nominal_power": 890.0,
             "production_resource_name": "Olkiluoto 2",
             "availability": 0.8258426966
+        },
+        {
+            "start": "2025-05-04T14:00:00.000Z",
+            "end": "2025-05-06T19:00:00.000Z",
+            "avail_qty": 0,
+            "nominal_power": 248.0,
+            "production_resource_name": "Loviisa 2",
+            "availability": 0.0
         }
     ]
 }
