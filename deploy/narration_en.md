@@ -1,27 +1,25 @@
-*Electricity prices for the coming week will vary by day: Monday will see a distinct price peak, while towards the end of the week, prices will dip occasionally into negative territory thanks to strong wind power production. However, price spikes may occur during individual hours, especially early in the week.*
+*Electricity prices on the power exchange will fluctuate significantly in the coming week: early-week price spikes will push Monday's average price upward, but from Wednesday onward, prices will drop to very affordable, even negative levels. The weekend will offer consumers the lowest-priced electricity hours of this period.*
 
-Forecast updated on Saturday at 03:20.
+Forecast updated on Saturday at 09:06.
 
-|        | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 3,2 | -0,0 - 6,4 | 204 - 1153 | 6,7 |
-| **Monday** | 9,6 | 3,2 - 24,4 | 192 - 1010 | 6,6 |
-| **Tuesday** | 3,9 | 0,8 - 10,2 | 671 - 4032 | 6,6 |
-| **Wednesday** | 0,9 | -1,0 - 3,9 | 2471 - 4537 | 6,8 |
-| **Thursday** | 0,8 | -1,0 - 3,7 | 2090 - 4373 | 7,4 |
-| **Friday** | 1,3 | 0,1 - 3,2 | 1542 - 4543 | 6,8 |
-| **Saturday** | 1,5 | -1,0 - 4,2 | 1250 - 3762 | 6,8 |
+|              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:-------------|:-------------------------:|:-------------------:|:-----------------------------:|:----------------------------:|
+| **Sunday**   |            3.5            |      0.0 - 7.5      |           193 - 1146          |              6.7             |
+| **Monday**   |            9.4            |     3.1 - 25.4      |           188 - 1006          |              6.6             |
+| **Tuesday**  |            4.5            |     1.1 - 14.6      |           670 - 4305          |              6.6             |
+| **Wednesday**|            0.5            |     -0.8 - 3.0      |          2371 - 4624          |              6.8             |
+| **Thursday** |            0.6            |     -1.4 - 3.6      |          1761 - 4460          |              7.4             |
+| **Friday**   |            1.4            |     -0.1 - 3.4      |          1700 - 3719          |              6.8             |
+| **Saturday** |            0.1            |     -2.1 - 3.2      |          1214 - 4485          |              6.8             |
 
-Electricity prices for the coming week will vary significantly depending on the day. The general price level will remain affordable, but **Monday** clearly stands out as the most expensive day. Monday's average price will rise to 9,6 cents per kilowatt-hour, and individual hours may peak at over 24 cents. Especially during the morning hours from 8–10 am, electricity prices may climb exceptionally high.
+Electricity prices on the power exchange will vary greatly during the upcoming week. Prices will peak on **Monday**, when the day's average price is expected to be 9.4 ¢/kWh. During the morning hours, electricity prices may rise significantly. Between 8:00 and 10:00, the price may even exceed 25 cents per kilowatt-hour. The risk of price spikes will be considerable.
 
-On **Sunday**, electricity prices are expected to remain moderate, with the daily average around three cents. However, there is a risk of price spikes during individual hours, especially in the morning from 8–10 am. The minimum electricity prices on Sunday might even reach close to zero.
+On **Tuesday**, the price level will clearly stabilize compared to Monday. The day's average price is expected to be below five cents, but individual price peaks may still occur, especially during the morning hours. Between 8:00 and 10:00, prices may reach up to 14.6 cents.
 
-On **Tuesday**, prices will again drop to affordable levels, with an average price below four cents. Despite the generally low price level, individual hours might experience price spikes, especially in the morning between 8–10 am.
+Midweek, prices will fall to very affordable levels. On **Wednesday** and **Thursday**, the average electricity price will remain below one cent. Both days will also experience negative prices; early Wednesday morning, the price is expected to drop as low as -0.8 cents per kilowatt-hour. High wind power production largely explains the very low prices during these days.
 
-From **Wednesday** onwards, electricity prices will be very low. According to forecasts, Wednesday and Thursday will see several hours when prices become negative, meaning consumers could theoretically earn money for electricity usage. On both days, the average price remains below one cent, making them the cheapest days of the week.
+Also on **Friday** and **Saturday**, electricity prices will remain very low. The week's lowest single-hour price will occur on Saturday afternoon between 15:00 and 17:00, when the price will drop to -2.1 cents. Saturday's average price will settle at just 0.1 cents, making it the cheapest day of the week.
 
-On **Friday** and **Saturday**, the price level continues to be very affordable. Prices will fluctuate only slightly, and no significant price spikes are expected on either day. Even on Saturday, individual negative price hours are forecast, making consumption especially affordable during these times.
+On the public holiday **Sunday**, prices will vary notably throughout the day. The average price will be 3.5 cents, but the price range extends from zero up to 7.5 cents. There will be a risk of price spikes during individual hours on Sunday.
 
-On days with low average prices, particularly midweek, the drop in electricity price is explained by strong wind power production. From Wednesday to Friday, wind power generation will be exceptionally abundant, keeping prices low. Conversely, Monday's higher price is clearly explained by significantly lower wind power output, potentially causing prices to rise, especially during morning peak consumption hours.
-
-*Forecast breezed by gpt-4.5-preview.* 🌬️
+*Numbers crunched by gpt-4.5-preview.* ⚡
