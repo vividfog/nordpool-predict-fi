@@ -154,6 +154,7 @@ function getLocalizedText(key) {
         'windPower': isEnglish ? 'Wind Power (GW)' : 'Tuulivoima (GW)',
         'latest': isEnglish ? 'Latest' : 'Viimeisin',
         'daysAgo': isEnglish ? 'd ago' : 'pv sitten',
+        'scaled_price': isEnglish ? 'Price spikes' : 'Hintapiikkejä',
         'weekdays': isEnglish ? 
             ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] : 
             ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la']
@@ -215,7 +216,10 @@ function createTooltipFormatter(seriesNameMappings = {}) {
         params.forEach(function(item) {
             if (item.seriesType !== 'line' && item.seriesType !== 'bar') return;
             
-            var valueRounded = item.value[1] !== undefined ? item.value[1].toFixed(1) : '';
+            // Check if item.value[1] is not null or undefined before calling toFixed
+            var valueRounded = (item.value[1] !== null && typeof item.value[1] !== 'undefined') 
+                               ? item.value[1].toFixed(1) 
+                               : '-'; // Display '-' for null/undefined values
             var unitLabel = seriesNameMappings[item.seriesName] || '¢/kWh';
             result += item.marker + " " + item.seriesName + ': ' + valueRounded + ' ' + unitLabel + '<br/>';
         });
@@ -386,6 +390,7 @@ var endDate = addDays(new Date(), 2).toISOString();
 
 // URLs for the datasets
 var npfUrl = `${baseUrl}/prediction.json`;
+var scaledPriceUrl = `${baseUrl}/prediction_scaled.json`; // Add URL for scaled prices
 var sahkotinUrl = 'https://sahkotin.fi/prices.csv';
 var sahkotinParams = new URLSearchParams({
     fix: 'true',
@@ -400,9 +405,28 @@ var sahkotinParams = new URLSearchParams({
 
 Promise.all([
     fetch(npfUrl).then(r => r.json()),
+    fetch(scaledPriceUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(text => {
+            try {
+                return text ? JSON.parse(text) : [];
+            } catch (e) {
+                console.warn('Failed to parse scaled price data JSON:', e);
+                return [];
+            }
+        })
+        .catch(e => { 
+            console.warn('Failed to fetch or parse scaled price data:', e); 
+            return []; 
+        }),
     fetch(`${sahkotinUrl}?${sahkotinParams}`).then(r => r.text())
 ])
-    .then(([npfData, sahkotinCsv]) => {
+    .then(([npfData, scaledPriceData, sahkotinCsv]) => {
         // Process Sähkötin data
         var sahkotinSeriesData = sahkotinCsv.split('\n').slice(1).map(line => {
             var [timestamp, price] = line.split(',');
@@ -433,11 +457,54 @@ Promise.all([
             console.log(`Prediction timestamp: ${localTime}, Price: ${item[1]} ¢/kWh`);
         });
 
+        // Create a map of timestamps to predicted prices for later reference
+        const priceByTimestamp = {};
+        npfSeriesData.forEach(item => {
+            priceByTimestamp[item[0]] = item[1];
+        });
+
+        // Prepare scaled price series data
+        var scaledPriceSeriesData = scaledPriceData
+            // Spike hours get a small red bar on the timeline
+            .map(item => [item[0], item[1] !== null ? -0.25 : null])
+            .filter(item => item[0] > overlapThreshold); // Use same threshold as regular predictions, keep nulls for gaps
+
+        console.log("Scaled Price Data loaded:", scaledPriceSeriesData.length, "data points");
+
         // Create chart options
         const chartOptions = createBaseChartOptions({
             legend: {
-                data: ['Nordpool', getLocalizedText('forecast')],
-                right: 16
+                data: [
+                    {
+                        name: 'Nordpool', 
+                        icon: 'circle',
+                        itemStyle: {
+                            color: 'lime'
+                        }
+                    },
+                    {
+                        name: getLocalizedText('forecast'),
+                        icon: 'circle',
+                        itemStyle: {
+                            color: 'skyblue'
+                        }
+                    }, 
+                    {
+                        name: getLocalizedText('scaled_price'),
+                        // Specify the desired icon shape
+                        icon: 'circle', 
+                        // Specify the desired color for the legend item
+                        itemStyle: {
+                            color: 'crimson' 
+                        },
+                    }
+                ],
+                right: 16,
+                selected: {
+                    'Nordpool': true,
+                    [getLocalizedText('forecast')]: true,
+                    [getLocalizedText('scaled_price')]: true
+                }
             },
             tooltipFormatter: createTooltipFormatter(),
             visualMap: [
@@ -534,6 +601,32 @@ Promise.all([
                     z: 3
                 },
                 {
+                    name: getLocalizedText('scaled_price'),
+                    type: 'line',
+                    data: scaledPriceSeriesData.map(item => [item[0], null]),
+                    markPoint: {
+                        symbol: 'triangle',  // Options: 'circle', 'rect', 'triangle', 'diamond', 'pin', 'arrow'
+                        symbolSize: [4, 4],
+                        symbolRotate: 0,
+                        itemStyle: {
+                            color: 'crimson'
+                        },
+                        data: scaledPriceSeriesData
+                            .filter(item => {
+                                // Only show triangles for hours with both a spike risk AND a price > 5 cents
+                                return item[1] !== null && priceByTimestamp[item[0]] > 8;
+                            })
+                            .map(item => ({
+                                coord: [item[0], 0.1],
+                                value: ''
+                            }))
+                    },
+                    tooltip: {
+                        show: false
+                    },
+                    z: 5
+                },
+                {
                     type: 'line',
                     markLine: createCurrentTimeMarkLine(),
                     z: 4
@@ -595,19 +688,47 @@ Promise.all([
 
         // Find the last timestamp in Sähkötin data (actual prices)
         var lastSahkotinTimestamp = Math.max(...sahkotinData.map(item => item[0]));
-        console.log("End of Sähkötin data; next showing prediction data from:", 
+        console.log("Wind Power Chart: End of Sähkötin data; next showing prediction data from:", 
             new Date(lastSahkotinTimestamp).toString());
+        
+        // Overlap disabled for wind power chart: all prices are bars, line continuity not needed
+        const overlapThreshold = lastSahkotinTimestamp;
             
-        // Prepare the prediction data for dates after Sähkötin data ends
+        // Filter Sähkötin data for the same time range as windPowerData
+        var sahkotinPriceData = sahkotinData
+            .filter(item => item[0] >= todayTimestamp);
+        
+        // Prepare the prediction data for dates after Sähkötin data ends with one hour overlap
         var npfSeriesData = npfData
             .map(item => [item[0], item[1]])
-            .filter(item => item[0] > lastSahkotinTimestamp);
+            .filter(item => item[0] > overlapThreshold);
 
-        // Filter Sähkötin data for the same time range as windPowerData
-        var sahkotinPriceData = sahkotinData.filter(item => item[0] >= todayTimestamp);
+        // Create chart series for both price data sources
+        const sahkotinPriceSeries = {
+            name: getLocalizedText('price') + ' (' + getLocalizedText('latest') + ')',
+            type: 'bar',
+            barWidth: '40%',
+            data: sahkotinPriceData,
+            yAxisIndex: 1,
+            z: 1,
+            itemStyle: {
+                color: '#AEB6BF',
+                opacity: 0.3
+            }
+        };
         
-        // Combine Sähkötin (actual) and NPF (predicted) price data
-        var combinedPriceData = [...sahkotinPriceData, ...npfSeriesData];
+        const npfPriceSeries = {
+            name: getLocalizedText('price') + ' (' + getLocalizedText('forecast') + ')',
+            type: 'bar',
+            barWidth: '40%',
+            data: npfSeriesData,
+            yAxisIndex: 1,
+            z: 1,
+            itemStyle: {
+                color: '#AEB6BF',
+                opacity: 0.3
+            }
+        };
 
         // Create custom options for wind power chart
         windPowerChart.setOption({
@@ -709,7 +830,7 @@ Promise.all([
                 {
                     // For wind power
                     show: false,
-                    seriesIndex: 1,
+                    seriesIndex: 2,
                     pieces: [
                         { lte: 1, color: 'red' },
                         { gt: 1, lte: 2, color: 'skyblue' },
@@ -725,9 +846,20 @@ Promise.all([
                     }
                 },
                 {
-                    // For price
+                    // For price - Sähkötin data
                     show: false,
                     seriesIndex: 0,
+                    pieces: [
+                        { gt: 0, color: '#AEB6BF' }
+                    ],
+                    outOfRange: {
+                        color: '#999'
+                    }
+                },
+                {
+                    // For price - NPF data
+                    show: false,
+                    seriesIndex: 1,
                     pieces: [
                         { gt: 0, color: '#AEB6BF' }
                     ],
@@ -737,17 +869,8 @@ Promise.all([
                 }
             ],
             series: [
-                {
-                    name: getLocalizedText('price'),
-                    type: 'bar',
-                    barWidth: '40%',
-                    data: combinedPriceData,
-                    yAxisIndex: 1,
-                    z: 1,
-                    itemStyle: {
-                        opacity: 0.3
-                    }
-                },
+                sahkotinPriceSeries,
+                npfPriceSeries,
                 {
                     name: getLocalizedText('windPower'),
                     type: 'line',
