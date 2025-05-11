@@ -59,3 +59,6 @@ repomix-background.md
 archive/
 deploy/prediction_full.json
 scripts.js.old
+nordpool_eval_fi.py
+deploy/evals/
+nordpool-predict-fi.code-workspace
