@@ -11,17 +11,22 @@ This repository contains all the code and most of the data to train the 2 requir
 <img src="data/home_assistant_sample_plot.png" alt="Predictions shown inside Home Assistant using ApexCharts" style="zoom:50%;" />
 
 ## Table of Contents
-- [Background](#background)
-- [Major updates](#major-updates)
-- [Installation](#installation)
-- [Usage](#usage)
-- [How does the model work?](#how-does-the-model-work)
-- [How long will this repository/data be updated?](#how-long-will-this-repositorydata-be-updated)
-- [How to use the data in your apps](#how-to-use-the-data-in-your-apps)
-  - [Python sample script](#python-sample-script)
-  - [Home Assistant](#home-assistant)
-- [Adding a new data source](#adding-a-new-data-source)
-- [License](#license)
+- [Nordpool FI Spot Price Prediction](#nordpool-fi-spot-price-prediction)
+  - [Table of Contents](#table-of-contents)
+  - [Background](#background)
+  - [Major updates](#major-updates)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [How does the model work?](#how-does-the-model-work)
+    - [Hidden patterns in weather/price data](#hidden-patterns-in-weatherprice-data)
+  - [How long will this repository/data be updated?](#how-long-will-this-repositorydata-be-updated)
+  - [How to use the data in your apps](#how-to-use-the-data-in-your-apps)
+    - [Python sample script](#python-sample-script)
+    - [Home Assistant](#home-assistant)
+      - [Requirements](#requirements)
+      - [Add the card](#add-the-card)
+  - [Adding a new data source](#adding-a-new-data-source)
+  - [License](#license)
 
 ## Background
 
@@ -41,7 +46,7 @@ The repository remains an evaluation tool for testing new LLMs and what can be d
 
 **Dec 21, 2024:** Wind power model now uses in-memory live training for a hands-free model update just before prediction. For hyperparameter optimization, the older [routines](https://github.com/vividfog/nordpool-predict-fi/tree/main/data/create/91_model_experiments) are still valid.
 
-**May 1, 2025:** Added an experimental price volatility model ([util/volatility_xgb.py](util/volatility_xgb.py)) to identify days with a higher risk of significant price fluctuations. This model is still under development and currently provides an extra input feature for the main price prediction, not a direct scaling factor.
+**May-July, 2025:** Ongoing volatility experiments. Two-stage volatility handling: a model predicts volatility likelihood ([util/volatility_xgb.py](util/volatility_xgb.py)), and (or) a scaler ([util/scaler.py](util/scaler.py)) adjusts prices for high-risk hours on low wind. Frontend can highlight these hours ([deploy/scripts.js](deploy/scripts.js)), and LLM narration incorporates volatility assessment ([util/llm.py](util/llm.py)). Testing and calibration ongoing. The exact models and methods may change and could be removed if ineffective.
 
 For details, see [CHANGELOG.md](CHANGELOG.md).
 
