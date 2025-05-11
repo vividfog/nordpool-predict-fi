@@ -126,19 +126,40 @@ def create_prediction_snapshot(folder_path, data, file_prefix, file_extension=".
 def rotate_snapshots(folder_path, pattern, max_files):
     try:
         # List all files that match the pattern
-        files = [os.path.join(folder_path, f) for f in os.listdir(folder_path) if fnmatch.fnmatch(f, pattern)]
-        
-        # Extract dates from filenames and sort files by these dates
-        files.sort(key=lambda x: datetime.strptime(x.split('_')[-1].split('.')[0], "%Y-%m-%d"))
+        all_files = [os.path.join(folder_path, f) for f in os.listdir(folder_path) if fnmatch.fnmatch(f, pattern)]
+
+        valid_files = []
+        for file_path in all_files:
+            try:
+                # Extract date part and attempt to parse
+                filename = os.path.basename(file_path)
+                date_str = filename.split('_')[-1].split('.')[0]
+                datetime.strptime(date_str, "%Y-%m-%d")
+                valid_files.append(file_path)
+            except (ValueError, IndexError):
+                # Ignore files that don't match the expected date format
+                logger.info(f"Eval: Ignoring file with unexpected format: {file_path}")
+                continue
+
+        # Sort valid files by date
+        valid_files.sort(key=lambda x: datetime.strptime(os.path.basename(x).split('_')[-1].split('.')[0], "%Y-%m-%d"))
 
         # Keep only the latest max_files based on these dates
-        files_to_remove = files[:-max_files]
-       
-        for file in files_to_remove:
-            os.remove(file)
-            logger.info(f"Eval: Removed old past-prediction-file: {file}")
-        
+        if len(valid_files) > max_files:
+            files_to_remove = valid_files[:-max_files]
+            for file in files_to_remove:
+                try:
+                    os.remove(file)
+                    logger.info(f"Eval: Removed old past-prediction-file: {file}")
+                except OSError as e_remove:
+                    logger.info(f"Exception: Eval: Failed to remove {file}: {e_remove.strerror}")
+        else:
+            logger.info("Eval: No old snapshot files needed removal.")
+
+
     except OSError as e:
-        logger.info(f"Exception: Eval: %s : %s" % (file, e.strerror))
+        # This OSError likely comes from os.listdir or os.remove if it fails outside the inner loop
+        logger.info(f"Exception: Eval: OS error during snapshot rotation: {e.strerror}")
     except Exception as e:
-        logger.info(f"Exception: Eval: An unexpected error occurred: ", e)
+        # Catch any other unexpected errors and fix the logging format
+        logger.info(f"Exception: Eval: An unexpected error occurred during snapshot rotation: {e}")

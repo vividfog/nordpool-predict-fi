@@ -40,8 +40,8 @@ narration_prompt = """
   - Huoltokatko tai tuotantovajaus voi vaikuttaa hintaennusteen tarkkuuteen. Tämän vuoksi älä koskaan spekuloi ydinvoiman mahdollisella hintavaikutuksella, vaan raportoi tiedot sellaisenaan, ja kerro myös että opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
 
   ## 1.6. Piikkihintojen riski yksittäisille tunneille
-  - Yli 15 c/kWh ennustettu maksimihinta ja selvästi alle 1000 MW tuulivoiman min voi olla riski: todellinen maksimihinta voi olla selvästi korkeampi kuin ennuste. Tällöin yksittäisten tuntien maksimihinnat voivat olla selvästi korkeampia ennustettuun maksimihintaan nähden. Tarkista tuntikohtainen ennuste.
-  - Saat puhua hintapiikeistä vain, jos <data> mainitsee niistä, yksittäisten päivin kohdalla. Älä spekuloi, jos riskiä ei erikseen ole tietyn päivän kohdalla mainittu. Normaalisti viittaat maksimihintaan.
+  - Yli 15 c/kWh ennustettu maksimihinta ja selvästi alle 1000 MW tuulivoiman min voi olla riski: todellinen maksimihinta voi olla korkeampi kuin ennuste. Tällöin yksittäisten huipputuntien maksimihinnat voivat olla korkeampia ennustettuun maksimihintaan nähden. Tarkista tuntikohtainen ennuste.
+  - Saat puhua hintapiikeistä vain, jos <data> mainitsee niistä, yksittäisten päivin kohdalla. Älä spekuloi, jos riskiä ei erikseen ole tietyn päivän kohdalla mainittu.
   - Jos hintapiikkejä ei ole <data>:ssa mainittu, riskiä ei kyseisen päivän kohdalla silloin ole, eikä hintapiikeistä ole tarpeen puhua kyseisen päivän kohdalla ollenkaan. Älä siis koskaan käytä esimerkiksi tällaista lausetta, koska se on tarpeeton: "Muina päivinä hintapiikkien riski on pieni."
   - Koska huippuhintojen ajankohtaa on vaikea ennustaa täsmälleen oikein, käytä artikkelissa 2 tunnin aikahaarukkaa, jossa huippu on keskellä. Esimerkiksi: Jos huippuhinta tuntikohtaisessa ennusteessa olisi <data>:n mukaan klo 13, tällöin käyttäisit aikahaarukkaa klo 12-14.
 
@@ -99,7 +99,6 @@ narration_prompt = """
   - Tavoitepituus on vähintään 3, max 6 sujuvaa tekstikappaletta, kaikki yhteensä noin 300 sanaa.
   - Vältä pitkiä ja monimutkaisia tekstikappaleita ja lauserakenteita. Käytä kappalevaihtoja.
   - Mainitse eniten erottuva päivä ja sen keski- ja maksimihinta, mutta vain jos korkeita maksimihintoja on. Tai voit sanoa, että päivät ovat keskenään hyvin samankaltaisia, jos näin on.
-  - Huomaa, että ennusteita tekee 2 eri mallia: taulukkon luoneen mallin lisäksi toinen malli on ennustanut hintapiikkien riskin, ja tämä piikkihinta voi olla suurempi kuin taulukossa oletettu maksimihinta, jos riski ei toteudu. Siksi maksimihintoja näkyy datassa joskus useampi kuin yksi per päivä. Käytä taulukossa taulukon tietoja, mutta artikkelissa voit mainita myös piikkihintoja, jos ne ovat selvästi korkeita.
   - Viikon edullisimmat ja kalleimmat ajankohdat ovat kiinnostavia tietoja, varsinkin jos hinta vaihtelee paljon.
   - Älä kommentoi tuulivoimaa/keskilämpötilaa, jos se on keskimäärin normaalilla tasolla eikä vaikuta hintaan ylös- tai alaspäin.
   - Kuvaile hintakehitystä neutraalisti ja informatiivisesti.

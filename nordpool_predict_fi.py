@@ -12,6 +12,7 @@ from util.sahkotin import update_spot
 from util.train_xgb import train_model
 from util.llm import narrate_prediction
 from util.entso_e import entso_e_nuclear
+from util.archive import insert_snapshot
 from util.holidays import update_holidays
 from util.sql import db_update, db_query_all
 from util.dataframes import update_df_from_df
@@ -22,6 +23,8 @@ from util.jao_imports import update_import_capacity
 from util.fmi import update_wind_speed, update_temperature
 from util.eval import create_prediction_snapshot, rotate_snapshots
 from util.volatility_xgb import train_volatility_model, predict_daily_volatility
+# from util.volatility_bayes import train_volatility_model, predict_daily_volatility
+from util.scaler import scale_predicted_prices
 from util.logger import logger
 
 # Wind power model choices: nn vs xgb
@@ -216,7 +219,9 @@ if args.predict:
     df_full['NuclearPowerMW'] = df_full['NuclearPowerMW'].ffill()
     df_full['ImportCapacityMW'] = df_full['ImportCapacityMW'].ffill()
 
-    required_columns = ['timestamp', 'NuclearPowerMW', 'ImportCapacityMW', 'Price_cpkWh', 'WindPowerMW', 'holiday', 'sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance', 'volatile_likelihood'] + fmisid_t + fmisid_ws
+    required_columns = [
+        'timestamp', 'NuclearPowerMW', 'ImportCapacityMW', 'Price_cpkWh', 'WindPowerMW', 'holiday', 'sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance', # 'volatile_likelihood'
+    ] + fmisid_t + fmisid_ws
     df_full = df_full.dropna(subset=required_columns)
 
     # Train the pricing model
@@ -254,7 +259,7 @@ if args.predict:
         'sum_irradiance', 'mean_irradiance', 'std_irradiance', 'min_irradiance', 'max_irradiance',
         'SE1_FI', 'SE3_FI', 'EE_FI',
         'eu_ws_EE01', 'eu_ws_EE02', 'eu_ws_DK01', 'eu_ws_DK02', 'eu_ws_DE01', 'eu_ws_DE02', 'eu_ws_SE01', 'eu_ws_SE02', 'eu_ws_SE03',
-        'volatile_likelihood'
+        # 'volatile_likelihood'
     ] + fmisid_t + fmisid_ws
     
     # Predict the prices
@@ -262,13 +267,25 @@ if args.predict:
     price_df = model_trained.predict(df_recent[prediction_features])
     df_recent['PricePredict_cpkWh'] = price_df
 
+    # region [scale]
+    # Apply the price scaler (creates a JSON file to be used in the frontend)
+    logger.info("Applying price prediction scaler")
+    df_recent = scale_predicted_prices(df_recent, deploy=args.deploy, deploy_folder_path=deploy_folder_path)
+
+    # Apply the volatility scaler to the price predictions only where scaled values are available (not NaN)
+    mask = df_recent['PricePredict_cpkWh_scaled'].notna()
+    if mask.any():
+        logger.info(f"Applying scaled prices to {mask.sum()} predictions")
+        df_recent.loc[mask, 'PricePredict_cpkWh'] = df_recent.loc[mask, 'PricePredict_cpkWh_scaled']
+    else:
+        logger.info("No scaled prices to apply (all NaN)")
+
     # Clean up all unnecessary columns before DB commit or display
     df_recent = df_recent.drop(columns=[
         'year', 'day_of_week', 'hour', 'month',
         'day_of_week_sin', 'day_of_week_cos',
         'hour_sin', 'hour_cos', 
         'temp_mean', 'temp_variance',
-        'volatile_likelihood'
     ])
 
     # Describe the predictions
@@ -277,13 +294,38 @@ if args.predict:
 
 # region commit
 # --commit: Update the database with the final data
-    if args.commit:
-        logger.info(f"* Will add/update {len(df_recent)} predictions to the database ")
-        if db_update(db_path, df_recent):
-            logger.info("Database updated with new predictions. You may want to --deploy next if you need the JSON predictions for further use.")
-
+# This needs to happen *before* narrate or deploy if they are to use the latest data
+if args.commit:
+    # Drop unnecessary columns before committing to the database
+    # These columns were needed for prediction/scaling but are not stored
+    columns_to_drop_before_commit = [
+        'year', 'month', 'day_of_week', 'hour',
+        'day_of_week_sin', 'day_of_week_cos',
+        'hour_sin', 'hour_cos', 
+        'temp_mean', 'temp_variance',
+        'volatile_likelihood', 'PricePredict_cpkWh_scaled',
+    ]
+    # Ensure columns exist before trying to drop them
+    columns_to_drop_existing = [col for col in columns_to_drop_before_commit if col in df_recent.columns]
+    if columns_to_drop_existing:
+        df_recent_to_commit = df_recent.drop(columns=columns_to_drop_existing)
     else:
-        logger.info("* Predictions NOT committed to the database or 'deploy' folder (no --commit).")
+        df_recent_to_commit = df_recent.copy() # Or just df_recent if no columns needed dropping
+
+    logger.info(f"* Will add/update {len(df_recent_to_commit)} predictions to the database ")
+    if db_update(db_path, df_recent_to_commit):
+        logger.info("→ Database updated with new predictions.")
+        
+        # Archive a snapshot of the predictions
+        archive_db_path = os.path.join(data_folder_path, 'archive.db')
+        run_id = insert_snapshot(archive_db_path, df_recent_to_commit)
+        if not run_id:
+            logger.error("Failed to archive prediction snapshot")
+    else:
+        logger.error("Failed to update database with new predictions")
+
+elif args.predict: # Only show this message if predict was run but not committed
+    logger.info("* Predictions generated but NOT committed to the database (no --commit).")
 
 # region narrate
 # -----------------------------------------------------------------------------------------------------------------------------

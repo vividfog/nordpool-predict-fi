@@ -94,10 +94,17 @@ def narrate_prediction(deploy=False, commit=False):
     cols_needed = [
         "timestamp",
         "PricePredict_cpkWh",
+        "Price_cpkWh",
         "WindPowerMW",
         "holiday",
     ] + temperature_columns
-    df_result = df_result[cols_needed].dropna()
+    df_result = df_result[cols_needed].dropna(subset=[col for col in cols_needed if col != "Price_cpkWh"])
+
+    # Replace predicted prices with actual known prices where available
+    mask_known_prices = df_result["Price_cpkWh"].notna()
+    if mask_known_prices.any():
+        logger.info(f"→ Using {mask_known_prices.sum()} known prices instead of predictions")
+        df_result.loc[mask_known_prices, "PricePredict_cpkWh"] = df_result.loc[mask_known_prices, "Price_cpkWh"]
 
     # Convert timestamp to Helsinki time
     df_result["timestamp"] = pd.to_datetime(
@@ -256,28 +263,18 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
         if not skip_spike_for_tomorrow:
             # Spike risk note
             if row["Spike_Risk"] >= 3:
-                risk_upper_boundary = int(
-                    math.ceil(row["PricePredict_cpkWh_mean"] * 3.5 / 10.0) * 10
-                )
-                risk_lower_boundary = int(
-                    math.ceil(row["PricePredict_cpkWh_mean"] * 2 / 10.0) * 10
-                )
-                if risk_upper_boundary != risk_lower_boundary:
-                    prompt += f"  - TÄRKEÄÄ MAINITA: Korkea riski hintapiikeille yllä ennustettuun verrattuna {weekday}na, jopa {risk_lower_boundary}-{risk_upper_boundary} ¢ yksittäisinä tunteina.\n"
-                else:
-                    prompt += f"  - TÄRKEÄÄ MAINITA: Korkea riski hintapiikeille yllä ennustettuun verrattuna {weekday}na, jopa {risk_upper_boundary} ¢ yksittäisinä tunteina.\n"
+                prompt += f"  - TÄRKEÄÄ MAINITA: Korkea riski hintapiikeille {weekday}na yksittäisinä tunteina.\n"
+
             elif row["Spike_Risk"] >= 1:
-                risk_upper_boundary = int(
-                    math.ceil(row["PricePredict_cpkWh_mean"] * 2 / 10.0) * 10
-                )
-                prompt += f"  - HUOM: Riski hintapiikeille yllä ennustettuun verrattuna {weekday}na, jopa {risk_upper_boundary} ¢ yksittäisinä tunteina.\n"
+                prompt += f"  - HUOM: Riski hintapiikeille {weekday}na yksittäisinä tunteina.\n"
+
             else:
                 prompt += f"  - Hintapiikkien riski tälle päivälle on niin pieni, että älä puhu hintapiikeistä artikkelissa ollenkaan, kun puhut {weekday}sta.\n\n"
 
     # region _nuclear
     # Add nuclear outages if any
     if NUCLEAR_OUTAGE_DATA:
-        nuclear_outage_section = "  **Ydinvoimalat**\n"
+        nuclear_outage_section = "\n  **Ydinvoimalat**\n"
         section_empty = True
 
         for outage in NUCLEAR_OUTAGE_DATA:
