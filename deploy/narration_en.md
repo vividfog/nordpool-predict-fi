@@ -1,27 +1,27 @@
-*In the upcoming week, electricity prices will remain moderate with minimal daily variations; Thursday will be the week's most affordable day with negative prices, whereas Tuesday will see the highest prices, and brief hourly price spikes are possible on Sunday and Tuesday.*
+*Electricity prices will remain very low and even negative in the coming days, especially on Wednesday and Thursday, but will start to rise gradually early next week, with Tuesday being the most expensive day of the week.*
 
-Olkiluoto 1 nuclear power plant is undergoing a maintenance outage, which began on 11 May 2025 at 18:00 and is expected to end on 22 May 2025 at 18:00. This maintenance outage may affect the accuracy of the forecast, as training data during such outages is limited.
+Forecast updated on Tuesday at 14:25.
 
-The forecast was updated on Tuesday at 12:06.
+|              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|:-------------|:----------------------:|:-------------------:|:----------------------------:|:--------------------------:|
+| **Wednesday** | -0.4 | -2.1 – 0.2 | 1657 – 5389 | 6.8 |
+| **Thursday**  | -0.8 | -2.5 – 0.7 | 3538 – 5613 | 7.4 |
+| **Friday**    | 0.6  | -1.0 – 6.0 | 1173 – 4082 | 6.8 |
+| **Saturday**  | 0.1  | -1.2 – 3.2 | 1866 – 4946 | 6.3 |
+| **Sunday**    | 0.9  | -1.0 – 3.6 | 950 – 3131  | 6.2 |
+| **Monday**    | 1.6  | 0.1 – 3.6  | 1117 – 3840 | 6.9 |
+| **Tuesday**   | 2.6  | -1.3 – 7.7 | 893 – 3762  | 7.4 |
 
-|             | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:------------|:-------------------------:|:------------------:|:-----------------------------:|:----------------------------:|
-| **Wednesday** | 0.0 | -1.7 - 3.9 | 1653 - 5399 | 6.8 |
-| **Thursday**     | -0.7 | -2.7 - 1.3 | 3644 - 5586 | 7.4 |
-| **Friday**   | 0.6 | -0.8 - 4.2 | 1156 - 4007 | 6.8 |
-| **Saturday**    | 0.1 | -1.4 - 2.6 | 2221 - 4917 | 6.3 |
-| **Sunday**   | 1.6 | -1.0 - 3.5 | 996 - 2285 | 6.2 |
-| **Monday**   | 1.8 | 0.6 - 4.2 | 1247 - 3828 | 6.9 |
-| **Tuesday**     | 2.8 | -1.3 - 7.8 | 968 - 3808 | 7.4 |
+The Olkiluoto 1 nuclear power plant is undergoing a maintenance outage that began on 11 May 2025 at 18:00 and is expected to end on 22 May 2025 at 18:00. This maintenance outage may affect the accuracy of the price forecast, as training data during such outages is limited.
 
-The electricity price forecast for the upcoming week will show moderate fluctuations. Average electricity prices each day will remain affordable, with no expectation of high prices. The lowest electricity prices of the week will occur on **Thursday**, when the average price will turn negative, approximately -0.7 cents. Thursday’s lowest hourly price will reach as low as -2.7 cents around 05:00 in the early morning.
+Electricity prices on the power exchange will remain at very low levels in the coming days. The cheapest days of the week are **Wednesday** and **Thursday**, when average prices will be negative: -0.4 cents on Wednesday and -0.8 cents per kilowatt-hour on Thursday. Thursday will see the week's lowest price, -2.5 ¢, around 5:00 in the early morning. Negative prices are possible especially during the night hours.
 
-Average electricity prices on **Wednesday** and **Friday** will also remain close to zero, at 0.0 and 0.6 cents respectively. On Wednesday, the highest prices will occur in the morning between 08:00 and 10:00, when the price will approach four cents. On Friday, the peak price will occur around 09:00, reaching 4.2 cents.
+On **Friday**, prices will rise slightly compared to previous days, with the daily average at 0.6 cents. Price fluctuations within the day will be larger than earlier in the week. Friday's highest price, 6 cents, will occur in the morning between 8:00 and 10:00. Despite this, there will be no risk of price spikes on Friday.
 
-Weekend price expectations also remain affordable. On **Saturday**, the average daily price will be around 0.1 cents, with minor fluctuations, peaking at 2.6 cents in the evening around 19:00. On **Sunday**, prices will slightly increase, and the day's average price will be 1.6 cents. On Sunday, there will be a risk of brief hourly price spikes, although the day's maximum price stays moderate at about 3.5 cents around 20:00.
+Weekend electricity prices will remain moderate. On **Saturday**, the daily average price will be only 0.1 ¢, and on **Sunday** 0.9 ¢. On Sunday, there is a slight risk of price spikes for individual hours, although prices overall will remain moderate. Sunday's highest prices will occur in the evening between 19:00 and 21:00, when electricity prices rise slightly above three cents.
 
-At the beginning of next week, the electricity price forecast will continue to be affordable. On **Monday**, the average price is expected to be 1.8 cents, with the highest prices occurring around 09:00, peaking at 4.2 cents. On **Tuesday**, prices will rise to the highest levels of the week, with an average daily price of 2.8 cents and a maximum price reaching 7.8 cents at around 09:00. Tuesday also carries a risk for brief price spikes on individual hours.
+At the beginning of next week, on **Monday** and **Tuesday**, prices will increase further. On Monday, the average price will be 1.6 cents, while Tuesday will see the week's highest average price at 2.6 cents. Tuesday will also have the week's highest individual price of 7.7 cents, occurring in the morning between 8:00 and 10:00. Tuesday has a risk of price spikes on individual hours, associated with low minimum wind power production in the morning hours.
 
-Wind power production throughout the week will generally be strong, partly explaining the affordable price forecasts. On Friday and Sunday, lower wind power production during morning hours partly explains the slightly higher maximum prices for these days. On other days, wind power production will not differ significantly from the usual levels.
+On other days, price fluctuations will remain small, and no significant changes in price levels are expected.
 
-*Electricity accurately forecasted by gpt-4.5-preview.* ⚡
+*Forecast presented by gpt-4.5-preview.* 🌬️
