@@ -909,7 +909,7 @@ const historicalUrls = dateStrings.map(date => `${baseUrl}/prediction_snapshot_$
 
 // Variables to store original chart data
 let originalData = [];
-let currentAveragePeriod = 3;
+let currentAveragePeriod = 1;
 let sahkotinOriginalData = [];
 
 // ==========================================================================
