@@ -3,6 +3,15 @@
 All notable changes will be documented in this file.
 
 
+## [2025-05-11] - Price Scaling and Volatility
+### Added
+- Linear price scaler on low wind
+- Snapshot archiver for prediction history
+- Bayesian volatility prediction model
+
+### Changed
+- Default history bin size to 1 hour
+
 ## [2025-05-01] - Volatility Model Experiment
 ### Added
 - Experimental price volatility model to identify days with higher risk of significant price fluctuations.
