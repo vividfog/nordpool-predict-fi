@@ -1,27 +1,27 @@
-*Tulevan viikon sähkön hintataso pysyy edullisena, mutta yksittäisinä tunteina hinnat voivat hetkellisesti nousta selvästi korkeammiksi. Viikon edullisimmat tunnit ajoittuvat viikonlopulle, jolloin sähkö on ajoittain jopa negatiivisen hintaista, kun taas viikon loppupuolella hinnat nousevat hieman korkeammiksi.*
+*Tulevan viikon sähkön hinta pysyttelee pääosin matalana, mutta maanantain aamussa hinnat kohoavat hetkellisesti yli 11 senttiin heikon tuulituotannon vuoksi. Sunnuntai puolestaan tarjoaa jopa negatiivisia hintoja, ja loppuviikolla hinnat vakiintuvat maltilliselle tasolle.*
 
-Olkiluoto 1 -ydinvoimalassa on käynnissä huoltokatko, joka alkoi 11.5.2025 klo 18 ja jonka arvioidaan päättyvän 22.5.2025 klo 18. Huoltokatko voi vaikuttaa ennusteen tarkkuuteen, koska opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
+Olkiluoto 1 -ydinvoimalassa on käynnissä huoltokatko, joka alkoi 11.5.2025 klo 18. Katkon arvioitu päättymisaika on 22.5.2025 klo 18. Huoltokatko voi vaikuttaa hintaennusteen tarkkuuteen, sillä opetusdataa huoltokatkojen ajalta on saatavilla rajallisesti.
 
-Ennuste on päivitetty perjantaina klo 03:20.
+Sähkön hintaennuste on päivitetty perjantaina klo 09:06.
 
-|              | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-------------|:----------------:|:----------------:|:---------------------:|:---------------------:|
-| **lauantai** |       0,5        |    -0,6 - 2,1    |      1725 - 4226      |          6,3          |
-| **sunnuntai**|       0,1        |    -2,0 - 2,6    |      1597 - 4394      |          6,2          |
-| **maanantai**|       1,7        |    -0,4 - 5,3    |      1080 - 3939      |          6,9          |
-| **tiistai**  |       0,3        |    -0,8 - 2,3    |      2310 - 3649      |          7,4          |
-| **keskiviikko**|     0,9        |    -0,5 - 3,6    |      2405 - 3873      |          6,8          |
-| **torstai**  |       2,4        |    -0,3 - 8,6    |      1322 - 4532      |          5,8          |
-| **perjantai**|       3,8        |     1,8 - 6,1    |      1273 - 4241      |          5,8          |
+|          | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **lauantai** | 0,4 | -0,7 - 1,6 | 1736 - 4234 | 6,3 |
+| **sunnuntai** | -0,2 | -1,7 - 1,3 | 1604 - 4397 | 6,2 |
+| **maanantai** | 2,2 | -0,4 - 11,2 | 416 - 3426 | 6,9 |
+| **tiistai** | 0,4 | -0,8 - 3,1 | 2223 - 3462 | 7,4 |
+| **keskiviikko** | 0,8 | -0,6 - 4,0 | 2233 - 3705 | 6,8 |
+| **torstai** | 1,4 | -0,4 - 3,7 | 2579 - 4508 | 5,8 |
+| **perjantai** | 2,7 | 0,8 - 4,8 | 2234 - 4076 | 5,8 |
 
-Tulevien päivien hintaennusteessa hinnat pysyvät pääosin edullisina. Keskihinnat vaihtelevat läpi viikon alle neljän sentin tuntumassa. Korkeimmat yksittäiset tuntihinnat sijoittuvat **torstaille**, jolloin maksimihinta voi nousta jopa 8,6 senttiin. Myös **maanantaina** illalla klo 18–20 välillä hinnat voivat hetkellisesti nousta yli viiden sentin.
+Tulevan viikon hintaodotukset ovat yleisesti ottaen varsin edullisia, mutta päivien välillä on nähtävissä selviä eroja. Merkillepantavaa on **maanantain** korkea hintavaihtelu. Tuolloin sähkön keskihinta on 2,2 senttiä, mutta päivän aikana nähdään poikkeuksellisen korkea huippuhinta, 11,2 senttiä. Tämä hintapiikki osuu aamulle kello 7–9 välille. Samana päivänä tuulivoiman minimituotanto putoaa poikkeuksellisen matalalle tasolle, 416 megawattiin. Juuri tämä vähäinen tuulituotanto selittää maanantain korkean maksimihinnan.
 
-Viikonlopun sähkönhintaennuste näyttää maltilliselta. **Lauantain** keskihinta on puoli senttiä ja **sunnuntaina** vielä vähemmän, vain 0,1 senttiä. Molempina päivinä sähkön hinta painuu hetkittäin negatiiviseksi. Esimerkiksi sunnuntaina puolenpäivän jälkeen klo 15–17 sähkön hinta voi käydä jopa kahden sentin verran pakkasen puolella.
+Viikonlopun aikana hinnat pysyvät hyvin matalina. **Sunnuntaina** nähdään jopa negatiivinen sähkön keskihinta, -0,2 senttiä. Hintavaihtelu tällöin on -1,7 sentistä 1,3 senttiin. Tällaiset negatiiviset hinnat ovat harvinaisia ja esiintyvät yleensä yöaikaan tai silloin, kun tuulivoimatuotanto on erityisen runsasta suhteessa kulutukseen.
 
-Sunnuntain ja maanantain kohdalla esiintyy kuitenkin riski yksittäisten tuntien hintapiikeistä. Sunnuntaina aamupäivällä klo 8–10 välillä hinta voi käydä korkeimmillaan 2,6 sentissä. Maanantaina illalla klo 18–20 välillä hinnat voivat nousta jopa 5,3 senttiin. Muina päivinä hintapiikkien riskiä ei datan mukaan ole.
+Muina viikon päivinä hinnat vaihtelevat maltillisesti, ja päivien keskihinnat pysyvät selvästi alle neljän sentin tason. **Perjantaina** sähkön keskihinta nousee hieman korkeammaksi, 2,7 senttiin, mutta pysyy edelleen edullisena. Hinnat ovat tuolloin tasaisia, eikä suuria vaihteluja nähdä päivän aikana.
 
-Viikon loppua kohden keskihinnat ovat hieman korkeammat. Torstain keskihinta kohoaa 2,4 senttiin ja perjantaina odotettavissa on koko viikon korkein keskihinta, 3,8 senttiä. Perjantain yksittäisten tuntien hinnat pysyvät kuitenkin kohtuullisina, korkeimman hinnan ollessa 6,1 senttiä keskiyöllä klo 23–01 välillä.
+Viikon sisäiset erot tuulivoimatuotannossa selittävät osaltaan havaittavia hintaeroja. Erityisesti **maanantain** heikko tuulituotanto vaikuttaa suoraan päivän hintahuippuun. Muutoin tuulituotannon vaihtelut eivät aiheuta merkittäviä hinnanmuutoksia.
 
-Tuulivoiman tuotanto on viikon aikana pääosin normaalilla tasolla, mutta maanantaina tuulivoiman minimituotanto käy alimmillaan 1080 megawatissa, mikä osaltaan selittää maanantain korkeampaa maksimihintaa illalla. Muina päivinä tuulivoima ei merkittävästi vaikuta hintaodotuksiin.
+Yleisesti ottaen tulevan viikon sähkön hinta pysyy matalana. Huomionarvoista on maanantain yksittäinen aamun hintapiikki sekä sunnuntain negatiiviset yöajan hinnat. Muina päivinä sähkömarkkinan hintataso on vakaa ja edullinen.
 
-*Analyysivastuussa tänään gpt-4.5-preview.* 🔌
+*Numeroita pureskeli gpt-4.5-preview.* 🔌
