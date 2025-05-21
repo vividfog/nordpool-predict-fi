@@ -1,14 +1,6 @@
 {
     "nuclear_outages": [
         {
-            "start": "2025-05-25T15:00:00.000Z",
-            "end": "2025-06-15T15:00:00.000Z",
-            "avail_qty": 0,
-            "nominal_power": 890.0,
-            "production_resource_name": "Olkiluoto 2",
-            "availability": 0.0
-        },
-        {
             "start": "2025-04-15T15:00:00.000Z",
             "end": "2025-05-25T15:00:00.000Z",
             "avail_qty": 735,
@@ -25,8 +17,16 @@
             "availability": 0.98125
         },
         {
+            "start": "2025-05-25T15:00:00.000Z",
+            "end": "2025-06-15T15:00:00.000Z",
+            "avail_qty": 0,
+            "nominal_power": 890.0,
+            "production_resource_name": "Olkiluoto 2",
+            "availability": 0.0
+        },
+        {
             "start": "2025-05-11T15:00:00.000Z",
-            "end": "2025-05-21T19:00:00.000Z",
+            "end": "2025-05-21T21:00:00.000Z",
             "avail_qty": 0,
             "nominal_power": 890.0,
             "production_resource_name": "Olkiluoto 1",
