@@ -26,7 +26,7 @@
         },
         {
             "start": "2025-05-11T15:00:00.000Z",
-            "end": "2025-05-21T21:00:00.000Z",
+            "end": "2025-05-22T03:00:00.000Z",
             "avail_qty": 0,
             "nominal_power": 890.0,
             "production_resource_name": "Olkiluoto 1",
