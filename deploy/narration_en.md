@@ -1,27 +1,25 @@
-*The coming week's electricity spot prices will remain mostly very affordable, occasionally even dipping into negative territory, but on Friday morning there will be a brief price spike reaching nearly ten cents. Due to Thursday being a public holiday, demand may be lower, potentially further depressing prices.*
+*In the coming week, electricity spot prices will remain very affordable, although some fluctuations are expected: the early part of the week offers even negative prices, while prices will rise slightly towards the weekend, particularly on Friday when a single hourly price exceeds eight cents.*
 
-Forecast updated on Saturday at 14:24.
+Forecast updated on Saturday at 21:06.
 
 |              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
-|:-------------|:----------------------:|:------------------:|:-----------------------------:|:--------------------------:|
-| **Sunday**   |          0,3           |    -0,0 - 0,9      |          245 - 3109           |            6,6             |
-| **Monday**   |          0,1           |    -1,0 - 1,7      |         2254 - 4726           |            9,4             |
-| **Tuesday**  |          0,0           |    -1,2 - 1,6      |         2076 - 3666           |           10,7             |
-| **Wednesday**|          0,4           |    -0,8 - 2,4      |         2441 - 3376           |           10,9             |
-| **Thursday** |          0,9           |    -0,7 - 2,9      |         1205 - 2338           |           10,8             |
-| **Friday**   |          2,7           |     0,3 - 9,8      |         1348 - 2454           |           10,4             |
-| **Saturday** |          0,0           |    -1,4 - 2,4      |         1679 - 2629           |            9,6             |
+|:-------------|:----------------:|:----------------:|:----------------------:|:----------------------:|
+| **Sunday**   |        0,3       |     -0,0 - 0,9    |       288 - 2970       |          6,6          |
+| **Monday**   |        0,1       |     -0,9 - 1,9    |      2202 - 4746       |          9,4          |
+| **Tuesday**  |        0,0       |     -1,3 - 1,9    |      2042 - 3712       |         10,7          |
+| **Wednesday**|        0,5       |     -0,8 - 2,3    |      2339 - 3431       |         10,9          |
+| **Thursday** |        1,3       |     -0,6 - 4,0    |      1134 - 2403       |         10,8          |
+| **Friday**   |        2,6       |     -0,0 - 8,3    |      1344 - 2469       |         10,4          |
+| **Saturday** |        0,1       |     -1,0 - 1,7    |      1561 - 2604       |          9,6          |
 
-In the coming week, the electricity spot price level will remain predominantly low. Daily average prices throughout the week are forecasted to remain below three cents. However, price fluctuations between days will be notable, and negative prices will also occur on several days.
+In the upcoming week, electricity prices on the spot market will remain very low on average. However, clear differences will occur, particularly on **Friday**, when the average price rises to the week's highest level at approximately 2.6 cents. Friday will also see the week's most expensive individual hour, with prices peaking at over 8 cents around 9 a.m.
 
-The week's lowest prices will be experienced on **Monday** and **Tuesday**, when electricity prices will fall into negative territory during nighttime and early morning hours. The lowest price occurs early **Monday**, around 2 AM, when electricity prices will drop to -1,0 cents. Similarly, on **Tuesday** from 1 PM to 3 PM, electricity prices will dip into negative numbers, bottoming out at -1,2 cents.
+The early days of the week (**Monday** and **Tuesday**) and also **Wednesday** are exceptionally affordable. During these days, prices are expected to remain close to zero or slightly below. Negative electricity prices will also appear on Monday and Tuesday, reaching as low as -1.3 cents on Tuesday afternoon between 1–3 p.m.
 
-Midweek remains moderately affordable. **Thursday**, a public holiday, might see lower than usual electricity demand, potentially further lowering prices. Nevertheless, Thursday carries a slight risk of occasional price spikes, with electricity prices reaching nearly three cents between 6 PM and 8 PM.
+On **Thursday**, which is a public holiday, electricity demand is likely to be lower than usual. This could help maintain low prices. However, Thursday's average price (1.3 ¢) is higher than the early week's pricing, and there is a risk of individual hourly price spikes during the day. The most expensive hour on Thursday will occur between 6–8 p.m., when the price may climb up to 4 cents.
 
-Clearly the most expensive day of the upcoming week will be **Friday**, when the average electricity price climbs to 2,7 cents per kilowatt-hour. On that day, price fluctuations will be significant: the lowest price is just 0,3 cents, whereas the highest approaches ten cents between 8 AM and 10 AM. Especially in the morning, around 9 AM, electricity prices will peak at the week's highest level of 9,8 cents. At this time, there is also an elevated risk of individual price spikes.
+The weekend starts again on **Saturday** with very affordable prices, including negative pricing in the early morning hours, reaching down to -1.0 cents around 6–8 a.m. Saturday's average price is only around 0.1 cents, closely matching the very low prices of the early week.
 
-On Saturday, prices will again drop significantly. The average electricity price will hover around zero cents, with large price fluctuations once more; at its lowest, electricity prices will reach -1,4 cents. Nonetheless, there remains a small risk of individual price spikes on Saturday, primarily during evening hours.
+Overall, the coming week will offer electricity consumers affordable hours throughout. However, price fluctuations should be noted, especially on Friday and some individual hours on Thursday evening.
 
-Overall, the forthcoming week offers exceptionally affordable electricity prices, although attention is warranted on Friday morning when prices will briefly rise significantly.
-
-*Numbers crunched by gpt-4.5-preview.* ⚡
+*Prices anticipated by gpt-4.5-preview.* ⚡
