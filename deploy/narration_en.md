@@ -1,25 +1,27 @@
-*Next week's electricity market prices will fluctuate significantly: the beginning of the week brings very low and even negative prices, while on Friday prices rise to the week's highest levels. Consumers should prepare for substantial intra-day variations and consider carefully timing electricity usage.*
+*In the upcoming week, electricity prices on the market will remain affordable, but intraday price fluctuations will lead to occasional price spikes, particularly on Friday and Thursday. Negative prices will also appear on early-week nights, with electricity rates briefly dropping below zero.*
 
-Forecast updated on Saturday at 03:19.
+Forecast updated on Saturday at 09:05.
 
 |              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
-|:-------------|:----------------------:|:-------------------:|:-----------------------------:|:-------------------------:|
-| **Sunday**   |          3.0           |     -0.0 - 8.5      |          210 - 2251           |            6.6            |
-| **Monday**   |          0.5           |     -1.7 - 2.3      |         2106 - 4108           |            9.4            |
-| **Tuesday**  |         -0.1           |     -1.0 - 1.3      |         2269 - 3623           |           10.7            |
-| **Wednesday**|          0.7           |     -0.5 - 2.5      |         2573 - 3600           |           10.9            |
-| **Thursday** |          2.3           |     -0.2 - 6.9      |         1625 - 2454           |           10.8            |
-| **Friday**   |          5.1           |     -0.1 - 11.7     |         1308 - 2471           |           10.4            |
-| **Saturday** |          0.9           |     -0.6 - 2.8      |         1570 - 2699           |            9.8            |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Sunday**   |        2,7       |     -0,4 - 8,2     |       201 - 2333       |        6,6        |
+| **Monday**   |        0,3       |     -1,3 - 2,1     |      2090 - 4213       |        9,4        |
+| **Tuesday**     |        0,1       |     -1,0 - 2,2     |      2286 - 3267       |       10,7        |
+| **Wednesday** |        0,8       |     -1,1 - 3,1     |      2352 - 3217       |       10,9        |
+| **Thursday**     |        2,1       |     -0,7 - 6,2     |      1145 - 2551       |       10,8        |
+| **Friday**   |        4,5       |      0,5 - 12,0    |      1327 - 2440       |       10,4        |
+| **Saturday**    |        0,7       |     -0,9 - 2,4     |      1666 - 2656       |        9,8        |
 
-Electricity market prices in the coming days will experience considerable fluctuations. The cheapest days occur at the start of the week: **Monday** and **Tuesday** average prices remain below one cent per kilowatt-hour. On Tuesday, the average price might even dip into negative territory (-0.1 ¢), making electricity clearly negative priced during nighttime and early morning hours. Strong wind production (average wind power exceeding 3000 MW) largely explains these extremely low prices.
+During the upcoming week, electricity prices will experience moderate variation. The average price will remain clearly below five cents on each day. However, intraday price fluctuations will be noteworthy.
 
-Midweek prices will remain low, although they slightly increase. On **Wednesday**, the average price hovers just above zero (0.7 ¢/kWh). Slightly higher, yet still affordable, will be **Thursday**, with an expected daily average around 2.3 cents. Thursday is a public holiday, which likely reduces electricity demand and could help maintain lower prices. Despite the holiday, individual price spikes remain possible on Thursday evening between 18:00–20:00, when prices may rise close to seven cents.
+The most expensive day of the week will be **Friday**, when the average electricity price rises to 4,5 cents per kilowatt-hour. At its peak, the price on Friday will reach as high as 12,0 cents between 8–10 in the morning. On the same day, wind power production will be as low as 1327 megawatts, partially explaining the high morning price. Thus, Friday carries a risk of price spikes at individual hours.
 
-The highest price levels of the week will arrive on **Friday**, when the daily average price rises to approximately 5.1 cents. On Friday, intra-day variations will be significant, with morning hours possibly seeing peaks above 11 cents. Highest price spikes are expected during the morning, around 08:00–10:00. Contributing to this is the low wind power production, as Friday’s wind generation remains well below normal levels (average around 1709 MW, minimum only 1308 MW).
+On **Thursday** as well, electricity prices will display somewhat higher-than-average fluctuations, varying from -0,7 cents to 6,2 cents. Thursday is a public holiday, potentially reducing electricity demand. Despite this, the possibility of price spikes at individual hours exists.
 
-As we move into the weekend, prices will decrease significantly again. On **Saturday**, the average price dips below one cent, with negative prices again possible in the early morning hours. Sunday's prices remain moderate, yet individual price spikes might occur Sunday morning around 08:00–10:00, when prices could momentarily exceed eight cents.
+In the early weekdays, prices will remain exceptionally low. Both **Monday** and **Tuesday** will see average electricity prices under one cent. Negative prices will even occur during the nighttime and early morning; for instance, on early Monday morning, the price will dip as low as -1,3 cents around 01:00–03:00.
 
-Throughout the week, prices will therefore fluctuate considerably—at times electricity will be nearly free or even negatively priced, while at other moments prices rise clearly above average. From a consumer perspective, closely monitoring intra-day price variations is advisable, as differences during the day can be substantial.
+Over the weekend, both **Saturday** and **Sunday** will offer affordable electricity, although on Sunday the price will momentarily rise above eight cents between 8–10 in the morning. On Saturday, price fluctuations will remain moderate, peaking at 2,4 cents and bottoming out negatively at -0,9 cents.
 
-*Forecast spun by gpt-4.5-preview.* 🔄
+Overall, the week will offer relatively cheap electricity, but intraday price variations suggest paying closer attention to hourly forecasts.
+
+*Numbers crunched by gpt-4.5-preview.* 🔌
