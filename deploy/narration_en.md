@@ -1,25 +1,29 @@
-*In the coming week, electricity spot prices will remain very affordable, although some fluctuations are expected: the early part of the week offers even negative prices, while prices will rise slightly towards the weekend, particularly on Friday when a single hourly price exceeds eight cents.*
+*In the upcoming week, electricity market prices will remain generally affordable, yet daily variations are considerable; after mid-week, individual evening hours can momentarily push prices higher, although overnight rates frequently dip into negative territory.*
 
-Forecast updated on Saturday at 21:06.
+The Olkiluoto 2 nuclear power plant is undergoing maintenance. This maintenance period began on May 25, 2025 at 18:00 and is expected to conclude on June 15, 2025 at 18:00. The end date is an estimate. Maintenance may affect the accuracy of the price forecast, as training data during outages is limited.
 
-|              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:----------------------:|:----------------------:|
-| **Sunday**   |        0,3       |     -0,0 - 0,9    |       288 - 2970       |          6,6          |
-| **Monday**   |        0,1       |     -0,9 - 1,9    |      2202 - 4746       |          9,4          |
-| **Tuesday**  |        0,0       |     -1,3 - 1,9    |      2042 - 3712       |         10,7          |
-| **Wednesday**|        0,5       |     -0,8 - 2,3    |      2339 - 3431       |         10,9          |
-| **Thursday** |        1,3       |     -0,6 - 4,0    |      1134 - 2403       |         10,8          |
-| **Friday**   |        2,6       |     -0,0 - 8,3    |      1344 - 2469       |         10,4          |
-| **Saturday** |        0,1       |     -1,0 - 1,7    |      1561 - 2604       |          9,6          |
+The electricity price forecast was updated on Sunday at 03:25.
 
-In the upcoming week, electricity prices on the spot market will remain very low on average. However, clear differences will occur, particularly on **Friday**, when the average price rises to the week's highest level at approximately 2.6 cents. Friday will also see the week's most expensive individual hour, with prices peaking at over 8 cents around 9 a.m.
+|              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Monday**     | 0,2              | -0,8 - 1,4          | 2737 - 4902     | 9,4             |
+| **Tuesday**    | 0,0              | -1,2 - 1,8          | 2459 - 3936     | 10,7            |
+| **Wednesday**  | 1,1              | -1,2 - 4,0          | 1899 - 3406     | 10,9            |
+| **Thursday**   | 1,3              | -1,6 - 5,8          | 1052 - 2338     | 10,8            |
+| **Friday**     | 2,5              | -0,3 - 8,1          | 1397 - 2236     | 10,4            |
+| **Saturday**   | -0,3             | -1,5 - 0,9          | 1427 - 2679     | 9,6             |
+| **Sunday**     | 0,5              | -1,7 - 4,1          | 1261 - 2961     | 10,2            |
 
-The early days of the week (**Monday** and **Tuesday**) and also **Wednesday** are exceptionally affordable. During these days, prices are expected to remain close to zero or slightly below. Negative electricity prices will also appear on Monday and Tuesday, reaching as low as -1.3 cents on Tuesday afternoon between 1–3 p.m.
+During the coming week, electricity prices will remain generally affordable. Overnight prices will frequently turn negative, reaching as low as below -1,5 cents on Sunday and Thursday. However, price differences between individual days will be quite notable, and after mid-week, the price level will slightly rise.
 
-On **Thursday**, which is a public holiday, electricity demand is likely to be lower than usual. This could help maintain low prices. However, Thursday's average price (1.3 ¢) is higher than the early week's pricing, and there is a risk of individual hourly price spikes during the day. The most expensive hour on Thursday will occur between 6–8 p.m., when the price may climb up to 4 cents.
+The early days of the week will be the cheapest. Average prices on **Monday** and **Tuesday** will stay close to zero. Tuesday night will even see prices as low as -1,2 cents. Strong wind power production will help keep prices low, especially on Monday, when average wind power generation will reach almost 3900 megawatts.
 
-The weekend starts again on **Saturday** with very affordable prices, including negative pricing in the early morning hours, reaching down to -1.0 cents around 6–8 a.m. Saturday's average price is only around 0.1 cents, closely matching the very low prices of the early week.
+Starting from Wednesday, prices will begin to rise. **Thursday** is a public holiday, typically reducing electricity demand and potentially lowering prices. Nevertheless, Thursday’s highest price, 5,8 cents, will occur in the evening between 18:00–20:00, coinciding with the lowest wind power production of the week, slightly above 1000 megawatts. This may explain the price peak.
 
-Overall, the coming week will offer electricity consumers affordable hours throughout. However, price fluctuations should be noted, especially on Friday and some individual hours on Thursday evening.
+On **Friday**, prices will reach the week's highest level, with a maximum price of 8,1 cents occurring in the evening between 18:00–20:00. This is partly due to low wind production, which will dip below 1400 megawatts at its lowest point. Similarly, Saturday and Sunday may also see individual high-price spikes, although average weekend prices will remain moderate.
 
-*Prices anticipated by gpt-4.5-preview.* ⚡
+Saturday’s average price will be the week's lowest at a negative -0,3 cents. Throughout the day, prices will remain negative almost continuously, except for the evening hours. On Sunday, however, prices will fluctuate more strongly, and between 20:00–22:00 prices might exceed around 4 cents.
+
+Overall, the week's price outlook will be varied, but average prices will remain affordable across the board. Individual hours, however, may rise significantly above average due to the risk of price spikes later in the week.
+
+*Forecast spun by gpt-4.5-preview.* ⚡
