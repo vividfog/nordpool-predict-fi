@@ -1,27 +1,29 @@
-*Electricity exchange prices for the coming week will generally remain very low, with consumers even seeing negative hourly prices at times; however, brief price spikes may occur, especially later in the week when wind power production is lower.*
+*In the coming week, electricity prices will remain mostly very affordable, including even negative price hours, but individual higher price spikes may occur especially towards the end of the week and on Thursday's public holiday.*
 
-Olkiluoto 2 nuclear power plant is undergoing maintenance. The maintenance began on 25 May 2025 at 18:00 and is expected to end on 15 June 2025 at 18:00. This maintenance outage may affect the accuracy of the price forecast, as training data from periods of maintenance outages is limited.
+Forecast updated on Monday at 03:19.
 
-Forecast updated on Sunday at 21:06.
-
-|           | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 0.2 | -0.0 – 0.4 | 2644 – 4311 | 9.4 |
-| **Tuesday** | -0.0 | -1.0 – 1.7 | 1988 – 4479 | 10.7 |
-| **Wednesday** | 0.8 | -1.1 – 2.3 | 2198 – 4557 | 10.9 |
-| **Thursday** | 2.1 | -0.1 – 4.1 | 1250 – 2312 | 10.8 |
-| **Friday** | 1.6 | -0.1 – 4.3 | 1543 – 2388 | 10.4 |
-| **Saturday** | 0.1 | -1.3 – 1.8 | 1713 – 2590 | 9.6 |
-| **Sunday** | 0.3 | -1.0 – 1.7 | 1734 – 2532 | 10.0 |
+| **Tuesday**      | -0.3             | -1.2 – 1.4       | 2013 – 4732       | 10.7          |
+| **Wednesday**    | 1.3              | -1.0 – 3.6       | 1868 – 4795       | 10.9          |
+| **Thursday**     | 3.4              | 0.5 – 6.6        | 1139 – 1827       | 10.8          |
+| **Friday**       | 3.5              | 0.7 – 7.4        | 1435 – 2217       | 10.4          |
+| **Saturday**     | 1.6              | -0.8 – 9.4       | 1643 – 2717       | 9.6           |
+| **Sunday**       | 0.3              | -0.5 – 1.8       | 1692 – 2615       | 10.0          |
+| **Monday**       | 2.1              | -0.1 – 6.8       | 1670 – 2642       | 10.5          |
 
-Average electricity prices for the coming week will remain extremely low, hovering around zero or slightly above. The most notable days are **Thursday** and **Friday**, when intraday price fluctuations will be significantly larger than on other days. The forecasted average price for Thursday is 2.1 cents, and for Friday, 1.6 cents. On both days, there is a risk of short-term price spikes during certain hours.
+The Olkiluoto 2 nuclear power plant is currently undergoing maintenance. The maintenance outage started on 25 May 2025 at 18:00 and is expected to finish on 15 June 2025 at 18:00. This outage may affect the accuracy of the forecast, as the training data available during maintenance periods is limited.
 
-On **Thursday**, electricity prices will peak at 4.1 cents between 17:00–19:00. **Friday** will also experience similar price surges, especially in the morning hours between 8:00–10:00, when prices may rise up to 4.3 cents. On both these days, wind power production will be lower compared to other days, partly explaining these higher maximum prices.
+Electricity prices for the coming week will vary somewhat from day to day. The week starts on **Tuesday** with a very affordable average price, even negative (-0.3 ¢/kWh). The cheapest hours will be in the afternoon between 12:00 and 18:00, when prices will drop to as low as -1.2 cents. For electricity users, this means they will effectively receive a small compensation for electricity consumed during those hours.
 
-The early part of the week, particularly **Monday** and **Tuesday**, will offer very affordable prices. On **Monday**, prices will remain near zero throughout the day, with even the highest hourly price staying below half a cent. On **Tuesday**, prices will dip into negative territory for several hours, hitting a low of -1.0 cents. Negative prices will also continue during the early hours of **Wednesday**, as well as on **Saturday** and **Sunday**, dropping as low as -1.3 cents.
+On **Wednesday**, prices will remain moderate but will gradually begin to rise. The day's average price is expected to be around 1.3 cents. Negative prices will occur in the early morning hours, whereas prices will peak slightly below four cents between 09:00 and 11:00.
 
-Weekend days will remain relatively calm regarding price forecasts, although individual short-lived price spikes might occur. Particularly on **Saturday** evening between 18:00–20:00, prices may momentarily rise to their daily peak, even though the average daily price will remain low.
+On **Thursday**, which is a public holiday, the average electricity price will rise further to approximately 3.4 cents. The lower energy demand typical of public holidays may partly moderate price increases. Thursday's highest prices will occur in the evening from 19:00 to 21:00, with prices briefly rising close to seven cents. Individual hourly price spikes may occur.
 
-Overall, electricity price expectations for the coming week will remain consumer-friendly. Brief price peaks will primarily appear Thursday and Friday; otherwise, the general outlook for the week remains affordable.
+On **Friday**, the average price (3.5 ¢) will remain at Thursday's level. The day's peak price (7.4 ¢) will occur in the morning between 08:00 and 10:00. Individual hourly price spikes may also occur on Friday.
 
-*Forecast compiled by gpt-4.5-preview.* 🔌
+**Saturday's** price level will drop again compared to mid-week, averaging around 1.6 cents. However, in the evening between 18:00 and 20:00, prices are expected to rise above nine cents. On **Sunday**, prices will return to very affordable levels (average price 0.3 ¢), with negative prices occurring in the morning.
+
+Next **Monday**, prices will rise slightly compared to the weekend but will still remain affordable, averaging about two cents. The day's peak price, around seven cents, will occur in the morning between 08:00 and 10:00.
+
+*Numbers crunched by gpt-4.5-preview.* ⚡
