@@ -703,9 +703,12 @@ Promise.all([
             .map(item => [item[0], item[1]])
             .filter(item => item[0] > overlapThreshold);
 
+        const localizedPrice = getLocalizedText('price') + ' (¢/kWh)';
+        const localizedWindPower = getLocalizedText('windPower');
+
         // Create chart series for both price data sources
         const sahkotinPriceSeries = {
-            name: getLocalizedText('price') + ' (' + getLocalizedText('latest') + ')',
+            name: localizedPrice,
             type: 'bar',
             barWidth: '40%',
             data: sahkotinPriceData,
@@ -718,7 +721,7 @@ Promise.all([
         };
         
         const npfPriceSeries = {
-            name: getLocalizedText('price') + ' (' + getLocalizedText('forecast') + ')',
+            name: localizedPrice,
             type: 'bar',
             barWidth: '40%',
             data: npfSeriesData,
@@ -733,7 +736,29 @@ Promise.all([
         // Create custom options for wind power chart
         windPowerChart.setOption({
             title: { text: ' ' },
-            legend: { show: false },
+            legend: {
+                data: [
+                    {
+                        name: localizedWindPower,
+                        icon: 'circle',
+                        itemStyle: {
+                            color: 'dodgerblue'
+                        }
+                    },
+                    {
+                        name: localizedPrice,
+                        icon: 'circle',
+                        itemStyle: {
+                            color: '#AEB6BF'
+                        }
+                    }
+                ],
+                right: 16,
+                selected: {
+                    [localizedWindPower]: true,
+                    [localizedPrice]: true
+                }
+            },
             tooltip: {
                 trigger: 'axis',
                 formatter: function(params) {
@@ -751,12 +776,18 @@ Promise.all([
                     var formattedDateString = `${weekday} ${day}.${month}. ${timePrefix} ${hours}:${minutes}`;
                     var result = formattedDateString + '<br/>';
                     
+                    // Sort params to show wind power first
+                    params.sort((a, b) => {
+                        if (a.seriesName === localizedWindPower) return -1;
+                        if (b.seriesName === localizedWindPower) return 1;
+                        return 0;
+                    });
+
                     params.forEach(function(item) {
                         if (item.seriesType !== 'line' && item.seriesType !== 'bar') return;
                         
                         var valueRounded = item.value[1] !== undefined ? item.value[1].toFixed(1) : '';
-                        var unitLabel = item.seriesName === getLocalizedText('windPower') ? 'GW' : '¢/kWh';
-                        result += item.marker + " " + item.seriesName + ': ' + valueRounded + ' ' + unitLabel + '<br/>';
+                        result += item.marker + " " + item.seriesName + ': ' + valueRounded + '<br/>';
                     });
                     
                     return result;
@@ -872,7 +903,7 @@ Promise.all([
                 sahkotinPriceSeries,
                 npfPriceSeries,
                 {
-                    name: getLocalizedText('windPower'),
+                    name: localizedWindPower,
                     type: 'line',
                     data: windPowerSeriesData,
                     symbol: 'none',
@@ -1195,4 +1226,3 @@ window.onresize = function() {
     historyChart.resize();
     windPowerChart.resize();
 };
-
