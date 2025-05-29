@@ -1043,9 +1043,9 @@ function setupHistoryChart(data) {
     console.log("setupHistoryChart found these snapshots: ", cleanedData);
 
     const series = cleanedData.map((seriesData, index) => {
-        // Calculate opacity with a more dramatic fade for older predictions
+        // Calculate opacity for older series
         // const opacityValue = index === 0 ? 0.9 : Math.max(0.5, 0.95 - (index * 0.1));
-        const opacityValue = index === 0 ? 0.5 : 0.5;
+        const opacityValue = index === 0 ? 0.4 : 0.4;
         
         return {
             name: index === 0 ? getLocalizedText('latest') : `${index} ${getLocalizedText('daysAgo')}`,
@@ -1082,7 +1082,7 @@ function setupHistoryChart(data) {
         {
             type: 'slider',
             xAxisIndex: 0,
-            start: 25,
+            start: 33,
             end: 100,
             bottom: 10,
             height: 30
@@ -1090,7 +1090,7 @@ function setupHistoryChart(data) {
         {
             type: 'inside',
             xAxisIndex: 0,
-            start: 25,
+            start: 33,
             end: 100
         }
     ];
@@ -1114,7 +1114,7 @@ function addSahkotinDataToChart(sahkotinData) {
         lineStyle: {
             type: 'solid',
             width: 1.5,
-            opacity: 0.6
+            opacity: 0.8
         },
         color: 'limegreen',
     };
