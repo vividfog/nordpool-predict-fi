@@ -22,8 +22,8 @@ from .logger import logger
 
 # region constants
 # Constants for wind-based linear scaling for spike hours
-WIND_SCALE_MAX_MW = 2100.0  # Wind power (MW) at or above which the minimum multiplier is applied
-WIND_SCALE_MIN_MW = 100.0   # Wind power (MW) at which the maximum multiplier is applied
+WIND_SCALE_MAX_MW = 2000.0  # Wind power (MW) at or above which the minimum multiplier is applied
+WIND_SCALE_MIN_MW = 50.0   # Wind power (MW) at which the maximum multiplier is applied
 MAX_WIND_MULTIPLIER = 1.5   # Multiplier applied when wind power is at WIND_SCALE_MIN_MW
 MIN_WIND_MULTIPLIER = 1.0   # Multiplier applied when wind power is at or above WIND_SCALE_MAX_MW
 
