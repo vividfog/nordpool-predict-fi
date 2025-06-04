@@ -2,6 +2,9 @@
 
 All notable changes will be documented in this file.
 
+## [2025-05-11] - Weather Station
+### Removed
+- FMISID 101851 (Tornio Kaakkuri) has been missing data lately; removing (for now?) to avoid blocking; Kemi is included and nearby
 
 ## [2025-05-11] - Price Scaling and Volatility
 ### Added
@@ -14,7 +17,7 @@ All notable changes will be documented in this file.
 
 ## [2025-05-01] - Volatility Model Experiment
 ### Added
-- Experimental price volatility model to identify days with higher risk of significant price fluctuations.
+- Experimental price volatility model to identify days with higher risk of significant price fluctuations
 
 ## [2025-04-21] - UI Improvements
 ### Changed
