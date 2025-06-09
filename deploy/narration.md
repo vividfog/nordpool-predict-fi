@@ -1,29 +1,27 @@
-*Pörssisähkön hinta vaihtelee tällä viikolla huomattavasti: viikon edullisimmat päivät ovat torstai ja perjantai, kun taas keskiviikko erottuu selvästi korkeimmilla hinnoillaan. Hintapiikkien riski on suurin alkuviikosta, jolloin tuulivoiman tuotanto jää paikoin poikkeuksellisen matalaksi.*
+*Sähkön hinta vaihtelee tällä viikolla voimakkaasti: korkeimmat hinnat nähdään tiistaina ja keskiviikkona, jolloin yksittäiset huipputunnit ylittävät jopa 20 senttiä, mutta loppuviikko tarjoaa selvästi edullisempaa sähköä, ajoittain jopa negatiivisin hinnoin.*
 
-Olkiluoto 2 -ydinvoimalassa on käynnissä huoltokatko. Katko alkoi 25.5.2025 klo 18 ja sen arvioitu päättymisaika on 15.6.2025 klo 18. Huoltokatko voi vaikuttaa hintaennusteen tarkkuuteen, koska opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
-
-Tämän hintaennusteen tiedot on päivitetty maanantaina klo 09:05.
+Ennuste on päivitetty maanantaina klo 12:06.
 
 |              | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **tiistai**      |       8,4        |   -0,3 - 18,3    |      257 - 2319      |     10,6        |
-| **keskiviikko**  |      11,6        |    4,5 - 25,8    |      124 - 854       |     10,8        |
-| **torstai**      |       2,1        |    0,2 - 3,8     |      992 - 3063      |     11,3        |
-| **perjantai**    |       1,4        |   -0,2 - 3,5     |     1978 - 2869      |     11,1        |
-| **lauantai**     |       1,6        |   -0,4 - 8,0     |     1364 - 3040      |     12,1        |
-| **sunnuntai**    |       3,3        |    0,9 - 7,4     |     1150 - 2060      |     12,9        |
-| **maanantai**    |       4,6        |    1,4 - 10,9    |     1124 - 2243      |     14,0        |
+| **tiistai**      |        9,2       |    -0,2 - 20,6    |       283 - 2460      |       10,6      |
+| **keskiviikko**  |       11,5       |     3,9 - 26,2    |       107 - 843       |       10,8      |
+| **torstai**      |        2,0       |    -0,1 - 4,4     |      1075 - 3045      |       11,3      |
+| **perjantai**    |        1,5       |    -0,2 - 3,7     |      2022 - 2791      |       11,1      |
+| **lauantai**     |        1,3       |    -0,7 - 7,1     |      1495 - 2869      |       12,1      |
+| **sunnuntai**    |        3,5       |     1,1 - 6,6     |      1267 - 2108      |       12,9      |
+| **maanantai**    |        4,6       |     1,1 - 10,4    |      1173 - 1771      |       13,3      |
 
-Sähkön hinnassa nähdään tulevina päivinä huomattavaa vaihtelua. Alkuviikon päivistä **keskiviikko** erottuu viikon korkeimmalla päivähinnalla. Keskihinta yltää silloin 11,6 senttiin ja maksimihinta jopa 25,8 senttiin. Hintapiikeille on keskiviikkona selvä riski, erityisesti aamupäivällä klo 8–10, jolloin hinnat ovat korkeimmillaan.
+Olkiluoto 2 -ydinvoimalassa on käynnissä huoltokatko. Se alkoi 25.5.2025 klo 18 ja sen arvioitu päättymisaika on 15.6.2025 klo 18. Tämä huoltokatko voi vaikuttaa ennusteen tarkkuuteen, sillä opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
 
-Myös **tiistaina** hinnat vaihtelevat voimakkaasti. Päivän aikana nähtäneen suuri vaihtelu, kun sähkön hinta liikkuu negatiivisista lukemista aina yli 18 senttiin asti. Hintapiikin riski korostuu erityisesti aamulla klo 8–10 sekä illalla klo 19–21.
+Sähkön hinta vaihtelee tulevalla viikolla merkittävästi päivien ja vuorokauden aikojen välillä. Hinnat ovat korkeimmillaan heti tiistaina ja keskiviikkona. **Tiistaina** päivän keskihinta kohoaa yli yhdeksään senttiin, ja yksittäisillä tunneilla hinta voi nousta jopa yli 20 senttiin. Erityisesti illalla klo 19–21 kannattaa varautua korkeampiin hintoihin, jolloin hintapiikkien riski on suuri.
 
-Viikon edullisimmat hinnat toteutuvat loppuviikosta. **Torstai** ja **perjantai** ovat molemmat selvästi edullisempia päiviä. Torstain keskihinta jää vain 2,1 senttiin, ja perjantaina odotettu keskihinta on vielä matalampi, vain 1,4 senttiä. Molempina päivinä nähdään jopa negatiivisia hintoja yön tunteina.
+**Keskiviikkona** keskihinta on viikon korkein, 11,5 senttiä. Huippuhinnat voivat olla todella korkeita, arviolta jopa yli 26 senttiä aamun tunneilla klo 8–10. Keskiviikon hintahuiput liittyvät heikkoon tuulivoiman tuotantoon, sillä koko päivän ajan tuulivoimaa saadaan poikkeuksellisen vähän, minimissään vain reilut sata megawattia.
 
-Viikonloppuna hinnat nousevat hieman, mutta pysyvät edelleen hyvin maltillisina. **Lauantaina** keskihinta on 1,6 senttiä ja **sunnuntaina** 3,3 senttiä. Molemmilla päivillä on mahdollisuus yksittäisiin hintapiikkeihin, mutta ne jäänevät maltillisiksi verrattuna alkuviikkoon.
+Torstaina ja perjantaina sähkön hinnat romahtavat selvästi alkuviikosta. **Torstaina** keskihinta putoaa noin kahteen senttiin, ja yön tunteina nähdään jopa negatiivisia hintoja. **Perjantaina** tilanne jatkuu vieläkin edullisempana, keskimääräinen hinta pysyttelee puolentoista sentin tienoilla.
 
-Ensi **maanantai** tuo mukanaan hieman korkeampia hintoja, keskihinnan ollessa 4,6 senttiä ja maksimihinnan noustessa lähes 11 senttiin. Hintapiikkejä voi esiintyä yksittäisinä tunteina, erityisesti aamupäivän aikana noin klo 9–11.
+Myös viikonloppuna sähkön hinta pysyy kohtuullisena mutta hieman vaihtelevana. **Lauantaina** keskihinta on vain 1,3 ¢, mutta joitakin yksittäisiä hintapiikkejä voi esiintyä illalla klo 19–21. **Sunnuntaina** hinta nousee hieman, keskimääräiseksi hinnaksi ennustetaan 3,5 ¢.
 
-Viikon sisäiset suuret vaihtelut hintatasossa selittyvät pitkälti tuulivoiman määrän vaihtelulla. Erityisen vähäinen tuulituotanto keskiviikkona ja tiistain matalat minimimäärät korreloivat korkeimpien hintojen kanssa. Torstain ja perjantain runsas tuulituotanto puolestaan pitää hinnat matalina.
+Ensi **maanantaina** hinta hieman kohoaa viikonlopusta, keskihinnan ollessa noin 4,6 senttiä. Hintapiikkejä voi esiintyä yksittäisinä tunteina, mutta ne jäävät selvästi alkuviikon huippuhinnoista.
 
-*Ennusteen tulkitsi gpt-4.5-preview.* 🌬️
+*Hintoja pureskeli gpt-4.5-preview.* 🔌
