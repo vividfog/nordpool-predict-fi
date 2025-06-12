@@ -1,27 +1,27 @@
-*Electricity market prices will fluctuate significantly in the coming days: the week's lowest prices are expected on Saturday, while prices could rise sharply above 17 cents per kilowatt-hour on Friday evening. Several days also carry a risk of brief price spikes higher than forecasted.*
+*In the coming days, electricity spot prices will fluctuate significantly: the week's highest prices occur on Friday evening, while Saturday offers unusually low, even negative prices. Price levels will stabilize again to moderate levels heading into the beginning of next week.*
 
-The Olkiluoto 2 nuclear power plant is undergoing a maintenance outage. The outage began on 25 May 2025 at 18:00 and is expected to end on 21 June 2025 at 18:00. The maintenance outage may affect the accuracy of the forecast, as training data during maintenance periods is limited.
+Forecast updated Thursday at 03:19.
 
-Forecast updated on Wednesday at 21:06.
+|              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Friday**      | 6,0              | -0,3 - 17,2       | 421 - 3597      | 11,1          |
+| **Saturday**    | 0,3              | -1,7 - 3,5        | 880 - 2775      | 12,1          |
+| **Sunday**      | 2,2              | -0,2 - 7,6        | 1149 - 2466     | 12,9          |
+| **Monday**      | 4,9              | 1,2 - 11,6        | 1235 - 1737     | 13,3          |
+| **Tuesday**     | 3,8              | 0,6 - 9,8         | 1421 - 2426     | 12,6          |
+| **Wednesday**   | 1,8              | -0,5 - 6,1        | 1897 - 2569     | 12,5          |
+| **Thursday**    | 1,7              | 0,5 - 4,0         | 1806 - 2852     | 12,5          |
 
-|              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:-------------|:-------------------------:|:------------------:|:-----------------------------:|:----------------------------:|
-| **Thursday** |           3,0             |    0,3 - 13,0      |          681 - 3630           |             11,3             |
-| **Friday**   |           5,1             |   -0,6 - 17,1      |          485 - 3729           |             11,1             |
-| **Saturday** |           0,8             |   -1,6 - 4,9       |          560 - 2449           |             12,1             |
-| **Sunday**   |           2,4             |   -0,6 - 7,2       |          832 - 2179           |             12,9             |
-| **Monday**   |           3,9             |    0,5 - 10,6      |         1092 - 1915           |             13,3             |
-| **Tuesday**  |           4,2             |    0,1 - 13,4      |         1175 - 2374           |             12,6             |
-| **Wednesday**|           1,9             |   -0,3 - 6,5       |         1764 - 2675           |             12,5             |
+The Olkiluoto 2 nuclear power plant is currently undergoing maintenance. The outage started on 25.5.2025 at 18:00 and its estimated completion is on 21.6.2025 at 18:00. This maintenance outage may affect forecast accuracy, as training data during outage periods is limited.
 
-Electricity market prices will vary noticeably in the coming days. The week's highest price spikes are forecasted for **Friday**, when the maximum hourly rate is expected to rise over 17 cents between 19:00 and 21:00. Friday's average price is projected at 5,1 ¢, slightly higher than on other days.
+Electricity spot prices will show considerable variation in the coming days. Prices are expected to remain affordable or normal, but the week's highest maximum prices will clearly occur on **Friday**. Friday's most expensive hours will be in the evening between 19:00 and 21:00, when prices could exceed 17 cents per kilowatt-hour. During early Friday morning, between 03:00 and 05:00, prices could fall into negative territory, even down to -0.3 cents.
 
-**Saturday** will likely be the week's cheapest day, with average prices below one cent. On Saturday afternoon between 13:00 and 17:00, prices will be particularly low, dipping into negative territory at -1,6 ¢ at the lowest. Negative prices around -0,6 ¢ are also expected early on **Friday** morning from 03:00 to 05:00.
+On **Saturday**, the average electricity price will be very low, just 0.3 cents, and there will be several hours of negative prices throughout the day. The cheapest hour will occur in the afternoon between 13:00 and 15:00, reaching as low as -1.7 ¢. This makes Saturday the week's most affordable day for electricity users.
 
-Prices on other days will be more balanced. On **Thursday** and **Monday**, average prices remain moderate, at 3,0 ¢ and 3,9 ¢ respectively. Tuesday's average price will be slightly higher at 4,2 cents, with the day's highest hourly price of 13,4 ¢ occurring in the morning between 08:00 and 10:00.
+On **Sunday**, prices will slightly rebound but will still remain affordable. Sunday's highest price, 7.6 ¢, will occur in the evening between 19:00 and 21:00, while prices in the early morning hours will hover around zero or slightly below. On **Monday**, prices will increase further, with the day's average price expected to be just under five cents. Evening hours between 19:00 and 21:00 could see prices rise above 11 cents.
 
-Midweek on **Wednesday**, the average price will drop below two cents again. Wednesday's hourly prices remain moderate, peaking at 6,5 cents between 08:00 and 10:00 in the morning.
+Midweek, prices will decrease again. On **Tuesday**, **Wednesday**, and **Thursday**, average electricity prices will remain moderate, with negative hours occurring only occasionally. Among these days, Wednesday is expected to be the cheapest, with the lowest price hour between 03:00 and 05:00 in the early morning, again negative at -0.5 ¢.
 
-Several days, however, carry a noted risk of price spikes during individual hours. On Friday, Saturday, Sunday, Monday, Tuesday, and Wednesday, such price spikes may occur. Especially during Friday's peak price from 19:00 to 21:00, users should prepare for potentially higher-than-forecasted rates.
+As maintenance at Olkiluoto 2 will continue past the period covered by this forecast, price predictions may carry some uncertainty, particularly in longer-term forecasts. Users should prepare for the possibility that prices during certain hours could rise higher than forecasted, especially on Friday and Saturday, when the risk of price spikes is high.
 
-*Numbers crunched by gpt-4.5-preview.* 🔌
+*Forecast crafted by gpt-4.5-preview.* 🔌
