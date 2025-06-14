@@ -1,27 +1,27 @@
-*In the coming week, market electricity prices will vary significantly day by day: the week will begin with higher prices and potential peak price hours, while prices will clearly drop in the latter half of the week, including negative hourly prices due to lower demand during public holidays.*
+*Electricity prices on the power exchange will fluctuate significantly within days during the coming week, but on average, prices will remain affordable; price spikes will occur mainly early in the week, while during public holidays at the week's end, prices will occasionally drop into negative territory.*
 
-The Olkiluoto 2 nuclear power plant is currently undergoing a maintenance outage that began on 25.5.2025 at 18:00 and is expected to end on 21.6.2025 at 18:00. This maintenance outage may affect the accuracy of the price forecast, as there is limited training data available from periods during outages.
+The Olkiluoto 2 nuclear power plant is undergoing a maintenance outage. The outage began on 25.5.2025 at 18:00 and is estimated to end on 21.6.2025 at 18:00. This outage may affect the accuracy of the forecast, as training data during maintenance outages is limited.
 
-Forecast updated on Saturday at 09:06.
+The forecast was updated on Saturday at 12:06.
 
-|          | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
-|:---------|:----------------------:|:------------------:|:----------------------------:|:-------------------------:|
-| **Sunday**    | 2,3                  | -0,0 - 6,2         | 596 - 3069                   | 12,9                      |
-| **Monday**    | 4,7                  | 0,2 - 12,4         | 870 - 2871                   | 13,3                      |
-| **Tuesday**   | 4,4                  | 1,8 - 13,1         | 1286 - 1944                  | 12,6                      |
-| **Wednesday** | 3,4                  | 0,9 - 11,6         | 1323 - 2201                  | 12,5                      |
-| **Thursday**  | 1,4                  | -0,7 - 2,9         | 2023 - 2488                  | 12,6                      |
-| **Friday**    | 1,7                  | -0,1 - 6,3         | 1431 - 2764                  | 12,0                      |
-| **Saturday**  | 1,3                  | -2,6 - 6,0         | 1182 - 2193                  | 12,3                      |
+|          | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Sunday** | 2,7 | -0,0 – 7,2 | 544 – 3331 | 12,9 |
+| **Monday** | 5,5 | 0,2 – 14,5 | 670 – 2715 | 13,3 |
+| **Tuesday** | 3,9 | 0,9 – 10,7 | 1332 – 2854 | 12,6 |
+| **Wednesday** | 3,5 | 0,8 – 10,8 | 1369 – 2159 | 12,5 |
+| **Thursday** | 1,3 | -1,2 – 3,1 | 2104 – 2494 | 12,6 |
+| **Friday** | 1,7 | -0,3 – 7,0 | 1469 – 2746 | 12,0 |
+| **Saturday** | 1,0 | -2,1 – 4,8 | 1526 – 2210 | 12,3 |
 
-During the coming week, electricity prices will show considerable daily variation. At the beginning of the week, prices will rise higher than towards the end, and there will also be negative price hours during the week.
+During the upcoming week, electricity prices on the power exchange will vary noticeably between days. Prices will generally remain affordable, however. The week's highest prices will occur on **Monday**, when the daily average climbs to 5,5 cents, and the peak price reaches 14,5 cents. The risk for price spikes on Monday will be significant, especially in the evening around 18:00–20:00, when price levels are expected to be highest.
 
-The most expensive day of the week will be **Monday**, when the average price will climb to 4.7 cents, and certain hourly prices may rise above 12 ¢. Particularly on Monday evening, between 18:00–20:00, the highest prices are expected, with electricity prices possibly exceeding 12 cents. **Tuesday** will also see high hourly prices during the morning between 08:00–10:00, when prices will reach over 13 cents. Both Monday and Tuesday carry risks of price spikes on individual hours.
+The most affordable days of the week will be **Thursday**, **Friday**, and **Saturday**, when prices will mostly remain well below two cents. On Thursday and Friday, negative hourly prices will also occur, meaning electricity prices will drop below zero. On Saturday, the week's lowest price will be recorded, as low as -2,1 ¢ at night.
 
-The most affordable days of the week will be **Thursday**, **Friday**, and **Saturday**, when the daily average price stays below two cents. These days will also see negative hourly prices. Particularly on Saturday afternoon, between 12:00–16:00, electricity prices will dip significantly negative, bottoming out at -2.6 cents.
+On **Sunday**, **Tuesday**, and **Wednesday**, prices will remain moderate on average, although intra-day price variations will be large. On these days, maximum prices will momentarily rise above 7–10 cents, especially during morning and evening hours. Hence, there will be a risk for price spikes on these days as well, but they will remain significantly lower compared to Monday.
 
-Friday and Saturday are public holidays, during which electricity demand may be lower than typical weekdays. This may partly explain these days' lower price levels.
+Friday and Saturday will be public holidays, reducing electricity demand and consequently lowering prices. This effect will be particularly noticeable in Saturday's very low price levels.
 
-Significant fluctuations in wind power production will also be observed during the week, which could impact the highest maximum prices momentarily. Monday’s higher prices may partly be explained by low wind power production, with minimum generation at just 870 MW. Similarly, Tuesday’s highest prices will coincide with low wind power output.
+The week's lowest prices will mainly occur during nighttime and early morning hours when electricity consumption is minimal. The morning and evening hours on weekdays will consistently be somewhat pricier.
 
-*Numbers crunched by gpt-4.5-preview.* 🌬️
+*Data reported by gpt-4.5-preview.* 🔌
