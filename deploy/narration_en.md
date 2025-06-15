@@ -1,27 +1,27 @@
-*Next week's electricity spot prices will vary significantly from day to day and hour to hour: Monday is expected to see the week's highest prices at over 13 cents, while weekend prices will briefly dip into negative territory.*
+*The electricity spot price will fluctuate notably during the upcoming week: Monday will see clearly the highest prices and potential price spikes, but as the week progresses, prices will drop significantly, with Thursday marking the week's lowest average price. Public holidays over the weekend will keep demand and prices moderate.*
 
-The Olkiluoto 2 nuclear power plant is undergoing scheduled maintenance. During this maintenance period, the plant's available power is 0 MW, and its availability percentage is 0.0%. The outage began on 25 May 2025 at 18:00 and is expected to end on 21 June 2025 at 18:00. This maintenance outage may affect the accuracy of this forecast, as training data during such outages is limited.
+The Olkiluoto 2 nuclear power plant is currently undergoing maintenance. The maintenance outage began on 25 May 2025 at 18:00 and is forecasted to end on 21 June 2025 at 18:00. The maintenance outage may impact the accuracy of this price forecast, as training data during maintenance periods is limited.
 
-Forecast updated on Sunday at 03:19.
+Forecast updated on Sunday at 09:05.
 
-|             | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
-|:------------|:----------------------:|:-------------------:|:----------------------------:|:-------------------------:|
-| **Monday**      |          5,3           |    -0,4 - 13,4     |          751 - 2516          |           13,3            |
-| **Tuesday**     |          3,0           |     0,4 - 7,3      |         2149 - 3185          |           12,6            |
-| **Wednesday**   |          2,8           |    -0,6 - 9,3      |         1536 - 2258          |           12,5            |
-| **Thursday**    |          1,0           |    -0,6 - 3,2      |         1841 - 2792          |           12,6            |
-| **Friday**      |          2,0           |    -0,7 - 8,9      |         1088 - 3098          |           12,0            |
-| **Saturday**    |          2,0           |    -1,8 - 6,9      |          998 - 1847          |           12,3            |
-| **Sunday**      |          0,8           |    -1,1 - 3,1      |         1116 - 2070          |           12,6            |
+|            | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:-----------|:-------------------------:|:------------------:|:-----------------------------:|:---------------------------:|
+| **Monday**     |           5,6             |    -0,2 - 14,9     |          732 - 2532           |             13,3            |
+| **Tuesday**    |           2,6             |     1,0 - 6,3      |         2183 - 3214           |             12,6            |
+| **Wednesday**  |           2,3             |    -0,7 - 7,2      |         1495 - 2298           |             12,5            |
+| **Thursday**   |           1,2             |     0,0 - 3,4      |         2114 - 2586           |             12,6            |
+| **Friday**     |           1,5             |    -0,6 - 6,5      |         1514 - 2707           |             12,0            |
+| **Saturday**   |           2,9             |    -0,3 - 7,6      |         1071 - 1853           |             12,3            |
+| **Sunday**     |           1,6             |    -0,1 - 3,6      |         1174 - 2019           |             12,6            |
 
-Next week's electricity prices are expected to vary considerably between different days and hours. The week's highest hourly prices will occur on **Monday**, when prices are forecast to peak at approximately 13.4 cents per kilowatt-hour in the evening between 18:00 and 20:00. Monday's average price, 5.3 cents, will be the highest of the week. It is also notable that the minimum wind power output on Monday is low, partly explaining the day's high peak price. **Wednesday** and **Friday** will also see relatively high peak prices, around nine cents per kilowatt-hour in the morning hours.
+At the beginning of the week, **Monday** clearly stands out in the price forecast, with an expected average electricity price of 5.6 cents per kilowatt-hour. Monday will also experience the week's largest price variation: the lowest predicted hourly price slightly drops to negative, at -0.2 cents, while the highest hourly price will rise to 14.9 cents. On Monday, the risk of price spikes will be significant, especially in the evening between 18:00 and 20:00, when the electricity price may rise notably above the forecasted 14.9 cents.
 
-The week's lowest prices will occur during nighttime hours and over the weekend. On **Saturday** afternoon, the price will drop as low as -1.8 cents between 14:00 and 16:00. **Sunday** afternoon will also see negative prices, reaching -1.1 cents between 15:00 and 17:00.
+Starting from Tuesday, electricity prices will see a clear drop. **Tuesday’s** average price will be 2.6 cents, and from Wednesday to Sunday, average prices will remain affordable, below the three-cent level. The week's most affordable day will be **Thursday**, when the average price will be only 1.2 cents. Price fluctuations on Thursday will also remain moderate, with the day's most expensive hour costing only 3.4 cents.
 
-Several days during the week carry the risk of sudden hourly price spikes. This risk particularly affects Monday, Wednesday, Thursday, Friday, Saturday, and Sunday. On these days, the hourly prices could briefly exceed the forecasted maximum, especially if wind forecasts turn out weaker than anticipated.
+Negative electricity prices will appear frequently during the week, especially at night. On Wednesday, early morning hours between 03:00 and 05:00 will see the lowest predicted price of -0.7 cents. Negative minimum prices are also expected on Friday and Saturday.
 
-Friday and Saturday are public holidays, which may reduce energy demand and thus lower electricity prices. The average prices on these two days will indeed be clearly lower than Monday's, around two cents. Thursday and Sunday will be the cheapest days of the week in terms of average prices, staying around one cent or even below.
+Friday and Saturday are public holidays, leading to lower-than-usual electricity demand. This clearly shows in Friday’s affordable average price of only 1.5 cents per kilowatt-hour. Although Saturday’s average price will rise slightly to 2.9 cents, a negative minimum price (-0.3 ¢) will also occur.
 
-Overall, price expectations for the week are volatile, and consumers should be prepared for significant price fluctuations, especially early in the week. The negative prices during the weekend are exceptional, and utilizing these periods may be beneficial for electricity consumers.
+Over the weekend, particularly on Saturday, wind power production will remain at a relatively low average level (1344 MW). This may partly explain Saturday’s slightly higher average price compared to other days of the week. Saturday also carries a risk of short-term price spikes.
 
-*Weekly predictions spun by gpt-4.5-preview.* 🔌
+*Forecasts delivered by gpt-4.5-preview.* 🌬️
