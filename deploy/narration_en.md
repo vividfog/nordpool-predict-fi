@@ -1,27 +1,27 @@
-*In the coming days, electricity prices will remain mostly moderate, but significantly higher price spikes are expected on Wednesday morning due to low wind power production. The public holiday on Friday may reduce electricity demand, keeping prices unusually affordable.*
+*Stock electricity prices will vary notably in the coming days. The week begins with affordable levels, even briefly dipping into negative prices, but notably higher peak prices are expected on Wednesday morning and Saturday evening.*
 
-The forecast was updated on Monday at 21:38.
+Forecast updated on Tuesday at 03:19.
 
-|              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temp.<br>°C |
+|              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday**  |        0,4       |      0,0 - 1,4     |     1465 - 1981    |      12,6     |
-| **Wednesday** |      3,9        |     0,3 - 16,2     |      313 - 2210    |      12,5     |
-| **Thursday** |        0,9       |    -0,5 - 3,1      |     2105 - 4017    |      12,6     |
-| **Friday**   |        1,0       |    -0,3 - 4,4      |     1531 - 3057    |      12,0     |
-| **Saturday** |        3,0       |     0,2 - 7,8      |     1072 - 1769    |      12,3     |
-| **Sunday**   |        2,3       |     0,6 - 5,3      |     1011 - 2007    |      12,5     |
-| **Monday**   |        2,8       |     0,7 - 5,0      |     2017 - 2815    |      12,2     |
+| **Wednesday** | 3.0 | -0.4 - 13.6 | 486 - 2063 | 12.5 |
+| **Thursday**  | 1.0 | -0.7 - 4.1  | 1561 - 3500 | 12.6 |
+| **Friday**    | 0.8 | -0.6 - 3.9  | 1092 - 3133 | 12.0 |
+| **Saturday**  | 3.2 | -0.5 - 9.2  | 975 - 1975  | 12.3 |
+| **Sunday**    | 2.3 |  0.6 - 6.0  | 1020 - 2007 | 12.5 |
+| **Monday**    | 2.8 |  0.4 - 4.4  | 2016 - 2857 | 12.2 |
+| **Tuesday**   | 2.9 |  0.8 - 7.4  | 1265 - 2509 | 12.2 |
 
-The Olkiluoto 2 nuclear power plant is currently undergoing maintenance. The outage started on 25.5.2025 at 18:00 and is expected to end on 25.6.2025 at 18:00. This maintenance outage may affect the accuracy of the price forecast, as training data from outage periods is limited.
+The Olkiluoto 2 nuclear power plant is currently undergoing maintenance. The plant has a nominal capacity of 890.0 MW, and its availability is currently at 0%. The maintenance outage began on 25.5.2025 at 18:00, and it is scheduled to end on 25.6.2025 at 18:00. This maintenance outage may affect the accuracy of the forecast, as training data from periods of maintenance outages is limited.
 
-The electricity price forecast for the coming days clearly highlights **Wednesday**, when prices will rise significantly. The average price on that day will be about 3.9 ¢, with certain individual hours potentially being particularly costly. Especially the morning hours between 7:00–9:00 carry a risk of price spikes, potentially rising above 16 cents per kilowatt-hour. This is particularly due to very low wind power production, which will drop to as little as 313 megawatts. Thus, the likelihood of price spikes on Wednesday is substantial.
+The electricity price forecast for the coming week shows clear daily variations. The most affordable days will be **Thursday** and **Friday**, when average electricity prices remain around one cent per kilowatt-hour. Thursday will see the lowest single hourly price of the week, at -0.7 cents, occurring during night hours between 2:00–4:00. Electricity will also briefly dip into negative pricing (-0.5 ¢) early Friday morning at 4:00.
 
-On other days, prices will remain low or moderate. **Tuesday** will be the cheapest day of the week, with an average price of 0.4 ¢, and overnight electricity prices will dip close to zero. Electricity use during these night-time hours will therefore be especially affordable. Thursday and Friday will also see very low prices, with electricity prices even turning negative overnight on both days. This means electricity consumption will be exceptionally cheap or even advantageous during these periods.
+**Wednesday** will differ markedly from other days due to its highest single-hour price. The day's peak pricing will occur in the morning between 8:00–10:00, when prices could rise as high as 13.6 cents. Nevertheless, Wednesday's average price will remain moderate at approximately 3.0 cents.
 
-**Friday** is a public holiday, which may reduce electricity demand and thus keep prices low. However, there remains a risk of price spikes on certain hours, even though the day's average price will be only around one cent.
+During the weekend, **Saturday** will be slightly more expensive, with average prices rising to 3.2 cents. On Saturday evening between 19:00–21:00, hourly prices will peak at over 9 cents. Sunday's prices will remain somewhat lower, averaging 2.3 ¢.
 
-Over the weekend, prices will be somewhat higher compared to the beginning of the week. On **Saturday**, the average electricity price will rise to three cents. During individual hours, prices could reach almost eight cents. Wind power production on Saturday will be lower than average, partially explaining the increase in prices. On **Sunday**, the average price will fall slightly, but the risk of individual price spikes remains.
+At the start of next week, prices will remain relatively stable. **Monday** will have an average price of 2.8 cents, and **Tuesday** will see an average of 2.9 cents. However, on Tuesday evening between 21:00–23:00, prices will rise significantly, peaking above 7 cents.
 
-Next **Monday**, electricity prices will remain reasonably low, although some individual hours may still rise to the five-cent level. Wind power production will be somewhat stronger on Monday, so the highest price peaks are not expected.
+Several days carry a noted risk of price spikes during certain individual hours. This applies particularly to the forecasts for Wednesday, Thursday, Friday, Saturday, Sunday, Monday, and Tuesday. This indicates that during specific hours, actual prices might rise above the forecasted maximum.
 
-*Numbers crunched by gpt-4.5-preview.* ⚡
+*Prices forecasted by gpt-4.5-preview.* ⚡
