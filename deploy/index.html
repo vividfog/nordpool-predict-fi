@@ -54,49 +54,47 @@
         </ul>
         <p>Lähdekoodi on avointa, ja olet tervetullut kokeilemaan erilaisia vaihtoehtoja näiden lisäksi tai sijaan.<p>
         <h1 style="padding-top: 32px">Muutokset</h1>
+        <p><strong>4-7.5.2025:</strong></p>
+        <p>Kokeellinen hintavolatiliteettimalli pyrkii nyt tunnistamaan tunnit, joilla on suurempi riski voimakkaisiin hinnanvaihteluihin. Ennustegraafiin on merkitty tunnit, joissa hintapiikkejä voi esiintyä matalan tuulivoimaennusteen vuoksi, ja huipputuntien hintoja on silloin skaalattu ylöspäin. Tällä on merkittävä nostava vaikutus ennustettuun keskihintaan vähätuulisina päivinä.</p>
+        <p><strong>25.4.2025:</strong></p>
+        <p>Ennusteessa mukana viivagraafi. Tuulivoimakuvaaja näyttää nyt tuulivoimatuotannon ja hinnan välisen mahdollisen korrelaation. Historiakuvaaja näyttää nyt 3 ja 6 tunnin keskihinnat, ja kuvaajaa voi zoomata.</p>
+        <p><strong>5.2.2025:</strong></p>
+        <p>Kielimalli saattaa nyt vaihtua sen mukaan, miten malleja on verkossa tarjolla.</p>
+        <p><strong>30.1.2025:</strong></p>
+        <p>Etusivu muodostuu nyt <a href="index.html">suomeksi</a> ja <a href="index_en.html">englanniksi.</a> Markdown-muotoinen versio löytyy Githubista <a href="https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/refs/heads/main/deploy/narration.md" target="_blank">suomeksi</a> ja <a href="https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/refs/heads/main/deploy/narration_en.md" target="_blank">englanniksi</a>. Kts. myös kaksikielinen <a href="https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/refs/heads/main/deploy/narration_full.json" target="_blank">JSON-versio</a>. Näistä voi olla iloa esim. kotiautomaation rakentajille. DeepSeek API on ollut nyt paljon <a href="https://status.deepseek.com" target="_blank">jumissa</a>, eikä aina suostu kirjoittamaan tekstejä. Jos tilanne jatkuu pitkään, niin palaamme GPT-4o-malliin, mutta samalla kieliversioita tod näk jää vain yksi.</p>
+        <p><strong>18.1.2025:</strong></p>
+        <p>Tuulivoimamallia tuunattu. Fingridin jatkuvasti päivittyvä <a href="https://data.fingrid.fi/datasets/245" target="">ennuste</a> kertoo ensimmäiset 36 tuntia päivityshetkestä alkaen, ja loput arvioidaan Itämeren ympäristön ja Suomen säätiedoista. Toteutuma päivittyy nyt <a href="https://data.fingrid.fi/datasets/181" target="_blank">takautuvasti</a>. Kielimalli näkee nyt päivän sisäiset tiedot ja mahdolliset hintapiikkien riskit. Kielimalliksi vaihdettu <a href="https://huggingface.co/deepseek-ai/DeepSeek-V3" target="_blank">DeepSeek-V3</a>.</p>
+        <p><strong>12.1.2025:</strong></p>
+        <p>Fingrid, tuulivoimakapasiteetti: rajapinnasta puuttui dataa vuoden alkupuolelta. Open-Meteo, auringonsäteily: tarjotut ennustearvot (W/m²) olivat <a href="https://github.com/open-meteo/open-meteo/issues/1184" target="_blank">negatiivisia</a> lähipäiville, puolen miljoonan Watin verran. Tarkistuksia lisätty tällaisten tilanteiden varalta. Itämeren tuulivoima-alueita lisätty hinnoittelumalliin. Vähäinen tuuli ulkomailla voi nostaa hintaa Suomessa, vaikka oma tuotanto olisi voimakasta.</p>
+        <p><strong>4.1.2025:</strong></p>
+        <p>Ennuste ulottuu nyt 7 päivää eteenpäin. Ruotsin ja Viron tuontiyhteyksiä käsitellään nyt mallissa erillisinä, eikä vain summana. Viron siirtoyhteyden käyttökatko tyypillisesti alentaa hintaa ja Ruotsin taas nostaa.</p>
+        <p><strong>30.12.2024:</strong></p>
+        <p>Malli arvioi nyt <a href="https://open-meteo.com/en/docs" target="_blank">aurinkoenergian</a> vaikutuksen hintaan. Tuulivoimaennuste käyttää jälleen XGBoostia.</p>
+        <p><strong>25.12.2024:</strong></p>
+        <p>Historiagraafi ei enää näytä sellaisia vanhoja ennusteita, joiden kohdalla huomisen toteutuva Nordpool-hinta oli jo mallin opittavissa. Historiaa pidennetty 30 päivään.</p>
+        <p><strong>24.12.2024:</strong></p>
+        <p>Tieto <a href="https://pyhäpäivä.fi" target="_blank">juhlapyhistä</a> on nyt mukana mallin opetuksessa.</p>
+        <p><strong>23.11.2024:</strong></p>
+        <p>Tuulivoimaennusteessa kokeillaan nyt neuroverkkomallia (PyTorch).</p>
+        <p><strong>17.11.2024:</strong></p>
+        <p>Kielimalli näkee nyt ydinvoimaloiden <a href="https://umm.nordpoolgroup.com/#/messages?publicationDate=all&eventDate=lastyear&areas=10YFI-1--------U&messageCategory=electricity&searchText=&messageTypes=production&unavailabilityType=unplanned&fuelTypes=nuclear" target="_blank">suunnittelemattomat tuotantokatkot</a>. Kielimalliksi vaihdettu GPT-4o. Aiempi oli GPT-4o-mini. Tämän pitäisi tuottaa selkeämpää suomea.</p>
+        <p><strong>10.11.2024:</strong></p>
+        <p>Fingrid <a href="https://www.fingrid.fi/ajankohtaista/tiedotteet/2024/flow-based-kapasiteetinlaskentamenetelma-otettu-onnistuneesti-kayttoon/" target="_blank">ei enää ilmoita</a> siirtokapasiteettiennusteita. Flow-laskennassa käytetty uusi <a href="https://publicationtool.jao.eu/nordic/api" target="_blank">JAO-tietolähde</a> kertoo vain toteutuneen kapasiteetin. Ennuste olettaa (taas) jatkossa, että viimeisin toteutunut siirtokapasiteetti pysyy ennustejakson ajan.</p>
+        <p><strong>20.10.2024:</strong></p>
+        <p>Kielimalli näkee nyt siirtoyhteyksiä ja ydinvoimaloiden huoltoja koskevat ennakkotiedot.</p>
+        <p><strong>17.10.2024:</strong></p>
+        <p>Ydinvoimaloiden ilmoitetut huoltokatkot ja tulevat tuotantokapasiteetit (ENTSO-E) palautettu ennusteeseen. Hintaennuste vaihdettu pylväsgraafiksi.</p> 
+        <p><strong>22.9.2024:</strong></p>
+        <p>Suunniteltu tuontikapasiteetti (Fingrid) huomioidaan nyt siirtoennusteessa. Tuulivoimatiedot mukana kielimallin selosteessa. Tuulivoimamallia tuunattu.</p>
+        <p><strong>16.9.2024:</strong></p>
+        <p>Otettu käyttöön 20 sääaseman historia- ja ennustetietoihin perustuva oma XGBoost-tuulivoimamalli.</p>
+        <p><strong>31.8.2024:</strong></p>
+        <p>Vaihdettu ennustemallin tyyppi Random Forestista XGBoostiin <a href="https://optuna.org" target="_blank">Optuna</a>-vertailun perusteella.</p>
+        <p><strong>19.8.2024:</strong></p>
+        <p>Lisätty rajasiirtokapasiteetit Suomen suuntaan: Pohjois-Ruotsi, Keski-Ruotsi ja Viro. Tämän pitäisi tarkentaa ennustetta huoltojaksojen aikana. Laskenta olettaa, että huomisen ilmoitettu kapasiteetti pysyy samana 5 pv ennustejakson ajan.</p>
         <p><strong>11.8.2024:</strong></p>
         <p>Poistettu ENTSO-E REMIT UMM -tuotantomuuttuja, koska rajapinnan mukaan OL3 olisi huollossa vuoden 2025 puolelle asti. Tämä ei onneksi ole totta, mutta sotkee ennusteen. Tutkimme asiaa ja palautamme ydinvoimaennusteen mukaan opetukseen, jos virheen syy löytyy. Ydinvoimaennuste olettaa nyt, että viimeisin tunnettu tuotantoluku pysyy seuraavat 5 vrk.</p>
         <p>Kuukausitieto (tammikuu-joulukuu) on poistettu mallin opetuksesta, koska takavuosien kk-keskiarvot voivat markkinatilanteen vuoksi olla hyvin erilaiset kuin tänä vuonna. Vuodenajan hintavaikutus käy opetuksessa ilmi myös säätilasta, kun lämpötilat menevät pakkaselle ja kulutus kasvaa.</p>
-        <p><strong>19.8.2024:</strong></p>
-        <p>Lisätty rajasiirtokapasiteetit Suomen suuntaan: Pohjois-Ruotsi, Keski-Ruotsi ja Viro. Tämän pitäisi tarkentaa ennustetta huoltojaksojen aikana. Laskenta olettaa, että huomisen ilmoitettu kapasiteetti pysyy samana 5 pv ennustejakson ajan.</p>
-        <p><strong>31.8.2024:</strong></p>
-        <p>Vaihdettu ennustemallin tyyppi Random Forestista XGBoostiin <a href="https://optuna.org" target="_blank">Optuna</a>-vertailun perusteella.</p>
-        <p><strong>16.9.2024:</strong></p>
-        <p>Otettu käyttöön 20 sääaseman historia- ja ennustetietoihin perustuva oma XGBoost-tuulivoimamalli.</p>
-        <p><strong>22.9.2024:</strong></p>
-        <p>Suunniteltu tuontikapasiteetti (Fingrid) huomioidaan nyt siirtoennusteessa. Tuulivoimatiedot mukana kielimallin selosteessa. Tuulivoimamallia tuunattu.</p>
-        <p><strong>17.10.2024:</strong></p>
-        <p>Ydinvoimaloiden ilmoitetut huoltokatkot ja tulevat tuotantokapasiteetit (ENTSO-E) palautettu ennusteeseen. Hintaennuste vaihdettu pylväsgraafiksi.</p> 
-        <p><strong>20.10.2024:</strong></p>
-        <p>Kielimalli näkee nyt siirtoyhteyksiä ja ydinvoimaloiden huoltoja koskevat ennakkotiedot.</p>
-        <p><strong>10.11.2024:</strong></p>
-        <p>Fingrid <a href="https://www.fingrid.fi/ajankohtaista/tiedotteet/2024/flow-based-kapasiteetinlaskentamenetelma-otettu-onnistuneesti-kayttoon/" target="_blank">ei enää ilmoita</a> siirtokapasiteettiennusteita. Flow-laskennassa käytetty uusi <a href="https://publicationtool.jao.eu/nordic/api" target="_blank">JAO-tietolähde</a> kertoo vain toteutuneen kapasiteetin. Ennuste olettaa (taas) jatkossa, että viimeisin toteutunut siirtokapasiteetti pysyy ennustejakson ajan.</p>
-        <p><strong>17.11.2024:</strong></p>
-        <p>Kielimalli näkee nyt ydinvoimaloiden <a href="https://umm.nordpoolgroup.com/#/messages?publicationDate=all&eventDate=lastyear&areas=10YFI-1--------U&messageCategory=electricity&searchText=&messageTypes=production&unavailabilityType=unplanned&fuelTypes=nuclear" target="_blank">suunnittelemattomat tuotantokatkot</a>. Kielimalliksi vaihdettu GPT-4o. Aiempi oli GPT-4o-mini. Tämän pitäisi tuottaa selkeämpää suomea.</p>
-        <p><strong>23.11.2024:</strong></p>
-        <p>Tuulivoimaennusteessa kokeillaan nyt neuroverkkomallia (PyTorch).</p>
-        <p><strong>24.12.2024:</strong></p>
-        <p>Tieto <a href="https://pyhäpäivä.fi" target="_blank">juhlapyhistä</a> on nyt mukana mallin opetuksessa.</p>
-        <p><strong>25.12.2024:</strong></p>
-        <p>Historiagraafi ei enää näytä sellaisia vanhoja ennusteita, joiden kohdalla huomisen toteutuva Nordpool-hinta oli jo mallin opittavissa. Historiaa pidennetty 30 päivään.</p>
-        <p><strong>30.12.2024:</strong></p>
-        <p>Malli arvioi nyt <a href="https://open-meteo.com/en/docs" target="_blank">aurinkoenergian</a> vaikutuksen hintaan. Tuulivoimaennuste käyttää jälleen XGBoostia.</p>
-        <p><strong>4.1.2025:</strong></p>
-        <p>Ennuste ulottuu nyt 7 päivää eteenpäin. Ruotsin ja Viron tuontiyhteyksiä käsitellään nyt mallissa erillisinä, eikä vain summana. Viron siirtoyhteyden käyttökatko tyypillisesti alentaa hintaa ja Ruotsin taas nostaa.</p>
-        <p><strong>12.1.2025:</strong></p>
-        <p>Fingrid, tuulivoimakapasiteetti: rajapinnasta puuttui dataa vuoden alkupuolelta. Open-Meteo, auringonsäteily: tarjotut ennustearvot (W/m²) olivat <a href="https://github.com/open-meteo/open-meteo/issues/1184" target="_blank">negatiivisia</a> lähipäiville, puolen miljoonan Watin verran. Tarkistuksia lisätty tällaisten tilanteiden varalta. Itämeren tuulivoima-alueita lisätty hinnoittelumalliin. Vähäinen tuuli ulkomailla voi nostaa hintaa Suomessa, vaikka oma tuotanto olisi voimakasta.</p>
-        <p><strong>18.1.2025:</strong></p>
-        <p>Tuulivoimamallia tuunattu. Fingridin jatkuvasti päivittyvä <a href="https://data.fingrid.fi/datasets/245" target="">ennuste</a> kertoo ensimmäiset 36 tuntia päivityshetkestä alkaen, ja loput arvioidaan Itämeren ympäristön ja Suomen säätiedoista. Toteutuma päivittyy nyt <a href="https://data.fingrid.fi/datasets/181" target="_blank">takautuvasti</a>. Kielimalli näkee nyt päivän sisäiset tiedot ja mahdolliset hintapiikkien riskit. Kielimalliksi vaihdettu <a href="https://huggingface.co/deepseek-ai/DeepSeek-V3" target="_blank">DeepSeek-V3</a>.</p>
-        <p><strong>30.1.2025:</strong></p>
-        <p>Etusivu muodostuu nyt <a href="index.html">suomeksi</a> ja <a href="index_en.html">englanniksi.</a> Markdown-muotoinen versio löytyy Githubista <a href="https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/refs/heads/main/deploy/narration.md" target="_blank">suomeksi</a> ja <a href="https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/refs/heads/main/deploy/narration_en.md" target="_blank">englanniksi</a>. Kts. myös kaksikielinen <a href="https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/refs/heads/main/deploy/narration_full.json" target="_blank">JSON-versio</a>. Näistä voi olla iloa esim. kotiautomaation rakentajille. DeepSeek API on ollut nyt paljon <a href="https://status.deepseek.com" target="_blank">jumissa</a>, eikä aina suostu kirjoittamaan tekstejä. Jos tilanne jatkuu pitkään, niin palaamme GPT-4o-malliin, mutta samalla kieliversioita tod näk jää vain yksi.</p>
-        <p><strong>5.2.2025:</strong></p>
-        <p>Kielimalli saattaa nyt vaihtua sen mukaan, miten malleja on verkossa tarjolla.</p>
-        <p><strong>25.4.2025:</strong></p>
-        <p>Ennusteessa mukana viivagraafi. Tuulivoimakuvaaja näyttää nyt tuulivoimatuotannon ja hinnan välisen mahdollisen korrelaation. Historiakuvaaja näyttää nyt 3 ja 6 tunnin keskihinnat, ja kuvaajaa voi zoomata.</p>
-        <p><strong>4-7.5.2025:</strong></p>
-        <p>Kokeellinen hintavolatiliteettimalli pyrkii nyt tunnistamaan tunnit, joilla on suurempi riski voimakkaisiin hinnanvaihteluihin. Ennustegraafiin on merkitty tunnit, joissa hintapiikkejä voi esiintyä matalan tuulivoimaennusteen vuoksi, ja huipputuntien hintoja on silloin skaalattu ylöspäin. Tällä on merkittävä nostava vaikutus ennustettuun keskihintaan vähätuulisina päivinä.</p>
-        <p><strong>Suunnitteilla:</strong></p>
-        <p>Tuntikohtaisen hintavolatiliteetin tarkempi ennustaminen vaatii lisää tutkimusta ja testausta. Nykyisen pohjaratkaisun toimivuutta pitää ensin seurata ajan yli. Tuunausta voi tapahtua touko-heinäkuussa ilman eri ilmoitusta.</p>
         <h1>Mitä ennuste ei huomioi?</h1>
         <p>Ennuste ei näe muuta kuin mitä yllä on mainittu. Opetuksessa käytetty data alkaa vuoden 2023 alusta.</p>
         <p style="padding-bottom: 24px;">Vaikka malli osaa "ennustaa" menneisyyttä ja historiallisesti tutun tyyppistä tulevaisuutta toisinaan oivasti, hinta-arviot uudenlaisissa poikkeustilanteissa voivat olla pielessä. Älä siis esim. säädä talosi lämmitystä näiden numeroiden perusteella, jos et ole kotona.</p>

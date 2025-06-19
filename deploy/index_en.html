@@ -55,49 +55,47 @@
         <p>The source code is open, and you are welcome to try different options in addition to or instead of these.<p>
         <h1 style="padding-top: 32px">Change log</h1>
         <p>The model has been online since February 2024. The following changes have been made since then.</p>
+        <p><strong>May 4-7, 2025:</strong></p>
+        <p>Experimental volatility model/scaler now aims to identify hours with higher risk of strong price fluctuations due to low wind power forecast. Updated the forecast chart to display hours with spike risk, where upwards scaling was applied. This significantly impacts the daily mean price forecasts on low-wind days.</p>
+        <p><strong>April 25, 2025:</strong></p>
+        <p>Line chart included in the forecast. Wind power chart now visualizes the possible correlation between wind power and price. History chart can now visualize 3 and 6 hour mean price values, and has a zoom control.</p>        
+        <p><strong>February 5, 2025:</strong></p>
+        <p>Language model selection may now change dynamically based on model availability.</p>
+        <p><strong>January 30, 2025:</strong></p>
+        <p>The main page is now available in <a href="index.html">Finnish</a> and <a href="index_en.html">English</a>. A Markdown-formatted version can be found on GitHub <a href="https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/refs/heads/main/deploy/narration.md" target="_blank">in Finnish</a> and <a href="https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/refs/heads/main/deploy/narration_en.md" target="_blank">in English</a>. See also the bilingual <a href="https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/refs/heads/main/deploy/narration_full.json" target="_blank">JSON version</a>. These may be useful, for example, for those building home automation systems. The DeepSeek API has recently been quite <a href="https://status.deepseek.com" target="_blank">congested</a>, and it doesn't always agree to generate texts. If this situation continues for a longer period, we'll revert to the GPT-4o model, although in that case we'll likely only provide a single language version.</p>
+        <p><strong>January 18, 2025:</strong></p>
+        <p>Wind power model tuned. Fingrid's continuously updated <a href="https://data.fingrid.fi/datasets/245" target="">forecast</a> provides the first 36 hours from the update time, and the rest are estimated from the weather data of the Baltic Sea region and Finland. The realization is now updated <a href="https://data.fingrid.fi/datasets/181" target="_blank">retrospectively</a>. The language model now sees intra-day data and potential price spike risks. Language model changed to <a href="https://huggingface.co/deepseek-ai/DeepSeek-V3" target="_blank">DeepSeek-V3</a>.</p>
+        <p><strong>January 12, 2025:</strong></p>
+        <p>Fingrid, wind power capacity: data was missing from the interface for the beginning of the year. Open-Meteo, solar radiation: the provided forecast values (W/m²) were <a href="https://github.com/open-meteo/open-meteo/issues/1184" target="_blank">negative</a> for the coming days, by half a million Watts. Checks added for such situations. Baltic Sea wind power areas added to the pricing model. Low wind abroad can raise the price in Finland, even if domestic production is strong.</p>
+        <p><strong>January 4, 2025:</strong></p>
+        <p>The forecast now extends 7 days ahead. Swedish and Estonian import connections are now handled separately in the model, not just as a sum. An outage in the Estonian connection typically lowers the price, while the Swedish one raises it.</p>
+        <p><strong>December 30, 2024:</strong></p>
+        <p>The model now estimates the impact of <a href="https://open-meteo.com/en/docs" target="_blank">solar energy</a> on the price. Wind power forecast uses XGBoost again.</p>
+        <p><strong>December 25, 2024:</strong></p>
+        <p>The history graph no longer shows old forecasts where the realized Nordpool price for tomorrow was already known to the model. History extended to 30 days.</p>
+        <p><strong>December 24, 2024:</strong></p>
+        <p>Information about <a href="https://pyhäpäivä.fi" target="_blank">holidays</a> is now included in model training.</p>
+        <p><strong>November 23, 2024:</strong></p>
+        <p>Wind power forecast now experimenting with a neural network model (PyTorch).</p>
+        <p><strong>November 17, 2024:</strong></p>
+        <p>The language model now sees <a href="https://umm.nordpoolgroup.com/#/messages?publicationDate=all&eventDate=lastyear&areas=10YFI-1--------U&messageCategory=electricity&searchText=&messageTypes=production&unavailabilityType=unplanned&fuelTypes=nuclear" target="_blank">unplanned production outages</a> of nuclear power plants. Language model changed to GPT-4o. The previous one was GPT-4o-mini. This should produce clearer Finnish.</p>
+        <p><strong>November 10, 2024:</strong></p>
+        <p>Fingrid <a href="https://www.fingrid.fi/ajankohtaista/tiedotteet/2024/flow-based-kapasiteetinlaskentamenetelma-otettu-onnistuneesti-kayttoon/" target="_blank">no longer reports</a> transmission capacity forecasts. The new <a href="https://publicationtool.jao.eu/nordic/api" target="_blank">JAO data source</a> used in flow-based calculation only reports realized capacity. The forecast now assumes (again) that the latest realized transmission capacity remains for the forecast period.</p>
+        <p><strong>October 20, 2024:</strong></p>
+        <p>The language model now sees advance information on transmission connections and nuclear power plant maintenance.</p>
+        <p><strong>October 17, 2024:</strong></p>
+        <p>Reported maintenance outages and future production capacities of nuclear power plants (ENTSO-E) returned to the forecast. Price forecast changed to a bar chart.</p> 
+        <p><strong>September 22, 2024:</strong></p>
+        <p>Planned transmission capacity (Fingrid) is now considered in the transmission forecast. Wind power data included in the language model's explanation. Wind power model tuned.</p>
+        <p><strong>September 16, 2024:</strong></p>
+        <p>Implemented a custom XGBoost wind power model based on historical and forecast data from 20 weather stations.</p>
+        <p><strong>August 31, 2024:</strong></p>
+        <p>Changed the forecast model type from Random Forest to XGBoost based on <a href="https://optuna.org" target="_blank">Optuna</a> comparison.</p>
+        <p><strong>August 19, 2024:</strong></p>
+        <p>Added transmission capacities towards Finland: Northern Sweden, Central Sweden, and Estonia. This should refine the forecast during maintenance periods. The calculation assumes that the announced capacity for tomorrow remains the same for the 5-day forecast period.</p>
         <p><strong>August 11, 2024:</strong></p>
         <p>Removed ENTSO-E REMIT UMM production variable because according to the interface, OL3 would be under maintenance until 2025. Fortunately, this is not true, but it disrupts the forecast. We are investigating the issue and will return the nuclear power forecast to training if the cause of the error is found. The nuclear power forecast now assumes that the latest known production figure remains for the next 5 days.</p>
         <p>Monthly data (January-December) has been removed from model training because the monthly averages of previous years can be very different from this year due to market conditions. The seasonal price effect is also evident in training from the weather when temperatures drop below freezing and consumption increases.</p>
-        <p><strong>August 19, 2024:</strong></p>
-        <p>Added transmission capacities towards Finland: Northern Sweden, Central Sweden, and Estonia. This should refine the forecast during maintenance periods. The calculation assumes that the announced capacity for tomorrow remains the same for the 5-day forecast period.</p>
-        <p><strong>August 31, 2024:</strong></p>
-        <p>Changed the forecast model type from Random Forest to XGBoost based on <a href="https://optuna.org" target="_blank">Optuna</a> comparison.</p>
-        <p><strong>September 16, 2024:</strong></p>
-        <p>Implemented a custom XGBoost wind power model based on historical and forecast data from 20 weather stations.</p>
-        <p><strong>September 22, 2024:</strong></p>
-        <p>Planned transmission capacity (Fingrid) is now considered in the transmission forecast. Wind power data included in the language model's explanation. Wind power model tuned.</p>
-        <p><strong>October 17, 2024:</strong></p>
-        <p>Reported maintenance outages and future production capacities of nuclear power plants (ENTSO-E) returned to the forecast. Price forecast changed to a bar chart.</p> 
-        <p><strong>October 20, 2024:</strong></p>
-        <p>The language model now sees advance information on transmission connections and nuclear power plant maintenance.</p>
-        <p><strong>November 10, 2024:</strong></p>
-        <p>Fingrid <a href="https://www.fingrid.fi/ajankohtaista/tiedotteet/2024/flow-based-kapasiteetinlaskentamenetelma-otettu-onnistuneesti-kayttoon/" target="_blank">no longer reports</a> transmission capacity forecasts. The new <a href="https://publicationtool.jao.eu/nordic/api" target="_blank">JAO data source</a> used in flow-based calculation only reports realized capacity. The forecast now assumes (again) that the latest realized transmission capacity remains for the forecast period.</p>
-        <p><strong>November 17, 2024:</strong></p>
-        <p>The language model now sees <a href="https://umm.nordpoolgroup.com/#/messages?publicationDate=all&eventDate=lastyear&areas=10YFI-1--------U&messageCategory=electricity&searchText=&messageTypes=production&unavailabilityType=unplanned&fuelTypes=nuclear" target="_blank">unplanned production outages</a> of nuclear power plants. Language model changed to GPT-4o. The previous one was GPT-4o-mini. This should produce clearer Finnish.</p>
-        <p><strong>November 23, 2024:</strong></p>
-        <p>Wind power forecast now experimenting with a neural network model (PyTorch).</p>
-        <p><strong>December 24, 2024:</strong></p>
-        <p>Information about <a href="https://pyhäpäivä.fi" target="_blank">holidays</a> is now included in model training.</p>
-        <p><strong>December 25, 2024:</strong></p>
-        <p>The history graph no longer shows old forecasts where the realized Nordpool price for tomorrow was already known to the model. History extended to 30 days.</p>
-        <p><strong>December 30, 2024:</strong></p>
-        <p>The model now estimates the impact of <a href="https://open-meteo.com/en/docs" target="_blank">solar energy</a> on the price. Wind power forecast uses XGBoost again.</p>
-        <p><strong>January 4, 2025:</strong></p>
-        <p>The forecast now extends 7 days ahead. Swedish and Estonian import connections are now handled separately in the model, not just as a sum. An outage in the Estonian connection typically lowers the price, while the Swedish one raises it.</p>
-        <p><strong>January 12, 2025:</strong></p>
-        <p>Fingrid, wind power capacity: data was missing from the interface for the beginning of the year. Open-Meteo, solar radiation: the provided forecast values (W/m²) were <a href="https://github.com/open-meteo/open-meteo/issues/1184" target="_blank">negative</a> for the coming days, by half a million Watts. Checks added for such situations. Baltic Sea wind power areas added to the pricing model. Low wind abroad can raise the price in Finland, even if domestic production is strong.</p>
-        <p><strong>January 18, 2025:</strong></p>
-        <p>Wind power model tuned. Fingrid's continuously updated <a href="https://data.fingrid.fi/datasets/245" target="">forecast</a> provides the first 36 hours from the update time, and the rest are estimated from the weather data of the Baltic Sea region and Finland. The realization is now updated <a href="https://data.fingrid.fi/datasets/181" target="_blank">retrospectively</a>. The language model now sees intra-day data and potential price spike risks. Language model changed to <a href="https://huggingface.co/deepseek-ai/DeepSeek-V3" target="_blank">DeepSeek-V3</a>.</p>
-        <p><strong>January 30, 2025:</strong></p>
-        <p>The main page is now available in <a href="index.html">Finnish</a> and <a href="index_en.html">English</a>. A Markdown-formatted version can be found on GitHub <a href="https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/refs/heads/main/deploy/narration.md" target="_blank">in Finnish</a> and <a href="https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/refs/heads/main/deploy/narration_en.md" target="_blank">in English</a>. See also the bilingual <a href="https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/refs/heads/main/deploy/narration_full.json" target="_blank">JSON version</a>. These may be useful, for example, for those building home automation systems. The DeepSeek API has recently been quite <a href="https://status.deepseek.com" target="_blank">congested</a>, and it doesn't always agree to generate texts. If this situation continues for a longer period, we'll revert to the GPT-4o model, although in that case we'll likely only provide a single language version.</p>
-        <p><strong>February 5, 2025:</strong></p>
-        <p>Language model selection may now change dynamically based on model availability.</p>
-        <p><strong>April 25, 2025:</strong></p>
-        <p>Line chart included in the forecast. Wind power chart now visualizes the possible correlation between wind power and price. History chart can now visualize 3 and 6 hour mean price values, and has a zoom control.</p>        
-        <p><strong>May 4-7, 2025:</strong></p>
-        <p>Experimental volatility model/scaler now aims to identify hours with higher risk of strong price fluctuations due to low wind power forecast. Updated the forecast chart to display hours with spike risk, where upwards scaling was applied. This significantly impacts the daily mean price forecasts on low-wind days.</p>
-        <p><strong>Planned:</strong></p>
-        <p>More accurate prediction of price volatility requires additional work, planned for May-July, as we monitor the effectiveness of the current methods. Further changes are likely and may happen without notice.</p>
         <h1>What does the forecast not consider?</h1>
         <p>The forecast does not see anything other than what is mentioned above. The data used in training starts from the beginning of 2023.</p>
         <p style="padding-bottom: 24px;">Although the model can "predict" the past and historically familiar types of the future, price estimates in new and exceptional situations can be off. So do not, for example, adjust your house heating based on these numbers if you are not at home.</p>
