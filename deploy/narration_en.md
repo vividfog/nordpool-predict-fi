@@ -1,27 +1,27 @@
-*This week's electricity price forecast anticipates variable but generally affordable spot electricity prices. Negative prices as well as occasional higher price spikes, especially in the evenings and morning hours, will occur during the week, although daily average prices will remain moderate.*
+*During the coming week, electricity prices will remain generally low, but significant fluctuations between days are expected, occasionally even dipping into negative prices; the highest price peaks will occur during Thursday and Friday evenings, whereas Sunday will be the week's cheapest day.*
 
-The Olkiluoto 2 nuclear power plant is currently undergoing a maintenance outage. The outage began on 25.5.2025 at 18:00 and is expected to end on 23.6.2025 at 18:00. The maintenance outage may affect the accuracy of the price forecast, as training data during outages is limited.
+The Olkiluoto nuclear plant's unit 2 is undergoing a maintenance break. During this outage, the available capacity is 0 MW, and the plant's availability is at zero percent. The maintenance break started on 25.5.2025 at 18:00, and its estimated end time is 23.6.2025 at 18:00. The maintenance break may affect the accuracy of the forecast, as training data during such outages are limited.
 
-The forecast was updated on Sunday at 09:16.
+Forecast updated on Sunday at 12:06.
 
-|              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|          | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday**      |       1,2        |     0,3 - 2,3      |      1031 - 3856      |        12,2        |
-| **Tuesday**     |       3,9        |    -0,0 - 9,1      |      1122 - 3600      |        12,2        |
-| **Wednesday**   |       1,4        |    -0,2 - 3,3      |      2186 - 3402      |        12,8        |
-| **Thursday**    |       4,0        |     0,2 - 9,4      |      1304 - 2960      |        12,9        |
-| **Friday**      |       3,3        |     0,8 - 5,6      |      1435 - 2091      |        14,1        |
-| **Saturday**    |       1,3        |    -0,3 - 3,3      |      1952 - 2537      |        14,2        |
-| **Sunday**      |       2,3        |     0,5 - 5,6      |      1302 - 2187      |        13,5        |
+| **Monday** | 0,8 | 0,0 - 1,6 | 900 - 3902 | 12,2 |
+| **Tuesday** | 1,9 | -0,2 - 4,9 | 1579 - 3612 | 12,2 |
+| **Wednesday** | 0,6 | -0,9 - 1,8 | 2456 - 3352 | 12,8 |
+| **Thursday** | 2,1 | -0,0 - 5,7 | 1305 - 2978 | 12,9 |
+| **Friday** | 2,1 | 0,0 - 4,9 | 1473 - 2071 | 14,1 |
+| **Saturday** | 0,4 | -1,2 - 1,9 | 1953 - 2559 | 14,2 |
+| **Sunday** | -0,4 | -1,3 - 0,4 | 1329 - 2603 | 13,6 |
 
-Next week's electricity price forecast will show variations among individual days. However, the average daily prices will remain affordable, with no day exceeding five cents per kilowatt-hour.
+In the coming week, electricity prices will remain relatively low on average. However, price variations between the days will be notable, and occasionally prices will even turn negative.
 
-At the beginning of the week, prices will stay moderate. On **Monday**, the daily average price will remain just above one cent. The cheapest hours will occur in the early morning around 5:00, when the price will drop as low as 0.3 cents. On Tuesday, price fluctuations will increase notably; during the early morning, the price may even dip slightly negative, but in the evening between 20:00–22:00 prices could rise above nine cents. Still, Tuesday's average price will remain under four cents.
+The most expensive days of the week will be **Thursday** and **Friday**. On both days, the average electricity price will settle at 2.1 cents per kilowatt-hour. On Thursday, the highest prices are expected in the evening around 19:00–21:00, when the hourly price may rise up to 5.7 cents. Friday evening also sees higher prices, with the highest predicted hourly price at 4.9 cents at 9 in the morning.
 
-On **Wednesday**, prices will again fall to low levels, including negative prices early in the morning between 03:00–05:00. Wednesday's average will be very economical at 1.4 cents. **Thursday** will bring the week's highest single price peak in the evening hours between 19:00–21:00, when electricity prices may rise above nine cents. Nevertheless, Thursday’s average price will remain at four cents.
+**Sunday** is forecasted to be the cheapest day, as the average price will fall slightly below zero, at -0.4 cents. On Sunday, prices will drop as low as -1.3 cents between 13:00–15:00. Saturday will also experience negative prices at times, hitting a low of -1.2 cents in the afternoon around 13:00–15:00.
 
-On **Friday**, prices will stabilize slightly, yet occasional higher hourly prices may occur in the morning hours between 08:00–10:00, when the price could exceed five cents. Saturday will again be one of the week's cheapest days, with the average price slightly above one cent. On Saturday, negative prices will also occur around noon between 12:00–14:00.
+Wind power generation will vary somewhat during the week. Thursday's and Friday's higher prices correlate with relatively lower average wind power generation, which will remain under 2000 MW on those days. On Thursday, wind power will be as low as 1305 MW at minimum, explaining the highest hourly price of that day.
 
-The week will end on **Sunday** with a moderate average price, although in the evening between 19:00–21:00 prices may rise above five cents. Overall, the coming week will offer affordable electricity prices, but several days will also feature hourly price spikes, especially in the evening hours.
+Individual hourly price spikes are possible on Monday, Tuesday, Thursday, Friday, Saturday, and Sunday. These days have significant price ranges, so short-term higher prices might occur particularly during morning or evening hours.
 
-*GPT-4.5-preview watching your watts!* 🔌
+*Analyzed by gpt-4.5-preview with wind power.* 🌬️
