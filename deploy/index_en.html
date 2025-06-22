@@ -53,7 +53,9 @@
             <li><strong>Holidays:</strong> On national holidays, energy demand may be lower than usual</li>
         </ul>
         <p>The source code is open, and you are welcome to try different options in addition to or instead of these.<p>
-        <h1 style="padding-top: 32px">Change log</h1>
+        <h1>What does the forecast not consider?</h1>
+        <p>The forecast does not see anything other than what is mentioned above. The data used in training starts from the beginning of 2023.</p>'
+        <h1>Change log</h1>
         <p>The model has been online since February 2024. The following changes have been made since then.</p>
         <p><strong>May 4-7, 2025:</strong></p>
         <p>Experimental volatility model/scaler now aims to identify hours with higher risk of strong price fluctuations due to low wind power forecast. Updated the forecast chart to display hours with spike risk, where upwards scaling was applied. This significantly impacts the daily mean price forecasts on low-wind days.</p>
@@ -96,8 +98,6 @@
         <p><strong>August 11, 2024:</strong></p>
         <p>Removed ENTSO-E REMIT UMM production variable because according to the interface, OL3 would be under maintenance until 2025. Fortunately, this is not true, but it disrupts the forecast. We are investigating the issue and will return the nuclear power forecast to training if the cause of the error is found. The nuclear power forecast now assumes that the latest known production figure remains for the next 5 days.</p>
         <p>Monthly data (January-December) has been removed from model training because the monthly averages of previous years can be very different from this year due to market conditions. The seasonal price effect is also evident in training from the weather when temperatures drop below freezing and consumption increases.</p>
-        <h1>What does the forecast not consider?</h1>
-        <p>The forecast does not see anything other than what is mentioned above. The data used in training starts from the beginning of 2023.</p>
         <p style="padding-bottom: 24px;">Although the model can "predict" the past and historically familiar types of the future, price estimates in new and exceptional situations can be off. So do not, for example, adjust your house heating based on these numbers if you are not at home.</p>
         <div id="disclaimer" style="padding-bottom: 24px;"><a id="source-code-link" href="mailto:judo.farming0u@icloud.com" target="_blank">email</a></div>
     </div>
