@@ -9,7 +9,15 @@
             "availability": 0.921875
         },
         {
-            "start": "2025-06-24T15:00:00.000Z",
+            "start": "2025-06-23T03:00:00.000Z",
+            "end": "2025-06-25T22:00:00.000Z",
+            "avail_qty": 1060,
+            "nominal_power": 1600.0,
+            "production_resource_name": "Olkiluoto 3",
+            "availability": 0.6625
+        },
+        {
+            "start": "2025-06-24T20:00:00.000Z",
             "end": "2026-04-06T15:00:00.000Z",
             "avail_qty": 735,
             "nominal_power": 890.0,
@@ -18,19 +26,11 @@
         },
         {
             "start": "2025-05-25T15:00:00.000Z",
-            "end": "2025-06-24T15:00:00.000Z",
+            "end": "2025-06-24T20:00:00.000Z",
             "avail_qty": 0,
             "nominal_power": 890.0,
             "production_resource_name": "Olkiluoto 2",
             "availability": 0.0
-        },
-        {
-            "start": "2025-06-23T03:00:00.000Z",
-            "end": "2025-06-25T22:00:00.000Z",
-            "avail_qty": 1060,
-            "nominal_power": 1600.0,
-            "production_resource_name": "Olkiluoto 3",
-            "availability": 0.6625
         }
     ]
 }
