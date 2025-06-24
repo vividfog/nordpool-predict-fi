@@ -32,10 +32,22 @@
         <h1>Hintaennusteen kehitys</h1>
         <p>Graafi kertoo, mitä Sähkövatkain on ennustanut viime aikoina. Isoja mielenmuutoksia voi tulla mm. jos sääennuste on muuttunut paljon, jos tulee odottamaton tuotantokatko, jos hintahäiriön syy on historiallisesti uudenlainen tai harvinainen, tai jos ennustemallia on hiljattain päivitetty. Kts. muutosloki alla.</p>
         <p><strong style="color:limegreen;">Vihreä</strong> viiva on lopullinen Nordpool-hinta. <strong style="color:dodgerblue;">Siniset</strong> viivat ovat ennusteparvi aiemmilta päiviltä, ennen kuin Nordpool-hinta oli tiedossa.</p>
-        <div class="history-toggle">
-            <button class="active" data-period="0">1 h</button>
-            <button data-period="3">keskiarvo 3 h</button>
-            <button data-period="6">keskiarvo 6 h</button>
+        <div class="history-controls">
+            <div class="history-toggle">
+                <button class="active" data-period="0" data-i18n="1h_avg">1 h</button>
+                <button data-period="3" data-i18n="3h_avg">keskiarvo 3 h</button>
+                <button data-period="6" data-i18n="6h_avg">keskiarvo 6 h</button>
+            </div>
+            <div class="history-prune">
+                <select id="pruneDropdown">
+                    <option value="24" data-i18n="1_day">1 vrk</option>
+                    <option value="48" data-i18n="2_days">2 vrk</option>
+                    <option value="72" data-i18n="3_days">3 vrk</option>
+                    <option value="96" data-i18n="4_days">4 vrk</option>
+                    <option value="120" data-i18n="5_days">5 vrk</option>
+                    <option value="max" data-i18n="all_data" selected>Kaikki</option>
+                </select>
+            </div>
         </div>
         <div id="historyChart" style="width: 100%; max-width: 920px; margin: auto; box-sizing: border-box"></div>
         <h1 style="padding-top: 32px">Mitä ennuste huomioi?</h1>
@@ -58,6 +70,8 @@
         <p>Vaikka malli osaa "ennustaa" menneisyyttä ja historiallisesti tutun tyyppistä tulevaisuutta toisinaan oivasti, hinta-arviot uudenlaisissa poikkeustilanteissa voivat olla pielessä. Älä siis esim. säädä talosi lämmitystä näiden numeroiden perusteella, jos et ole kotona.</p>
         <h1 style="padding-top: 32px">Muutokset</h1>
         <p>Sähkövatkain on ollut linjoilla helmikuusta 2024. Alla sen jälkeen tehdyt muutokset.</p>
+        <p><strong>24.6.2025:</strong></p>
+        <p>Historiagraafiin lisätty valikko, jolla voi rajata ennusteiden näytön 1-5 seuraavaan päivään. Tällä voi helpommin arvioida lyhyen aikavälin ennusteen osumista.</p>
         <p><strong>7.5.2025:</strong></p>
         <p>Kokeellinen hintavolatiliteettimalli pyrkii nyt tunnistamaan tunnit, joilla on suurempi riski voimakkaisiin hinnanvaihteluihin. Ennustegraafiin on merkitty tunnit, joissa hintapiikkejä voi esiintyä matalan tuulivoimaennusteen vuoksi, ja huipputuntien hintoja on silloin skaalattu ylöspäin. Tällä on merkittävä nostava vaikutus ennustettuun keskihintaan vähätuulisina päivinä.</p>
         <p><strong>25.4.2025:</strong></p>

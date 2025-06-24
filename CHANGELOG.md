@@ -2,6 +2,10 @@
 
 All notable changes will be documented in this file.
 
+## [2025-06-24] - UI Enhancement
+### Added
+- Dropdown menu to historical forecasts chart allowing users to limit forecast display to 1-5 days ahead for better short-term accuracy evaluation
+
 ## [2025-05-11] - Weather Station
 ### Removed
 - FMISID 101851 (Tornio Kaakkuri) has been missing data lately; removing (for now?) to avoid blocking; Kemi is included and nearby

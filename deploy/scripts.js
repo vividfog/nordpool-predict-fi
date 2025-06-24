@@ -147,20 +147,41 @@ function getTimePrefix() {
 // Get localized text based on current pathname
 function getLocalizedText(key) {
     const isEnglish = window.location.pathname.includes('index_en');
-    
+
     const translations = {
         'forecast': isEnglish ? 'Forecast' : 'Ennuste',
         'price': isEnglish ? 'Price' : 'Hinta',
         'windPower': isEnglish ? 'Wind Power (GW)' : 'Tuulivoima (GW)',
         'latest': isEnglish ? 'Latest' : 'Viimeisin',
         'daysAgo': isEnglish ? 'd ago' : 'pv sitten',
+        'all_data': isEnglish ? 'All predictions' : 'Kaikki ennusteet',
+        '1_day': isEnglish ? '1 day prediction' : '1 vrk ennakko',
+        '2_days': isEnglish ? '2 days prediction' : '2 vrk ennakko',
+        '3_days': isEnglish ? '3 days prediction' : '3 vrk ennakko',
+        '4_days': isEnglish ? '4 days prediction' : '4 vrk ennakko',
+        '5_days': isEnglish ? '5 days prediction' : '5 vrk ennakko',
+        '1h_avg': isEnglish ? '1 h' : '1 h',
+        '3h_avg': isEnglish ? 'average 3 h' : 'keskiarvo 3 h',
+        '6h_avg': isEnglish ? 'average 6 h' : 'keskiarvo 6 h',
         'scaled_price': isEnglish ? 'Price spikes' : 'Hintapiikkejä',
-        'weekdays': isEnglish ? 
-            ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] : 
+        'weekdays': isEnglish ?
+            ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] :
             ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la']
     };
-    
+
     return translations[key] || key;
+}
+
+function applyTranslations() {
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        const translation = getLocalizedText(key);
+        if (translation) {
+            if (element.tagName === 'OPTION') {
+                element.textContent = translation;
+            }
+        }
+    });
 }
 
 // Create vertical gridlines for day or week boundaries
@@ -941,6 +962,7 @@ const historicalUrls = dateStrings.map(date => `${baseUrl}/prediction_snapshot_$
 // Variables to store original chart data
 let originalData = [];
 let currentAveragePeriod = 1;
+let currentPruneOption = 'max'; // Default prune option, all data
 let sahkotinOriginalData = [];
 
 // ==========================================================================
@@ -948,7 +970,10 @@ let sahkotinOriginalData = [];
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', function() {
+    applyTranslations();
+
     const toggleButtons = document.querySelectorAll('.history-toggle button');
+    const pruneDropdown = document.getElementById('pruneDropdown');
     
     toggleButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -962,37 +987,42 @@ document.addEventListener('DOMContentLoaded', function() {
             currentAveragePeriod = parseInt(this.getAttribute('data-period'));
             
             // Apply time binning to chart data
-            applyMovingAverageToChart(currentAveragePeriod);
+            applyPruningAndAveragingToChart();
         });
+    });
+
+    pruneDropdown.addEventListener('change', function() {
+        currentPruneOption = this.value;
+        applyPruningAndAveragingToChart();
     });
 });
 
-// Function to apply time binning to all series in the chart
-function applyMovingAverageToChart(hours) {
-    // Skip if no original data available yet
+// Apply pruning and then moving average to the chart
+function applyPruningAndAveragingToChart() {
     if (!originalData.length) return;
 
     const option = historyChart.getOption();
     
-    // Apply time binning to each series except the last one (which is the marker)
-    for (let i = 0; i < originalData.length; i++) {
-        // Apply time binning to the series data
-        const binnedData = calculateTimeBins(originalData[i], hours);
-        
-        // Update the series data in the chart
+    // Apply pruning first
+    const prunedData = originalData.map(series => {
+        return pruneData(series, currentPruneOption);
+    });
+
+    // Then apply moving average to the pruned data
+    for (let i = 0; i < prunedData.length; i++) {
+        const averagedData = calculateTimeBins(prunedData[i], currentAveragePeriod);
         if (option.series[i]) {
-            option.series[i].data = binnedData;
+            option.series[i].data = averagedData;
         }
     }
-    
-    // Apply time binning specifically to the Nordpool series
+
+    // Nordpool data is not pruned, but it is averaged
     const seriesIndex = option.series.findIndex(s => s.name === 'Nordpool');
     if (seriesIndex >= 0) {
-        const binnedData = calculateTimeBins(sahkotinOriginalData, hours);
-        option.series[seriesIndex].data = binnedData;
+        const averagedNordpoolData = calculateTimeBins(sahkotinOriginalData, currentAveragePeriod);
+        option.series[seriesIndex].data = averagedNordpoolData;
     }
 
-    // Update the chart with the new data
     historyChart.setOption(option, false, false);
 }
 
@@ -1000,12 +1030,23 @@ function applyMovingAverageToChart(hours) {
 // Historical data fetching and processing
 // ==========================================================================
 
-function fetchHistoricalData(urls) {
-    const today = new Date();
-    const cutoffDate = new Date(today);
-    cutoffDate.setDate(today.getDate() - 30);
-    const cutoffTimestamp = cutoffDate.getTime();
+function pruneData(data, option) {
+    if (option === 'max' || !data || data.length === 0) {
+        return data;
+    }
 
+    const hours = parseInt(option);
+    if (isNaN(hours)) {
+        return data;
+    }
+
+    const startTime = data[0][0];
+    const cutoffTime = startTime + hours * 60 * 60 * 1000;
+    
+    return data.filter(item => item[0] < cutoffTime);
+}
+
+function fetchHistoricalData(urls) {
     return Promise.all(urls.map(url => {
         console.log(`[fetchHistoricalData] Fetching URL: ${url}`);
 
@@ -1035,8 +1076,8 @@ function fetchHistoricalData(urls) {
                     const cutoffMs = snapshotDateTime + skipDays * 24 * 60 * 60 * 1000;
 
                     const originalCount = jsonData.length;
-                    // Filter out data older than the day after the snapshot and older than 30 days from today
-                    jsonData = jsonData.filter(item => item[0] >= cutoffMs && item[0] >= cutoffTimestamp);
+                    // Only filter out data older than the day after the snapshot
+                    jsonData = jsonData.filter(item => item[0] >= cutoffMs);
 
                     console.log(
                         `[fetchHistoricalData] Filtered out ${originalCount - jsonData.length} of ${originalCount} entries for ${url}, 
@@ -1069,11 +1110,14 @@ function processSahkotinCsv(csvData) {
 // Historical chart presentation setup
 // ==========================================================================
 
-function setupHistoryChart(data) {
+function setupHistoryChart(data, pruneOption) {
     const cleanedData = data.filter(item => item !== null).slice(1);
     console.log("setupHistoryChart found these snapshots: ", cleanedData);
 
     const series = cleanedData.map((seriesData, index) => {
+        // Prune data before rendering
+        const prunedData = pruneData(seriesData, pruneOption);
+
         // Calculate opacity for older series
         // const opacityValue = index === 0 ? 0.9 : Math.max(0.5, 0.95 - (index * 0.1));
         const opacityValue = index === 0 ? 0.4 : 0.4;
@@ -1081,7 +1125,7 @@ function setupHistoryChart(data) {
         return {
             name: index === 0 ? getLocalizedText('latest') : `${index} ${getLocalizedText('daysAgo')}`,
             type: 'line',
-            data: seriesData.map(item => [item[0], item[1]]),
+            data: prunedData.map(item => [item[0], item[1]]),
             symbol: 'none',
             step: 'middle',
             lineStyle: {
@@ -1196,7 +1240,7 @@ function setupSahkotinData() {
             addSahkotinDataToChart(sahkotinData);
             
             // Apply the default binning after adding Sahkotin data
-            applyMovingAverageToChart(currentAveragePeriod);
+            applyPruningAndAveragingToChart();
         })
         .catch(error => console.error("Error fetching Sähkötin data:", error));
 }
@@ -1208,7 +1252,7 @@ function setupSahkotinData() {
 
 fetchHistoricalData(historicalUrls)
     .then(data => {
-        setupHistoryChart(data);
+        setupHistoryChart(data, currentPruneOption);
         setupSahkotinData();
     })
     .catch(error => console.error("Error in chart setup:", error));

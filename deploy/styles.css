@@ -90,11 +90,35 @@ body {
     box-sizing: border-box;
 }
 
+.history-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    max-width: 920px;
+    margin: 48px auto 0px auto;
+}
+
 .history-toggle {
     display: flex;
     justify-content: center;
-    max-width: 920px;
-    margin: 48px auto 0px auto;
+}
+
+.history-prune select {
+    background-color: #f0f2f5;
+    border: 1px solid #ddd;
+    color: #666;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9em;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+    height: 31.6px;
+}
+
+.history-prune select:hover {
+    background-color: #ddd;
 }
 
 .history-toggle button {
