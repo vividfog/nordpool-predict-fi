@@ -1,27 +1,25 @@
-*The electricity price forecast shows significant fluctuations during the week: high price spikes are expected on Friday and Saturday, but from Sunday onward, prices will drop notably, sometimes even reaching negative levels due to abundant wind power generation.*
+*Electricity prices will fluctuate significantly over the weekend: Friday and Saturday will see high price spikes, while the beginning of the week will bring very affordable prices, occasionally even dropping to negative levels.*
 
-Forecast updated on Thursday at 03:19.
+The forecast has been updated on Thursday at 09:05.
 
-|             | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
-|:------------|:----------------------:|:-------------------:|:-----------------------------:|:-------------------------:|
-| **Friday**      | 7,7                    | 3,0 - 17,1         | 282 - 920                     | 14,1                       |
-| **Saturday**    | 7,9                    | 2,5 - 21,7         | 134 - 1584                    | 14,2                       |
-| **Sunday**      | 1,4                    | -0,7 - 3,2         | 1773 - 2394                   | 13,6                       |
-| **Monday**      | 1,7                    | -0,7 - 6,6         | 1686 - 2682                   | 13,6                       |
-| **Tuesday**     | 3,0                    | -0,5 - 7,7         | 1545 - 3147                   | 13,9                       |
-| **Wednesday**   | 2,7                    | 0,3 - 5,3          | 1673 - 2340                   | 14,7                       |
-| **Thursday**    | 3,0                    | 0,5 - 6,2          | 1659 - 2732                   | 13,8                       |
+|              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Friday**       |        7,6       |     3,1 - 16,5    |       261 - 923      |        14,1        |
+| **Saturday**     |        8,1       |     3,0 - 19,8    |       122 - 1572     |        14,2        |
+| **Sunday**       |        1,4       |    -0,5 - 3,5     |      1542 - 2523     |        13,6        |
+| **Monday**       |        1,1       |    -0,9 - 4,3     |      1955 - 2808     |        13,6        |
+| **Tuesday**      |        2,2       |    -0,4 - 4,9     |      1563 - 2915     |        13,9        |
+| **Wednesday**    |        2,9       |     0,7 - 4,8     |      1720 - 2463     |        14,7        |
+| **Thursday**     |        3,5       |     0,6 - 7,6     |      1409 - 2738     |        13,8        |
 
-The electricity price forecast shows notable variation throughout the week. At the start of the weekend, significantly higher price spikes will occur, whereas prices from Sunday and early next week will remain low, occasionally even negative.
+The electricity price development for the coming days will be varied. Clearly higher prices will occur on **Saturday**, when the daily average price will reach 8.1 cents, with momentary price spikes approaching as high as 20 cents. Saturday's peak price is expected in the morning between 8–10 o'clock, when the forecast approaches 20 cents per kilowatt-hour.
 
-On **Friday** and **Saturday**, prices will rise sharply during certain hours. On **Friday**, the highest price is expected in the evening between 19:00 and 21:00, when electricity prices may exceed 17 cents per kilowatt-hour. Also, on **Saturday** morning between 08:00 and 10:00, prices could peak above 21 cents. On both days, wind power production will be very low at its minimum—only 282 MW on Friday and 134 MW on Saturday—which partly explains these high price spikes.
+On **Friday**, electricity prices will also exhibit significant fluctuation. The average daily price will be around 7.6 cents, but notably higher prices, exceeding 16 cents, are forecast for the evening between 19–21 o'clock. Both Friday and Saturday stand out as days with elevated risk of high price spikes.
 
-On **Sunday**, prices are expected to drop significantly. The day's average price will be only 1.4 cents, and during certain hours, electricity prices could even become negative. On Sunday afternoon between 12:00 and 14:00, the forecasted electricity price is -0.7 cents. This is primarily due to very high wind power generation, consistently staying between approximately 1773 and 2394 MW throughout the day.
+The week's most affordable days will be **Sunday** and **Monday**, when average electricity prices will remain below two cents. On both days, prices will occasionally fall into negative territory. Sunday afternoon between 12–16 o'clock and early Monday morning between 3–5 o'clock will see prices dropping below zero, reaching as low as -0.9 cents early Monday.
 
-At the beginning of the next week, on **Monday** and **Tuesday**, electricity prices will remain low, with averages below four cents. These days will also feature some negative-price hours during early morning and night. For example, on **Monday** between 03:00 and 05:00, the price will drop to -0.7 cents, with wind power production exceeding 2600 MW at that time.
+The beginning of the week overall will be an inexpensive time for electricity consumption. Prices on **Tuesday** and **Wednesday** will remain moderate, averaging two to three cents. On Thursday, the price level will rise slightly but remain affordable at around 3.5 cents.
 
-On **Tuesday** and **Wednesday**, prices will rise slightly but remain relatively low. The highest prices on Wednesday will just surpass five cents, with no significant price spikes expected. Similarly, on **Thursday**, electricity prices will remain moderate, ranging from 0.5 to 6.2 cents.
+During the week, wind power production will vary considerably. On Friday and Saturday, wind power will dip to very low levels at times, partly explaining these days' high price spikes. From Sunday onward, wind power production will increase significantly, immediately reflected in clearly lower prices and negative price levels.
 
-Thus, the week's electricity price development will be clearly divided: the beginning of the weekend will witness the highest fluctuations and price spikes, while from Sunday onwards, prices will significantly decrease and remain moderate.
-
-*Numbers crunched by gpt-4.5-preview.* 🍃
+*A windy analysis by gpt-4.5-preview.* 🌬️
