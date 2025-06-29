@@ -1,25 +1,25 @@
-*Electricity prices for the coming week will remain mostly affordable, although daily variations are significant; peak prices will occur during Tuesday and Thursday evenings, while weekend and nighttime hours will occasionally see negative prices.*
+*Significant fluctuations are expected in electricity exchange prices during the upcoming week, as substantial variations in wind power production will occasionally push prices above ten cents, while at other times driving them into negative territory. The lowest prices are forecasted for early in the week, with price spikes becoming more common towards the weekend.*
 
-Forecast updated on Sunday at 03:19.
+Forecast updated on Sunday at 09:05.
 
-|              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temp.<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday**    | 0.7              | -1.0 - 2.7       | 2056 - 3443       | 13.6         |
-| **Tuesday**      | 3.1              | 0.1 - 9.1        | 545 - 3202        | 13.9         |
-| **Wednesday**  | 2.8              | 0.4 - 4.7        | 806 - 2212        | 14.7         |
-| **Thursday**      | 4.5              | 0.4 - 11.7       | 1002 - 2558       | 13.9         |
-| **Friday**    | 1.0              | -0.2 - 3.9       | 1103 - 3378       | 13.4         |
-| **Saturday**     | 0.1              | -1.8 - 3.7       | 1401 - 3466       | 13.3         |
-| **Sunday**    | 1.6              | -0.3 - 4.0       | 998 - 1838        | 13.6         |
+| **Monday**      | 0.5              | -1.1 - 2.3      | 2019 - 3460   | 13.6        |
+| **Tuesday**     | 3.4              | 0.1 - 10.5      | 524 - 3189    | 13.9        |
+| **Wednesday**   | 4.2              | 1.6 - 10.0      | 501 - 1790    | 14.7        |
+| **Thursday**    | 2.5              | 0.4 - 5.0       | 1145 - 2237   | 13.9        |
+| **Friday**      | 1.8              | -0.3 - 4.7      | 1999 - 3276   | 13.4        |
+| **Saturday**    | 3.1              | 0.4 - 8.9       | 952 - 2336    | 13.3        |
+| **Sunday**      | 2.4              | -0.3 - 5.4      | 936 - 1374    | 13.6        |
 
-Electricity prices during the coming week will remain generally affordable. Prices will vary from day to day, but overall the week will be quite inexpensive for consumers. The range of price fluctuations will be relatively large, with the cheapest day's average price being as low as 0.1 cents per kilowatt-hour, while the most expensive day's average will reach 4.5 cents per kilowatt-hour.
+The electricity price forecast for the coming week indicates notable daily variations. The most affordable day in terms of exchange electricity will be **Monday**, with an average price around half a cent. Particularly in the early morning hours, electricity prices will even dip into negative territory, reaching as low as -1.1 cents.
 
-The lowest prices of the week will be seen on **Saturday**, when the average price will drop to only 0.1 cents per kilowatt-hour. Saturday will also feature the week's lowest individual hourly price (-1.8 ¢), occurring during the morning hours between 9–11. Negative prices will also appear on **Monday** and **Friday**, especially during nighttime and early morning hours.
+The highest average price of the week is expected on **Wednesday**, reaching 4.2 cents. On that day, prices are projected to fluctuate considerably within the day. Around eight o'clock in the morning, the price is expected to peak at around 10 cents. **Tuesday** will also see substantial price variation, and in the evening hours between 19:00–21:00, there will be a significant risk of high price spikes, with forecasts suggesting electricity prices could exceed 10 cents during these hours. Tuesday's wind power production will drop exceptionally low at times, explaining the high peak prices.
 
-The week's most expensive day will be **Thursday**, with an average price of 4.5 cents and a maximum price peaking during the evening between 19–21, reaching as high as 11.7 cents. Prices will also rise noticeably at times on **Tuesday**, when the maximum price will reach 9.1 cents per kilowatt-hour between 19–21. Additionally, individual hours of higher prices are expected on **Wednesday** and **Sunday**.
+On **Thursday** and **Friday**, the price situation will stabilize somewhat. Thursday's average price will remain moderate at around 2.5 cents, and no significant spikes are expected. On Friday, the average price will decrease further to 1.8 cents, with negative prices again expected during nighttime hours. However, on Saturday, prices will rise again, with the daily average climbing slightly above three cents. On Saturday evening between 19:00–21:00, electricity prices will approach nine cents, posing an increased risk of price spikes.
 
-Fluctuations in wind power production will clearly affect electricity pricing throughout the week. For instance, Tuesday's price peaks will partly result from wind power production dropping significantly at times, down to just over 500 megawatts. Similarly, lower wind power production on Thursday morning and evening will partly explain the highest prices. On Saturday, by contrast, abundant wind power availability will keep prices consistently low throughout the day.
+The week concludes on Sunday with an average price of 2.4 cents. Prices remain moderate between early morning and afternoon, but after eight o'clock in the evening, prices will rise above five cents. Again, the risk of price spikes will occur during certain evening hours.
 
-Towards the end of the week, Sunday's average price will settle at a moderate 1.6 cents, though limited wind power production will occasionally raise prices slightly higher. However, Sunday's maximum price will remain moderate at four cents per kilowatt-hour.
+Throughout the week, price fluctuations will be primarily related to significant variations in wind power production. The lowest prices correspond to days with abundant wind power, while the highest peaks coincide with times when wind power production is exceptionally low.
 
-*Numbers crunched by gpt-4.5-preview.* ⚡
+*Today's analysis by gpt-4.5-preview.* 🌬️
