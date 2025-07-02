@@ -1,25 +1,25 @@
-*Electricity prices will fluctuate notably in the coming days: Friday will even see negative prices, while Monday reaches the week's highest average. Variations in wind power generation largely explain these price swings, with individual price spikes likely to occur, especially during evening hours.*
+*Electricity prices will remain mostly affordable in the coming days, though higher price peaks are expected during the weekend and early next week; Friday will even see negative electricity prices, whereas Monday evening is predicted to have the week's highest rates.*
 
-Forecast updated on Wednesday at 12:06.
+Forecast updated on Wednesday at 14:24.
 
-|               | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
-|:--------------|:----------------:|:----------------:|:---------------------------:|:---------------------:|
-| **Thursday**   |        2,4       |      -0,1 - 4,4      |        755 - 4161        |         13,9          |
-| **Friday** |       -0,0       |      -1,4 - 1,4      |       1827 - 6299        |         13,4          |
-| **Saturday**  |        2,7       |       0,3 - 9,1      |        318 - 1718        |         13,3          |
-| **Sunday** |        1,8       |      -0,3 - 5,0      |        974 - 1402        |         13,6          |
-| **Monday** |        4,5       |       0,7 - 10,0     |        905 - 1375        |         14,9          |
-| **Tuesday**   |        3,8       |       1,5 - 5,7      |       1291 - 2311        |         15,2          |
-| **Wednesday** |      3,7       |       0,6 - 7,4      |       1296 - 1990        |         14,6          |
+|              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Thursday** |        0.9       |      0.0 - 3.1     |        750 - 4177        |        13.9       |
+| **Friday**   |       -0.0       |     -1.2 - 1.2     |       1849 - 6314        |        13.4       |
+| **Saturday** |        2.9       |      0.2 - 8.2     |        280 - 1734        |        13.3       |
+| **Sunday**   |        1.9       |     -0.3 - 6.3     |        955 - 1504        |        13.6       |
+| **Monday**   |        4.5       |      0.3 - 10.1    |        911 - 1205        |        14.9       |
+| **Tuesday**  |        3.4       |      1.1 - 4.9     |       1316 - 2212        |        15.2       |
+| **Wednesday**|        3.4       |      0.7 - 7.1     |       1313 - 1977        |        14.6       |
 
-Electricity prices will vary significantly in the coming days. **Friday** will be the week's most affordable day, with the average price expected to be near zero and even negative overnight and early morning. In fact, during the night towards Friday between 03:00–05:00, the price will dip as low as -1,4 cents, meaning electricity producers effectively pay consumers to use electricity.
+Electricity prices will mostly remain affordable during the next few days, although price fluctuations will occur throughout the week. Negative prices will be most evident on **Friday**, when the lowest hourly rate will drop to -1.2 cents. Early morning hours, especially from 03:00 to 05:00, will see clearly negative prices. With an average daily price around zero cents, Friday will be the cheapest day of the week for electricity users.
 
-The highest price levels of the week will occur early next week. **Monday** stands out clearly with the highest average price, expected at 4,5 cents per kilowatt-hour. The week's peak instantaneous price of exactly 10 cents is also expected Monday evening around 19:00–21:00.
+On **Saturday**, price levels will rise slightly compared to Friday. The day's average price will increase to 2.9 cents, and in the morning between 07:00–09:00, as well as in the evening between 19:00–21:00, electricity prices could peak above 8 cents. Saturday's risk of high price peaks is related to low wind power production, reaching as low as 280 MW.
 
-Weekend price trends also bring variability. On **Saturday**, the electricity price will rise up to 9,1 cents in the evening hours between 19:00–21:00, resulting in a daily average of 2,7 cents. On **Sunday**, price fluctuations will also occur, though more moderately, with an average daily price of 1,8 cents and a peak of 5 cents around 20:00–22:00 in the evening.
+On **Sunday**, the average electricity price will remain moderate at 1.9 cents. The day's minimum price will dip slightly negative in the afternoon between 14:00–16:00, reaching -0.3 cents. In the evening between 19:00–21:00, electricity prices will peak above 6 cents, raising the possibility of individual price spikes.
 
-Wind power generation will notably impact pricing. On Friday, abundant wind power averaging nearly 5000 megawatts largely explains the very low price level for that day. In contrast, wind generation on Saturday will be very limited, averaging only 957 megawatts, directly correlating to higher peak prices. Similarly, Monday's wind power output remains relatively low, averaging around 1110 megawatts, lifting that day's average price.
+Next week's most expensive day will be **Monday**, when the average electricity price climbs to 4.5 cents. The highest hourly rate, 10.1 cents, will occur in the evening between 19:00–21:00. Monday's price increase is partly explained by relatively low wind power production, at most 1205 MW during the day.
 
-The risk of hourly price spikes has been noted for several days: Thursday, Saturday, Sunday, Monday, and Wednesday may see individual hours exceeding forecasted price levels. On these days, it will be advisable to monitor price developments closely, especially during evening hours when price spikes typically occur.
+On **Tuesday** and **Wednesday**, average prices will remain reasonable, around 3.4 cents on both days. Tuesday's price fluctuations will be moderate, with no significant risk of price spikes. Wednesday will see slightly greater price variation; the price will rise above 7 cents in the morning between 08:00–10:00, making isolated peak hours possible.
 
-*GPT-4.5-preview energizing your forecast* ⚡
+*Analysis provided by gpt-4.5-preview.* 🌬️
