@@ -15,14 +15,6 @@
             "nominal_power": 1600.0,
             "production_resource_name": "Olkiluoto 3",
             "availability": 0.921875
-        },
-        {
-            "start": "2025-07-01T05:00:00.000Z",
-            "end": "2025-07-01T22:00:00.000Z",
-            "avail_qty": 1460,
-            "nominal_power": 1600.0,
-            "production_resource_name": "Olkiluoto 3",
-            "availability": 0.9125
         }
     ]
 }
