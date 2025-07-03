@@ -1,27 +1,27 @@
-*Sähkön hinta vaihtelee lähipäivinä merkittävästi: perjantaina nähdään jopa negatiivisia hintoja runsaan tuulivoiman ansiosta, kun taas viikonlopun ja alkuviikon heikompi tuulituotanto nostaa hinnat ajoittain yli kymmeneen senttiin.*
+*Sähkön hinta on lähiaikoina vaihtelevaa: viikon edullisimmat tunnit osuvat perjantaille runsaan tuulivoiman ansiosta, mutta viikonloppuna hinnat nousevat hetkittäin korkeiksi heikon tuulituotannon vuoksi. Arkiviikolla hinnat tasaantuvat, vaikka yksittäisiä hintapiikkejä esiintyy edelleen.*
 
-Ennuste päivitetty torstaina klo 09:06.
+Ennuste on päivitetty torstaina klo 12:06.
 
 |              | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **perjantai**   | -0,1 | -1,4 – 1,6 | 1730 – 6422 | 13,4 |
-| **lauantai**    | 4,0  | 0,1 – 11,2 | 168 – 1671  | 13,3 |
-| **sunnuntai**   | 2,1  | -0,6 – 6,3 | 318 – 1234  | 13,6 |
-| **maanantai**   | 4,3  | 0,0 – 8,6  | 965 – 1250  | 14,9 |
-| **tiistai**     | 3,3  | 1,6 – 7,0  | 1260 – 2521 | 15,2 |
-| **keskiviikko** | 2,3  | 0,2 – 6,4  | 1418 – 2093 | 14,6 |
-| **torstai**     | 3,4  | 0,3 – 9,1  | 912 – 1533  | 14,3 |
+| **perjantai**   |        0,0       |     -1,2 - 2,1    |      1778 - 6370      |     13,4     |
+| **lauantai**    |        6,0       |      0,8 - 15,3   |       207 - 1657      |     13,3     |
+| **sunnuntai**   |        4,6       |      1,3 - 11,2   |       159 - 1395      |     13,6     |
+| **maanantai**   |        5,9       |      1,3 - 11,7   |      1172 - 1395      |     14,9     |
+| **tiistai**     |        4,2       |      2,8 - 7,9    |      1436 - 2567      |     15,2     |
+| **keskiviikko** |        3,9       |      1,4 - 8,2    |      1510 - 2107      |     14,6     |
+| **torstai**     |        5,7       |      1,9 - 10,7   |      1266 - 1647      |     14,4     |
 
-Pörssisähkön hintaennusteessa näkyy merkittäviä päiväkohtaisia eroja lähipäivinä. Erityisesti **perjantaina** sähkön keskihinta painuu poikkeuksellisen alas, jopa negatiiviseksi, päivän keskihinnan ollessa -0,1 senttiä. Tuulivoiman tuotanto on perjantaina erittäin runsasta, keskimäärin yli 4800 MW, mikä osaltaan selittää halpaa hintatasoa. Yön ja aamuyön tunteina hinnat käyvät jopa -1,4 sentissä.
+Pörssisähkön hintaennuste osoittaa tuleville päiville merkittäviä vaihteluja. Ero päivien välillä on suuri: viikon edullisinta sähköä nähdään **perjantaina**, jolloin keskihinta pysyttelee lähellä nollaa ja yöllä hinnat painuvat jopa negatiivisiksi. Tämä poikkeuksellisen matala hintataso liittyy erittäin voimakkaaseen tuulivoiman tuotantoon, joka saavuttaa perjantaina tasaisen korkean tason koko päivän ajan.
 
-**Lauantaina** tilanne muuttuu selvästi, kun sähkön keskihinta nousee neljään senttiin. Tuulivoiman tuotanto laskee huomattavasti, ja päivän minimiteho jää alle 200 MW:n. Tämä heikko tuulivoima selittää osaltaan päivän korkeaa maksimihintaa, joka yltää 11,2 senttiin illalla noin klo 19–21 välillä. Lauantaille ennustetaan myös korkeaa riskiä yksittäisille hintapiikeille.
+Toisin käy **lauantaina**, jolloin sähkömarkkinoilla on odotettavissa selvä hintojen nousu. Lauantain keskihinta kohoaa kuuteen senttiin, ja päivän sisällä on ennakoitavissa hintapiikkejä. Korkein hinnan nousu sijoittuu arviolta iltatunneille klo 19–21, jolloin hinta saattaa nousta jopa yli 15 senttiin. Lauantain poikkeuksellisen korkea maksimihinta selittyy erityisen heikolla tuulituotannolla, joka painuu varhain aamulla ja päivällä hyvin matalalle tasolle.
 
-**Sunnuntaina** hintaodotukset ovat maltillisemmat, keskihinnan ollessa noin kaksi senttiä. Päivän aikana nähdään kuitenkin negatiivisia tuntihintoja iltapäivällä, mutta toisaalta illalla hinnat nousevat yli kuuteen senttiin. Yksittäisten tuntien hintapiikkien riski säilyy sunnuntaina, etenkin illan tunneilla noin klo 19–21.
+Myös **sunnuntaina** sähkön hinta pysyttelee hieman korkeammalla keskihinnalla, noin 4,6 sentissä. Sunnuntainakin hintojen vaihtelu on merkittävää aamupäivällä noin klo 8–10, jolloin hinnat voivat nousta poikkeuksellisen korkeiksi, jopa yli 11 senttiin. Sunnuntain hintavaihteluiden taustalla on edelleen matala tuulivoiman tuotanto aamun aikana.
 
-Uuden viikon alku tuo jälleen hieman korkeampia keskihintoja. **Maanantaista** odotetaan viikon kalleinta päivää, jolloin keskihinta on noin 4,3 senttiä ja korkein tuntihinta nousee illalla kahdeksan ja yhdeksän sentin välille. Maanantaina tuulivoiman tuotanto pysyy matalalla tasolla, mikä osaltaan voi ylläpitää hintatasoja korkeampina. Myös maanantaina on riski hintapiikeille.
+Alkava viikko tuo mukanaan tasaantumista, vaikka yksittäisiä hintapiikkejä on edelleen odotettavissa. **Maanantaina** hinnat liikkuvat laajalla välillä, noin yhdestä sentistä lähes 12 senttiin, korkeimmat hinnat nähdään iltatunneilla klo 19–21. **Tiistaina** ja **keskiviikkona** hinnat pysyttelevät maltillisemmalla tasolla, keskihinnat jäävät neljän sentin tuntumaan, eikä merkittäviä hintapiikkejä ole odotettavissa.
 
-**Tiistai ja keskiviikko** näyttävät maltillisemmilta hinnoiltaan, tiistain keskihinnan ollessa 3,3 senttiä ja keskiviikon 2,3 senttiä. Molempina päivinä tuulivoiman tuotanto elpyy hieman, mikä pitää hinnat maltillisina. Keskiviikon iltatunnit voivat silti nostaa hetkellisesti hinnan yli kuuden sentin.
+Ensi **torstaina** hinta jälleen kohoaa hieman, noin 5,7 senttiin. Yksittäisiä korkeita hintatunteja tulee todennäköisesti ilta-aikaan klo 19–21, jolloin hintataso voi nousta yli kymmenen sentin.
 
-**Torstaina** sähkön keskihinta nousee hieman edellispäivistä, noin 3,4 senttiin. Päivän aikana nähdään myös korkeampia tuntihintoja illalla, jolloin maksimihinta kohoaa yhdeksän sentin tuntumaan. Torstaille ennakoidaan hintapiikkien riskiä erityisesti iltatunneille.
+Hintavaihtelut näkyvät erityisesti viikonlopussa, jolloin tuulivoiman tuotanto on hyvin vaihtelevaa. Tämä johtaa suuriin eroihin yksittäisten tuntien hintatasossa, kun taas arkipäivinä tilanne tasaantuu vähitellen.
 
-*Hintakäyrät piirsi gpt-4.5-preview.* 📉
+*Tuulienergiaa tulkitsi gpt-4.5-preview.* 🌬️
