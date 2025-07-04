@@ -1,27 +1,25 @@
-*Slight day-to-day variations are expected in electricity prices over the coming days, although overall rates remain moderate. The cheapest hours will occur on Tuesday and Sunday, while the week's highest prices are expected on Thursday evening.*
+*The coming week's electricity prices will show variability: early in the week, prices will dip into negative territory, while Thursday and Monday will see prices briefly rising above 10 cents per kilowatt-hour. Price spikes will occur particularly during evening hours, but generally, price levels will remain moderate.*
 
-Forecast updated on Friday at 12:06.
+Forecast updated on Friday at 14:24.
 
-|              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temp.<br>°C |
+|              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday** |        3,7       |      0,4 - 9,8     |      221 - 1852     |     13,3      |
-| **Sunday**   |        2,1       |     -0,2 - 6,7     |      488 - 1366     |     13,6      |
-| **Monday**   |        4,3       |      0,9 - 8,6     |      855 - 1523     |     14,9      |
-| **Tuesday**  |        1,6       |      0,1 - 3,2     |     1425 - 2709     |     15,2      |
-| **Wednesday**|        3,3       |      0,4 - 7,5     |     1239 - 1877     |     14,6      |
-| **Thursday** |        5,3       |      1,6 - 10,2    |      805 - 1431     |     14,4      |
-| **Friday**   |        4,5       |      2,3 - 9,6     |     1128 - 1361     |     15,3      |
+| **Saturday**   |        3,2       |     0,6 - 12,7    |      201 - 1857     |       13,3       |
+| **Sunday**     |        1,9       |    -0,1 - 8,1     |      509 - 1373     |       13,6       |
+| **Monday**     |        5,1       |     0,4 - 11,5    |      781 - 1535     |       14,9       |
+| **Tuesday**    |        2,0       |    -0,6 - 3,6     |     1253 - 2414     |       15,2       |
+| **Wednesday**  |        4,1       |     1,4 - 10,5    |     1259 - 1840     |       14,6       |
+| **Thursday**   |        5,4       |     1,7 - 10,8    |      808 - 1429     |       14,4       |
+| **Friday**     |        4,7       |     2,3 - 9,9     |     1145 - 1423     |       15,3       |
 
-Electricity prices will see considerable variation from day to day in the coming days. However, overall price levels will remain moderate, with average rates mostly staying below five cents per kilowatt-hour. Clear differences between the days are nonetheless apparent.
+During the coming week, electricity prices will fluctuate. The week's lowest prices will occur early **Tuesday** morning between 03:00 and 05:00, when prices may even become negative, dropping as low as -0,6 cents per kilowatt-hour. This will partially be due to abundant wind power generation, expected to peak above 2400 megawatts on Tuesday.
 
-The cheapest day of the week will be **Tuesday**, when the average electricity price will be just 1.6 cents per kilowatt-hour. On Tuesday, even the highest hourly price remains modest, hovering just above three cents. Similarly, Sunday will experience very affordable hours as well, even briefly turning negative between 2 p.m. and 4 p.m., with prices dipping to as low as -0.2 cents.
+The most expensive day of the week based on average price will be **Thursday**, when the average electricity price is forecasted to reach 5,4 cents. Thursday evening between approximately 19:00 and 21:00, prices will approach the week's highest individual hourly rate of 10,8 cents per kilowatt-hour. **Monday** will be slightly cheaper, with an average price of 5,1 cents, but Monday evening between 19:00 and 21:00, prices may rise above 11 cents. Specific risks for price spikes have been noted for Monday, Thursday, Sunday, and Wednesday.
 
-The most expensive moments are anticipated on **Thursday**, when the day's average price will reach the week's highest at 5.3 cents. On Thursday evening between 7 p.m. and 9 p.m., the hourly rate will surpass ten cents, marking the week's highest hourly price. Additionally, Saturday evening between 6 p.m. and 8 p.m. will see a price peak close to ten cents per kilowatt-hour.
+On **Saturday**, prices will vary significantly throughout the day. Electricity will be cheapest during early morning hours, at less than one cent, but prices will rise temporarily to nearly 13 cents between 19:00 and 21:00. On **Sunday**, prices will generally remain low; however, an evening price increase to around 8 cents is expected between 19:00 and 21:00.
 
-Within the week, the fluctuations will be especially noticeable over the weekend. On **Saturday**, hourly rates vary significantly, with prices as low as 0.4 cents during the early morning hours, quickly rising to nearly ten cents in the evening. On Sunday, fluctuations are milder, although evening hours will still be somewhat pricier.
+On **Wednesday**, the average price will be slightly above four cents, while early morning prices will remain low. During morning hours from 08:00 to 10:00, prices will reach the week's second-highest individual hourly rate of about 10,5 cents. On **Friday**, prices will remain more stable, averaging 4,7 cents, with no risk of price spikes specifically indicated.
 
-The early weekdays will remain relatively stable in terms of prices. On **Monday** and **Wednesday**, average electricity rates will hover between just over three and four cents. Prices will rise slightly higher on Thursday and Friday, but no significant peaks exceeding ten cents are expected throughout the week.
+Overall, the week will offer both affordable hours and a risk of price spikes, making it beneficial for electricity users to monitor prices actively. Negative prices early in the week may be especially interesting for flexible electricity consumers.
 
-Overall, the week's price outlook will be fairly balanced. Particularly, the affordable hours on Tuesday and Sunday offer opportunities to utilize lower electricity rates.
-
-*Numbers crunched by gpt-4.5-preview.* ⚡
+*Numbers crunched by gpt-4.5-preview.* 🌬️
