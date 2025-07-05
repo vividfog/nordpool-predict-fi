@@ -1,27 +1,25 @@
-*In the upcoming week, electricity prices will fluctuate significantly from day to day; particularly affordable hours are expected on Tuesday and Saturday, while Wednesday and Thursday mornings and evenings will see the week's highest prices with possible spikes during individual hours.*
+*Electricity prices for the coming week will remain moderate overall, although certain morning and evening hours on specific days will see notably higher prices. The cheapest day of the week will be Saturday, when electricity prices will even dip into negative territory.*
 
-Forecast updated on Saturday at 12:06.
+Forecast updated on Saturday at 14:24.
 
 |              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
-|:-------------|:----------------------:|:-------------------:|:----------------------------:|:-------------------------:|
-| **Monday**      |          4.0          |      0.7 - 6.9      |          1536 - 2053         |           14.9            |
-| **Tuesday**     |          0.9          |     -0.5 - 2.3      |          1850 - 3113         |           15.2            |
-| **Wednesday**   |          4.4          |      0.2 - 9.2      |          1125 - 2461         |           14.6            |
-| **Thursday**    |          4.6          |      1.7 - 9.3      |          1054 - 1540         |           14.4            |
-| **Friday**      |          3.5          |      1.4 - 8.7      |          1295 - 1956         |           15.3            |
-| **Saturday**    |          0.6          |     -1.0 - 1.9      |          1150 - 2051         |           16.4            |
-| **Sunday**      |          1.8          |     -0.8 - 7.4      |           778 - 1861         |           13.6            |
+|:-------------|:----------------:|:----------------:|:----------------------:|:---------------------:|
+| **Sunday**   |        1.0       |      0.4 - 3.1      |       763 - 1874       |         13.6         |
+| **Monday**   |        3.8       |      0.2 - 9.9      |      1522 - 2059       |         14.9         |
+| **Tuesday**     |        2.0       |      0.3 - 4.7      |      1947 - 3842       |         15.2         |
+| **Wednesday** |        3.9       |      1.0 - 9.2      |      1196 - 1838       |         14.6         |
+| **Thursday**     |        3.7       |      0.1 - 6.5      |      1028 - 1652       |         14.4         |
+| **Friday**   |        3.2       |      0.9 - 8.3      |      1189 - 1983       |         15.3         |
+| **Saturday**    |        0.3       |     -1.2 - 1.2      |      1132 - 1992       |         16.4         |
 
-Electricity prices for the upcoming week will vary considerably from day to day. On average, prices will remain relatively affordable, but there will be notable fluctuations within individual days. Several hours with negative electricity prices are also expected during the week.
+Electricity prices for the upcoming week will generally remain moderate. The average price level will stay below four cents throughout the entire week, indicating a relatively affordable period for electricity users. However, daily price variations will be significant, with evening hours occasionally showing notably higher prices.
 
-The week's most affordable days will be **Tuesday** and **Saturday**, with daily average prices around one cent. On Tuesday, prices will remain very low throughout the day, even dipping below zero during night and early morning hours. Saturday will see the week's lowest price, reaching as low as -1.0 cents between 4-5 pm.
+The lowest-priced day of the week will be **Saturday**, when the average price will be just 0.3 cents, and the minimum price will even drop into negative territory, at -1.2 cents. This practically means that on Saturday between approximately 16:00 and 18:00, electricity prices will be exceptionally low.
 
-The week's highest hourly prices will occur on **Wednesday** and **Thursday**. On Wednesday, prices are expected to peak at 9.2 cents in the evening between 6-8 pm. Thursday's highest level, 9.3 cents, will occur in the morning between 7-9 am. Both days also carry a risk of price spikes during individual hours, potentially surpassing forecasted levels.
+The highest peak prices of the week will occur on **Monday** and **Wednesday**. Monday's highest hourly price, nearly 10 cents, is expected in the evening between 19:00 and 21:00. Wednesday's peak price of 9.2 cents will fall in the morning hours, between 07:00 and 09:00. On these days, there is a risk of price spikes, and actual prices may rise even higher than forecasted.
 
-Significant price fluctuations will also occur on **Monday** and **Sunday**. On Sunday evening, between 7-9 pm, prices will rise above seven cents. Monday evening hours between 6-8 pm are expected to approach seven cents per kilowatt-hour, with a risk of occasional hourly price spikes.
+The average price on **Tuesday**, around two cents, will remain moderate, and no significant price fluctuations are expected throughout the day. On **Thursday** and **Friday**, electricity prices will be slightly higher but still reasonable, averaging around 3 to 4 cents. Thursday's maximum price of 6.5 cents will be reached in the morning, between 09:00 and 11:00. Friday's maximum price of 8.3 cents will occur in the morning between 08:00 and 10:00.
 
-Towards the end of the week, on **Friday**, prices will remain moderate without significant fluctuations expected. The day's average price, 3.5 cents, is considered affordable.
+The week will conclude on **Sunday** again with a lower price level, averaging around one cent. However, the most expensive moment of the day will be in the evening between 17:00 and 19:00, when the price rises slightly above three cents.
 
-Overall, price development will vary considerably each day: the most affordable hours will typically occur during nighttime and early morning, while the highest prices will generally be concentrated in morning and early evening hours. Electricity users should closely monitor daily price forecasts.
-
-*Numbers crunched by gpt-4.5-preview.* 🔌
+*Analyzed by gpt-4.5-preview.* 🔌
