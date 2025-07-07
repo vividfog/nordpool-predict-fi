@@ -1,27 +1,27 @@
-*The electricity price forecast for the coming week indicates significant fluctuations, with the highest prices concentrated on Wednesday and the lowest over the weekend, including even negative nighttime prices. The risk of price spikes is heightened midweek, while electricity users benefit from very low prices during the weekend.*
+*Electricity prices in the coming week will show significant variability: Wednesday morning is expected to have clear price spikes, negative prices will occur during Sunday night, and Saturday will offer the week's cheapest electricity hours throughout nearly the entire day.*
 
-Forecast updated on Sunday at 21:06.
+Forecast updated on Monday at 03:19.
 
 |              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday**   |       5,8        |     0,6 - 11,6     |      1135 - 1965      |      14,9      |
-| **Tuesday**     |       3,6        |     0,3 - 7,1      |      1445 - 3094      |      15,2      |
-| **Wednesday** |       6,1        |     1,2 - 15,1     |       428 - 2580      |      14,6      |
-| **Thursday**     |       3,7        |     0,3 - 7,4      |       943 - 1958      |      14,4      |
-| **Friday**   |       4,2        |     2,2 - 8,6      |       968 - 1470      |      15,3      |
-| **Saturday**    |       0,9        |     0,2 - 1,7      |      1257 - 1947      |      16,4      |
-| **Sunday**   |       1,5        |    -0,6 - 5,2      |       860 - 2247      |      16,9      |
+| **Tuesday**      |       3,6        |     0,6 - 7,5      |       1212 - 2897        |       15,2        |
+| **Wednesday**    |       6,2        |    1,3 - 15,0      |        310 - 2367        |       14,6        |
+| **Thursday**     |       4,0        |     0,9 - 7,4      |        855 - 1858        |       14,4        |
+| **Friday**       |       4,4        |     1,9 - 9,9      |        905 - 1468        |       15,3        |
+| **Saturday**     |       0,8        |     0,2 - 1,8      |       1374 - 1935        |       16,4        |
+| **Sunday**       |       1,5        |    -0,5 - 4,3      |        884 - 2258        |       16,9        |
+| **Monday**       |       3,1        |     1,2 - 6,0      |        996 - 1631        |       18,4        |
 
-During the upcoming week, electricity prices will fluctuate considerably between days and hours. The highest prices will appear early in the week, whereas the weekend will clearly offer lower rates.
+Electricity market prices in the coming week will vary notably from day to day. **Saturday** will be the most affordable day of the week, with an average electricity price below one cent per kilowatt-hour. Prices throughout Saturday will remain consistently low, even dropping to as low as 0,2 cents at certain hours.
 
-The week's highest hourly prices are expected on **Wednesday**, when the price could soar above 15 cents during the morning hours between 8:00–10:00. Wednesday's daily average price will be 6.1 ¢, the highest of the week. The risk of individual price spikes will be notably elevated on Wednesday, especially in the morning.
+In contrast, **Wednesday** will see the highest electricity prices of the week. The average price on Wednesday is expected to be 6,2 cents, and the day also includes the week's highest single-hour price spike. According to forecasts, peak prices will occur on Wednesday morning between approximately 8:00 and 10:00, potentially reaching up to 15 cents per kilowatt-hour. Wednesday's notably high maximum price is linked to particularly low wind power output during the morning hours.
 
-Relatively high hourly prices will also occur late **Monday** evening between 21:00–23:00, with prices forecasted above 11 cents. Monday's average price will settle at 5.8 cents.
+**Thursday** and **Friday** will also see elevated prices at certain times of the day. On Thursday, peak prices are expected in the evening around 19:00–21:00, approaching seven cents. On Friday morning between approximately 8:00 and 10:00, prices are anticipated to approach nearly ten cents.
 
-On **Thursday** and **Friday**, prices will be more moderate, although individual hourly price spikes may still occur. Thursday's highest price, 7.4 ¢, will appear around 20:00 in the evening, while Friday's peak, 8.6 ¢, is expected between 8:00–10:00 in the morning. However, the daily averages for these days will remain below five cents.
+**Sunday** stands out due to its negative minimum price occurring overnight, roughly between 1:00 and 3:00. During this period, electricity prices will dip as low as -0,5 cents per kilowatt-hour. This negative pricing event is temporarily driven by higher wind power production during nighttime hours.
 
-The weekend will clearly be the cheapest period of the week. On **Saturday**, the average price drops below one cent (0.9 ¢), with the day's highest hourly price reaching just 1.7 cents at 8:00. On **Sunday**, there will even be a negative price period at night between 1:00–3:00 (-0.6 ¢), and the daily average will remain very low at around 1.5 cents. Prices will slightly rise again Sunday evening between 20:00–22:00, peaking slightly above five cents. The risk of individual hourly price spikes also exists on Sunday.
+The remaining days of the week, **Tuesday** and next **Monday**, will have relatively stable prices. Tuesday's average price will stay under four cents, while on Monday, the average will settle just above three cents. Significant price fluctuations or spikes are not expected on these days.
 
-Thus, the weekly price fluctuations will be quite pronounced, and price-conscious electricity users will find particularly favorable periods during the weekend.
+The fluctuation in prices suggests that timing electricity usage carefully in the coming days could significantly impact electricity bills. Monitoring price developments closely can help consumers effectively utilize the most affordable hours.
 
-*Powered by gpt-4.5-preview.* ⚡
+*Forecasts kindly provided by gpt-4.5-preview.* ⚡
