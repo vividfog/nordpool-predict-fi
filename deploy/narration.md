@@ -1,25 +1,25 @@
-*Tulevalla viikolla sähkön hinta vaihtelee selvästi: viikon puolivälin korkeampien hintojen ja hetkittäisten hintapiikkien jälkeen viikonloppuna koetaan jopa negatiivisia hintoja yöaikaan, ja uusi viikko alkaa jälleen maltillisesti kohoavilla, mutta tasaisemmilla hinnoilla.*
+*Tulevien päivien sähkön hintaennuste lupaa suurta vaihtelua: arkiviikolla nähdään jopa yli 15 sentin huippuja, kun taas viikonloppuna hinnat laskevat erittäin mataliksi — lauantaina hetkellisesti jopa negatiivisiksi.*
 
-Ennuste päivitetty tiistaina klo 12:06.
+Ennuste päivitetty tiistaina klo 14:24.
 
 |              | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **keskiviikko** | 6,3 | 1,2 - 13,0 | 227 - 2214 | 14,6 |
-| **torstai**     | 6,5 | 2,0 - 13,1 | 205 - 1206 | 14,4 |
-| **perjantai**   | 4,3 | 1,9 - 9,7  | 554 - 1501 | 15,3 |
-| **lauantai**    | 1,2 | -0,5 - 3,6 | 1034 - 1732 | 16,4 |
-| **sunnuntai**   | 1,9 | -0,2 - 4,6 | 835 - 1817 | 16,9 |
-| **maanantai**   | 4,7 | 2,8 - 8,5  | 1036 - 1222 | 18,5 |
-| **tiistai**     | 4,6 | 1,7 - 9,9  | 1078 - 1707 | 18,5 |
+|:-------------|:------------------------:|:-------------------:|:----------------------------:|:--------------------------:|
+| **keskiviikko** |           8,3            |     1,4 - 15,7     |          214 - 2201          |            14,6            |
+| **torstai**     |           8,1            |     3,2 - 15,2     |          194 - 1212          |            14,4            |
+| **perjantai**   |           4,4            |     1,6 - 11,7     |          554 - 2086          |            15,3            |
+| **lauantai**    |           0,8            |    -0,1 - 2,0      |         1389 - 2502          |            16,4            |
+| **sunnuntai**   |           2,0            |    -0,1 - 4,7      |         1116 - 2163          |            16,9            |
+| **maanantai**   |           4,6            |     2,8 - 8,8      |         1097 - 1284          |            18,5            |
+| **tiistai**     |           4,5            |     2,1 - 9,0      |         1178 - 1725          |            18,5            |
 
-Tulevan viikon hintaennusteessa esiintyy kohtalaisia vaihteluita sekä päivien välillä että yksittäisten päivien sisällä. Viikon alkupuolella, erityisesti **keskiviikkona** ja **torstaina**, sähkön keskihinnat tulevat olemaan kohtalaisen korkeat, noin 6,3–6,5 senttiä kilowattitunnilta. Molempina päivinä nähdään myös hetkittäisiä korkeita hintatasoja, jotka voivat nousta yli 13 senttiin. Tällaiset hintapiikit ajoittuvat todennäköisesti aamuyhdeksän tuntumaan sekä iltakahdeksaan.
+Tulevien päivien sähkön hintaennusteet osoittavat vaihtelevia hintoja. Viikon ensimmäisinä päivinä, **keskiviikkona** ja **torstaina**, sähkön hintojen vaihtelu tulee olemaan suurta, ja etenkin **torstaina** yksittäisillä tunneilla on korkea riski hintapiikeille. Torstaina hinnat käväisevät jopa yli 15 sentissä aamuisin klo 7–9 välillä. Myös keskiviikkona korkeimmat hinnat nähdään illalla klo 20–22 välillä, jolloin hintataso ylittää 15 senttiä.
 
-**Perjantaina** hintaodotus laskee hieman, ja päivän keskihinta asettuu runsaaseen neljään senttiin. Vaikka hintataso laskee viikon alusta, myös perjantaina yksittäiset tunnit voivat kohota lähes 10 senttiin. Suurimmat hinnat ajoittuvat päivän aamupuolelle, etenkin yhdeksältä aamulla.
+**Lauantai** erottuu viikon halvimpana päivänä erittäin edullisella keskihinnalla (0,8 ¢/kWh). Lauantaina sähkön hinta painuu negatiiviseksi iltapäivällä klo 16–17 välillä, jolloin hinnan odotetaan olevan -0,1 senttiä. Myös **sunnuntain** puolella sähkön hinta käy negatiivisena yön varhaisina tunteina klo 2–3 välillä. Sunnuntain keskihinta nousee hieman korkeammaksi mutta pysyy edelleen selvästi edullisena keskimäärin kahden sentin tuntumassa.
 
-Viikonloppuna hintataso tulee laskemaan selvästi. **Lauantai** tarjoaa tulevan viikon edullisimmat hinnat, keskihinnan ollessa vain 1,2 senttiä. Samana päivänä nähdään myös negatiivisia hintoja yöaikaan, jolloin sähköstä maksetaan jopa puoli senttiä kilowattitunnilta. **Sunnuntaina** hinnat pysyvät edelleen hyvin matalina, keskihinnan ollessa alle kaksi senttiä. Myös sunnuntain varhaisina aamuyön tunteina hintataso käy hetkellisesti negatiivisena.
+**Perjantaina** hinnat ovat keskimäärin alle viiden sentin, mikä tekee päivästä kokonaisuutena edullisen. Perjantain aamupäivän tunneilla klo 8–9 nähdään kuitenkin viikonlopun lähestyessä hintojen nousua yli 11 senttiin. Erot arkiviikon loppupuolella ja viikonlopun erittäin alhaisten hintojen välillä ovat suuret.
 
-Uuden viikon käynnistyessä **maanantaina** ja jatkuessa **tiistaina**, hinta kohoaa jälleen hieman korkeammalle, noin viiden sentin tasolle. Hintavaihtelut ovat kuitenkin maltillisempia kuin viikon alkupuolella, eikä hintapiikkejä ole odotettavissa.
+Uuden viikon alussa, **maanantaina** ja **tiistaina**, sähkön hinnat ovat jälleen hieman korkeampia kuin viikonloppuna, mutta jäävät edelleen maltillisiksi noin 4,5 sentin keskihinnalla. Hinnat pysyvät tasaisina ilman merkittäviä huippuja, ollen korkeimmillaan alle kymmenen sentin rajalla.
 
-Kaiken kaikkiaan tuleva viikko tarjoaa kuluttajille hyvin vaihtelevia hintaolosuhteita. Viikon keskivaiheilla kannattaa varautua korkeampiin hintahuippuihin, kun taas viikonloppuna sähkön käyttö on selvästi edullisempaa.
+Kaikkiaan viikon aikana hintavaihtelu on runsasta. Halvimmat tunnit keskittyvät viikonlopulle ja öiseen aikaan, kun taas kalleimmat tunnit sijoittuvat useimmiten arkiaamujen ja iltojen kulutuspiikkeihin.
 
-*Ennusteen analysoi gpt-4.5-preview.* 🌬️
+*Lukuapuna tänään gpt-4.5-preview.* ⚡
