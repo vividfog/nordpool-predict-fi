@@ -1,27 +1,23 @@
-*The electricity market price forecast for the coming days indicates notable price fluctuations: midweek will experience temporary high prices, while the weekend promises exceptionally inexpensive electricity. Early next week, prices will rise moderately again but will nevertheless remain reasonable.*
+*Electricity prices will fluctuate significantly during the upcoming week: on Thursday, prices will peak near 13 cents, whereas the weekend will offer highly affordable electricity, even dropping to zero cents early Sunday morning. Prices will moderately rise again at the start of the week.*
 
-The forecast was updated on Tuesday at 21:06.
+Forecast updated on Wednesday at 03:19.
 
-|             | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
-|:------------|:----------------:|:----------------:|:-----------------------:|:-----------------------:|
-| **Wednesday** | 8,3              | 1,4 - 15,7       | 218 - 2302             | 14,6                   |
-| **Thursday**     | 7,4              | 3,3 - 15,2       | 210 - 1211             | 14,4                   |
-| **Friday**   | 4,7              | 1,7 - 11,7       | 583 - 2057             | 15,3                   |
-| **Saturday**    | 0,9              | 0,1 - 2,6        | 1085 - 2120            | 16,4                   |
-| **Sunday**   | 2,0              | 0,0 - 4,9        | 1035 - 1990            | 16,9                   |
-| **Monday**   | 5,4              | 2,8 - 9,2        | 1136 - 1459            | 18,5                   |
-| **Tuesday**     | 4,8              | 2,0 - 9,9        | 1173 - 2163            | 18,5                   |
+|              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Thursday**      | 6,7              | 2,8 - 12,8       | 286 - 1364        | 14,4         |
+| **Friday**        | 3,4              | 1,1 - 8,4        | 1089 - 2624       | 15,3         |
+| **Saturday**      | 1,7              | 0,3 - 4,2        | 1007 - 2863       | 16,4         |
+| **Sunday**        | 2,3              | 0,0 - 5,3        | 1019 - 1777       | 16,9         |
+| **Monday**        | 4,9              | 2,9 - 8,8        | 1140 - 1486       | 18,5         |
+| **Tuesday**       | 4,6              | 2,3 - 9,0        | 1191 - 2150       | 18,5         |
+| **Wednesday**     | 5,4              | 2,6 - 10,7       | 1170 - 1451       | 18,2         |
 
-Electricity market prices in the coming days will see noticeable fluctuations. The overall price level will decline towards the weekend, but temporary price spikes may occur on Thursday and Friday.
+The electricity price forecast for the coming week will show clear variation. The week's highest prices will occur on **Thursday**, when the average daily price will rise to 6.7 cents. Thursday's price range will be wide, with nighttime prices below three cents, but reaching nearly 13 cents around nine in the morning. Additionally, Thursday carries a risk of price spikes during individual hours.
 
-On **Wednesday**, price variation will be significant. The average electricity price will be around eight cents. However, the day will see clear differences, with prices dropping to as low as 1.4 cents in the early morning hours and peaking above 15 cents between 8 p.m. and 10 p.m.
+On **Friday**, prices will drop significantly compared to the previous day, with the average price staying below four cents. On Saturday and Sunday, price levels will be clearly the lowest of the week. Saturday's average price will be just 1.7 ¢, and electricity will be available early Saturday morning for less than half a cent per kilowatt-hour. On Sunday, the minimum price is expected to reach zero cents during early morning hours, essentially meaning free electricity at that time.
 
-On **Thursday**, the price situation will remain similar. The average price will be slightly lower than Wednesday, around 7.4 cents. Nevertheless, the risk of price spikes on Thursday will be significant, as wind power production will fall to as low as 210 megawatts. Highest prices will occur around eight in the morning, when prices could momentarily exceed 15 cents.
+At the beginning of next week, price expectations will again rise slightly after the weekend. On **Monday**, the average price will approach five cents, with the day's peak price nearly nine cents at eight o'clock in the morning. On **Tuesday** and **Wednesday**, the price level will remain roughly in the same range as on Monday, though Wednesday will see slightly increased price volatility again. On Wednesday morning, electricity prices will peak at almost 11 cents.
 
-On **Friday**, the price level will continue to decrease. The average price will stay below five cents, although individual price spikes may still occur in the morning hours. Between 8 and 10 a.m., prices will rise above 11 cents due to reduced wind power production during morning hours.
+Examining the week's price development, it becomes clear that the weekend will offer distinctly cheaper electricity. Compared to the weekend, Thursday's highest price level is particularly noticeable. On other days, prices will remain relatively stable without significant fluctuations, and no special risks of price spikes are expected.
 
-During the weekend, prices will become extremely affordable. On **Saturday**, the average electricity price will remain below one cent and occasionally close to zero. Price levels will remain very stable throughout the day, without significant fluctuations. On **Sunday**, electricity prices will slightly increase from Saturday's levels, but will still remain modest. The average price will be two cents, with peak prices clearly below five cents.
-
-At the beginning of the next week, prices will rise moderately. On **Monday** and **Tuesday**, prices will be slightly higher than during the weekend, yet still reasonable. Monday's highest price will be slightly above nine cents, and Tuesday's peak around ten cents.
-
-*Wind forecasts analyzed by gpt-4.5-preview.* 🌬️
+*Forecast provided by gpt-4.5-preview.* 🔌
