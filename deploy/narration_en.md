@@ -1,25 +1,25 @@
-*Electricity prices will fluctuate significantly in the coming days: Thursday will see the week's highest prices, whereas during the weekend electricity prices will occasionally turn negative—with Saturday being especially affordable.*
+*Electricity prices in the coming week will remain mostly moderate, with especially affordable hours during the weekend, while Thursday evening and Wednesday morning will see the most noticeable price increases.*
 
-Forecast updated on Wednesday at 12:06.
+Forecast updated on Wednesday at 14:24.
 
 |              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
-|:-------------|:----------------------:|:------------------:|:-----------------------------:|:-------------------------:|
-| **Thursday** |          6,6           |     1,9 - 13,0     |          360 - 1697           |           14,4            |
-| **Friday**   |          3,7           |     1,2 - 8,7      |         1211 - 2395           |           15,3            |
-| **Saturday** |          1,3           |    -0,4 - 3,5      |          914 - 2863           |           16,4            |
-| **Sunday**   |          2,1           |    -0,5 - 5,7      |         1166 - 2001           |           16,9            |
-| **Monday**   |          4,9           |     2,0 - 9,8      |         1133 - 1286           |           18,5            |
-| **Tuesday**  |          4,8           |     2,2 - 8,1      |         1144 - 1536           |           18,5            |
-| **Wednesday**|          5,3           |     2,0 - 11,6     |         1206 - 1727           |           18,4            |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Thursday**  |        7,1       |     3,8 - 12,2    |      358 - 1714      |      14,4     |
+| **Friday**    |        4,0       |     1,5 - 8,9     |     1207 - 2406      |      15,3     |
+| **Saturday**  |        1,7       |     0,3 - 4,2     |      916 - 2878      |      16,4     |
+| **Sunday**    |        2,3       |     0,1 - 5,1     |     1097 - 2002      |      16,9     |
+| **Monday**    |        4,8       |     2,0 - 9,1     |     1231 - 1349      |      18,5     |
+| **Tuesday**   |        5,4       |     2,6 - 9,3     |     1190 - 1572      |      18,5     |
+| **Wednesday** |        5,7       |     1,9 - 11,2    |     1216 - 1757      |      18,4     |
 
-The coming days' electricity price forecasts reveal clear variations. The highest prices will occur on **Thursday**, with the day's average price expected to reach 6.6 cents per kilowatt-hour. During Thursday, hourly prices will fluctuate significantly, ranging from a low of 1.9 cents to a daily peak of 13.0 cents. Prices will particularly rise in the morning between 7–9 and again in the evening from 18–21. Thursday also carries a heightened risk of price spikes during individual hours.
+The market electricity price will mostly remain at moderate or low levels during the upcoming week, without significant price spikes. The greatest differences will be evident between individual daily averages, particularly over the weekend and midweek.
 
-**Saturday** will be the week's most affordable day for electricity consumers. The day's average price will fall to just 1.3 cents, and during some nighttime hours, electricity prices are expected to even become negative. Saturday's lowest price will be -0.4 cents between 4–5 a.m. Even during the daytime and evening hours, prices will remain moderate, peaking at just 3.5 cents. However, Saturday still carries a heightened risk of individual hourly price spikes, despite generally low prices.
+The week's highest average price will occur on **Thursday**, at 7.1 cents. Within Thursday, price fluctuations will be notable, with the day's most expensive hours around 9 PM, specifically from 8–10 PM. Thursday will see the week's clearly highest peak prices, reaching up to 12.2 ¢.
 
-On **Friday** and **Sunday**, electricity prices will also remain at low levels. Both days' average prices will stay below four cents. Sunday will again feature particularly affordable moments, especially early in the morning between 1–2 a.m., when the electricity price will dip to -0.5 cents.
+During the weekend, prices will clearly drop. On **Saturday** and **Sunday**, electricity prices will stay affordable, averaging 1.7 and 2.3 cents respectively. Early morning hours on Saturday will be especially inexpensive, reaching as low as below half a cent. On Saturday, the risk of short-term price spikes on individual hours emerges, but prices will still remain very moderate. Sunday will be nearly as affordable, featuring the week's lowest hourly price at just 0.1 ¢ overnight.
 
-At the beginning of next week, electricity prices will rise slightly. On **Monday** and **Tuesday**, average prices will hover around five cents, somewhat higher than the exceptionally low weekend prices. On **Wednesday**, the average price will climb a bit further to 5.3 cents, with hourly prices varying between two and nearly 12 cents. Particularly on Wednesday morning between 8–10, prices will peak at 11.6 cents, marking the highest hourly prices of the latter half of the week.
+From Monday to Wednesday prices will rise slightly again. **Monday's** average will remain below five cents, but **Tuesday** and **Wednesday** will approach around five and a half cents. Wednesday will again witness larger fluctuations within the day, with higher prices in the morning between 8–10 AM, peaking at 11.2 cents.
 
-Thus, electricity price variations will be considerable during the coming week, and electricity consumers may want to pay special attention to the affordable weekend hours and possible peak prices on Thursday.
+Overall, the week's price development clearly highlights a calm weekend, flanked by slightly higher prices towards the end of the week and early next week. However, the overall price level will remain relatively moderate, without particularly high price spikes anticipated.
 
-*Prices analyzed by gpt-4.5-preview.* ⚡
+*Price trends sketched by gpt-4.5-preview.* 🌬️
