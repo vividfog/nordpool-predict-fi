@@ -1,25 +1,25 @@
-*The market electricity price is forecast to rise from exceptionally affordable weekend hours towards significantly higher prices early next week; the cheapest moments will occur during nighttime, even dipping into negative pricing, while the highest peaks are expected on Wednesday and Thursday mornings and evenings.*
+*Electricity prices will remain affordable over the weekend but are expected to rise significantly during the weekdays. Individual price spikes will occur especially during morning and evening hours, with the week's highest price anticipated on Wednesday morning, surpassing 10 cents.*
 
-Forecast updated on Thursday at 21:06.
+Forecast updated on Friday at 03:20.
 
 |              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
-|:-------------|:----------------------:|:------------------:|:----------------------------:|:-------------------------:|
-| **Friday**      |          1,1         |     0,4 - 4,3      |         1135 - 2397          |           15,3            |
-| **Saturday**    |          1,2         |    -0,2 - 2,5      |          932 - 2704          |           16,4            |
-| **Sunday**      |          2,1         |    -0,3 - 5,2      |          660 - 3046          |           16,9            |
-| **Monday**      |          4,8         |     2,8 - 8,6      |          940 - 1232          |           18,5            |
-| **Tuesday**     |          3,3         |     1,9 - 5,7      |          906 - 1617          |           18,5            |
-| **Wednesday**   |          4,7         |     1,3 - 9,1      |          885 - 1433          |           18,4            |
-| **Thursday**    |          5,0         |     2,8 - 8,2      |          890 - 1462          |           18,4            |
+|:-------------|:----------------------:|:-------------------:|:----------------------------:|:-------------------------:|
+| **Saturday**     |         1,4          |    -0,3 - 3,3       |          916 - 2725           |           16,4            |
+| **Sunday**       |         2,0          |     0,2 - 5,3       |          794 - 2915           |           16,9            |
+| **Monday**       |         5,3          |     2,6 - 8,8       |          745 - 2012           |           18,5            |
+| **Tuesday**      |         5,0          |     1,6 - 8,5       |          749 - 1440           |           18,5            |
+| **Wednesday**    |         5,3          |     1,1 - 10,5      |          718 - 1404           |           18,4            |
+| **Thursday**     |         5,1          |     2,8 - 8,1       |          700 - 1396           |           18,4            |
+| **Friday**       |         3,7          |     2,4 - 5,8       |          577 - 1240           |           17,7            |
 
-The week's electricity price forecast clearly indicates an upward trend. The cheapest days will be over the weekend, while higher average prices are expected at the beginning and middle of next week.
+Electricity prices during the weekend will remain affordable, with relatively moderate fluctuations. On **Saturday**, prices will even dip into negative territory around 1 a.m., reaching as low as -0.3 cents. Prices are expected to rise moderately during the day, peaking at 3.3 cents around 7 p.m. **Sunday** will see slightly higher prices compared to Saturday but will still remain affordable. The weekend's highest price, 5.3 cents, is expected Sunday evening around 8 p.m.
 
-On **Friday** and **Saturday**, average prices remain moderate, around one cent per kilowatt-hour. On both days, prices will even dip negative during nighttime. Early on **Saturday** at 4 am, prices are expected to reach -0.2 cents. On **Sunday**, prices will rise slightly, with an average forecasted at 2.1 cents. Negative prices will still occur around 1 am on Sunday morning (-0.3 ¢/kWh).
+During the weekdays, the average electricity prices will climb considerably from weekend levels. The highest daily averages will occur on **Monday** and **Wednesday**, both reaching 5.3 cents. On Monday evening between 7 and 9 p.m., electricity prices will peak, reaching up to 8.8 cents. Wednesday's price spike will happen in the morning between 8 and 10 a.m., with prices expected to rise up to 10.5 cents.
 
-As the week turns to **Monday**, prices will shift notably upward. Monday's average price will rise to 4.8 cents, with the highest hourly prices reaching 8.6 cents in the evening around 8-10 pm. This increase is partly explained by weaker wind power production, which is expected to remain relatively low throughout the day.
+On **Tuesday** and **Thursday**, price levels will remain close to Monday's and Wednesday’s. Tuesday's highest price, 8.5 cents, is expected during the evening between 7 and 9 p.m. Thursday's peak price will be slightly lower at 8.1 cents, occurring in the morning between 8 and 10 a.m.
 
-On **Tuesday**, average prices will decrease slightly compared to Monday but will remain elevated compared to the weekend. The average price will be around 3.3 cents. Tuesday's highest prices will occur around 8 am, reaching 5.7 cents per hour.
+The week's lowest wind power production is forecasted for **Friday**, with production dropping as low as 577 megawatts. Despite this, Friday's prices will remain relatively moderate, with no significant price spikes expected. The average price on Friday will be a reasonable 3.7 cents, with the highest hourly price of 5.8 cents occurring around 7 p.m.
 
-The most expensive days of the week will be **Wednesday** and **Thursday**, with expected average prices around five cents. Wednesday's maximum price of 9.1 cents will occur in the morning between 8-10 am. Thursday's peak price (8.2 ¢) will fall in the evening hours between 7-9 pm. On both days, wind power production will remain moderate, partly explaining the elevated price levels.
+Overall, electricity prices will clearly rise from the weekend's lower levels toward higher weekday prices. Each day's forecast mentions the risk of price spikes, so prices could momentarily exceed predictions, especially during morning and evening hours on weekdays.
 
-*Forecast compiled by gpt-4.5-preview.* 🍃
+*Numbers crunched by gpt-4.5-preview.* 🔌
