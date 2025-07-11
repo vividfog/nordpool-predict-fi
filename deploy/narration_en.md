@@ -1,25 +1,25 @@
-*The price of electricity on the spot market will fluctuate noticeably during the coming week: negative hourly rates are expected over the weekend, while weekdays will see prices occasionally exceeding eight cents, especially in the evenings.*
+*Electricity prices will remain affordable during the coming week, but daily variations will be significant: negative prices will occur over the weekend, while midweek morning and evening hours will see peak rates exceeding nine cents per kilowatt-hour.*
 
-Forecast updated on Friday at 09:06.
+Forecast updated on Friday at 12:07.
 
-|             | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
-|:------------|:----------------------:|:-------------------:|:----------------------------:|:-------------------------:|
-| **Saturday**    |          1,3           |     -0,3 - 3,1      |          871 - 2738           |            16,4           |
-| **Sunday**      |          2,0           |     -0,0 - 4,8      |          747 - 2899           |            16,9           |
-| **Monday**      |          5,0           |      2,7 - 8,1      |           852 - 2026          |            18,5           |
-| **Tuesday**     |          4,6           |      2,9 - 7,4      |           955 - 1464          |            18,5           |
-| **Wednesday**   |          5,1           |      2,7 - 8,4      |           859 - 1213          |            18,4           |
-| **Thursday**    |          4,4           |      2,6 - 7,2      |           973 - 1469          |            18,4           |
-| **Friday**      |          3,8           |      1,5 - 6,3      |           906 - 1446          |            17,7           |
+|              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:---------------------:|:-------------------:|
+| **Saturday** |        1.4       |      0.2 - 3.1     |       927 - 2756       |        16.4        |
+| **Sunday**   |        2.2       |     -0.2 - 4.4     |       503 - 2800       |        16.9        |
+| **Monday**   |        5.2       |      2.5 - 8.3     |       516 - 1820       |        18.5        |
+| **Tuesday**  |        4.5       |      2.9 - 7.6     |       975 - 1395       |        18.5        |
+| **Wednesday**|        5.8       |      2.6 - 9.4     |       773 - 1180       |        18.4        |
+| **Thursday** |        4.7       |      2.4 - 7.9     |       919 - 1597       |        18.4        |
+| **Friday**   |        4.3       |      1.7 - 7.1     |       887 - 1540       |        17.0        |
 
-During the coming week, electricity prices will vary quite notably. The lowest daily prices will occur over the weekend, particularly on **Saturday** and **Sunday**, with average daily prices staying around two cents or below. On Saturday, electricity prices will even dip slightly below zero around 04:00 AM, reaching an expected -0,3 cents. Conversely, Saturday evening between 18:00 and 20:00 will see prices rise slightly above three cents.
+During the upcoming week, electricity prices will remain generally affordable, but noticeable differences between days will emerge. **Monday** stands out early in the week, with average prices rising above five cents per kilowatt-hour. Monday's peak prices will occur around nine in the morning, with electricity rates expected to reach as high as 8.3 cents.
 
-On weekdays, price levels will significantly increase compared to the weekend. The most expensive days will be early in the week, especially on **Monday** and **Wednesday**, with average prices close to five cents. Monday evening's highest prices are expected between 19:00 and 21:00, with electricity forecasted to exceed eight cents. Similarly, Wednesday will see comparable peaks above eight cents during the evening between 19:00 and 21:00.
+The weekend will start very affordably. **Saturday's** average price will stay below one and a half cents, with the cheapest hours occurring at night between midnight and two AM. On **Sunday**, negative hourly prices will appear during the early hours around midnight to two AM, meaning electricity will be essentially free, even slightly below zero. However, Sunday's average price will remain slightly higher than Saturday, around two cents.
 
-On **Tuesday** and **Thursday**, average electricity prices will remain slightly more moderate, around four and a half cents. However, on both days, prices are expected to momentarily surpass seven cents, particularly during the morning hours between 08:00 and 10:00. As the week progresses toward the end, prices will decrease further, and **Friday's** average price will drop below four cents.
+As the week progresses, prices will rise moderately. On **Tuesday**, the average price will climb to about four and a half cents, with the highest hourly price around eight in the morning reaching 7.6 cents. On **Wednesday**, the week's highest individual hourly price will occur around eight in the evening, with electricity rates forecasted to reach up to 9.4 cents. Wednesday's average price will be the week's highest, around 5.8 cents. Prices will then slightly decrease towards the end of the week.
 
-Prices will fluctuate considerably within the week. While negative hourly prices will appear over the weekend, weekday prices will occasionally rise above eight cents. Peak pricing periods typically occur during morning and evening hours.
+At the end of the week, on **Thursday** and **Friday**, average prices will remain below five cents. Thursday's highest hourly price will take place around nine in the morning, reaching approximately 7.9 cents. On Friday, peak hours will occur around ten in the morning, with prices rising to 7.1 cents.
 
-For certain days, the data mentions a risk of price spikes, indicating actual hourly prices could occasionally rise higher than forecasted. This risk particularly applies to peak evening hours early in the week.
+Overall, clear differences between days will emerge during the week, and variations in hourly prices will be significant, especially during midweek morning and evening hours. The risk of price spikes during individual hours has been noted for each day, meaning actual peak prices could differ slightly from this forecast.
 
-*Numbers analyzed by gpt-4.5-preview.* ⚡
+*Numbers crunched by gpt-4.5-preview.* 🔌
