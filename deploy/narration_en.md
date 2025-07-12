@@ -1,29 +1,27 @@
-*In the coming week, electricity prices will fluctuate significantly, starting higher in the early weekdays and dropping to very affordable levels toward the weekend, with even negative hourly prices anticipated—peak price risks will be concentrated from Monday to Thursday, particularly during morning and evening hours.*
+*In the upcoming week, electricity prices will remain generally affordable, although the early part of the week will bring higher price peaks; prices will decrease towards the weekend, with the lowest hours occurring during Sunday night.*
 
-Forecast updated on Saturday at 14:24.
+Forecast updated on Saturday at 21:06.
 
-|           | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 1.6 | 0.0 - 3.8 | 592 - 3029 | 16.9 |
-| **Monday** | 4.9 | 1.6 - 10.0 | 750 - 2152 | 18.5 |
-| **Tuesday** | 5.1 | 2.4 - 9.3 | 180 - 1607 | 18.5 |
-| **Wednesday** | 4.2 | 2.7 - 8.1 | 898 - 1452 | 18.4 |
-| **Thursday** | 3.8 | 2.0 - 7.4 | 821 - 1695 | 18.4 |
-| **Friday** | 2.7 | 1.0 - 5.0 | 1168 - 1820 | 17.0 |
-| **Saturday** | 1.1 | -0.7 - 4.1 | 1015 - 2768 | 16.8 |
+| **Sunday**     |        1.6       |      0.0 - 3.8     |         571 - 2906        |          16.9        |
+| **Monday**     |        4.8       |      2.3 - 10.0    |         741 - 2160        |          18.5        |
+| **Tuesday**    |        5.8       |      2.7 - 10.5    |         176 - 1639        |          18.5        |
+| **Wednesday**  |        4.9       |      2.8 - 8.6     |        1066 - 1553        |          18.4        |
+| **Thursday**   |        3.8       |      2.1 - 6.2     |        1018 - 1613        |          18.4        |
+| **Friday**     |        3.8       |      0.9 - 5.7     |         887 - 1345        |          17.0        |
+| **Saturday**   |        2.1       |      0.2 - 5.4     |        1052 - 2240        |          16.8        |
 
-The electricity price forecast for the upcoming week will show clear variation between days. The week will begin with slightly higher price levels but will end at quite affordable rates.
+Electricity prices in the coming week will remain mostly affordable. However, clear differences between days will be observed, both in average prices and price fluctuations. Early in the week, particularly **Tuesday** and **Monday**, price expectations will be higher, with maximum prices potentially exceeding 10 cents.
 
-On **Monday**, the average price will be 4.9 cents per kilowatt-hour, and the day will feature the week's highest single-hour price, reaching up to 10 cents in the evening around 7–9 PM. The morning hours, approximately 8–10 AM, will also be notable with prices exceeding five cents. It should also be noted that there will be a risk of individual hourly price spikes on Monday.
+The cheapest day of the week will be **Sunday**, when the average price is expected to remain around 1.6 cents. Sunday night will also feature the week's lowest hourly price, reaching exactly zero cents at 01:00. Throughout Sunday, electricity prices will remain very low, with no significant increases expected.
 
-**Tuesday** will be slightly more expensive than Monday, with the daily average rising to 5.1 cents. The highest prices of the day will occur in the morning around 8–10 AM, peaking at 9.3 cents around 9 AM. There will also be a risk of individual hourly price spikes on Tuesday.
+At the very beginning of the week, on **Monday**, prices will clearly rise compared to the previous day. Monday’s prices will range between 2.3 and 10.0 cents, with an average price around 4.8 cents. The highest prices on Monday will occur in the evening hours between 19:00–21:00, exceeding 9 cents according to the forecast. The risk of price peaks has been indicated for Monday, meaning individual hourly prices could rise higher than forecasted.
 
-On **Wednesday**, prices will decrease slightly, with an average price of 4.2 cents. The day's highest price, 8.1 cents, will occur around 8–10 AM, approximately at 9 AM. The possibility of hourly price spikes for individual hours will remain on Wednesday.
+On **Tuesday**, the price level will remain relatively high. Tuesday’s average price of 5.8 cents will be the highest of the week. Price variation during the day will be significant, and the highest hourly price (10.5 ¢) will occur in the morning between 08:00–10:00. The risk of price peaks has also been noted for Tuesday, meaning peak prices could exceed the current forecast.
 
-**Thursday's** average price will further decrease slightly to 3.8 cents. The highest prices of the day (7.4 ¢) will be experienced in the morning around 8–10 AM. There will still be a risk of individual hourly price spikes on Thursday.
+During the latter part of the week, prices will stabilize. On **Thursday** and **Friday**, average prices will remain below four cents, and on **Saturday**, the price will further drop to around two cents. Early Saturday morning at 03:00, electricity prices will approach zero, at only 0.2 cents.
 
-As the week progresses, price levels will clearly decrease: on **Friday**, the average price will drop to 2.7 cents, and on **Saturday**, it will be just above one cent. Saturday will also see the week's lowest individual hourly price, dropping into negative territory (-0.7 ¢) early in the morning around 4–6 AM.
+Overall, the week will offer affordable hours especially during the weekend and nighttime, while the highest prices will concentrate in the early week and daytime as well as evening hours. Price variations will be evident, but extremely high price levels are not expected.
 
-The weekly price variations are partly explained by fluctuations in wind power. Particularly on Tuesday, the minimum wind power (180 MW) will be very low, partially explaining the day's high price peaks. Saturday's very low prices will be supported by the week's highest average wind power production.
-
-*Prices crunched by GPT-4.5-preview.* 🍃
+*Interpreted by gpt-4.5-preview.* ⚡
