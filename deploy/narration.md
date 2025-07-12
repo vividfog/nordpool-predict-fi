@@ -1,25 +1,27 @@
-*Ensi viikon sähkön hintaennuste lupaa maltillisia keskihintoja ja ajoittaisia hintavaihteluita; viikon alku on hieman kalliimpi ja yksittäiset piikit ajoittuvat aamun ja illan tunneille, kun taas viikonloppuna kuluttajat pääsevät hyödyntämään jopa negatiivisia hintoja.*
+*Tulevan viikon pörssisähkön hinnat vaihtelevat selkeästi päivien välillä, alkuviikolla nähdään korkeampia tuntihintoja ja hetkittäisiä hintapiikkejä, kun taas viikonloppua kohti hinnat alenevat merkittävästi, jopa negatiivisiksi varhaisaamun tunteina.*
 
-Ennuste päivitetty lauantaina klo 09:06.
+Ennuste päivitetty lauantaina klo 12:06.
 
-|              | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **sunnuntai**   |       2,0        |    -0,1 - 6,2    |      532 - 2940      |      16,9      |
-| **maanantai**   |       4,7        |     2,1 - 8,9    |      614 - 1868      |      18,5      |
-| **tiistai**     |       4,6        |     2,9 - 7,8    |      423 - 1395      |      18,5      |
-| **keskiviikko** |       4,8        |     2,9 - 9,4    |      931 - 1423      |      18,4      |
-| **torstai**     |       3,5        |     2,1 - 6,9    |      901 - 1608      |      18,4      |
-| **perjantai**   |       2,6        |     1,0 - 4,4    |      1121 - 1740     |      17,0      |
-| **lauantai**    |       0,7        |    -0,5 - 2,1    |      1353 - 2715     |      17,1      |
+|             | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:------------|:----------------:|:----------------:|:--------------------:|:----------------:|
+| **sunnuntai**   | 2,0              | -0,1 - 5,2       | 589 - 3066           | 16,9             |
+| **maanantai**   | 4,7              | 1,8 - 9,8        | 741 - 2144           | 18,5             |
+| **tiistai**     | 5,2              | 3,0 - 11,2       | 187 - 1604           | 18,5             |
+| **keskiviikko** | 4,7              | 3,0 - 9,0        | 1002 - 1407          | 18,4             |
+| **torstai**     | 3,5              | 2,0 - 7,0        | 954 - 1702           | 18,4             |
+| **perjantai**   | 2,6              | 0,9 - 5,1        | 1159 - 1778          | 17,0             |
+| **lauantai**    | 1,0              | -0,6 - 3,9       | 1117 - 2748          | 16,8             |
 
-Pörssisähkön hinta tulee vaihtelemaan ensi viikolla kohtuullisesti päivästä riippuen. Hintaodotukset pysyttelevät maltillisina, eikä yksittäisten päivien keskihinnat kohoa erityisen korkeiksi. Viikon kalleimmat päivät näyttävät olevan **maanantai**, **tiistai** ja **keskiviikko**, jolloin keskihinnat asettuvat 4,6–4,8 sentin tuntumaan. Näiden päivien aikana on kuitenkin odotettavissa yksittäisiä korkeampia hintapiikkejä erityisesti aamun ja illan tunteina.
+Tulevan viikon sähkömarkkinat ovat melko vaihtelevat. Keskimääräiset hinnat pysyttelevät enimmäkseen edullisella tasolla, mutta alkuviikon aikana nähdään selkeitä nousuja yksittäisinä tunteina.
 
-**Maanantaina** hinta vaihtelee 2,1 ja 8,9 sentin välillä. Illalla noin klo 18–20 hinta saattaa nousta lähelle yhdeksää senttiä kilowattitunnilta. **Tiistaina** maksimihinta on hieman matalampi, 7,8 senttiä, ja korkeimmat hinnat ajoittuvat aamulle klo 8–10. **Keskiviikkona** nähdään viikon korkein yksittäinen tuntihinta, 9,4 senttiä klo 9 aikoihin aamulla. Näinä kolmena päivänä riski lyhytkestoisille hintapiikeille on olemassa.
+Viikon alhaisin päiväkohtainen keskihinta, vain sentin kilowattitunnilta, toteutuu **lauantaina**. Lauantaina nähdään myös viikon alimmat tuntihinnat, jolloin hinta käy negatiivisena varhain aamulla klo 3:n ja 8:n välillä. Negatiivisia hintoja, joskin vain hetkittäin, esiintyy myös **sunnuntaina** aamuyöstä klo 2:n aikaan.
 
-Viikon edullisimmat päivät ovat **lauantai** ja **sunnuntai**, jolloin sähkön vuorokausihinnat pysyttelevät alhaalla. Lauantaina keskihinta jää hyvin matalaksi, vain 0,7 senttiin, ja yksittäisinä yön tunteina hinta voi olla jopa negatiivinen. Myös sunnuntaina nähdään negatiivisia hintoja yön varhaisina tunteina, mutta päivän keskimääräinen hinta on hieman korkeampi, noin kaksi senttiä.
+Viikon korkeimmat tuntihinnat ajoittuvat **tiistaille**, jolloin hinta voi saavuttaa 11,2 senttiä aamuyhdeksän ympärillä. Saman päivän aikana tuulivoiman tuotanto käy hyvin matalalla, vain 187 megawatissa. Tämä poikkeuksellisen alhainen tuulituotanto selittää tiistain huipputuntien korkeahkoa hintatasoa. Hintapiikkien riski onkin tiistaina todellinen yksittäisten aamun tuntien aikana.
 
-Loppuviikkoa kohden hinnat tulevat laskemaan asteittain. **Torstaina** keskihinta asettuu 3,5 senttiin, ja yksittäisten tuntien hinnat eivät yllä seitsemää senttiä korkeammiksi. **Perjantaina** hinnat jatkavat laskusuuntaa, ja päivän keskihinta jää 2,6 sentin tasolle. Perjantain korkeimmat hinnat pysyvät maltillisina, maksimissaan 4,4 sentissä.
+Myös **maanantaina** hintapiikit ovat mahdollisia erityisesti illansuussa klo 18–20 välillä, jolloin hinta kohoaa lähelle kymmentä senttiä. Keskihinta pysyttelee kuitenkin maltillisena, 4,7 sentin tasolla. Keskiviikko ja torstai ovat hintojen puolesta melko rauhallisia, vaikka torstaina hintavaihtelu voikin hetkellisesti nostaa hinnan seitsemään senttiin aamuyhdeksän tienoilla.
 
-Tuulivoima vaikuttaa jonkin verran viikonlopun mataliin hintoihin, sillä tuulituotanto on lauantaina ja sunnuntaina runsasta. Arkiviikolla tuulivoiman tuotantotaso on hieman matalampi, mutta pysyttelee kuitenkin riittävällä tasolla, joten merkittäviä tuulivoiman aiheuttamia hintapaineita ei ole odotettavissa.
+Perjantaina hintataso laskee jälleen, päivän keskihinnan asettuessa 2,6 senttiin. Viikonloppua kohden hinnat jatkavat laskuaan, lauantain ollessa koko viikon halvin päivä.
 
-*Hintoja arvioi tänään gpt-4.5-preview.* 🍃
+Kaikkiaan hinnat vaihtelevat viikon aikana melko paljon. Viikon alku on hieman kalliimpaa aikaa, mutta viikonloppuna sähkön hintaodotukset ovat selkeästi edullisemmat.
+
+*GPT-4.5-preview hintasähköllä surffaten.* 🌬️
