@@ -1,27 +1,27 @@
-*In the upcoming week, electricity prices will remain generally affordable, although the early part of the week will bring higher price peaks; prices will decrease towards the weekend, with the lowest hours occurring during Sunday night.*
+*Electricity prices will see clear fluctuations in the coming week: the early week sees prices occasionally climbing above ten cents, but rates will drop significantly towards the weekend, with electricity even becoming free for consumers at certain times on Sunday.*
 
-Forecast updated on Saturday at 21:06.
+Forecast updated on Sunday at 03:19.
 
 |              | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday**     |        1.6       |      0.0 - 3.8     |         571 - 2906        |          16.9        |
-| **Monday**     |        4.8       |      2.3 - 10.0    |         741 - 2160        |          18.5        |
-| **Tuesday**    |        5.8       |      2.7 - 10.5    |         176 - 1639        |          18.5        |
-| **Wednesday**  |        4.9       |      2.8 - 8.6     |        1066 - 1553        |          18.4        |
-| **Thursday**   |        3.8       |      2.1 - 6.2     |        1018 - 1613        |          18.4        |
-| **Friday**     |        3.8       |      0.9 - 5.7     |         887 - 1345        |          17.0        |
-| **Saturday**   |        2.1       |      0.2 - 5.4     |        1052 - 2240        |          16.8        |
+| **Monday**   |        4,9       |      2,2 - 8,4     |        613 - 1814       |         18,5        |
+| **Tuesday**     |        6,1       |     2,5 - 10,6     |        182 - 1512       |         18,5        |
+| **Wednesday** |        4,2       |      2,5 - 8,1     |        836 - 1490       |         18,4        |
+| **Thursday**     |        4,4       |      2,1 - 7,5     |        895 - 1504       |         18,4        |
+| **Friday**   |        3,8       |      1,5 - 6,2     |        900 - 1422       |         17,0        |
+| **Saturday**    |        1,9       |      0,2 - 4,4     |       1045 - 2150       |         16,8        |
+| **Sunday**   |        1,2       |    -0,6 - 3,7      |       1264 - 1710       |         16,9        |
 
-Electricity prices in the coming week will remain mostly affordable. However, clear differences between days will be observed, both in average prices and price fluctuations. Early in the week, particularly **Tuesday** and **Monday**, price expectations will be higher, with maximum prices potentially exceeding 10 cents.
+Electricity prices in the coming week will vary notably. The week will begin on **Monday** with a moderate average price of 4.9 cents, but during the day prices may rise up to 8.4 cents between 18:00 and 20:00. There will be a risk of price spikes on Monday.
 
-The cheapest day of the week will be **Sunday**, when the average price is expected to remain around 1.6 cents. Sunday night will also feature the week's lowest hourly price, reaching exactly zero cents at 01:00. Throughout Sunday, electricity prices will remain very low, with no significant increases expected.
+On **Tuesday**, the average price is forecasted to rise to 6.1 cents, marking the highest daily average for the week. The day's peak price will occur in the morning between 08:00 and 10:00, when electricity may cost over 10 cents per kilowatt-hour. Tuesday also carries a risk of price spikes.
 
-At the very beginning of the week, on **Monday**, prices will clearly rise compared to the previous day. Monday’s prices will range between 2.3 and 10.0 cents, with an average price around 4.8 cents. The highest prices on Monday will occur in the evening hours between 19:00–21:00, exceeding 9 cents according to the forecast. The risk of price peaks has been indicated for Monday, meaning individual hourly prices could rise higher than forecasted.
+Midweek prices will stabilize slightly. On **Wednesday** and **Thursday**, average prices will hover around four cents, but price spikes are possible during certain hours on both days. Thursday's highest hourly price, 7.5 cents, will occur between 08:00 and 10:00.
 
-On **Tuesday**, the price level will remain relatively high. Tuesday’s average price of 5.8 cents will be the highest of the week. Price variation during the day will be significant, and the highest hourly price (10.5 ¢) will occur in the morning between 08:00–10:00. The risk of price peaks has also been noted for Tuesday, meaning peak prices could exceed the current forecast.
+On **Friday**, the overall price level will decrease further, with the daily average dropping below four cents. The cheapest hours will be in the early morning, down to 1.5 cents, while in the early evening electricity will cost slightly over 6 cents.
 
-During the latter part of the week, prices will stabilize. On **Thursday** and **Friday**, average prices will remain below four cents, and on **Saturday**, the price will further drop to around two cents. Early Saturday morning at 03:00, electricity prices will approach zero, at only 0.2 cents.
+During the weekend, electricity prices will become notably cheaper compared to early in the week. On **Saturday**, the average price will fall below two cents, and the day's lowest positive rate, just 0.2 cents, will occur early in the morning. On **Sunday**, prices will fall further, with an average daily price of 1.2 cents. Sunday will also feature a rare negative price period, with electricity costing as little as -0.6 cents shortly after midday between 13:00 and 15:00.
 
-Overall, the week will offer affordable hours especially during the weekend and nighttime, while the highest prices will concentrate in the early week and daytime as well as evening hours. Price variations will be evident, but extremely high price levels are not expected.
+The week's price variation will be considerable, transitioning from the somewhat higher prices and risks of spikes at the beginning of the week to extremely affordable rates during the weekend.
 
-*Interpreted by gpt-4.5-preview.* ⚡
+*Analysis provided by gpt-4.5-preview.* ⚡
