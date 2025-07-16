@@ -1,23 +1,21 @@
-*In the coming week, electricity price expectations vary from moderate to higher, with Thursday and Friday appearing as more expensive days, while weekend and early week prices remain reasonable as wind power production fluctuates.*
+*Next week's electricity prices are expected to show moderate fluctuations, with the largest spikes potentially occurring during individual hours on Thursday and Friday. Average prices remain affordable, and wind power production is anticipated to be at an average level.*
 
-Price forecasts were updated on Wednesday at 03:19.
+The forecast is updated on Wednesday at 09:14.
 
-|               | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|             | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday**  | 3.3              | 0.2 - 8.5        | 636 - 2246    | 18.4          |
-| **Friday**| 4.1              | 1.2 - 8.4        | 267 - 1517    | 17.0          |
-| **Saturday** | 1.9              | 0.9 - 3.2        | 809 - 1949    | 16.8          |
-| **Sunday**| 1.4              | -0.2 - 3.2       | 782 - 1401    | 17.3          |
-| **Monday**| 3.1              | 0.7 - 6.1        | 756 - 1415    | 17.7          |
-| **Tuesday**  | 3.0              | 1.3 - 5.6        | 684 - 1214    | 18.6          |
-| **Wednesday**| 3.5            | 1.5 - 7.8        | 706 - 1235    | 19.2          |
+| **Thursday**  | 3.0              | 0.3 - 8.7        | 618 - 2251    | 18.4          |
+| **Friday**| 4.0              | 1.0 - 8.0        | 256 - 1528    | 17.0          |
+| **Saturday** | 2.0              | 0.6 - 4.1        | 481 - 1776    | 16.8          |
+| **Sunday**| 1.4              | 0.3 - 3.2        | 870 - 1422    | 17.3          |
+| **Monday**| 3.9              | 1.3 - 7.2        | 656 - 1280    | 17.7          |
+| **Tuesday**  | 3.3              | 2.1 - 5.1        | 682 - 1177    | 18.6          |
+| **Wednesday**| 2.0           | 0.7 - 5.4        | 987 - 1444    | 19.2          |
 
-In the upcoming week, electricity price expectations show fluctuations, but overall the price level remains moderate. On **Thursday** and **Friday**, price expectations are higher compared to the weekend days. **Friday's** average price is 4.1 cents, and the most expensive time of the day may rise to 8.4 cents. This can be explained by low wind power production, averaging 836 megawatts.
+During the upcoming week, electricity prices are expected to exhibit moderate variation without significant anomalies. **Thursday** and **Friday** might bring price spikes, with the most expensive hours expected between morning and evening on Friday. Average prices range between three and four cents per kilowatt-hour, indicating an affordable price trend for the coming week. **Saturday** and **Sunday** appear to be the cheapest days of the week, especially Sunday, with an average price of 1.4 cents.
 
-On **Saturday** and **Sunday**, prices are expected to drop significantly, with average prices below two cents. On **Sunday**, a negative minimum price of -0.2 cents is even observed, which is rare. Wind power production increases over the weekend, which partly explains the lower prices.
+**Monday** and **Tuesday** will bring slightly higher average prices, but they remain under four cents. **Wednesday** is expected to be similar in price level to the beginning of the week, making it one of the more affordable days.
 
-On **Monday** and **Tuesday**, prices rise slightly from the weekend but remain at a reasonable level, around three cents. On **Wednesday**, the price rises slightly higher to 3.5 cents but remains relatively stable without significant price spikes.
+Wind power production remains mostly at an average level throughout the week, and no specific price impacts from wind power are anticipated. Temperatures remain above 15 degrees, which does not affect price trends. The risk of price spikes is present on several days but mainly concentrates on mornings and evenings.
 
-Overall, the coming week offers varying electricity price expectations, influenced particularly by wind power production. Although price spikes occur in individual hours, prices remain reasonable on the whole.
-
-*Price future predicted by gpt-4o.* 🌬️
+*Forecast compiled by gpt-4o.* 🌬️
