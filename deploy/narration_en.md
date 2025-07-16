@@ -1,21 +1,23 @@
-*Electricity prices for the coming week will vary significantly, with potential price spikes especially in the first half of the week. Wind power production remains low at times, influencing price trends on different days.*
+*Next week's electricity spot prices are expected to vary significantly across different days, with potential price spikes particularly on Friday and Monday. Sunday is anticipated to have the lowest prices, while Friday may be the most expensive day of the week.*
 
-The forecast has been updated on Wednesday at 12:06.
+The forecast was updated on Wednesday at 14:24.
 
-|           | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|               | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday**  | 2.8              | 0.1 - 8.2        | 642 - 2507    | 18.4          |
-| **Friday**| 4.2              | 1.2 - 8.0        | 219 - 1539    | 17.0          |
-| **Saturday** | 2.4              | 0.9 - 5.4        | 444 - 1800    | 16.8          |
-| **Sunday**| 1.6              | 0.3 - 3.0        | 896 - 1426    | 17.3          |
-| **Monday**| 3.9              | 1.2 - 7.2        | 750 - 1318    | 17.7          |
-| **Tuesday**  | 3.3              | 2.2 - 5.3        | 795 - 1149    | 18.6          |
-| **Wednesday**| 2.3            | 1.1 - 4.6        | 1064 - 1445   | 19.3          |
+| **Thursday**  |      1.4         |      0.4 - 2.9   |  644 - 2534   |     18.4      |
+| **Friday**|      4.2         |      0.8 - 7.6   |  206 - 1536   |     17.0      |
+| **Saturday** |      2.0         |      0.9 - 4.5   |  442 - 1712   |     16.8      |
+| **Sunday**|      0.9         |     -0.3 - 2.6   |  845 - 1361   |     17.3      |
+| **Monday**|      3.7         |      1.2 - 7.0   |  714 - 1543   |     17.7      |
+| **Tuesday**  |      3.5         |      2.1 - 6.7   |  733 - 1186   |     18.6      |
+| **Wednesday**|    1.9         |      0.6 - 3.6   | 1016 - 1423   |     19.3      |
 
-The upcoming week brings interesting changes in electricity prices. **Thursday's** forecasted average price is 2.8 cents, but price spikes can occur, especially around 9 a.m. when the price rises to 8.2 cents. This is partly due to low wind power production in the morning. **Friday** sees a slight rise in the average price to 4.2 cents, and the risk of price spikes remains. Wind power production is occasionally very low, affecting prices.
+During the upcoming week, electricity spot prices are expected to vary significantly across different days. **Friday** is anticipated to stand out with the highest prices, with an average electricity spot price rising to 4.2 cents per kilowatt-hour. Wind power production is expected to be relatively low on that day, partially explaining the higher price. Additionally, price spikes might occur particularly in the morning between 7-9 AM and in the evening between 7-9 PM, potentially leading to higher prices.
 
-On **Saturday**, the average price is expected to drop to 2.4 cents, but price spikes can still occur at certain hours. On **Sunday**, prices are the lowest of the week, with an average of just 1.6 cents, though the risk of spikes is not ruled out. **Monday**'s average price is forecasted at 3.9 cents, and wind power production remains at a lower level, which may increase the price.
+**Sunday**, on the other hand, is expected to have the lowest prices of the week, with an average price possibly dropping to 0.9 cents. Negative prices might also occur during some hours, especially in the late morning between 10 AM and 12 PM. This is partly due to the moderate levels of wind power production, supporting low prices.
 
-On **Tuesday**, the average price is 3.3 cents, and wind power production continues at a moderate level. **Wednesday** sees a drop in the average price to 2.3 cents, with slightly higher wind power production. No significant price spikes are forecasted for Wednesday.
+The other days of the week fall between these extremes in terms of price levels. **Monday** and **Tuesday** are expected to have moderate prices, with potential price spikes around 8 AM and 6 PM. **Wednesday**'s prices are expected to be close to the week's average level, with no significant price fluctuations anticipated.
 
-*Analysis by gpt-4o.* 🌬️
+Overall, the forecasts suggest that electricity spot prices will vary significantly throughout the day. It is important to note that these forecasts may change if, for example, wind forecasts are updated. 
+
+*Price assessments were prepared today by gpt-4o.* 📈
