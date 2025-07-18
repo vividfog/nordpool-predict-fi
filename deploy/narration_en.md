@@ -1,25 +1,21 @@
-*Next week, average electricity prices will range from moderate to higher, with a risk of price spikes particularly in the middle of the week. Fluctuations in wind power production and price peaks during morning and evening hours may influence consumer electricity usage.*
+*Electricity prices will fluctuate in the coming week, especially considering price spikes on Sunday and early in the week. Saturday offers the most affordable rates, while Wednesday and Thursday see higher average prices.*
 
-The electricity market price forecast was last updated on Friday at 14:24.
+The forecast was updated on Friday at 21:06.
 
-|        | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:-------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday** | 2.3 | 0.3 - 6.4 | 348 - 1961 | 16.8 |
-| **Sunday** | 3.1 | 1.6 - 5.5 | 150 - 1259 | 17.3 |
-| **Monday** | 4.3 | 1.3 - 8.7 | 302 - 1420 | 17.7 |
-| **Tuesday** | 4.4 | 1.4 - 7.6 | 808 - 1452 | 18.6 |
-| **Wednesday** | 5.8 | 2.7 - 8.7 | 802 - 1074 | 19.3 |
-| **Thursday** | 5.5 | 3.8 - 8.0 | 693 - 1143 | 19.6 |
-| **Friday** | 5.1 | 3.0 - 9.3 | 783 - 1222 | 19.1 |
+|             | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Saturday** | 2.3             | 0.3 - 6.4        | 335 - 1982    | 16.8          |
+| **Sunday** | 3.1             | 1.5 - 6.2        | 128 - 1292    | 17.3          |
+| **Monday** | 4.7             | 1.4 - 9.3        | 274 - 1444    | 17.7          |
+| **Tuesday**   | 4.6             | 1.5 - 8.0        | 730 - 1426    | 18.6          |
+| **Wednesday** | 5.4             | 2.4 - 9.2        | 801 - 1385    | 19.3          |
+| **Thursday**  | 5.5             | 3.9 - 7.6        | 660 - 1141    | 19.6          |
+| **Friday** | 5.2             | 3.4 - 9.1        | 753 - 1192    | 19.1          |
 
-The upcoming week offers a diverse price trend for electricity consumers. **Saturday** stands out as the cheapest day of the week, with an average price holding at 2.3 cents, and price expectations ranging between 0.3 and 6.4 cents. This forecast may encourage consumers to schedule their electricity use at the start of the weekend.
+The coming week brings fluctuating electricity prices, with average prices ranging between 2.3 cents and 5.5 cents per kilowatt-hour. **Saturday** stands out with its lowest average price, and electricity is expected to be available at the lowest price level during the night. **Wednesday** and **Thursday** show higher average prices, possibly due to reduced wind power production.
 
-On **Sunday**, the average price rises slightly to 3.1 cents. Wind power production is at its lowest at only 150 MW, which may partially explain the slight increase in prices and potential isolated price spikes.
+Individual price spikes may appear particularly on Sunday, with an average price of 3.1 cents, but the risk of price-raising spikes exists. Sunday's highest price might occur in the morning between 8–10 a.m. **Monday** and **Tuesday** also face the risk of price spikes during the afternoon and evening. This may be due to fluctuations in wind power production, with Monday's prices peaking at 9.3 cents.
 
-**Monday** and **Tuesday** bring slightly higher average prices, at 4.3 and 4.4 cents respectively. Price fluctuations are expected on these days, particularly during morning and evening hours when consumption typically peaks.
+The week ends on **Friday**, with expected prices slightly below the week's highest level. Wind power production is generally moderate this week, which might contribute to a rise in prices.
 
-Midweek, on **Wednesday**, the average electricity price rises to the highest of the week at 5.8 cents. This is partly due to wind power production remaining relatively low, which can drive up prices. On **Thursday** and **Friday**, prices decrease slightly but remain above the five-cent average, reflecting the variable wind power production.
-
-The weekend offers some relief for consumers, but prices are expected to be variable. Overall, the forecast for the coming week indicates that electricity prices will remain moderate yet variable. Isolated price spikes are possible, especially at the start and middle of the week, so consumers should closely monitor the situation.
-
-*The article was compiled by gpt-4o, an observer of electricity price trends.* 🔍
+*Today's forecast was interpreted by the savvy gpt-4o.* 🌬️
