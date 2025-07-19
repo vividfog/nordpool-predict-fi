@@ -1,21 +1,21 @@
-*Alkavan viikon sähkömarkkinat näyttävät vaihtelevalta, kun ennustetut hinnat liikkuvat kohtuullisista tasoista korkeampiin huippuihin erityisesti alkuviikosta, ja tuulivoiman tuotanto vaikuttaa hintakehitykseen merkittävästi.*
+*Ensi viikolla sähkön hinnat vaihtelevat maltillisesti, mutta alkuviikosta voi esiintyä hintapiikkejä erityisesti aamulla ja illalla. Viikonloppuna hinnat laskevat edullisemmalle tasolle, tarjoten mahdollisuuksia sähkönkäytön ajoittamiseen.*
 
-Ennuste päivitettiin lauantaina klo 14:24.
+Ennuste on päivitetty lauantaina klo 21:06.
 
-|             | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **sunnuntai**    | 2,1 | 0,3 - 4,1 | 146 - 1355 | 17,3 |
-| **maanantai**    | 4,5 | 1,2 - 9,1 | 359 - 1558 | 17,7 |
-| **tiistai**      | 4,7 | 2,3 - 8,4 | 283 - 1336 | 18,6 |
-| **keskiviikko**  | 5,8 | 2,0 - 10,1 | 799 - 1562 | 19,3 |
-| **torstai**      | 4,9 | 3,1 - 7,6 | 663 - 1052 | 19,6 |
-| **perjantai**    | 5,7 | 3,2 - 10,1 | 681 - 1061 | 19,1 |
-| **lauantai**     | 3,7 | 1,9 - 7,0 | 678 - 1777 | 19,2 |
+|            | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:-----------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **sunnuntai** | 2,1 | 0,3 - 4,1 | 135 - 1328 | 17,3 |
+| **maanantai** | 4,4 | 1,2 - 8,7 | 337 - 1546 | 17,7 |
+| **tiistai** | 4,8 | 1,8 - 9,3 | 284 - 1111 | 18,6 |
+| **keskiviikko** | 5,2 | 2,0 - 8,4 | 885 - 1491 | 19,3 |
+| **torstai** | 5,2 | 3,0 - 8,8 | 702 - 1161 | 19,6 |
+| **perjantai** | 4,4 | 2,6 - 8,6 | 705 - 1826 | 19,1 |
+| **lauantai** | 2,1 | 0,5 - 4,7 | 903 - 1957 | 19,2 |
 
-Alkavalla viikolla sähkön hinnassa odotetaan vaihtelua. **Maanantai** näyttää erityisesti erottuvan, sillä päivän korkein ennustettu sähkön hinta nousee yli 9 senttiin, mikä on viikon korkeimpia. Tämä saattaa liittyä alhaiseen tuulivoiman minimitasoon, joka on vain 359 MW. Hintapiikkejä saattaa esiintyä aamun ja illan tunteina, erityisesti klo 8-10 ja klo 17-19 välillä. **Tiistain** ja **keskiviikon** keskihinnat ovat hieman korkeammat, ja keskiviikkona ennustetaan jopa 10,1 sentin maksimihintaa. Tämä viittaa mahdollisesti korkeampiin kustannuksiin keskellä viikkoa.
+Tulevan viikon sähkön hinnat näyttävät pysyvän kohtuullisella tasolla, vaikka vaihtelua on odotettavissa erityisesti alkuviikosta. **Maanantai** erottuu viikon korkeimmilla hinnoilla, kun keskihinta on 4,4 ¢ ja maksimihinta nousee 8,7 ¢:iin. Hintapiikkejä voi esiintyä erityisesti aamulla klo 8 ja illalla klo 18. Tiistaina hinnat pysyvät samankaltaisina kuin maanantaina, mutta maksimihinta kohoaa hieman korkeammalle, 9,3 ¢:iin. Myös tiistaina on riski hintapiikeille klo 8 ja 18 välillä.
 
-**Torstai** ja **perjantai** asettuvat hintakehityksessä lähelle alkuviikon tasoja, mutta perjantaina on odotettavissa korkeampia maksimihintoja, mikä voi viitata hintapiikkeihin iltapäivän ja illan aikana. **Lauantai** näyttää olevan viikon edullisimpia päiviä hintojen osalta, ja tuulivoiman tuotanto on ennustettu olevan korkeimmillaan, mikä voi osaltaan laskea hintatasoa.
+Keskiviikkona ja torstaina sähkön keskihinta asettuu 5,2 ¢:iin, ja molempina päivinä on odotettavissa hintapiikkejä. Keskiviikkona maksimihinta on 8,4 ¢ ja torstaina 8,8 ¢. Viikon lopulla hinnat laskevat, ja **perjantai** tuokin hieman helpotusta hintojen suhteen, vaikka yksittäisiä piikkejä saattaa esiintyä.
 
-Keskimääräiset lämpötilat pysyvät viikon aikana yli 15 °C, mikä ei odotetusti vaikuta sähkön hintaan. Tuulivoiman tuotanto vaihtelee, mutta se nousee erityisesti **lauantaina**, mikä saattaa osaltaan selittää päivän matalamman keskihinnan.
+**Lauantai** tarjoaa viikon alhaisimmat hinnat, kun keskihinta on 2,1 ¢ ja maksimihinta pysyy alle 5 ¢. Tämä voi olla otollinen hetki sähkönkäyttäjille, jotka pystyvät ajoittamaan kulutustaan viikonloppuun.
 
-*Ennusteen laati gpt-4o.* 🌬️
+*Ensi viikon sääennustetta laati gpt-4o.* 🌬️
