@@ -6,7 +6,7 @@ pandas==2.2.0
 pip==24.0
 pipdeptree==2.14.0
 pyarrow==15.0.0
-pyautogen==0.2.12
+ag2==0.2.12
 pytz==2024.1
 PySocks==1.7.1
 scikit-learn==1.4.0
