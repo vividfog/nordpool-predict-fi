@@ -1,21 +1,21 @@
-*The electricity market price forecast for next week shows variable prices, significantly influenced by wind power production. From Monday to Friday, prices remain moderate, but over the weekend, low prices dip even into the negative.*
+*Electricity prices for the upcoming week will vary significantly, with the risk of price spikes particularly early in the week, while during the weekend, prices could even drop into negative territory due to strong wind power.*
 
-The forecast was updated on Sunday at 21:06.
+The forecast was updated on Monday at 03:19.
 
 |             | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 3.8 | 1.2 - 7.5 | 288 - 1959 | 17.7 |
-| **Tuesday**   | 4.3 | 0.3 - 7.8 | 172 - 1128 | 18.6 |
-| **Wednesday** | 4.5 | 1.6 - 7.7 | 282 - 1035 | 19.3 |
-| **Thursday**   | 3.3 | 2.5 - 5.3 | 638 - 1167 | 19.6 |
-| **Friday** | 2.5 | 1.2 - 5.9 | 937 - 1757 | 19.1 |
-| **Saturday**  | 0.8 | -0.1 - 2.2 | 889 - 2198 | 19.2 |
-| **Sunday** | -0.2 | -1.0 - 0.9 | 1575 - 2282 | 18.9 |
+|:------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Tuesday** | 3.9              | 1.2 - 8.0        | 175 - 937     | 18.6          |
+| **Wednesday** | 4.7          | 2.4 - 8.0        | 125 - 1000    | 19.3          |
+| **Thursday** | 3.0              | 1.9 - 5.0        | 547 - 1368    | 19.6          |
+| **Friday** | 3.5            | 1.7 - 7.6        | 597 - 1584    | 19.1          |
+| **Saturday** | 0.7             | -0.4 - 2.9       | 802 - 2136    | 19.2          |
+| **Sunday** | -0.3           | -1.2 - 0.9       | 1631 - 2367   | 18.9          |
+| **Monday** | 1.7            | 0.7 - 3.1        | 1043 - 1945   | 18.1          |
 
-In the upcoming week's electricity market price forecast, we see variability across different days. **Monday** sees the average electricity price rise to 3.8 cents, with the most expensive hour between 20:00 and 22:00 reaching up to 7.5 cents. This is due to low wind power production, which is at a minimum of 288 MW. **Tuesday** and **Wednesday** have slightly higher average prices at 4.3 and 4.5 cents, respectively, with a risk of price spikes, especially in the morning and evening hours. Tuesday's maximum price could rise to 7.8 cents between 8:00 and 10:00.
+In the coming week, electricity price trends appear to vary significantly, with the risk of price spikes existing particularly on **Tuesday**, **Wednesday**, **Thursday**, and **Friday**. The highest average price is expected on **Wednesday**, where prices could rise to 8 cents. Variations in wind power production affect prices, with **Wednesday** anticipated to have the lowest average production, partly explaining the higher price levels.
 
-The lowest prices of the week are expected on **Saturday** and **Sunday**. On Saturday, the average electricity price drops to 0.8 cents, with prices potentially turning negative during nighttime hours. Sunday is projected to be the cheapest day of the week, with an average price of -0.2 cents and no known risk of price spikes. This is due to high wind power production, averaging 1995 MW on Sunday.
+**Saturday** and **Sunday** stand out as the cheapest days of the week, with Sunday potentially seeing an average price drop to negative values. This is partly due to strong wind power, which lowers electricity prices. On **Saturday** and **Sunday**, wind power production is expected to be higher than on other days, which partly explains the low prices.
 
-Overall, electricity prices vary moderately throughout the week, with wind power production significantly contributing to the low prices over the weekend.
+Next **Monday**, prices may rise slightly from the weekend, but will still remain low compared to the beginning of the week. Wind power production remains at a high level, helping to keep prices moderate.
 
-*Analysis by gpt-4o.* 🌬️
+*Gpt-4o predicts electricity prices on windy waters.* 🌊
