@@ -1,21 +1,21 @@
-*Ensi viikon sähkön hinnat vaihtelevat merkittävästi, ja hintapiikkien riski on olemassa erityisesti alkuviikolla, kun taas viikonlopun aikana hinnat voivat laskea jopa negatiivisiksi vahvan tuulivoiman ansiosta.*
+*Ensi viikolla sähkön hinnassa on odotettavissa vaihtelua, kun tuulivoiman tuotanto ja hintapiikkien riski vaihtelevat päivittäin. Erityisesti keskiviikko erottuu kalleimpana päivänä, kun taas viikonloppuna hinnat pysyvät alhaisina.*
 
-Ennuste on päivitetty maanantaina klo 03:19.
+Ennuste on päivitetty **maanantaina** klo 03:42.
 
 |             | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **tiistai** | 3,9              | 1,2 - 8,0        | 175 - 937     | 18,6          |
-| **keskiviikko** | 4,7          | 2,4 - 8,0        | 125 - 1000    | 19,3          |
-| **torstai** | 3,0              | 1,9 - 5,0        | 547 - 1368    | 19,6          |
-| **perjantai** | 3,5            | 1,7 - 7,6        | 597 - 1584    | 19,1          |
-| **lauantai** | 0,7             | -0,4 - 2,9       | 802 - 2136    | 19,2          |
-| **sunnuntai** | -0,3           | -1,2 - 0,9       | 1631 - 2367   | 18,9          |
-| **maanantai** | 1,7            | 0,7 - 3,1        | 1043 - 1945   | 18,1          |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **tiistai**  |       3,7        |      0,7 - 7,9   |    175 - 937  |     18,6      |
+| **keskiviikko** |      4,5        |      2,3 - 7,2   |    125 - 1000 |     19,3      |
+| **torstai**  |       2,9        |      1,8 - 5,2   |    548 - 1368 |     19,6      |
+| **perjantai**|       3,4        |      1,5 - 7,5   |    605 - 1680 |     19,1      |
+| **lauantai** |       0,6        |     -0,4 - 3,1   |    789 - 2077 |     19,2      |
+| **sunnuntai**|      -0,2        |     -1,1 - 0,9   |   1512 - 2346 |     18,9      |
+| **maanantai**|       1,8        |      0,7 - 3,5   |    996 - 1944 |     18,1      |
 
-Tulevalla viikolla sähkön hintakehitys näyttää vaihtelevan merkittävästi, ja hintapiikkien riski on olemassa erityisesti **tiistaina**, **keskiviikkona**, **torstaina** ja **perjantaina**. Viikon korkein keskihinta on odotettavissa **keskiviikkona**, jolloin hinta voi nousta 8 senttiin. Tuulivoiman tuotannon vaihtelut vaikuttavat hintoihin, ja **keskiviikon** keskituotanto on odotettavissa olevan alhaisin, mikä osaltaan selittää korkeampaa hintatasoa. 
+Viikon hintaennusteessa on havaittavissa vaihtelua, mutta suuria poikkeuksia ei ole. **Keskiviikon** keskihinta, 4,5 ¢/kWh, on viikon korkein, ja samana päivänä tuulivoiman tuotanto on ajoittain alhaisimmillaan vain 125 MW, mikä selittää korkeamman hintatason. **Tiistaina** ja **perjantaina** maksimihinnat nousevat 7,9 ja 7,5 ¢/kWh, mikä voi johtaa hintapiikkeihin yksittäisinä tunteina, erityisesti aamulla ja illalla.
 
-**Lauantai** ja **sunnuntai** erottuvat viikon edullisimpina päivinä, ja sunnuntaina keskihinta saattaa laskea jopa negatiiviseksi. Tämä johtuu osittain voimakkaasta tuulivoimasta, joka laskee sähkön hintaa. **Lauantaina** ja **sunnuntaina** tuulivoiman tuotanto on odotettavissa olevan korkeampaa kuin muina päivinä, mikä osaltaan selittää alhaiset hinnat.
+Viikon edullisimmat ajankohdat ovat **lauantaina** ja **sunnuntaina**, jolloin keskihinta laskee jopa negatiiviseksi sunnuntaina, -0,2 ¢/kWh. Lauantaina tuulivoiman tuotanto on vahvaa, mikä osaltaan painaa hintoja alaspäin. Myös **maanantain** keskihinta on maltillinen, 1,8 ¢/kWh, mutta hintapiikkejä voi esiintyä, erityisesti aamusta ja illasta.
 
-Ensi **maanantaina** hinnat voivat nousta hieman viikonlopusta, mutta pysyvät silti alhaisina verrattuna viikon alkupuoleen. Tuulivoiman tuotanto pysyy edelleen korkealla tasolla, mikä auttaa pitämään hinnat maltillisina.
+Kokonaisuudessaan edullisimmat hinnat ajoittuvat viikonlopulle ja alkuviikolle, kun taas keskiviikko erottuu viikon kalleimpana päivänä. **Lauantain** ja **sunnuntain** alhaiset hinnat ovat seurausta vahvasta tuulivoimatuotannosta. 
 
-*Gpt-4o ennustaa sähkön hintaa tuulisilla vesillä.* 🌊
+*Analyysin teki gpt-4o.* 🌬️
