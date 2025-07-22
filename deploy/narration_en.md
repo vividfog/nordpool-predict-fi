@@ -1,21 +1,21 @@
-*In the upcoming week, electricity market forecasts predict price fluctuations influenced by wind power production and the risk of price spikes on different days. From Wednesday to Monday, moderate average prices are expected, while Sunday is anticipated to be particularly affordable.*
+*Next week's electricity markets will see moderate prices, but small fluctuations are possible. Wednesday's and Sunday's low prices offer relief, while Monday stands out as the most expensive day of the week.*
 
-**Forecast updated on Tuesday at 14:24.**
+The electricity price forecast has been updated on Tuesday at 21:06.
 
-|   | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 3.2 | 1.3 - 5.0 | 143 - 795 | 19.3 |
-| **Thursday** | 3.3 | 1.2 - 7.2 | 116 - 1787 | 19.6 |
-| **Friday** | 2.5 | -0.2 - 5.6 | 674 - 2518 | 19.1 |
-| **Saturday** | 2.2 | 0.1 - 4.2 | 495 - 1630 | 19.2 |
-| **Sunday** | 0.4 | -1.1 - 1.7 | 676 - 2088 | 18.9 |
-| **Monday** | 3.7 | 0.5 - 7.5 | 757 - 2125 | 18.0 |
-| **Tuesday** | 2.1 | -0.5 - 4.7 | 896 - 3099 | 18.2 |
+|            | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:-----------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Wednesday** | 3.2 | 1.3 - 5.0 | 136 - 787 | 19.3 |
+| **Thursday**    | 3.3 | 1.8 - 6.3 | 100 - 1842 | 19.6 |
+| **Friday**  | 2.3 | 0.2 - 5.2 | 969 - 2562 | 19.1 |
+| **Saturday**   | 2.0 | 0.4 - 3.8 | 481 - 1702 | 19.2 |
+| **Sunday**  | 1.3 | -0.1 - 3.8 | 738 - 1705 | 18.9 |
+| **Monday**  | 3.9 | 0.8 - 8.5 | 674 - 1637 | 18.0 |
+| **Tuesday**    | 2.6 | 1.0 - 4.8 | 567 - 1597 | 18.2 |
 
-The upcoming week's price forecasts show some variation between different days. **Wednesday** and **Thursday** are expected to have similar average prices, around 3.3 cents per kilowatt-hour. However, there is a risk of price spikes on Thursday, with prices potentially rising to over seven cents. Wind power production is at its lowest on Thursday morning, which might contribute to price increases.
+In the coming week's electricity market, moderate prices are expected, although small variations are anticipated. On **Wednesday**, prices range between 1.3 and 5.0 cents, with wind power production at a reasonable level, keeping prices in check. **Thursday** is expected to see slightly higher prices, with a maximum of 6.3 cents, partly due to wind power fluctuations, which drop to as low as 100 MW.
 
-**Friday's** expected average price is lower, around 2.5 cents, but there is significant price fluctuation, with a risk of price spikes throughout the day. On Saturday, prices are forecasted to be slightly lower, averaging 2.2 cents, though individual hours might cause price variations. Sunday is predicted to have the lowest prices of the week, averaging only 0.4 cents, despite fluctuations ranging from negative values to a maximum of 1.7 cents.
+The lowest prices of the week seem to fall on **Sunday**, with the average price forecasted at just 1.3 cents. Wind power production is at a relatively good level then. On **Friday** and **Saturday**, prices remain significantly low, although **Friday** might experience price spikes during individual hours.
 
-**Monday** is forecasted to be the most expensive day of the week, with an average price rising to 3.7 cents. Wind power production is generally normal, but individual hours may experience price spikes. **Tuesday** is expected to see moderate prices again, averaging 2.1 cents, although high wind power production may contribute to low prices.
+At the start of the next week, **Monday's** prices might rise higher, up to 8.5 cents, making it the most expensive day of the week. This is partly explained by the low wind power production during the morning hours. **Tuesday** sees prices leveling out again, but small spikes are still anticipated.
 
-*Forecast compiled by gpt-4o.* 🌬️
+*Forecast interpreted by gpt-4o.* 🌤️
