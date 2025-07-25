@@ -1,23 +1,21 @@
-*Tuleva viikko tarjoaa vaihtelevia sähköhintoja, joissa keskiviikko erottuu edullisimpana päivänä tuulivoiman voimakkaan tuotannon ansiosta. Maanantai ja perjantai saattavat kokea hintapiikkejä, erityisesti ilta-aikoina.*
+*Electricity prices in the coming week will range from reasonable to low, but individual price spikes may raise costs, particularly on Monday and Thursday. Wind power production and temperature have varying impacts on forecasts for different days.*
 
-The forecast was updated on Friday at 12:06.
+The electricity price forecast for the week has been updated on Friday at 2:25 PM. Here are the expected price developments:
 
 |             | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday**  |      1.5      |       0.1 - 4.3       |   815 - 2706   |      19.2      |
-| **Sunday**  |      2.3      |       0.8 - 5.8       |   214 - 1166   |      18.9      |
-| **Monday**  |      3.3      |       1.1 - 5.8       |   614 - 1996   |      18.0      |
-| **Tuesday**    |      1.4      |      -0.6 - 3.0       |   883 - 2218   |      18.2      |
-| **Wednesday**|      0.7      |      -0.7 - 2.4       |  1188 - 3051   |      18.8      |
-| **Thursday**    |      2.0      |       0.3 - 4.1       |   832 - 1548   |      19.2      |
-| **Friday**  |      3.0      |       0.9 - 5.6       |   794 - 1219   |      19.7      |
+| **Saturday**  |       2.8        |      1.0 - 8.5   |  818 - 2700   |      19.2     |
+| **Sunday** |       2.8        |      1.0 - 7.0   |  207 - 1161   |      18.9     |
+| **Monday** |       3.5        |      1.7 - 7.4   |  385 - 2007   |      18.0     |
+| **Tuesday**   |       1.3        |      0.1 - 3.0   | 1023 - 2895   |      18.2     |
+| **Wednesday** |     0.9        |    -0.7 - 2.3   | 1308 - 3127   |      18.8     |
+| **Thursday**   |       2.2        |      0.3 - 4.5   |  786 - 1669   |      19.2     |
+| **Friday** |       2.9        |      1.0 - 5.1   |  772 - 1303   |      19.7     |
 
-In the upcoming week, electricity price developments show some variability, but overall prices remain reasonable. **Wednesday** stands out as the cheapest day of the week, with an average price of only 0.7 cents, and wind power production is at its strongest, partly explaining the low price. **Saturday** and **Sunday** are expected to have slightly higher prices, yet they remain reasonable.
+The upcoming week presents a diverse price environment, with **Monday** having the highest average price of the week at 3.5 ¢/kWh, partly due to low wind power, which may increase prices. **Saturday** and **Sunday** are expected to have similar averages of 2.8 ¢/kWh, but there is a possibility of price spikes on Sunday during individual hours, particularly in the morning at 8 AM and in the evening at 6 PM.
 
-The most expensive moments of the week occur on **Monday** and **Friday** evenings, with expected maximum prices of 5.8 cents. This may be due to lower wind power production on these days. **Monday** sees the lowest wind power production, contributing to the higher price.
+**Tuesday** and **Wednesday** are forecasted to be low-cost days with average prices of 1.3 ¢/kWh and 0.9 ¢/kWh. On Wednesday, wind power is expected to be particularly strong, explaining the low price. **Thursday** and **Friday** maintain reasonable price expectations, but individual hourly spikes may occur, especially on Thursday evening.
 
-During the week, price spikes may occur especially on **Sunday** and **Monday** evenings, when electricity demand may be higher. **Tuesday** expects moderate price forecasts again, with even negative prices possible during the night.
+Towards the weekend, especially **Friday's** forecasts indicate price variation, but the average price remains reasonable. Overall, the coming week does not contain dramatic price fluctuations, but individual hour and day-specific spikes are possible.
 
-Overall, the week offers variable but mostly moderate price expectations, with fluctuations in wind power and occasional higher prices creating interesting situations.
-
-*Analysis conducted by electricity-savvy gpt-4o.* 🌬️
+*Analysis provided by gpt-4o.* 🌬️
