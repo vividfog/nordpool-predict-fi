@@ -1,23 +1,21 @@
-*Next week, electricity prices are expected to fluctuate, with a risk of price spikes on Monday and Friday. On Tuesday, however, favorable wind power availability significantly lowers prices, creating distinct differences between the days.*
+*In the upcoming week, electricity prices will vary significantly day by day. Monday is expected to see higher prices, while Tuesday's costs decrease notably due to the abundant supply of wind power.*
 
-The forecast was updated on Sunday at 03:19.
+The forecast was updated on Sunday at 09:06.
 
 |            | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-----------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 3.2 | 0.8 - 6.4 | 701 - 1768 | 18.0 |
-| **Tuesday**   | 1.0 | 0.2 - 2.1 | 1166 - 3052 | 18.2 |
-| **Wednesday** | 1.9 | 0.2 - 4.6 | 902 - 3164 | 18.8 |
-| **Thursday**   | 2.0 | 0.8 - 4.0 | 920 - 1541 | 19.2 |
-| **Friday** | 3.1 | 1.4 - 5.0 | 849 - 1141 | 19.7 |
-| **Saturday**  | 1.8 | 0.9 - 3.5 | 1229 - 1669 | 20.7 |
-| **Sunday** | 1.6 | -0.3 - 4.3 | 803 - 1559 | 20.1 |
+| **Monday** | 3.5 | 1.0 - 6.6 | 686 - 1765 | 18.0 |
+| **Tuesday**   | 0.9 | -0.2 - 2.5 | 1160 - 3048 | 18.2 |
+| **Wednesday** | 2.0 | -0.0 - 5.3 | 778 - 3158 | 18.8 |
+| **Thursday**   | 2.6 | 0.2 - 4.4 | 846 - 1468 | 19.2 |
+| **Friday** | 3.2 | 1.5 - 5.2 | 797 - 1171 | 19.7 |
+| **Saturday**  | 1.9 | 1.0 - 3.6 | 1198 - 1637 | 20.7 |
+| **Sunday** | 1.5 | -0.5 - 4.1 | 725 - 1518 | 20.1 |
 
-In the coming week, electricity prices are expected to vary considerably between days. **Monday's** average price is slightly higher, with a risk of price spikes, especially in the morning and evening when prices may rise above six cents. Wind power production is at its lowest then, which may partly explain the higher prices.
+In the price forecast for the week, **Monday** stands out with higher expected prices. The average price for the day is 3.5 cents per kilowatt-hour, with a maximum price potentially rising to 6.6 cents. This is due to both lower wind power availability and possible price spikes at certain hours, especially in the morning around 8 AM and in the evening between 6 PM and 8 PM. On **Tuesday**, the price expectations drop significantly, with an average price of only 0.9 cents. There is plenty of wind power available on Tuesday, which partly explains the lower prices.
 
-On **Tuesday**, the price level drops significantly, with the average price remaining around one cent. This is partly due to abundant wind power availability, keeping prices low. **Wednesday** sees a slight increase from Tuesday's levels but remains reasonable. There is also a risk of price spikes on Wednesday, particularly in the afternoon.
+On **Wednesday**, prices are slightly higher than on Tuesday, but still remain at a reasonable level, with an average price of 2.0 cents. There is a risk of price spikes, so there could be larger fluctuations during some hours. **Thursday** sees the average price rise to 2.6 cents, with a continued risk of price spikes. Friday's forecasted average price is 3.2 cents, and the risk of price spikes remains.
 
-**Thursday** and **Friday** continue with reasonable price levels, but especially on Friday, higher prices are expected as wind power production is at its lowest. Prices drop again over the weekend, with Sunday possibly seeing negative prices overnight. The risk of price spikes is low over the weekend, but there may be isolated spikes on Sunday.
+**Saturday** brings slightly lower prices, with an average price of 1.9 cents. The wind power supply remains reasonable, and no significant price spikes are expected. On **Sunday**, the average price further decreases to 1.5 cents, but the risk of price spikes is still present, especially in the evening. The week offers varying prices, with Monday standing out as the most expensive day, while Tuesday is clearly the cheapest.
 
-Overall, the week's price development is variable, with particular caution needed for potential price spikes on Monday and Friday. The cheapest prices of the week are expected on Tuesday, supported by the high availability of wind power.
-
-*Price fluctuations for the coming week assessed by gpt-4o.* 🌬️
+*Analysis by gpt-4o.* 🌬️
