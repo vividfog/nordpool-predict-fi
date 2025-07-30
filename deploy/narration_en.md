@@ -1,21 +1,21 @@
-*The electricity price forecast shows variation throughout the week but remains mostly affordable. Saturday is expected to have low prices, while Tuesday is anticipated to have higher average prices. The risk of price spikes exists on several days.*
+*Electricity prices will vary this week, with forecasts particularly predicting the impact of wind power on price development. The most affordable prices of the week are expected on Wednesday afternoon, when wind power production peaks.*
 
-The forecast was updated on Wednesday at 12:30.
+Forecast updated on Wednesday at 14:47.
 
 |              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday**  |       3.3        |     1.3 - 7.4    |   582 - 1493  |     19.2      |
-| **Friday**|       3.2        |     1.1 - 5.6    |   565 - 1992  |     19.7      |
-| **Saturday** |       2.1        |     0.7 - 4.7    |   965 - 2535  |     20.7      |
-| **Sunday**|       2.7        |    -0.3 - 7.1    |   564 - 1491  |     20.2      |
-| **Monday**|       3.8        |     1.2 - 8.2    |   892 - 1913  |     20.2      |
-| **Tuesday**  |       4.1        |     1.7 - 8.5    |   757 - 1938  |     19.7      |
-| **Wednesday**|    2.3        |     0.0 - 5.9    |   702 - 3043  |     19.4      |
+| **Thursday**  |       3.9        |      1.4 - 6.3   |   567 - 1468  |      19.2     |
+| **Friday**|       3.5        |      0.9 - 6.3   |   510 - 1991  |      19.7     |
+| **Saturday** |       2.7        |      0.7 - 6.7   |   925 - 2554  |      20.7     |
+| **Sunday**|       2.6        |      0.5 - 7.0   |   747 - 1553  |      20.2     |
+| **Monday**|       3.9        |      0.6 - 8.6   |   808 - 1919  |      20.2     |
+| **Tuesday**  |       4.5        |      1.5 - 9.4   |   729 - 1945  |      19.7     |
+| **Wednesday**|     2.7        |      -0.0 - 7.6  |   673 - 3111  |      19.4     |
 
-The upcoming week's electricity price forecast appears variable, but prices are expected to remain mostly affordable. **Saturday** is projected to have the lowest prices, with an average price of only 2.1 ¢/kWh. **Sunday** and **Wednesday** are also expected to have low average prices, at 2.7 ¢ and 2.3 ¢/kWh respectively. On Sunday, there might be negative hourly prices early in the afternoon, which is unusual.
+Electricity prices will fluctuate moderately this week. **Thursday** and **Monday** stand out with an average price of 3.9 ¢/kWh. On **Thursday**, prices will range between 1.4 and 6.3 cents, while **Monday** anticipates a slightly wider range of 0.6 - 8.6 cents. **Friday** and **Saturday** have more moderate average prices, but price spikes are expected in individual hours on both days. **Saturday** could see significant price variation due to substantial fluctuations in wind power production.
 
-The highest price expectations are on **Tuesday**, with an average daily price forecasted at 4.1 ¢/kWh. During this time, wind power production is expected to be at a low level, partially explaining the higher price forecasts. **Monday** and **Friday** are also expected to have slightly higher prices compared to the weekend, but average prices remain below five cents.
+At the end of the week, **Sunday**'s electricity price will remain low at an average of 2.6 ¢/kWh, although individual price spikes may occur. On **Tuesday**, the price forecast predicts the highest average price of 4.5 ¢/kWh, partly due to low wind power production. **Wednesday**'s electricity price is forecasted to decrease again, despite significant fluctuations throughout the day due to strong wind power.
 
-There is a risk of price spikes on several days, particularly on **Thursday**, **Friday**, and **Monday**. On these days, prices may rise significantly during individual hours, especially in the evening. For example, on **Thursday**, the highest hourly prices could occur between 18:00 and 20:00.
+Electricity prices are particularly low on **Wednesday** afternoon, when wind power production is very high. This illustrates how significantly variations in wind power production can impact short-term electricity prices.
 
-*Analysis provided by gpt-4o.* 🔍
+*Electricity price forecasts reported by gpt-4o.* 🌬️
