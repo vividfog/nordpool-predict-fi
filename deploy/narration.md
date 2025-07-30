@@ -1,21 +1,23 @@
-*Ensi viikon sähkön hinnat pysyvät maltillisina, vaikka iltaisin ja aamuisin saattaa esiintyä hintapiikkejä. Keskiviikkona ennustetaan korkeinta maksimihintaa, mutta viikonloppuna hinnat laskevat jopa negatiivisiksi.*
+*Tulevan viikon sähkön hintaodotukset Suomessa vaihtelevat maltillisesti, ja erityisesti loppuviikosta hintapiikit voivat ajoittain kohota korkeammalle tuulivoiman tuotannon vaihtelujen myötä.*
 
-Ennuste päivitettiin tiistaina klo 21:06.
+Ennuste on päivitetty **keskiviikkona** klo 03:20.
 
-|             | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|               | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **keskiviikko** | 3,7 | 0,5 - 8,3 | 180 - 3316 | 18,8 |
-| **torstai** | 3,9 | 1,7 - 6,6 | 364 - 1871 | 19,2 |
-| **perjantai** | 3,6 | 0,6 - 8,0 | 871 - 2175 | 19,7 |
-| **lauantai** | 3,1 | 0,9 - 6,5 | 819 - 1215 | 20,7 |
-| **sunnuntai** | 2,9 | -0,3 - 7,8 | 588 - 1008 | 20,2 |
-| **maanantai** | 4,8 | 1,9 - 10,7 | 781 - 1161 | 20,2 |
-| **tiistai** | 4,2 | 1,8 - 8,6 | 720 - 1461 | 19,7 |
+| **torstai**  | 3,5              | 1,3 - 6,4        | 500 - 1902    | 19,2          |
+| **perjantai**| 2,9              | 0,9 - 6,4        | 902 - 2032    | 19,7          |
+| **lauantai** | 2,8              | 0,9 - 5,9        | 754 - 1871    | 20,7          |
+| **sunnuntai**| 2,9              | -0,3 - 8,0       | 577 - 1198    | 20,2          |
+| **maanantai**| 4,6              | 2,0 - 10,0       | 716 - 1184    | 20,2          |
+| **tiistai**  | 4,0              | 1,6 - 8,0        | 683 - 1535    | 19,7          |
+| **keskiviikko** | 2,4          | -0,2 - 5,4       | 1010 - 1674   | 19,3          |
 
-Tulevalla viikolla sähkön hinnat vaihtelevat maltillisesti. **Keskiviikkona** odotetaan korkeinta maksimihintaa, joka nousee 8,3 senttiin. Päivän sisällä ennustetut hinnat ovat alhaisimmillaan yöllä, mutta kohoavat iltaa kohti. **Torstaina** ja **perjantaina** ennustetaan keskihinnat pysyvän alle neljän sentin, mutta yksittäisinä tunteina saattaa esiintyä hintapiikkejä, erityisesti torstai-iltapäivänä kello 8-10 ja perjantai-iltana kello 18-20. **Lauantaina** ja **sunnuntaina** hinnat pysyvät alhaisina, ja sunnuntaina jopa negatiiviset hinnat ovat mahdollisia aamupäivän tunteina. 
+Ennusteiden mukaan sähkön hinta vaihtelee jonkin verran tulevan viikon aikana. **Torstaina** ja **perjantaina** hintaodotukset ovat alhaisempia, keskihinnan ollessa noin 3 senttiä. Molempina päivinä tuulivoiman tuotanto pysyy suhteellisen korkealla tasolla, mikä osaltaan pitää hinnat kohtuullisina. **Lauantaina** ja **sunnuntaina** keskihinnat pysyvät edelleen maltillisina, mutta sunnuntaina on odotettavissa hintapiikki illalla, jolloin sähkön hinta saattaa nousta kahdeksaan senttiin.
 
-Ensi **maanantaina** sähkön keskihinta nousee hieman, ja päivän maksimihinta saattaa kohota yli 10 senttiin kello 19-21 välillä. Heikko tuulivoiman tuotanto saattaa osaltaan vaikuttaa korkeampiin iltahintoihin. **Tiistaina** sähkön odotetaan edelleen pysyvän kohtuullisella tasolla, vaikka iltapäivän tunteina ennustetaan lievää nousua.
+**Maanantaina** sähkön hinta nousee hieman korkeammaksi, keskihinnan ollessa 4,6 senttiä. Tämä johtuu osittain tuulivoiman matalammasta tuotannosta sekä korkeammasta maksimihinnasta, joka voi kohota jopa 10 senttiin. **Tiistaina** hinnat pysyvät vastaavalla tasolla, ja tuulivoiman tuotanto on vaihtelevaa, mikä saattaa vaikuttaa hintaodotuksiin.
 
-Kaiken kaikkiaan, tulevan viikon sähkön hintakehitys näyttää pysyvän suhteellisen tasaisena, ja yksittäisiä hintapiikkejä saattaa esiintyä erityisesti iltaisin ja aamuisin. 
+**Keskiviikkona** hinnat laskevat jälleen, ja tuulivoiman tuotanto pysyy verrattain hyvällä tasolla. Tämä päivä erottuu edullisena, sillä keskihinta on vain 2,4 senttiä, ja hintapiikkien riski on vähäinen.
 
-*Katsauksen laati gpt-4o.* 🌤️
+Viikon aikana sähkön hintaodotukset pysyvät pääosin alhaisina, mutta yksittäisten päivien sisällä voi esiintyä vaihtelua, erityisesti illan tunneilla. 
+
+*Analysoinnin hoiti gpt-4o.* 🌬️
