@@ -1,21 +1,21 @@
-*Electricity prices will fluctuate significantly next week as wind power production increases and temperatures remain high. On Saturday and Sunday, price spikes may raise consumer costs, but Thursday offers exceptionally low prices.*
+*Electricity prices will fluctuate in the coming week as wind power availability and the risk of price spikes influence costs. Prices will be at their lowest on Thursday, but individual spikes will raise costs especially on Saturday, Monday, and Friday.*
 
-The forecast was updated on Friday at 09:06.
+Updated forecast: Friday at 12:07.
 
 |            | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday**  |        2.8        |       0.3 - 8.0       |     447 - 2396     |     20.7     |
-| **Sunday** |        2.7        |     -0.1 - 7.7     |     757 - 1358     |     20.2     |
-| **Monday** |        2.8        |       0.1 - 6.3       |     883 - 1801     |     20.2     |
-| **Tuesday**   |        1.8        |     -0.5 - 4.3     |   1341 - 2695   |     19.7     |
-| **Wednesday** |      1.1        |     -0.5 - 3.1     |   1157 - 2484   |     19.4     |
-| **Thursday**   |        0.4        |     -1.0 - 1.8     |   1663 - 2846   |     18.7     |
-| **Friday** |        2.7        |       0.1 - 5.9       |     850 - 2490     |     18.5     |
+|:-----------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Saturday**  | 2.8 | 0.5 - 7.3 | 750 - 2162 | 20.7 |
+| **Sunday** | 2.0 | -0.2 - 5.5 | 1201 - 2547 | 20.2 |
+| **Monday** | 2.8 | 0.1 - 5.8 | 820 - 2104 | 20.2 |
+| **Tuesday**   | 1.8 | -0.7 - 3.9 | 1283 - 2768 | 19.7 |
+| **Wednesday**| 1.3 | -0.5 - 3.2 | 1191 - 2493 | 19.4 |
+| **Thursday**   | 0.4 | -1.0 - 1.7 | 1708 - 2832 | 18.7 |
+| **Friday** | 2.7 | 0.1 - 7.2 | 804 - 2706 | 18.4 |
 
-In the coming week, significant price fluctuations are expected in the electricity market. On **Saturday**, prices may rise to as high as 8¢, although the daily average remains at 2.8¢. This is due to occasional price spikes during the evening. **Sunday** follows a similar pattern, and while the average price is slightly lower at 2.7¢/kWh, price fluctuations can range from -0.1¢ to 7.7¢.
+The electricity market is expected to see fluctuating prices in the upcoming week. On **Saturday** and **Monday**, the average electricity price is projected to be at 2.8 cents per kilowatt-hour. Both days are forecasted to have individual price spikes, especially in the evening, which could temporarily increase costs for consumers. On Sunday, the situation is calmer as prices are expected to decrease to an average of two cents, with no price spikes anticipated.
 
-On **Monday**, prices are expected to remain stable with an average of 2.8¢/kWh, though price spikes may occur in the evening. On **Tuesday**, prices drop with an average of 1.8¢, and no significant price fluctuations are anticipated. **Wednesday** continues with a low average price level of 1.1¢/kWh, and the day is predicted to be one of the most affordable of the week.
+On **Tuesday** and **Wednesday**, the price level continues to decline, with Tuesday's average price at 1.8 cents and Wednesday's at 1.3 cents per kilowatt-hour. Both days will benefit from higher average wind power, supporting lower prices. On Thursday, the lowest average price of the week is forecasted at just 0.4 cents per kilowatt-hour, due to strong wind power production.
 
-**Thursday** is forecasted to be the cheapest day of the week, with the average price dropping to 0.4¢/kWh. This is due to the abundant supply of wind power. The week concludes with **Friday**, where prices rise again, with an average price of 2.7¢/kWh. Price fluctuations are possible, particularly in the evening.
+At the end of the week, on **Friday**, prices will rise again slightly to 2.7 cents. Possible price spikes are also forecasted for Friday evening, which may impact consumers' electricity bills.
 
-*Price predictions made by gpt-4o.* 🌬️
+*Next week's forecast was compiled by gpt-4o.* 🌬️

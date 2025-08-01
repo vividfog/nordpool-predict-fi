@@ -1,21 +1,21 @@
-*Sähkön hinnat vaihtelevat merkittävästi ensi viikolla, kun tuulivoiman tuotanto lisääntyy ja lämpötilat pysyvät korkeina. Lauantaina ja sunnuntaina hintapiikit voivat nostaa kuluttajien kustannuksia, mutta torstai tarjoaa poikkeuksellisen edullisia hintoja.*
+*Sähkön hinnat vaihtelevat tulevalla viikolla, kun tuulivoiman määrä ja hintapiikkien riskit vaikuttavat kustannuksiin. Alhaisimmillaan hinnat ovat torstaina, mutta yksittäiset piikit nostavat kustannuksia erityisesti lauantaina, maanantaina ja perjantaina.*
 
-Ennuste päivitettiin perjantaina klo 09:06.
+Ennuste päivitetty: perjantaina klo 12:07.
 
 |            | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **lauantai**  |        2,8        |       0,3 - 8,0       |     447 - 2396     |     20,7     |
-| **sunnuntai** |        2,7        |     -0,1 - 7,7     |     757 - 1358     |     20,2     |
-| **maanantai** |        2,8        |       0,1 - 6,3       |     883 - 1801     |     20,2     |
-| **tiistai**   |        1,8        |     -0,5 - 4,3     |   1341 - 2695   |     19,7     |
-| **keskiviikko** |      1,1        |     -0,5 - 3,1     |   1157 - 2484   |     19,4     |
-| **torstai**   |        0,4        |     -1,0 - 1,8     |   1663 - 2846   |     18,7     |
-| **perjantai** |        2,7        |       0,1 - 5,9       |     850 - 2490     |     18,5     |
+|:-----------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **lauantai**  | 2,8 | 0,5 - 7,3 | 750 - 2162 | 20,7 |
+| **sunnuntai** | 2,0 | -0,2 - 5,5 | 1201 - 2547 | 20,2 |
+| **maanantai** | 2,8 | 0,1 - 5,8 | 820 - 2104 | 20,2 |
+| **tiistai**   | 1,8 | -0,7 - 3,9 | 1283 - 2768 | 19,7 |
+| **keskiviikko**| 1,3 | -0,5 - 3,2 | 1191 - 2493 | 19,4 |
+| **torstai**   | 0,4 | -1,0 - 1,7 | 1708 - 2832 | 18,7 |
+| **perjantai** | 2,7 | 0,1 - 7,2 | 804 - 2706 | 18,4 |
 
-Tulevalla viikolla sähkömarkkinoilla odotetaan merkittävää hintavaihtelua. **Lauantaina** hinta saattaa nousta jopa 8 ¢:iin, vaikka päivän keskihinta jääkin 2,8 ¢:iin. Tämä johtuu ajoittaisista hintapiikeistä ilta-aikaan. **Sunnuntai** jatkaa samalla linjalla, ja vaikka keskihinta on aavistuksen alhaisempi, 2,7 ¢/kWh, hintavaihtelut voivat yltää -0,1 ¢:stä 7,7 ¢:iin.
+Sähkömarkkinoilla odotetaan vaihtelevaa hintakehitystä tulevalla viikolla. **Lauantaina** ja **maanantaina** pörssisähkön keskihinta asettuu 2,8 sentin tasolle kilowattitunnilta. Molemmille päiville ennustetaan yksittäisiä hintapiikkejä, erityisesti ilta-aikaan, mikä voi nostaa hetkellisesti kustannuksia kuluttajille. Sunnuntaina tilanne on rauhallisempi, sillä hinnat ovat laskemassa keskimäärin kahden sentin tasolle, eikä hintapiikkejä ole odotettavissa.
 
-**Maanantaina** hintojen odotetaan pysyvän tasaisina, keskihinnan ollessa 2,8 ¢/kWh, mutta hintapiikkejä voi esiintyä illalla. **Tiistaina** hinnat laskevat ja keskihinta asettuu 1,8 ¢:iin, eikä suuria hintavaihteluita ole odotettavissa. **Keskiviikkona** keskimääräinen hintataso on edelleen matala, 1,1 ¢/kWh, ja päivä on ennusteiden mukaan yksi viikon edullisimmista.
+**Tiistaina** ja **keskiviikkona** hintataso jatkaa laskuaan, tiistain keskihinnan ollessa 1,8 senttiä ja keskiviikkona 1,3 senttiä kilowattitunnilta. Molempina päivinä tuulivoiman määrä on keskimäärin korkeampi, mikä tukee alhaisempia hintoja. Torstaina ennustetaan viikon alhaisinta keskihintaa, vain 0,4 senttiä kilowattitunnilta, mikä johtuu voimakkaasta tuulivoimatuotannosta.
 
-**Torstaina** ennustetaan olevan viikon edullisin päivä, keskihinnan laskiessa 0,4 ¢/kWh:iin. Tämä johtuu tuulivoiman runsaasta tarjonnasta. Viikon päättää **perjantai**, jolloin hinnat nousevat jälleen, keskihinnan ollessa 2,7 ¢/kWh. Hintavaihtelut ovat mahdollisia erityisesti ilta-aikaan.
+Viikon päätteeksi **perjantaina** hinnat nousevat jälleen hieman 2,7 sentin tasolle. Perjantain iltaan ennustetaan myös mahdollisia hintapiikkejä, mikä voi vaikuttaa kuluttajien sähkölaskuihin.
 
-*Hintojen ennustaja: gpt-4o.* 🌬️
+*Tulevan viikon ennusteen laati gpt-4o.* 🌬️
