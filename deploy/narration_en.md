@@ -1,25 +1,27 @@
-*Electricity markets are expected to experience fluctuating prices in the coming week, influenced particularly by variations in wind power production and potential price spikes, although the general price level remains moderate on most days.*
+*The wholesale electricity prices for the upcoming week show significant variation, with Tuesday expected to be particularly affordable. Wind power production is generally strong, contributing to a downward trend in prices on several days.*
 
-The forecast was updated on Saturday at 14:24.
+**The forecast for wholesale electricity prices** was updated on Saturday at 21:06.
 
 |              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 1.6 | 0.0 - 6.6 | 557 - 1893 | 20.2 |
-| **Monday** | 2.7 | 0.5 - 5.3 | 1003 - 2907 | 20.2 |
-| **Tuesday**   | 1.2 | -0.3 - 2.6 | 1992 - 3166 | 19.7 |
-| **Wednesday** | 0.4 | -0.5 - 1.4 | 1690 - 2940 | 19.4 |
-| **Thursday**  | 1.7 | 0.1 - 4.6 | 999 - 2802 | 18.7 |
-| **Friday** | 1.9 | 0.4 - 4.8 | 1129 - 1889 | 18.4 |
-| **Saturday**  | 0.5 | -0.8 - 1.6 | 780 - 3036 | 18.1 |
+| **Sunday** | 1.6 | 0.0 - 6.6 | 554 - 1802 | 20.2 |
+| **Monday** | 2.7 | 0.5 - 5.8 | 1016 - 2878 | 20.2 |
+| **Tuesday**   | 0.8 | -0.7 - 2.3 | 2064 - 3125 | 19.7 |
+| **Wednesday** | 0.3 | -1.5 - 2.2 | 1557 - 2837 | 19.4 |
+| **Thursday**   | 2.8 | 0.1 - 5.2 | 757 - 2896 | 18.7 |
+| **Friday** | 3.2 | 0.7 - 6.6 | 804 - 1672 | 18.4 |
+| **Saturday**  | 1.3 | -0.2 - 4.6 | 940 - 1705 | 18.1 |
 
-In the coming week, the electricity market is expected to show varied developments. **Sunday's** forecast indicates an average price of 1.6 ¢/kWh, which is relatively low. Prices are expected to fluctuate from 0.0 ¢ to 6.6 ¢ in the afternoon. Wind power production is relatively low at that time, partly explaining the higher afternoon prices.
+The upcoming week’s wholesale electricity prices are expected to vary considerably. On **Sunday**, prices are projected to range between 0.0 and 6.6 cents, with an average price estimated at 1.6 cents per kilowatt-hour. Wind power production is at an average level, so it does not significantly affect the price.
 
-On **Monday**, the average price slightly increases to 2.7 ¢/kWh, but price fluctuations are moderate compared to Sunday. Wind power production increases, which may help keep price spikes at bay.
+**Monday** is expected to be a bit more expensive with an average price of 2.7 cents. The price range is moderate, and no price spikes are forecasted. Wind power is predicted to be strong.
 
-On **Tuesday** and **Wednesday**, prices remain particularly low, with Tuesday's average price at just 1.2 ¢/kWh and Wednesday at 0.4 ¢/kWh. Wednesday's minimum prices are even negative, indicating an abundant supply of wind power and low demand.
+**Tuesday** is forecasted to be the cheapest day of the week, with an average electricity price of just 0.8 cents per kilowatt-hour. Wind power is predicted to be abundant, which contributes to lowering the price.
 
-On **Thursday** and **Friday**, prices rise slightly from Tuesday and Wednesday's levels. Thursday poses a possibility of individual price spikes in the afternoon, during which prices may increase. Wind power production is lower on these days, which may partly explain the price rise.
+On **Wednesday**, prices remain moderate with an average of 0.3 cents, partly due to abundant wind power. **Thursday's** average price rises to 2.8 cents, and individual hourly price spikes are possible if wind power production significantly decreases.
 
-On **Saturday**, prices drop again, with an average of just 0.5 ¢/kWh. The forecast mentions a risk of price spikes, but overall, the price level remains low for most of the day.
+**Friday** is anticipated to have the highest average price of the week at 3.2 cents, with prices expected to fluctuate between 0.7 and 6.6 cents. The low wind power production may drive the price up, especially in the evening.
 
-*Price forecasts monitored by gpt-4o.* 🌬️
+On **Saturday**, prices are expected to stabilize again, with an average price of 1.3 cents. Price spikes are also possible on Saturday, especially during windy periods.
+
+*The price forecast was analyzed today by gpt-4o.* 🌬️
