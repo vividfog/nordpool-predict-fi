@@ -1,21 +1,21 @@
-*In the coming week, electricity prices on the Finnish exchange are expected to remain moderate, with wind power production helping to keep prices low. Wednesday is forecasted to be the cheapest day, while Thursday may see slightly higher prices.*
+*Next week, electricity exchange prices will fluctuate but remain mostly moderate. Strong wind power production on Wednesday will lower prices, while Sunday is expected to see slightly higher prices due to weaker wind production.*
 
-The forecast was updated on Sunday at 14:24.
+The electricity exchange price forecast was updated on Sunday at 21:06.
 
-|              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|             | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday**   | 0.5 | 0.1 - 1.3 | 1338 - 3099 | 20.2 |
-| **Tuesday**  | 0.2 | -0.8 - 1.6 | 2448 - 3644 | 19.7 |
-| **Wednesday**| -0.1 | -1.3 - 1.4 | 2178 - 4131 | 19.4 |
-| **Thursday** | 0.5 | -0.6 - 3.6 | 1232 - 2564 | 18.7 |
-| **Friday**   | 0.5 | -0.8 - 2.4 | 1463 - 2523 | 18.4 |
-| **Saturday** | 0.7 | -1.0 - 3.2 | 1215 - 2291 | 18.1 |
-| **Sunday**   | 0.5 | -1.1 - 3.4 | 1382 - 2581 | 17.6 |
+| **Monday**    | 0.5             | 0.1 - 1.3        | 1315 - 2712   | 20.2          |
+| **Tuesday**   | 0.0             | -0.9 - 1.3       | 2450 - 3668   | 19.7          |
+| **Wednesday** | -0.5            | -1.2 - 0.3       | 2656 - 4202   | 19.4          |
+| **Thursday**  | 0.8             | -0.6 - 4.2       | 894 - 2969    | 18.7          |
+| **Friday**    | 1.0             | -0.5 - 4.8       | 1049 - 2153   | 18.4          |
+| **Saturday**  | 1.7             | -0.2 - 4.5       | 742 - 1733    | 18.1          |
+| **Sunday**    | 2.5             | 0.7 - 6.8        | 546 - 1859    | 17.6          |
 
-In the upcoming week, electricity prices on the Finnish exchange are expected to remain quite moderate. **Wednesday** stands out with the lowest average price, predicted to be slightly below zero at -0.1 ¢. This is partly due to strong wind power production, forecasted to average 3100 MW. **Tuesday** also has a low average price of 0.2 ¢, thanks to abundant wind power. According to the forecasts, wind power will exceed 3000 MW on both Tuesday and Wednesday.
+In the coming week, electricity exchange prices are expected to fluctuate moderately without significant changes between days. **Wednesday** is anticipated to have the lowest average price of the week at -0.5 cents, due to strong wind power production. This day's wind power production is expected to average over 3000 MW, which lowers prices. Conversely, **Sunday** is forecasted to see a slightly higher average price of 2.5 ¢, which might be due to weaker wind power production dropping below 1000 MW during the day. Sunday also stands out with the week's highest maximum price of 6.8 ¢, which could lead to price spikes especially in the evening between 20:00 and 22:00.
 
-**Thursday's** maximum price is predicted to rise to 3.6 ¢, the highest of the week. This may be due to slightly lower levels of wind power production compared to other days. On **Saturday** and **Sunday**, prices fluctuate slightly more throughout the day, but average prices remain close to other weekdays, around 0.5-0.7 ¢.
+**Thursday** and **Saturday** have warnings of possible price spikes during individual hours. Thursday's highest price may occur during morning or evening hours when wind power production is at its lowest below 1000 MW. **Saturday's** maximum price could rise in the afternoon or evening when wind power production is weaker.
 
-Throughout the week, the weather is expected to stay warm, which does not significantly impact electricity prices. Overall, the coming week seems to offer favorable electricity prices without significant price spikes.
+The average temperatures for the week are expected to remain generally warm, and are unlikely to significantly impact electricity prices. Wind power production is mostly at a normal level, but a few days, such as **Wednesday**, stand out with high production, keeping prices low.
 
-*Forecasts were evaluated this time by gpt-4o.* 🌬️
+*Analysis by gpt-4o.* 🌬️
