@@ -1,21 +1,21 @@
-*Next week, electricity price expectations in Finland will range from modest to negative values at the beginning of the week, but towards the weekend, prices are on the rise with potential price spikes due to limited wind power availability.*
+*According to forecasts, electricity prices in the coming week are expected to remain moderate, thanks to variable wind power production and warm weather. Wednesday and Saturday appear to be the most affordable days, while price spikes are possible on Sunday.*
 
-**Forecast updated on Monday at 03:20.**
+The forecast was updated on Monday at 09:06.
 
 |              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday**  |       0.2        |     -0.9 - 1.7   |   2334 - 3923   |      19.7      |
-| **Wednesday** |      -0.3       |    -1.2 - 0.7   |   2590 - 3736   |      19.4      |
-| **Thursday**  |       0.3        |    -0.9 - 3.6   |   1313 - 3529   |      18.7      |
-| **Friday**|       0.8        |    -1.0 - 2.8   |   1235 - 1963   |      18.4      |
-| **Saturday** |       1.6        |    -0.1 - 4.6   |    718 - 1666   |      18.1      |
-| **Sunday**|       2.5        |     0.6 - 7.2   |    485 - 1781   |      17.6      |
-| **Monday**|       2.5        |     0.7 - 5.0   |    873 - 1503   |      17.5      |
+| **Tuesday**  |       0.1        |     -1.1 - 1.8   |   2377 - 3922 |      19.7     |
+| **Wednesday** |     -0.5        |    -1.4 - 0.5    |   2587 - 3876 |      19.4     |
+| **Thursday**  |       0.2        |    -0.9 - 3.8    |   1089 - 3567 |      18.7     |
+| **Friday**|       1.0        |    -0.6 - 4.0    |   1247 - 2173 |      18.4     |
+| **Saturday** |      -0.2        |    -1.3 - 1.0    |   1451 - 2779 |      18.1     |
+| **Sunday**|       1.4        |    -0.1 - 4.4    |    729 - 2918 |      17.6     |
+| **Monday**|       1.6        |    -0.1 - 3.4    |   1015 - 1503 |      17.5     |
 
-At the start of the week, **Tuesday** and **Wednesday** will offer affordable electricity prices, with both days showing average prices falling below one cent. Especially on **Wednesday**, the price expectations are negative, indicating strong wind production. **Thursday** might see a slight increase in prices, although they remain moderate. **Friday** will experience a significant drop in wind power production, pushing the average price closer to one cent.
+The upcoming week seems relatively stable in terms of electricity prices. **Wednesday** and **Saturday** show the lowest price expectations, with negative average prices partly due to strong wind power, which lowers prices. **Thursday** and **Sunday** see slightly higher price expectations, but they remain affordable. **Friday's** expected average price is slightly higher as well, yet still under four cents.
 
-As the weekend approaches, on **Saturday**, price expectations are rising, with potential price spikes possible during certain hours. A similar situation is anticipated for **Sunday**, where the day's average price already rises to 2.5 cents. The limited wind power supply on Sunday partially explains the higher prices.
+Next **Sunday** and **Monday**, prices are expected to be slightly higher than other days, yet remain reasonable. Although a minor risk of price spikes is forecasted for Sunday, it's important to note that the forecast may still change. Towards the end of the week, price fluctuations are possible but not expected to be significant.
 
-Next **Monday**, electricity's average price will remain at the same level as Sunday, although wind power production slightly increases. This suggests that possible price spikes might also occur at the start of the week.
+Wind power production appears to be variable but generally remains at a sufficiently high level to keep prices moderate. Potential price spikes may occur on Sunday evening when wind power production might be lower. Overall, the week is expected to proceed without significant deviations or major price fluctuations.
 
-*Forecast assembled by gpt-4o.* 🔍
+*Forecast insights today by gpt-4o.* 🌬️
