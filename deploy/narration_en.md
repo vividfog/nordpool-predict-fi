@@ -1,21 +1,21 @@
-*Next week, electricity prices will fluctuate slightly, with the lowest prices expected on Wednesday and Saturday. Friday stands out with a higher average price, and Sunday and Monday may see price spikes during certain hours.*
+*Next week's electricity prices will vary significantly, starting with negative prices due to low wind power production and leading to expected price spikes on Sunday and Monday as wind power decreases. Wednesday offers the most affordable prices.*
 
-The forecast was updated on Monday at 12:07.
+The forecast was updated on Monday at 14:24.
 
 |              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday**  |       0.1        |     -1.0 - 1.6   |   2644 - 3764 |      19.7     |
-| **Wednesday** |     -0.4        |     -1.2 - 0.4   |   3264 - 4514 |      19.4     |
-| **Thursday**  |       -0.0       |     -1.2 - 2.0   |   1262 - 3832 |      18.7     |
-| **Friday**|       1.0        |     -0.6 - 4.4   |   1233 - 2106 |      18.4     |
-| **Saturday** |      -0.3        |     -1.2 - 0.8   |   1452 - 2756 |      18.1     |
-| **Sunday**|       1.6        |     0.1 - 3.9    |   719 - 2909  |      17.6     |
-| **Monday**|       2.0        |     0.1 - 4.3    |   898 - 1504  |      17.6     |
+| **Tuesday**  |       0.1        |     -0.1 - 0.3   |   2683 - 3813 |     19.7      |
+| **Wednesday** |      -0.2       |     -0.8 - 0.3   |   3316 - 4603 |     19.4      |
+| **Thursday**  |      -0.1       |     -0.9 - 2.0   |   1756 - 3869 |     18.7      |
+| **Friday**|       1.0        |     -0.6 - 4.5   |   1302 - 2461 |     18.4      |
+| **Saturday** |      -0.1       |     -1.4 - 1.4   |   1525 - 2783 |     18.1      |
+| **Sunday**|       1.9        |     -0.1 - 4.9   |   704 - 2892  |     17.6      |
+| **Monday**|       2.3        |     0.2 - 4.8    |   848 - 1526  |     17.6      |
 
-In the upcoming week, electricity price trends appear to have slight variations. **Wednesday** and **Saturday** are expected to be the cheapest days, with average prices slightly negative. This is partly explained by strong wind power, exceeding 4500 MW on Wednesday. **Friday**, on the other hand, stands out with a higher average price of 1.0 ¢/kWh, but the price expectations within the day vary significantly.
+The upcoming week presents varying electricity price forecasts. **Tuesday** and **Wednesday** appear particularly affordable, with average prices hovering around zero. This is partly due to strong wind power production, which exceeds 4600 MW on Wednesday. **Thursday** sees a slightly wider price range, but the average price remains negative.
 
-**Sunday** and next **Monday** are expected to have higher price expectations. Sunday's average price will settle at 1.6 cents, and Monday's at 2.0 cents per kilowatt-hour. There is also a possibility of price spikes during certain hours on Sunday and Monday. On Sunday, clear price peaks are seen in the hourly forecast during the morning and evening hours, such as 19-21. Price spikes may also occur on Monday, especially in the afternoon and early evening.
+**Friday** sees a slight increase in price levels, with an average price of 1.0 cents. Wind power production remains low, which may partly explain the price rise. **Saturday** features moderate winds, and prices are again low. Sunday, on the other hand, brings price spikes, especially in the afternoon when prices could rise to nearly five cents. This is due to low wind power production, falling below 1000 MW.
 
-The weekend's wind power production seems weaker, which could partly elevate the price. On Sunday, wind power's minimum production drops to 719 MW, which could partly contribute to the price rise. Overall, the forecast points to fluctuating price trends, with variations in wind power production playing a significant role.
+Next **Monday**, the price trend continues similar to Sunday, with an average price rising to 2.3 cents. Wind power production remains low, which may explain the higher prices. Therefore, the weekend and the beginning of the week appear to be more expensive periods, while the midweek offers more affordable prices.
 
-*The upcoming week was predicted by gpt-4o.* 🌬️
+*Forecast interpreted by gpt-4o.* 📊
