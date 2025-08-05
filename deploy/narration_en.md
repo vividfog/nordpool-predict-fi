@@ -1,23 +1,21 @@
-*Next week's electricity market remains stable without significant price fluctuations, and Wednesday's low prices are explained by high wind power production. The most expensive day of the week is Friday, when wind power production is low.*
+*Electricity prices remain moderate throughout the week due to strong wind power production. Wednesday and Thursday stand out with low prices, while Monday may bring a slight increase in prices.*
 
-The forecast was updated on Tuesday at 09:06.
+The forecast was updated on Tuesday at 12:06 PM.
 
 |               | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | -0.4 | -1.0 - 0.0 | 2971 - 4749 | 19.4 |
-| **Thursday** | -0.0 | -1.0 - 2.0 | 1945 - 3836 | 18.7 |
-| **Friday** | 1.0 | -0.6 - 5.3 | 1130 - 2635 | 18.4 |
-| **Saturday** | 0.3 | -1.0 - 2.4 | 1315 - 2661 | 18.1 |
-| **Sunday** | 1.2 | 0.0 - 3.9 | 1042 - 2380 | 17.6 |
-| **Monday** | 1.4 | -0.3 - 3.0 | 1006 - 2701 | 17.6 |
-| **Tuesday** | 0.7 | -1.8 - 5.1 | 1009 - 2953 | 17.3 |
+| **Wednesday** | -0.4             | -0.8 - 0.1       | 3020 - 4922   | 19.4          |
+| **Thursday**  | -0.0             | -1.1 - 1.3       | 1531 - 4010   | 18.7          |
+| **Friday**    | 0.9              | -0.5 - 4.7       | 1024 - 2545   | 18.4          |
+| **Saturday**  | 0.3              | -0.8 - 2.1       | 1294 - 2554   | 18.1          |
+| **Sunday**    | 0.9              | -0.1 - 3.4       | 1037 - 2367   | 17.6          |
+| **Monday**    | 1.5              | 0.2 - 3.3        | 1024 - 2670   | 17.6          |
+| **Tuesday**   | 0.5              | -1.6 - 4.3       | 1199 - 2769   | 17.2          |
 
-The upcoming week’s electricity market seems to remain fairly stable without significant fluctuations between the days. **Wednesday** stands out with its low average price, remaining negative at -0.4 cents. This is partly due to high wind power production, averaging 3920 megawatts on Wednesday. The temperature on the same day is forecasted to be around 19.4 °C, which does not impact the price.
+In the upcoming week, electricity price trends appear fairly stable without significant fluctuations. Average prices mostly remain below one cent per kWh. **Wednesday** and **Thursday** stand out with their low average prices, partly due to high wind power production exceeding 3000 MW. This strong wind power also explains the low prices on these days.
 
-**Friday**, on the other hand, appears to be the most expensive day of the week, with the average price rising to 1.0 cents per kilowatt-hour. Wind power production is significantly lower on Friday, averaging 2051 megawatts, partly explaining the higher price. A peak hourly price of 5.3 cents is expected on Friday morning.
+**Friday's** price expectations rise slightly, with an average price of 0.9 ¢/kWh. This is partly due to reduced wind power production, averaging 1916 MW, which is lower than on other days of the week. **Saturday** and **Sunday** maintain a steady price level, but on Sunday, there could be a price increase in the afternoon and evening hours as wind power production decreases.
 
-During the weekend, on Saturday and Sunday, prices remain moderate, ranging from 0.3 cents to 1.2 cents. On Sunday, wind power production is minimal, averaging 1470 megawatts, but this does not significantly increase the average price.
+**Monday** looks slightly more expensive, with an average price of 1.5 ¢/kWh, partly due to fluctuations in wind power production throughout the day. On Tuesday, the price remains moderate, but forecasts suggest possible price variations as wind power production averages lower.
 
-By next Monday, prices are again slightly rising, with an average price of 1.4 cents. On Tuesday, prices drop again, even though wind power production is minimal. In summary, the week’s price trend is characterized by moderate fluctuations without major spikes or dramatic changes.
-
-*Next week's forecast was prepared by gpt-4o.* 🌬️
+*Price insights interpreted by gpt-4o.* ⚡
