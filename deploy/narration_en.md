@@ -1,23 +1,23 @@
-*In the coming week, electricity prices are expected to remain mostly affordable, although higher prices are anticipated on Monday due to low wind power production. Negative average prices on Wednesday and Saturday will provide relief for consumers.*
+*Electricity prices will vary significantly this week as wind power production influences price levels. On Tuesday, in particular, the risk of price spikes is high, and electricity prices may rise substantially during the day.*
 
-Forecasts were updated on Monday at 21:06.
+The forecast was updated on Tuesday at 03:19.
 
-|               | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|             | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday**     | 0.1 | -0.1 - 0.3 | 2035 - 3423 | 19.7 |
-| **Wednesday** | -0.5 | -1.1 - 0.0 | 3086 - 4604 | 19.4 |
-| **Thursday**     | -0.1 | -0.9 - 1.3 | 1559 - 3878 | 18.7 |
-| **Friday**   | 0.7 | -0.6 - 2.7 | 1406 - 2211 | 18.4 |
-| **Saturday**    | -0.5 | -1.2 - 0.3 | 1551 - 2636 | 18.1 |
-| **Sunday**   | 0.4 | -1.0 - 2.9 | 1387 - 2434 | 17.6 |
-| **Monday**   | 2.5 | 0.4 - 5.6 | 923 - 1542 | 17.6 |
+| **Wednesday** | -0.4 | -0.9 - 0.0 | 3017 - 4775 | 19.4 |
+| **Thursday**  | -0.1 | -0.8 - 1.3 | 1954 - 3868 | 18.7 |
+| **Friday**    | 1.3  | -0.7 - 3.4 | 1224 - 2643 | 18.4 |
+| **Saturday**  | -0.1 | -0.7 - 1.0 | 1390 - 2833 | 18.1 |
+| **Sunday**    | 0.3  | -0.9 - 2.3 | 1320 - 2467 | 17.6 |
+| **Monday**    | 2.3  | 0.3 - 5.4  | 1007 - 1555 | 17.6 |
+| **Tuesday**   | 3.0  | -0.2 - 6.0 | 749 - 1823  | 17.3 |
 
-The upcoming week appears to be quite steady in terms of electricity price trends. **Wednesday** stands out with the lowest average price at -0.5 ¢/kWh, which is explained by the strong wind power production forecasted at an average of 3804 MW. Similarly, **Saturday** is expected to have a negative average price of -0.5 ¢/kWh. On these days, strong wind power reduces prices.
+In the coming week, electricity price expectations will vary significantly between different days. **On Wednesday** and **Thursday**, prices are very low, even negative, due to abundant wind power. Wind power production is at a high level on these days, pushing prices down.
 
-**Monday**, on the other hand, stands out with the highest average price at 2.5 ¢/kWh. This is due to the low wind power production forecasted at an average of only 1204 MW, which raises the price level. There is also a potential for price spikes on Monday during specific hours, particularly in the mornings and evenings.
+**On Friday**, the average price rises to 1.3 cents per kilowatt-hour. This is due to less wind power, averaging only 1763 MW. On Saturday, prices drop again as wind power slightly increases.
 
-Over the weekend, on **Friday** and **Sunday**, some price fluctuations can be observed, but overall they remain affordable. On Sunday, the maximum price is expected to be 2.9 ¢/kWh, which is the highest single price of the week, yet still reasonable.
+**On Sunday**, electricity prices are expected to remain low, but by Monday, prices significantly rise to 2.3 cents per kilowatt-hour. This is partly due to a decrease in wind power and its low average production. **On Tuesday**, the risk of price spikes is high, and prices can rise up to 6 cents per kilowatt-hour.
 
-Overall, the forecasts indicate a fairly stable week in terms of prices, with no significant spikes or exceptions. **Monday** is the most notable day for higher prices, but otherwise, the week offers affordable moments for electricity consumers.
+Among the expected prices for the week, Tuesday stands out with its highest prices and possible price spikes. This is partly due to low wind power production during the day. Price spikes might occur during the night between Monday and Tuesday, so it is advisable to monitor electricity price developments closely on these days.
 
-*Analysis by gpt-4o.* 🌬️
+*Forecasts analyzed by gpt-4o.* 🌬️
