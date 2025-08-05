@@ -1,23 +1,23 @@
-*Electricity prices will vary significantly this week as wind power production influences price levels. On Tuesday, in particular, the risk of price spikes is high, and electricity prices may rise substantially during the day.*
+*Next week's electricity market remains stable without significant price fluctuations, and Wednesday's low prices are explained by high wind power production. The most expensive day of the week is Friday, when wind power production is low.*
 
-The forecast was updated on Tuesday at 03:19.
+The forecast was updated on Tuesday at 09:06.
 
-|             | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|               | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | -0.4 | -0.9 - 0.0 | 3017 - 4775 | 19.4 |
-| **Thursday**  | -0.1 | -0.8 - 1.3 | 1954 - 3868 | 18.7 |
-| **Friday**    | 1.3  | -0.7 - 3.4 | 1224 - 2643 | 18.4 |
-| **Saturday**  | -0.1 | -0.7 - 1.0 | 1390 - 2833 | 18.1 |
-| **Sunday**    | 0.3  | -0.9 - 2.3 | 1320 - 2467 | 17.6 |
-| **Monday**    | 2.3  | 0.3 - 5.4  | 1007 - 1555 | 17.6 |
-| **Tuesday**   | 3.0  | -0.2 - 6.0 | 749 - 1823  | 17.3 |
+| **Wednesday** | -0.4 | -1.0 - 0.0 | 2971 - 4749 | 19.4 |
+| **Thursday** | -0.0 | -1.0 - 2.0 | 1945 - 3836 | 18.7 |
+| **Friday** | 1.0 | -0.6 - 5.3 | 1130 - 2635 | 18.4 |
+| **Saturday** | 0.3 | -1.0 - 2.4 | 1315 - 2661 | 18.1 |
+| **Sunday** | 1.2 | 0.0 - 3.9 | 1042 - 2380 | 17.6 |
+| **Monday** | 1.4 | -0.3 - 3.0 | 1006 - 2701 | 17.6 |
+| **Tuesday** | 0.7 | -1.8 - 5.1 | 1009 - 2953 | 17.3 |
 
-In the coming week, electricity price expectations will vary significantly between different days. **On Wednesday** and **Thursday**, prices are very low, even negative, due to abundant wind power. Wind power production is at a high level on these days, pushing prices down.
+The upcoming week’s electricity market seems to remain fairly stable without significant fluctuations between the days. **Wednesday** stands out with its low average price, remaining negative at -0.4 cents. This is partly due to high wind power production, averaging 3920 megawatts on Wednesday. The temperature on the same day is forecasted to be around 19.4 °C, which does not impact the price.
 
-**On Friday**, the average price rises to 1.3 cents per kilowatt-hour. This is due to less wind power, averaging only 1763 MW. On Saturday, prices drop again as wind power slightly increases.
+**Friday**, on the other hand, appears to be the most expensive day of the week, with the average price rising to 1.0 cents per kilowatt-hour. Wind power production is significantly lower on Friday, averaging 2051 megawatts, partly explaining the higher price. A peak hourly price of 5.3 cents is expected on Friday morning.
 
-**On Sunday**, electricity prices are expected to remain low, but by Monday, prices significantly rise to 2.3 cents per kilowatt-hour. This is partly due to a decrease in wind power and its low average production. **On Tuesday**, the risk of price spikes is high, and prices can rise up to 6 cents per kilowatt-hour.
+During the weekend, on Saturday and Sunday, prices remain moderate, ranging from 0.3 cents to 1.2 cents. On Sunday, wind power production is minimal, averaging 1470 megawatts, but this does not significantly increase the average price.
 
-Among the expected prices for the week, Tuesday stands out with its highest prices and possible price spikes. This is partly due to low wind power production during the day. Price spikes might occur during the night between Monday and Tuesday, so it is advisable to monitor electricity price developments closely on these days.
+By next Monday, prices are again slightly rising, with an average price of 1.4 cents. On Tuesday, prices drop again, even though wind power production is minimal. In summary, the week’s price trend is characterized by moderate fluctuations without major spikes or dramatic changes.
 
-*Forecasts analyzed by gpt-4o.* 🌬️
+*Next week's forecast was prepared by gpt-4o.* 🌬️

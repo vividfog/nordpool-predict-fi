@@ -1,23 +1,23 @@
-*Sähkön hinnat vaihtelevat tällä viikolla merkittävästi, kun tuulivoiman tuotanto vaikuttaa hintatasoihin. Erityisesti tiistaina hintapiikkien riski on korkea, ja sähkön hinta voi nousta huomattavasti päivän aikana.*
+*Ensi viikon sähkömarkkinat pysyvät vakaana ilman suuria hintavaihteluita, ja keskiviikon alhaiset hinnat selittyvät korkealla tuulivoimatuotannolla. Viikon kallein päivä on perjantai, jolloin tuulivoiman tuotanto jää vähäiseksi.*
 
-Ennuste on päivitetty tiistaina klo 03:19.
+Ennuste päivitettiin tiistaina klo 09:06.
 
-|             | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|               | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **keskiviikko** | -0,4 | -0,9 - 0,0 | 3017 - 4775 | 19,4 |
-| **torstai**     | -0,1 | -0,8 - 1,3 | 1954 - 3868 | 18,7 |
-| **perjantai**   | 1,3  | -0,7 - 3,4 | 1224 - 2643 | 18,4 |
-| **lauantai**    | -0,1 | -0,7 - 1,0 | 1390 - 2833 | 18,1 |
-| **sunnuntai**   | 0,3  | -0,9 - 2,3 | 1320 - 2467 | 17,6 |
-| **maanantai**   | 2,3  | 0,3 - 5,4  | 1007 - 1555 | 17,6 |
-| **tiistai**     | 3,0  | -0,2 - 6,0 | 749 - 1823  | 17,3 |
+| **keskiviikko** | -0,4 | -1,0 - 0,0 | 2971 - 4749 | 19,4 |
+| **torstai** | -0,0 | -1,0 - 2,0 | 1945 - 3836 | 18,7 |
+| **perjantai** | 1,0 | -0,6 - 5,3 | 1130 - 2635 | 18,4 |
+| **lauantai** | 0,3 | -1,0 - 2,4 | 1315 - 2661 | 18,1 |
+| **sunnuntai** | 1,2 | 0,0 - 3,9 | 1042 - 2380 | 17,6 |
+| **maanantai** | 1,4 | -0,3 - 3,0 | 1006 - 2701 | 17,6 |
+| **tiistai** | 0,7 | -1,8 - 5,1 | 1009 - 2953 | 17,3 |
 
-Tulevalla viikolla sähkön hintaodotukset vaihtelevat merkittävästi eri päivien välillä. **Keskiviikkona** ja **torstaina** hinnat ovat hyvin alhaisia, jopa negatiivisia, mikä johtuu runsaasta tuulivoimasta. Tuulivoiman tuotanto on näinä päivinä korkealla tasolla, mikä painaa hintoja alas.
+Tulevan viikon sähkömarkkinat näyttävät pysyvän melko stabiileina, ilman suuria vaihteluita päivien välillä. **Keskiviikko** erottuu alhaisella keskihinnallaan, joka jää negatiiviseksi -0,4 sentin tasolle. Tämä johtuu osittain korkeasta tuulivoiman tuotannosta, joka nousee keskiviikkona keskimäärin 3920 megawattiin. Saman päivän lämpötila on ennustettu noin 19,4 °C:ksi, mikä ei vaikuta hintaan.
 
-**Perjantaina** keskihinta nousee 1,3 senttiin kilowattitunnilta. Tämä johtuu vähäisemmästä tuulivoimasta, joka on keskimäärin vain 1763 MW. Lauantaina hinnat laskevat jälleen, kun tuulivoima kasvaa hieman.
+**Perjantai** puolestaan näyttää olevan viikon kallein päivä, kun keskihinta nousee 1,0 senttiin kilowattitunnilta. Tuulivoiman tuotanto on perjantaina huomattavasti alhaisempaa, keskimäärin 2051 megawattia, mikä osaltaan selittää korkeampaa hintaa. Perjantaiaamuna on odotettavissa myös päivän korkein tuntihinta, 5,3 senttiä.
 
-**Sunnuntaina** sähkön hintojen odotetaan olevan matalalla tasolla, mutta maanantaihin mennessä hinnat nousevat merkittävästi 2,3 senttiin kilowattitunnilta. Tämä johtuu osittain tuulivoiman vähenemisestä ja sen alhaisesta keskimääräisestä tuotannosta. **Tiistaina** hintapiikkien riski on korkea ja hinnat voivat nousta jopa 6 senttiin kilowattitunnilta.
+Viikonloppuna, lauantaina ja sunnuntaina, hinnat pysyvät maltillisina ja vaihtelevat 0,3 sentin ja 1,2 sentin välillä. Sunnuntaina tuulivoiman tuotanto jää vähäiseksi, keskimäärin 1470 megawattiin, mutta tämä ei kuitenkaan nosta keskihintaa merkittävästi.
 
-Viikon ennustetuista hinnoista erityisesti tiistai erottuu korkeimmilla hinnoillaan ja mahdollisilla hintapiikeillään. Tämä johtuu osittain alhaisesta tuulivoiman tuotannosta päivän aikana. Maanantain ja tiistain välisellä yöllä saattaa esiintyä hintapiikkejä, joten näinä päivinä kannattaa seurata sähkön hintakehitystä tarkasti.
+Ensi viikon maanantaihin mennessä hinnat ovat jälleen hieman nousussa, keskihinnan ollessa 1,4 senttiä. Tiistaina hinnat laskevat jälleen, vaikka tuulivoiman tuotanto on vähäistä. Yhteenvetona voidaan todeta, että viikon hintakehitystä leimaa maltillinen vaihtelu ilman suuria piikkejä tai dramaattisia muutoksia.
 
-*Ennusteita analysoi gpt-4o.* 🌬️
+*Tulevan viikon ennusteen laati gpt-4o.* 🌬️
