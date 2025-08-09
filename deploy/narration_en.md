@@ -1,25 +1,23 @@
-*Next week’s electricity market forecasts indicate fluctuating prices, but on average, prices remain moderate. There is a risk of price spikes, particularly in the evenings when wind power production is at its lowest.*
+*Next week's electricity price forecasts appear moderate, but price spikes on Sunday and Thursday may introduce variability. Wind power production remains reasonable, contributing to stable prices throughout the week.*
 
-**Forecast updated on Friday at 21:06.**
+The forecast was updated on Saturday at 03:19.
 
 |               | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday** | 2.3 | -0.0 - 11.0 | 506 - 1801 | 18.1 |
-| **Sunday** | 2.4 | 0.1 - 11.4 | 412 - 2017 | 17.6 |
-| **Monday** | 2.8 | 0.4 - 7.3 | 908 - 1923 | 17.6 |
-| **Tuesday** | 3.4 | 0.6 - 8.6 | 894 - 1643 | 17.2 |
-| **Wednesday** | 3.8 | 0.9 - 10.0 | 658 - 1843 | 17.4 |
-| **Thursday** | 4.2 | 1.5 - 9.2 | 935 - 1824 | 18.0 |
-| **Friday** | 3.6 | 0.8 - 6.7 | 816 - 1394 | 17.9 |
+| **Sunday**   | 2.3  | -0.1 - 10.2 | 503 - 1985   | 17.6 |
+| **Monday**   | 2.8  | 0.1 - 7.3   | 1175 - 2061  | 17.6 |
+| **Tuesday**  | 3.1  | 0.2 - 7.0   | 1081 - 2085  | 17.2 |
+| **Wednesday**| 3.8  | 1.4 - 7.8   | 764 - 1819   | 17.4 |
+| **Thursday** | 4.1  | 2.0 - 8.8   | 979 - 1758   | 18.0 |
+| **Friday**   | 3.8  | 1.1 - 6.8   | 894 - 1449   | 17.9 |
+| **Saturday** | 2.3  | 0.4 - 6.2   | 945 - 1612   | 18.1 |
 
-The upcoming week shows some variability in electricity prices. **Saturday** maintains a low average price, but prices are expected to rise above 11 cents in the evening. Sunday is quite similar, but there is a risk of price spikes, especially in the evening between 18:00 and 20:00, when prices could exceed 11 ¢.
+The upcoming week brings moderate electricity price forecasts with no significant peaks. **Sunday** sees a wide price range with expected price spikes, even though the average price is low. This is likely due to minimal wind power production during certain hours. **Monday** continues with a slightly higher average price, but the risk of price spikes is minimal, which may encourage consumers to take advantage of low-price hours during the day.
 
-On **Monday** and **Tuesday**, prices increase slightly, and the risk of price spikes is present, particularly in the morning and evening. **Tuesday's** predicted peak price is 8.6 ¢, with the highest prices expected between 18:00 and 20:00.
+**Tuesday** and **Wednesday** follow a similar price trend, but the risk of price spikes on Wednesday may raise prices during specific hours. Wind power production is reasonable on these days, supporting stable prices.
 
-**Wednesday** sees the average electricity price rise to 3.8 ¢, with the day’s highest price possibly reaching 10 ¢ in the evening between 18:00 and 20:00. Wind power production is slightly lower on Wednesday, which might affect prices.
+**Thursday** is expected to have the highest average price of the week, partly due to possible price spikes during the day. Wind power production is slightly lower, which partly explains the rise in prices. **Friday**, on the other hand, brings prices back to the level seen at the start of the week, although the risk of price spikes remains.
 
-On **Thursday**, the average price reaches the week's highest at 4.2 ¢, with wind power supply remaining modest. **Friday** sees a slight drop in prices, but there might be price spikes in the afternoon and evening.
+Over the weekend, **Saturday** again offers a more affordable average price, though the risk of price spikes is still present. This may provide opportunities for those who can time their consumption accurately.
 
-Throughout the week, wind power production remains mostly below 2000 MW, which could influence price fluctuations, especially in the evenings. Overall, the price trend for the week is fairly steady, but individual price spikes may occur, particularly in the late evening hours.
-
-*Analysis meticulously compiled by gpt-4o.* 🌬️
+*Analysis conducted by gpt-4o.* 🌬️
