@@ -1,25 +1,23 @@
-*Next week, electricity prices will remain relatively stable, without significant daily fluctuations. Price spikes may occur on Sunday and Wednesday, but otherwise, prices will stay moderate with wind power production at a steady level.*
+*Electricity prices for the coming week are expected to remain moderate, although individual price spikes may occur. Variations in wind power production and warm temperatures influence price fluctuations, but overall the price level remains reasonable.*
 
-The forecast was updated on Saturday at 09:06.
+The forecast was updated on Saturday at 12:06 PM.
 
-|             | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|           | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday**   | 2.3             | 0.1 - 10.3       | 505 - 1947    | 17.6         |
-| **Monday**   | 3.0             | 0.1 - 7.6        | 1141 - 1991   | 17.6         |
-| **Tuesday**  | 3.6             | 0.4 - 8.5        | 1005 - 2002   | 17.2         |
-| **Wednesday**| 3.6             | 1.5 - 6.8        | 922 - 1753    | 17.4         |
-| **Thursday** | 3.5             | 1.1 - 6.6        | 1056 - 1722   | 18.0         |
-| **Friday**   | 3.1             | 0.1 - 6.7        | 1060 - 1702   | 17.9         |
-| **Saturday** | 2.1             | 0.8 - 5.9        | 1222 - 2062   | 18.1         |
+| **Sunday**   | 2.5             | 0.1 - 10.6       | 591 - 1956    | 17.6          |
+| **Monday**   | 3.0             | -0.2 - 7.9       | 1174 - 2019   | 17.6          |
+| **Tuesday**     | 3.8             | 0.6 - 8.4        | 665 - 2016    | 17.2          |
+| **Wednesday** | 3.6             | 1.7 - 7.1        | 897 - 1712    | 17.4          |
+| **Thursday**     | 3.8             | 0.9 - 7.6        | 1055 - 1726   | 18.0          |
+| **Friday**   | 3.3             | 0.3 - 7.2        | 972 - 1679    | 17.9          |
+| **Saturday**    | 2.3             | 0.7 - 7.1        | 980 - 1754    | 18.0          |
 
-The upcoming week's price forecasts indicate relatively stable price developments without significant anomalies. On **Sunday**, price spikes are possible, especially in the evening when the maximum price rises above 10 cents. Wind power will be lower at that time, which may influence price increases. This differentiates it from other days of the week, where prices are expected to remain at more moderate levels.
+The upcoming week's electricity prices are expected to remain moderate, with the average price mostly below four cents. **On Sunday**, prices vary significantly throughout the day, with the most increases expected in the evening, when the price may rise above 10 cents. This could be due to low wind power production, which drops below 600 megawatts during the day.
 
-**Monday** and **Tuesday** are expected to have average electricity prices around three and a half cents. Wind power production is relatively stable on these days, without significant changes anticipated. The average prices on these days are typical, indicating a stable market situation.
+**Tuesday** and **Wednesday** show similar price trends, but Wednesday is expected to have slightly more stable pricing, even though the risk of price spikes exists. On both days, wind power production varies significantly, which may affect price fluctuations.
 
-On Wednesday, prices are expected to be similar to Tuesday, but there is a possibility of price spikes. Higher prices may occur in the evening when wind power production decreases. This makes Wednesday stand out due to slightly higher prices and price fluctuations.
+**Thursday** and **Friday** are forecasted to have slightly higher average prices, but overall, they remain at reasonable levels. On Thursday, wind power production is slightly higher, which might smooth out price fluctuations.
 
-On Thursday and Friday, price developments are expected to be very similar. Wind power production remains at a sufficient level, and significant price variations are not anticipated. As the weekend approaches, particularly on Friday, energy prices remain steady, keeping the average price slightly above three cents.
+At the end of the week, **Saturday** is expected to have the lowest average prices of the week, but even then, the risk of spikes exists, especially during the evening hours. Wind power production is expected to be relatively stable, which may curb price increases.
 
-**Saturday** is expected to have the week's lowest prices. Wind power production will be the highest of the week, which partly explains the low prices. Saturday's average price is just over two cents, and the intra-day price differences are small.
-
-*Forecast interpreted by gpt-4o.* 🌬️
+*This week's forecasts were analyzed by gpt-4o.* 🌬️
