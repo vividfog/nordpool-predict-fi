@@ -1,21 +1,23 @@
-*The electricity price forecast for the upcoming week suggests relatively stable trends, but individual price spikes are possible early in the week. The weekend, however, offers more affordable electricity prices as wind power production strengthens.*
+*Electricity price expectations for the coming week are moderate, with particularly low prices anticipated on Monday and Sunday. Throughout the week, price fluctuations are relatively minor, although there is a risk of isolated price spikes on Tuesday.*
 
-The forecast was updated on Sunday at 03:19.
+The forecast was updated on Sunday at 09:06.
 
 |               | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday**   |       2.8        |     0.3 - 6.7    |   1188 - 2119 |      17.6     |
-| **Tuesday**  |       3.9        |     0.8 - 10.3   |    674 - 1959 |      17.2     |
-| **Wednesday**|       3.4        |     1.3 - 6.9    |    840 - 2012 |      17.4     |
-| **Thursday** |       3.8        |     1.1 - 8.5    |    930 - 1865 |      18.0     |
-| **Friday**   |       3.5        |     0.4 - 6.3    |    994 - 1353 |      17.9     |
-| **Saturday** |       2.0        |     0.1 - 6.2    |   1027 - 1920 |      18.0     |
-| **Sunday**   |       1.1        |    -0.3 - 2.7    |   1412 - 2443 |      17.4     |
+| **Monday**   | 3.1             | 0.0 - 6.9        | 1172 - 2100   | 17.6          |
+| **Tuesday**  | 4.1             | 0.6 - 10.0       | 687 - 1969    | 17.2          |
+| **Wednesday**| 3.9             | 1.3 - 7.9        | 430 - 1787    | 17.4          |
+| **Thursday** | 4.0             | 1.2 - 9.2        | 905 - 1801    | 18.0          |
+| **Friday**   | 3.5             | 0.7 - 6.9        | 1041 - 1365   | 17.9          |
+| **Saturday** | 2.4             | 0.4 - 7.3        | 893 - 1658    | 18.0          |
+| **Sunday**   | 1.3             | 0.0 - 3.8        | 852 - 2001    | 17.4          |
 
-The upcoming week brings fairly consistent electricity price expectations without significant deviations. **Monday** opens the week with an average price of 2.8 ¢/kWh, with a price range of 0.3 - 6.7 ¢. Wind power production is expected to be typical, supporting moderate prices. On **Tuesday**, the average price rises to 3.9 ¢, with prices potentially reaching up to 10.3 ¢ during individual hours due to fluctuations in wind power production.
+The upcoming week appears relatively stable in terms of electricity prices, with a few notable features. **Monday** offers the lowest prices, with an average of 3.1 ¢/kWh. Prices are expected to remain low throughout the day, making it the most affordable day at the start of the week.
 
-**Wednesday**'s price expectations average 3.4 ¢, with wind power anticipated to be somewhat weaker than earlier in the week, possibly causing individual price spikes throughout the day. **Thursday**'s average price is 3.8 ¢, with the day's maximum price reaching 8.5 ¢. Wind power production is expected to be at a low level, which could drive prices up.
+**Tuesday** and **Thursday** are expected to see slightly higher average prices, around 4 ¢/kWh. There is also a risk of price spikes on Tuesday, particularly in the evening, where prices could reach up to 10 ¢/kWh. This may be linked to the low wind power production expected on Tuesday morning.
 
-As the weekend approaches, **Friday**'s average price is 3.5 ¢, and prices drop to an average of 2.0 ¢ on **Saturday**. **Saturday** and **Sunday** offer the week's lowest price levels, with Sunday having an average price of just 1.1 ¢. On Sunday, wind power is expected to be stronger, supporting lower prices. The weekend thus provides affordable electricity prices without significant price spikes.
+For the weekend, **Saturday** and **Sunday** stand out with lower prices. **Sunday** is forecasted to have the week's lowest prices, with an average of just 1.3 ¢/kWh. This could be due to higher wind power production on Sunday, which stabilizes price fluctuations throughout the day.
 
-*Forecast meticulously crafted by gpt-4o.* 🌬️
+In summary, the price trend for the coming week is quite moderate, without major deviations or dramatic price swings. Prices remain mostly under four cents, providing consumers the opportunity to take advantage of affordable electricity on multiple days.
+
+*Data interpreted by gpt-4o.* 🌬️
