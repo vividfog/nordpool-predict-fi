@@ -1,21 +1,23 @@
-*Ennusteet viittaavat vaihtelevaan sähkönhintaan tulevalla viikolla, jossa viikonloppu tarjoaa edullisia hintoja, mutta alkuviikosta hinnat nousevat merkittävästi. Erityisesti keskiviikkona ja torstaina hintavaihtelut voivat yllättää kuluttajat.*
+*Ennusteet lupaavat vaihtelevia sähkön hintoja ensi viikolle, kun tuulivoiman tuotanto vaikuttaa hintakehitykseen. Erityisesti alkuviikon edulliset hinnat nousevat loppuviikkoa kohden, jolloin hintapiikit voivat yllättää.*
 
-Ennuste on päivitetty torstaina klo 21:06.
+Perjantaina klo 12:06 päivitetty ennuste näyttää seuraavaa:
 
-|               | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|             | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **perjantai**   | 0,3            | -0,8 - 5,9       | 1962 - 4643   | 17,9          |
-| **lauantai**    | 1,4            | -0,5 - 5,1       | 2512 - 4514   | 18,0          |
-| **sunnuntai**   | 1,6            | -0,6 - 4,7       | 2313 - 4557   | 17,4          |
-| **maanantai**   | 4,5            | 2,4 - 7,1        | 1986 - 3320   | 16,1          |
-| **tiistai**     | 3,4            | 1,4 - 6,5        | 2100 - 4098   | 15,0          |
-| **keskiviikko** | 5,2            | 1,3 - 9,4        | 1246 - 4179   | 14,0          |
-| **torstai**     | 3,9            | 0,8 - 10,2       | 1404 - 3055   | 12,5          |
+| **lauantai**  | 1,7             | -0,7 - 5,9       | 1976 - 4086  | 18,0          |
+| **sunnuntai** | 1,6             | 0,1 - 5,5        | 2740 - 4552  | 17,4          |
+| **maanantai** | 5,3             | 2,5 - 14,6       | 333 - 3537   | 16,1          |
+| **tiistai**   | 2,3             | 0,8 - 4,5        | 1951 - 4210  | 15,0          |
+| **keskiviikko**| 3,2            | 0,5 - 6,3        | 1343 - 4415  | 14,0          |
+| **torstai**   | 4,1             | -0,0 - 10,4      | 1582 - 2958  | 12,5          |
+| **perjantai** | 7,5             | 0,6 - 16,1       | 800 - 2852   | 12,0          |
 
-Tulevan viikon sähkön hintaodotukset vaihtelevat huomattavasti eri päivien välillä. **Perjantaina** ja **lauantaina** odotetaan keskihinnan olevan edullisempi, alle 2 ¢/kWh, mikä voi selittyä runsaalla tuulivoiman tuotannolla. **Sunnuntain** keskihinta jatkaa vielä maltillisena, mutta alkuviikosta hinnat nousevat.
+Olkiluoto 2 -ydinvoimalassa on tuotantovajaus, joka alkoi 15.8.2025 klo 07 ja päättyy 15.8.2025 klo 12. Tämä voi vaikuttaa ennusteen tarkkuuteen, sillä huoltokatkojen aikana saatavilla oleva data on rajallista.
 
-**Maanantaina** keskihinta nousee ennusteen mukaan 4,5 ¢/kWh:iin, ja samalla tuulivoiman tuotanto vähenee verrattuna viikonloppuun. **Keskiviikko** erottuu viikon korkeimmalla keskihinnalla, 5,2 ¢/kWh, ja tuulivoiman tuotannon vaihtelu voi nostaa maksimihintoja, erityisesti aamun ja illan tunteina.
+Sähkön hintaodotukset vaihtelevat merkittävästi tulevina päivinä. **Lauantaina** ja **sunnuntaina** hintataso pysyy edullisena, kun keskihinta on alle kaksi senttiä kilowattitunnilta. Korkeimmillaan hinta nousee sunnuntai-iltana 5,5 ¢:iin. Näiden päivien tuulivoimatuotanto on korkealla, mikä osaltaan selittää alhaisia hintoja.
 
-**Torstaina** hintavaihtelu jatkuu, ja päivälle ennustetaan maksimihinnaksi yli 10 ¢/kWh. Myös torstaina saattaa esiintyä hintapiikkejä yksittäisinä tunteina, mikä korostaa päivän sisäistä hinnanvaihtelua.
+**Maanantaina** hintaodotukset nousevat, ja keskihinta kohoaa 5,3 ¢:iin. Yksittäisten tuntien aikana voi ilmetä hintapiikkejä, erityisesti aamun ja illan tunteina. Tuulivoiman tuotanto on ennustettu alhaiseksi aamulla, mikä nostaa hintaa erityisesti klo 8-10 välillä.
 
-*Ennusteen parissa työskenteli gpt-4o.* 🌬️
+**Keskiviikkona** keskihinta on hieman korkeampi kuin alkuviikosta, 3,2 ¢. Myös tämän päivän aikana hintapiikkien riski on olemassa, mutta se ei ole yhtä merkittävä kuin maanantaina. **Torstaina** hintataso on edelleen nousussa, ja keskihinta nousee 4,1 ¢:iin. Perjantaina korkea keskihinta 7,5 ¢ heijastaa suurempaa hintapiikkien riskiä. Tällöin hintojen odotetaan nousevan erityisesti aamupäivällä.
+
+*Analyysin teki gpt-4o.* 📈
