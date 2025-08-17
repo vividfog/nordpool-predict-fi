@@ -1,10 +1,6 @@
 {
     "import_capacity_daily_average": [
         {
-            "average_import_capacity_mw": 1979.2,
-            "date": "2025-08-16"
-        },
-        {
             "average_import_capacity_mw": 2269.2,
             "date": "2025-08-17"
         },
@@ -23,6 +19,10 @@
         {
             "average_import_capacity_mw": 2793.0,
             "date": "2025-08-21"
+        },
+        {
+            "average_import_capacity_mw": 2793.0,
+            "date": "2025-08-22"
         }
     ]
 }
