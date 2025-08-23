@@ -23,14 +23,6 @@
             "nominal_power": 496.0,
             "production_resource_name": "Loviisa 2",
             "availability": 0.0
-        },
-        {
-            "start": "2025-08-20T14:00:00.000Z",
-            "end": "2025-08-22T18:00:00.000Z",
-            "avail_qty": 380,
-            "nominal_power": 496.0,
-            "production_resource_name": "Loviisa 1",
-            "availability": 0.7661290323
         }
     ]
 }
