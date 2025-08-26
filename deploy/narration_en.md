@@ -1,19 +1,21 @@
-*The electricity price forecasts for the coming week indicate significant fluctuations, especially on Wednesday and Thursday, when the risk of price spikes is high. The reasonable price levels over the weekend provide consumers with an opportunity to take advantage of lower electricity costs.*
+*Forecasts indicate a fluctuating electricity price trend in the coming days, particularly highlighting high prices on Thursday and potential price spikes. Over the weekend, prices decrease, but spikes remain possible.*
 
-The forecast was updated on Tuesday at 03:19.
+The forecast was updated on Tuesday at 09:06.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|           | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 9.2 | 3.2 - 17.1 | 1190 - 2674 | 13.0 |
-| **Thursday** | 15.0 | 6.7 - 28.2 | 341 - 1443 | 13.2 |
-| **Friday** | 7.4 | 3.6 - 13.9 | 822 - 1680 | 13.3 |
-| **Saturday** | 6.4 | 4.0 - 9.8 | 1197 - 1912 | 14.2 |
-| **Sunday** | 4.8 | 1.9 - 7.4 | 1494 - 2619 | 14.2 |
-| **Monday** | 6.3 | 1.9 - 12.4 | 1044 - 2716 | 14.1 |
-| **Tuesday** | 7.4 | 2.8 - 15.7 | 1319 - 2419 | 14.1 |
+| **Wednesday** |      9.0      |     3.0 - 16.5     |   1190 - 2707  |      13.0     |
+| **Thursday**    |      15.3     |     7.1 - 29.2     |    326 - 1466  |      13.2     |
+| **Friday**  |      9.1      |     5.6 - 15.6     |    826 - 1573  |      13.3     |
+| **Saturday**   |      5.7      |     3.0 - 9.3      |   1457 - 1883  |      14.2     |
+| **Sunday**  |      5.8      |     3.1 - 9.6      |    975 - 2154  |      14.2     |
+| **Monday**  |      8.2      |     3.9 - 13.8     |   1218 - 2170  |      14.1     |
+| **Tuesday**    |      8.8      |     5.1 - 15.9     |   1101 - 1999  |      14.1     |
 
-The upcoming week's electricity price forecasts show significant variations. **Wednesday** sees the highest price expectations, with the average price rising to 9.2 cents. Price spikes are also forecasted for this day, particularly in the evening around 8-10 PM. **Thursday** sees prices rising even further, with an average price of 15.0 ¢ and the day's maximum price exceeding 28 ¢, which may be due to low wind power production falling below 350 MW. **Friday** sees prices stabilizing, with the expected average price at only 7.4 ¢ as wind power production returns to more normal levels.
+Electricity price expectations show variability in the coming days. **Thursday** stands out as the most expensive day of the week, with the average price rising to 15.3 cents. There is a high risk of price spikes on Thursday, and within the day, the maximum price could reach up to 29.2 cents, possibly due to low wind power production. **Wednesday** also expects price spikes, but the average price remains at a moderate 9.0 cents. **Friday** sees an average price of 9.1 cents, with the risk of price spikes continuing.
 
-**Saturday** and **Sunday** see further price declines, with Sunday being the most affordable day of the week with an average price of 4.8 ¢. This might be linked to higher wind power production on Sunday, exceeding 2600 MW. **Monday** sees a slight increase in prices but remains moderate at 6.3 cents. Wind power production remains high on Monday, which may help keep prices reasonable. **Tuesday** sees a slight increase in prices, with an expected average price of 7.4 ¢. However, wind power production remains reasonable, which might stabilize the price trend.
+During the weekend, prices decrease. On **Saturday** and **Sunday**, average prices are lower at 5.7 and 5.8 cents, even though individual price spikes might occur. On Saturday, wind power production is moderate, supporting the lower price level. **Monday** and **Tuesday** see prices rising slightly again, with Tuesday expecting price spikes in the morning and evening.
 
-Next week's price developments may offer consumers opportunities to take advantage of lower prices over the weekend. *Electricity forecasts were compiled by gpt-4o.* ⚡
+Overall, the week's price trend is variable, with Thursday particularly standing out with its high prices. Price spikes are possible on several days, which could pose challenges for electricity consumers. 
+
+*Forecast analyzed by electricity price analyst gpt-4o.* 🌬️
