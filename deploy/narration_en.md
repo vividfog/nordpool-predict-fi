@@ -1,21 +1,21 @@
-*Forecasts indicate a fluctuating electricity price trend in the coming days, particularly highlighting high prices on Thursday and potential price spikes. Over the weekend, prices decrease, but spikes remain possible.*
+*The coming week brings varying electricity price trends, with Wednesday and Thursday standing out for their high prices, while the weekend offers more moderate levels. Variations in wind power production may affect price predictability.*
 
-The forecast was updated on Tuesday at 09:06.
+The forecast was updated on Tuesday at 12:07.
 
-|           | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** |      9.0      |     3.0 - 16.5     |   1190 - 2707  |      13.0     |
-| **Thursday**    |      15.3     |     7.1 - 29.2     |    326 - 1466  |      13.2     |
-| **Friday**  |      9.1      |     5.6 - 15.6     |    826 - 1573  |      13.3     |
-| **Saturday**   |      5.7      |     3.0 - 9.3      |   1457 - 1883  |      14.2     |
-| **Sunday**  |      5.8      |     3.1 - 9.6      |    975 - 2154  |      14.2     |
-| **Monday**  |      8.2      |     3.9 - 13.8     |   1218 - 2170  |      14.1     |
-| **Tuesday**    |      8.8      |     5.1 - 15.9     |   1101 - 1999  |      14.1     |
+|            | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:-----------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Wednesday** | 8.3 | 2.9 - 14.0 | 1591 - 2824 | 13.0 |
+| **Thursday**     | 15.2 | 7.0 - 27.4 | 321 - 1517 | 13.2 |
+| **Friday**   | 9.8 | 5.8 - 21.5 | 455 - 1564 | 13.3 |
+| **Saturday**    | 5.9 | 3.1 - 9.7 | 1412 - 1896 | 14.2 |
+| **Sunday**   | 5.8 | 3.0 - 9.7 | 918 - 2153 | 14.2 |
+| **Monday**   | 8.4 | 4.1 - 14.2 | 1224 - 2138 | 14.1 |
+| **Tuesday**     | 9.9 | 4.9 - 21.4 | 921 - 1989 | 14.4 |
 
-Electricity price expectations show variability in the coming days. **Thursday** stands out as the most expensive day of the week, with the average price rising to 15.3 cents. There is a high risk of price spikes on Thursday, and within the day, the maximum price could reach up to 29.2 cents, possibly due to low wind power production. **Wednesday** also expects price spikes, but the average price remains at a moderate 9.0 cents. **Friday** sees an average price of 9.1 cents, with the risk of price spikes continuing.
+Wednesday and Thursday clearly stand out in the upcoming week's price development. **On Wednesday**, prices are expected to range from 2.9 to 14.0 ¢/kWh, with the risk of individual price spikes. On Thursday, prices rise significantly higher, and the day's average price could reach as high as 15.2 ¢/kWh. Particularly in the morning and evening, high prices are anticipated as wind power production remains low.
 
-During the weekend, prices decrease. On **Saturday** and **Sunday**, average prices are lower at 5.7 and 5.8 cents, even though individual price spikes might occur. On Saturday, wind power production is moderate, supporting the lower price level. **Monday** and **Tuesday** see prices rising slightly again, with Tuesday expecting price spikes in the morning and evening.
+**Friday's** average price sits at a moderate level, but individual price spikes may occur during the day. The weekend shows a calm price development, with both **Saturday** and **Sunday** maintaining moderate prices, with an average of less than 6 ¢/kWh. On Monday, prices are slightly higher again, with an average of 8.4 ¢/kWh.
 
-Overall, the week's price trend is variable, with Thursday particularly standing out with its high prices. Price spikes are possible on several days, which could pose challenges for electricity consumers. 
+**Tuesday** sees prices rising again to a relatively high level. The average price is 9.9 ¢/kWh, with individual price spikes possible, especially during the afternoon and evening hours. Variations in wind power production affect price predictability, potentially causing unexpected changes in price levels.
 
-*Forecast analyzed by electricity price analyst gpt-4o.* 🌬️
+*Forecast compiled by gpt-4o.* 🌬️
