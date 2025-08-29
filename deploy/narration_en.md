@@ -1,23 +1,21 @@
-*Next week, electricity prices in Finland will vary significantly, with peak prices rising above 19 and 26 cents on Sunday and Monday. On Tuesday, cheaper prices are expected, aided by strong wind power.*
+*Next week's electricity price forecast shows significant fluctuations: Monday stands out as an expensive day, while Friday offers more affordable electricity. Wind power significantly influences prices, and price spikes may occur on several days.*
 
-**Loviisa 2** nuclear power plant is currently undergoing maintenance, which began on August 17, 2025, at 04:00 and is expected to end on September 8, 2025, at 00:00. This maintenance may affect the accuracy of forecasts, as training data from maintenance periods is limited.
+The forecast was last updated on Friday at 21:07.
 
-The forecast was updated on Friday at 14:24.
+|          | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:---------|:---------------:|:---------------:|:-------------:|:-------------:|
+| **Saturday** | 6.4 | 1.6 - 13.5 | 825 - 2218 | 14.2 |
+| **Sunday** | 10.4 | 3.8 - 20.8 | 205 - 1443 | 14.2 |
+| **Monday** | 12.2 | 3.8 - 26.3 | 176 - 1867 | 14.1 |
+| **Tuesday** | 6.2 | 1.1 - 13.7 | 1375 - 2595 | 14.4 |
+| **Wednesday** | 7.0 | 2.0 - 12.6 | 1293 - 2184 | 14.8 |
+| **Thursday** | 5.2 | 2.6 - 8.2 | 1387 - 2466 | 15.0 |
+| **Friday** | 3.3 | 0.7 - 5.8 | 1639 - 2626 | 15.3 |
 
-|            | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:-----------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday**  | 6.4 | 1.6 - 13.5 | 862 - 2228 | 14.2 |
-| **Sunday** | 9.9 | 4.3 - 19.8 | 221 - 1424 | 14.2 |
-| **Monday** | 10.2 | 4.5 - 26.0 | 199 - 1781 | 14.1 |
-| **Tuesday**   | 6.6 | 2.1 - 13.9 | 1309 - 2602 | 14.4 |
-| **Wednesday** | 7.6 | 2.4 - 15.3 | 1124 - 2114 | 14.8 |
-| **Thursday**   | 9.9 | 4.0 - 16.3 | 1017 - 1439 | 15.0 |
-| **Friday** | 9.6 | 5.7 - 17.3 | 975 - 1759 | 15.3 |
+Electricity prices on the market will vary significantly next week. **Monday** stands out with its high prices, as the day's average price rises to 12.2 cents and the maximum price reaches 26.3 ¢. This may be due to low wind power production, which averages only 502 MW. **Sunday** also appears expensive, with an average price of 10.4 ¢ and a maximum price of 20.8 ¢. On these days, there is a high risk of price spikes, particularly during the morning and evening hours.
 
-The coming week will bring varying electricity prices. **Sunday** and **Monday** are expected to have higher average prices, 9.9¢ and 10.2¢. Both days carry a high risk of price spikes, especially during morning and evening hours. **Monday** is forecasted to reach peak prices of up to 26.0¢, which could be due to weak wind power and the maintenance of Loviisa 2.
+The most affordable prices of the week will be seen on Friday, with an average price of just 3.3 cents and a maximum price remaining modest at 5.8 cents. **Friday's** low prices are partly explained by high wind power production, averaging 2268 MW. **Saturday** also offers more affordable prices, with an average price of 6.4 ¢.
 
-The cheapest periods are expected on **Saturday** and **Tuesday**, with average prices remaining below 7¢. **Tuesday’s** minimum price is only 2.1¢, indicating strong wind power. This could stabilize the price throughout the day, although no price spikes are anticipated.
+**Tuesday** stands out with its high wind power production, keeping prices moderate, although the average price rises to 6.2 cents. However, there is a risk of price spikes, as the maximum price could reach 13.7 ¢. **Wednesday** is similar, with an average price of 7.0 ¢ and a maximum price of 12.6 ¢. Thursday and Friday, on the other hand, offer stable and affordable prices without significant price spikes.
 
-Towards the end of the week, prices stabilize, but particularly on **Thursday**, price spikes are expected in the afternoon. Average wind power production is relatively low, contributing to the increased prices.
-
-*Forecasts analyzed today by gpt-4o.* 🌬️
+*Data interpretation was handled by gpt-4o.* 🌥️
