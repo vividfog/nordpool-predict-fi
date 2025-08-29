@@ -1,23 +1,23 @@
-*Electricity prices for the upcoming week will vary greatly, with high prices expected on Sunday due to low wind power, while prices on Friday are expected to decrease thanks to strong wind power.*
+*Next week's electricity market anticipates significant price fluctuations as variations in wind power production and the risk of price spikes influence daily price trends. Thursday stands out as the most expensive day of the week.*
 
-The electricity market's price forecast was last updated on Friday at 03:41.
+Loviisa 2 nuclear power plant is undergoing maintenance, which began on August 17, 2025, and is expected to end on September 8, 2025. During this period, the plant's availability is zero percent, and this may affect forecast accuracy since training data is limited during maintenance periods.
 
-|      | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+Forecast updated on Friday at 09:06.
+
+|               | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday**  | 3.8              | 1.6 - 6.1        | 1607 - 2652   | 14.2          |
-| **Sunday** | 7.1              | 1.9 - 17.4       | 408 - 2079    | 14.2          |
-| **Monday** | 6.4              | 2.3 - 9.8        | 412 - 2048    | 14.1          |
-| **Tuesday**   | 6.8              | 1.9 - 14.7       | 1067 - 2453   | 14.4          |
-| **Wednesday**| 8.2             | 4.0 - 13.7       | 997 - 2028    | 14.8          |
-| **Thursday**   | 7.8              | 2.3 - 15.8       | 975 - 1965    | 15.0          |
-| **Friday** | 2.3              | 0.5 - 6.6        | 1071 - 3373   | 15.1          |
+| **Saturday**  | 3.6              | 1.6 - 5.4        | 1633 - 2662   | 14.2          |
+| **Sunday** | 7.5              | 2.6 - 17.8       | 392 - 2087    | 14.2          |
+| **Monday** | 7.6              | 2.1 - 21.5       | 240 - 2197    | 14.1          |
+| **Tuesday**   | 4.9              | 0.3 - 11.4       | 1371 - 2762   | 14.4          |
+| **Wednesday** | 8.0              | 3.5 - 15.1       | 1108 - 1798   | 14.8          |
+| **Thursday**   | 9.5              | 3.7 - 15.7       | 993 - 1478    | 15.0          |
+| **Friday** | 5.1              | 0.7 - 10.9       | 1125 - 3463   | 15.1          |
 
-The upcoming week brings varying electricity market prices. **Sunday** stands out as the day with the highest average price, rising to 7.1 cents. Prices for this day vary significantly, and the maximum price may rise to a high of 17.4 cents, the highest in the weekly forecast. Sunday's wind power is also low, contributing to higher prices.
+**Saturday** offers a low average price, but price spikes may occur during individual hours. Prices on **Sunday** and **Monday** are expected to rise significantly, partly due to lower wind power generation. There is also a high risk of price spikes on these days, particularly during the morning and evening hours.
 
-**Thursday** and **Wednesday** follow Sunday in terms of average prices, at 7.8 and 8.2 cents. Thursday also has a high maximum price of 15.8 ¢, which, combined with low wind power, may cause price spikes, especially in the evening. On Wednesday, attention is drawn to the morning hours when prices may be higher.
+**Tuesday** sees prices return to more moderate levels, while **Wednesday** is expected to see higher prices again, particularly in the evening. **Thursday** continues this trend, with its average price being the highest of the week. **Friday's** forecast promises more affordable prices again, but afternoon hours may see spikes.
 
-**Friday** appears to be the cheapest day of the week, with an average price of just 2.3 cents. This is partly due to strong wind power, which can push prices down. Saturday also offers relatively low prices, but isolated price spikes may occur.
+The week's price expectations vary significantly, with **Thursday** standing out as the most expensive day. Fluctuations in wind power production strongly impact price formation, clearly reflected in the price range across different days of the week.
 
-Overall, the week presents varying price expectations, most influenced by fluctuations in wind power and general demand. The weekend is expected to see the greatest price fluctuations, while prices remain more moderate at the beginning of the week.
-
-*Report completed by electricity number expert gpt-4o.* ⚡️
+*Upcoming prices analyzed by gpt-4o.* 🌬️
