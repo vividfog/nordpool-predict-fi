@@ -1,23 +1,27 @@
-*This week presents diverse price developments in the electricity market, with wind power fluctuations and the risk of price spikes standing out, particularly at the beginning of the week, while the end of the week promises stability and affordable prices.*
+*The electricity market price forecast for the coming week shows price fluctuations, with Monday standing out as an expensive day. Variations in wind power production influence prices, and there is a risk of price spikes on several days.*
 
-The forecast was updated on Saturday at 14:24.
+**Loviisa 2** nuclear power plant is undergoing maintenance, which started on August 17, 2025, at 04:00 and is expected to continue until September 8, 2025, at 00:00. This maintenance may affect the accuracy of the forecast, as training data available from maintenance periods is limited.
 
-|           | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 10.9 | 3.3 - 19.5 | 161 - 1715 | 14.2 |
-| **Monday** | 12.5 | 6.1 - 23.1 | 241 - 1381 | 14.1 |
-| **Tuesday**   | 7.6  | 2.2 - 19.0 | 1033 - 2482 | 14.4 |
-| **Wednesday** | 7.7  | 4.0 - 12.9 | 1523 - 2160 | 14.8 |
-| **Thursday**   | 7.5  | 4.1 - 12.4 | 1445 - 1884 | 15.0 |
-| **Friday** | 3.8  | 1.6 - 6.1  | 1389 - 2595 | 15.3 |
-| **Saturday**  | 3.5  | 1.5 - 6.0  | 1279 - 2348 | 15.1 |
+The forecast was updated on Saturday at 21:06.
 
-The upcoming week's electricity price expectations vary significantly between different days. **Monday** stands out as the most expensive day of the week, with an average price rising to 12.5 cents per kilowatt-hour, and the maximum price could reach up to 23.1 cents. This may be due to the low wind power production, averaging only 440 megawatts. The risk of price spikes is high on Monday, especially in the morning from 8-10 and in the evening from 6-8.
+|                | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:---------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Sunday**     | 10.9             | 3.3 - 19.5       | 156 - 1790    | 14.2          |
+| **Monday**     | 12.9             | 6.1 - 23.0       | 231 - 1350    | 14.1          |
+| **Tuesday**    | 7.2              | 1.5 - 15.8       | 1000 - 2508   | 14.4          |
+| **Wednesday**  | 6.2              | 3.2 - 11.8       | 1650 - 2297   | 14.8          |
+| **Thursday**   | 6.8              | 1.9 - 11.8       | 1237 - 2313   | 15.0          |
+| **Friday**     | 4.0              | 1.3 - 7.5        | 1860 - 2514   | 15.3          |
+| **Saturday**   | 7.7              | 3.9 - 13.8       | 887 - 1923    | 15.1          |
 
-**Tuesday**, on the other hand, offers cheaper electricity at an average of 7.6 cents, but the risk of price spikes remains, especially in the morning from 7-9 and in the evening from 6-8. Wind power production on Tuesday averages 1660 megawatts, helping to keep prices moderate, although individual peak hours may increase the price.
+The upcoming week brings varied price expectations for electricity on the market. **Monday** stands out as the most expensive day of the week, with an average price rising to 12.9 cents and peak prices potentially reaching up to 23.0 cents. This can partly be attributed to low wind power production, which falls to just 231 MW in the morning hours. The risk of price spikes is particularly notable during the afternoon and evening hours, from 18:00 to 20:00.
 
-Towards the end of the week, prices on **Friday** and **Saturday** are significantly lower, averaging less than four cents per kilowatt-hour. Wind power production is stronger during this time, explaining the lower prices to some extent. Notably, Friday's maximum price remains at 6.1 cents, indicating a calm price development.
+On **Tuesday**, the price level significantly drops, with the average price expected to be 7.2 cents. This is partly due to substantial wind power production, exceeding 2500 MW during the day. However, price spikes are also anticipated on Tuesday, particularly in the morning from 8:00 to 10:00 and in the evening from 18:00 to 20:00.
 
-Average prices are generally moderate with a few exceptions, and weather conditions appear to remain cool, which does not significantly affect the price level. During the week, price fluctuations are at their greatest early in the week, while the end of the week looks more stable in terms of prices.
+In the middle of the week, on **Wednesday** and **Thursday**, prices settle at more moderate levels, with average prices of 6.2 and 6.8 cents, respectively. During these days, wind power production is relatively stable, and no significant price fluctuations are expected.
 
-*Analysis provided by gpt-4o.* 🌬️
+The most affordable day of the week is **Friday**, when the average price drops to 4.0 cents. Wind power production is high on this day, partially explaining the lower price level.
+
+**Saturday** again brings a slight increase in prices, with the average price at 7.7 cents. There is a risk of price spikes, particularly during the morning and afternoon hours.
+
+*Analysis conducted by gpt-4o.* 🌪️
