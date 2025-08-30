@@ -1,21 +1,23 @@
-*Next week's electricity price forecast shows significant fluctuations: Monday stands out as an expensive day, while Friday offers more affordable electricity. Wind power significantly influences prices, and price spikes may occur on several days.*
+*Next week's electricity price forecasts vary significantly, and consumers should prepare for potential price spikes, especially at the beginning and end of the week. The week also offers more affordable price periods, particularly on Thursday and Friday.*
 
-The forecast was last updated on Friday at 21:07.
+The forecast was updated on Saturday at 03:19.
 
-|          | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:---------|:---------------:|:---------------:|:-------------:|:-------------:|
-| **Saturday** | 6.4 | 1.6 - 13.5 | 825 - 2218 | 14.2 |
-| **Sunday** | 10.4 | 3.8 - 20.8 | 205 - 1443 | 14.2 |
-| **Monday** | 12.2 | 3.8 - 26.3 | 176 - 1867 | 14.1 |
-| **Tuesday** | 6.2 | 1.1 - 13.7 | 1375 - 2595 | 14.4 |
-| **Wednesday** | 7.0 | 2.0 - 12.6 | 1293 - 2184 | 14.8 |
-| **Thursday** | 5.2 | 2.6 - 8.2 | 1387 - 2466 | 15.0 |
-| **Friday** | 3.3 | 0.7 - 5.8 | 1639 - 2626 | 15.3 |
+|             | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Sunday** | 10.8 | 4.8 - 21.4 | 129 - 1480 | 14.2 |
+| **Monday** | 11.5 | 5.6 - 22.0 | 314 - 1371 | 14.1 |
+| **Tuesday**   | 6.2  | 0.7 - 15.2 | 1260 - 2598 | 14.4 |
+| **Wednesday** | 6.0  | 2.4 - 11.8 | 1517 - 2324 | 14.8 |
+| **Thursday**   | 5.3  | 2.3 - 8.4  | 1318 - 2467 | 15.0 |
+| **Friday** | 3.2  | 0.6 - 5.9  | 1636 - 2673 | 15.3 |
+| **Saturday**  | 5.8  | 2.1 - 12.2 | 1119 - 1773 | 15.2 |
 
-Electricity prices on the market will vary significantly next week. **Monday** stands out with its high prices, as the day's average price rises to 12.2 cents and the maximum price reaches 26.3 ¢. This may be due to low wind power production, which averages only 502 MW. **Sunday** also appears expensive, with an average price of 10.4 ¢ and a maximum price of 20.8 ¢. On these days, there is a high risk of price spikes, particularly during the morning and evening hours.
+The upcoming week's electricity markets anticipate fluctuating prices and wind power production. **Sunday** and **Monday** stand out with higher average prices, which may cause cost pressures for consumers. On these days, prices are 10.8 ¢ and 11.5 ¢, with a risk of price spikes. For instance, on Sunday, price spikes may occur between 5 PM and 7 PM. Similarly, on Monday, prices are expected to rise in the morning and evening.
 
-The most affordable prices of the week will be seen on Friday, with an average price of just 3.3 cents and a maximum price remaining modest at 5.8 cents. **Friday's** low prices are partly explained by high wind power production, averaging 2268 MW. **Saturday** also offers more affordable prices, with an average price of 6.4 ¢.
+**Tuesday** and **Wednesday** are forecasted to be significantly cheaper, with average prices of 6.2 ¢ and 6.0 ¢, but there is still a risk of price spikes. On Tuesday, prices may rise in the morning and evening, while on Wednesday, prices may increase in the afternoon. However, these days generally have lower prices compared to the beginning of the week.
 
-**Tuesday** stands out with its high wind power production, keeping prices moderate, although the average price rises to 6.2 cents. However, there is a risk of price spikes, as the maximum price could reach 13.7 ¢. **Wednesday** is similar, with an average price of 7.0 ¢ and a maximum price of 12.6 ¢. Thursday and Friday, on the other hand, offer stable and affordable prices without significant price spikes.
+**Thursday** and **Friday** appear to be the cheapest days of the week, especially with Friday's average price at just 3.2 ¢. Wind power production is sufficiently high on these days, which helps to keep prices in check. The weekend begins on **Saturday**, when prices may rise again, particularly in the afternoon and evening hours.
 
-*Data interpretation was handled by gpt-4o.* 🌥️
+Overall, next week brings price fluctuations, with the highest prices seen on **Sunday** and **Monday**, while the end of the week is noticeably cheaper. Consumers should be prepared for potential price spikes, especially at the start and end of the week.
+
+*Report compiled by gpt-4o.* 🌬️
