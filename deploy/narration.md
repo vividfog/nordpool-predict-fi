@@ -1,23 +1,21 @@
-*Tulevan viikon pörssisähkön hinnat vaihtelevat merkittävästi, ja erityisesti viikonlopun jälkeen ennustetaan korkeampia hintapiikkejä. Keskiviikko ja torstai ovat edullisimmat päivät, kun taas maanantai ja tiistai voivat yllättää kalleudellaan.*
+*Ensi viikon sähkömarkkinoilla nähdään vaihtelevia hintakehityksiä, kun edullisemmat päivät vaihtuvat korkeampiin hintoihin erityisesti viikonloppuna ja tiistaina, osittain alhaisen tuulivoiman tuotannon vuoksi.*
 
-Pörssisähkön hintaennuste on päivitetty tiistaina klo 03:20.
+Ennuste on päivitetty tiistaina klo 09:06.
 
-|               | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|          | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **keskiviikko** | 3,6 | 0,5 - 7,7 | 1796 - 3277 | 14,8 |
-| **torstai**      | 3,8 | 0,1 - 9,2 | 1542 - 4267 | 15,0 |
-| **perjantai**    | 5,8 | 1,1 - 11,6 | 1116 - 4246 | 15,3 |
-| **lauantai**     | 6,8 | 2,6 - 13,2 | 667 - 2365 | 15,1 |
-| **sunnuntai**    | 7,2 | 3,4 - 16,8 | 979 - 1437 | 14,9 |
-| **maanantai**    | 11,0 | 3,9 - 21,1 | 882 - 1307 | 14,4 |
-| **tiistai**      | 10,8 | 6,3 - 20,3 | 754 - 1265 | 14,6 |
+| **keskiviikko** | 3,3 | 0,2 - 7,6 | 1786 - 3232 | 14,8 |
+| **torstai**    | 4,2 | 0,7 - 9,4 | 1510 - 4288 | 15,0 |
+| **perjantai**  | 6,9 | 0,3 - 14,5 | 910 - 4262  | 15,3 |
+| **lauantai**   | 8,4 | 4,2 - 17,6 | 650 - 1626  | 15,1 |
+| **sunnuntai**  | 4,0 | 1,6 - 7,1 | 1237 - 2115 | 14,9 |
+| **maanantai**  | 4,8 | 1,3 - 10,8 | 967 - 2107  | 14,4 |
+| **tiistai**    | 7,8 | -0,3 - 29,7 | 599 - 2119  | 14,6 |
 
-Tulevan viikon aikana sähkön hinta vaihtelee merkittävästi. **Keskiviikkona** ja **torstaina** odotetaan edullisia keskihintoja, jotka pysyvät alle neljän sentin tasolla. Nämä päivät erottuvat matalana tuulivoimatuotantona, mutta hintapiikkien riskiä ei ole ennustettu.
+Tulevan viikon sähkömarkkinat näyttävät vaihtelevilta, kun eri päivien keskihinnat antavat viitteitä hintojen vaihteluista. **Keskiviikkona** ja **torstaina** odotetaan suhteellisen edullisia sähkön hintoja, keskihintojen ollessa alle viiden sentin. Näiden päivien ennusteet eivät näytä merkittäviä hintapiikkejä, ja tuulivoima on tasolla, joka ei vaikuta merkittävästi hintaan.
 
-**Perjantaina** keskihinta nousee 5,8 senttiin, ja hintapiikkien riski on mainittu. Tuulivoimatuotanto on vaihtelevaa, mikä osaltaan selittää hintavaihtelut. Yksittäisiä hintapiikkejä voi esiintyä erityisesti aamun ja illan tunneilla.
+**Perjantaina** ja **lauantaina** odotetaan hintojen nousevan, ja lauantaina voi esiintyä merkittäviä hintapiikkejä. Lauantain maksimihinta saattaa nousta jopa 17,6 senttiin, mikä selittyy osittain alhaisella tuulivoiman tuotannolla. Tämä voi lisätä merkittävästi sähkön hintaa tietyillä tunneilla.
 
-Viikonloppu tuo mukanaan lisää hintavaihtelua. **Lauantaina** ja **sunnuntaina** keskihinnat nousevat edelleen, erityisesti sunnuntaina, jolloin hinta kohoaa 7,2 senttiin. Sunnuntaipäivän maksimihinta voi nousta jopa 16,8 senttiin, mikä johtuu alhaisesta tuulivoiman tuotannosta ja mahdollisista hintapiikeistä iltapäivän tunteina.
+**Sunnuntaina** palataan jälleen maltillisempaan hintatasoon, keskihinnan ollessa neljän sentin luokkaa. **Maanantaina** hinnat pysyvät kohtuullisina, mutta **tiistaina** nähdään merkittävä nousu, sillä maksimihinta saattaa nousta jopa 29,7 senttiin. Tämä johtuu erittäin matalasta tuulivoiman tuotannosta, mikä voi nostaa sähkön hintaa yksittäisinä tunteina.
 
-Ensi **maanantaina** ja **tiistaina** ovat viikon kalleimmat päivät, keskihintojen noustessa yli 10 sentin. Maanantain maksimihinta voi olla jopa 21,1 senttiä, mikä tekee siitä erityisen kalliin päivän. Tiistaina on myös korkea hintapiikkien riski, erityisesti aamun ja illan välillä, kun tuulivoimatuotanto on vähäistä.
-
-*Analyysista vastasi gpt-4o.* 🌬️
+*Katsauksesta vastasi gpt-4o, joka tarkasteli tulevan viikon markkinoita.* ⚡️
