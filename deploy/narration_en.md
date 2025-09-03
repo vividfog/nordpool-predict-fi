@@ -1,21 +1,21 @@
-*Next week, electricity prices will vary significantly as we move from Wednesday's low prices to Monday's higher ones. Fluctuations in wind power production and potential price spikes influence the price trends on different days.*
+*The upcoming week brings fluctuating electricity exchange prices as wind power production and price spikes influence the price expectations for individual days. Thursday is marked by a low price level, but price spikes are anticipated, especially on Sunday and Monday.*
 
-The forecast was updated on Tuesday at 21:06.
+The forecast was updated: Wednesday at 03:19.
 
-|              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|                 | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 0.6 | 0.0 - 2.9 | 2032 - 3861 | 14.8 |
-| **Thursday**  | 2.0 | -1.0 - 4.5 | 2243 - 4514 | 15.0 |
-| **Friday**    | 6.4 | -0.3 - 14.9 | 839 - 4419  | 15.3 |
-| **Saturday**  | 6.0 | 2.0 - 17.2 | 987 - 2147  | 15.1 |
-| **Sunday**    | 6.7 | 3.5 - 16.0 | 898 - 1243  | 14.9 |
-| **Monday**    | 10.4 | 5.8 - 19.5 | 1003 - 1576 | 14.4 |
-| **Tuesday**   | 5.6 | 0.9 - 12.6 | 1233 - 2692 | 14.6 |
+| **Thursday**     |         2.2         |        -1.0 - 4.8       |     2196 - 4565     |         15.0         |
+| **Friday**   |         6.8         |        0.5 - 14.5       |     853 - 4536      |         15.3         |
+| **Saturday**    |         5.7         |        0.9 - 14.7       |     877 - 2203      |         15.1         |
+| **Sunday**   |         5.9         |        2.7 - 13.2       |     927 - 1435      |         14.9         |
+| **Monday**   |        10.0         |        5.5 - 20.2       |     999 - 1606      |         14.4         |
+| **Tuesday**     |         5.5         |        0.8 - 12.5       |    1212 - 2752      |         14.6         |
+| **Wednesday** |         6.0         |       -1.1 - 15.2       |    1169 - 2780      |         15.2         |
 
-**Wednesday** brings exceptionally low electricity prices, with the average remaining at 0.6 cents per kilowatt-hour. There is plenty of wind power, which partly explains the low price level. **On Thursday**, prices remain moderate, and abundant wind power helps keep prices in check.
+The upcoming week starts on **Thursday** with a favorable average price predicted to be 2.2 cents per kilowatt-hour. There is an abundance of wind power available, which partly explains the low price level. **Friday** sees the price rise to an average of 6.8 cents, with potential price spikes during certain hours. **Saturday** maintains an average price of 5.7 cents, but sporadic price spikes may occur as wind power production remains lower.
 
-**Friday** presents a possibility for price spikes during the morning and evening hours. Wind power production fluctuates greatly, which could impact price increases. Similarly, **on Saturday** and **Sunday**, price spikes are expected, especially in the afternoon and evening hours. Wind power production is lower on these days, which partly explains the higher price expectations.
+**Sunday** is when price spikes are most likely, with the average price rising to 5.9 cents and wind power production staying low throughout the day. **Monday** sees the price increasing to 10 cents, and wind power remains relatively low, which may lead to price spikes during morning and evening hours.
 
-**On Monday**, the average price rises to 10.4 cents per kilowatt-hour, making it the most expensive day of the week. This is partly due to the limited wind power. **On Tuesday**, prices stabilize again as wind power production increases, and the average price drops to 5.6 cents.
+**Tuesday** and **Wednesday** experience more moderate prices, at 5.5 and 6.0 cents. However, on Wednesday, anticipated price spikes could raise the maximum prices for individual hours as wind power production dips during the day.
 
-*Forecasts were thoughtfully crafted today by gpt-4o.* 🌬️
+*Analysis by gpt-4o.* ⚡
