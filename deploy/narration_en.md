@@ -1,23 +1,21 @@
-*Next week's electricity price expectations vary significantly, as fluctuations in wind power production and potential price spikes affect pricing. Wednesday stands out for its affordability, but the weekend may see potential price spikes.*
+*Next week on the electricity market, price fluctuations are expected as affordable days like Thursday alternate with higher prices on Tuesday. Wind power production significantly influences price trends, and individual price spikes are possible early in the week.*
 
-The forecast was updated on Thursday at 14:25.
+The forecast has been updated on Thursday at 21:06.
 
-|              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday** | 3.9 | -0.1 - 12.9 | 863 - 4286 | 15.3 |
-| **Saturday** | 5.2 | 0.7 - 13.0 | 318 - 2038 | 15.1 |
-| **Sunday** | 2.7 | 0.7 - 7.5 | 678 - 1697 | 14.9 |
-| **Monday** | 4.0 | 0.0 - 9.8 | 1053 - 1835 | 14.4 |
-| **Tuesday** | 4.1 | 1.3 - 8.9 | 1295 - 1798 | 14.6 |
-| **Wednesday** | 0.8 | -0.6 - 2.7 | 1569 - 2959 | 15.3 |
-| **Thursday** | 1.2 | -0.7 - 3.6 | 2121 - 2773 | 15.8 |
+|                  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:----------------:|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Friday**       | 3.9              | -0.1 - 12.9      | 858 - 3297    | 15.3          |
+| **Saturday**     | 4.8              | 0.5 - 11.2       | 312 - 2043    | 15.1          |
+| **Sunday**       | 3.7              | 1.1 - 10.4       | 510 - 1706    | 14.9          |
+| **Monday**       | 5.5              | 2.2 - 13.1       | 865 - 1655    | 14.4          |
+| **Tuesday**      | 6.3              | 1.5 - 14.5       | 919 - 1696    | 14.6          |
+| **Wednesday**    | 3.1              | 0.6 - 8.2        | 1091 - 2845   | 15.3          |
+| **Thursday**     | 0.5              | -1.3 - 1.7       | 2133 - 3293   | 15.8          |
 
-During the upcoming week, electricity market prices will vary significantly between days. **Friday** opens the weekend with a moderate price level, with an expected average price of around 3.9 cents. Wind power is relatively high, which may explain the more affordable pricing. **Saturday**, however, forecasts a slight increase in prices, with the average price reaching 5.2 cents. There is also a risk of price spikes on Saturday, especially during morning and evening hours.
+The electricity price expectations for the next week appear varied. **Thursday** stands out as particularly affordable, with an average daily price expected to be just 0.5 cents, and the price range is -1.3 to 1.7 ¢. This is due to abundant wind power production, averaging 2625 MW. **Tuesday**, on the other hand, is the most expensive day of the week, with the average price rising to 6.3 cents. Tuesday's price expectations are influenced by the low minimum wind power of 919 MW, which partly explains the higher maximum prices.
 
-On **Sunday**, price expectations decrease again, with the average price at only 2.7 cents. This day offers affordable prices, although the risk of price spikes remains. **Monday** sees prices staying moderate, with an average of about 4 cents. Tuesday’s forecast shows no significant changes, maintaining the same average price level.
+On **Monday** and **Tuesday**, price spikes are expected during certain hours, so electricity users should be cautious. For example, on Monday, the highest expected hourly price is 13.1 ¢, and on Tuesday, it rises to as much as 14.5 cents. **Saturday** and **Sunday** also carry a risk of price spikes, although somewhat more moderate than at the beginning of the week.
 
-**Wednesday** is forecasted to have the lowest prices of the week, with an average price of only 0.8 cents. Wind power production is stronger, which partly explains the low price level. **Thursday** continues the week at a reasonable price, with an average price of 1.2 cents.
+The week begins on **Monday** with an average price of 5.5 cents, which is slightly higher than over the weekend but remains well below Tuesday's level. **Wednesday** sees prices stabilize again, with the day expected to be affordable at 3.1 cents. This suggests that price fluctuations are greater at the beginning of the week but level off as the week progresses. The weekend is relatively reasonably priced, though individual price spikes should be noted from Saturday to Sunday.
 
-The week’s price development appears variable but generally moderate. Wednesday stands out for its affordability, while Saturday and Sunday require caution for potential price spikes.
-
-*Price data interpreted by gpt-4o.* 🌬️
+*Gpt-4o interprets the electricity market.* ⚡
