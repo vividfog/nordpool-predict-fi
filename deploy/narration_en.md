@@ -1,23 +1,23 @@
-*The electricity market price forecast for the week shows significant fluctuations, especially on Tuesday, with notable price spikes expected. After that, Thursday and the weekend promise attractively low prices, thanks to strong wind power.*
+*Forecasts indicate that electricity prices will vary significantly in the coming week, particularly on Tuesday due to high demand and low wind power production. Towards the end of the week, prices decrease as wind power increases, offering affordable electricity usage opportunities.*
 
-Maintenance outages are ongoing at the Loviisa nuclear power plants. The maintenance outage for Loviisa 1 began on September 6, 2025, at 10:00 AM and is expected to end on September 24, 2025, at 12:00 AM. The maintenance outage for Loviisa 2 began on August 17, 2025, at 4:00 AM and is expected to end on September 13, 2025, at 12:00 AM. These outages may affect the accuracy of the forecast, as training data is limited during maintenance periods.
+**Loviisa 1** nuclear power plant is undergoing maintenance, which started on September 6, 2025, at 10:00 and is expected to end on September 24, 2025, at 00:00. Additionally, **Loviisa 2** plant is also on maintenance, which began on August 17, 2025, at 04:00 and will conclude on September 13, 2025, at 00:00. These maintenance periods may affect the accuracy of the forecasts, as training data from maintenance periods is limited.
 
-The electricity market price forecast was updated on Monday at 12:07 PM. Here are the forecasts for the coming days:
+The forecast was updated on Monday at 14:25.
 
-|                | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:---------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday**    | 11.4             | 5.5 - 20.5       | 304 - 1193    | 14.6          |
-| **Wednesday**  | 6.1              | 1.5 - 15.3       | 521 - 2319    | 15.3          |
-| **Thursday**   | 0.5              | -0.6 - 1.4       | 2175 - 3902   | 15.8          |
-| **Friday**     | 0.9              | -0.2 - 4.1       | 2554 - 3426   | 16.1          |
-| **Saturday**   | 0.4              | -0.8 - 2.7       | 2004 - 3547   | 14.5          |
-| **Sunday**     | 0.9              | -0.3 - 3.8       | 1482 - 3116   | 14.6          |
-| **Monday**     | 0.9              | -0.6 - 2.2       | 2036 - 3210   | 14.2          |
+|            | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:-----------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Tuesday**    | 14.4           | 3.1 - 33.3       | 288 - 1196    | 14.6          |
+| **Wednesday**| 7.7            | 2.8 - 18.5       | 522 - 2310    | 15.3          |
+| **Thursday**    | 1.2            | -0.5 - 2.7       | 2395 - 3909   | 15.8          |
+| **Friday**  | 1.2            | -0.0 - 3.3       | 2529 - 3492   | 16.1          |
+| **Saturday**   | 0.2            | -1.1 - 2.7       | 2045 - 3647   | 14.5          |
+| **Sunday**  | 1.0            | -0.3 - 4.6       | 1460 - 3126   | 14.6          |
+| **Monday**  | 1.8            | -0.5 - 5.9       | 1710 - 3222   | 14.2          |
 
-The price forecast for the week shows significant fluctuations, with **Tuesday's** higher average price standing out from other days. On Tuesday, prices range from 5.5 cents to 20.5 cents, with an average price rising to 11.4 cents, which is very expensive compared to the price levels of other days. Price spikes on this day are predicted between 10 AM-12 PM and in the evening from 6 PM-8 PM, when wind power production is at its lowest. On **Wednesday**, the average price is more moderate at 6.1 cents, but the risk of price spikes exists in the morning and afternoon.
+**On Tuesday**, the average electricity price is expected to be high, at 14.4 cents, mainly due to high prices in the afternoon and evening, when prices rise to as much as 33.3 cents. Wind power production is relatively low on that day, which contributes to the price increase. **On Wednesday**, price expectations are more moderate, with an average price of 7.7 cents, but there could be spikes in individual hours, such as from 10:00 to 12:00.
 
-Thursday offers the lowest prices of the week, with an average price of only 0.5 cents. This is due to strong wind power, which can exceed 3000 MW. **Friday**, **Saturday**, and **Sunday** are also economically priced, ranging from 0.4-0.9 cents.
+In the latter half of the week, between **Thursday** and **Friday**, particularly low prices are forecasted, with average prices around 1.2 cents. This is due to strong wind power, exceeding 3000 MW, which keeps prices low. **On Saturday**, electricity prices are expected to drop even further, below one cent, making it the cheapest day of the week.
 
-There is a risk of price spikes on **Sunday**, with prices expected to rise in the afternoon and early evening. On Monday, prices remain low, but due to maintenance outages, the accuracy of the forecast may vary.
+**On Sunday**, the price might rise slightly, with an average of 1.0 cent. However, there is a risk of price spikes, especially in the evening from 18:00 to 20:00. **Next Monday**, prices will remain low, around 1.8 cents, but occasionally prices might rise, such as in the evening from 20:00 to 22:00.
 
-*Analysis by gpt-4o.* 🚀
+*Forecasts interpreted today by the astute gpt-4o.* 📉
