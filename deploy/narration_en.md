@@ -1,29 +1,23 @@
-*Next week, electricity prices will vary significantly between days due to the influence of wind power production and other factors. Price spikes are particularly expected on Sunday, while the lowest prices of the week are anticipated on Saturday and Friday.*
+*The electricity market forecast for next week indicates varying price developments, with Sunday standing out due to its highest average price and potential price spikes, while Monday and Saturday offer more affordable prices supported by strong wind power.*
 
-There is an ongoing maintenance outage at the Loviisa 1 nuclear power plant, which started on 6.9.2025 at 10:00 and is expected to end on 24.9.2025 at 00:00. Loviisa 2 is also under maintenance, beginning on 17.8.2025 at 04:00 and expected to finish on 17.9.2025 at 00:00. These maintenance outages can affect forecast accuracy because there is limited training data available from periods with maintenance outages.
+The Loviisa 1 nuclear power plant is currently undergoing maintenance. Its nominal capacity is 496.0 MW, but the available capacity is 0 MW. The maintenance started on 6.9.2025 at 10:00 and is expected to end on 24.9.2025 at 00:00. The Loviisa 2 nuclear power plant is also under maintenance, with a nominal capacity of 496.0 MW and an available capacity of 0 MW. The maintenance began on 17.8.2025 at 04:00 and will end on 17.9.2025 at 00:00. These maintenance outages may affect the forecast's accuracy, as training data from maintenance periods is limited.
 
-The forecast was updated on Friday at 14:25.
+The electricity price forecast was updated on Friday at 21:07.
 
-|              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|             | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday** |       1.4        |     0.4 - 6.1    |  2256 - 4298  |     14.5      |
-| **Sunday**   |       4.5        |   -0.1 - 17.6    |   565 - 3456  |     14.6      |
-| **Monday**   |       2.4        |     0.6 - 5.6    |  2058 - 6076  |     14.2      |
-| **Tuesday**  |       3.6        |     0.4 - 7.8    |  1228 - 3349  |     13.5      |
-| **Wednesday**|       3.9        |     2.4 - 8.6    |  1552 - 3682  |     12.9      |
-| **Thursday** |       5.3        |     1.9 - 9.8    |  1652 - 3442  |     12.7      |
-| **Friday**   |       2.5        |     0.5 - 4.1    |  2586 - 3937  |     11.8      |
+| **Saturday**   | 1.4             | 0.4 - 6.1        | 2187 - 4424   | 14.5          |
+| **Sunday**  | 5.0             | -0.2 - 17.0      | 466 - 3340    | 14.6          |
+| **Monday**  | 1.3             | -0.1 - 3.0       | 2087 - 6128   | 14.2          |
+| **Tuesday**    | 2.5             | -0.2 - 5.5       | 1933 - 3729   | 13.5          |
+| **Wednesday**| 5.1             | 1.9 - 10.3       | 1514 - 2978   | 12.9          |
+| **Thursday**    | 4.1             | 0.9 - 6.3        | 1458 - 2403   | 12.7          |
+| **Friday**  | 2.2             | -0.2 - 4.9       | 2048 - 3651   | 11.8          |
 
-The price forecasts for the coming week indicate fluctuating electricity costs. **Saturday** will start the week with a low average price of about 1.4 cents per kilowatt-hour, but the price range will vary between 0.4 and 6.1 cents. This is partly due to the abundant wind power production, which will be at a strong average level.
+Next week's electricity markets appear to be variable, with prices expected to fluctuate across different days. **Sunday** stands out with the highest average price of 5.0 ¢/kWh, and the maximum price could reach up to 17.0 ¢. This is partly due to the low wind power production, which is forecasted to be at a minimum of only 466 MW. Such a low wind power production could partly explain the price spikes, which are expected to occur particularly during the afternoon and evening hours. The average wind power production on Sunday is also significantly below the levels of other days.
 
-**Sunday** stands out with its higher average price of 4.5 cents and a significant maximum price that could reach up to 17.6 cents. This is due to the reduced wind power production, with a minimum that could drop below 600 MW. There is a high risk of price spikes on Sunday, especially in the evening between 18:00 and 20:00.
+The cheapest days of the week seem to be **Monday** and **Saturday**, with average prices remaining low at 1.3 ¢ and 1.4 ¢. On these days, wind power production is strong, which could partly keep prices down. On the other hand, **Wednesday** and **Thursday** bring the possibility of price spikes, even though the average prices for the days are below 5.5 ¢. On these days, wind power production is lower, which could raise electricity prices during certain hours.
 
-**Monday** and **Tuesday** will bring more moderate price developments, with average prices at 2.4 and 3.6 cents. During these days, wind power production will remain relatively stable, and no price spikes are expected.
+On Friday, prices average at 2.2 ¢, and the minimum price could even drop to negative. Wind power production is at a typical level, which helps stabilize prices towards the end of the week. As the weekend approaches, prices are expected to remain moderate, with no significant fluctuations anticipated.
 
-**Wednesday** sees slightly higher prices with an average of 3.9 cents, but wind power production will remain at a reasonable level. Price expectations are stable without significant spikes.
-
-**Thursday**’s price forecasts rise again, with an average price of 5.3 cents, and the maximum price could reach 9.8 cents. The lower minimum wind power production partly explains the higher price level. Price spikes may occur in the morning between 07:00 and 09:00.
-
-**Friday** concludes the week with relatively low prices, with an average price of 2.5 cents. Wind power production is expected to be strong, which partly supports the lower prices.
-
-*Forecasts interpreted by gpt-4o.* 📊
+*Analysis conducted by gpt-4o.* 🌬️
