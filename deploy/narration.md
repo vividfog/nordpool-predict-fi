@@ -1,23 +1,23 @@
-*Sähkön hinnat vaihtelevat tulevalla viikolla edullisista tasoista korkeisiin piikkeihin, erityisesti alkuviikosta ja viikon lopulla, kun matala tuulivoimatuotanto ja huoltokatkot vaikuttavat ennusteisiin.*
+*Ensi viikolla pörssisähkön hinnat vaihtelevat merkittävästi eri päivinä, ja erityisesti maanantaina ennustetaan hintojen nousevan huomattavasti. Tuulivoiman tuotanto vaikuttaa hintojen kehitykseen, ja paikallisia hintapiikkejä voi esiintyä useina päivinä.*
 
-**Loviisa 1** -ydinvoimalassa on käynnissä huoltokatko, joka alkoi 6. syyskuuta 2025 klo 10 ja päättyy ennusteen mukaan 24. syyskuuta 2025 klo 00. Myös **Loviisa 2** on huoltokatkossa, alkaen 17. elokuuta 2025 klo 04 ja päättyen 17. syyskuuta 2025 klo 16. Huoltokatko voi vaikuttaa ennusteen tarkkuuteen, sillä opetusdataa on saatavilla rajallisesti huoltokatkojen ajalta.
+Loviisa 1 -ydinvoimala on huoltokatkolla, joka alkoi 6. syyskuuta 2025 klo 10 ja päättyy ennusteen mukaan 24. syyskuuta 2025 klo 00. Samoin Loviisa 2 on huoltokatkolla 17. elokuuta 2025 klo 04 alkaen ja sen on määrä päättyä 17. syyskuuta 2025 klo 16. Nämä huoltokatkot voivat vaikuttaa ennusteen tarkkuuteen, koska opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
 
-Ennuste on päivitetty maanantaina klo 21:10.
+Ennuste päivitettiin viimeksi tiistaina klo 03:21.
 
-|           | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **tiistai**   | 1,9             | 0,0 - 8,3        | 3199 - 4623   | 13,5          |
-| **keskiviikko** | 5,2             | 1,6 - 10,7       | 1186 - 3074   | 12,9          |
-| **torstai**   | 6,5             | 1,1 - 14,5       | 988 - 2626    | 12,7          |
-| **perjantai** | 2,9             | 0,1 - 6,7        | 1646 - 4757   | 11,8          |
-| **lauantai**  | 1,8             | -0,3 - 6,4       | 779 - 4410    | 10,8          |
-| **sunnuntai** | 1,9             | 0,6 - 4,0        | 2170 - 3684   | 10,8          |
-| **maanantai** | 14,1            | 2,5 - 25,0       | 805 - 2467    | 10,1          |
+|                | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:---------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **keskiviikko** | 5,6             | 1,4 - 11,4       | 859 - 3115    | 12,9          |
+| **torstai**    | 4,5             | 1,6 - 8,8        | 1559 - 1942   | 12,7          |
+| **perjantai**  | 5,2             | 0,6 - 12,2       | 1250 - 3955   | 11,8          |
+| **lauantai**   | 3,1             | 1,4 - 5,3        | 1520 - 4312   | 10,8          |
+| **sunnuntai**  | 1,9             | 0,5 - 3,3        | 2244 - 3625   | 10,8          |
+| **maanantai**  | 13,9            | 2,7 - 25,0       | 785 - 2522    | 10,1          |
+| **tiistai**    | 5,0             | 2,4 - 9,5        | 1895 - 3252   | 9,5           |
 
-Tulevalla viikolla sähkön hinnat vaihtelevat merkittävästi. **Tiistai** ja **lauantai** ovat ennusteen mukaan edullisimmat päivät, sillä niiden keskihinnat ovat alle kahden sentin. Tiistaina hinnat pysyvät suurimman osan päivästä matalina, mutta illalla on odotettavissa nousua, kun hinta kohoaa yli kahdeksan sentin. **Keskiviikkona** ja **torstaina** hinnat ovat paikoin korkeammat, ja torstaina on suuri riski hintapiikeille, erityisesti iltapäivällä. Keskiviikkona tuulivoiman tuotanto on alhaisimmillaan, mikä saattaa nostaa hintoja.
+Tuleva viikko tuo mukanaan vaihtelevia pörssisähkön hintoja. **Keskiviikkona** ja **torstaina** hinnat ovat maltillisella tasolla, mutta yksittäiset hintapiikit voivat nostaa kustannuksia, erityisesti keskiviikkona ilta-aikaan, jolloin maksimihinta saattaa nousta 11,4 senttiin. **Perjantaina** hinnat vaihtelevat huomattavasti, ja odotettavissa on, että sähkö olisi edullisimmillaan aamuyöllä. Päivän aikana maksimihinta voi saavuttaa 12,2 sentin tason.
 
-**Perjantai** tarjoaa kohtalaisen hintatason ilman merkittäviä hintapiikkejä, kun taas **sunnuntaina** hinnat pysyvät matalalla tasolla läpi päivän. Sunnuntain tuulivoimatuotanto on keskimäärin hieman normaalia alhaisempi, mutta sillä ei odoteta olevan merkittävää vaikutusta hintatasoon.
+**Lauantaina** ja **sunnuntaina** hinnat ovat ennusteen mukaan viikon alhaisimmat, ja hintojen odotetaan pysyvän alle viiden sentin. Lauantain ja sunnuntain tuulivoimatuotanto on korkealla tasolla, mikä osaltaan vaikuttaa hintojen maltillisuuteen. Viikonlopun jälkeen **maanantaina** hinnat nousevat selvästi, ja päivän keskihinta on arvioitu olevan 13,9 senttiä. Maanantaina illalla hintapiikit voivat nostaa kustannuksia merkittävästi.
 
-Ensi **maanantai** erottuu selvästi viikon kalliimpana päivänä, jolloin hinta voi nousta jopa 25 senttiin kWh:lta. Tämä johtuu osittain alhaisesta tuulivoiman tuotannosta sekä ydinvoimaloiden huoltokatkoista, jotka voivat vaikuttaa ennusteen tarkkuuteen. Maanantaina hintapiikkejä odotetaan erityisesti aamun ja illan tunteina.
+**Tiistaina** hinnat tasaantuvat jälleen viiden sentin tuntumaan, mutta mahdollisuus hintapiikkeihin säilyy. Odotettavissa on, että tuulivoimatuotanto pysyy tavanomaisella tasolla, eikä sillä ole merkittävää vaikutusta hintojen suuntaan.
 
-*Ensi viikon sähkön hintanäkymiä tulkitsi gpt-4o.* 🌬️📉
+*Analyysin teki gpt-4o.* 🌬️
