@@ -1,23 +1,23 @@
-*Next week, electricity price forecasts vary significantly, with prices expected to rise notably towards the end of the week. Wind power production and price spikes influence price expectations, so consumers should monitor the situation closely.*
+*Next week's electricity market price trends will be variable, starting with low prices and culminating in strong increases on Friday. Electricity production is supported by fluctuating wind power, but individual price peaks may raise costs as the weekend approaches.*
 
-There is an ongoing maintenance outage at the Olkiluoto 3 nuclear power plant, which began on September 20 at 01:00 and is expected to end on October 10 at 01:00. The Loviisa 1 plant is also under maintenance from September 6 at 10:00, with completion expected on September 29 at 12:00. These maintenance outages may affect the accuracy of forecasts, as training data from outage periods is limited.
+Olkiluoto 3 nuclear power plant is currently undergoing maintenance, which began on September 20, 2025, and is expected to end on October 10, 2025. Loviisa 1 plant is also under maintenance starting September 6, 2025, with an expected end date of September 29, 2025. These maintenance outages may affect the forecast's accuracy, as training data for outage periods is limited.
 
-The forecast was updated on Saturday at 12:07.
+The forecast was updated on Saturday at 14:25.
 
-|            | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:-----------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday**    | 1.6 | -0.3 - 5.5 | 679 - 6302 | 10.8 |
-| **Monday**    | 1.2 | -1.4 - 3.6 | 4989 - 6524 | 10.1 |
-| **Tuesday**   | 1.9 | -0.7 - 6.6 | 3102 - 4810 | 9.3 |
-| **Wednesday** | 5.4 | 0.6 - 10.4 | 1898 - 3519 | 8.7 |
-| **Thursday**  | 5.1 | 0.7 - 15.3 | 1606 - 4624 | 10.0 |
-| **Friday**    | 10.5 | 2.6 - 21.6 | 561 - 2747 | 11.0 |
-| **Saturday**  | 7.1 | 2.1 - 16.1 | 1509 - 2320 | 10.6 |
+|             | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Sunday**    | 0.3 | -0.1 - 1.7 | 634 - 6282 | 10.8 |
+| **Monday**    | 0.5 | -1.7 - 2.2 | 5055 - 6530 | 10.1 |
+| **Tuesday**   | 1.8 | -1.1 - 6.3 | 3478 - 4871 | 9.3 |
+| **Wednesday** | 4.6 | 0.3 - 10.9 | 2117 - 4185 | 8.7 |
+| **Thursday**  | 5.0 | 1.7 - 14.4 | 1666 - 4645 | 10.0 |
+| **Friday**    | 10.0 | 2.3 - 19.7 | 712 - 2728 | 11.0 |
+| **Saturday**  | 6.9 | 1.1 - 15.7 | 1434 - 2419 | 10.6 |
 
-In the coming week, electricity price trends appear variable. **Monday** and **Tuesday** are expected to be the most affordable days, with average prices below two cents, due to high wind power production. **Wednesday** brings a significant price increase, with the average price rising above five cents. This may be due to a decrease in wind power production and higher demand.
+The upcoming week begins with relatively low electricity market prices on **Sunday** and **Monday**, with prices fluctuating around two cents. Both days benefit from strong wind power production, which helps keep electricity prices low. **Tuesday** sees a slight increase in prices, but they remain moderate.
 
-On **Thursday**, prices remain high, with potential price spikes expected during the late morning and afternoon hours. **Friday** is the most expensive day of the week, with average prices exceeding ten cents. This is partly due to low wind power production, which falls below 1000 MW at certain times, affecting price increases.
+On **Wednesday** and **Thursday**, prices rise, especially on Thursday afternoon when prices may reach 14.4 ¢/kWh. This could be due to decreased wind power production during the day. **Friday** sees prices clearly exceeding ten cents, with the risk of individual price spikes, particularly in the late morning around 9-11 AM.
 
-Over the weekend, **Saturday** still sees high prices but does not reach Friday's levels. Individual price spikes may still occur in the morning and evening hours.
+During the weekend on **Saturday**, prices remain high, with the highest risk of price spikes in the morning and early evening. When looking at the week's overall picture, Friday stands out as the most expensive day, but the entire week's price expectations remain relatively variable due to fluctuations in wind and nuclear power production.
 
-*Data interpreted today by gpt-4o.* 🌬️
+*Today's price forecast was crafted by the vigilant gpt-4o.* 🌬️
