@@ -1,25 +1,23 @@
-*Alkavan viikon sähkön hintaennusteissa on odotettavissa vaihtelua, kun tuulivoiman tuotantomäärät ja hintapiikkien riskit vaihtelevat päivittäin. Erityisesti perjantaina ja lauantaina ennustetaan korkeampia hintoja. Viikko alkaa kuitenkin maltillisemmilla sähkön hinnoilla.*
+*Viikon sähkön hintaennusteessa näkyy merkittäviä vaihteluita, erityisesti viikonloppuna, jolloin vähäinen tuulivoiman tuotanto nostaa hintoja. Lauantaina ennustetaan korkeimmat hinnat, ja hintapiikit ovat mahdollisia useina päivinä.*
 
-Olkiluoto 3 -ydinvoimala on huoltokatkossa, joka alkoi 20.9.2025 klo 01 ja päättyy ennusteen mukaan 10.10.2025 klo 01. Myös Loviisa 1 -voimala on huoltokatkossa, joka alkoi 6.9.2025 klo 10 ja päättyy ennusteen mukaan 2.10.2025 klo 12. Huoltokatkot voivat vaikuttaa ennusteen tarkkuuteen, sillä opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
+Olkiluoto 3 -ydinvoimala on poissa tuotannosta huoltokatkon vuoksi. Huoltokatko alkoi 20.9.2025 klo 01 ja sen odotetaan päättyvän 10.10.2025 klo 01. Loviisa 1 on myös huollossa ajalla 6.9.2025 klo 10 - 2.10.2025 klo 12. Huoltokatkot voivat vaikuttaa ennusteen tarkkuuteen, sillä opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
 
-Ennuste päivitettiin tiistaina klo 03:20.
+Ennuste on päivitetty tiistaina klo 09:08.
 
 |            | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-----------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **keskiviikko** | 4,5 | -0,6 - 10,5 | 1418 - 4982 | 8,7 |
-| **torstai**     | 5,5 | 2,0 - 9,9  | 1442 - 3490 | 10,0 |
-| **perjantai**   | 10,4 | 1,5 - 24,2 | 552 - 3020 | 11,0 |
-| **lauantai**    | 13,8 | 7,9 - 26,4 | 349 - 1519 | 10,6 |
-| **sunnuntai**   | 7,6 | 2,9 - 13,0 | 967 - 2241 | 9,9 |
-| **maanantai**   | 4,3 | 0,7 - 10,5 | 2242 - 3949 | 9,9 |
-| **tiistai**     | 10,7 | 0,8 - 26,8 | 565 - 3892 | 11,2 |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **keskiviikko** | 5,0 | -0,5 - 11,5 | 1411 - 5035 | 8,7 |
+| **torstai**    | 6,0 | 2,5 - 12,0  | 1434 - 3470 | 10,0 |
+| **perjantai**  | 9,2 | 2,1 - 20,1  | 791 - 3020  | 11,0 |
+| **lauantai**   | 16,2 | 7,3 - 31,0 | 350 - 1145  | 10,6 |
+| **sunnuntai**  | 10,3 | 5,1 - 18,2 | 522 - 1789  | 9,9 |
+| **maanantai**  | 5,5 | 1,8 - 15,1  | 1241 - 2945 | 9,9 |
+| **tiistai**    | 5,3 | 0,4 - 15,4  | 1439 - 3046 | 11,2 |
 
-Viikon sähkön hintakehitys näyttää vaihtelevalta, sillä erityisesti **lauantai** erottuu korkealla keskihinnallaan, 13,8 ¢/kWh, ja maksimihinnalla, joka voi nousta 26,4 ¢:iin. Tällöin tuulivoiman tuotanto on ennusteen mukaan vähäistä, mikä voi osaltaan selittää hintapiikkejä. **Perjantaina** on myös odotettavissa hintapiikkejä, sillä ennustettu maksimihinta nousee 24,2 ¢:iin ja tuulivoiman minimi on vain 552 MW.
+Viikon sähkön hintaennusteessa näkyy merkittäviä vaihteluita. **Lauantai** erottuu selvästi kalleimmalla keskihinnallaan, joka nousee 16,2 senttiin. Tälle päivälle ennustetaan myös viikon korkein maksimihinta, 31,0 ¢. Tämä johtuu osittain hyvin vähäisestä tuulivoiman tuotannosta, joka on keskimäärin vain 627 MW. Tällainen vähäinen tuulivoima voi nostaa sähkön hintaa.
 
-**Tiistai** on ennustettu olevan toinen kallis päivä, ja sen maksimihinta voi nousta jopa 26,8 ¢:iin, mikä saattaa viitata hintapiikkien riskiin. Tuulivoiman tuotanto on tällöin vaihtelevaa, mikä voi osaltaan vaikuttaa hintoihin.
+**Perjantaina** ennustetaan korkea keskihinta 9,2 ¢, mikä on myös merkittävästi korkeampi kuin muina päivinä. Hintapiikit ovat odotettavissa erityisesti aamulla ja illalla, jolloin maksimihinta voi nousta yli 20 ¢. **Sunnuntaina** hintapiikit voivat esiintyä iltapäivällä, ja tämä näkyy myös ennustetussa korkeassa maksimihinnassa, 18,2 ¢.
 
-**Keskiviikko** ja **maanantai** erottuvat edullisempina päivinä, sillä niiden keskihinnat ovat alle viiden sentin tasolla. Näinä päivinä tuulivoiman tuotanto on ennustettu olevan voimakkaampaa, mikä saattaa pitää hinnat matalina.
+Muina päivinä, kuten **maanantaina** ja **tiistaina**, hinnat pysyvät maltillisempina, vaikka pieniä hintapiikkejä saattaa esiintyä. **Keskiviikko** alkaa alhaisilla hinnoilla, ja yön tunteina hinta voi jopa pudota negatiiviseksi, mikä on mielenkiintoinen yksityiskohta viikon aloituksessa. **Torstaina** hintapiikit voivat ajoittua aamulle, mutta yleisesti päivän hinnat pysyvät kohtuullisina.
 
-Viikonlopun aikana **sunnuntaina** odotetaan hintojen asettuvan maltillisemmalle tasolle, vaikka hintapiikkejä saattaa silti esiintyä yksittäisinä tunteina.
-
-*Ennusteen tulkitsi tänään sähköinen gpt-4o.* ⚡
+*Energiakatsausta laati tänään gpt-4o.* 🔋
