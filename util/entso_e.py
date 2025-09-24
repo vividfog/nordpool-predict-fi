@@ -40,12 +40,16 @@ def entso_e_nuclear(entso_e_api_key, DEBUG=False):
 
         logger.debug(f"→ ENTSO-E: Unavailability of generation units, RAW data:\n{unavailable_generation}")
 
+        # print("RAW unavailable_generation:")
+        # print(unavailable_generation.to_string())
+
         # Filter for relevant outage types
         outage_types = ['Planned maintenance', 'Unplanned outage']
 
         # Filter data for nuclear plant outages
         olkiluoto_outages = unavailable_generation[unavailable_generation['plant_type'] == 'Nuclear']
         olkiluoto_outages = olkiluoto_outages[olkiluoto_outages['businesstype'].isin(outage_types)]
+        olkiluoto_outages = olkiluoto_outages[olkiluoto_outages['docstatus'] != 'Cancelled']
         olkiluoto_outages = olkiluoto_outages[olkiluoto_outages['resolution'] == 'PT60M']
         olkiluoto_outages = olkiluoto_outages[['start', 'end', 'avail_qty', 'nominal_power', 'production_resource_name']]
 
@@ -62,9 +66,12 @@ def entso_e_nuclear(entso_e_api_key, DEBUG=False):
             if DEBUG:
                 logger.info(f"ENTSO-E: Unavailability of production units, RAW data:\n{unavailable_production}")
             
+            # print("RAW unavailable_production:")
+            # print(unavailable_production.to_string())
             # Filter data for nuclear plant outages
             loviisa_outages = unavailable_production[unavailable_production['plant_type'] == 'Nuclear']
             loviisa_outages = loviisa_outages[loviisa_outages['businesstype'].isin(outage_types)]
+            loviisa_outages = loviisa_outages[loviisa_outages['docstatus'] != 'Cancelled']
             loviisa_outages = loviisa_outages[loviisa_outages['resolution'] == 'PT60M']
             loviisa_outages = loviisa_outages[['start', 'end', 'avail_qty', 'nominal_power', 'production_resource_name']]
 
