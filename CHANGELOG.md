@@ -2,6 +2,11 @@
 
 All notable changes will be documented in this file.
 
+## [2025-09-24] - ENTSO-E Outage Filtering and FMI Updates
+### Fixed
+- Excluded cancelled nuclear outages from ENTSO-E API data to prevent inaccurate capacity forecasts.
+- Filtered out weather stations without data in FMI updates to prevent blocking the execution.
+
 ## [2025-06-24] - UI Enhancement
 ### Added
 - Dropdown menu to historical forecasts chart allowing users to limit forecast display to 1-5 days ahead for better short-term accuracy evaluation
