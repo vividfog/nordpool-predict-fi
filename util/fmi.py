@@ -45,10 +45,10 @@ def get_forecast(fmisid, start_date, parameters, end_date=None):
         response.raise_for_status()
         
         if not response.content:
-            logger.info(f"[WARNING] Empty response from FMI API for FMISID {fmisid} forecast ({start_date} to {end_date})")
+            logger.warning(f"FMI: Empty response from FMI API for FMISID {fmisid} forecast ({start_date} to {end_date})")
             
     except requests.RequestException as e:
-        logger.info(f"[WARNING] Error fetching forecast data from FMI for FMISID {fmisid} ({start_date} to {end_date}): {e}")
+        logger.warning(f"FMI: Error fetching forecast data from FMI for FMISID {fmisid} ({start_date} to {end_date}): {e}")
         
     # Let's not spam the FMI API
     time.sleep(.2)
@@ -59,10 +59,10 @@ def get_forecast(fmisid, start_date, parameters, end_date=None):
     try:
         root = etree.fromstring(response.content)
         if len(root.findall('.//BsWfs:BsWfsElement', namespaces=root.nsmap)) == 0:
-            logger.info(f"[WARNING] No forecast data found for FMISID {fmisid} ({start_date} to {end_date})")
+            logger.warning(f"FMI: No forecast data found for FMISID {fmisid} ({start_date} to {end_date})")
             sys.exit(1)
     except etree.XMLSyntaxError as e:
-        logger.info(f"[WARNING] Error parsing XML from FMI response for FMISID {fmisid}: {e}")
+        logger.warning(f"FMI: Error parsing XML from FMI response for FMISID {fmisid}: {e}")
 
     data = []
     for member in root.findall('.//BsWfs:BsWfsElement', namespaces=root.nsmap):
@@ -78,7 +78,7 @@ def get_forecast(fmisid, start_date, parameters, end_date=None):
         df['Value'] = pd.to_numeric(df['Value'], errors='coerce')
         df_pivot = df.pivot(index='timestamp', columns='Parameter', values='Value').reset_index()
     except Exception as e:
-        logger.info(f"DataFrame operation failed with FMI data: {e}")
+        logger.warning(f"FMI: DataFrame operation failed with FMI data: {e}")
 
     return df_pivot
 
@@ -121,20 +121,20 @@ def get_history(fmisid, start_date, parameters, end_date=None):
     try:
         response = requests.get(base_url, params=params)
         if response.status_code != 200:
-            logger.info(f"[WARNING] Failed to fetch historical data for FMISID {fmisid} ({start_date} to {end_date}): {response.text}")
+            logger.warning(f"FMI: Failed to fetch historical data for FMISID {fmisid} ({start_date} to {end_date}): {response.text}")
             
         if not response.content:
-            logger.info(f"[WARNING] Empty response from FMI API for FMISID {fmisid} history ({start_date} to {end_date})")
+            logger.warning(f"FMI: Empty response from FMI API for FMISID {fmisid} history ({start_date} to {end_date})")
             
         root = etree.fromstring(response.content)
         if len(root.findall('.//BsWfs:BsWfsElement', namespaces=root.nsmap)) == 0:
-            logger.info(f"[WARNING] No historical data found for FMISID {fmisid} ({start_date} to {end_date})")
+            logger.warning(f"FMI: No historical data found for FMISID {fmisid} ({start_date} to {end_date})")
             
     except requests.RequestException as e:
-        logger.info(f"[WARNING] Error fetching historical data from FMI for FMISID {fmisid} ({start_date} to {end_date}): {e}")
+        logger.warning(f"FMI: Error fetching historical data from FMI for FMISID {fmisid} ({start_date} to {end_date}): {e}")
         sys.exit(1)
     except etree.XMLSyntaxError as e:
-        logger.info(f"[WARNING] Error parsing XML from FMI response for FMISID {fmisid}: {e}")
+        logger.warning(f"FMI: Error parsing XML from FMI response for FMISID {fmisid}: {e}")
 
     # Let's not spam the FMI API
     time.sleep(0.1)
@@ -148,6 +148,14 @@ def get_history(fmisid, start_date, parameters, end_date=None):
 
     # Convert list of dictionaries to DataFrame
     df = pd.DataFrame(data)
+
+    # Sometimes FMI returns no history data for a station
+    if df.empty:
+        # Create empty DataFrame with expected structure
+        columns = ['timestamp'] + parameters
+        logger.warning(f"FMI: Will proceed without {parameters} training data update for FMISID {fmisid} ({start_date} to {end_date})")
+        return pd.DataFrame(columns=columns)
+
     df['Value'] = pd.to_numeric(df['Value'], errors='coerce')
     df_pivot = df.pivot(index='timestamp', columns='Parameter', values='Value').reset_index()
     return df_pivot
@@ -241,7 +249,7 @@ def update_wind_speed(df):
         # Check for NaN values in the specific wind speed column
         nan_count = df[col].isna().sum()
         if nan_count > 0:
-            logger.info(f"[WARNING] The final DataFrame contains {nan_count} NaN values in column '{col}'.")
+            logger.warning(f"FMI: The final DataFrame contains {nan_count} NaN values in column '{col}'.")
 
     return df
 
@@ -301,7 +309,7 @@ def update_temperature(df):
         # Check for NaN values in the specific temperature column
         nan_count = df[col].isna().sum()
         if nan_count > 0:
-            logger.info(f"[WARNING] The final DataFrame contains {nan_count} NaN values in column '{col}'.")
+            logger.warning(f"FMI: The final DataFrame contains {nan_count} NaN values in column '{col}'.")
 
     return df
 
