@@ -1,29 +1,25 @@
-*Electricity price forecasts indicate fluctuating prices for the coming week, with affordable weekend days transitioning to higher prices at the start of the week. Wednesday, in particular, is expected to be a significant day for price increases, with potential price spikes.*
+*Next week, electricity prices are expected to fluctuate significantly due to variations in wind power production and the possibility of price spikes. Especially during the weekend, electricity prices are forecasted to be exceptionally low.*
 
-The Loviisa 1 nuclear power plant is undergoing maintenance. Its nominal capacity is 496.0 MW, but the currently available capacity is 0 MW. The maintenance started on September 6, 2025, at 10:00 and is expected to end on October 4, 2025, at 12:00. The maintenance may affect the accuracy of the forecast because training data from maintenance periods is limited.
+The forecast was updated on Friday at 21:08.
 
-The forecast was updated on Friday at 14:26.
-
-|           | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday**  | -0.3            | -0.7 - 0.6        | 3636 - 5708   | 10.3          |
-| **Sunday** | -0.4            | -0.9 - 0.9        | 4956 - 6230   | 10.1          |
-| **Monday** | 5.0             | -0.4 - 14.6       | 1240 - 4679   | 9.6           |
-| **Tuesday**   | 7.6             | 3.9 - 15.0        | 1168 - 2524   | 9.8           |
-| **Wednesday**| 6.4            | 1.0 - 17.8        | 1185 - 2723   | 9.6           |
-| **Thursday**   | 4.8             | 1.0 - 7.9         | 1248 - 2904   | 8.7           |
-| **Friday** | 2.2             | -0.7 - 5.5        | 1745 - 3736   | 9.1           |
+| **Saturday**  | 0.1             | -0.0 - 0.3       | 3395 - 5344   | 10.3          |
+| **Sunday** | -0.4            | -1.1 - 0.7       | 4856 - 6205   | 10.1          |
+| **Monday** | 4.9             | -0.5 - 14.3      | 1199 - 4654   | 9.6           |
+| **Tuesday**   | 7.3             | 3.8 - 15.2       | 1207 - 2249   | 9.8           |
+| **Wednesday** | 8.0            | 3.0 - 18.0       | 1144 - 2170   | 9.6           |
+| **Thursday**   | 5.1             | 0.9 - 9.9        | 1361 - 3785   | 8.7           |
+| **Friday** | 2.6             | -0.6 - 5.6       | 1720 - 3991   | 9.1           |
 
-The upcoming week shows fluctuating electricity prices. **Saturday** and **Sunday** offer affordable rates, with averages even dipping into negative values, meaning practically free electricity for users. This is partly due to strong wind power production exceeding 3000 MW.
+The upcoming week's electricity price trends in Finland show variability. **Sunday** stands out with a negative average price forecast of -0.4 ¢/kWh, indicating exceptionally cheap electricity. On **Saturday**, price expectations are also low, with an average price of 0.1 ¢/kWh. On these days, wind power production is abundant, which partly explains the low prices.
 
-**Monday** is expected to see a rise in prices, with the average price forecasted to reach 5.0 cents. Price spikes might occur during the day, especially around 8 AM and 6 PM. This is partly due to weaker wind power production, averaging 2401 MW.
+**Monday** brings a clear change, as the average price rises to 4.9 ¢/kWh. Wind power production is lower, contributing to the rising prices. There is a risk of price spikes on Monday, particularly in the evening around 18:00, when high prices are expected.
 
-On **Tuesday**, the average electricity price rises further to 7.6¢, with potential for price spikes during the day. The wind power production is forecasted to be even lower than on Monday, partly explaining the higher prices.
+On **Tuesday** and **Wednesday**, the price trend continues upward, with average prices of 7.3 ¢/kWh and 8.0 ¢/kWh. Price spikes are anticipated on both days. On Tuesday, the highest prices are expected around 18:00, while on Wednesday, evening peak hours are centered around 19:00. On these days, wind power production is at a low level, partly explaining the higher prices.
 
-**Wednesday** will be a significant day in terms of prices, with maximum prices potentially reaching 17.8¢. Therefore, there is a high risk of price spikes on Wednesday, particularly in the morning and evening.
+**Thursday** sees a slight easing in price trends, with an average price of 5.1 ¢/kWh. The day's price fluctuation is more moderate, but individual hours may still see spikes. Wind power production is slightly increasing, which may help stabilize price expectations.
 
-Prices decrease slightly on **Thursday** compared to Wednesday. The average price is forecasted at 4.8¢, and wind power production remains close to normal levels. While there is still a risk of price spikes, it is lower than on Wednesday.
+On **Friday**, prices drop again, with an average price of 2.6 ¢/kWh. Wind power production is moderate, contributing to keeping prices steady. By the end of the week, more affordable electricity is expected once again.
 
-As the week closes on **Friday**, prices remain moderate, with an average price of 2.2¢. Wind power production is forecasted to rise back to higher levels, helping to keep prices low.
-
-*Future prices were analyzed by gpt-4o.* 🌬️
+*Next week's energy landscapes were charted by gpt-4o.* 🌬️
