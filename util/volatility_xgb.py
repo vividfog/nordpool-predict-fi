@@ -22,6 +22,7 @@ from sklearn.preprocessing import StandardScaler
 from xgboost import XGBClassifier
 from rich import print
 from .logger import logger
+from .xgb_utils import configure_cuda, booster_predict
 
 # Percentage threshold for labeling volatile days
 VOLATILE_THRESHOLD_PERCENTILE = 80
@@ -153,23 +154,32 @@ def train_volatility_model(df):
     logger.info(f"Calculated scale_pos_weight for XGBoost: {scale_pos_weight_val:.2f}")
     
     # Build XGBoost classifier model
-    model = XGBClassifier(
-        objective='binary:logistic',  # Output logistic probabilities
-        eval_metric='logloss',        # Evaluation metric
-        scale_pos_weight=scale_pos_weight_val, # Handle class imbalance
-        n_estimators=200,             # Number of trees
-        learning_rate=0.05,            # Learning rate
-        max_depth=4,                  # Max depth of trees
-        random_state=42,
-        n_jobs=-1                     # Use all available cores
+    model_params = configure_cuda(
+        {
+            'objective': 'binary:logistic',  # Output logistic probabilities
+            'eval_metric': 'logloss',        # Evaluation metric
+            'scale_pos_weight': scale_pos_weight_val,  # Handle class imbalance
+            'n_estimators': 200,             # Number of trees
+            'learning_rate': 0.05,           # Learning rate
+            'max_depth': 4,                  # Max depth of trees
+            'random_state': 42,
+            'n_jobs': -1                     # Use all available cores
+        },
+        logger,
     )
+    model = XGBClassifier(**model_params)
     
     # Train the model
     model.fit(X_train_scaled, y_train)
     
     # Evaluate model performance on test set
-    y_proba = model.predict_proba(X_test_scaled)[:, 1]  # Get probability of class 1
-    y_pred = model.predict(X_test_scaled)
+    X_test_scaled_df = pd.DataFrame(
+        X_test_scaled,
+        columns=X_features,
+        index=X_test.index,
+    )
+    y_proba = booster_predict(model, X_test_scaled_df)  # Probability of class 1
+    y_pred = (y_proba >= 0.5).astype(int)
     
     # Calculate metrics
     auc = roc_auc_score(y_test, y_proba)
@@ -224,9 +234,14 @@ def train_volatility_model(df):
         
         # Scale the features
         X_new_scaled = scaler.transform(X_new)
+        X_new_scaled_df = pd.DataFrame(
+            X_new_scaled,
+            columns=X_features,
+            index=X_new.index,
+        )
         
         # Get probabilities for class 1 (volatile)
-        probabilities = model.predict_proba(X_new_scaled)[:, 1]
+        probabilities = booster_predict(model, X_new_scaled_df)
         
         return probabilities
     

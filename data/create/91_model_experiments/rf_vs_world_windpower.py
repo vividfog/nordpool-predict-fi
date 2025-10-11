@@ -64,6 +64,7 @@ from sklearn.model_selection import train_test_split, TimeSeriesSplit
 from xgboost import XGBRegressor
 from statsmodels.stats.stattools import durbin_watson
 from statsmodels.tsa.stattools import acf
+from util.xgb_utils import configure_cuda
 
 # Load environment variables
 load_dotenv()
@@ -323,8 +324,8 @@ def tune_model_with_optuna(model_class, X, y, model_name, timeout, n_trials):
                 'reg_alpha': trial.suggest_float('reg_alpha', 0, 1.0),
                 'reg_lambda': trial.suggest_float('reg_lambda', 0, 1.0),
                 'random_state': 42,
-                'tree_method': 'auto'
             }
+            params = configure_cuda(params, logger)
 
         elif model_name == "Light GBM":
             params = {
@@ -387,6 +388,8 @@ def tune_model_with_optuna(model_class, X, y, model_name, timeout, n_trials):
     study.optimize(objective, n_trials=n_trials, timeout=timeout, n_jobs=get_n_jobs())
     
     best_params = study.best_params
+    if model_name == "XGBoost":
+        best_params = configure_cuda(best_params, logger)
     logger.info(f"Best parameters found for {model_name}: {best_params}")
 
     best_model = model_class(**best_params)
@@ -434,9 +437,10 @@ def main():
         return
 
     n_jobs = get_n_jobs()
+    xgb_base_params = configure_cuda({'random_state': 42, 'n_jobs': n_jobs, 'early_stopping_rounds': 50}, logger)
     models = {
         "Random Forest": RandomForestRegressor(random_state=42, n_jobs=n_jobs),
-        "XGBoost": XGBRegressor(random_state=42, n_jobs=n_jobs, early_stopping_rounds=50),
+        "XGBoost": XGBRegressor(**xgb_base_params),
         "Gradient Boosting": GradientBoostingRegressor(random_state=42),
         "Light GBM": LGBMRegressor(random_state=42, n_jobs=n_jobs, verbose=-1)
     }

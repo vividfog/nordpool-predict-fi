@@ -119,7 +119,7 @@ def calculate_capacity_sums(df):
     
     return pivot_df
 
-def update_import_capacity(df):
+def update_import_capacity(df, *, write_daily_average=False, output_path='deploy/import_capacity_daily_average.json'):
     """
     Updates the input DataFrame with import capacity data.
     """
@@ -198,13 +198,14 @@ def update_import_capacity(df):
     for entry in daily_avg_data:
         entry['date'] = entry.pop('Date')
     
-    # Wrap the data in a dictionary with a key
-    output_data = {"import_capacity_daily_average": daily_avg_data}
-    
-    with open('deploy/import_capacity_daily_average.json', 'w') as json_file:
-        json.dump(output_data, json_file, indent=4, default=str)
-    
-    logger.info(f"Daily average import capacity data saved to deploy/import_capacity_daily_average.json")
+    if write_daily_average:
+        output_data = {"import_capacity_daily_average": daily_avg_data}
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        with open(output_path, 'w') as json_file:
+            json.dump(output_data, json_file, indent=4, default=str)
+        logger.info(f"Daily average import capacity data saved to {output_path}")
+    else:
+        logger.debug("Skipping import capacity daily average export (write_daily_average=False)")
     
     # Produce a one-liner report
     total_capacity = final_df['ImportCapacityMW']

@@ -5,6 +5,7 @@ import pytz
 from datetime import datetime, timedelta
 from rich import print
 from .logger import logger
+from .dataframes import coalesce_merged_columns
 
 def fetch_nuclear_power_data(fingrid_api_key, start_date, end_date):
     dataset_id = 188  # Nuclear power production dataset ID
@@ -50,36 +51,6 @@ def fetch_nuclear_power_data(fingrid_api_key, start_date, end_date):
 
     return pd.DataFrame(columns=['startTime', 'NuclearPowerMW'])
 
-def clean_up_df_after_merge(df):
-    """
-    This function removes duplicate columns resulting from a merge operation,
-    and fills the NaN values in the original columns with the values from the
-    duplicated columns. Assumes duplicated columns have suffixes '_x' and '_y',
-    with '_y' being the most recent values to retain.
-    """
-    # Identify duplicated columns by their suffixes
-    cols_to_remove = []
-    for col in df.columns:
-        if col.endswith('_x'):
-            original_col = col[:-2]  # Remove the suffix to get the original column name
-            duplicate_col = original_col + '_y'
-            
-            # Check if the duplicate column exists
-            if duplicate_col in df.columns:
-                # Fill NaN values in the original column with values from the duplicate
-                df[original_col] = df[col].fillna(df[duplicate_col])
-                
-                # Mark the duplicate column for removal
-                cols_to_remove.append(duplicate_col)
-                
-            # Also mark the original '_x' column for removal as it's now redundant
-            cols_to_remove.append(col)
-    
-    # Drop the marked columns
-    df.drop(columns=cols_to_remove, inplace=True)
-    
-    return df
-
 def update_nuclear(df, fingrid_api_key):
     """
     Updates the input DataFrame with nuclear power production data for a specified range.
@@ -110,7 +81,7 @@ def update_nuclear(df, fingrid_api_key):
     if not nuclear_df.empty:
         nuclear_df['startTime'] = pd.to_datetime(nuclear_df['startTime'], utc=True)
         nuclear_df.set_index('startTime', inplace=True)
-        hourly_nuclear_df = nuclear_df.resample('H').mean().reset_index()
+        hourly_nuclear_df = nuclear_df.resample('h').mean().reset_index()
 
         # Log the Fingrid data fetch and aggregation results        
         logger.info(f"Fetched {len(nuclear_df)} rows, aggregated to {len(hourly_nuclear_df)} hourly averages spanning from {hourly_nuclear_df['startTime'].min().strftime('%Y-%m-%d')} to {hourly_nuclear_df['startTime'].max().strftime('%Y-%m-%d')}")
@@ -130,11 +101,11 @@ def update_nuclear(df, fingrid_api_key):
         merged_df.drop(columns=['startTime'], inplace=True)
         
         # Combine the _x and _y columns after the merge operation back to the original column
-        merged_df = clean_up_df_after_merge(merged_df)
+        merged_df = coalesce_merged_columns(merged_df)
         
         # Ensure 'NuclearPowerMW' column is filled at the end with the last known value
         if 'NuclearPowerMW' in merged_df.columns:
-            merged_df['NuclearPowerMW'] = merged_df['NuclearPowerMW'].fillna(method='ffill')
+            merged_df['NuclearPowerMW'] = merged_df['NuclearPowerMW'].ffill()
         else:
             logger.warning("'NuclearPowerMW' column not found after merge. Check data integration logic.")
         

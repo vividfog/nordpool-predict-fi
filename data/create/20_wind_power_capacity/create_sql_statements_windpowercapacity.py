@@ -11,7 +11,7 @@ df_capacity = pd.read_csv(file_path_wind_power_capacity,
                           index_col='Start_UTC')
 
 # Resample to hourly intervals and interpolate missing values
-df_capacity_resampled = df_capacity.resample('H').mean().interpolate(method='linear')
+df_capacity_resampled = df_capacity.resample('h').mean().interpolate(method='linear')
 
 # Generate UPDATE statements
 for timestamp, row in df_capacity_resampled.iterrows():

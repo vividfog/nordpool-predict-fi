@@ -17,6 +17,7 @@ from rich import print
 from sklearn.model_selection import train_test_split
 import xgboost as xgb
 from .logger import logger
+from .xgb_utils import configure_cuda
 
 pd.options.mode.copy_on_write = True
 
@@ -123,6 +124,7 @@ def train_windpower_xgb(df: pd.DataFrame):
     print(X_features.tail())
     
     # Train the model
+    hyperparams = configure_cuda(hyperparams, logger)
     logger.info(f"XGBoost for wind power: ")
     logger.info(f", ".join(f"{k}={v}" for k, v in hyperparams.items()))
 

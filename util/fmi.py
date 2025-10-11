@@ -7,6 +7,7 @@ import sys
 from rich import print
 import time
 from .logger import logger
+from .dataframes import coalesce_merged_columns
 
 def get_forecast(fmisid, start_date, parameters, end_date=None):
     """
@@ -160,37 +161,47 @@ def get_history(fmisid, start_date, parameters, end_date=None):
     df_pivot = df.pivot(index='timestamp', columns='Parameter', values='Value').reset_index()
     return df_pivot
 
-def clean_up_df_after_merge(df):
+# region helpers
+def _update_station_series(df, prefix, forecast_param, history_param, log_label):
     """
-    This function removes duplicate columns resulting from a merge operation,
-    and fills the NaN values in the original columns with the values from the
-    duplicated columns. Assumes duplicated columns have suffixes '_x' and '_y',
-    with '_y' being the most recent values to retain.
+    Shared workflow for combining FMI forecast and historical data for a group of stations.
     """
-    # Identify duplicated columns by their suffixes
-    cols_to_remove = []
-    for col in df.columns:
-        if col.endswith('_x'):
-            original_col = col[:-2]  # Remove the suffix to get the original column name
-            duplicate_col = original_col + '_y'
-            
-            # Check if the duplicate column exists
-            if duplicate_col in df.columns:
-                # Fill NaN values in the original column with values from the duplicate
-                df[original_col] = df[col].fillna(df[duplicate_col])
-                
-                # Mark the duplicate column for removal
-                cols_to_remove.append(duplicate_col)
-                
-            # Also mark the original '_x' column for removal as it's now redundant
-            cols_to_remove.append(col)
-    
-    # Drop the marked columns
-    df.drop(columns=cols_to_remove, inplace=True)
-    
+    current_utc = datetime.now(pytz.UTC)
+    current_date = current_utc.strftime("%Y-%m-%d")
+    history_date = (current_utc - timedelta(days=7)).strftime("%Y-%m-%d")
+    end_date = (current_utc + timedelta(days=8)).strftime("%Y-%m-%d")
+
+    logger.info(f"FMI: Fetching {log_label} forecast and historical data between {history_date} and {end_date}")
+
+    for col in [c for c in df.columns if c.startswith(prefix)]:
+        fmisid = int(col.split('_')[1])
+
+        forecast_df = get_forecast(fmisid, current_date, [forecast_param], end_date=end_date)
+        history_df = get_history(fmisid, history_date, [history_param], end_date=end_date)
+
+        forecast_df.rename(columns={forecast_param: col}, inplace=True)
+        history_df.rename(columns={history_param: col}, inplace=True)
+
+        forecast_df[col] = forecast_df[col].interpolate(method='linear')
+        history_df[col] = history_df[col].interpolate(method='linear')
+
+        combined_df = pd.concat(
+            [forecast_df.set_index('timestamp'), history_df.set_index('timestamp')]
+        ).sort_index()
+        combined_df = combined_df[~combined_df.index.duplicated(keep='first')]
+
+        df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True)
+        combined_df.index = pd.to_datetime(combined_df.index, utc=True).unique()
+
+        df = pd.merge(df, combined_df[[col]], left_on='timestamp', right_index=True, how='left')
+        df = coalesce_merged_columns(df)
+
+        nan_count = df[col].isna().sum()
+        if nan_count > 0:
+            logger.warning(f"FMI: The final DataFrame contains {nan_count} NaN values in column '{col}'.")
+
     return df
 
-# TODO: Combine this with the other update function, they are almost identical
 def update_wind_speed(df):
     """
     Updates the input DataFrame with wind speed forecast and historical data for specified locations.
@@ -205,55 +216,8 @@ def update_wind_speed(df):
 
     The function ensures that the 'timestamp' column in the input DataFrame and the index of the combined forecast and historical data are aligned and timezone-aware (UTC). It also removes potential duplicates after combining the forecast and historical data. After updating the wind speed data, the function performs a clean-up to handle any issues arising from the merge operation.
     """
-    # Define the current date for fetching forecasts
-    current_date = datetime.now(pytz.UTC).strftime("%Y-%m-%d")
-    
-    # 7 days earlier:
-    history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
-    
-    # 8 days later:
-    end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
-    
-    logger.info(f"FMI: Fetching wind speed forecast and historical data between {history_date} and {end_date}")
-    
-    for col in [c for c in df.columns if c.startswith('ws_')]:
-        fmisid = int(col.split('_')[1])
-        # Fetch forecast data
-        forecast_df = get_forecast(fmisid, current_date, ['windspeedms'], end_date=end_date)
-        # Fetch historical data for the past 7 days
-        history_df = get_history(fmisid, history_date, ['WS_PT1H_AVG'], end_date=end_date)       
-        
-        # Rename columns to match the input DataFrame's namespace
-        forecast_df.rename(columns={'windspeedms': col}, inplace=True)
-        history_df.rename(columns={'WS_PT1H_AVG': col}, inplace=True)
-        
-        # Interpolate missing values in the forecast and history
-        forecast_df[col] = forecast_df[col].interpolate(method='linear')
-        history_df[col] = history_df[col].interpolate(method='linear')
+    return _update_station_series(df, 'ws_', 'windspeedms', 'WS_PT1H_AVG', 'wind speed')
 
-        # Combine forecast and history with overlap handling
-        combined_df = pd.concat([forecast_df.set_index('timestamp'), history_df.set_index('timestamp')]).sort_index()
-        # Remove potential duplicates after combining
-        combined_df = combined_df[~combined_df.index.duplicated(keep='first')]
-
-        # Ensure the 'timestamp' column in df and the index of combined_df are timezone-aware and aligned
-        df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True)
-        combined_df.index = pd.to_datetime(combined_df.index, utc=True).unique()
-
-        # Update the original DataFrame with the combined data
-        df = pd.merge(df, combined_df[[col]], left_on='timestamp', right_index=True, how='left')
-        
-        # Merged data frame contains the old NaN column and the new column with the same name → remove the old one
-        df = clean_up_df_after_merge(df)
-        
-        # Check for NaN values in the specific wind speed column
-        nan_count = df[col].isna().sum()
-        if nan_count > 0:
-            logger.warning(f"FMI: The final DataFrame contains {nan_count} NaN values in column '{col}'.")
-
-    return df
-
-# TODO: Combine this with the other update function, they are almost identical
 def update_temperature(df):
     """
     Updates the input DataFrame with temperature forecast and historical data for specified locations.
@@ -268,50 +232,7 @@ def update_temperature(df):
 
     The function ensures that the 'timestamp' column in the input DataFrame and the index of the combined forecast and historical data are aligned and timezone-aware (UTC). It also removes potential duplicates after combining the forecast and historical data. After updating the temperature data, the function performs a clean-up to handle any issues arising from the merge operation.
     """
-    # Define the current date and end date for fetching forecasts and historical data
-    current_date = datetime.now(pytz.UTC).strftime("%Y-%m-%d")
-    history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
-    end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")  # 120 hours later for forecasts
-
-    logger.info(f"FMI: Fetching temperature forecast and historical data between {history_date} and {end_date}")
-
-    for col in [c for c in df.columns if c.startswith('t_')]:
-        fmisid = int(col.split('_')[1])
-        
-        # Fetch forecast data with updated end_date parameter
-        forecast_df = get_forecast(fmisid, current_date, ['temperature'], end_date=end_date)
-        # Fetch historical data with updated end_date parameter
-        history_df = get_history(fmisid, history_date, ['TA_PT1H_AVG'], end_date=end_date)
-        
-        # Rename columns to match the input DataFrame's namespace
-        forecast_df.rename(columns={'temperature': col}, inplace=True)
-        history_df.rename(columns={'TA_PT1H_AVG': col}, inplace=True)
-        
-        # Interpolate missing values in the forecast and history
-        forecast_df[col] = forecast_df[col].interpolate(method='linear')
-        history_df[col] = history_df[col].interpolate(method='linear')
-
-        # Combine forecast and history with overlap handling
-        combined_df = pd.concat([forecast_df.set_index('timestamp'), history_df.set_index('timestamp')]).sort_index()
-        # Remove potential duplicates after combining
-        combined_df = combined_df[~combined_df.index.duplicated(keep='first')]
-
-        # Ensure the 'timestamp' column in df and the index of combined_df are timezone-aware and aligned
-        df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True)
-        combined_df.index = pd.to_datetime(combined_df.index, utc=True).unique()
-
-        # Update the original DataFrame with the combined data
-        df = pd.merge(df, combined_df[[col]], left_on='timestamp', right_index=True, how='left')
-        
-        # Optionally, you can include the clean-up function here if necessary
-        df = clean_up_df_after_merge(df)
-
-        # Check for NaN values in the specific temperature column
-        nan_count = df[col].isna().sum()
-        if nan_count > 0:
-            logger.warning(f"FMI: The final DataFrame contains {nan_count} NaN values in column '{col}'.")
-
-    return df
+    return _update_station_series(df, 't_', 'temperature', 'TA_PT1H_AVG', 'temperature')
 
 # Main function for testing the FMI API functions
 if __name__ == "__main__":
