@@ -48,3 +48,4 @@
 - Logs via `logger.info`/`warning`; avoid bare prints outside Rich context.
 - Shared helpers live in `util/` and should stay dependency-light; reuse `coalesce_merged_columns` after merges.
 - JSON outputs keep `ensure_ascii=False`; timestamps serialized as UNIX ms for frontend consumption.
+- Structure long code blocks with lightweight folding anchors: `# region title` (single word or two_word, up to 3; keep terse for minimap scan). For deep sections inside a large function use escalating underscores: `# region _subtopic`, `# region __subpart`. No closing marker (omit `endregion`), rely on start tags only; keep them sparse, semantic, and consistent.
