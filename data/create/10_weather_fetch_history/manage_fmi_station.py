@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Callable, Dict, List, Optional, Sequence, Set, Tuple
 
 import pandas as pd
-from dotenv import load_dotenv
+from dotenv import load_dotenv, dotenv_values
 
 from util.fmi import get_history
 from util.logger import logger
@@ -103,11 +103,16 @@ def parse_arguments(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
         "audit",
         help="Sample random historical windows (from project history) to assess FMI coverage.",
     )
-    audit_parser.add_argument(
+    audit_target_group = audit_parser.add_mutually_exclusive_group(required=True)
+    audit_target_group.add_argument(
         "--fmisid",
         type=int,
-        required=True,
         help="FMISID to audit.",
+    )
+    audit_target_group.add_argument(
+        "--all",
+        action="store_true",
+        help="Audit every FMISID referenced in the environment file (FMISID_WS ∪ FMISID_T).",
     )
     audit_parser.add_argument(
         "--samples",
@@ -172,6 +177,36 @@ def backup_database(db_path: Path, suffix_format: str = DEFAULT_BACKUP_SUFFIX) -
     shutil.copyfile(db_path, backup_path)
     console.print(f"[green]Created backup at[/green] {backup_path}")
     return backup_path
+
+
+def load_fmisids_from_env(env_file: str) -> List[int]:
+    env_path = Path(env_file)
+    if not env_path.exists():
+        raise FMIScriptError(f"Environment file '{env_file}' was not found.")
+
+    env_values = dotenv_values(env_file)
+    if not env_values:
+        return []
+
+    def parse_ids(key: str) -> List[int]:
+        raw = env_values.get(key)
+        if not raw:
+            return []
+        ids: List[int] = []
+        for value in raw.split(","):
+            value = value.strip()
+            if not value:
+                continue
+            try:
+                ids.append(int(value))
+            except ValueError as exc:
+                raise FMIScriptError(
+                    f"Invalid FMISID '{value}' in environment variable '{key}'."
+                ) from exc
+        return ids
+
+    ids = set(parse_ids("FMISID_WS")) | set(parse_ids("FMISID_T"))
+    return sorted(ids)
 
 
 # region schema
@@ -316,6 +351,14 @@ class BackfillPlan:
         if not self.has_updates():
             lines.append("- No updates available from FMI for the requested window.")
         return lines
+
+
+@dataclass
+class AuditAggregate:
+    fmisid: int
+    expected_hours: Dict[str, int]
+    remaining_hours: Dict[str, int]
+    warnings: List[str]
 
 
 # region display
@@ -651,18 +694,19 @@ def sample_windows(
     return windows
 
 
-def handle_audit(args: argparse.Namespace) -> None:
-    db_path = load_db_path(args.env_file, args.db_path)
-    manager = StationBackfillManager(db_path, chunk_days=args.chunk_days)
-
-    current_utc = manager.now_provider().floor("h")
-    earliest, latest = determine_history_bounds(db_path, current_utc)
-    if latest <= earliest:
-        raise FMIScriptError("Historical range too small for auditing.")
-
-    window = pd.Timedelta(days=args.window_days)
-    rng = random.Random(args.seed)
-    windows = sample_windows(earliest, latest, window, args.samples, rng)
+def perform_station_audit(
+    manager: StationBackfillManager,
+    fmisid: int,
+    earliest: pd.Timestamp,
+    latest: pd.Timestamp,
+    window_days: int,
+    samples: int,
+    ensure_columns: bool,
+    seed: Optional[int],
+) -> AuditAggregate:
+    window = pd.Timedelta(days=window_days)
+    rng = random.Random(seed) if seed is not None else random.Random()
+    windows = sample_windows(earliest, latest, window, samples, rng)
 
     aggregate_expected: Dict[str, int] = {}
     aggregate_remaining: Dict[str, int] = {}
@@ -670,25 +714,25 @@ def handle_audit(args: argparse.Namespace) -> None:
 
     console.rule(
         Text.from_markup(
-            f"Audit for FMISID [bold]{args.fmisid}[/bold] · [italic]{len(windows)} sample(s)[/italic]"
+            f"Audit for FMISID [bold]{fmisid}[/bold] · [italic]{len(windows)} sample(s)[/italic]"
         )
     )
     console.print(
         f"[cyan]Sampling between {earliest.isoformat()} and {latest.isoformat()} "
-        f"({args.window_days}-day windows).[/cyan]"
+        f"({window_days}-day windows).[/cyan]"
     )
 
     for idx, (start, end) in enumerate(windows, start=1):
         plan = manager.prepare_plan(
-            args.fmisid,
+            fmisid,
             start,
             end,
-            ensure_columns=args.ensure_columns,
+            ensure_columns=ensure_columns,
         )
         display_plan(
             plan,
             heading=f"Sample {idx}/{len(windows)} · {start.isoformat()} → {plan.range_end.isoformat()}",
-            show_columns_added=args.ensure_columns,
+            show_columns_added=ensure_columns,
             compact=True,
         )
 
@@ -699,7 +743,7 @@ def handle_audit(args: argparse.Namespace) -> None:
 
     if not aggregate_expected:
         console.print("[yellow]No data was evaluated during audit.[/yellow]")
-        return
+        return AuditAggregate(fmisid, {}, {}, aggregated_warnings)
 
     console.rule("Aggregate Coverage Across Samples")
     agg_table = Table(box=None)
@@ -717,13 +761,150 @@ def handle_audit(args: argparse.Namespace) -> None:
             f"{coverage*100:.1f}%",
         )
     console.print(agg_table)
-    if aggregated_warnings:
+    unique_warnings = sorted(set(aggregated_warnings))
+    if unique_warnings:
         warning_panel = Panel(
-            "\n".join(sorted(set(aggregated_warnings))),
+            "\n".join(unique_warnings),
             title="Warnings",
             style="yellow",
         )
         console.print(warning_panel)
+
+    return AuditAggregate(fmisid, aggregate_expected, aggregate_remaining, unique_warnings)
+
+
+def handle_audit(args: argparse.Namespace) -> None:
+    db_path = load_db_path(args.env_file, args.db_path)
+    manager = StationBackfillManager(db_path, chunk_days=args.chunk_days)
+
+    current_utc = manager.now_provider().floor("h")
+    earliest, latest = determine_history_bounds(db_path, current_utc)
+    if latest <= earliest:
+        raise FMIScriptError("Historical range too small for auditing.")
+
+    if getattr(args, "all", False):
+        env_fmisids = load_fmisids_from_env(args.env_file)
+        if not env_fmisids:
+            raise FMIScriptError(
+                "No FMISIDs found in the environment file. Populate FMISID_WS or FMISID_T."
+            )
+        target_fmisids = env_fmisids
+    else:
+        target_fmisids = [args.fmisid]
+
+    aggregates: List[AuditAggregate] = []
+    overall_expected: Dict[str, int] = {}
+    overall_remaining: Dict[str, int] = {}
+    overall_warnings: List[str] = []
+
+    for offset, fmisid in enumerate(target_fmisids):
+        station_seed = None if args.seed is None else args.seed + offset
+        aggregate = perform_station_audit(
+            manager,
+            fmisid,
+            earliest,
+            latest,
+            args.window_days,
+            args.samples,
+            args.ensure_columns,
+            station_seed,
+        )
+        aggregates.append(aggregate)
+        for col, expected in aggregate.expected_hours.items():
+            overall_expected[col] = overall_expected.get(col, 0) + expected
+            remaining = aggregate.remaining_hours.get(col, expected)
+            overall_remaining[col] = overall_remaining.get(col, 0) + remaining
+        overall_warnings.extend(aggregate.warnings)
+
+    if len(target_fmisids) <= 1:
+        return
+
+    console.rule("Overall Coverage Summary")
+    summary_table = Table(box=None)
+    summary_table.add_column("FMISID", style="bold")
+    summary_table.add_column("sampled_h", justify="right")
+    summary_table.add_column("t_missing", justify="right")
+    summary_table.add_column("t_cov", justify="right")
+    summary_table.add_column("ws_missing", justify="right")
+    summary_table.add_column("ws_cov", justify="right")
+    summary_table.add_column("worst_cov", justify="right")
+    summary_table.add_column("total_missing", justify="right")
+
+    station_summaries: List[Dict[str, float]] = []
+    for aggregate in aggregates:
+        fmisid = aggregate.fmisid
+        t_col = f"t_{fmisid}"
+        ws_col = f"ws_{fmisid}"
+        expected_t = aggregate.expected_hours.get(t_col, 0)
+        remaining_t = aggregate.remaining_hours.get(t_col, expected_t)
+        expected_ws = aggregate.expected_hours.get(ws_col, 0)
+        remaining_ws = aggregate.remaining_hours.get(ws_col, expected_ws)
+        coverage_t = 1.0 - (remaining_t / expected_t) if expected_t else 1.0
+        coverage_ws = 1.0 - (remaining_ws / expected_ws) if expected_ws else 1.0
+        sampled_hours = max(expected_t, expected_ws)
+        worst_cov = min(coverage_t, coverage_ws)
+        station_summaries.append(
+            {
+                "fmisid": fmisid,
+                "sampled_hours": sampled_hours,
+                "remaining_t": remaining_t,
+                "coverage_t": coverage_t,
+                "remaining_ws": remaining_ws,
+                "coverage_ws": coverage_ws,
+                "worst_cov": worst_cov,
+                "total_missing": remaining_t + remaining_ws,
+            }
+        )
+
+    station_summaries.sort(
+        key=lambda row: (
+            row["worst_cov"],
+            -row["total_missing"],
+            row["fmisid"],
+        )
+    )
+
+    for summary in station_summaries:
+        summary_table.add_row(
+            str(summary["fmisid"]),
+            f"{int(summary['sampled_hours'])}",
+            f"{summary['remaining_t']}",
+            f"{summary['coverage_t']*100:.1f}%",
+            f"{summary['remaining_ws']}",
+            f"{summary['coverage_ws']*100:.1f}%",
+            f"{summary['worst_cov']*100:.1f}%",
+            f"{summary['total_missing']}",
+        )
+    console.print(summary_table)
+
+    if overall_expected:
+        console.rule("Combined Coverage Across All Columns")
+        combined_table = Table(box=None)
+        combined_table.add_column("Column", style="bold")
+        combined_table.add_column("Sampled hours", justify="right")
+        combined_table.add_column("Missing hours", justify="right")
+        combined_table.add_column("Coverage", justify="right")
+        for col in sorted(overall_expected):
+            expected = overall_expected[col]
+            remaining = overall_remaining.get(col, expected)
+            coverage = 1.0 - (remaining / expected) if expected else 1.0
+            combined_table.add_row(
+                col,
+                f"{expected}",
+                f"{remaining}",
+                f"{coverage*100:.1f}%",
+            )
+        console.print(combined_table)
+
+    unique_overall_warnings = sorted(set(overall_warnings))
+    if unique_overall_warnings:
+        console.print(
+            Panel(
+                "\n".join(unique_overall_warnings),
+                title="Warnings (any station)",
+                style="yellow",
+            )
+        )
 
 
 # region entrypoint

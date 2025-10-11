@@ -23,7 +23,7 @@ Rich-enabled CLI with three workflows.
 | --- | --- | --- |
 | `validate` | Inspect a specific window, without writing. | `--fmisid`, `--start`, `--end` |
 | `backfill` | Fetch history + update DB (with backups & SQL preview options). | `--fmisid`, `--start`, `--end`, `--dry-run`, `--keep-sql`, `--no-backup` |
-| `audit` | Sample random windows from the full historical range; ideal for coverage studies. | `--fmisid`, `--samples`, `--window-days`, `--seed`, `--ensure-columns` |
+| `audit` | Sample random windows from the full historical range; ideal for coverage studies. | `--fmisid`, `--all`, `--samples`, `--window-days`, `--seed`, `--ensure-columns` |
 
 All commands accept `--chunk-days` to control FMI window size (default 7).
 
@@ -40,6 +40,14 @@ PYTHONPATH=. .venv/bin/python -m data.create.10_weather_fetch_history.manage_fmi
   --samples 5 \
   --window-days 7 \
   --seed 42
+
+# Audit every FMISID currently configured in .env.local and print a combined summary.
+PYTHONPATH=. .venv/bin/python -m data.create.10_weather_fetch_history.manage_fmi_station \
+  --env-file .env.local \
+  audit \
+  --all \
+  --samples 3 \
+  --window-days 7
 
 # Validate a specific window after audit, without touching the DB.
 PYTHONPATH=. .venv/bin/python -m data.create.10_weather_fetch_history.manage_fmi_station \
@@ -67,7 +75,7 @@ PYTHONPATH=. .venv/bin/python -m data.create.10_weather_fetch_history.manage_fmi
   --keep-sql data/create/10_weather_fetch_history/101783_backfill.sql
 ```
 
-Audit output includes per-sample tables plus aggregate coverage (`sampled hours`, `missing hours`, `% coverage`), making it easy to spot flaky stations.
+Audit output includes per-sample tables plus aggregate coverage (`sampled hours`, `missing hours`, `% coverage`). When `--all` is enabled you also get a per-station summary (worst coverage first) and combined coverage table, making it easy to verify that `.env.local` only references healthy stations.
 
 ### Exit Artefacts
 
