@@ -63,6 +63,7 @@ from optuna.pruners import MedianPruner
 from xgboost import XGBRegressor
 from optuna import Trial
 from tqdm import tqdm
+from util.xgb_utils import configure_cuda
 
 # Load environment variables
 load_dotenv()
@@ -396,7 +397,7 @@ def tune_model_with_optuna(model_class, X, y, model_name, timeout, iterations):
             elif model_name == 'XGBoost':
                 params = {
                     'n_estimators': trial.suggest_int('n_estimators', 7000, 12000),
-                    'max_depth': trial.suggest_int('max_depth', 5, 12),            
+                    'max_depth': trial.suggest_int('max_depth', 5, 12),
                     'learning_rate': trial.suggest_float('learning_rate', 0.005, 0.05, log=True),
                     'subsample': trial.suggest_float('subsample', 0.1, 0.8),
                     'colsample_bytree': trial.suggest_float('colsample_bytree', 0.4, 0.8),
@@ -406,6 +407,7 @@ def tune_model_with_optuna(model_class, X, y, model_name, timeout, iterations):
                     'random_state': 42,
                     'n_jobs': get_n_jobs(),
                 }
+                params = configure_cuda(params, logger)
 
             elif model_name == 'Gradient Boosting':
                 params = {
@@ -457,6 +459,8 @@ def tune_model_with_optuna(model_class, X, y, model_name, timeout, iterations):
 
         # Train the best model on the outer fold
         best_params = study.best_trial.params
+        if model_name == 'XGBoost':
+            best_params = configure_cuda(best_params, logger)
         best_model = model_class(**best_params)
         best_model.fit(X_outer_train, y_outer_train)
         y_outer_pred = best_model.predict(X_outer_test)
@@ -508,9 +512,10 @@ def main():
     n_jobs = get_n_jobs()
 
     # Define models to optimize
+    xgb_model_params = configure_cuda({'random_state': 42, 'n_jobs': n_jobs, 'early_stopping_rounds': 50}, logger)
     all_models = {
         "rf": ("Random Forest", RandomForestRegressor(random_state=42, n_jobs=n_jobs)),
-        "xgb": ("XGBoost", XGBRegressor(random_state=42, n_jobs=n_jobs, early_stopping_rounds=50)),
+        "xgb": ("XGBoost", XGBRegressor(**xgb_model_params)),
         "gb": ("Gradient Boosting", GradientBoostingRegressor(random_state=42))
     }
 
