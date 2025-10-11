@@ -34,7 +34,7 @@ The repository began as a personal [Autogen](https://github.com/microsoft/autoge
 
 The repository remains an evaluation tool for testing new LLMs and what can be done with them in ML projects. When the output is useful for price prediction, that is definitely a bonus, but this is primarily a playground for tracking the evolution of AI pair programming.
 
-[Continue.dev](https://github.com/continuedev/continue) was and remains the primary tool of choice for AI pair programming. The choice of LLMs is a range of locally running and commercial models, typically the latest available or currently under evaluation.
+[Continue.dev](https://github.com/continuedev/continue) and [Codex CLI](https://developers.openai.com/codex/cli/) serve as the main coding assistants for these sessions, while the choice of LLMs spans locally running and commercial models, typically the latest available or currently under evaluation.
 
 ## Major updates
 
