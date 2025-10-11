@@ -2,6 +2,19 @@
 
 All notable changes will be documented in this file.
 
+## [2025-10-11] - FMI Backfill Toolkit and GPU Compatibility
+### Added
+- FMI backfill toolkit (`manage_fmi_station`) with validate/backfill/audit workflows, all-station auditing, and supporting docs/tests.
+- Repository-level pytest defaults plus broader unit tests covering FMI imports, nuclear handling, volatility, and dataframe helpers.
+
+### Changed
+- Upgraded modelling stack to XGBoost 3.0.5 with CUDA auto-detection, modernized pandas usage, and refreshed requirements/env templates.
+- Narration pipeline recognises GPT-5 models and lets them manage completion parameters.
+
+### Fixed
+- Eliminated GPU/CPU device mismatch warnings by routing predictions through the XGBoost booster API.
+- Import capacity enrichment now exports daily averages only during `--commit` runs, logging skips otherwise.
+
 ## [2025-09-24] - ENTSO-E Outage Filtering and FMI Updates
 ### Fixed
 - Excluded cancelled nuclear outages from ENTSO-E API data to prevent inaccurate capacity forecasts.
@@ -9,11 +22,11 @@ All notable changes will be documented in this file.
 
 ## [2025-06-24] - UI Enhancement
 ### Added
-- Dropdown menu to historical forecasts chart allowing users to limit forecast display to 1-5 days ahead for better short-term accuracy evaluation
+- Dropdown menu to historical forecasts chart allowing users to limit forecast display to 1-5 days ahead for better short-term accuracy evaluation.
 
 ## [2025-05-11] - Weather Station
 ### Removed
-- FMISID 101851 (Tornio Kaakkuri) has been missing data lately; removing (for now?) to avoid blocking; Kemi is included and nearby
+- FMISID 101851 (Tornio Kaakkuri) has been missing data lately; removing (for now?) to avoid blocking; Kemi is included and nearby.
 
 ## [2025-05-11] - Price Scaling and Volatility
 ### Added
@@ -26,7 +39,7 @@ All notable changes will be documented in this file.
 
 ## [2025-05-01] - Volatility Model Experiment
 ### Added
-- Experimental price volatility model to identify days with higher risk of significant price fluctuations
+- Experimental price volatility model to identify days with higher risk of significant price fluctuations.
 
 ## [2025-04-21] - UI Improvements
 ### Changed
