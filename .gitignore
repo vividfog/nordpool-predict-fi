@@ -62,3 +62,4 @@ scripts.js.old
 nordpool_eval_fi.py
 deploy/evals/
 nordpool-predict-fi.code-workspace
+xgboost/
