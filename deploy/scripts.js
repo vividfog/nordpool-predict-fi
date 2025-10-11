@@ -8,21 +8,7 @@ if (window.location.hostname === "nordpool-predict-fi.web.app") {
 // ==========================================================================
 
 // Determine base URL based on hosting environment
-var baseUrl = (function() {
-    switch (window.location.hostname) {
-        case "":
-        case "localhost":
-            return "http://localhost:5005";
-        case "rpi4":
-            return "http://rpi4:5000";
-        case "nordpool-predict-fi.web.app":
-            return "https://nordpool-predict-fi.web.app";
-        case "sahkovatkain.web.app":
-            return "https://sahkovatkain.web.app";
-        default:
-            return "https://raw.githubusercontent.com/vividfog/nordpool-predict-fi/main/deploy";
-    }
-})();
+var baseUrl = window.location.origin;
 
 //#region utils
 // ==========================================================================
@@ -961,8 +947,8 @@ const historicalUrls = dateStrings.map(date => `${baseUrl}/prediction_snapshot_$
 
 // Variables to store original chart data
 let originalData = [];
-let currentAveragePeriod = 1;
-let currentPruneOption = 'max'; // Default prune option, all data
+let currentAveragePeriod = 3;
+let currentPruneOption = '120'; // Default to 5-day lookahead
 let sahkotinOriginalData = [];
 
 // ==========================================================================
@@ -1188,7 +1174,7 @@ function addSahkotinDataToChart(sahkotinData) {
         step: 'middle',
         lineStyle: {
             type: 'solid',
-            width: 1.5,
+            width: 2,
             opacity: 0.8
         },
         color: 'limegreen',
