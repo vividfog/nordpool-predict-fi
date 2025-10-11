@@ -6,7 +6,11 @@ from __future__ import annotations
 
 import ctypes
 import json
-from typing import Dict
+from typing import Dict, Iterable, Optional, Sequence
+
+import numpy as np
+import pandas as pd
+import xgboost as xgb
 
 
 def _has_cuda_support() -> bool:
@@ -62,3 +66,39 @@ def configure_cuda(params: Dict[str, object], logger=None) -> Dict[str, object]:
         if logger is not None:
             logger.info("XGBoost: CUDA not available, using CPU backend.")
     return updated
+
+
+def _to_dmatrix(
+    data: object,
+    feature_names: Optional[Sequence[str]] = None,
+) -> xgb.DMatrix:
+    """
+    Convert a pandas/numpy structure into an XGBoost DMatrix.
+    """
+    if isinstance(data, xgb.DMatrix):
+        return data
+    if isinstance(data, pd.DataFrame):
+        return xgb.DMatrix(data, feature_names=data.columns.tolist())
+    if isinstance(data, np.ndarray):
+        if feature_names is not None:
+            return xgb.DMatrix(data, feature_names=list(feature_names))
+        return xgb.DMatrix(data)
+    if feature_names is not None and isinstance(data, Iterable):
+        return xgb.DMatrix(data, feature_names=list(feature_names))
+    return xgb.DMatrix(data)
+
+
+def booster_predict(
+    estimator,
+    data: object,
+    *,
+    feature_names: Optional[Sequence[str]] = None,
+    **predict_kwargs,
+):
+    """
+    Run predictions via the booster API to avoid device mismatch warnings when
+    mixing GPU-trained models with CPU-based data structures.
+    """
+    booster = estimator.get_booster()
+    dmatrix = _to_dmatrix(data, feature_names)
+    return booster.predict(dmatrix, **predict_kwargs)

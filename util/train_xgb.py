@@ -9,7 +9,7 @@ from rich import print
 from xgboost import XGBRegressor
 import pytz
 from .logger import logger
-from .xgb_utils import configure_cuda
+from .xgb_utils import configure_cuda, booster_predict
 
 def train_model(df, fmisid_ws, fmisid_t):
         
@@ -126,7 +126,7 @@ def train_model(df, fmisid_ws, fmisid_t):
     # logger.info(shap_summary_df.to_string(index=False))
 
     # Residual analysis
-    y_pred_filtered = xgb_model.predict(X_test)
+    y_pred_filtered = booster_predict(xgb_model, X_test)
     residuals = y_test - y_pred_filtered
     
     # Durbin-Watson test for autocorrelation
@@ -172,7 +172,7 @@ def train_model(df, fmisid_ws, fmisid_t):
         ] + fmisid_t + fmisid_ws]
         
         y_random_sample_true = random_sample['Price_cpkWh']
-        y_random_sample_pred = xgb_model.predict(X_random_sample)
+        y_random_sample_pred = booster_predict(xgb_model, X_random_sample)
         
         mae_list.append(mean_absolute_error(y_random_sample_true, y_random_sample_pred))
         mse_list.append(mean_squared_error(y_random_sample_true, y_random_sample_pred))

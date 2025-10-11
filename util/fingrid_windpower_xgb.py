@@ -19,6 +19,7 @@ from dotenv import load_dotenv
 from rich import print
 from util.sql import db_query_all
 from util.train_windpower_xgb import train_windpower_xgb
+from util.xgb_utils import booster_predict
 from .logger import logger
 
 # Load environment variables
@@ -277,8 +278,10 @@ def update_windpower(df, fingrid_api_key):
             trained_columns = [col for col in trained_columns if col in X_missing_df.columns]
             X_missing_df = X_missing_df[sorted(trained_columns)]  # Reorder columns to match training
 
-            # Predict with XGB
-            raw_preds = ws_model.predict(X_missing_df)
+            # Predict with XGB via the booster API to avoid CPU/GPU device mismatch warnings.
+            # Using booster_predict bypasses the wrapper's inplace_predict path that triggers the
+            # mismatch warning when a GPU-trained model infers on CPU data.
+            raw_preds = booster_predict(ws_model, X_missing_df)
 
             # Sort the missing timestamps for chronological processing
             missing_idx = merged_df.loc[missing_mask].index
