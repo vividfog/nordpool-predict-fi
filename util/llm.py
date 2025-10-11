@@ -331,14 +331,20 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
             logger.debug(
                 f"llm_call(): '{LLM_API_BASE}': '{LLM_MODEL}': payload: {len(messages)} messages"
             )
-            response = client.chat.completions.create(
-                model=LLM_MODEL,
-                messages=messages,
-                temperature=0.7,
-                max_tokens=1536,
-                stream=False,
-            )
-            
+            request_params = {
+                "model": LLM_MODEL,
+                "messages": messages,
+                "stream": False,
+            }
+
+            if "gpt-5" in LLM_MODEL.lower():
+                # GPT-5 models allocate their own completion budget; avoid capping max tokens to prevent early cutoffs.
+                pass
+            else:
+                request_params["max_tokens"] = 1536
+                request_params["temperature"] = 0.7
+
+            response = client.chat.completions.create(**request_params)
             return response.choices[0].message.content
         except Exception as e:
             logger.error(f"LLM API call failed: {e}", exc_info=True)

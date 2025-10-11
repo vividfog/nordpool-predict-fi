@@ -26,6 +26,7 @@ from util.volatility_xgb import train_volatility_model, predict_daily_volatility
 # from util.volatility_bayes import train_volatility_model, predict_daily_volatility
 from util.scaler import scale_predicted_prices
 from util.logger import logger
+from util.xgb_utils import booster_predict
 
 # Wind power model choices: nn vs xgb
 # from util.fingrid_windpower_nn import update_windpower
@@ -166,7 +167,7 @@ if args.predict:
     df_recent = update_nuclear(df_recent, fingrid_api_key=fingrid_api_key)
     
     # Update import capacity data
-    df_recent = update_import_capacity(df_recent)
+    df_recent = update_import_capacity(df_recent, write_daily_average=args.commit)
 
     # Update Baltic Sea area wind speed data
     df_recent = update_eu_ws(df_recent)
@@ -264,7 +265,7 @@ if args.predict:
     
     # Predict the prices
     logger.info("Predicting prices with the trained model")
-    price_df = model_trained.predict(df_recent[prediction_features])
+    price_df = booster_predict(model_trained, df_recent[prediction_features])
     df_recent['PricePredict_cpkWh'] = price_df
 
     # region [scale]
