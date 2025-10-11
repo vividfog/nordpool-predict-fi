@@ -166,7 +166,7 @@ if args.predict:
     df_recent = update_nuclear(df_recent, fingrid_api_key=fingrid_api_key)
     
     # Update import capacity data
-    df_recent = update_import_capacity(df_recent)
+    df_recent = update_import_capacity(df_recent, write_daily_average=args.commit)
 
     # Update Baltic Sea area wind speed data
     df_recent = update_eu_ws(df_recent)
