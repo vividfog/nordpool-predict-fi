@@ -5,6 +5,7 @@ import pytz
 import sys
 from rich import print
 from .logger import logger
+from .dataframes import coalesce_merged_columns
 
 def fetch_electricity_price_data(start_date, end_date):
     """
@@ -57,36 +58,6 @@ def fetch_electricity_price_data(start_date, end_date):
         return pd.DataFrame(columns=['timestamp', 'Price_cpkWh'])
 
 
-def clean_up_df_after_merge(df):
-    """
-    This function removes duplicate columns resulting from a merge operation,
-    and fills the NaN values in the original columns with the values from the
-    duplicated columns. Assumes duplicated columns have suffixes '_x' and '_y',
-    with '_y' being the most recent values to retain.
-    """
-    # Identify duplicated columns by their suffixes
-    cols_to_remove = []
-    for col in df.columns:
-        if col.endswith('_x'):
-            original_col = col[:-2]  # Remove the suffix to get the original column name
-            duplicate_col = original_col + '_y'
-            
-            # Check if the duplicate column exists
-            if duplicate_col in df.columns:
-                # Fill NaN values in the original column with values from the duplicate
-                df[original_col] = df[col].fillna(df[duplicate_col])
-                
-                # Mark the duplicate column for removal
-                cols_to_remove.append(duplicate_col)
-                
-            # Also mark the original '_x' column for removal as it's now redundant
-            cols_to_remove.append(col)
-    
-    # Drop the marked columns
-    df.drop(columns=cols_to_remove, inplace=True)
-    
-    return df
-
 def update_spot(df):
     """
     Updates the input DataFrame with electricity price data fetched from sahkotin.fi.
@@ -109,7 +80,7 @@ def update_spot(df):
         df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True)
         merged_df = pd.merge(df, price_df, on='timestamp', how='left')
        
-        merged_df = clean_up_df_after_merge(merged_df)
+        merged_df = coalesce_merged_columns(merged_df)
 
         # Interpolate to fill NaN values in 'Price_cpkWh'
         merged_df['Price_cpkWh'] = merged_df['Price_cpkWh'].interpolate(method='cubic')

@@ -22,6 +22,7 @@ from sklearn.preprocessing import StandardScaler
 from xgboost import XGBClassifier
 from rich import print
 from .logger import logger
+from .xgb_utils import configure_cuda
 
 # Percentage threshold for labeling volatile days
 VOLATILE_THRESHOLD_PERCENTILE = 80
@@ -153,16 +154,20 @@ def train_volatility_model(df):
     logger.info(f"Calculated scale_pos_weight for XGBoost: {scale_pos_weight_val:.2f}")
     
     # Build XGBoost classifier model
-    model = XGBClassifier(
-        objective='binary:logistic',  # Output logistic probabilities
-        eval_metric='logloss',        # Evaluation metric
-        scale_pos_weight=scale_pos_weight_val, # Handle class imbalance
-        n_estimators=200,             # Number of trees
-        learning_rate=0.05,            # Learning rate
-        max_depth=4,                  # Max depth of trees
-        random_state=42,
-        n_jobs=-1                     # Use all available cores
+    model_params = configure_cuda(
+        {
+            'objective': 'binary:logistic',  # Output logistic probabilities
+            'eval_metric': 'logloss',        # Evaluation metric
+            'scale_pos_weight': scale_pos_weight_val,  # Handle class imbalance
+            'n_estimators': 200,             # Number of trees
+            'learning_rate': 0.05,           # Learning rate
+            'max_depth': 4,                  # Max depth of trees
+            'random_state': 42,
+            'n_jobs': -1                     # Use all available cores
+        },
+        logger,
     )
+    model = XGBClassifier(**model_params)
     
     # Train the model
     model.fit(X_train_scaled, y_train)

@@ -9,6 +9,7 @@ from rich import print
 from xgboost import XGBRegressor
 import pytz
 from .logger import logger
+from .xgb_utils import configure_cuda
 
 def train_model(df, fmisid_ws, fmisid_t):
         
@@ -83,6 +84,7 @@ def train_model(df, fmisid_ws, fmisid_t):
         'reg_lambda': 0.09870580997491653,
         'random_state': 42,
     }
+    params = configure_cuda(params, logger)
 
     # Train the model
     logger.info(f"XGBoost for price prediction: ")
