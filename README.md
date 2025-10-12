@@ -24,7 +24,8 @@ This repository contains all the code and most of the data to train the 2 requir
     - [Python sample script](#python-sample-script)
     - [Home Assistant](#home-assistant)
       - [Requirements](#requirements)
-      - [Add the card](#add-the-card)
+      - [Option A: As cards](#option-a-as-cards)
+      - [Option B: As sensors via HACS](#option-b-as-sensors-via-hacs)
   - [Adding a new data source](#adding-a-new-data-source)
   - [License](#license)
 
@@ -141,9 +142,13 @@ You can show Nordpool prices with predictions on your dashboard. This code merge
 - [HACS](https://hacs.xyz) + [custom:apexcharts-card](https://github.com/RomRider/apexcharts-card)  
 - [Nordpool integration](https://github.com/custom-components/nordpool), set to EUR VAT0 or your preference. Adjust sensor names accordingly.
 
-#### Add the card
+#### Option A: As cards
 
 Use the “Manual” card approach in Lovelace, copy-pasting from [deploy/npf.yaml](deploy/npf.yaml) or [deploy/npf2.yaml](deploy/npf2.yaml). They show two ways to overlay actual vs. predicted. For wind predictions, see [deploy/npf_windpower.yaml](deploy/npf_windpower.yaml).
+
+#### Option B: As sensors via HACS
+
+See https://github.com/vividfog/nordpool-predict-fi-hacs. This approach is more automation-friendly, e.g. for charging an EV during the cheapest 6-hour window of the week.
 
 ## Adding a new data source
 
