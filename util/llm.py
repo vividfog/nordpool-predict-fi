@@ -359,7 +359,7 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
     messages.append(
         {
             "role": "user",
-            "content": "Nyt luo tälle artikkelille yhden rivin ingressi (noin 30-50 sanaa). Vältä toistoa ja pysy ylätasolla: esim. mahdollisia huoltokatkoja ei ole tarpeen toistaa ingressissä. Älä kirjoita mitään muuta kuin ingressi. Muotoile ingressi kursiivilla käyttämällä markdown-syntaksia. Kiitos!",
+            "content": "Nyt luo tälle artikkelille yhden rivin yhteenveto/ingressi (noin 20 sanaa). Vältä toistoa ja pysy ylätasolla: esim. mahdollisia huoltokatkoja ei ole tarpeen toistaa ingressissä. Älä kirjoita mitään muuta kuin ingressi. Muotoile ingressi kursiivilla käyttämällä markdown-syntaksia. Kiitos!",
         }
     )
 
