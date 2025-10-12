@@ -37,7 +37,6 @@ narration_prompt = """
   - Suomessa on viisi ydinvoimalaa: Olkiluoto 1, 2 ja 3, sekä Loviisa 1 ja 2.
   - Näet listan poikkeuksellisen suurista ydinvoimaloiden tuotantovajauksista.
   - Jos käyttöaste on nolla prosenttia, silloin käytä termiä huoltokatko. Muuten kyseessä on tuotantovajaus.
-  - Huoltokatko tai tuotantovajaus voi vaikuttaa hintaennusteen tarkkuuteen. Tämän vuoksi älä koskaan spekuloi ydinvoiman mahdollisella hintavaikutuksella, vaan raportoi tiedot sellaisenaan, ja kerro myös että opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
 
   ## 1.6. Piikkihintojen riski yksittäisille tunneille
   - Yli 15 c/kWh ennustettu maksimihinta ja selvästi alle 1000 MW tuulivoiman min voi olla riski: todellinen maksimihinta voi olla korkeampi kuin ennuste. Tällöin yksittäisten huipputuntien maksimihinnat voivat olla korkeampia ennustettuun maksimihintaan nähden. Tarkista tuntikohtainen ennuste.
@@ -73,7 +72,6 @@ narration_prompt = """
   ## 1. Jos käynnissä on ydinvoiman huoltokatkoja
 
   - Mainitse voimala ja häiriön alkamis- ja loppumisaika kellonaikoineen.
-  - Mainitse että huoltokatko voi vaikuttaa ennusteen tarkkuuteen, koska opetusdataa on huoltokatkojen ajalta saatavilla rajallisesti.
 
   Jos käynnissä ei ole ydinvoiman huoltokatkoja, jätä tämä osio kokonaan pois.
 
@@ -119,7 +117,7 @@ narration_prompt = """
   - Keskity vain poikkeuksellisiin tilanteisiin, jotka vaikuttavat hintaan. Älä mainitse normaaleja olosuhteita.
   - Koska kyse on ennusteesta, toteutuvat hinnat voivat vielä muuttua ennusteesta, varsinkin jos tuuliennuste muuttuu. Puhu hintaennusteesta, hintaodotuksista jne käyttäen synonyymejä, kun viittaat hintoihin.
   - Älä koskaan kirjoita, että 'poikkeamia ei ole' tai 'ei ilmene hintaa selittäviä poikkeamia'. Jos poikkeamia ei ole, jätä tämä mainitsematta. Kirjoita vain poikkeuksista, jotka vaikuttavat hintaan.
-  - Älä koskaan spekuloi ydinvoiman mahdollisella hintavaikutuksella. Kerro vain, että huoltokatko voi vaikuttaa ennusteen tarkkuuteen ja raportoi annetut tiedot sellaisenaan, kuten yllä on ohjeistettu.
+  - Älä koskaan spekuloi ydinvoiman mahdollisella hintavaikutuksella. Raportoi annetut tiedot sellaisenaan, kuten yllä on ohjeistettu.
   - TÄRKEÄÄ: Suomessa viikko alkaa maanantaista ja päättyy sunnuntaihin. Muista tämä, jos puhut viikonlopun päivistä tai viittaat viikon alkuun.
 
   Lue ohjeet vielä kerran, jotta olet varma että muistat ne. Nyt voit kirjoittaa valmiin tekstin. Älä kirjoita mitään muuta kuin valmis teksti. Kiitos!
