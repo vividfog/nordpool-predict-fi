@@ -21,8 +21,7 @@
     <div id="predictionText">
         <h1 style="padding-top: 16px">Nordpool Predict FI</h1>
         <p><strong>This experimental, privately-made (no relation to Nordpool) machine learning model estimates the consumer price of electricity in Finland (VAT 25.5%) for about a week ahead. The model correlates predicted weather and electricity production with previous periods where these factors were similar.</strong></p>
-        <p>Although the model can be surprisingly accurate in normal situations, the forecast should be viewed with caution. The wind forecast has a significant impact on price spikes, especially if there are maintenance outages at the same time.</p>
-        <p>The model is trained and the forecast is updated automatically several times a day. Below the graph is a language model's interpretation of the forecast.</p>
+        <p>The model is trained and the forecast is updated automatically a few times per day. Below the graph is a language model's interpretation of the numbers.</p>
         <h1 style="padding-top: 32px">Forecast for the coming days</h1>
         <p id="predictionChart"></p>
         <p id="narration"></p>
@@ -70,6 +69,8 @@
         <p>Although the model can "predict" the past and historically familiar types of the future, price estimates in new and exceptional situations can be off. So do not, for example, adjust your house heating based on these numbers if you are not at home.</p>
         <h1 style="padding-top: 32px">Change log</h1>
         <p>The model has been online since February 2024. The following changes have been made since then.</p>
+        <p><strong>October 13, 2025:</strong></p>
+        <p>A HACS integration <a href="https://github.com/vividfog/nordpool-predict-fi-hacs/" target="_blank">is now available</a> for Home Assistant users to, for example, schedule electric car charging based on cheapest 6 hour period.</p>
         <p><strong>June 24, 2025:</strong></p>
         <p>Added a dropdown menu to the historical forecasts chart allowing users to limit the forecast display to 1-5 days ahead. This makes it easier to evaluate short-term forecast accuracy.</p>
         <p><strong>May 7, 2025:</strong></p>
