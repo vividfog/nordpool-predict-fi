@@ -1,9 +1,13 @@
 import os
 import json
 import pandas as pd
+from zipfile import BadZipFile
 from dotenv import load_dotenv
 from datetime import datetime, timedelta, timezone
 from entsoe import EntsoePandasClient
+from entsoe.entsoe import EntsoeRawClient
+from entsoe.exceptions import NoMatchingDataError
+from entsoe.parsers import parse_unavailabilities
 from rich import print
 from .logger import logger
 
@@ -32,9 +36,59 @@ def entso_e_nuclear(entso_e_api_key, DEBUG=False):
 
         country_code = 'FI'
 
+        def _empty_unavailability_frame():
+            tz = 'Europe/Helsinki'
+            return pd.DataFrame({
+                'start': pd.Series(pd.DatetimeIndex([], tz=tz)),
+                'end': pd.Series(pd.DatetimeIndex([], tz=tz)),
+                'avail_qty': pd.Series(dtype='float64'),
+                'nominal_power': pd.Series(dtype='float64'),
+                'production_resource_name': pd.Series(dtype='object'),
+                'plant_type': pd.Series(dtype='object'),
+                'businesstype': pd.Series(dtype='object'),
+                'docstatus': pd.Series(dtype='object'),
+                'resolution': pd.Series(dtype='object'),
+            })
+
+        raw_client = EntsoeRawClient(api_key=entso_e_api_key)
+        helsinki_tz = 'Europe/Helsinki'
+
+        def _parse_unavailability_bytes(content: bytes, doctype: str):
+            try:
+                df = parse_unavailabilities(content, doctype)
+            except BadZipFile:
+                return _empty_unavailability_frame()
+
+            df = df.tz_convert(helsinki_tz)
+            df['start'] = df['start'].apply(lambda x: x.tz_convert(helsinki_tz))
+            df['end'] = df['end'].apply(lambda x: x.tz_convert(helsinki_tz))
+            df = df[(df['start'] < end) | (df['end'] > start)]
+            return df
+
+        def _fallback_generation():
+            content = raw_client.query_unavailability_of_generation_units(country_code, start, end)
+            return _parse_unavailability_bytes(content, "A80")
+
+        def _fallback_production():
+            content = raw_client.query_unavailability_of_production_units(country_code, start, end)
+            return _parse_unavailability_bytes(content, "A77")
+
+        def _safe_query(description, query_callable, fallback_callable):
+            try:
+                return query_callable()
+            except BadZipFile:
+                logger.info(f"ENTSO-E: {description} response looked like acknowledgement – retrying with raw client")
+                return fallback_callable()
+            except NoMatchingDataError:
+                logger.info(f"ENTSO-E: {description} returned acknowledgement/no data – offset exhausted")
+                return _empty_unavailability_frame()
+
         try:
-            # Query unavailability of generation units
-            unavailable_generation = client.query_unavailability_of_generation_units(country_code, start=start, end=end)
+            unavailable_generation = _safe_query(
+                "Generation unavailability",
+                lambda: client.query_unavailability_of_generation_units(country_code, start=start, end=end),
+                _fallback_generation
+            )
         except Exception as e:
             raise ConnectionError(f"Failed to fetch unavailability of generation units: {e}")
 
@@ -55,10 +109,16 @@ def entso_e_nuclear(entso_e_api_key, DEBUG=False):
 
         logger.debug(f"→ ENTSO-E: Unavailability of generation units:\n{olkiluoto_outages}")
 
-        unavailable_production = pd.DataFrame()  # Initialize to an empty DataFrame
+        unavailable_production = _empty_unavailability_frame()  # Initialize to an empty DataFrame
         try:
             # Query unavailability of production units
-            unavailable_production = client.query_unavailability_of_production_units(country_code, start, end)
+            unavailable_production_candidate = _safe_query(
+                "Production unavailability",
+                lambda: client.query_unavailability_of_production_units(country_code, start, end),
+                _fallback_production
+            )
+            if not unavailable_production_candidate.empty:
+                unavailable_production = unavailable_production_candidate
         except Exception as e:
             logger.info(f"[WARNING] ENTSO-E update: {e} - Loviisa production data not available, continuing with Olkiluoto only")
 

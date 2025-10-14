@@ -22,72 +22,75 @@ def fetch_transfer_capacity_data(start_date, end_date):
     # Convert start_date and end_date to datetime objects
     start_dt = datetime.strptime(start_date, "%Y-%m-%d").replace(tzinfo=pytz.UTC)
     end_dt = datetime.strptime(end_date, "%Y-%m-%d").replace(tzinfo=pytz.UTC) + timedelta(days=1)
-    
-    params = {
-        'FromUtc': start_dt.strftime("%Y-%m-%dT%H:%M:%S.000Z"),
-        'ToUtc': end_dt.strftime("%Y-%m-%dT%H:%M:%S.000Z")
-    }
-    
-    # Rate limit handling
-    time.sleep(3)
-    
-    for attempt in range(3):
-        try:
-            response = requests.get(api_url, params=params)
-            response.raise_for_status()
-            
-            if response.status_code == 200:
+
+    max_window = timedelta(hours=48)
+    window_start = start_dt
+    all_frames = []
+
+    def _request_window(window_start_dt, window_end_dt):
+        params = {
+            'FromUtc': window_start_dt.strftime("%Y-%m-%dT%H:%M:%S.000Z"),
+            'ToUtc': window_end_dt.strftime("%Y-%m-%dT%H:%M:%S.000Z")
+        }
+
+        # Rate limit handling
+        time.sleep(1)
+
+        for attempt in range(3):
+            try:
+                response = requests.get(api_url, params=params)
+                response.raise_for_status()
+
                 try:
                     data = response.json().get('data', [])
                 except ValueError:
-                    raise ValueError("Failed to decode JSON from response from JAO")
-    
+                    raise ValueError("Failed to decode JSON from response from JAO") from None
+
                 if not data:
                     raise ValueError("No data returned from JAO API")
-    
-                logger.debug(f"Fetched data from JAO API:")
-                logger.debug(data)
 
-                # Convert data to DataFrame
+                logger.debug("Fetched data from JAO API window %s → %s", window_start_dt, window_end_dt)
+
                 df = pd.DataFrame(data)
-                if not df.empty:
-                    df['dateTimeUtc'] = pd.to_datetime(df['dateTimeUtc'], utc=True)
-                    
-                    # Keep only the columns we're interested in
-                    columns_to_keep = ['dateTimeUtc'] + BORDER_KEYS
-                    df = df[columns_to_keep]
-    
-                    # Melt the DataFrame to have one row per time and border
-                    df_melted = df.melt(id_vars=['dateTimeUtc'], var_name='border', value_name='CapacityMW')
-                    
-                    # Modify the melted DataFrame to use simplified border names
-                    df_melted['border'] = df_melted['border'].map({
-                        'border_SE1_FI': 'SE1_FI',
-                        'border_SE3_FI': 'SE3_FI',
-                        'border_EE_FI': 'EE_FI'
-                    })
-                    
-                    # Remove any missing data
-                    df_melted.dropna(subset=['CapacityMW'], inplace=True)
-    
-                    logger.debug("Melted DataFrame:")
-                    logger.debug(df_melted)
-
-                    return df_melted[['dateTimeUtc', 'border', 'CapacityMW']]
-
-                else:
+                if df.empty:
                     raise ValueError("Empty DataFrame after fetching data")
-            elif response.status_code == 429:
-                retry_after = int(response.headers.get('Retry-After', 60))
-                logger.info(f"[WARNING] Rate limited! Waiting for {retry_after} seconds.")
-                time.sleep(retry_after)
-            else:
-                logger.error(f"Failed to fetch data: {response.text}", exc_info=True)
-        except requests.exceptions.RequestException as e:
-            logger.error(f"Error occurred while requesting JAO data: {e}", exc_info=True)
-            time.sleep(5)
-        
-    raise RuntimeError("Failed to fetch data after 3 attempts")
+
+                df['dateTimeUtc'] = pd.to_datetime(df['dateTimeUtc'], utc=True)
+                columns_to_keep = ['dateTimeUtc'] + BORDER_KEYS
+                df = df[columns_to_keep]
+
+                df_melted = df.melt(id_vars=['dateTimeUtc'], var_name='border', value_name='CapacityMW')
+                df_melted['border'] = df_melted['border'].map({
+                    'border_SE1_FI': 'SE1_FI',
+                    'border_SE3_FI': 'SE3_FI',
+                    'border_EE_FI': 'EE_FI'
+                })
+                df_melted.dropna(subset=['CapacityMW'], inplace=True)
+                return df_melted[['dateTimeUtc', 'border', 'CapacityMW']]
+
+            except requests.exceptions.RequestException as e:
+                logger.error(f"Error occurred while requesting JAO data: {e}", exc_info=True)
+                time.sleep(5)
+            except Exception as e:
+                logger.error(f"Failed to fetch data window {window_start_dt} → {window_end_dt}: {e}", exc_info=True)
+                break
+        return None
+
+    while window_start < end_dt:
+        window_end = min(window_start + max_window, end_dt)
+        window_df = _request_window(window_start, window_end)
+        if window_df is not None:
+            all_frames.append(window_df)
+        window_start = window_end
+
+    if not all_frames:
+        raise RuntimeError("Failed to fetch data after iterating over all windows")
+
+    result_df = pd.concat(all_frames, ignore_index=True)
+    result_df.drop_duplicates(subset=['dateTimeUtc', 'border'], keep='last', inplace=True)
+    result_df.sort_values('dateTimeUtc', inplace=True)
+    result_df.reset_index(drop=True, inplace=True)
+    return result_df
 
 def calculate_capacity_sums(df):
     """
