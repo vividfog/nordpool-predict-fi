@@ -2,6 +2,16 @@
 
 All notable changes will be documented in this file.
 
+## [2025-10-15] - Feature Embedding Explorer
+### Added
+- `util/features_umap.py` for exporting a UMAP-based 3D embedding of all modelling features during `--deploy`, emitting `deploy/feature_embedding.json`.
+- Plotly-powered feature explorer embedded at the bottom of both Finnish and English landing pages (`deploy/index.html`, `deploy/index_en.html`) with supporting styles/scripts.
+- Unit test coverage for the embedding exporter.
+
+### Changed
+- Deployment pipeline now regenerates the feature embedding alongside the existing prediction artefacts.
+- Guarded deploy stage so it only runs when `--commit` is present, preventing accidental file drops from dry runs.
+
 ## [2025-10-11] - FMI Backfill Toolkit and GPU Compatibility
 ### Added
 - FMI backfill toolkit (`manage_fmi_station`) with validate/backfill/audit workflows, all-station auditing, and supporting docs/tests.

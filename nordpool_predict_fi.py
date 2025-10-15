@@ -27,6 +27,7 @@ from util.volatility_xgb import train_volatility_model, predict_daily_volatility
 from util.scaler import scale_predicted_prices
 from util.logger import logger
 from util.xgb_utils import booster_predict
+from util.features_umap import build_feature_embedding
 
 # Wind power model choices: nn vs xgb
 # from util.fingrid_windpower_nn import update_windpower
@@ -338,11 +339,20 @@ if args.narrate:
 # region deploy
 # -----------------------------------------------------------------------------------------------------------------------------
 # --deploy: Deploy the output files
-if args.deploy:
+if args.deploy and not args.commit:
+    logger.warning("--deploy requested without --commit: skipping deploy outputs to avoid stale files.")
+
+if args.deploy and args.commit:
     logger.info(f"Deploying the latest prediction data to: '{deploy_folder_path}' ...")
 
     deploy_df = db_query_all(db_path)
     deploy_df['timestamp'] = pd.to_datetime(deploy_df['timestamp'])
+
+    try:
+        build_feature_embedding(deploy_df.copy(), fmisid_ws=fmisid_ws, fmisid_t=fmisid_t,
+                                deploy_folder_path=deploy_folder_path)
+    except Exception as exc:
+        logger.error("Feature embedding export failed: %s", exc, exc_info=True)
 
     # Helsinki time zone setup
     helsinki_tz = pytz.timezone('Europe/Helsinki')

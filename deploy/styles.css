@@ -10,14 +10,14 @@ body {
     height: 50vh;
     min-height: 400px;
     width: 100%;
-    max-width: 920px;
+    max-width: 1080px;
     margin: auto;
     box-sizing: border-box;
     padding-top: 24px;
 }
 
 #windPowerChart {
-    max-width: 920px;
+    max-width: 1080px;
     margin: auto;
     box-sizing: border-box;
     height: 50vh;
@@ -27,7 +27,7 @@ body {
 }
 
 #chart {
-    max-width: 920px;
+    max-width: 1080px;
     height: 50vh;
     min-height: 400px;
     width: 100%;
@@ -37,7 +37,7 @@ body {
 }
 
 #predictionText {
-    max-width: 920px;
+    max-width: 1080px;
     line-height: 1.6;
     box-sizing: border-box;
     margin: auto;
@@ -51,7 +51,7 @@ body {
 }
 
 #narration {
-    max-width: 920px;
+    max-width: 1080px;
     margin: auto;
     line-height: 1.6;
     padding-bottom: 24px;
@@ -59,7 +59,7 @@ body {
 }
 
 #llm {
-    max-width: 920px;
+    max-width: 1080px;
     margin: auto;
     text-align: left;
     color: rgba(102, 102, 102, 0.7);
@@ -74,7 +74,7 @@ body {
     height: 50vh;
     min-height: 400px;
     width: 100%;
-    max-width: 920px;
+    max-width: 1080px;
     margin: auto;
     box-sizing: border-box;
     padding-bottom: 24px;
@@ -85,8 +85,17 @@ body {
     height: 50vh;
     min-height: 400px;
     width: 100%;
-    max-width: 920px;
+    max-width: 1080px;
     margin: auto;
+    box-sizing: border-box;
+}
+
+#featureEmbeddingChart {
+    height: 720px;
+    min-height: 420px;
+    width: 100%;
+    max-width: 1080px;
+    margin: 24px auto;
     box-sizing: border-box;
 }
 
@@ -95,7 +104,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 8px;
-    max-width: 920px;
+    max-width: 1080px;
     margin: 48px auto 0px auto;
 }
 

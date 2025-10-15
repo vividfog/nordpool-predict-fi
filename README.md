@@ -49,6 +49,8 @@ The repository remains an evaluation tool for testing new LLMs and what can be d
 
 **May-July, 2025:** Ongoing volatility experiments. Two-stage volatility handling: a model predicts volatility likelihood ([util/volatility_xgb.py](util/volatility_xgb.py)), and (or) a scaler ([util/scaler.py](util/scaler.py)) adjusts prices for high-risk hours on low wind. Frontend can highlight these hours ([deploy/scripts.js](deploy/scripts.js)), and LLM narration incorporates volatility assessment ([util/llm.py](util/llm.py)). Testing and calibration ongoing. The exact models and methods may change and could be removed if ineffective.
 
+**Oct 15, 2025:** Added a UMAP-based feature map exporter ([util/features_umap.py](util/features_umap.py)) and a new Plotly 3D chart on the FI/EN landing pages showing how modelling features cluster together. Regenerated automatically during `--deploy`, producing `deploy/feature_embedding.json`.
+
 For details, see [CHANGELOG.md](CHANGELOG.md).
 
 ## Installation
@@ -85,12 +87,14 @@ Examples:
 
 - **Simple usage**: `python nordpool_predict_fi.py --predict` will train a model and display price predictions for 7 days into the past and 7 days into the future, with no commit back to the database. Training happens in-memory and the model file is not saved. This should take a minute or two on a modern CPU. Even a Raspberry Pi is fine for predictions, if hyperparameter search is done elsewhere.
 
-- **Longer pipeline**: `python nordpool_predict_fi.py --predict --narrate --commit --deploy` will:
+- **Longer pipeline** (recommended): `python nordpool_predict_fi.py --predict --narrate --commit --deploy` will:
   1. Train a new model (in memory) and print evaluation stats,
   2. Use that model to fill or update your price forecast data frame for 7 days into the future,
   3. Use an OpenAI-based LLM to narrate the next 7 days’ forecast,
   4. Commit it all to your local SQLite database,
   5. Deploy JSON and narration MD files to `deploy/`.
+
+  The deploy step is skipped automatically if you forget `--commit`, so we never emit artefacts that are out of sync with the database.
 
 - When done, look in the `deploy` folder. You should see `prediction.json` with your newly generated data. If you open `index.html` from the `deploy` folder, you can see a rough chart. For a nicer UI, see the [Home Assistant instructions](#home-assistant).
 
@@ -122,6 +126,8 @@ The model tries to find and exploit correlations:
 - and so on...
 
 These are discovered automatically by XGBoost from historical examples.
+
+Want to explore them visually? Run `nordpool_predict_fi.py --predict --commit --deploy` (with the new [UMAP dependency](requirements.txt#L15) installed) to export `deploy/feature_embedding.json`. The front-end reads that file and renders an interactive 3D Plotly view where each point is a model feature, sized by its absolute correlation with price and colour-coded by source (generation, transmission, Baltic winds, FMI weather, calendar, etc.). The chart appears at the bottom of both `deploy/index.html` and `deploy/index_en.html`.
 
 ## How long will this repository/data be updated?
 
