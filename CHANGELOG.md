@@ -2,6 +2,11 @@
 
 All notable changes will be documented in this file.
 
+## [2025-10-16] - Database Workflow Updates
+### Changed
+- Removed `data/prediction.db` from version control because the file size became impractical, but the weekly `data/dump.sql` export remains available for reproducibility.
+- README now explains how to rebuild `data/prediction.db` from `data/dump.sql`, then backfill the latest week by running the prediction pipeline locally.
+
 ## [2025-10-15] - Feature Embedding Explorer
 ### Added
 - `util/features_umap.py` for exporting a UMAP-based 3D embedding of all modelling features during `--deploy`, emitting `deploy/feature_embedding.json`.

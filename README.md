@@ -81,6 +81,17 @@ options:
 
 See the `data/create` folders for a set of DB initialization scripts if you need them. You may need to fetch some of the data sets from their original sources. The CSV and SQL database dumps are updated from time to time.
 
+### Restore the local database from the dump
+
+If you clone the repository without the SQLite database committed, recreate `data/prediction.db` locally using the dump artifacts:
+
+```bash
+cd nordpool-predict-fi
+sqlite3 data/prediction.db < data/dump.sql
+```
+
+The `DATA_FOLDER_PATH` env variable should already point to the `data/` directory, so the scripts will pick up the restored file automatically. (Alternatively, you can use `.import` with `data/dump.csv` if you prefer CSV.)
+
 The main script is one flow with multiple optional stops, and you can choose one or many of them in almost any combination.
 
 Examples:
