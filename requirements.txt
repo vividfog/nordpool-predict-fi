@@ -12,6 +12,7 @@ pytz==2024.1
 PySocks==1.7.1
 requests==2.32.5
 scikit-learn==1.5.2
+umap-learn==0.5.6
 seaborn==0.13.2
 selenium==4.17.2
 shap==0.46.0
