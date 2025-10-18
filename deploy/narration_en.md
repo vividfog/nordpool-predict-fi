@@ -1,23 +1,23 @@
-*Electricity prices will remain mostly low next week; Monday will be pricier and Tuesday carries single-hour spike risk, cheapest from Wednesday to Saturday.*
+*Early-week prices will rise, Monday likely hosts the top hours; from Wednesday they slip below four cents, with Saturday the lowest.*
 
-The forecast was updated on Saturday at 09:01.
+The forecast was updated on Saturday at 12:01.
 
-| ""            | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
+|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 6,8 | 3,1 - 10,7 | 2412 - 4091 | 4,0 |
-| **Tuesday**   | 4,8 | 1,6 - 18,4 | 1657 - 4425 | 3,6 |
-| **Wednesday** | 2,0 | 0,3 - 4,4 | 4141 - 5071 | 5,0 |
-| **Thursday**   | 3,2 | 0,6 - 5,6 | 2767 - 4140 | 6,3 |
-| **Friday** | 3,0 | 1,0 - 6,2 | 2065 - 3892 | 7,5 |
-| **Saturday**  | 2,3 | 0,1 - 8,9 | 2104 - 4176 | 6,8 |
-| **Sunday** | 2,9 | 0,3 - 4,2 | 4013 - 5024 | 4,7 |
+| **Monday** | 7,7 | 2,3 - 13,5 | 1770 - 4055 | 4,0 |
+| **Tuesday** | 4,9 | 1,2 - 10,5 | 1947 - 4423 | 3,6 |
+| **Wednesday** | 2,0 | 0,6 - 4,5 | 4240 - 5121 | 5,0 |
+| **Thursday** | 2,6 | 0,6 - 5,5 | 3066 - 4562 | 6,3 |
+| **Friday** | 2,6 | 0,3 - 5,5 | 2524 - 4038 | 7,5 |
+| **Saturday** | 1,9 | 0,9 - 2,7 | 3407 - 4390 | 6,6 |
+| **Sunday** | 2,8 | 0,5 - 4,4 | 4270 - 5084 | 4,7 |
 
-Prices are expected to stay mostly low through the week. On most days, average prices will sit around 2–3 cents. Exceptions arise as **Monday** averages 6,8 cents and a single intraday peak appears on **Tuesday**. Wind generation above 3,000 MW on several days will support the low price level.
+The week’s price trend will be twofold. Early in the week the level will firm temporarily, but from Wednesday onward prices will broadly drop below four cents. The lowest averages are forecast for Saturday, at 1,9 ¢. On Sunday the level will be slightly higher than late in the week, yet still moderate.
 
-Monday’s priciest hours will fall into the daytime and evening. The high will reach 10,7 cents, with extended periods holding between 8–10 cents. In the late night and early morning, prices will move around 3–5 cents, but daytime will add clear upward pressure.
+The most distinct day will be **Monday**. The average price is expected at 7,7 ¢, with a range of 2,3–13,5 ¢. According to the forecast, the risk of individual peak hours will be elevated, and the highest hour will fall in the morning between 08–10. The intraday swing will be linked to wind power: minimum output will dip to 1770 MW while the day’s maximum price is the week’s highest. This low wind trough explains the elevated peak.
 
-On Tuesday the spike risk will stand out in the morning, around 08–10, when the day’s peak is forecast at 18,4 ¢. At the same time, wind output will dip to 1657 MW, which clearly explains the higher intraday maximum. For the rest of the day, prices will mostly stay between 2–8 cents and the daily average will land at 4,8 cents.
+**Tuesday** will see the average drop to 4,9 ¢, but intraday variation will still be brisk. Around midday, roughly 12–14, prices will climb near the day’s 10,5 ¢ maximum. **Wednesday** will calm notably: the average will fall to 2,0 ¢ and the range will stay within 0,6–4,5 ¢. **Thursday** will remain low at 2,6 ¢ with extremes at 0,6–5,5 ¢.
 
-The lowest-priced stretches will cluster in the middle and latter part of the week. **Wednesday** is expected to average 2,0 ¢, with nighttime dipping to 0,3–1 ¢. **Thursday** and **Friday** will average around 3 cents. **Saturday** will likely set the weekly low in the small hours, around 01–03, when prices touch 0,1–0,5 cents. **Sunday** will remain steady between 0,3 and 4,2 cents.
+Toward the end of the week, prices will remain low. **Friday** will average 2,6 ¢ with a range of 0,3–5,5 ¢. **Saturday** will have a narrow band (0,9–2,7 ¢), and the week’s lowest average would materialize then. **Sunday** is expected at 2,8 ¢ with a 0,5–4,4 ¢ range. The cheapest hours will mostly occur at night, while the week’s highest hours are concentrated in early-week mornings.
 
-*Stats interpreted by gpt-5.* 🌬️
+*Figures compiled by gpt-5.* ⚡️
