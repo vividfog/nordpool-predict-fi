@@ -1,23 +1,23 @@
-*Early-week prices will rise, Monday likely hosts the top hours; from Wednesday they slip below four cents, with Saturday the lowest.*
+*Next week’s spot electricity will stay mostly low-cost; on Monday prices will rise in the morning, other days see modest variation and the weekend is the cheapest overall.*
 
-The forecast was updated on Saturday at 12:01.
+Forecast updated on Saturday at 14:19.
 
 |  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 7,7 | 2,3 - 13,5 | 1770 - 4055 | 4,0 |
-| **Tuesday** | 4,9 | 1,2 - 10,5 | 1947 - 4423 | 3,6 |
-| **Wednesday** | 2,0 | 0,6 - 4,5 | 4240 - 5121 | 5,0 |
-| **Thursday** | 2,6 | 0,6 - 5,5 | 3066 - 4562 | 6,3 |
-| **Friday** | 2,6 | 0,3 - 5,5 | 2524 - 4038 | 7,5 |
-| **Saturday** | 1,9 | 0,9 - 2,7 | 3407 - 4390 | 6,6 |
-| **Sunday** | 2,8 | 0,5 - 4,4 | 4270 - 5084 | 4,7 |
+| **Monday** | 7,4 | 1,2 - 13,4 | 1726 - 4076 | 4,0 |
+| **Tuesday** | 4,2 | 1,2 - 9,5 | 1999 - 4316 | 3,6 |
+| **Wednesday** | 1,4 | 0,1 - 3,6 | 4175 - 5046 | 5,0 |
+| **Thursday** | 2,5 | 0,3 - 5,4 | 3016 - 4522 | 6,3 |
+| **Friday** | 2,6 | 0,4 - 5,3 | 2477 - 4005 | 7,5 |
+| **Saturday** | 1,6 | 0,7 - 2,3 | 3375 - 4525 | 6,6 |
+| **Sunday** | 0,7 | 0,2 - 2,7 | 4285 - 5073 | 4,7 |
 
-The week’s price trend will be twofold. Early in the week the level will firm temporarily, but from Wednesday onward prices will broadly drop below four cents. The lowest averages are forecast for Saturday, at 1,9 ¢. On Sunday the level will be slightly higher than late in the week, yet still moderate.
+In the overall view for the week, prices will mostly settle at a low level, often clearly below 4–5 cents. An exception will appear at the start of the week, as the average on Monday rises to 7,4 cents and a single hour reaches 13,4 cents. On other days, averages will stay lower and intraday variation will be more moderate.
 
-The most distinct day will be **Monday**. The average price is expected at 7,7 ¢, with a range of 2,3–13,5 ¢. According to the forecast, the risk of individual peak hours will be elevated, and the highest hour will fall in the morning between 08–10. The intraday swing will be linked to wind power: minimum output will dip to 1770 MW while the day’s maximum price is the week’s highest. This low wind trough explains the elevated peak.
+**On Monday** a risk of price spikes is forecast for individual hours. The highest level will occur in the late morning, roughly 9–11. The day’s high maximum is partly explained by the low wind-power minimum, which falls to 1 726 megawatts. This is clearly lower than on other days and coincides with the elevated peak.
 
-**Tuesday** will see the average drop to 4,9 ¢, but intraday variation will still be brisk. Around midday, roughly 12–14, prices will climb near the day’s 10,5 ¢ maximum. **Wednesday** will calm notably: the average will fall to 2,0 ¢ and the range will stay within 0,6–4,5 ¢. **Thursday** will remain low at 2,6 ¢ with extremes at 0,6–5,5 ¢.
+**On Sunday** the price level will be the week’s lowest, with an average of 0,7 cents and a maximum of 2,7 cents. **On Wednesday** and **on Saturday** prices will largely stay around 1–2 cents. **Thursday’s** and **Friday’s** averages will hover near 2,5 cents, with limited intraday variation. **On Tuesday** the average will reach 4,2 cents, but intraday levels will remain clearly below Monday’s.
 
-Toward the end of the week, prices will remain low. **Friday** will average 2,6 ¢ with a range of 0,3–5,5 ¢. **Saturday** will have a narrow band (0,9–2,7 ¢), and the week’s lowest average would materialize then. **Sunday** is expected at 2,8 ¢ with a 0,5–4,4 ¢ range. The cheapest hours will mostly occur at night, while the week’s highest hours are concentrated in early-week mornings.
+The week’s low price level will be supported by abundant wind power on most days, averaging over 3 000 megawatts. As a result, the cheapest periods will typically fall at night and over the weekend. The priciest moments will concentrate in weekday mornings and evenings, but Monday’s late morning will stand out as the only time clearly exceeding 10 cents.
 
-*Figures compiled by gpt-5.* ⚡️
+*Forecast compiled by gpt-5.* 🌬️
