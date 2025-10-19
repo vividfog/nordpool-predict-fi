@@ -1,25 +1,23 @@
-*Spot electricity will remain mostly low next week, but Monday stands out as clearly pricier; the weekend returns to a very low, very even level.*
+*The week starts pricier on Monday, but prices drop quickly; rising wind output pushes levels down, Wednesday briefly dips negative and the rest of the week is cheap.*
 
-The forecast was updated on Saturday at 21:01.
+The forecast was updated on Sunday at 03:13.
 
-|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 0,7 | 0,2 - 2,7 | 4188 - 4972 | 4,7 |
-| **Monday** | 8,2 | 1,1 - 14,6 | 1715 - 3991 | 4,0 |
-| **Tuesday** | 4,2 | 1,2 - 9,6 | 3555 - 5116 | 3,6 |
-| **Wednesday** | 1,5 | -0,0 - 2,9 | 4348 - 5048 | 5,0 |
-| **Thursday** | 3,9 | 0,1 - 7,2 | 2324 - 4724 | 6,3 |
-| **Friday** | 2,9 | 1,1 - 5,2 | 2157 - 3999 | 7,5 |
-| **Saturday** | 1,4 | 0,3 - 2,5 | 3389 - 4593 | 6,6 |
+| **Monday** | 7,4 | 1,2 - 11,8 | 2310 - 3949 | 4,0 |
+| **Tuesday** | 4,2 | 0,6 - 11,3 | 2981 - 5439 | 3,6 |
+| **Wednesday** | 1,2 | -0,3 - 3,1 | 4583 - 5708 | 5,0 |
+| **Thursday** | 3,3 | -0,0 - 6,4 | 2197 - 4732 | 6,3 |
+| **Friday** | 1,8 | 0,6 - 2,9 | 2709 - 4280 | 7,5 |
+| **Saturday** | 1,8 | 0,6 - 4,5 | 2276 - 4305 | 6,6 |
+| **Sunday** | 1,6 | 0,5 - 2,9 | 3348 - 4696 | 5,4 |
 
-In the weekly overview, prices will mostly sit below four cents. One exception will be **Monday**, when the average is set to rise to 8,2 ¢ and the day’s top reaches 14,6 ¢. The cheapest days look to be **Sunday** (avg 0,7 ¢) and **Saturday** (avg 1,4 ¢).
+The week will start at a clearly higher level and will get cheaper quickly towards the end. On **Monday**, the average price will be 7,4 ¢ with a range of 1,2–11,8 ¢. For individual peak hours the forecast indicates a spike risk: the most expensive window would land in the afternoon around 16–18, when the level would rise clearly above ten cents. The cheapest hours will fall at night right at the start of the day.
 
-**On Sunday**, prices should remain even. The lowest hours will likely fall overnight and early morning, while the evening around 18:00–20:00 should bring the day’s highest stretch (2,1–2,7 ¢). **On Monday**, single-hour peaks will likely cluster in the morning and early evening: the most likely top window is 9:00–11:00, with another elevated stretch around 17:00–19:00.
+Already on **Tuesday** prices will shift to a cheaper direction. The average will be 4,2 ¢ and the day’s top 11,3 ¢, but the overall level will be lower than Monday. Wind output will be ample from Tuesday onward, which typically depresses prices. On **Wednesday**, prices will be at the week’s low: the day’s average will be 1,2 cents and during the early night it would be around zero and briefly negative, at a low of −0,3 ¢. Wind will be clearly abundant (about 4 600–5 700 MW), which supports the low level.
 
-Midweek will edge back down. **On Tuesday**, the average is projected around 4,2 ¢, with late-morning hours briefly higher (up to 9,6 ¢). **On Wednesday**, variation should remain limited and a near‑zero minimum is possible, but most hours should stay within the 0–3 ¢ range.
+**Thursday** will bring a slight rise, but the average will remain at 3,3 cents. Intraday variation will be moderate with the day’s high at 6,4 ¢. The end of the week will be broadly inexpensive: **Friday’s** average will be 1,8 ¢ with a range of 0,6–2,9 ¢. **Saturday** will remain at roughly the same level, with individual hours peaking at 4,5 ¢.
 
-The end of the week will remain moderate. **On Thursday** and **Friday** the averages will settle at 3,9 and 2,9 ¢, and no large intraday swings are anticipated. **On Saturday**, prices should again be low, with the day’s range confined to roughly 0,3–2,5 ¢.
+The week will end still cheap. On **Sunday**, the average will be 1,6 ¢ and the day’s top 2,9 ¢. There will be many cheap hours from Friday to Sunday, often well under two cents. The most affordable stretches will fall in Wednesday’s night and early morning, whereas the week’s only clearly pricier full day will be Monday with its afternoon peaks. Realized prices may still move if the wind forecast changes.
 
-Wind output will be plentiful on most days, supporting low prices. In particular, early‑ and late‑week days will average clearly above 3000 MW. **On Monday**, the minimum wind output drops to 1715 MW, and that same day records the week’s highest maximum price. The low minimum production will likely explain Monday’s markedly steeper hourly prices versus the rest of the week.
-
-*Data reported by gpt-5.* ⚡️
+*Numbers by gpt-5.* 🌬️
