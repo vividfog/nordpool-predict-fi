@@ -1,23 +1,23 @@
-*Power prices will remain broadly low through the week, dipping below zero on Wednesday–Thursday nights; next Monday stands out higher with a single-hour spike risk.*
+*Forecast: day-ahead power prices will stay very low and occasionally negative early in the week; on Sunday and next Monday they will rise notably.*
 
-Forecast updated Monday at 09:01.
+The forecast was updated on Monday at 12:00.
 
 |  | avg-<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg-<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday** | 2,5 | 0,2 - 7,6 | 3093 - 5691 | 3,6 |
-| **Wednesday** | 0,7 | -0,2 - 1,8 | 4659 - 5795 | 5,0 |
-| **Thursday** | 1,6 | -0,4 - 4,0 | 2991 - 5616 | 6,3 |
-| **Friday** | 1,7 | 0,4 - 2,9 | 2744 - 3878 | 7,5 |
-| **Saturday** | 2,7 | 0,9 - 5,5 | 2080 - 3980 | 6,6 |
-| **Sunday** | 3,4 | -0,0 - 8,2 | 1838 - 4325 | 5,0 |
-| **Monday** | 6,7 | 2,5 - 12,1 | 1576 - 2979 | 4,1 |
+| **Tuesday** | 2,6 | 0,3 - 7,5 | 3349 - 5833 | 3,6 |
+| **Wednesday** | 0,6 | -0,3 - 1,8 | 5114 - 6326 | 5,0 |
+| **Thursday** | 1,5 | -0,7 - 3,2 | 3103 - 6034 | 6,3 |
+| **Friday** | 1,8 | 0,6 - 3,2 | 2554 - 3983 | 7,5 |
+| **Saturday** | 0,3 | -0,3 - 1,8 | 3064 - 4211 | 6,6 |
+| **Sunday** | 3,5 | 0,8 - 7,2 | 1522 - 3302 | 5,0 |
+| **Monday** | 5,2 | 1,0 - 9,4 | 2333 - 3163 | 4,7 |
 
-The week will shape up as clearly inexpensive: from Tuesday to Sunday, average prices will mostly stay below four cents. The lowest levels will come midweek, with **Wednesday** averaging 0,7 ¢ and **Thursday** 1,6 ¢. Night-time prices will briefly turn negative on Wednesday and Thursday.
+The start of the week will remain moderate. From **Tuesday** to **Saturday** average prices will mostly stay below four cents, and on several days the level will touch zero or dip below it at times. The week’s clearly higher overall levels will likely occur on **Sunday** and **Monday**, when averages are forecast at 3,5 and 5,2 cents and maxima at 7,2 and 9,4 ¢.
 
-The first weekdays of the week would benefit from abundant wind, pushing prices broadly lower. **Tuesday’s** price range will be 0,2–7,6 ¢, and **Friday’s** range will narrow to 0,4–2,9 ¢. **Saturday’s** and **Sunday’s** averages will also stay below four cents, even though Sunday will see a higher intraday maximum of 8,2 ¢.
+On **Tuesday** the day’s peak will land in the morning, around 8–10, when the high of 7,5 ¢ is reached. On **Wednesday** exceptionally low night and early-morning hours will appear; around 2–4 the forecast turns negative, and the day’s range stays within -0,3…1,8 ¢. On **Thursday** the pattern will continue, with a negative trough around 2–4.
 
-The clearest exception will appear next **Monday**, when the average rises to 6,7 ¢ and the maximum is forecast at 12,1 ¢. Behind this is weak wind: the day’s minimum wind output will drop to 1576 MW, and this low minimum also explains the elevated peak price. Monday also carries a noted risk of single-hour surges; the peak would likely fall between 7–9.
+**Friday’s** range (0,6–3,2 ¢) will remain narrow without pronounced hourly peaks. On **Saturday** the average will ease to 0,3 cents. Negative hours will fall in the early morning and afternoon: around 3–5 and 15–17 prices will briefly dip below zero, while the day’s upper end will stay near two cents.
 
-In summary, the cheapest periods will fall on midweek nights, while the week’s highest levels will cluster around next Monday’s morning hours. Price expectations may still shift if the wind forecast changes.
+On **Sunday** the level will rise from the weekend lows. Weak wind (wind power minimum 1522 MW) and a low production floor will explain the higher individual hours, and price spikes may occur in the morning around 7–9 and in the evening around 17–19, with readings up to 7,2 cents. Next **Monday** the upward trend will continue: the average will climb to 5,2 cents and the day’s high will be seen in the evening around 18–20 (peak 9,4 ¢). Intraday variation will be clearly larger than early in the week.
 
-*Concisely interpreted by gpt-5.* 📊
+*Numbers reported by gpt-5.* ⚡
