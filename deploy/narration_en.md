@@ -1,23 +1,23 @@
-*In the coming days, prices are expected to fluctuate: Saturday will stay affordable, while Tuesday–Wednesday may bring high peaks; Friday and Sunday have isolated pricier hours.*
+*The weekend will look inexpensive, but next week prices will tighten and Tue–Thu will feature spike risk and evening peaks. Average prices will rise gradually.*
 
-Forecast updated Wednesday at 21:00.
+The forecast was updated on Thursday at 03:36.
 
 |  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday** | 5,1 | 0,4 - 8,6 | 2581 - 5747 | 6,3 |
-| **Friday** | 6,0 | 2,8 - 10,4 | 1105 - 2392 | 7,5 |
-| **Saturday** | 2,4 | 1,4 - 3,2 | 1824 - 4804 | 6,6 |
-| **Sunday** | 4,6 | 1,0 - 7,6 | 1619 - 4884 | 5,0 |
-| **Monday** | 7,7 | 3,6 - 11,6 | 1713 - 2213 | 4,7 |
-| **Tuesday** | 9,6 | 4,0 - 20,0 | 588 - 2689 | 4,7 |
-| **Wednesday** | 10,0 | 2,7 - 20,6 | 802 - 2955 | 5,1 |
+| **Friday** | 6,8 | 2,8 - 10,9 | 1075 - 2265 | 7,5 |
+| **Saturday** | 2,5 | 0,8 - 4,5 | 1460 - 4789 | 6,6 |
+| **Sunday** | 4,2 | 0,6 - 7,3 | 1850 - 5185 | 5,0 |
+| **Monday** | 8,0 | 3,2 - 14,6 | 1597 - 2336 | 4,7 |
+| **Tuesday** | 12,5 | 5,6 - 24,8 | 479 - 1836 | 4,7 |
+| **Wednesday** | 13,4 | 6,0 - 22,6 | 824 - 1032 | 5,1 |
+| **Thursday** | 15,4 | 7,6 - 26,6 | 603 - 1157 | 5,1 |
 
-The weekly price profile will vary clearly. **Tuesday** and **Wednesday** are projected to see the week’s sharpest peaks: Tuesday’s maximum is estimated at 20,0 ¢ and Wednesday’s at 20,6 ¢. Both days carry a high risk of single-hour spikes. Tuesday’s top is set for the evening at 17–19, while Wednesday’s costliest hours will concentrate in the morning at 07–09.
+Over the weekend, a rather low price level will be expected. **Saturday’s** average price will be 2,5 ¢, and **Sunday’s** 4,2 ¢. **Friday’s** 6,8 ¢ will act as a transition into the start of the week, when prices will rise.
 
-In **Friday’s** day-level outlook there will also be spike risk. The priciest moment will fall in the late afternoon around 16–18, when the price will reach 10,4 ¢. **On Sunday** the spike risk will stand out in the evening at 18–20, with single hours rising to about 7–8 ¢. **On Monday** the higher levels will appear in the morning at 07–09, with a top hour at 11,6 ¢; the early evening will bring the day’s second-highest range.
+At the start of next week, prices will climb. **Monday’s** average will be 8,0 ¢, followed by a pricier stretch: **Tuesday** 12,5 ¢, **Wednesday** 13,4 ¢ and **Thursday** 15,4 ¢. High daily peaks will be seen especially on days like Wednesday and Thursday, with intraday highs exceeding 20 ¢. Thursday will stand out with the week’s highest maximum, 26,6 ¢. On these days, minimum wind output will fall very low (below 1000 MW), which will explain the elevated peaks. On **Tuesday** the minimum will also be exceptionally low (479 MW), reflected in the 24,8 ¢ high.
 
-Wind output swings will explain part of the dispersion. **On Thursday** the generally strong production (about 4162 MW) will press prices down and bring night-time levels around one cent. **Tuesday’s** and **Wednesday’s** peaks will be supported by exceptionally low minimum wind output, just 588 MW on Tuesday and 802 MW on Wednesday, aligning with the days’ highest maximum prices.
+A spike risk will be flagged for several days. On **Friday**, individual evening hours could rise notably, most likely at 18:00–20:00. On **Monday**, the focus will be on the evening, around 17:00–19:00. On **Tuesday**, the risk will be high; the largest peak will likely fall in the evening at 17:00–19:00. On **Wednesday**, the risk will be elevated both in the morning at 08:00–10:00 and in the evening at 17:00–19:00. On **Thursday**, the highest probability will land in the evening at 17:00–19:00, and the anticipated peak will be the week’s highest.
 
-The week’s lowest prices will cluster in the night and late evening hours. **Early Thursday** at 03–05 the price will remain at 0,4–0,6 ¢. **On Saturday** pricing will be subdued throughout, and late evening at 21–23 will see the day’s lows around 1,4–1,6 ¢. During the day from Saturday to Sunday, prices will mostly stay within the 2–7 ¢ range, before the early-week rise accelerates toward Tuesday’s and Wednesday’s highs.
+The cheapest individual hours of the week will fall on the weekend. On **Saturday** evening at 21:00–23:00, levels of 0,8–1,1 ¢ will be anticipated. In **Sunday’s** early night at 01:00–03:00, prices will stay around 0,6–1,7 ¢. Moving into weekdays, night and morning hours will generally be more moderate, while evenings will lift daily averages, especially from Tuesday to Thursday.
 
-*Numbers compiled by gpt-5.* ⚡️
+*Numbers parsed by gpt-5.* ⚡️
