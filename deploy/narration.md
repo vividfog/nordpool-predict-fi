@@ -1,23 +1,27 @@
-*Viikonloppu näyttäytyy edullisena, mutta ensi viikolla hinnat kiristyvät ja ti–to korostuu piikkiriski sekä iltahuiput. Keskihinnat nousevat asteittain.*
+*Viikko jakautuu kahtia: viikonloppu on edullinen, tiistaista torstaihin hinnat nousevat selvästi ja usein huipputunnit painottuvat aamuun ja iltaan.*
 
-Ennuste on päivitetty torstaina klo 03:36.
+Ennuste on päivitetty torstaina klo 09:00.
 
 |  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **perjantai** | 6,8 | 2,8 - 10,9 | 1075 - 2265 | 7,5 |
-| **lauantai** | 2,5 | 0,8 - 4,5 | 1460 - 4789 | 6,6 |
-| **sunnuntai** | 4,2 | 0,6 - 7,3 | 1850 - 5185 | 5,0 |
-| **maanantai** | 8,0 | 3,2 - 14,6 | 1597 - 2336 | 4,7 |
-| **tiistai** | 12,5 | 5,6 - 24,8 | 479 - 1836 | 4,7 |
-| **keskiviikko** | 13,4 | 6,0 - 22,6 | 824 - 1032 | 5,1 |
-| **torstai** | 15,4 | 7,6 - 26,6 | 603 - 1157 | 5,1 |
+| **perjantai** | 6.4 | 2.6 - 11.0 | 1066 - 2257 | 7.5 |
+| **lauantai** | 2.6 | 1.3 - 3.9 | 1445 - 4762 | 6.6 |
+| **sunnuntai** | 2.8 | 0.0 - 5.7 | 2095 - 5326 | 5.0 |
+| **maanantai** | 5.8 | 2.4 - 9.6 | 2035 - 3514 | 4.7 |
+| **tiistai** | 9.6 | 2.8 - 20.4 | 611 - 2688 | 4.7 |
+| **keskiviikko** | 13.5 | 5.5 - 22.6 | 824 - 1083 | 5.1 |
+| **torstai** | 14.6 | 7.2 - 24.4 | 612 - 1127 | 5.1 |
 
-Viikonvaihteessa odotetaan varsin edullista hintatasoa. **Lauantain** keskihinta on ennusteen mukaan 2,5 ¢, ja **sunnuntain** 4,2 ¢. **Perjantain** 6,8 ¢ toimii siirtymänä kohti alkuviikkoa, jolloin hintataso nousee selvästi.
+Viikonvaihteessa hintataso pysyy yleisesti edullisena, kun lauantain keskihinta on 2,6 ¢ ja sunnuntain 2,8 ¢. Alle neljän sentin päivän keskiarvoa nähdään myös vielä perjantaina ja ensi maanantaina. Viikon kallein jakso painottuu tiistaista torstaihin: tiistain keskihinta on 9,6 ¢, keskiviikon 13,5 ¢ ja torstain 14,6 ¢, ja näinä päivinä myös yksittäiset huiput kohoavat selvästi.
 
-Ensi viikon alussa hinnat kohotaan. **Maanantain** keskihinta on 8,0 ¢, ja tätä seuraa kalliimpi jakso: **tiistaina** 12,5 ¢, **keskiviikkona** 13,4 ¢ ja **torstaina** 15,4 ¢. Korkeita maksimihintoja nähdään erityisesti keskiviikon ja torstain kaltaisina päivinä, jolloin päivän huiput yltävät yli 20 ¢. Torstai erottuu viikosta korkeimmalla maksimilla, 26,6 ¢. Näinä päivinä tuulivoiman minimituotanto jää hyvin matalaksi (alle 1000 MW), mikä selittää kohonneet huippuhinnat. Myös tiistaina minimi on poikkeuksellisen alhainen (479 MW), ja tämä näkyy 24,8 ¢ huipussa.
+**Perjantain** hinnoissa esiintyy nousu iltapäivällä, jolloin päivän korkein tunti asettuu klo 15–17 haarukkaan (huippu 11,0 ¢). Tämä näkyy päivän sisäisenä vaihteluna, vaikka keskiarvo pysyy maltillisena.
 
-Hintapiikkien riski mainitaan usealle päivälle. **Perjantaina** yksittäiset illan tunnit voivat nousta selvästi, todennäköisimmin klo 18–20. **Maanantaina** korostus kohdistuu iltaan, arviolta klo 17–19. **Tiistaina** piikkiriski on korkea; suurin huippu ajoittuu iltaan klo 17–19. **Keskiviikkona** riski on koholla sekä aamulla klo 08–10 että illalla klo 17–19. **Torstaina** korkein todennäköisyys osuu iltaan klo 17–19, ja ennakoitu huippu on viikon korkein.
+**Lauantaina** hintavaihtelu jää kapeaksi 1,3–3,9 ¢ väliin. **Sunnuntaina** alaraja käy nollassa ja yläraja jää 5,7 ¢ tasolle; voimakas tuuli (ka. 3499 MW) tukee matalaa hintaa.
 
-Viikon edullisimmat yksittäiset tunnit ajoittuvat viikonlopulle. **Lauantain** iltaan klo 21–23 ennakoidaan 0,8–1,1 ¢ tasoa. **Sunnuntain** alkuyössä klo 01–03 hinnat pysyttelevät lähellä 0,6–1,7 ¢. Arkipäiville siirryttäessä yö- ja aamun tunnit ovat yleensä maltillisempia, kun taas illat nostavat päivän keskiarvoja, etenkin tiistaista torstaihin.
+**Maanantaina** keskihinta asettuu noin kuuteen senttiin, ja aamuun ajoittuu selkeämpi korkeampi hetki klo 08–10 (huippu 9,6 ¢). **Tiistaina** ennakoidaan selvästi korkeampia tuntihintoja, erityisesti illassa klo 17–19 (huippu 20,4 ¢). Päivän tuulivoiman minimituotanto jää hyvin matalaksi (611 MW), mikä selittää korkeamman maksimihinnan.
 
-*Luvut luki gpt-5.* ⚡️
+**Keskiviikkona** ja torstaina hintataso kohoaa viikon selvästi korkeimmaksi ja yksittäisille tunneille arvioidaan piikkiriski. Keskiviikkona korostuvat aamu klo 07–09 ja ilta klo 17–19 (päivän huippu 22,6 ¢). Torstaina vastaavat huiput osuvat samoin klo 07–09 ja 17–19 (päivän huippu 24,4 ¢). Molempina päivinä tuuli jää tyynelle tasolle (päivän minimit 824 MW ja 612 MW), mikä on vahva taustatekijä korkeille maksimihinnoille.
+
+Itse viikko näyttäisi rakentuvan kahdesta selvästä jaksosta: viikonloppu ja viikon alku ovat edullisia, kun taas tiistaista eteenpäin hinnoissa mennään kalliimpaan luokkaan ja ilta-aikojen huiput nousevat yli 20 ¢:n.
+
+*Lyhyesti tulkitsi gpt-5.* ⚡️
