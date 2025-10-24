@@ -24,8 +24,9 @@
         <p>The model is trained and the forecast is updated automatically a few times per day. Below the graph is a language model's interpretation of the numbers.</p>
         <h1 style="padding-top: 32px">Forecast for the coming days</h1>
         <p id="predictionChart"></p>
+        <p id="narration"></p>
         <div id="cheapestWindows">
-            <h2>Cheapest windows</h2>
+            <h1 style="padding-top: 32px">Cheapest windows</h1>
             <p>The table tracks the model’s cheapest price periods for the hours ahead.</p>
             <table class="cheapest-table">
                 <thead>
@@ -43,7 +44,6 @@
                 </tbody>
             </table>
         </div>
-        <p id="narration"></p>
         <h1>Wind power forecast</h1>
         <p>Based on data and forecasts from FMI weather stations on the coast of the Gulf of Bothnia, with price data shown in the background. Wind over 2...3 gigawatts is favorable for the electricity price, and with wind below 1 gigawatt, the price can rise significantly if there are maintenance outages or cold temperatures at the same time.</p>
         <div id="windPowerChart" style="width: 100%; max-width: 920px; margin: auto; box-sizing: border-box; padding-top: 32px;"></div>
