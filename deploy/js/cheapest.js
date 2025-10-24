@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     const PULSE_CLASS = 'cheapest-refresh';
     let pulseTimer = null;
+    const PULSE_DURATION_MS = 900;
 
     syncControlsWithConfig(currentConfig);
     attachControls();
@@ -392,6 +393,6 @@ document.addEventListener('DOMContentLoaded', function() {
         pulseTimer = setTimeout(() => {
             card.classList.remove(PULSE_CLASS);
             pulseTimer = null;
-        }, 500);
+        }, PULSE_DURATION_MS);
     }
 });

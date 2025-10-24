@@ -21,18 +21,24 @@ body {
 }
 
 #cheapestWindows.cheapest-refresh .cheapest-table {
-    animation: cheapestPulse 0.5s ease;
+    animation: cheapestPulseBackground 0.8s ease-in-out;
 }
 
-@keyframes cheapestPulse {
+@keyframes cheapestPulseBackground {
     0% {
-        box-shadow: 0 0 0 rgba(30, 144, 255, 0);
+        background-color: transparent;
     }
-    30% {
-        box-shadow: 0 0 0 8px rgba(30, 144, 255, 0.15);
+    25% {
+        background-color: rgba(135, 206, 235, 0.1);
+    }
+    50% {
+        background-color: rgba(135, 206, 235, 0.2);
+    }
+    75% {
+        background-color: rgba(135, 206, 235, 0.1);
     }
     100% {
-        box-shadow: 0 0 0 rgba(30, 144, 255, 0);
+        background-color: transparent;
     }
 }
 
