@@ -12,13 +12,13 @@ var endDate = addDays(new Date(), 2).toISOString();
 const HOUR_MS = 60 * 60 * 1000;
 const CHEAPEST_WINDOW_DURATIONS = [3, 6, 12];
 const MAX_LOOKAHEAD_HOURS = 168;
-const DEFAULT_LOOKAHEAD_DAYS = 3;
+const DEFAULT_LOOKAHEAD_DAYS = 4;
 const MIN_LOOKAHEAD_DAYS = 1;
 const MAX_LOOKAHEAD_DAYS = 7;
 const MIN_DAY_HOUR = 0;
 const MAX_DAY_HOUR = 23;
 const DEFAULT_WINDOW_START_HOUR = 0;
-const DEFAULT_WINDOW_END_HOUR = 8;
+const DEFAULT_WINDOW_END_HOUR = 23;
 const HELSINKI_TIMEZONE = 'Europe/Helsinki';
 
 // URLs for the datasets

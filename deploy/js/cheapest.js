@@ -31,11 +31,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const defaultsSource = window.CHEAPEST_WINDOW_DEFAULTS || {};
     const defaults = {
-        lookaheadDays: ensureNumber(defaultsSource.lookaheadDays, 3),
+        lookaheadDays: ensureNumber(defaultsSource.lookaheadDays, 4),
         minLookaheadDays: ensureNumber(defaultsSource.minLookaheadDays, 1),
         maxLookaheadDays: ensureNumber(defaultsSource.maxLookaheadDays, 7),
         startHour: ensureNumber(defaultsSource.startHour, 0),
-        endHour: ensureNumber(defaultsSource.endHour, 8),
+        endHour: ensureNumber(defaultsSource.endHour, 23),
         minHour: ensureNumber(defaultsSource.minHour, 0),
         maxHour: ensureNumber(defaultsSource.maxHour, 23)
     };
