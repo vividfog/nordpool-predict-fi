@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     const PULSE_CLASS = 'cheapest-refresh';
     let pulseTimer = null;
-    const PULSE_DURATION_MS = 900;
+    const PULSE_DURATION_MS = 1100;
 
     syncControlsWithConfig(currentConfig);
     attachControls();
@@ -256,23 +256,31 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     }
 
-    function renderRows() {
+    function renderRows(options = {}) {
+        const shouldPulse = options.pulse !== false;
+
         if (!predictionData) {
             setMessageRow(getLocalizedText('cheapest_table_loading'));
-            triggerTablePulse();
+            if (shouldPulse) {
+                triggerTablePulse();
+            }
             return;
         }
 
         const windows = latestWindowState?.windows;
         if (!windows) {
             setMessageRow(getLocalizedText('cheapest_table_loading'));
-            triggerTablePulse();
+            if (shouldPulse) {
+                triggerTablePulse();
+            }
             return;
         }
 
         if (!windows.length) {
             setMessageRow(getLocalizedText('cheapest_table_none'));
-            triggerTablePulse();
+            if (shouldPulse) {
+                triggerTablePulse();
+            }
             return;
         }
 
@@ -303,7 +311,9 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
         }).join('');
 
-        triggerTablePulse();
+        if (shouldPulse) {
+            triggerTablePulse();
+        }
     }
 
     function updateCheapestWindows() {
@@ -352,7 +362,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         refreshTimer = setInterval(function() {
             updateCheapestWindows();
-            renderRows();
+            renderRows({ pulse: false });
         }, REFRESH_INTERVAL_MS);
     }
 
@@ -374,7 +384,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             input.addEventListener('change', handleControlsInput);
-            input.addEventListener('input', handleControlsInput);
         });
     }
 

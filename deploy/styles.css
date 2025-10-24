@@ -21,7 +21,7 @@ body {
 }
 
 #cheapestWindows.cheapest-refresh .cheapest-table {
-    animation: cheapestPulseBackground 0.8s ease-in-out;
+    animation: cheapestPulseBackground 0.96s ease-in-out;
 }
 
 @keyframes cheapestPulseBackground {
@@ -32,7 +32,7 @@ body {
         background-color: rgba(135, 206, 235, 0.1);
     }
     50% {
-        background-color: rgba(135, 206, 235, 0.2);
+        background-color: rgba(135, 206, 235, 0.25);
     }
     75% {
         background-color: rgba(135, 206, 235, 0.1);
