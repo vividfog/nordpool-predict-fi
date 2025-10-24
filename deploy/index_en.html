@@ -27,8 +27,8 @@
         <p id="narration"></p>
         <div id="cheapestWindows">
             <h1>Cheapest price windows</h1>
-            <form id="cheapestControls" class="cheapest-sentence" autocomplete="off">
-                <span>Show the cheapest windows within the next</span>
+            <form id="cheapestControls" class="cheapest-sentence" autocomplete="off" style="padding-top: 16px">
+                <span>The table covers the next</span>
                 <label class="cheapest-field">
                     <select id="cheapestDaysInput" aria-label="Lookahead days">
                         <option value="1">1</option>
@@ -40,7 +40,7 @@
                         <option value="7">7</option>
                     </select>
                 </label>
-                <span>days, starting between</span>
+                <span>days. Windows start at</span>
                 <label class="cheapest-field">
                     <select id="cheapestStartHourInput" aria-label="Start hour lower bound">
                         <option value="0" selected>0</option>
@@ -69,7 +69,7 @@
                         <option value="23">23</option>
                     </select>
                 </label>
-                <span>:00 and</span>
+                <span>:00 – </span>
                 <label class="cheapest-field">
                     <select id="cheapestEndHourInput" aria-label="Start hour upper bound">
                         <option value="0">0</option>
