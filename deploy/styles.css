@@ -25,9 +25,38 @@ body {
     font-size: 1.2em;
 }
 
-#cheapestWindows p {
+.cheapest-sentence {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
     margin: 6px 0 16px 0;
     font-size: 0.95em;
+    color: rgba(51, 51, 51, 0.85);
+}
+
+.cheapest-sentence span {
+    display: inline-flex;
+    align-items: center;
+}
+
+.cheapest-field {
+    display: inline-flex;
+}
+
+.cheapest-field input {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font: inherit;
+    width: 3.2ch;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.cheapest-field input:focus {
+    outline: 2px solid rgba(65, 131, 215, 0.35);
+    outline-offset: 1px;
 }
 
 .cheapest-table {
@@ -118,6 +147,16 @@ body {
         letter-spacing: 0.04em;
         color: rgba(31, 61, 117, 0.6);
         font-weight: 600;
+    }
+
+    .cheapest-sentence {
+        font-size: 0.9em;
+        gap: 4px;
+    }
+
+    .cheapest-field input {
+        width: 3ch;
+        padding: 2px 4px;
     }
 
     .cheapest-cell-average,

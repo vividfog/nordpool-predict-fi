@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
+    const controlsForm = document.getElementById('cheapestControls');
+    const lookaheadInput = document.getElementById('cheapestDaysInput');
+    const startHourInput = document.getElementById('cheapestStartHourInput');
+    const endHourInput = document.getElementById('cheapestEndHourInput');
+
     const isEnglish = window.location.pathname.includes('index_en');
     const HELSINKI_TIMEZONE = 'Europe/Helsinki';
     const REFRESH_INTERVAL_MS = 60000;
@@ -24,8 +29,105 @@ document.addEventListener('DOMContentLoaded', function() {
         start: getLocalizedText('cheapest_column_start')
     };
 
-    let latestData = null;
+    const defaultsSource = window.CHEAPEST_WINDOW_DEFAULTS || {};
+    const defaults = {
+        lookaheadDays: ensureNumber(defaultsSource.lookaheadDays, 3),
+        minLookaheadDays: ensureNumber(defaultsSource.minLookaheadDays, 1),
+        maxLookaheadDays: ensureNumber(defaultsSource.maxLookaheadDays, 7),
+        startHour: ensureNumber(defaultsSource.startHour, 0),
+        endHour: ensureNumber(defaultsSource.endHour, 8),
+        minHour: ensureNumber(defaultsSource.minHour, 0),
+        maxHour: ensureNumber(defaultsSource.maxHour, 23)
+    };
+
+    let predictionData = null;
+    let latestWindowState = null;
     let refreshTimer = null;
+    let currentConfig = {
+        lookaheadDays: defaults.lookaheadDays,
+        startHour: defaults.startHour,
+        endHour: defaults.endHour
+    };
+
+    syncControlsWithConfig(currentConfig);
+    attachControls();
+
+    if (window.latestPredictionData) {
+        handlePredictionPayload(window.latestPredictionData);
+    } else {
+        setMessageRow(getLocalizedText('cheapest_table_loading'));
+    }
+
+    window.addEventListener('prediction-data-ready', function(event) {
+        handlePredictionPayload(event.detail);
+    });
+
+    function ensureNumber(value, fallback) {
+        const numeric = Number(value);
+        return Number.isFinite(numeric) ? numeric : fallback;
+    }
+
+    function toInteger(input) {
+        if (typeof input === 'number') {
+            return Number.isFinite(input) ? Math.round(input) : NaN;
+        }
+        if (typeof input !== 'string') {
+            return NaN;
+        }
+        const trimmed = input.trim();
+        if (trimmed === '') {
+            return NaN;
+        }
+        const parsed = Number.parseInt(trimmed, 10);
+        return Number.isFinite(parsed) ? parsed : NaN;
+    }
+
+    function toHourCandidate(input) {
+        if (typeof input === 'number') {
+            return Number.isFinite(input) ? Math.round(input) : NaN;
+        }
+        if (typeof input !== 'string') {
+            return NaN;
+        }
+        const digits = input.replace(/[^0-9]/g, '');
+        if (!digits) {
+            return NaN;
+        }
+        const parsed = Number.parseInt(digits, 10);
+        return Number.isFinite(parsed) ? parsed : NaN;
+    }
+
+    function clampDays(value, fallback) {
+        const candidate = toInteger(value);
+        const baseline = Number.isNaN(candidate) ? toInteger(fallback) : candidate;
+        if (!Number.isFinite(baseline)) {
+            return defaults.lookaheadDays;
+        }
+        if (baseline < defaults.minLookaheadDays) {
+            return defaults.minLookaheadDays;
+        }
+        if (baseline > defaults.maxLookaheadDays) {
+            return defaults.maxLookaheadDays;
+        }
+        return baseline;
+    }
+
+    function clampHourValue(value, fallback, defaultValue) {
+        const candidate = toHourCandidate(value);
+        const baseline = Number.isNaN(candidate) ? toHourCandidate(fallback) : candidate;
+        const pivot = Number.isNaN(baseline) ? defaultValue : baseline;
+        if (pivot < defaults.minHour) {
+            return defaults.minHour;
+        }
+        if (pivot > defaults.maxHour) {
+            return defaults.maxHour;
+        }
+        return pivot;
+    }
+
+    function padHour(hour) {
+        return hour.toString().padStart(2, '0');
+    }
 
     function setMessageRow(text) {
         tableBody.innerHTML = `
@@ -33,6 +135,48 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td colspan="4">${text}</td>
             </tr>
         `;
+    }
+
+    function syncControlsWithConfig(config) {
+        const normalized = {
+            lookaheadDays: clampDays(config?.lookaheadDays, defaults.lookaheadDays),
+            startHour: clampHourValue(config?.startHour, defaults.startHour, defaults.startHour),
+            endHour: clampHourValue(config?.endHour, defaults.endHour, defaults.endHour)
+        };
+
+        if (lookaheadInput) {
+            lookaheadInput.value = normalized.lookaheadDays.toString();
+        }
+        if (startHourInput) {
+            startHourInput.value = padHour(normalized.startHour);
+        }
+        if (endHourInput) {
+            endHourInput.value = padHour(normalized.endHour);
+        }
+
+        currentConfig = normalized;
+        return normalized;
+    }
+
+    function normalizeControlsFromInputs() {
+        const normalized = {
+            lookaheadDays: clampDays(lookaheadInput?.value, currentConfig.lookaheadDays),
+            startHour: clampHourValue(startHourInput?.value, currentConfig.startHour, defaults.startHour),
+            endHour: clampHourValue(endHourInput?.value, currentConfig.endHour, defaults.endHour)
+        };
+
+        if (lookaheadInput) {
+            lookaheadInput.value = normalized.lookaheadDays.toString();
+        }
+        if (startHourInput) {
+            startHourInput.value = padHour(normalized.startHour);
+        }
+        if (endHourInput) {
+            endHourInput.value = padHour(normalized.endHour);
+        }
+
+        currentConfig = normalized;
+        return normalized;
     }
 
     function formatStart(timestamp) {
@@ -113,27 +257,24 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     }
 
-    function buildRows(data) {
-        if (!data || !Array.isArray(data.windows)) {
-            return [];
-        }
-
-        return data.windows;
-    }
-
     function renderRows() {
-        if (!latestData) {
+        if (!predictionData) {
             setMessageRow(getLocalizedText('cheapest_table_loading'));
             return;
         }
 
-        const rows = buildRows(latestData);
-        if (!rows.length) {
+        const windows = latestWindowState?.windows;
+        if (!windows) {
+            setMessageRow(getLocalizedText('cheapest_table_loading'));
+            return;
+        }
+
+        if (!windows.length) {
             setMessageRow(getLocalizedText('cheapest_table_none'));
             return;
         }
 
-        tableBody.innerHTML = rows.map(windowInfo => {
+        tableBody.innerHTML = windows.map(windowInfo => {
             const average = Number(windowInfo.average);
             const start = Number(windowInfo.start);
             const end = Number(windowInfo.end);
@@ -161,24 +302,80 @@ document.addEventListener('DOMContentLoaded', function() {
         }).join('');
     }
 
+    function updateCheapestWindows() {
+        if (!predictionData || typeof window.buildCheapestWindowPayload !== 'function') {
+            return;
+        }
+
+        const series = predictionData.mergedSeries;
+        if (!Array.isArray(series) || series.length === 0) {
+            return;
+        }
+
+        const payload = window.buildCheapestWindowPayload(series, Date.now(), currentConfig);
+        latestWindowState = payload;
+
+        predictionData.windows = payload.windows;
+        predictionData.meta = Object.assign({}, predictionData.meta, payload.meta, currentConfig);
+
+        if (window.latestPredictionData) {
+            window.latestPredictionData.windows = payload.windows;
+            window.latestPredictionData.meta = predictionData.meta;
+        }
+    }
+
+    function handlePredictionPayload(payload) {
+        if (!payload) {
+            return;
+        }
+
+        predictionData = payload;
+        const configFromMeta = {
+            lookaheadDays: payload?.meta?.lookaheadDays,
+            startHour: payload?.meta?.startHour,
+            endHour: payload?.meta?.endHour
+        };
+
+        syncControlsWithConfig(configFromMeta);
+        updateCheapestWindows();
+        renderRows();
+        startCountdownUpdates();
+    }
+
     function startCountdownUpdates() {
         if (refreshTimer) {
             clearInterval(refreshTimer);
         }
-        refreshTimer = setInterval(renderRows, REFRESH_INTERVAL_MS);
+        refreshTimer = setInterval(function() {
+            updateCheapestWindows();
+            renderRows();
+        }, REFRESH_INTERVAL_MS);
     }
 
-    window.addEventListener('prediction-data-ready', function(event) {
-        latestData = event.detail;
-        renderRows();
-        startCountdownUpdates();
-    });
+    function handleControlsInput(event) {
+        if (event) {
+            event.stopPropagation();
+        }
 
-    if (window.latestPredictionData) {
-        latestData = window.latestPredictionData;
+        normalizeControlsFromInputs();
+        updateCheapestWindows();
         renderRows();
-        startCountdownUpdates();
-    } else {
-        setMessageRow(getLocalizedText('cheapest_table_loading'));
+    }
+
+    function attachControls() {
+        if (controlsForm) {
+            controlsForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+            });
+        }
+
+        [lookaheadInput, startHourInput, endHourInput].forEach(input => {
+            if (!input) {
+                return;
+            }
+            input.addEventListener('input', handleControlsInput);
+            input.addEventListener('blur', handleControlsInput);
+        });
     }
 });
+

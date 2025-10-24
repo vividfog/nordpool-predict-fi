@@ -11,7 +11,14 @@ var endDate = addDays(new Date(), 2).toISOString();
 
 const HOUR_MS = 60 * 60 * 1000;
 const CHEAPEST_WINDOW_DURATIONS = [3, 6, 12];
-const DEFAULT_LOOKAHEAD_HOURS = 168;
+const MAX_LOOKAHEAD_HOURS = 168;
+const DEFAULT_LOOKAHEAD_DAYS = 3;
+const MIN_LOOKAHEAD_DAYS = 1;
+const MAX_LOOKAHEAD_DAYS = 7;
+const MIN_DAY_HOUR = 0;
+const MAX_DAY_HOUR = 23;
+const DEFAULT_WINDOW_START_HOUR = 0;
+const DEFAULT_WINDOW_END_HOUR = 8;
 const HELSINKI_TIMEZONE = 'Europe/Helsinki';
 
 // URLs for the datasets
@@ -312,19 +319,49 @@ function mergePriceSeries(actualSeries, forecastSeries) {
         .sort((a, b) => a[0] - b[0]);
 }
 
-function buildCheapestWindowPayload(series, nowMs) {
+function clampLookaheadDays(days) {
+    if (!Number.isFinite(days)) {
+        return DEFAULT_LOOKAHEAD_DAYS;
+    }
+    const rounded = Math.round(days);
+    if (rounded < MIN_LOOKAHEAD_DAYS) {
+        return MIN_LOOKAHEAD_DAYS;
+    }
+    if (rounded > MAX_LOOKAHEAD_DAYS) {
+        return MAX_LOOKAHEAD_DAYS;
+    }
+    return rounded;
+}
+
+function computeLookaheadHours(nowMs, lookaheadDays) {
+    const timestamp = Number.isFinite(nowMs) ? nowMs : Date.now();
+    const days = clampLookaheadDays(lookaheadDays);
+    const currentHour = getHelsinkiHour(timestamp);
+    const remainderHours = Math.max(24 - (currentHour + 1), 0);
+    const total = remainderHours + days * 24;
+    const bounded = Math.min(Math.max(total, 1), MAX_LOOKAHEAD_HOURS);
+    return bounded;
+}
+
+function buildCheapestWindowPayload(series, nowMs, options = {}) {
     const finiteSeries = Array.isArray(series)
         ? series.filter(item => Array.isArray(item) && Number.isFinite(item[0]) && Number.isFinite(item[1]))
         : [];
 
     const generatedAt = Number.isFinite(nowMs) ? nowMs : Date.now();
+    const lookaheadDays = clampLookaheadDays(options.lookaheadDays ?? DEFAULT_LOOKAHEAD_DAYS);
+    const startHour = clampHour(options.startHour ?? DEFAULT_WINDOW_START_HOUR);
+    const endHour = clampHour(options.endHour ?? DEFAULT_WINDOW_END_HOUR);
+    const lookaheadHours = computeLookaheadHours(generatedAt, lookaheadDays);
     const anchor = Math.floor(generatedAt / HOUR_MS) * HOUR_MS;
-    const lookaheadLimit = anchor + DEFAULT_LOOKAHEAD_HOURS * HOUR_MS;
+    const lookaheadLimit = anchor + lookaheadHours * HOUR_MS;
+    const mask = buildStartHourMask(startHour, endHour);
 
     const windows = CHEAPEST_WINDOW_DURATIONS.map(duration => {
         const windowResult = computeCheapestWindow(finiteSeries, duration, {
             nowMs: generatedAt,
-            lookaheadLimit
+            lookaheadLimit,
+            mask
         });
         return formatWindowPayload(duration, windowResult);
     });
@@ -333,8 +370,11 @@ function buildCheapestWindowPayload(series, nowMs) {
         generatedAt,
         windows,
         meta: {
-            lookaheadHours: DEFAULT_LOOKAHEAD_HOURS,
-            lookaheadLimit
+            lookaheadHours,
+            lookaheadLimit,
+            lookaheadDays,
+            startHour,
+            endHour
         }
     };
 }
@@ -346,9 +386,9 @@ function computeCheapestWindow(series, hours, options) {
 
     const nowMs = options?.nowMs ?? Date.now();
     const lookaheadLimit = options?.lookaheadLimit;
-    const startHour = options?.startHour ?? 0;
-    const endHour = options?.endHour ?? 23;
-    const mask = buildStartHourMask(startHour, endHour);
+    const startHour = clampHour(options?.startHour ?? MIN_DAY_HOUR);
+    const endHour = clampHour(options?.endHour ?? MAX_DAY_HOUR);
+    const mask = options?.mask ?? buildStartHourMask(startHour, endHour);
 
     const anchor = Math.floor(nowMs / HOUR_MS) * HOUR_MS;
     const earliestStartCandidate = anchor - (hours - 1) * HOUR_MS;
@@ -465,13 +505,13 @@ function buildStartHourMask(startHour, endHour) {
 
 function clampHour(hour) {
     if (!Number.isFinite(hour)) {
-        return 0;
+        return MIN_DAY_HOUR;
     }
-    if (hour < 0) {
-        return 0;
+    if (hour < MIN_DAY_HOUR) {
+        return MIN_DAY_HOUR;
     }
-    if (hour > 23) {
-        return 23;
+    if (hour > MAX_DAY_HOUR) {
+        return MAX_DAY_HOUR;
     }
     return Math.floor(hour);
 }
@@ -505,3 +545,15 @@ function formatWindowPayload(duration, windowResult) {
         end: windowResult.end
     };
 }
+
+window.buildCheapestWindowPayload = buildCheapestWindowPayload;
+window.CHEAPEST_WINDOW_DEFAULTS = {
+    lookaheadDays: DEFAULT_LOOKAHEAD_DAYS,
+    minLookaheadDays: MIN_LOOKAHEAD_DAYS,
+    maxLookaheadDays: MAX_LOOKAHEAD_DAYS,
+    startHour: DEFAULT_WINDOW_START_HOUR,
+    endHour: DEFAULT_WINDOW_END_HOUR,
+    minHour: MIN_DAY_HOUR,
+    maxHour: MAX_DAY_HOUR
+};
+window.computeCheapestLookaheadHours = computeLookaheadHours;

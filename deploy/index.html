@@ -27,11 +27,25 @@
         <p id="narration"></p>
         <div id="cheapestWindows">
             <h1>Halvimmat hintaikkunat</h1>
-            <p>Taulukko näyttää ennustetut halvimmat hintajaksot seuraaville tunneille.</p>
+            <form id="cheapestControls" class="cheapest-sentence" autocomplete="off">
+                <span>Näytä halvimmat hintaikkunat seuraavan</span>
+                <label class="cheapest-field">
+                    <input id="cheapestDaysInput" type="number" min="1" max="7" step="1" value="3" aria-label="Päivien määrä">
+                </label>
+                <span>päivän sisällä, ja jakso alkaa aikavälillä klo</span>
+                <label class="cheapest-field">
+                    <input id="cheapestStartHourInput" type="text" inputmode="numeric" pattern="[0-2]?\\d" maxlength="2" value="00" aria-label="Alkamisajan alaraja tunnit">
+                </label>
+                <span>:00 - klo</span>
+                <label class="cheapest-field">
+                    <input id="cheapestEndHourInput" type="text" inputmode="numeric" pattern="[0-2]?\\d" maxlength="2" value="08" aria-label="Alkamisajan yläraja tunnit">
+                </label>
+                <span>:59.</span>
+            </form>
             <table class="cheapest-table">
                 <thead>
                     <tr>
-                        <th>Jakson pituus</th>
+                        <th>Pituus tuntia</th>
                         <th>Keskihinta ¢/kWh</th>
                         <th>Alkuun</th>
                         <th>Alkaa</th>
