@@ -16,6 +16,133 @@ body {
     padding-top: 24px;
 }
 
+#cheapestWindows {
+    margin: 32px 0;
+    padding: 18px 24px;
+    border: 1px solid rgba(30, 144, 255, 0.25);
+    border-radius: 14px;
+    background: #f5f9ff;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+#cheapestWindows h2 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #1f3d75;
+}
+
+#cheapestWindows p {
+    margin: 8px 0 16px 0;
+    color: rgba(31, 61, 117, 0.75);
+    font-size: 0.95em;
+}
+
+.cheapest-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95em;
+    table-layout: fixed;
+}
+
+.cheapest-table thead th {
+    text-align: left;
+    padding: 8px 6px 12px;
+    font-weight: 600;
+    color: rgba(31, 61, 117, 0.7);
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.cheapest-row {
+    border-top: 1px solid rgba(30, 144, 255, 0.12);
+}
+
+.cheapest-row:first-child {
+    border-top: none;
+}
+
+.cheapest-cell {
+    padding: 12px 6px;
+    vertical-align: middle;
+}
+
+.cheapest-cell-average,
+.cheapest-cell-countdown {
+    font-weight: 600;
+    font-size: 1.05em;
+    color: #123c56;
+}
+
+.cheapest-row-empty td {
+    padding: 20px 6px;
+    text-align: center;
+    color: rgba(17, 42, 63, 0.6);
+}
+
+.cheapest-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #123c56;
+}
+
+.cheapest-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-flex;
+}
+
+@media (max-width: 720px) {
+    #cheapestWindows {
+        padding: 16px;
+    }
+
+    .cheapest-table,
+    .cheapest-table tbody,
+    .cheapest-table tr,
+    .cheapest-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .cheapest-table thead {
+        display: none;
+    }
+
+    .cheapest-row {
+        padding: 12px 0;
+    }
+
+    .cheapest-cell {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 6px 0;
+        gap: 12px;
+    }
+
+    .cheapest-cell::before {
+        content: attr(data-label);
+        font-size: 0.72em;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: rgba(31, 61, 117, 0.6);
+        font-weight: 600;
+    }
+
+    .cheapest-cell-average,
+    .cheapest-cell-countdown {
+        font-size: 1em;
+    }
+
+    .cheapest-row-empty td {
+        padding: 12px 0;
+    }
+}
+
 #windPowerChart {
     max-width: 1080px;
     margin: auto;

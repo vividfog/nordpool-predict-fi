@@ -152,7 +152,20 @@ function getLocalizedText(key) {
         'scaled_price': isEnglish ? 'Price spikes' : 'Hintapiikkejä',
         'weekdays': isEnglish ?
             ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] :
-            ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la']
+            ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'],
+        'cheapest_column_duration': isEnglish ? 'Window' : 'Jakso',
+        'cheapest_column_average': isEnglish ? 'Average ¢/kWh' : 'Keskihinta ¢/kWh',
+        'cheapest_column_countdown': isEnglish ? 'Countdown' : 'Alkuun',
+        'cheapest_column_start': isEnglish ? 'Starts' : 'Alkaa',
+        'cheapest_custom_label': isEnglish ? 'Custom' : 'Oma',
+        'cheapest_waiting': isEnglish ? 'Waiting for data' : 'Odottaa tietoja',
+        'cheapest_now': isEnglish ? 'Now' : 'Nyt',
+        'cheapest_ended': isEnglish ? 'Ended' : 'Päättynyt',
+        'cheapest_day_unit': isEnglish ? 'd' : 'pv',
+        'cheapest_hour_unit': 'h',
+        'cheapest_minute_unit': 'min',
+        'cheapest_table_loading': isEnglish ? 'Loading data...' : 'Ladataan tietoja...',
+        'cheapest_table_none': isEnglish ? 'No windows available yet' : 'Saatavilla olevia jaksoja ei vielä ole'
     };
 
     return translations[key] || key;

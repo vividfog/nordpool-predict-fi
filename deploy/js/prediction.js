@@ -9,6 +9,17 @@ var nfpChart = echarts.init(document.getElementById('predictionChart'));
 var startDate = addDays(new Date(), -0).toISOString();
 var endDate = addDays(new Date(), 2).toISOString();
 
+const HOUR_MS = 60 * 60 * 1000;
+const CHEAPEST_WINDOW_DURATIONS = [3, 6, 12];
+const DEFAULT_LOOKAHEAD_HOURS = 168;
+const CUSTOM_WINDOW_CONFIG = {
+    hours: 4,
+    lookaheadHours: 72,
+    startHour: 0,
+    endHour: 23
+};
+const HELSINKI_TIMEZONE = 'Europe/Helsinki';
+
 // URLs for the datasets
 var npfUrl = `${baseUrl}/prediction.json`;
 var scaledPriceUrl = `${baseUrl}/prediction_scaled.json`; // Add URL for scaled prices
@@ -256,6 +267,20 @@ Promise.all([
         });
 
         nfpChart.setOption(chartOptions);
+
+        const mergedSeries = mergePriceSeries(sahkotinSeriesData, npfSeriesData);
+        const cheapestPayload = buildCheapestWindowPayload(mergedSeries, Date.now());
+        window.latestPredictionData = {
+            mergedSeries,
+            sahkotinSeries: sahkotinSeriesData,
+            forecastSeries: npfSeriesData,
+            scaledPriceSeries: scaledPriceSeriesData,
+            generatedAt: cheapestPayload.generatedAt,
+            windows: cheapestPayload.windows,
+            customWindow: cheapestPayload.customWindow,
+            meta: cheapestPayload.meta
+        };
+        window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: window.latestPredictionData }));
     })
     .catch(error => {
         console.error('Error fetching or processing data:', error);
@@ -263,3 +288,240 @@ Promise.all([
 
 // Setup interval for marker updates
 setInterval(() => updateMarkerPosition(nfpChart), 10000);
+
+function mergePriceSeries(actualSeries, forecastSeries) {
+    const merged = new Map();
+
+    if (Array.isArray(forecastSeries)) {
+        forecastSeries.forEach(item => {
+            if (!Array.isArray(item) || item.length < 2) return;
+            const timestamp = Number(item[0]);
+            const value = Number(item[1]);
+            if (Number.isFinite(timestamp) && Number.isFinite(value)) {
+                merged.set(timestamp, value);
+            }
+        });
+    }
+
+    if (Array.isArray(actualSeries)) {
+        actualSeries.forEach(item => {
+            if (!Array.isArray(item) || item.length < 2) return;
+            const timestamp = Number(item[0]);
+            const value = Number(item[1]);
+            if (Number.isFinite(timestamp) && Number.isFinite(value)) {
+                merged.set(timestamp, value);
+            }
+        });
+    }
+
+    return Array.from(merged.entries())
+        .map(([timestamp, value]) => [Number(timestamp), Number(value)])
+        .sort((a, b) => a[0] - b[0]);
+}
+
+function buildCheapestWindowPayload(series, nowMs) {
+    const finiteSeries = Array.isArray(series)
+        ? series.filter(item => Array.isArray(item) && Number.isFinite(item[0]) && Number.isFinite(item[1]))
+        : [];
+
+    const generatedAt = Number.isFinite(nowMs) ? nowMs : Date.now();
+    const anchor = Math.floor(generatedAt / HOUR_MS) * HOUR_MS;
+    const lookaheadLimit = anchor + DEFAULT_LOOKAHEAD_HOURS * HOUR_MS;
+    const customLookaheadLimit = anchor + CUSTOM_WINDOW_CONFIG.lookaheadHours * HOUR_MS;
+
+    const windows = CHEAPEST_WINDOW_DURATIONS.map(duration => {
+        const windowResult = computeCheapestWindow(finiteSeries, duration, {
+            nowMs: generatedAt,
+            lookaheadLimit
+        });
+        return formatWindowPayload(duration, windowResult);
+    });
+
+    const customWindowResult = computeCheapestWindow(finiteSeries, CUSTOM_WINDOW_CONFIG.hours, {
+        nowMs: generatedAt,
+        lookaheadLimit: customLookaheadLimit,
+        startHour: CUSTOM_WINDOW_CONFIG.startHour,
+        endHour: CUSTOM_WINDOW_CONFIG.endHour
+    });
+
+    return {
+        generatedAt,
+        windows,
+        customWindow: formatWindowPayload(CUSTOM_WINDOW_CONFIG.hours, customWindowResult, true),
+        meta: {
+            lookaheadHours: DEFAULT_LOOKAHEAD_HOURS,
+            lookaheadLimit,
+            customLookaheadHours: CUSTOM_WINDOW_CONFIG.lookaheadHours,
+            customLookaheadLimit
+        }
+    };
+}
+
+function computeCheapestWindow(series, hours, options) {
+    if (!Array.isArray(series) || series.length === 0 || !Number.isFinite(hours) || hours <= 0) {
+        return null;
+    }
+
+    const nowMs = options?.nowMs ?? Date.now();
+    const lookaheadLimit = options?.lookaheadLimit;
+    const startHour = options?.startHour ?? 0;
+    const endHour = options?.endHour ?? 23;
+    const mask = buildStartHourMask(startHour, endHour);
+
+    const anchor = Math.floor(nowMs / HOUR_MS) * HOUR_MS;
+    const earliestStartCandidate = anchor - (hours - 1) * HOUR_MS;
+    const firstStart = series[0][0];
+    const earliestStart = Number.isFinite(firstStart)
+        ? Math.max(firstStart, earliestStartCandidate)
+        : earliestStartCandidate;
+
+    const firstPass = findCheapestWindow(series, hours, {
+        earliestStart,
+        minEnd: nowMs,
+        maxEnd: lookaheadLimit,
+        mask
+    });
+
+    if (firstPass) {
+        return firstPass;
+    }
+
+    return findCheapestWindow(series, hours, {
+        earliestStart,
+        maxEnd: lookaheadLimit,
+        mask
+    });
+}
+
+function findCheapestWindow(series, hours, constraints) {
+    if (!Array.isArray(series) || series.length < hours) {
+        return null;
+    }
+
+    const earliestStart = constraints?.earliestStart;
+    const minEnd = constraints?.minEnd;
+    const maxEnd = constraints?.maxEnd;
+    const mask = constraints?.mask;
+
+    let bestWindow = null;
+
+    for (let index = 0; index <= series.length - hours; index++) {
+        const slice = series.slice(index, index + hours);
+        if (!isHourlySequence(slice)) {
+            continue;
+        }
+
+        const startTime = slice[0][0];
+        const endTime = slice[slice.length - 1][0] + HOUR_MS;
+
+        if (Number.isFinite(earliestStart) && startTime < earliestStart) {
+            continue;
+        }
+        if (Number.isFinite(minEnd) && endTime < minEnd) {
+            continue;
+        }
+        if (Number.isFinite(maxEnd) && endTime > maxEnd) {
+            continue;
+        }
+        if (mask && !mask.has(getHelsinkiHour(startTime))) {
+            continue;
+        }
+
+        const average = slice.reduce((sum, item) => sum + item[1], 0) / hours;
+
+        if (!bestWindow || average < bestWindow.average) {
+            bestWindow = {
+                start: startTime,
+                end: endTime,
+                average,
+                points: slice
+            };
+        }
+    }
+
+    return bestWindow;
+}
+
+function isHourlySequence(windowPoints) {
+    if (!Array.isArray(windowPoints) || windowPoints.length <= 1) {
+        return true;
+    }
+
+    for (let idx = 1; idx < windowPoints.length; idx++) {
+        const prev = windowPoints[idx - 1][0];
+        const current = windowPoints[idx][0];
+        if (!Number.isFinite(prev) || !Number.isFinite(current)) {
+            return false;
+        }
+        if (Math.abs((current - prev) - HOUR_MS) > 1000) {
+            return false;
+        }
+    }
+
+    return windowPoints.every(point => Number.isFinite(point[1]));
+}
+
+function buildStartHourMask(startHour, endHour) {
+    const normalizedStart = clampHour(startHour);
+    const normalizedEnd = clampHour(endHour);
+
+    if (normalizedStart === 0 && normalizedEnd === 23) {
+        return null;
+    }
+
+    const mask = new Set();
+    let hour = normalizedStart;
+    while (true) {
+        mask.add(hour);
+        if (hour === normalizedEnd) {
+            break;
+        }
+        hour = (hour + 1) % 24;
+    }
+    return mask;
+}
+
+function clampHour(hour) {
+    if (!Number.isFinite(hour)) {
+        return 0;
+    }
+    if (hour < 0) {
+        return 0;
+    }
+    if (hour > 23) {
+        return 23;
+    }
+    return Math.floor(hour);
+}
+
+function getHelsinkiHour(timestampMs) {
+    const date = new Date(timestampMs);
+    const formatter = new Intl.DateTimeFormat('en-US', {
+        hour: 'numeric',
+        hour12: false,
+        timeZone: HELSINKI_TIMEZONE
+    });
+    const parts = formatter.formatToParts(date);
+    const hourPart = parts.find(part => part.type === 'hour');
+    return hourPart ? Number(hourPart.value) : date.getUTCHours();
+}
+
+function formatWindowPayload(duration, windowResult, isCustom = false) {
+    if (!windowResult) {
+        return {
+            duration,
+            average: null,
+            start: null,
+            end: null,
+            isCustom
+        };
+    }
+
+    return {
+        duration,
+        average: windowResult.average,
+        start: windowResult.start,
+        end: windowResult.end,
+        isCustom
+    };
+}
