@@ -15,8 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const DOT_COLORS = {
         3: '#87CEEB',
         6: '#00BFFF',
-        12: '#1E90FF',
-        custom: '#7B68EE'
+        12: '#1E90FF'
     };
     const TABLE_HEADERS = {
         duration: getLocalizedText('cheapest_column_duration'),
@@ -103,11 +102,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function badgeMarkup(windowInfo) {
         const duration = Number(windowInfo.duration);
-        const isCustom = windowInfo.isCustom;
-        const accent = isCustom ? DOT_COLORS.custom : DOT_COLORS[duration] || DOT_COLORS.custom;
-        const label = isCustom
-            ? getLocalizedText('cheapest_custom_label')
-            : `${duration} h`;
+        const accent = DOT_COLORS[duration] || '#7B68EE';
+        const label = Number.isFinite(duration) ? `${duration} h` : '--';
 
         return `
             <span class="cheapest-badge">
@@ -122,19 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return [];
         }
 
-        const baseRows = data.windows.map(windowInfo => ({
-            ...windowInfo,
-            isCustom: false
-        }));
-
-        if (data.customWindow) {
-            baseRows.push({
-                ...data.customWindow,
-                isCustom: true
-            });
-        }
-
-        return baseRows;
+        return data.windows;
     }
 
     function renderRows() {

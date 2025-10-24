@@ -12,12 +12,6 @@ var endDate = addDays(new Date(), 2).toISOString();
 const HOUR_MS = 60 * 60 * 1000;
 const CHEAPEST_WINDOW_DURATIONS = [3, 6, 12];
 const DEFAULT_LOOKAHEAD_HOURS = 168;
-const CUSTOM_WINDOW_CONFIG = {
-    hours: 4,
-    lookaheadHours: 72,
-    startHour: 0,
-    endHour: 23
-};
 const HELSINKI_TIMEZONE = 'Europe/Helsinki';
 
 // URLs for the datasets
@@ -277,7 +271,6 @@ Promise.all([
             scaledPriceSeries: scaledPriceSeriesData,
             generatedAt: cheapestPayload.generatedAt,
             windows: cheapestPayload.windows,
-            customWindow: cheapestPayload.customWindow,
             meta: cheapestPayload.meta
         };
         window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: window.latestPredictionData }));
@@ -327,7 +320,6 @@ function buildCheapestWindowPayload(series, nowMs) {
     const generatedAt = Number.isFinite(nowMs) ? nowMs : Date.now();
     const anchor = Math.floor(generatedAt / HOUR_MS) * HOUR_MS;
     const lookaheadLimit = anchor + DEFAULT_LOOKAHEAD_HOURS * HOUR_MS;
-    const customLookaheadLimit = anchor + CUSTOM_WINDOW_CONFIG.lookaheadHours * HOUR_MS;
 
     const windows = CHEAPEST_WINDOW_DURATIONS.map(duration => {
         const windowResult = computeCheapestWindow(finiteSeries, duration, {
@@ -337,22 +329,12 @@ function buildCheapestWindowPayload(series, nowMs) {
         return formatWindowPayload(duration, windowResult);
     });
 
-    const customWindowResult = computeCheapestWindow(finiteSeries, CUSTOM_WINDOW_CONFIG.hours, {
-        nowMs: generatedAt,
-        lookaheadLimit: customLookaheadLimit,
-        startHour: CUSTOM_WINDOW_CONFIG.startHour,
-        endHour: CUSTOM_WINDOW_CONFIG.endHour
-    });
-
     return {
         generatedAt,
         windows,
-        customWindow: formatWindowPayload(CUSTOM_WINDOW_CONFIG.hours, customWindowResult, true),
         meta: {
             lookaheadHours: DEFAULT_LOOKAHEAD_HOURS,
-            lookaheadLimit,
-            customLookaheadHours: CUSTOM_WINDOW_CONFIG.lookaheadHours,
-            customLookaheadLimit
+            lookaheadLimit
         }
     };
 }
@@ -506,14 +488,13 @@ function getHelsinkiHour(timestampMs) {
     return hourPart ? Number(hourPart.value) : date.getUTCHours();
 }
 
-function formatWindowPayload(duration, windowResult, isCustom = false) {
+function formatWindowPayload(duration, windowResult) {
     if (!windowResult) {
         return {
             duration,
             average: null,
             start: null,
-            end: null,
-            isCustom
+            end: null
         };
     }
 
@@ -521,7 +502,6 @@ function formatWindowPayload(duration, windowResult, isCustom = false) {
         duration,
         average: windowResult.average,
         start: windowResult.start,
-        end: windowResult.end,
-        isCustom
+        end: windowResult.end
     };
 }

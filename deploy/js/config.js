@@ -157,7 +157,6 @@ function getLocalizedText(key) {
         'cheapest_column_average': isEnglish ? 'Average ¢/kWh' : 'Keskihinta ¢/kWh',
         'cheapest_column_countdown': isEnglish ? 'Countdown' : 'Alkuun',
         'cheapest_column_start': isEnglish ? 'Starts' : 'Alkaa',
-        'cheapest_custom_label': isEnglish ? 'Custom' : 'Oma',
         'cheapest_waiting': isEnglish ? 'Waiting for data' : 'Odottaa tietoja',
         'cheapest_now': isEnglish ? 'Now' : 'Nyt',
         'cheapest_ended': isEnglish ? 'Ended' : 'Päättynyt',
