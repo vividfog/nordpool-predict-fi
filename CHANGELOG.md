@@ -2,6 +2,10 @@
 
 All notable changes will be documented in this file.
 
+## [2025-10-25] - Cheapest Windows Table
+### Added
+- Landing web page "Cheapest Windows" table surfaces the cheapest 3/6/12-hour windows within the selected lookahead days and hour bounds, as initially implemented for the [HACS sensors](https://github.com/vividfog/nordpool-predict-fi-hacs) repository. 
+
 ## [2025-10-16] - Database Workflow Updates
 ### Changed
 - Removed `data/prediction.db` from version control because the file size became impractical, but the weekly `data/dump.sql` export remains available for reproducibility.
