@@ -48,6 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
         startHour: defaults.startHour,
         endHour: defaults.endHour
     };
+    const PULSE_CLASS = 'cheapest-refresh';
+    let pulseTimer = null;
 
     syncControlsWithConfig(currentConfig);
     attachControls();
@@ -125,10 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return pivot;
     }
 
-    function padHour(hour) {
-        return hour.toString().padStart(2, '0');
-    }
-
     function setMessageRow(text) {
         tableBody.innerHTML = `
             <tr class="cheapest-row cheapest-row-empty">
@@ -148,10 +146,10 @@ document.addEventListener('DOMContentLoaded', function() {
             lookaheadInput.value = normalized.lookaheadDays.toString();
         }
         if (startHourInput) {
-            startHourInput.value = padHour(normalized.startHour);
+            startHourInput.value = normalized.startHour.toString();
         }
         if (endHourInput) {
-            endHourInput.value = padHour(normalized.endHour);
+            endHourInput.value = normalized.endHour.toString();
         }
 
         currentConfig = normalized;
@@ -169,10 +167,10 @@ document.addEventListener('DOMContentLoaded', function() {
             lookaheadInput.value = normalized.lookaheadDays.toString();
         }
         if (startHourInput) {
-            startHourInput.value = padHour(normalized.startHour);
+            startHourInput.value = normalized.startHour.toString();
         }
         if (endHourInput) {
-            endHourInput.value = padHour(normalized.endHour);
+            endHourInput.value = normalized.endHour.toString();
         }
 
         currentConfig = normalized;
@@ -260,17 +258,20 @@ document.addEventListener('DOMContentLoaded', function() {
     function renderRows() {
         if (!predictionData) {
             setMessageRow(getLocalizedText('cheapest_table_loading'));
+            triggerTablePulse();
             return;
         }
 
         const windows = latestWindowState?.windows;
         if (!windows) {
             setMessageRow(getLocalizedText('cheapest_table_loading'));
+            triggerTablePulse();
             return;
         }
 
         if (!windows.length) {
             setMessageRow(getLocalizedText('cheapest_table_none'));
+            triggerTablePulse();
             return;
         }
 
@@ -300,6 +301,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 </tr>
             `;
         }).join('');
+
+        triggerTablePulse();
     }
 
     function updateCheapestWindows() {
@@ -352,11 +355,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, REFRESH_INTERVAL_MS);
     }
 
-    function handleControlsInput(event) {
-        if (event) {
-            event.stopPropagation();
-        }
-
+    function handleControlsInput() {
         normalizeControlsFromInputs();
         updateCheapestWindows();
         renderRows();
@@ -373,9 +372,26 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!input) {
                 return;
             }
+            input.addEventListener('change', handleControlsInput);
             input.addEventListener('input', handleControlsInput);
-            input.addEventListener('blur', handleControlsInput);
         });
     }
-});
 
+    function triggerTablePulse() {
+        if (!card) {
+            return;
+        }
+        if (pulseTimer) {
+            clearTimeout(pulseTimer);
+            pulseTimer = null;
+        }
+        card.classList.remove(PULSE_CLASS);
+        // Force reflow so the animation can retrigger
+        void card.offsetWidth;
+        card.classList.add(PULSE_CLASS);
+        pulseTimer = setTimeout(() => {
+            card.classList.remove(PULSE_CLASS);
+            pulseTimer = null;
+        }, 500);
+    }
+});

@@ -20,6 +20,22 @@ body {
     margin: 24px 0 32px 0;
 }
 
+#cheapestWindows.cheapest-refresh .cheapest-table {
+    animation: cheapestPulse 0.5s ease;
+}
+
+@keyframes cheapestPulse {
+    0% {
+        box-shadow: 0 0 0 rgba(30, 144, 255, 0);
+    }
+    30% {
+        box-shadow: 0 0 0 8px rgba(30, 144, 255, 0.15);
+    }
+    100% {
+        box-shadow: 0 0 0 rgba(30, 144, 255, 0);
+    }
+}
+
 #cheapestWindows h2 {
     margin: 0;
     font-size: 1.2em;
@@ -44,17 +60,19 @@ body {
     display: inline-flex;
 }
 
-.cheapest-field input {
+.cheapest-field input,
+.cheapest-field select {
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     padding: 2px 6px;
     font: inherit;
-    width: 3.2ch;
+    min-width: 3.2ch;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.9);
 }
 
-.cheapest-field input:focus {
+.cheapest-field input:focus,
+.cheapest-field select:focus {
     outline: 2px solid rgba(65, 131, 215, 0.35);
     outline-offset: 1px;
 }
@@ -154,8 +172,9 @@ body {
         gap: 4px;
     }
 
-    .cheapest-field input {
-        width: 3ch;
+    .cheapest-field input,
+    .cheapest-field select {
+        min-width: 3ch;
         padding: 2px 4px;
     }
 

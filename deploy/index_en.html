@@ -26,26 +26,84 @@
         <p id="predictionChart"></p>
         <p id="narration"></p>
         <div id="cheapestWindows">
-            <h1>Cheapest windows</h1>
+            <h1>Cheapest price windows</h1>
             <form id="cheapestControls" class="cheapest-sentence" autocomplete="off">
-                <span>Show the cheapest price windows within the next</span>
+                <span>Show the cheapest windows within the next</span>
                 <label class="cheapest-field">
-                    <input id="cheapestDaysInput" type="number" min="1" max="7" step="1" value="3" aria-label="Lookahead days">
+                    <select id="cheapestDaysInput" aria-label="Lookahead days">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected>3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                    </select>
                 </label>
                 <span>days, starting between</span>
                 <label class="cheapest-field">
-                    <input id="cheapestStartHourInput" type="text" inputmode="numeric" pattern="[0-2]?\\d" maxlength="2" value="00" aria-label="Start hour lower bound">
+                    <select id="cheapestStartHourInput" aria-label="Start hour lower bound">
+                        <option value="0" selected>0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                    </select>
                 </label>
                 <span>:00 and</span>
                 <label class="cheapest-field">
-                    <input id="cheapestEndHourInput" type="text" inputmode="numeric" pattern="[0-2]?\\d" maxlength="2" value="08" aria-label="Start hour upper bound">
+                    <select id="cheapestEndHourInput" aria-label="Start hour upper bound">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8" selected>8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                    </select>
                 </label>
                 <span>:59.</span>
             </form>
             <table class="cheapest-table">
                 <thead>
                     <tr>
-                        <th>Length (h)</th>
+                        <th>Length</th>
                         <th>Average ¢/kWh</th>
                         <th>Countdown</th>
                         <th>Starts</th>
