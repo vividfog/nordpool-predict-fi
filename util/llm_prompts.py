@@ -94,8 +94,8 @@ narration_prompt = """
 
   ## 3. Kirjoita yleiskuvaus viikon hintakehityksestä, futuurissa.
 
-  - Tavoitepituus on vähintään 2, max 3 sujuvaa tekstikappaletta, kaikki yhteensä noin 250 sanaa.
-  - Vältä pitkiä ja monimutkaisia tekstikappaleita ja lauserakenteita. Käytä kappalevaihtoja.
+  - Tavoitepituus on melko lyhyt: noin 2 sujuvaa tekstikappaletta, yhteensä noin 150-180 sanaa.
+  - Vältä pitkiä ja monimutkaisia lauserakenteita. Käytä selkeää kieltä.
   - Mainitse eniten erottuva päivä ja sen keski- ja maksimihinta, mutta vain jos korkeita maksimihintoja on. Tai voit sanoa, että päivät ovat keskenään hyvin samankaltaisia, jos näin on.
   - Viikon edullisimmat ja kalleimmat ajankohdat ovat kiinnostavia tietoja, varsinkin jos hinta vaihtelee paljon.
   - Älä kommentoi tuulivoimaa/keskilämpötilaa, jos se on keskimäärin normaalilla tasolla eikä vaikuta hintaan ylös- tai alaspäin.
