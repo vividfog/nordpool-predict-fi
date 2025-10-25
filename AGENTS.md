@@ -50,3 +50,10 @@
 - Shared helpers live in `util/` and should stay dependency-light; reuse `coalesce_merged_columns` after merges.
 - JSON outputs keep `ensure_ascii=False`; timestamps serialized as UNIX ms for frontend consumption.
 - Structure long code blocks with lightweight folding anchors: `# region title` (single word or two_word, up to 3; keep terse for minimap scan). For deep sections inside a large function use escalating underscores: `# region _subtopic`, `# region __subpart`. No closing marker (omit `endregion`), rely on start tags only; keep them sparse, semantic, and consistent.
+
+## Frontend Map
+- Static shell lives in `deploy/index.html` + `index_en.html`; they load CDN `marked`, `echarts`, `plotly` plus modular scripts under `deploy/js/`.
+- Shared runtime config is centralised in `deploy/js/config.js`: exports `DATA_ENDPOINTS`, Sähkötin URL builders, localization strings, chart factory helpers, and price band palettes consumed across modules.
+- Chart controllers stay isolated by concern: `prediction.js` for live/forecast prices, `history.js` for snapshot comparisons, `windpower.js` for production vs price, `calendar.js` for hourly heatmap, `cheapest.js` for window selection, `features-umap.js` for Plotly embeddings; each dispatches events or sets `window.latestPredictionData` for downstream consumers.
+- Layout glue sits in `deploy/js/layout.js`, which now guards chart existence before resizing and preserves a `window.onresize` shim for legacy callers/tests.
+- Static assets under `deploy/` mirror deployment outputs: JSON feeds (prediction, windpower, narration) are written by the Python pipeline; Vitest suites in `tests/js/` mock fetch/DOM to pin module behavior (`tests/js/setup.js`, `tests/js/utils.js` seed globals).
