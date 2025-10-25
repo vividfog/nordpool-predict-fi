@@ -16,7 +16,6 @@ import pytz
 import numpy as np
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
-from rich import print
 from util.sql import db_query_all
 from util.train_windpower_xgb import train_windpower_xgb
 from util.xgb_utils import booster_predict
@@ -148,7 +147,6 @@ def update_windpower(df, fingrid_api_key):
     """
     
     current_utc = datetime.now(pytz.UTC)
-    current_date = current_utc.strftime("%Y-%m-%d")
     history_date = (current_utc - timedelta(days=7)).strftime("%Y-%m-%d")
     end_date = (current_utc + timedelta(days=8)).strftime("%Y-%m-%d")
 
@@ -242,7 +240,7 @@ def update_windpower(df, fingrid_api_key):
         df_training['timestamp'] = pd.to_datetime(df_training['timestamp'], utc=True)
         df_training = df_training[df_training['timestamp'] <= max_real_ts]
     else:
-        logger.error(f"No history data returned. Skipping model training.", exc_info=True)
+        logger.error("No history data returned. Skipping model training.", exc_info=True)
         # We'll just return the partial merges as-is
         raise RuntimeError("No history data returned from Fingrid API.")
 
@@ -303,9 +301,9 @@ def update_windpower(df, fingrid_api_key):
                   f"(Min: {min_pred:.0f}, Max: {max_pred:.0f}, "
                   f"Avg: {avg_pred:.0f}, Median: {median_pred:.0f}).")
         else:
-            logger.info(f"No rows need inference after filtering.")
+            logger.info("No rows need inference after filtering.")
     else:
-        logger.info(f"No missing wind power values found, no predictions needed.")
+        logger.info("No missing wind power values found, no predictions needed.")
 
     # Free up memory
     del ws_model

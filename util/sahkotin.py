@@ -3,7 +3,6 @@ import requests
 from datetime import datetime, timedelta
 import pytz
 import sys
-from rich import print
 from .logger import logger
 from .dataframes import coalesce_merged_columns
 
@@ -51,7 +50,7 @@ def fetch_electricity_price_data(start_date, end_date):
                 sys.exit(1)
             return df
         else:
-            logger.info(f"No data returned from the API.")
+            logger.info("No data returned from the API.")
             return pd.DataFrame(columns=['timestamp', 'Price_cpkWh'])
     else:
         logger.info(f"Failed to fetch electricity price data: {response.text}")
@@ -68,7 +67,6 @@ def update_spot(df):
     Returns:
     - pd.DataFrame: The updated DataFrame with electricity price data.
     """
-    current_date = datetime.now(pytz.UTC).strftime("%Y-%m-%dT%H:%M:%S.000Z")
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
     end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%dT%H:%M:%S.000Z")
     
@@ -114,11 +112,10 @@ def sahkotin_tomorrow():
     return hourly_df, daily_avg, start_dt
 
 def main():
-    tz = pytz.timezone("Europe/Helsinki")
     hourly_df, daily_avg, start_dt = sahkotin_tomorrow()
     
     if hourly_df.empty:
-        logger.info(f"[red]No pricing data available for tomorrow.")
+        logger.info("[red]No pricing data available for tomorrow.")
         return
 
     logger.info(f"[bold blue]* Sähkötin: Fetched tomorrow's prices for {start_dt.strftime('%Y-%m-%d')} (Helsinki Time)")

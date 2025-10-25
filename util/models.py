@@ -1,8 +1,6 @@
 import sqlite3
 import json
 import os
-from datetime import datetime
-from rich import print
 from .logger import logger
 
 # Database file path
@@ -100,5 +98,5 @@ if __name__ == "__main__":
     # Example of saving stats to JSON
     # stats_json('path_to_your_folder')  # Ensure the folder exists
 
-    logger.info(f"This feature is meant to be used as a module. It is not meant to be run as a standalone script.")
+    logger.info("This feature is meant to be used as a module. It is not meant to be run as a standalone script.")
     exit(0)

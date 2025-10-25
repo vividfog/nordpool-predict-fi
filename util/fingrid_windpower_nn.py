@@ -23,13 +23,8 @@ import requests
 import pytz
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
-from rich import print
 import torch
 import numpy as np
-from sklearn.preprocessing import StandardScaler
-import torch.nn as nn
-import joblib
-import json
 
 from util.train_windpower_nn import train_windpower_nn
 from util.sql import db_query_all
@@ -102,7 +97,6 @@ def update_windpower(df, fingrid_api_key):
     """
     
     # Define the current date and adjust the start and end dates
-    current_date = datetime.now(pytz.UTC).strftime("%Y-%m-%d")
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
     end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
 
@@ -156,7 +150,7 @@ def update_windpower(df, fingrid_api_key):
     df_training = df_training[df_training['timestamp'] <= last_known_timestamp]
     
     # Print the tail of the training DataFrame for debugging
-    logger.info(f"Training DataFrame tail:")
+    logger.info("Training DataFrame tail:")
     logger.info(df_training.tail())
 
     # Identify rows with missing WindPowerMW values
@@ -191,14 +185,14 @@ def update_windpower(df, fingrid_api_key):
 
     if not X_missing_df.empty:
         # Print the features before scaling for debugging
-        logger.info(f"Features before scaling:")
+        logger.info("Features before scaling:")
         logger.info(X_missing_df)
 
         # Scale the features
         X_scaled = scaler_X.transform(X_missing_df)
 
         # Print the features after scaling for debugging
-        logger.info(f"Features after scaling:")
+        logger.info("Features after scaling:")
         logger.info(X_scaled)
 
         # Convert to torch tensor
@@ -209,7 +203,7 @@ def update_windpower(df, fingrid_api_key):
             predicted_wind_power = model(X_tensor).numpy().flatten()
 
         # Print the raw predictions for debugging
-        logger.info(f"Raw predictions:")
+        logger.info("Raw predictions:")
         logger.info(predicted_wind_power)
 
         # Inverse transform the predictions
@@ -217,19 +211,19 @@ def update_windpower(df, fingrid_api_key):
         predicted_wind_power = np.round(predicted_wind_power, 1)
 
         # Print the inverse-transformed and rounded predictions for debugging
-        logger.info(f"Inverse-transformed and rounded predictions:")
+        logger.info("Inverse-transformed and rounded predictions:")
         logger.info(predicted_wind_power)
 
         # Ensure no negative predictions
         predicted_wind_power[predicted_wind_power < 0] = 0
 
         # Print the final predictions before updating the DataFrame
-        logger.info(f"Final predictions (non-negative):")
+        logger.info("Final predictions (non-negative):")
         logger.info(predicted_wind_power)
 
         merged_df.loc[missing_wind_power, 'WindPowerMW'] = predicted_wind_power
     else:
-        logger.info(f"No missing wind power values found, no predictions needed.")
+        logger.info("No missing wind power values found, no predictions needed.")
 
     # Calculate statistics for the inferred values
     if 'predicted_wind_power' in locals() and len(predicted_wind_power) > 0:
@@ -240,14 +234,14 @@ def update_windpower(df, fingrid_api_key):
 
         # Check if any of the statistics are NaN, and exit if so
         if np.isnan(min_pred) or np.isnan(max_pred) or np.isnan(avg_pred) or np.isnan(median_pred):
-            logger.info(f"Error: One or more statistics contain NaN values. Exiting.")
+            logger.info("Error: One or more statistics contain NaN values. Exiting.")
             sys.exit(1)
 
         logger.info(f"Inferred wind power values for {missing_wind_power.sum()} missing entries "
             f"(Min: {min_pred:.1f}, Max: {max_pred:.1f}, "
             f"Avg: {avg_pred:.1f}, Median: {median_pred:.1f}).")
     else:
-        logger.info(f"No wind power values needed to be inferred.")
+        logger.info("No wind power values needed to be inferred.")
 
     return merged_df
 
@@ -304,14 +298,14 @@ def main():
     df = pd.DataFrame(df_data)
     
     # Output the initial DataFrame
-    logger.info(f"Initial DataFrame:")
+    logger.info("Initial DataFrame:")
     logger.info(df)
     
     # Update the DataFrame with wind power data
     updated_df = update_windpower(df, fingrid_api_key)
 
     # Output the DataFrame after updating with wind power data
-    logger.info(f"DataFrame After Wind Power Update:")
+    logger.info("DataFrame After Wind Power Update:")
     logger.info(updated_df)
 
 if __name__ == "__main__":

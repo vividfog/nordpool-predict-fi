@@ -1,7 +1,6 @@
 import sqlite3
 import pandas as pd
 import sys
-from rich import print
 from .logger import logger
 
 # A set of functions to work with the predictions SQLite database
@@ -80,7 +79,7 @@ def db_query(db_path, df):
     '''
     # Normalize timestamps in query dataframe
     if 'timestamp' not in df.columns:
-        logger.info(f"Timestamp is not a column in the DataFrame")
+        logger.info("Timestamp is not a column in the DataFrame")
     else:
         df['timestamp'] = df['timestamp'].apply(normalize_timestamp)
 

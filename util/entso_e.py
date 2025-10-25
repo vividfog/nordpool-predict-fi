@@ -8,7 +8,6 @@ from entsoe import EntsoePandasClient
 from entsoe.entsoe import EntsoeRawClient
 from entsoe.exceptions import NoMatchingDataError
 from entsoe.parsers import parse_unavailabilities
-from rich import print
 from .logger import logger
 
 # Total nuclear capacity in Finland is 4372 MW (2 x 890 MW, 1 x 1600 MW and 2 x 496 MW)
@@ -19,7 +18,7 @@ LONG_OUTAGE_THRESHOLD = 6 * 30 * 24  # hours
 
 def entso_e_nuclear(entso_e_api_key, DEBUG=False):
     try:
-        logger.info(f"ENTSO-E: Fetching nuclear downtime messages...")
+        logger.info("ENTSO-E: Fetching nuclear downtime messages...")
         client = EntsoePandasClient(api_key=entso_e_api_key)
 
         logger.debug(f"→ ENTSO-E: Total nuclear capacity: {TOTAL_CAPACITY} MW")
@@ -182,7 +181,7 @@ def entso_e_nuclear(entso_e_api_key, DEBUG=False):
         with open('deploy/nuclear_outages.json', 'w') as f:
             json.dump(combined_data, f, indent=4)
 
-        logger.info(f"ENTSO-E: Future nuclear outages saved to deploy/nuclear_outages.json")
+        logger.info("ENTSO-E: Future nuclear outages saved to deploy/nuclear_outages.json")
             
         # Calculate unavailable capacity
         unavailable_capacity = combined_outages.assign(unavailable_qty=(combined_outages['nominal_power'] - combined_outages['avail_qty']))
@@ -229,7 +228,7 @@ def main():
     entso_e_api_key = os.getenv('ENTSO_E_API_KEY')
 
     if not entso_e_api_key:
-        logger.info(f"ENTSO_E_API_KEY not found in .env.local file.")
+        logger.info("ENTSO_E_API_KEY not found in .env.local file.")
         return
 
     # Fetch and print nuclear forecast data

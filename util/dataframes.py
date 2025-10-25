@@ -10,7 +10,6 @@ Functions:
 
 from .logger import logger
 import pandas as pd
-from rich import print
 
 
 def update_df_from_df(df1, df2):
@@ -29,7 +28,7 @@ def update_df_from_df(df1, df2):
     # Find the common column to update, excluding 'timestamp'
     common_cols = set(df1.columns).intersection(set(df2.columns)) - {'timestamp'}
     if not common_cols:
-        logger.info(f"No common columns to update.")
+        logger.info("No common columns to update.")
         return df1
     common_col = common_cols.pop()
 

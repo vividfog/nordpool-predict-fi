@@ -1,5 +1,4 @@
 import pandas as pd
-import pytest
 
 from util.dataframes import coalesce_merged_columns
 

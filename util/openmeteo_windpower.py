@@ -13,7 +13,6 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 import pytz
-from rich import print
 from .logger import logger
 
 # --- Location data ---
@@ -90,7 +89,6 @@ def fetch_historical_wind_data(locations, start_date, end_date):
                 "time": pd.to_datetime(hourly_data["time"]).tz_localize("UTC"),  # Ensure timestamps are in UTC
                 code: hourly_data["wind_speed_100m"],  # Rename to 120m for consistency
             }).rename(columns={code: code})  # Use the new code directly
-            empty_values_count = df[code].isna().sum()
             # logger.info(f"  • {empty_values_count} empty values for {code}")
             data_frames.append(df)
             
@@ -169,7 +167,6 @@ def fetch_forecast_wind_data(locations):
                 "time": pd.to_datetime(hourly_data["time"]).tz_localize("UTC"),  # Ensure timestamps are in UTC
                 code: hourly_data["wind_speed_120m"],  # Rename to 120m for consistency
             }).rename(columns={code: code})  # Use the new code directly
-            empty_values_count = df[code].isna().sum()
             # logger.info(f"  • {empty_values_count} empty values for {code}")
             data_frames.append(df)
         else:
@@ -295,16 +292,13 @@ def update_eu_ws(df):
 
 def main():
     """
-    Main function for testing the wind speed code: 
-    - Generate two date ranges: 
+    Main function for testing the wind speed code:
+    - Generate two date ranges:
       1. From 2023-01-01 UTC to today + 8 days UTC
       2. From -7 days to +8 days using UTC
     - Fetch and combine wind speed data
     - Print the merged DataFrame and some basic info
     """
-    import numpy as np
-    import pandas as pd
-    from datetime import datetime, timedelta
 
     # First date range: from 2023-01-01 UTC to today + 8 days UTC
     start_date_1 = datetime(2023, 1, 1, tzinfo=pytz.UTC)
@@ -323,7 +317,7 @@ def main():
     # Print final results for the first date range
     pd.set_option("display.max_columns", None)
     pd.set_option("display.max_rows", 60)  # just as an example
-    logger.info(f"Data frame with wind speeds from 2023-01-01 to today + 8 days UTC:")
+    logger.info("Data frame with wind speeds from 2023-01-01 to today + 8 days UTC:")
     logger.info(updated_df_1)
     
     # Second date range: from -7 days to +8 days using UTC
@@ -341,7 +335,7 @@ def main():
     updated_df_2 = update_eu_ws(df_test_2)
     
     # Print final results for the second date range
-    logger.info(f"Data frame with wind speeds from -7 to +8 days UTC:")
+    logger.info("Data frame with wind speeds from -7 to +8 days UTC:")
     logger.info(updated_df_2)
     
     # Optionally, show statistics for each location for both date ranges

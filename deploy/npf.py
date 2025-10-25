@@ -6,7 +6,6 @@ A sample Python program to demonstrate how to fetch predictions.json, convert it
 import requests
 import pandas as pd
 from datetime import datetime, timedelta
-import json
 import argparse
 import pytz
 

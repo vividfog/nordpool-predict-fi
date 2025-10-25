@@ -3,14 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import scipy.stats as stats
-from pytz import timezone
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score, mean_absolute_percentage_error
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from .sql import db_query_all
 from datetime import datetime
 import os
 import json
 import fnmatch
-from rich import print
 from .logger import logger
 
 def eval(db_path, plot=False):

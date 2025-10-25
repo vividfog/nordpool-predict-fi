@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 import pytz
-from rich import print
 from .logger import logger
 
 # FMI's solar irradiation monitoring stations, supposedly well-distributed across Finland
@@ -166,10 +165,10 @@ def combine_irradiation_data(historical_df, forecast_df):
     if historical_df is None and forecast_df is None:
         raise ValueError("Both historical and forecast data are unavailable.")
     elif historical_df is None:
-        logger.info(f"Historical data is unavailable, using forecast data only.")
+        logger.info("Historical data is unavailable, using forecast data only.")
         combined_df = forecast_df
     elif forecast_df is None:
-        logger.info(f"Forecast data is unavailable, using historical data only.")
+        logger.info("Forecast data is unavailable, using historical data only.")
         combined_df = historical_df
     else:
         combined_df = pd.concat([historical_df, forecast_df], ignore_index=True)
@@ -188,7 +187,7 @@ def combine_irradiation_data(historical_df, forecast_df):
     
     # Print out the time stamps with missing values
     if missing_values > 0:
-        logger.info(f"[WARNING] Missing sum_irradiance values in the following timestamps:")
+        logger.info("[WARNING] Missing sum_irradiance values in the following timestamps:")
         logger.info(combined_df[combined_df["sum_irradiance"].isna()]["time"])
     
     if missing_values > 24:
@@ -289,20 +288,6 @@ def main():
     """
     helsinki_tz = pytz.timezone('Europe/Helsinki')
 
-    # Test with data frame from 2023-01-01 onwards
-    # start_date_1 = datetime(2023, 1, 1, tzinfo=helsinki_tz)
-    # end_date_1 = datetime.now(helsinki_tz)
-    # df1 = pd.DataFrame({
-    #     'timestamp': pd.date_range(start=start_date_1, end=end_date_1, freq='h').round('h', ambiguous='NaT'),
-    #     'random_data1': np.random.rand(len(pd.date_range(start=start_date_1, end=end_date_1, freq='h'))),
-    #     'random_data2': np.random.rand(len(pd.date_range(start=start_date_1, end=end_date_1, freq='h')))
-    # })
-    # updated_df1 = update_solar(df1)
-    logger.debug("Data frame from 2023-01-01 onwards:")
-    logger.debug(updated_df1)
-    logger.debug("Irradiation stats (2023-01-01 onwards):")
-    logger.debug(updated_df1['sum_irradiance'].describe().apply(lambda x: f"{x:.0f}"))
-
     # Test with data frame from -7 to +8 days
     start_date_2 = (datetime.now(helsinki_tz) - timedelta(days=7))
     end_date_2 = (datetime.now(helsinki_tz) + timedelta(days=8))
@@ -316,9 +301,9 @@ def main():
     pd.set_option("display.max_columns", None)
     pd.set_option("display.max_rows", None)
     
-    logger.info(f"Data frame from -7 to +8 days:")
+    logger.info("Data frame from -7 to +8 days:")
     logger.info(updated_df2)
-    logger.info(f"Irradiation stats (-7 to +8 days):")
+    logger.info("Irradiation stats (-7 to +8 days):")
     logger.info(updated_df2['sum_irradiance'].describe().apply(lambda x: f"{x:.0f}"))
 
 if __name__ == "__main__":

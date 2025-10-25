@@ -1,7 +1,6 @@
 import sys
 import os
 import json
-import math
 import time
 import locale
 import datetime
@@ -11,7 +10,6 @@ from dotenv import load_dotenv
 from openai import OpenAI
 from datetime import datetime as dt
 from .sql import db_query
-from .sahkotin import sahkotin_tomorrow
 from .logger import logger
 from .llm_prompts import narration_prompt
 
@@ -195,7 +193,6 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
 
     today = datetime.date.today()
     weekday_today = today.strftime("%A")
-    date_today = f"{int(today.strftime('%d'))}. {today.strftime('%B').lower()}ta {today.strftime('%Y')}"
     time_now = datetime.datetime.now().strftime("%H:%M")
 
     # Build the prompt
@@ -203,7 +200,7 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
     prompt += f"  Olet osa Sähkövatkain-nimistä verkkopalvelua, joka arvioi pörssisähkön hintaa noin viikon verran eteenpäin. Nordpool-sähköpörssin verolliset Suomen markkinan hintaennusteet lähipäiville ovat seuraavat (viimeksi päivitetty: {weekday_today.lower()}na klo {time_now}).\n"
 
     # region _hourly
-    prompt += f"  <tuntikohtainen_ennuste huom='Yksityiskohdat tiedoksi sinulle — mutta huomaathan että lopulliseen artikkeliin tulee *päiväkohtainen* ennuste, ei tuntikohtainen. Kts. alempana.'>\n"
+    prompt += "  <tuntikohtainen_ennuste huom='Yksityiskohdat tiedoksi sinulle — mutta huomaathan että lopulliseen artikkeliin tulee *päiväkohtainen* ennuste, ei tuntikohtainen. Kts. alempana.'>\n"
     for date_value, group_df in df_intraday.groupby("date", sort=False):
         # Pick the weekday name (e.g. 'Maanantai') from the first row in this group
         weekday_name = group_df["timestamp"].dt.strftime("%A").iloc[0]
@@ -211,10 +208,6 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
 
         prompt += f"    <päivä viikonpäivä='{weekday_name}'>\n"
         compact_data = []
-
-        # Identify the top-priced hour
-        top_hour_row = group_df.loc[group_df["PricePredict_cpkWh"].idxmax()]
-        top_hour_time = top_hour_row["timestamp"].strftime("%H:%M")
 
         for _, hour_row in group_df.iterrows():
             time_str = hour_row["timestamp"].strftime("%H:%M")
@@ -230,7 +223,7 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
 
         prompt += "    " + " ".join(compact_data)
         prompt += "    </päivä>\n"
-    prompt += f"  </tuntikohtainen_ennuste>\n"
+    prompt += "  </tuntikohtainen_ennuste>\n"
 
     # We'll need the current Helsinki time for the "after 14:00 for tomorrow" check
     now_hel = datetime.datetime.now(helsinki_tz)
@@ -417,5 +410,5 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
     return narration
 
 if __name__ == "__main__":
-    logger.info(f"This is not meant to be executed directly.")
+    logger.info("This is not meant to be executed directly.")
     exit()

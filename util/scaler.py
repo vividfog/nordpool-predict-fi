@@ -14,7 +14,6 @@ import pandas as pd
 import numpy as np
 import os
 import json
-from datetime import datetime
 import pytz  # Use pytz directly
 import math  # Import math for ceil
 
@@ -284,7 +283,7 @@ def scale_predicted_prices(df, deploy=False, deploy_folder_path=None):
                 max_multiplier = applied_multipliers.dropna().max()
 
                 logger.info(f"  Applied Multiplier Range (on scaled hours): {min_multiplier:.2f}x - {max_multiplier:.2f}x, Mean: {avg_multiplier:.2f}x")
-                logger.info(f"Scaler: Price impact on hours meeting scaling criteria:")
+                logger.info("Scaler: Price impact on hours meeting scaling criteria:")
                 if pd.notna(original_min):
                     logger.info(f"  Original Range (all future): {original_min:.2f} - {original_max:.2f} c/kWh, Mean: {original_mean:.2f} c/kWh")
                 else:

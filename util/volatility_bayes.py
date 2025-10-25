@@ -4,7 +4,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import roc_auc_score, accuracy_score, confusion_matrix, classification_report
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
-from rich import print
 from .logger import logger
 
 # Percentage threshold for labeling volatile days
@@ -23,7 +22,7 @@ def train_volatility_model(df):
     Returns:
         A trained model that can predict volatility likelihood
     """
-    logger.info(f"Training a volatility prediction model")
+    logger.info("Training a volatility prediction model")
     
     # Create a copy of the DataFrame to avoid modifying the original
     df_vol = df.copy()
@@ -154,7 +153,7 @@ def train_volatility_model(df):
     accuracy = accuracy_score(y_test, y_pred)
     cm = confusion_matrix(y_test, y_pred)
     
-    logger.info(f"Volatility model evaluation:")
+    logger.info("Volatility model evaluation:")
     logger.info(f"  ROC AUC: {auc:.4f}")
     logger.info(f"  Accuracy: {accuracy:.4f}")
     logger.info(f"  Confusion Matrix:\n{cm}")

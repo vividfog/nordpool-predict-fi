@@ -3,7 +3,6 @@
 import requests
 import pandas as pd
 from datetime import datetime, timedelta
-import pytz
 
 # Define locations for data fetching
 LOCATIONS = [

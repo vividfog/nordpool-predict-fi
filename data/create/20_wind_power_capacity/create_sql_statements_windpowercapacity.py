@@ -1,5 +1,4 @@
 import pandas as pd
-from datetime import timedelta
 
 # Adjust the file path as necessary
 file_path_wind_power_capacity = './wind_power_capacity_fingrid.csv'

@@ -12,8 +12,7 @@ import sys
 import json
 import numpy as np
 import pandas as pd
-from typing import Tuple, List
-from rich import print
+from typing import Tuple
 from sklearn.model_selection import train_test_split
 import xgboost as xgb
 from .logger import logger
@@ -32,13 +31,13 @@ def preprocess_data(df: pd.DataFrame) -> Tuple[np.ndarray, np.ndarray]:
     if 'WindPowerCapacityMW' in df.columns:
         df['WindPowerCapacityMW'] = df['WindPowerCapacityMW'].ffill()
     else:
-        logger.error(f"'WindPowerCapacityMW' column not found.", exc_info=True)
+        logger.error("'WindPowerCapacityMW' column not found.", exc_info=True)
         sys.exit(1)
 
     if 'WindPowerMW' in df.columns and 'WindPowerCapacityMW' in df.columns:
         df['WindProductionPercent'] = df['WindPowerMW'] / df['WindPowerCapacityMW']
     else:
-        logger.error(f"'WindPowerMW' or 'WindPowerCapacityMW' column not found.", exc_info=True)
+        logger.error("'WindPowerMW' or 'WindPowerCapacityMW' column not found.", exc_info=True)
         sys.exit(1)
 
     ws_cols = [col for col in df.columns if col.startswith("ws_") or col.startswith("eu_ws_")]
@@ -84,8 +83,8 @@ def train_windpower_xgb(df: pd.DataFrame):
         WIND_POWER_XGB_HYPERPARAMS = os.getenv("WIND_POWER_XGB_HYPERPARAMS", "models/windpower_xgb_hyperparams.json")
         if WIND_POWER_XGB_HYPERPARAMS is None:
             raise ValueError("WIND_POWER_XGB_HYPERPARAMS is not set.")
-    except ValueError as e:
-        logger.error(f"Missing environment variable for XGB hyperparams.", exc_info=True)
+    except ValueError:
+        logger.error("Missing environment variable for XGB hyperparams.", exc_info=True)
         sys.exit(1)
 
     try:
@@ -125,11 +124,11 @@ def train_windpower_xgb(df: pd.DataFrame):
     
     # Train the model
     hyperparams = configure_cuda(hyperparams, logger)
-    logger.info(f"XGBoost for wind power: ")
-    logger.info(f", ".join(f"{k}={v}" for k, v in hyperparams.items()))
+    logger.info("XGBoost for wind power: ")
+    logger.info(", ".join(f"{k}={v}" for k, v in hyperparams.items()))
 
     # First, create a model with early stopping to find the optimal number of trees
-    logger.info(f"Fitting model with early stopping...")
+    logger.info("Fitting model with early stopping...")
     early_stopping_model = xgb.XGBRegressor(**hyperparams)
     early_stopping_model.fit(train_X, train_y, eval_set=[(test_X, test_y)], verbose=500)
 
@@ -149,5 +148,5 @@ def train_windpower_xgb(df: pd.DataFrame):
     # Use the final model (trained on all data) for further evaluation
     xgb_model = final_model
 
-    logger.info(f"Wind power model training complete.")
+    logger.info("Wind power model training complete.")
     return xgb_model

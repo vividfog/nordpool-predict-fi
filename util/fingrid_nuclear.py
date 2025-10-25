@@ -3,7 +3,6 @@ import pandas as pd
 import requests
 import pytz
 from datetime import datetime, timedelta
-from rich import print
 from .logger import logger
 from .dataframes import coalesce_merged_columns
 
@@ -33,7 +32,7 @@ def fetch_nuclear_power_data(fingrid_api_key, start_date, end_date):
             try:
                 data = response.json().get('data', [])
             except ValueError:
-                logger.info(f"Failed to decode JSON from response from Fingrid")
+                logger.info("Failed to decode JSON from response from Fingrid")
                 exit(1)
 
             df = pd.DataFrame(data)
@@ -65,7 +64,6 @@ def update_nuclear(df, fingrid_api_key):
     - pd.DataFrame: The updated DataFrame with nuclear power production data.
     """
     # Define the current date and adjust the start date to look 7 days into the past
-    current_date = datetime.now(pytz.UTC).strftime("%Y-%m-%d")
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
     end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
     

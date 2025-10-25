@@ -4,7 +4,6 @@ from lxml import etree
 from datetime import datetime, timedelta
 import pytz
 import sys
-from rich import print
 import time
 from .logger import logger
 from .dataframes import coalesce_merged_columns
@@ -250,7 +249,7 @@ if __name__ == "__main__":
     current_date = datetime.today().strftime('%Y-%m-%d')
     past_date = "2024-12-20"
     
-    logger.info(f"\n=== Testing Wind Speed Stations ===")
+    logger.info("\n=== Testing Wind Speed Stations ===")
     for station in ws_stations:
         logger.info(f"\nTesting FMISID: {station}")
         # Get current forecast
@@ -268,7 +267,7 @@ if __name__ == "__main__":
         logger.info(f"\nPast history sample ({past_date}):")
         logger.info(past_history.describe())
     
-    logger.info(f"\n=== Testing Temperature Stations ===")
+    logger.info("\n=== Testing Temperature Stations ===")
     for station in t_stations:
         logger.info(f"\nTesting FMISID: {station}")
         # Get current forecast

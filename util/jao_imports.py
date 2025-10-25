@@ -6,8 +6,6 @@ import pandas as pd
 import requests
 import pytz
 from datetime import datetime, timedelta
-from dotenv import load_dotenv
-from rich import print
 from .logger import logger
 
 # Define the DEBUG variable
@@ -127,7 +125,6 @@ def update_import_capacity(df, *, write_daily_average=False, output_path='deploy
     Updates the input DataFrame with import capacity data.
     """
     # Define the current date and adjust the start and end dates
-    current_date = datetime.now(pytz.UTC).strftime("%Y-%m-%d")
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
     end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
     

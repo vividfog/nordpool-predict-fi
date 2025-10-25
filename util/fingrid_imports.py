@@ -13,7 +13,6 @@ import requests
 import pytz
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
-from rich import print
 from .logger import logger
 
 # Define the DEBUG variable
@@ -25,7 +24,7 @@ BACKUP_DATASET_IDS = [142, 144, 367] # SE1, SE3, and EE planned import capacitie
 
 def fetch_transfer_capacity_data(fingrid_api_key, dataset_ids, start_date, end_date, backup=False):
     dataset_ids_str = ','.join(map(str, dataset_ids))
-    api_url = f"https://data.fingrid.fi/api/data"
+    api_url = "https://data.fingrid.fi/api/data"
     headers = {'x-api-key': fingrid_api_key}
     params = {
         'datasets': dataset_ids_str,
@@ -119,7 +118,6 @@ def update_import_capacity(df, fingrid_api_key, *, write_daily_average=False, ou
     Updates the input DataFrame with import capacity data.
     """
     # Define the current date and adjust the start and end dates
-    current_date = datetime.now(pytz.UTC).strftime("%Y-%m-%d")
     history_date = (datetime.now(pytz.UTC) - timedelta(days=7)).strftime("%Y-%m-%d")
     end_date = (datetime.now(pytz.UTC) + timedelta(days=8)).strftime("%Y-%m-%d")
     
@@ -130,9 +128,9 @@ def update_import_capacity(df, fingrid_api_key, *, write_daily_average=False, ou
     backup_df = fetch_transfer_capacity_data(fingrid_api_key, BACKUP_DATASET_IDS, history_date, end_date, backup=True)
 
     if DEBUG:
-        logger.info(f"Primary DataFrame:")
+        logger.info("Primary DataFrame:")
         logger.info(primary_df)
-        logger.info(f"Backup DataFrame:")
+        logger.info("Backup DataFrame:")
         logger.info(backup_df)
 
     # Calculate summed import capacities
@@ -140,9 +138,9 @@ def update_import_capacity(df, fingrid_api_key, *, write_daily_average=False, ou
     summed_backup_df = calculate_capacity_sums(backup_df)
 
     if DEBUG:
-        logger.info(f"Summed Primary DataFrame:")
+        logger.info("Summed Primary DataFrame:")
         logger.info(summed_primary_df)
-        logger.info(f"Summed Backup DataFrame:")
+        logger.info("Summed Backup DataFrame:")
         logger.info(summed_backup_df)
 
     # Check if the backup dataset is completely zero and set it to None for forward filling
@@ -169,7 +167,7 @@ def update_import_capacity(df, fingrid_api_key, *, write_daily_average=False, ou
     merged_df['TotalCapacityMW'] = merged_df['TotalCapacityMW'].ffill()
 
     if DEBUG:
-        logger.info(f"Merged DataFrame:")
+        logger.info("Merged DataFrame:")
         logger.info(merged_df)
 
     # Prepare to merge with original DataFrame
@@ -259,21 +257,21 @@ def main():
     })
     
     # Output the initial DataFrame
-    logger.info(f"Initial DataFrame:")
+    logger.info("Initial DataFrame:")
     logger.info(df)
     
     # Update the DataFrame with import capacity
     updated_df = update_import_capacity(df, fingrid_api_key, write_daily_average=True)
 
     # Output the DataFrame after updating with import capacity
-    logger.info(f"DataFrame After Import Capacity Update:")
+    logger.info("DataFrame After Import Capacity Update:")
     logger.info(updated_df)
 
     # Drop rows with any NaN values before printing
     cleaned_df = updated_df.dropna()
 
     # Output the cleaned DataFrame
-    logger.info(f"Updated and Cleaned DataFrame:")
+    logger.info("Updated and Cleaned DataFrame:")
     logger.info(cleaned_df)
 
 if __name__ == "__main__":

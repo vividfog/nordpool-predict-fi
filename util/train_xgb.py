@@ -1,19 +1,16 @@
-import shap
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from statsmodels.stats.stattools import durbin_watson
 from statsmodels.tsa.stattools import acf
-from rich import print
 from xgboost import XGBRegressor
-import pytz
 from .logger import logger
 from .xgb_utils import configure_cuda, booster_predict
 
 def train_model(df, fmisid_ws, fmisid_t):
-        
-    logger.info(f"Training a pricing model")
+
+    logger.info("Training a pricing model")
     
     # Drop the target column from training data
     df = df.drop(columns=['PricePredict_cpkWh'])
@@ -65,8 +62,8 @@ def train_model(df, fmisid_ws, fmisid_t):
     print(X_train.sample(10, random_state=42))
 
     # Print feature columns used in training
-    logger.info(f"Pricing model feature columns:")
-    logger.info(f", ".join(X_train.columns))
+    logger.info("Pricing model feature columns:")
+    logger.info(", ".join(X_train.columns))
 
     # See train_xgb.txt for history of hyperparameter tuning
     # Last update: 2025-01-19
@@ -87,11 +84,11 @@ def train_model(df, fmisid_ws, fmisid_t):
     params = configure_cuda(params, logger)
 
     # Train the model
-    logger.info(f"XGBoost for price prediction: ")
-    logger.info(f", ".join(f"{k}={v}" for k, v in params.items()))
+    logger.info("XGBoost for price prediction: ")
+    logger.info(", ".join(f"{k}={v}" for k, v in params.items()))
 
     # First, create a model with early stopping to find the optimal number of trees
-    logger.info(f"Fitting model with early stopping...")
+    logger.info("Fitting model with early stopping...")
     early_stopping_model = XGBRegressor(**params)
     early_stopping_model.fit(X_train, y_train, eval_set=[(X_test, y_test)], verbose=500)
     
@@ -135,7 +132,7 @@ def train_model(df, fmisid_ws, fmisid_t):
     
     # Autocorrelation Function for the first 5 lags
     acf_values = acf(residuals, nlags=5, fft=False)
-    logger.info(f"ACF values for the first 5 lags:")
+    logger.info("ACF values for the first 5 lags:")
     for lag, value in enumerate(acf_values, start=1):
         logger.info(f"  Lag {lag}: {value:.4f}")
     

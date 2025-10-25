@@ -20,5 +20,5 @@ def dump_sqlite_db(data_folder_path):
     sys.stdout.write(df.to_csv(index=False))
 
 if __name__ == "__main__":
-    logger.info(f"This is not meant to be executed directly.")
+    logger.info("This is not meant to be executed directly.")
     exit()

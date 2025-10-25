@@ -2,7 +2,6 @@ from datetime import datetime, timezone
 from unittest.mock import mock_open
 
 import pandas as pd
-import pytest
 
 from util import jao_imports
 

@@ -44,8 +44,8 @@ pd.options.display.float_format = '{:.2f}'.format
 # Fetch environment variables from .env.local (create yours from .env.template)
 try:
     load_dotenv('.env.local')
-except Exception as e:
-    logger.error(f"Can't find .env.local. Did you create one? See README.md.")
+except Exception:
+    logger.error("Can't find .env.local. Did you create one? See README.md.")
 
 # Fetch mandatory environment variables and raise exceptions if they are missing
 def get_mandatory_env_variable(name):
