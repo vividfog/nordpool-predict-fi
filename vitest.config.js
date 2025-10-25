@@ -8,6 +8,22 @@ export default defineConfig({
     fakeTimers: {
       enableGlobally: false
     },
-    include: ['tests/js/**/*.test.{js,ts}']
+    include: ['tests/js/**/*.test.{js,ts}'],
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'lcov'],
+      reportsDirectory: 'coverage',
+      include: [
+        'deploy/js/**/*.js'
+      ],
+      exclude: [
+        'deploy/**/vendor/**',
+        'node_modules/**',
+        'private/**',
+        'archive/**',
+        'data/**',
+        'logs/**'
+      ]
+    }
   }
 });

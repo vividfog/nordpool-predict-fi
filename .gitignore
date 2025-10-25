@@ -19,6 +19,7 @@ node_modules/
 firebase-debug.log*
 .vitest/
 coverage/
+coverage-reports/
 .env
 functions/node_modules/
 functions/lib/
@@ -67,3 +68,5 @@ nordpool-predict-fi.code-workspace
 xgboost/
 data/create/10_weather_fetch_history/validation_logs/
 data/prediction.*
+.coverage
+.vscode/
