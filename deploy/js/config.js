@@ -10,6 +10,32 @@ if (window.location.hostname === "nordpool-predict-fi.web.app") {
 // Determine base URL based on hosting environment
 var baseUrl = window.location.origin;
 
+//#region endpoints
+// ==========================================================================
+// Shared data source endpoints and helpers
+// ==========================================================================
+
+const DATA_ENDPOINTS = Object.freeze({
+    prediction: `${baseUrl}/prediction.json`,
+    predictionScaled: `${baseUrl}/prediction_scaled.json`,
+    windpower: `${baseUrl}/windpower.json`
+});
+
+const SAHKOTIN_CSV_URL = 'https://sahkotin.fi/prices.csv';
+
+function createSahkotinParams(startIso, endIso) {
+    return new URLSearchParams({
+        fix: 'true',
+        vat: 'true',
+        start: startIso,
+        end: endIso
+    });
+}
+
+window.DATA_ENDPOINTS = DATA_ENDPOINTS;
+window.SAHKOTIN_CSV_URL = SAHKOTIN_CSV_URL;
+window.createSahkotinParams = createSahkotinParams;
+
 //#region utils
 // ==========================================================================
 // Date and time handling utilities

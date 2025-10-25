@@ -4,7 +4,19 @@
 // ==========================================================================
 
 var windPowerChart = echarts.init(document.getElementById('windPowerChart'));
-var windPowerUrl = `${baseUrl}/windpower.json`;
+const windpowerEndpoints = window.DATA_ENDPOINTS || {};
+const windPowerUrl = windpowerEndpoints.windpower || `${baseUrl}/windpower.json`;
+const windpowerSahkotinStart = addDays(new Date(), 0).toISOString();
+const windpowerSahkotinEnd = addDays(new Date(), 2).toISOString();
+const windpowerSahkotinUrl = window.SAHKOTIN_CSV_URL || 'https://sahkotin.fi/prices.csv';
+const windpowerSahkotinParams = typeof window.createSahkotinParams === 'function'
+    ? window.createSahkotinParams(windpowerSahkotinStart, windpowerSahkotinEnd)
+    : new URLSearchParams({
+        fix: 'true',
+        vat: 'true',
+        start: windpowerSahkotinStart,
+        end: windpowerSahkotinEnd
+    });
 
 // ==========================================================================
 // Fetching and processing wind power data
@@ -17,14 +29,26 @@ Promise.all([
         }
         return response.json();
     }),
-    fetch(`${sahkotinUrl}?${sahkotinParams}`).then(r => r.text()).then(text => {
-        const sahkotinData = text.split('\n').slice(1).map(line => {
-            const [timestamp, price] = line.split(',');
-            return [new Date(timestamp).getTime(), parseFloat(price)];
-        });
+    fetch(`${windpowerSahkotinUrl}?${windpowerSahkotinParams}`).then(r => r.text()).then(text => {
+        const sahkotinData = text
+            .split('\n')
+            .slice(1)
+            .map(line => {
+                const [timestamp, price] = line.split(',');
+                const parsedTime = new Date(timestamp).getTime();
+                const numericPrice = parseFloat(price);
+                if (!Number.isFinite(parsedTime) || !Number.isFinite(numericPrice)) {
+                    return null;
+                }
+                return [parsedTime, numericPrice];
+            })
+            .filter(item => Array.isArray(item));
+        if (!sahkotinData.length) {
+            console.warn('No valid Sähkötin rows parsed for wind power chart; using empty price series.');
+        }
         return sahkotinData;
     }),
-    fetch(npfUrl).then(r => r.json()) // Add prediction data
+    fetch((windpowerEndpoints.prediction || `${baseUrl}/prediction.json`)).then(r => r.json()) // Add prediction data
 ])
     .then(([windPowerData, sahkotinData, npfData]) => {
         console.log("Wind Power Data:", windPowerData);
@@ -42,7 +66,12 @@ Promise.all([
         console.log("Processed Wind Power Series Data:", windPowerSeriesData);
 
         // Find the last timestamp in Sähkötin data (actual prices)
-        var lastSahkotinTimestamp = Math.max(...sahkotinData.map(item => item[0]));
+        var lastSahkotinTimestamp = sahkotinData.length
+            ? Math.max(...sahkotinData.map(item => item[0]))
+            : Date.now();
+        if (!sahkotinData.length) {
+            console.warn('Wind power chart falling back to current time for overlap due to empty Sähkötin data.');
+        }
         console.log("Wind Power Chart: End of Sähkötin data; next showing prediction data from:", 
             new Date(lastSahkotinTimestamp).toString());
         

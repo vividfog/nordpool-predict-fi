@@ -6,8 +6,8 @@
 var nfpChart = echarts.init(document.getElementById('predictionChart'));
 
 // Calculate dates for API requests
-var startDate = addDays(new Date(), -0).toISOString();
-var endDate = addDays(new Date(), 2).toISOString();
+const startDate = addDays(new Date(), 0).toISOString();
+const endDate = addDays(new Date(), 2).toISOString();
 
 const HOUR_MS = 60 * 60 * 1000;
 const CHEAPEST_WINDOW_DURATIONS = [3, 6, 12];
@@ -22,15 +22,18 @@ const DEFAULT_WINDOW_END_HOUR = 23;
 const HELSINKI_TIMEZONE = 'Europe/Helsinki';
 
 // URLs for the datasets
-var npfUrl = `${baseUrl}/prediction.json`;
-var scaledPriceUrl = `${baseUrl}/prediction_scaled.json`; // Add URL for scaled prices
-var sahkotinUrl = 'https://sahkotin.fi/prices.csv';
-var sahkotinParams = new URLSearchParams({
-    fix: 'true',
-    vat: 'true',
-    start: startDate,
-    end: endDate,
-});
+const endpoints = window.DATA_ENDPOINTS || {};
+const npfUrl = endpoints.prediction || `${baseUrl}/prediction.json`;
+const scaledPriceUrl = endpoints.predictionScaled || `${baseUrl}/prediction_scaled.json`; // Add URL for scaled prices
+const sahkotinUrl = window.SAHKOTIN_CSV_URL || 'https://sahkotin.fi/prices.csv';
+const sahkotinParams = typeof window.createSahkotinParams === 'function'
+    ? window.createSahkotinParams(startDate, endDate)
+    : new URLSearchParams({
+        fix: 'true',
+        vat: 'true',
+        start: startDate,
+        end: endDate
+    });
 
 // ==========================================================================
 // Fetching and processing prediction data
@@ -61,16 +64,29 @@ Promise.all([
 ])
     .then(([npfData, scaledPriceData, sahkotinCsv]) => {
         // Process Sähkötin data
-        var sahkotinSeriesData = sahkotinCsv.split('\n').slice(1).map(line => {
-            var [timestamp, price] = line.split(',');
-            var parsedTime = new Date(timestamp).getTime();
-            var localTime = new Date(parsedTime).toString();
-            console.log(`Sähkötin timestamp: ${localTime}, Price: ${parseFloat(price)} ¢/kWh`);
-            return [parsedTime, parseFloat(price)];
-        });
+        var sahkotinSeriesData = sahkotinCsv
+            .split('\n')
+            .slice(1)
+            .map(line => {
+                var [timestamp, price] = line.split(',');
+                var parsedTime = new Date(timestamp).getTime();
+                var numericPrice = parseFloat(price);
+                if (!Number.isFinite(parsedTime) || !Number.isFinite(numericPrice)) {
+                    return null;
+                }
+                var localTime = new Date(parsedTime).toString();
+                console.log(`Sähkötin timestamp: ${localTime}, Price: ${numericPrice} ¢/kWh`);
+                return [parsedTime, numericPrice];
+            })
+            .filter(item => Array.isArray(item));
 
         // Find the last timestamp in Sähkötin data
-        var lastSahkotinTimestamp = Math.max(...sahkotinSeriesData.map(item => item[0]));
+        var lastSahkotinTimestamp = sahkotinSeriesData.length
+            ? Math.max(...sahkotinSeriesData.map(item => item[0]))
+            : Date.now();
+        if (!sahkotinSeriesData.length) {
+            console.warn('No valid Sähkötin rows parsed; falling back to current time for overlap.');
+        }
         console.log("End of Sähkötin data for today; displaying the Nordpool prediction data from:", 
             new Date(lastSahkotinTimestamp).toString());
         
