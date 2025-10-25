@@ -40,6 +40,7 @@
 ## Testing & Validation Targets
 - Unit coverage focuses on merge helpers, FMI/Fingrid update logic, price scaling, and spot integration (see `tests/`).
 - Typical smoke test: run `nordpool_predict_fi.py --predict` with sanctioned API keys; verify deploy outputs and log for warnings.
+- Frontend harness: use `npm test -- --run` (Vitest) to exercise `deploy/` scripts with the shared DOM/fetch mocks in `tests/js/setup.js` and helpers in `tests/js/utils.js`.
 - When adding data sources: extend enrichment chain, create corresponding tests mocking API responses, ensure new columns seeded in SQLite before training.
 
 ## Styling & Conventions

@@ -17,6 +17,8 @@ png/
 node_modules/
 .firebase/
 firebase-debug.log*
+.vitest/
+coverage/
 .env
 functions/node_modules/
 functions/lib/
