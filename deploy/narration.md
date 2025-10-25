@@ -1,23 +1,21 @@
-*Sähkön hinnat tulevat jakautumaan: alku on maltillinen, viikon puolivälissä iltapiikkien riski korostuu, ja viikonloppu painuu hyvin matalalle pyhäpäivän myötä.*
+*Edullinen alku ja loppu: sunnuntai–maanantai sekä pyhä lauantai matalia, kun ti–to kallistuvat heikon tuulen ja yksittäisten hintapiikkien vuoksi.*
 
-Ennuste on päivitetty lauantaina klo 12:01.
+Ennuste on päivitetty lauantaina klo 14:18.
 
 | ""  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **maanantai** | 4,5 | 1,7 - 8,2 | 2748 - 4062 | 4,7 |
-| **tiistai** | 11,6 | 2,5 - 24,7 | 720 - 2682 | 4,7 |
-| **keskiviikko** | 13,3 | 5,4 - 22,8 | 595 - 1289 | 5,1 |
-| **torstai** | 13,9 | 5,0 - 27,4 | 349 - 1206 | 4,8 |
-| **perjantai** | 5,7 | 1,8 - 11,4 | 845 - 3274 | 4,3 |
-| **lauantai** | 0,5 | -1,8 - 2,5 | 1823 - 3932 | 4,5 |
-| **sunnuntai** | 1,5 | -0,7 - 3,2 | 3152 - 5680 | 5,0 |
+| **sunnuntai** | 0,8 | 0,1 - 3,0 | 3132 - 5690 | 5,0 |
+| **maanantai** | 4,1 | 0,8 - 8,2 | 2742 - 4069 | 4,7 |
+| **tiistai** | 11,3 | 2,4 - 24,6 | 631 - 2678 | 4,7 |
+| **keskiviikko** | 13,5 | 5,0 - 23,8 | 520 - 1182 | 5,1 |
+| **torstai** | 13,4 | 4,9 - 28,0 | 345 - 1266 | 4,8 |
+| **perjantai** | 5,7 | 2,0 - 11,6 | 876 - 3242 | 4,3 |
+| **lauantai** | 0,4 | -1,8 - 1,7 | 1739 - 3999 | 4,5 |
 
-Viikon hintataso tulee jakautumaan kahtia. Alku pysyy maltillisena, ja **maanantaina** keskihinta asettuu noin 4,5 senttiin. Viikonvaihteessa nähdään erittäin matalia tasoja: **lauantaina** kyseessä on pyhäpäivä, mikä laskisi kysyntää ja painaisi hinnat selvästi alas. Yön tunteina mentäneen miinukselle, alimmillaan −1,8 ¢. Myös **sunnuntaina** hinnat jäävät mataliksi ja miinusmerkkisiä hetkiä odotetaan aamuyölle.
+Viikon alku näyttää edulliselta. **Sunnuntaina** keskihinta asettuu 0,8 ¢:iin ja vaihteluväli pysyy välillä 0,1–3,0 ¢. **Maanantaina** keskihinta on 4,1 ¢, eli selvästi alle viiden sentin. **Lauantaina** ennakoidaan viikon matalinta tasoa: keskihinta 0,4 ¢ ja yksittäisillä tunneilla jopa negatiivisia hintoja. Pyhäpäivä laskee kysyntää ja painaa hintaa.
 
-Viikon selvästi kalleimmat päivät painottuvat **tiistaihin**, **keskiviikkoon** ja **torstaihin**. Tiistain keskihinta nousee 11,6 senttiin ja yksittäisille tunneille ennakoidaan piikkiriskiä erityisesti klo 18–20. Tuulivoiman keskituotanto jää alhaiseksi, mikä tukee korkeampaa hintaa. Keskiviikkona tyyni sää (keskimäärin 971 MW) nostanee hintaa edelleen, ja piikkiriski kohdistuu iltaan klo 17–19. Torstain ennuste erottuu eniten: maksimihinta kohoaisi 27,4 ¢, ja huippu asettuisi klo 17–19. Torstain poikkeuksellisen alhainen tuulivoiman minimituotanto (349 MW) selittäisi myös korkeimman maksimihinnan.
+Viikon kalleus painottuu keskivaiheille. **Tiistaina** keskihinta kohoaa 11,3 ¢:iin ja maksimiksi ennakoidaan 24,6 ¢. Tuuli on heikkoa (keskimäärin 1418 MW), mikä tukee korkeampaa hintatasoa; yksittäisten tuntien piikkiriski painottuu klo 18–20. **Keskiviikkona** tuulivoiman keskiarvo jää 930 MW:iin (tyyni taso), keskihinta on 13,5 ¢ ja huippu 23,8 ¢; piikkiriski ajoittuu klo 16–18. **Torstaina** nähdään viikon korkein huippu, 28,0 ¢, ja keskihinta 13,4 ¢. Erittäin alhainen minimituotanto (345 MW) selittää tämän korkean huippuhinnan; piikkiriski on klo 17–19.
 
-Myös **perjantaina** varoitetaan yksittäisten tuntien piikeistä, vaikka päivän maksimihinta jää alle 12 sentin. Korkeampi taso painottunee aamuun, arviolta klo 08–10. Päivän sisäinen vaihtelu on suurta, kun tuulivoima vahvistuu päivää kohti iltapäivää.
+**Perjantaina** keskihinta maltillistuu 5,7 ¢:iin, mutta yksittäisille tunneille ennakoidaan piikkiriskiä, todennäköisimmin klo 08–10. Viikon edullisimmat jaksot osuvat viikonloppuun: **lauantaina** aamulla noin klo 05–07 hintojen odotetaan painuvan alle nollan, ja **sunnuntain** yö- ja aamun tunnit pysyvät enimmäkseen alle yhden sentin. Kalleimmat ajankohdat sijoittuvat tiistaista torstaihin, etenkin iltapäivän ja alkuillan tunteihin.
 
-Viikon edullisimmat hetket osuvat pyhäpäivän aamuyöhön ja siihen lähiviikonloppuun. Korkeammat hinnat kasaantuvat tiistaista torstaihin, etenkin iltahuippuihin. Ennuste voi vielä elää, jos tuuliennuste muuttuu, mutta tämän hetken tiedoilla hintavaihtelu tulee olemaan suurta viikon puolivälissä.
-
-*Analyysin teki gpt-5.* ⚡️
+*Luvut tulkitsi gpt-5.* ⚡️

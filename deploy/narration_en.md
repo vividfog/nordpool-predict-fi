@@ -1,23 +1,21 @@
-*Electricity prices will split: the start of the week will be moderate, midweek evening spike risk will stand out, and the weekend will sink very low thanks to the public holiday.*
+*An inexpensive start and finish: Sunday–Monday and the holiday Saturday will be low, while Tue–Thu will get pricier due to weak wind and isolated price spikes.*
 
-The forecast was updated on Saturday at 12:01.
+The forecast was updated on Saturday at 14:18.
 
 | ""  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 4.5 | 1.7 - 8.2 | 2748 - 4062 | 4.7 |
-| **Tuesday** | 11.6 | 2.5 - 24.7 | 720 - 2682 | 4.7 |
-| **Wednesday** | 13.3 | 5.4 - 22.8 | 595 - 1289 | 5.1 |
-| **Thursday** | 13.9 | 5.0 - 27.4 | 349 - 1206 | 4.8 |
-| **Friday** | 5.7 | 1.8 - 11.4 | 845 - 3274 | 4.3 |
-| **Saturday** | 0.5 | -1.8 - 2.5 | 1823 - 3932 | 4.5 |
-| **Sunday** | 1.5 | -0.7 - 3.2 | 3152 - 5680 | 5.0 |
+| **Sunday** | 0,8 | 0,1 - 3,0 | 3132 - 5690 | 5,0 |
+| **Monday** | 4,1 | 0,8 - 8,2 | 2742 - 4069 | 4,7 |
+| **Tuesday** | 11,3 | 2,4 - 24,6 | 631 - 2678 | 4,7 |
+| **Wednesday** | 13,5 | 5,0 - 23,8 | 520 - 1182 | 5,1 |
+| **Thursday** | 13,4 | 4,9 - 28,0 | 345 - 1266 | 4,8 |
+| **Friday** | 5,7 | 2,0 - 11,6 | 876 - 3242 | 4,3 |
+| **Saturday** | 0,4 | -1,8 - 1,7 | 1739 - 3999 | 4,5 |
 
-The week’s price levels will split in two. The start will remain moderate, and on **Monday** the average price will settle around 4.5 cents. Toward the weekend, very low levels will be seen: on **Saturday** there will be a public holiday, which will reduce demand and push prices clearly lower. Overnight hours will likely dip into negative, down to -1.8 ¢ at the lowest. On **Sunday** as well, prices will stay low and negative moments are expected in the early night.
+The week will start off inexpensive. **Sunday** will average 0,8 ¢ and the range will stay between 0,1–3,0 ¢. **Monday** will average 4,1 ¢, clearly under five cents. **Saturday** is expected to be the lowest of the week: an average of 0,4 ¢ and even negative prices in some hours. The holiday will lower demand and push prices down.
 
-The week’s clearly most expensive days will concentrate on **Tuesday**, **Wednesday** and **Thursday**. Tuesday’s average will rise to 11.6 cents and spike risk for individual hours will be forecast especially at 18:00–20:00. Average wind output will remain low, supporting higher prices. On Wednesday, very low wind (average 971 MW) will likely lift prices further, with spike risk in the evening at 17:00–19:00. Thursday’s forecast will stand out the most: the maximum will reach 27.4 ¢, with the peak around 17:00–19:00. Thursday’s exceptionally low minimum wind output (349 MW) will also explain the highest maximum price.
+Costs will concentrate midweek. **Tuesday** will average 11,3 ¢ with a forecast maximum of 24,6 ¢. Wind will be weak (average 1418 MW), which supports the higher price level; the risk of single-hour spikes will be around 18:00–20:00. **Wednesday** will see wind average fall to 930 MW (calm), an average price of 13,5 ¢ and a peak of 23,8 ¢; spike risk around 16:00–18:00. **Thursday** will see the week’s highest peak, 28,0 ¢, with an average of 13,4 ¢. A very low minimum output (345 MW) will explain this high peak; spike risk around 17:00–19:00.
 
-On **Friday** as well, spike risk for individual hours will be flagged, even though the day’s maximum stays below 12 cents. The higher levels will likely concentrate in the morning, roughly 08:00–10:00. Intraday variation will be large as wind strengthens through the day toward the afternoon.
+**Friday** will ease to a 5,7 ¢ average, but single-hour spike risk is still forecast, most likely around 08:00–10:00. The cheapest periods will fall on the weekend: **Saturday** morning around 05:00–07:00 prices are expected to dip below zero, and **Sunday** night and morning hours will mostly stay below one cent. The priciest periods will cluster from Tuesday to Thursday, especially in the afternoon and early evening.
 
-The week’s cheapest moments will fall in the early night of the public holiday and the adjacent weekend. Higher prices will cluster from Tuesday to Thursday, especially in the evening peaks. The outlook could still change if wind forecasts shift, but based on current data, price variation will be substantial in the middle of the week.
-
-*Analysis by gpt-5.* ⚡️
+*Numbers parsed by gpt-5.* ⚡️
