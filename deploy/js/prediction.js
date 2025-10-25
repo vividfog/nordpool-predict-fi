@@ -104,8 +104,20 @@ Promise.all([
 
         console.log("Scaled Price Data loaded:", scaledPriceSeriesData.length, "data points");
 
+        const sahkotinVisualPieces = typeof getSahkotinVisualMapPieces === 'function'
+            ? getSahkotinVisualMapPieces()
+            : [
+                { lte: 5, color: 'lime', opacity: 1.0 },
+                { gt: 5, lte: 10, color: 'limegreen', opacity: 1.0 },
+                { gt: 10, lte: 15, color: 'gold', opacity: 1.0 },
+                { gt: 15, lte: 20, color: 'darkorange', opacity: 1.0 },
+                { gt: 20, lte: 30, color: 'red', opacity: 1.0 },
+                { gt: 30, color: 'darkred', opacity: 1.0 }
+            ];
+
         // Create chart options
         const chartOptions = createBaseChartOptions({
+            grid: { left: 8, right: 12, top: 28, bottom: 48 },
             legend: {
                 data: [
                     {
@@ -147,14 +159,7 @@ Promise.all([
                     seriesIndex: [3],
                     top: 50,
                     right: 10,
-                    pieces: [
-                        { lte: 5, color: 'lime', opacity: 1.0 },
-                        { gt: 5, lte: 10, color: 'limegreen', opacity: 1.0 },
-                        { gt: 10, lte: 15, color: 'gold', opacity: 1.0 },
-                        { gt: 15, lte: 20, color: 'darkorange', opacity: 1.0 },
-                        { gt: 20, lte: 30, color: 'red', opacity: 1.0 },
-                        { gt: 30, color: 'darkred', opacity: 1.0 }
-                    ],
+                    pieces: sahkotinVisualPieces,
                     outOfRange: { color: '#999', opacity: 1.0 }
                 },
                 {

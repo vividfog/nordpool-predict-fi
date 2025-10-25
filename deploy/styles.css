@@ -6,14 +6,76 @@ body {
     color: rgba(51, 51, 51, 0.9);
 }
 
+.page-title {
+    padding-top: 16px;
+}
+
+.section-title {
+    padding-top: 32px;
+}
+
 #predictionChart {
     height: 50vh;
     min-height: 400px;
     width: 100%;
-    max-width: 1080px;
-    margin: auto;
+    max-width: none;
+    margin: 0;
     box-sizing: border-box;
     padding-top: 24px;
+}
+
+#priceCalendarSection {
+    margin: 28px 0 8px 0;
+}
+
+.price-calendar {
+    width: 100%;
+    height: 256px;
+    margin-top: 12px;
+    /* background: #f9fafb; */
+    /* border-radius: 12px; */
+    /* box-shadow: inset 0 0 0 1px rgba(31, 35, 40, 0.06); */
+}
+
+@media (min-width: 640px) {
+    .price-calendar {
+        height: 256px;
+    }
+}
+
+@media (min-width: 960px) {
+    .price-calendar {
+        height: 256px;
+    }
+}
+
+.price-calendar-status {
+    font-size: 0.9rem;
+    color: rgba(51, 51, 51, 0.66);
+    margin-top: 8px;
+}
+
+.price-calendar-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    font-size: 0.82rem;
+    color: rgba(31, 35, 40, 0.72);
+    justify-content: flex-end;
+}
+
+.price-calendar-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.price-calendar-legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 1px rgba(31, 35, 40, 0.08);
 }
 
 #cheapestWindows {
@@ -61,6 +123,18 @@ body {
 .cheapest-sentence span {
     display: inline-flex;
     align-items: center;
+}
+
+.cheapest-wrap {
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 620px) {
+    .cheapest-wrap {
+        flex-basis: 100%;
+    }
 }
 
 .cheapest-field {
@@ -196,21 +270,19 @@ body {
 }
 
 #windPowerChart {
-    max-width: 1080px;
-    margin: auto;
+    width: 100%;
+    margin: 0;
     box-sizing: border-box;
     height: 50vh;
     min-height: 400px;
-    width: 100%;
     padding-top: 24px;
 }
 
 #chart {
-    max-width: 1080px;
+    width: 100%;
     height: 50vh;
     min-height: 400px;
-    width: 100%;
-    margin: auto;
+    margin: 0;
     box-sizing: border-box;
     padding-top: 12px;
 }
@@ -253,8 +325,7 @@ body {
     height: 50vh;
     min-height: 400px;
     width: 100%;
-    max-width: 1080px;
-    margin: auto;
+    margin: 0;
     box-sizing: border-box;
     padding-bottom: 24px;
     padding-top: 24px;
@@ -264,8 +335,7 @@ body {
     height: 50vh;
     min-height: 400px;
     width: 100%;
-    max-width: 1080px;
-    margin: auto;
+    margin: 0;
     box-sizing: border-box;
 }
 

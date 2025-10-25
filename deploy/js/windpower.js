@@ -91,6 +91,13 @@ Promise.all([
         // Create custom options for wind power chart
         windPowerChart.setOption({
             title: { text: ' ' },
+            grid: {
+                left: 8,
+                right: 12,
+                top: 28,
+                bottom: 48,
+                containLabel: true
+            },
             legend: {
                 data: [
                     {

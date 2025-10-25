@@ -195,11 +195,18 @@ function setupHistoryChart(data, pruneOption) {
     });
 
     // Create history chart options
-    const historyChartOptions = createBaseChartOptions({
+const historyChartOptions = createBaseChartOptions({
         tooltipFormatter: createTooltipFormatter(),
         xAxisFormatter: createXAxisFormatter(true),
         series: series,
         isHistoryChart: true // Flag to use weekly grid lines
+    });
+
+    historyChartOptions.grid = Object.assign({}, historyChartOptions.grid || {}, {
+        left: 8,
+        right: 12,
+        top: 28,
+        bottom: 74
     });
     
     // Add zoom controls to the history chart

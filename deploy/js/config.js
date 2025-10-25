@@ -164,11 +164,63 @@ function getLocalizedText(key) {
         'cheapest_hour_unit': 'h',
         'cheapest_minute_unit': 'min',
         'cheapest_table_loading': isEnglish ? 'Loading data...' : 'Ladataan tietoja...',
-        'cheapest_table_none': isEnglish ? 'No windows available yet' : 'Saatavilla olevia jaksoja ei vielä ole'
+        'cheapest_table_none': isEnglish ? 'No windows available yet' : 'Saatavilla olevia jaksoja ei vielä ole',
+        'calendar_loading': isEnglish ? 'Loading hourly prices...' : 'Ladataan tuntihintoja...',
+        'calendar_no_data': isEnglish ? 'Waiting for price data' : 'Odottaa hintatietoja...'
     };
 
     return translations[key] || key;
 }
+
+const SAHKOTIN_PRICE_BANDS = [
+    { min: -Infinity, max: 5, color: 'lime' },
+    { min: 5, max: 10, color: 'limegreen' },
+    { min: 10, max: 15, color: 'gold' },
+    { min: 15, max: 20, color: 'darkorange' },
+    { min: 20, max: 30, color: 'red' },
+    { min: 30, max: Infinity, color: 'darkred' }
+];
+
+function getSahkotinPriceColor(value, fallback = '#999') {
+    if (!Number.isFinite(value)) {
+        return fallback;
+    }
+    for (const band of SAHKOTIN_PRICE_BANDS) {
+        const lowerOk = value >= (Number.isFinite(band.min) ? band.min : -Infinity);
+        const upperOk = value <= (Number.isFinite(band.max) ? band.max : Infinity);
+        if (lowerOk && upperOk) {
+            return band.color;
+        }
+    }
+    return fallback;
+}
+
+function getSahkotinVisualMapPieces() {
+    return SAHKOTIN_PRICE_BANDS.map((band, index) => {
+        const piece = { color: band.color, opacity: 1.0 };
+        if (index === 0) {
+            if (Number.isFinite(band.max)) {
+                piece.lte = band.max;
+            }
+        } else if (index === SAHKOTIN_PRICE_BANDS.length - 1) {
+            if (Number.isFinite(band.min)) {
+                piece.gt = band.min;
+            }
+        } else {
+            if (Number.isFinite(band.min)) {
+                piece.gt = band.min;
+            }
+            if (Number.isFinite(band.max)) {
+                piece.lte = band.max;
+            }
+        }
+        return piece;
+    });
+}
+
+window.SAHKOTIN_PRICE_BANDS = SAHKOTIN_PRICE_BANDS;
+window.getSahkotinPriceColor = getSahkotinPriceColor;
+window.getSahkotinVisualMapPieces = getSahkotinVisualMapPieces;
 
 function applyTranslations() {
     document.querySelectorAll('[data-i18n]').forEach(element => {
@@ -288,6 +340,14 @@ function createCurrentTimeMarkLine() {
 
 function createBaseChartOptions(config) {
     // Create base options
+    const defaultGrid = {
+        left: 48,
+        right: 24,
+        top: 32,
+        bottom: 48,
+        containLabel: true
+    };
+    const grid = config.grid ? Object.assign({}, defaultGrid, config.grid) : defaultGrid;
     const baseOptions = {
         title: { text: ' ' },
         legend: config.legend || { show: false },
@@ -295,6 +355,7 @@ function createBaseChartOptions(config) {
             trigger: 'axis',
             formatter: config.tooltipFormatter || createTooltipFormatter()
         },
+        grid,
         xAxis: {
             type: 'time',
             boundaryGap: false,

@@ -4,6 +4,7 @@ All notable changes will be documented in this file.
 
 ## [2025-10-25] - Cheapest Windows Table
 ### Added
+- Added a 7-day hourly price calendar to the landing page to visualise cheap vs expensive hours alongside the cheapest-window table.
 - Landing web page "Cheapest Windows" table surfaces the cheapest 3/6/12-hour windows within the selected lookahead days and hour bounds, as initially implemented for the [HACS sensors](https://github.com/vividfog/nordpool-predict-fi-hacs) repository. 
 
 ## [2025-10-16] - Database Workflow Updates

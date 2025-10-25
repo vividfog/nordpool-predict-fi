@@ -19,14 +19,19 @@
 <body>
     <div id="topdisclaimer"><a href="index.html">FI</a> | EN</div>
     <div id="predictionText">
-        <h1 style="padding-top: 16px">Nordpool Predict FI</h1>
+        <h1 class="page-title">Nordpool Predict FI</h1>
         <p><strong>This experimental, privately-made (no relation to Nordpool) machine learning model estimates the consumer price of electricity in Finland (VAT 25.5%) for about a week ahead. The model correlates predicted weather and electricity production with previous periods where these factors were similar.</strong></p>
-        <p>The model is trained and the forecast is updated automatically a few times per day. Below the graph is a language model's interpretation of the numbers.</p>
-        <h1 style="padding-top: 32px">Forecast for the coming days</h1>
+        <p>The model is trained and the forecast is updated automatically a few times per day.</p>
         <p id="predictionChart"></p>
-        <p id="narration"></p>
+        <div id="priceCalendarSection">
+            <h1 class="section-title">Hourly price calendar</h1>
+            <p>The calendar shows how the predicted cheap/expensive periods stack up by hour and by day.</p>
+            <div id="priceCalendar" class="price-calendar"></div>
+            <p id="priceCalendarStatus" class="price-calendar-status">Loading hourly prices…</p>
+            <div id="priceCalendarLegend" class="price-calendar-legend"></div>
+        </div>
         <div id="cheapestWindows">
-            <h1>Cheapest price windows</h1>
+            <h1 class="section-title">Cheapest price windows</h1>
             <form id="cheapestControls" class="cheapest-sentence" autocomplete="off" style="padding-top: 16px">
                 <span>The table covers the next</span>
                 <label class="cheapest-field">
@@ -40,8 +45,9 @@
                         <option value="7">7</option>
                     </select>
                 </label>
-                <span>days. Windows start at</span>
-                <label class="cheapest-field">
+                <span>days.</span>
+                <label class="cheapest-field cheapest-wrap">
+                    <span>Windows start at</span>
                     <select id="cheapestStartHourInput" aria-label="Start hour lower bound">
                         <option value="0" selected>00</option>
                         <option value="1">01</option>
@@ -68,9 +74,7 @@
                         <option value="22">22</option>
                         <option value="23">23</option>
                     </select>
-                </label>
-                <span>:00 – </span>
-                <label class="cheapest-field">
+                    <span>:00 –</span>
                     <select id="cheapestEndHourInput" aria-label="Start hour upper bound">
                         <option value="0">00</option>
                         <option value="1">01</option>
@@ -97,8 +101,8 @@
                         <option value="22">22</option>
                         <option value="23" selected>23</option>
                     </select>
+                    <span>:59.</span>
                 </label>
-                <span>:59.</span>
             </form>
             <table class="cheapest-table">
                 <thead>
@@ -116,10 +120,12 @@
                 </tbody>
             </table>
         </div>
-        <h1>Wind power forecast</h1>
+        <h1 class="section-title">Language model interpretation</h1>
+        <p id="narration"></p>
+        <h1 class="section-title">Wind power forecast</h1>
         <p>Based on data and forecasts from FMI weather stations on the coast of the Gulf of Bothnia, with price data shown in the background. Wind over 2...3 gigawatts is favorable for the electricity price, and with wind below 1 gigawatt, the price can rise significantly if there are maintenance outages or cold temperatures at the same time.</p>
-        <div id="windPowerChart" style="width: 100%; max-width: 920px; margin: auto; box-sizing: border-box; padding-top: 32px;"></div>
-        <h1>Historical forecasts</h1>
+        <div id="windPowerChart"></div>
+        <h1 class="section-title">Historical forecasts</h1>
         <p>The graph shows a 30-day history of previous forecasts. Major changes can occur, for example, if the weather forecast changes significantly, if there is an unexpected production outage, if the cause of the price disturbance is historically new or rare, or if the model has been recently updated. See the change log below.</p>
         <p>The <strong style="color:limegreen;">green</strong> line is the final Nordpool price. The <strong style="color:dodgerblue;">blue</strong> lines are the forecast ensemble from previous days, before the Nordpool price was known.</p>
         <div class="history-controls">
@@ -139,8 +145,8 @@
                 </select>
             </div>
         </div>
-        <div id="historyChart" style="width: 100%; max-width: 920px; margin: auto; box-sizing: border-box"></div>
-        <h1 style="padding-top: 32px">What does the forecast take into account?</h1>
+        <div id="historyChart"></div>
+        <h1 class="section-title">What does the forecast take into account?</h1>
         <p>This is a machine learning model that seeks correlations between different variables and learns what price each combination leads to based on history. This is not a time series forecast, but each hour gets its value independently based on this information:</p>
         <ul>
             <li><strong>Forecasts for wind power areas in Finland:</strong> FMI weather stations, i.e., indirectly the amount of wind power</li>
@@ -154,16 +160,16 @@
             <li><strong>Time of day:</strong> 0-23</li>
             <li><strong>Holidays:</strong> On national holidays, energy demand may be lower than usual</li>
         </ul>
-        <h1 style="padding-top: 32px">How do the features influence price?</h1>
+        <h1 class="section-title">How do the features influence price?</h1>
         <p><strong>Try rotating</strong> the <a href="https://pair-code.github.io/understanding-umap/" target="_blank">UMAP</a> chart below. Marker size shows how much each feature influences the predicted price. Points that sit near each other act similarly in the training data and provide reinforcing signals for the model. A negative correlation means the feature tends to push prices down when it increases.</p>
         <div id="featureEmbeddingChart"></div>
-        <h1 style="padding-top: 32px">What does the forecast not consider?</h1>
+        <h1 class="section-title">What does the forecast not consider?</h1>
         <p>The forecast only sees the factors listed above. The source code is open, and you are welcome to experiment with other features. Training data starts from the beginning of 2023.</p>
         <p>Although the model can "predict" the past and historically familiar types of the future, price estimates in new and exceptional situations can be off. So do not, for example, adjust your house heating based on these numbers if you are not at home.</p>
-        <h1 style="padding-top: 32px">Change log</h1>
+        <h1 class="section-title">Change log</h1>
         <p>The model has been online since February 2024. The following changes have been made since then.</p>
         <p><strong>October 25, 2025:</strong></p>
-        <p>Added a table that surfaces the forecast’s cheapest 3/6/12-hour windows within the selected day and hour span, so you could, for example, line up overnight EV charging for the lowest-cost hours in the coming days.</p>
+        <p>Added a table that surfaces the forecast’s cheapest 3/6/12-hour windows within the selected day and hour span, so you could, for example, line up overnight EV charging for the lowest-cost hours in the coming days. Also introduced a 7-day hourly calendar view that highlights which hours are expected to be cheap or expensive.</p>
         <p><strong>October 16, 2025:</strong></p>
         <p>Added a <a href="https://pair-code.github.io/understanding-umap/" target="_blank">UMAP</a> feature map to the landing page. The chart explains which feature groups move together and how strongly each one influences the forecast.</p>
         <p><strong>October 13, 2025:</strong></p>
@@ -220,6 +226,7 @@
     <script src="js/config.js"></script>
     <script src="js/narration.js"></script>
     <script src="js/prediction.js"></script>
+    <script src="js/calendar.js"></script>
     <script src="js/cheapest.js"></script>
     <script src="js/windpower.js"></script>
     <script src="js/history.js"></script>
