@@ -5,8 +5,8 @@
 
 (function() {
     const HOUR_MS = 60 * 60 * 1000;
+    const DAY_MS = 24 * HOUR_MS;
     const MAX_DAY_SLOTS = 27;
-    const DAYS_VISIBLE = 7;
     const HELSINKI_TZ = 'Europe/Helsinki';
 
     const dtfCache = new Map();
@@ -109,6 +109,37 @@
         return numeric < 10 ? `0${numeric}` : String(numeric);
     }
 
+    function formatWithColonSeparator(formatter, date) {
+        if (!formatter || typeof formatter.formatToParts !== 'function') {
+            return typeof formatter?.format === 'function' ? formatter.format(date) : '';
+        }
+        const parts = formatter.formatToParts(date);
+        let result = '';
+        let awaitingMinute = false;
+
+        for (let index = 0; index < parts.length; index++) {
+            const part = parts[index];
+            if (part.type === 'hour') {
+                awaitingMinute = true;
+                result += part.value;
+                continue;
+            }
+            if (part.type === 'literal' && awaitingMinute) {
+                const next = parts[index + 1];
+                if (next && next.type === 'minute') {
+                    result += ':';
+                    continue;
+                }
+            }
+            result += part.value;
+            if (part.type === 'minute') {
+                awaitingMinute = false;
+            }
+        }
+
+        return result;
+    }
+
     function buildPriceMap(series) {
         const map = new Map();
         if (!Array.isArray(series)) {
@@ -139,6 +170,29 @@
         };
     }
 
+    function getLatestTimestamp(sources) {
+        if (!sources) {
+            return NaN;
+        }
+        const pools = [sources.merged, sources.actual, sources.forecast];
+        let latest = NaN;
+        pools.forEach(pool => {
+            if (!(pool instanceof Map)) {
+                return;
+            }
+            for (const key of pool.keys()) {
+                const numericKey = Number(key);
+                if (!Number.isFinite(numericKey)) {
+                    continue;
+                }
+                if (!Number.isFinite(latest) || numericKey > latest) {
+                    latest = numericKey;
+                }
+            }
+        });
+        return latest;
+    }
+
     function selectPrice(timestamp, sources) {
         if (sources.merged.has(timestamp)) {
             return sources.merged.get(timestamp);
@@ -150,6 +204,60 @@
             return sources.forecast.get(timestamp);
         }
         return null;
+    }
+
+    function determineDaysVisible(anchorParts, sources) {
+        if (!anchorParts || !Number.isFinite(anchorParts.year)) {
+            return 0;
+        }
+
+        const baseDayUtc = zonedTimeToUtc({
+            year: anchorParts.year,
+            month: anchorParts.month,
+            day: anchorParts.day,
+            hour: 0,
+            minute: 0,
+            second: 0
+        }, HELSINKI_TZ);
+
+        if (!Number.isFinite(baseDayUtc)) {
+            return 0;
+        }
+
+        const latestTimestamp = getLatestTimestamp(sources);
+        if (!Number.isFinite(latestTimestamp)) {
+            return 0;
+        }
+
+        const alignedLatest = Math.floor(latestTimestamp / HOUR_MS) * HOUR_MS;
+        const latestParts = getLocalDateParts(alignedLatest, HELSINKI_TZ);
+        if (!Number.isFinite(latestParts?.year)) {
+            return 0;
+        }
+
+        const lastDayUtc = zonedTimeToUtc({
+            year: latestParts.year,
+            month: latestParts.month,
+            day: latestParts.day,
+            hour: 0,
+            minute: 0,
+            second: 0
+        }, HELSINKI_TZ);
+
+        if (!Number.isFinite(lastDayUtc)) {
+            return 0;
+        }
+
+        if (lastDayUtc < baseDayUtc) {
+            return 1;
+        }
+
+        const diff = Math.round((lastDayUtc - baseDayUtc) / DAY_MS);
+        if (!Number.isFinite(diff)) {
+            return 0;
+        }
+
+        return diff + 1;
     }
 
     function formatDayLabel(timestamp, locale) {
@@ -172,7 +280,7 @@
             hour12: false,
             timeZone: HELSINKI_TZ
         });
-        const stamp = formatter.format(new Date(timestamp));
+        const stamp = formatWithColonSeparator(formatter, new Date(timestamp));
         const rounded = Number(price).toFixed(1);
         let tooltip = `${stamp}<br/>${rounded} ¢/kWh`;
 
@@ -195,7 +303,10 @@
                     if (entry.timestamp === timestamp) {
                         return;
                     }
-                    const label = tzNameFormatter.format(new Date(entry.timestamp));
+                    const label = formatWithColonSeparator(
+                        tzNameFormatter,
+                        new Date(entry.timestamp)
+                    );
                     tooltip += `<br/>${label}: ${Number(entry.price).toFixed(1)} ¢/kWh`;
                 });
         }
@@ -315,10 +426,14 @@
         const hourLabels = Array.from({ length: 24 }, (_, hour) => padHour(hour));
         const data = [];
         const dayLabels = [];
+        const daysVisible = determineDaysVisible(anchorParts, sources);
+        if (daysVisible <= 0) {
+            return null;
+        }
 
         const baseDate = new Date(Date.UTC(anchorParts.year, anchorParts.month - 1, anchorParts.day));
 
-        for (let dayOffset = 0; dayOffset < DAYS_VISIBLE; dayOffset++) {
+        for (let dayOffset = 0; dayOffset < daysVisible; dayOffset++) {
             const dayCandidate = new Date(baseDate);
             dayCandidate.setUTCDate(baseDate.getUTCDate() + dayOffset);
 
@@ -401,11 +516,7 @@
                 type: 'category',
                 data: matrix.hourLabels,
                 boundaryGap: false,
-                axisLine: {
-                    lineStyle: {
-                        color: 'rgba(31, 35, 40, 0.18)'
-                    }
-                },
+                axisLine: { show: false },
                 axisTick: { show: false },
                 axisLabel: {
                     interval: 1,
@@ -420,13 +531,10 @@
                 axisTick: { show: false },
                 axisLabel: {
                     color: 'rgba(31, 35, 40, 0.72)',
-                    margin: 22
+                    margin: 32
                 },
                 splitLine: {
-                    show: true,
-                    lineStyle: {
-                        color: 'rgba(31, 35, 40, 0.08)'
-                    }
+                    show: false
                 }
             },
             series: [
@@ -434,8 +542,8 @@
                     type: 'heatmap',
                     data: matrix.data,
                     itemStyle: {
-                        borderColor: 'rgba(255, 255, 255, 0.65)',
-                        borderWidth: 1,
+                        borderColor: 'rgba(255, 255, 255, 1)',
+                        borderWidth: 2,
                         color: function(args) {
                             const payload = args?.data;
                             if (!Array.isArray(payload)) {
@@ -453,8 +561,8 @@
                     },
                     emphasis: {
                         itemStyle: {
-                            borderColor: 'rgba(31, 35, 40, 0.66)',
-                            borderWidth: 1.4
+                            borderColor: 'dodgerblue',
+                            borderWidth: 2.8
                         }
                     }
                 }
