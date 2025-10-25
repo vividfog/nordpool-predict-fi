@@ -5,7 +5,7 @@
 
 (function() {
     const HOUR_MS = 60 * 60 * 1000;
-    const HOURS_PER_DAY = 24;
+    const MAX_DAY_SLOTS = 27;
     const DAYS_VISIBLE = 7;
     const HELSINKI_TZ = 'Europe/Helsinki';
 
@@ -46,23 +46,59 @@
         };
     }
 
+    function matchesLocal(parts, target) {
+        return (
+            Number.isFinite(parts.year) && parts.year === target.year &&
+            Number.isFinite(parts.month) && parts.month === target.month &&
+            Number.isFinite(parts.day) && parts.day === target.day &&
+            Number.isFinite(parts.hour) && parts.hour === target.hour &&
+            Number.isFinite(parts.minute) && parts.minute === target.minute &&
+            Number.isFinite(parts.second) && parts.second === target.second
+        );
+    }
+
     function zonedTimeToUtc(components, timeZone) {
-        const { year, month, day, hour = 0, minute = 0, second = 0 } = components;
-        if (!Number.isFinite(year) || !Number.isFinite(month) || !Number.isFinite(day)) {
+        const {
+            year,
+            month,
+            day,
+            hour = 0,
+            minute = 0,
+            second = 0
+        } = components;
+
+        if (![year, month, day, hour, minute, second].every(Number.isFinite)) {
             return NaN;
         }
-        const guess = new Date(Date.UTC(year, month - 1, day, hour, minute, second));
-        const local = getLocalDateParts(guess.getTime(), timeZone);
-        const adjusted = Date.UTC(
-            Number.isFinite(local.year) ? local.year : year,
-            Number.isFinite(local.month) ? local.month - 1 : month - 1,
-            Number.isFinite(local.day) ? local.day : day,
-            Number.isFinite(local.hour) ? local.hour : hour,
-            Number.isFinite(local.minute) ? local.minute : minute,
-            Number.isFinite(local.second) ? local.second : second
+
+        const naiveUtc = Date.UTC(year, month - 1, day, hour, minute, second);
+        const localParts = getLocalDateParts(naiveUtc, timeZone);
+        const localUtcEstimate = Date.UTC(
+            Number.isFinite(localParts.year) ? localParts.year : year,
+            Number.isFinite(localParts.month) ? localParts.month - 1 : month - 1,
+            Number.isFinite(localParts.day) ? localParts.day : day,
+            Number.isFinite(localParts.hour) ? localParts.hour : hour,
+            Number.isFinite(localParts.minute) ? localParts.minute : minute,
+            Number.isFinite(localParts.second) ? localParts.second : second
         );
-        const offset = adjusted - guess.getTime();
-        return guess.getTime() - offset;
+
+        let candidate = naiveUtc + (naiveUtc - localUtcEstimate);
+        let resolvedParts = getLocalDateParts(candidate, timeZone);
+
+        if (matchesLocal(resolvedParts, { year, month, day, hour, minute, second })) {
+            return candidate;
+        }
+
+        const adjustments = [-HOUR_MS, HOUR_MS, -2 * HOUR_MS, 2 * HOUR_MS];
+        for (const delta of adjustments) {
+            const attempt = candidate + delta;
+            resolvedParts = getLocalDateParts(attempt, timeZone);
+            if (matchesLocal(resolvedParts, { year, month, day, hour, minute, second })) {
+                return attempt;
+            }
+        }
+
+        return NaN;
     }
 
     function padHour(hour) {
@@ -126,7 +162,7 @@
         return formatter.format(new Date(timestamp));
     }
 
-    function formatTooltip(timestamp, price, locale) {
+    function formatTooltip(timestamp, price, locale, detail) {
         const formatter = new Intl.DateTimeFormat(locale, {
             weekday: 'long',
             month: 'short',
@@ -138,7 +174,33 @@
         });
         const stamp = formatter.format(new Date(timestamp));
         const rounded = Number(price).toFixed(1);
-        return `${stamp}<br/>${rounded} ¢/kWh`;
+        let tooltip = `${stamp}<br/>${rounded} ¢/kWh`;
+
+        if (Array.isArray(detail) && detail.length > 1) {
+            const tzNameFormatter = new Intl.DateTimeFormat(locale, {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false,
+                timeZone: HELSINKI_TZ,
+                timeZoneName: 'short'
+            });
+
+            detail
+                .slice()
+                .sort((a, b) => a.timestamp - b.timestamp)
+                .forEach(entry => {
+                    if (!Number.isFinite(entry.timestamp) || !Number.isFinite(entry.price)) {
+                        return;
+                    }
+                    if (entry.timestamp === timestamp) {
+                        return;
+                    }
+                    const label = tzNameFormatter.format(new Date(entry.timestamp));
+                    tooltip += `<br/>${label}: ${Number(entry.price).toFixed(1)} ¢/kWh`;
+                });
+        }
+
+        return tooltip;
     }
 
     function formatLegendLabel(band, locale) {
@@ -206,6 +268,36 @@
         container.style.display = 'flex';
     }
 
+    function collectDaySlots(year, month, day, timeZone) {
+        const dayStartUtc = zonedTimeToUtc({ year, month, day, hour: 0 }, timeZone);
+        if (!Number.isFinite(dayStartUtc)) {
+            return { slotsByHour: new Map(), dayStartUtc: NaN };
+        }
+
+        const slotsByHour = new Map();
+        let cursor = dayStartUtc;
+
+        for (let index = 0; index < MAX_DAY_SLOTS; index++) {
+            const parts = getLocalDateParts(cursor, timeZone);
+            if (!Number.isFinite(parts.year) || parts.year !== year ||
+                !Number.isFinite(parts.month) || parts.month !== month ||
+                !Number.isFinite(parts.day) || parts.day !== day) {
+                break;
+            }
+
+            const hour = parts.hour;
+            if (!slotsByHour.has(hour)) {
+                slotsByHour.set(hour, []);
+            }
+            slotsByHour.get(hour).push({
+                timestamp: cursor
+            });
+            cursor += HOUR_MS;
+        }
+
+        return { slotsByHour, dayStartUtc };
+    }
+
     function buildCalendarMatrix(payload) {
         if (!payload) {
             return null;
@@ -220,7 +312,7 @@
         }
 
         const locale = window.location.pathname.includes('index_en') ? 'en-GB' : 'fi-FI';
-        const hourLabels = Array.from({ length: HOURS_PER_DAY }, (_, hour) => padHour(hour));
+        const hourLabels = Array.from({ length: 24 }, (_, hour) => padHour(hour));
         const data = [];
         const dayLabels = [];
 
@@ -234,17 +326,40 @@
             const month = dayCandidate.getUTCMonth() + 1;
             const day = dayCandidate.getUTCDate();
 
-            const dayStart = zonedTimeToUtc({ year, month, day, hour: 0 }, HELSINKI_TZ);
-            dayLabels.push(formatDayLabel(dayStart, locale));
+            const { slotsByHour, dayStartUtc } = collectDaySlots(year, month, day, HELSINKI_TZ);
+            const labelTimestamp = Number.isFinite(dayStartUtc)
+                ? dayStartUtc
+                : Date.UTC(year, month - 1, day);
+            dayLabels.push(formatDayLabel(labelTimestamp, locale));
 
-            for (let hour = 0; hour < HOURS_PER_DAY; hour++) {
-                const slotTs = zonedTimeToUtc({ year, month, day, hour }, HELSINKI_TZ);
-                const aligned = Math.floor(slotTs / HOUR_MS) * HOUR_MS;
-                const isPastHour = aligned < anchorMs;
-                const price = !isPastHour ? selectPrice(aligned, sources) : null;
+            hourLabels.forEach((label, xIndex) => {
+                const hour = Number.parseInt(label, 10);
+                const occurrences = Number.isFinite(hour) ? (slotsByHour.get(hour) || []) : [];
+
+                const enriched = occurrences.map(entry => {
+                    const aligned = Math.floor(entry.timestamp / HOUR_MS) * HOUR_MS;
+                    return {
+                        timestamp: entry.timestamp,
+                        price: selectPrice(aligned, sources)
+                    };
+                }).filter(entry => Number.isFinite(entry.price));
+
+                const primary = enriched.length ? enriched[enriched.length - 1] : enriched[0];
+                const timestamp = primary ? primary.timestamp : occurrences[0]?.timestamp ?? NaN;
+                const aligned = Number.isFinite(timestamp) ? Math.floor(timestamp / HOUR_MS) * HOUR_MS : NaN;
+                const isPastHour = Number.isFinite(aligned) && aligned < anchorMs;
+                const price = !isPastHour && primary ? primary.price : null;
                 const normalized = Number.isFinite(price) ? Number(price) : null;
-                data.push([hour, dayOffset, normalized, aligned]);
-            }
+                const detail = enriched.length > 1 ? enriched : null;
+
+                data.push([
+                    xIndex,
+                    dayOffset,
+                    normalized,
+                    Number.isFinite(timestamp) ? timestamp : NaN,
+                    detail
+                ]);
+            });
         }
 
         return {
@@ -275,10 +390,11 @@
                     }
                     const price = payload[2];
                     const ts = payload[3];
+                    const detail = payload[4];
                     if (!Number.isFinite(price) || !Number.isFinite(ts)) {
                         return '';
                     }
-                    return formatTooltip(ts, price, matrix.locale);
+                    return formatTooltip(ts, price, matrix.locale, detail);
                 }
             },
             xAxis: {
