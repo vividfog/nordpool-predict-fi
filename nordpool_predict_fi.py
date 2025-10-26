@@ -1,4 +1,5 @@
 import os
+import gc
 import json
 import pytz
 import argparse
@@ -211,6 +212,10 @@ if args.predict:
     logger.info("Predicting price volatility likelihood for recent/future data")
     df_recent = predict_daily_volatility(df_recent, volatility_model)
 
+    # Intentionally release the volatility model here; later steps must not assume it's still available.
+    del volatility_model
+    gc.collect()
+
     # Reset the index of df_full
     df_full.reset_index(inplace=True)
 
@@ -231,6 +236,10 @@ if args.predict:
     model_trained = train_model(
         df_full, fmisid_ws=fmisid_ws, fmisid_t=fmisid_t
     )
+
+    # df_full is no longer required beyond this point; keep it deleted to avoid creeping GPU/CPU pressure.
+    del df_full
+    gc.collect()
 
     # Prepare df_recent for price prediction
     # Convert timestamp to datetime if it's not already
