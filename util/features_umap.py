@@ -4,6 +4,9 @@ from datetime import datetime, timezone
 
 import numpy as np
 import pandas as pd
+
+os.environ.setdefault('NUMBA_THREADING_LAYER', 'workqueue')
+
 from umap import UMAP
 
 from .logger import logger
@@ -161,6 +164,7 @@ def build_feature_embedding(df: pd.DataFrame, fmisid_ws, fmisid_t, deploy_folder
         n_neighbors=n_neighbors,
         min_dist=0.15,
         random_state=42,
+        n_jobs=1,
     )
     embedding = reducer.fit_transform(transpose_matrix)
 

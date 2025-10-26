@@ -1,10 +1,13 @@
+import importlib
 import json
+import os
+import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-from util.features_umap import build_feature_embedding
+import util.features_umap as features_umap
 
 
 def _make_series(base: float, count: int):
@@ -37,7 +40,7 @@ def test_build_feature_embedding(tmp_path: Path):
         'eu_ws_DE01': _make_series(7.0, hours),
     })
 
-    output_path = build_feature_embedding(
+    output_path = features_umap.build_feature_embedding(
         frame,
         fmisid_ws=['ws_100'],
         fmisid_t=['t_100', 't_200'],
@@ -57,3 +60,11 @@ def test_build_feature_embedding(tmp_path: Path):
         assert 0.0 <= feature['y'] <= 1.0
         assert 0.0 <= feature['z'] <= 1.0
         assert feature['group'] in data['groups']
+
+
+def test_features_umap_sets_numba_threading_layer(monkeypatch):
+    monkeypatch.delenv('NUMBA_THREADING_LAYER', raising=False)
+    sys.modules.pop('util.features_umap', None)
+    module = importlib.import_module('util.features_umap')
+    globals()['features_umap'] = module
+    assert os.environ.get('NUMBA_THREADING_LAYER') == 'workqueue'
