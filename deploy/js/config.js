@@ -179,7 +179,7 @@ function getLocalizedText(key) {
         'weekdays': isEnglish ?
             ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] :
             ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'],
-        'cheapest_column_duration': isEnglish ? 'Length (h)' : 'Pituus tuntia',
+        'cheapest_column_duration': isEnglish ? 'Length' : 'Pituus',
         'cheapest_column_average': isEnglish ? 'Average ¢/kWh' : 'Keskihinta ¢/kWh',
         'cheapest_column_countdown': isEnglish ? 'Countdown' : 'Alkuun',
         'cheapest_column_start': isEnglish ? 'Starts' : 'Alkaa',
