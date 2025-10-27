@@ -2,6 +2,11 @@
 
 All notable changes will be documented in this file.
 
+## [2025-10-28] - Persistent Settings & Auto Refresh
+### Added
+- Browser-side preference storage so history, cheapest-window, and other chart controls reopen with the user’s last selections.
+- Six-hour auto-refresh guardrails that re-fetch every deployed data source (prediction, narration, wind, history, etc.) to avoid stale caches.
+
 ## [2025-10-25] - Cheapest Windows Table
 ### Added
 - Added a 7-day hourly price calendar to the landing page to visualise cheap vs expensive hours alongside the cheapest-window table.
