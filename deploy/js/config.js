@@ -36,6 +36,102 @@ window.DATA_ENDPOINTS = DATA_ENDPOINTS;
 window.SAHKOTIN_CSV_URL = SAHKOTIN_CSV_URL;
 window.createSahkotinParams = createSahkotinParams;
 
+// Lightweight localStorage adapter with graceful fallback
+const LOCAL_STORAGE_ENABLED = (() => {
+    try {
+        const probe = '__np_storage_probe__';
+        window.localStorage.setItem(probe, probe);
+        window.localStorage.removeItem(probe);
+        return true;
+    } catch (error) {
+        return false;
+    }
+})();
+
+const appStorage = {
+    enabled: LOCAL_STORAGE_ENABLED,
+    get(key, fallback = null) {
+        if (!LOCAL_STORAGE_ENABLED) {
+            return fallback;
+        }
+        try {
+            const raw = window.localStorage.getItem(key);
+            return raw === null ? fallback : JSON.parse(raw);
+        } catch (error) {
+            console.warn('appStorage.get failed', error);
+            return fallback;
+        }
+    },
+    set(key, value) {
+        if (!LOCAL_STORAGE_ENABLED) {
+            return;
+        }
+        try {
+            window.localStorage.setItem(key, JSON.stringify(value));
+        } catch (error) {
+            console.warn('appStorage.set failed', error);
+        }
+    },
+    remove(key) {
+        if (!LOCAL_STORAGE_ENABLED) {
+            return;
+        }
+        try {
+            window.localStorage.removeItem(key);
+        } catch (error) {
+            console.warn('appStorage.remove failed', error);
+        }
+    }
+};
+
+window.appStorage = appStorage;
+
+/**
+ * Appends a cache-busting query parameter to a URL.
+ * When token is undefined, uses the current timestamp; returns the original URL if falsy.
+ * @param {string} url The base URL to augment.
+ * @param {number} [token] Optional cache key; defaults to Date.now().
+ * @returns {string} URL with cache-busting query parameter applied.
+ */
+function createCacheBustedUrl(url, token) {
+    if (!url) {
+        return url;
+    }
+    const suffix = typeof token === 'undefined' ? Date.now() : token;
+    const separator = url.includes('?') ? '&' : '?';
+    return `${url}${separator}cb=${suffix}`;
+}
+
+window.createCacheBustedUrl = createCacheBustedUrl;
+
+function applyCacheToken(url, token) {
+    if (!Number.isFinite(token)) {
+        return url;
+    }
+    return createCacheBustedUrl(url, token);
+}
+
+window.applyCacheToken = applyCacheToken;
+
+const CHART_GRID_INSETS = Object.freeze({
+    left: 24,
+    right: 24,
+    top: 32,
+    bottom: 72
+});
+
+window.CHART_GRID_INSETS = CHART_GRID_INSETS;
+
+function buildChartGrid(overrides) {
+    const base = Object.assign({ containLabel: true }, CHART_GRID_INSETS);
+    if (!overrides) {
+        return base;
+    }
+    return Object.assign({}, base, overrides);
+}
+
+window.buildChartGrid = buildChartGrid;
+
 //#region utils
 // ==========================================================================
 // Date and time handling utilities
@@ -366,14 +462,7 @@ function createCurrentTimeMarkLine() {
 
 function createBaseChartOptions(config) {
     // Create base options
-    const defaultGrid = {
-        left: 48,
-        right: 24,
-        top: 32,
-        bottom: 48,
-        containLabel: true
-    };
-    const grid = config.grid ? Object.assign({}, defaultGrid, config.grid) : defaultGrid;
+    const grid = buildChartGrid(config.grid);
     const baseOptions = {
         title: { text: ' ' },
         legend: config.legend || { show: false },

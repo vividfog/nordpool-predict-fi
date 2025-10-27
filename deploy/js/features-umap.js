@@ -71,18 +71,48 @@
         });
     }
 
-    function init() {
-        const container = document.getElementById('featureEmbeddingChart');
-        if (!container) return;
+    let featureEmbeddingPending = null;
+    let lastEmbeddingToken = 0;
+    let hasRenderedEmbedding = false;
+
+    function buildFeatureEmbeddingUrl(token) {
+        const base = `${baseUrl}/feature_embedding.json`;
+        if (typeof window.applyCacheToken === 'function') {
+            return window.applyCacheToken(base, token);
+        }
+        if (Number.isFinite(token) && typeof window.createCacheBustedUrl === 'function') {
+            return window.createCacheBustedUrl(base, token);
+        }
+        return base;
+    }
+
+    /**
+     * Fetches feature embedding payload and renders it into the provided container.
+     * Skips duplicate requests by reusing the pending promise and applies cache-busting when a token is supplied.
+     * @param {HTMLElement} container Target element for Plotly rendering.
+     * @param {number} [token] Optional cache-busting token (typically a timestamp).
+     * @returns {Promise<void>|null} Resolves once the embedding is processed; null if container invalid.
+     */
+    function loadFeatureEmbedding(container, token) {
+        if (!container) {
+            return;
+        }
+
+        if (featureEmbeddingPending) {
+            return featureEmbeddingPending;
+        }
+
         if (typeof Plotly === 'undefined') {
             container.textContent = isEnglish()
                 ? 'Plotly library not loaded.'
                 : 'Plotly-kirjastoa ei saatu ladattua.';
+            hasRenderedEmbedding = false;
             return;
         }
 
-        const url = `${baseUrl}/feature_embedding.json`;
-        fetch(url)
+        const effectiveToken = Number.isFinite(token) ? token : Date.now();
+        const requestUrl = buildFeatureEmbeddingUrl(effectiveToken);
+        featureEmbeddingPending = fetch(requestUrl, { cache: 'no-cache' })
             .then((response) => {
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 return response.json();
@@ -92,6 +122,7 @@
                     container.textContent = isEnglish()
                         ? 'Feature embedding will appear here after the next deployment.'
                         : 'Piirteiden upotus tulee näkyviin seuraavan ajon jälkeen.';
+                    hasRenderedEmbedding = false;
                     return;
                 }
 
@@ -133,17 +164,48 @@
                     hovermode: 'closest',
                 };
 
-                Plotly.newPlot(container, traces, layout, {
+                const config = {
                     displayModeBar: false,
                     responsive: true,
-                });
+                };
+
+                if (hasRenderedEmbedding) {
+                    Plotly.react(container, traces, layout, config);
+                } else {
+                    Plotly.newPlot(container, traces, layout, config);
+                    hasRenderedEmbedding = true;
+                }
+                lastEmbeddingToken = effectiveToken;
             })
             .catch((err) => {
                 console.error('Feature embedding error', err);
                 container.textContent = isEnglish()
                     ? 'Unable to load feature embedding.'
                     : 'Piirteiden upotusta ei voitu ladata.';
+                hasRenderedEmbedding = false;
+            })
+            .finally(() => {
+                featureEmbeddingPending = null;
             });
+
+        return featureEmbeddingPending;
+    }
+
+    function init() {
+        const container = document.getElementById('featureEmbeddingChart');
+        if (!container) return;
+        loadFeatureEmbedding(container);
+
+        window.addEventListener('prediction-data-ready', event => {
+            if (featureEmbeddingPending) {
+                return;
+            }
+            const generatedAt = Number(event?.detail?.generatedAt);
+            if (!Number.isFinite(generatedAt) || generatedAt <= lastEmbeddingToken) {
+                return;
+            }
+            loadFeatureEmbedding(container, generatedAt);
+        });
     }
 
     if (document.readyState === 'loading') {

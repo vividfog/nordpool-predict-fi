@@ -57,4 +57,57 @@ describe('deploy/js/features-umap.js', () => {
     const container = document.getElementById('featureEmbeddingChart');
     expect(container.textContent).toMatch(/Feature embedding|Piirteiden upotusta/);
   });
+
+  it('suppresses duplicate fetches while pending and when token unchanged', async () => {
+    loadScript('deploy/js/config.js');
+    document.body.innerHTML = '<div id="featureEmbeddingChart"></div>';
+
+    const payload = {
+      groups: { g: { en: 'Group', fi: 'Ryhmä' } },
+      features: [
+        { group: 'g', label: 'Foo', corr_price: 0.2, latest: 1, mean: 1, std: 0.1, x: 0, y: 0, z: 0 }
+      ]
+    };
+
+    let resolvePending;
+    const firstPromise = new Promise(resolve => { resolvePending = resolve; });
+    globalThis.fetch.mockImplementation(() => firstPromise);
+
+    const newPlot = vi.fn();
+    const react = vi.fn();
+    globalThis.Plotly = { newPlot, react };
+
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2025-01-01T00:00:00Z'));
+
+    loadScript('deploy/js/features-umap.js', { triggerDOMContentLoaded: true });
+    window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: { generatedAt: 0 } }));
+    expect(globalThis.fetch).toHaveBeenCalledTimes(1);
+
+    resolvePending({
+      ok: true,
+      json: () => Promise.resolve(payload)
+    });
+    await flushPromises(8);
+    expect(newPlot).toHaveBeenCalledTimes(1);
+
+    globalThis.fetch.mockClear();
+    globalThis.fetch.mockResolvedValue({
+      ok: true,
+      json: () => Promise.resolve(payload)
+    });
+
+    const nextToken = Date.now() + 1;
+    window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: { generatedAt: nextToken } }));
+    await flushPromises(8);
+    expect(globalThis.fetch.mock.calls.length).toBeGreaterThan(0);
+    expect(react).toHaveBeenCalledTimes(1);
+
+    const callsBeforeRepeat = globalThis.fetch.mock.calls.length;
+    window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: { generatedAt: nextToken } }));
+    await flushPromises(4);
+    expect(globalThis.fetch.mock.calls.length).toBe(callsBeforeRepeat);
+
+    vi.useRealTimers();
+  });
 });

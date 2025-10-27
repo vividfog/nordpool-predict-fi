@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, it, vi } from 'vitest';
-import { createEchartsMock, loadScript, flushPromises } from './utils';
+import { createEchartsMock, loadScript, flushPromises, buildPriceCsv } from './utils';
 
 const HOUR = 60 * 60 * 1000;
 
@@ -17,9 +17,7 @@ describe('deploy/js/prediction.js', () => {
 
     const predictionSeries = Array.from({ length: 6 }, (_, idx) => [now + idx * HOUR, 10 + idx]);
     const scaledSeries = predictionSeries.map(([ts], idx) => [ts, idx % 2 === 0 ? 1 : null]);
-    const csvLines = ['timestamp,price']
-      .concat(predictionSeries.map(([ts, value]) => `${new Date(ts).toISOString()},${value - 2}`))
-      .join('\n');
+    const csvLines = buildPriceCsv(predictionSeries.map(([ts, value]) => [ts, value - 2]));
 
     vi.spyOn(globalThis, 'fetch').mockImplementation(url => {
       if (String(url).includes('prediction_scaled')) {

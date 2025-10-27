@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, it, vi } from 'vitest';
-import { createEchartsMock, flushPromises, loadScript, setPathname } from './utils';
+import { createEchartsMock, flushPromises, loadScript, setPathname, buildPriceCsv } from './utils';
 
 const HOUR = 60 * 60 * 1000;
 
@@ -41,11 +41,7 @@ describe('deploy/js/history.js', () => {
       if (urlString.includes('prices.csv')) {
         return Promise.resolve({
           ok: true,
-          text: () => Promise.resolve(
-            ['timestamp,price']
-              .concat(sampleSeries.map(([ts, value]) => `${new Date(ts).toISOString()},${value}`))
-              .join('\n')
-          )
+          text: () => Promise.resolve(buildPriceCsv(sampleSeries))
         });
       }
       if (urlString.includes('prediction_snapshot')) {
@@ -77,8 +73,8 @@ describe('deploy/js/history.js', () => {
   });
 
   it('processes Sahkotin CSV data', () => {
-    const csv = 'timestamp,price\n2025-01-01T00:00:00Z,7\n';
-    const parsed = processSahkotinCsv(csv);
+    const sahkotinCsv = buildPriceCsv([[Date.UTC(2025, 0, 1), 7]]);
+    const parsed = processSahkotinCsv(sahkotinCsv);
     const finite = parsed.filter(([, value]) => Number.isFinite(value));
     expect(finite).toEqual([[Date.UTC(2025, 0, 1), 7]]);
   });
@@ -110,5 +106,29 @@ describe('deploy/js/history.js', () => {
     addSahkotinDataToChart(sahkotinSeries);
     const updated = window.historyChart.setOption.mock.calls.at(-1)[0];
     expect(updated.series.some(series => series.name === 'Nordpool')).toBe(true);
+  });
+
+  it('guards refreshes behind prediction token changes', async () => {
+    const fetchHistoricalSpy = vi.spyOn(window, 'fetchHistoricalData').mockResolvedValue([[ [0, 1] ]]);
+    const setupSpy = vi.spyOn(window, 'setupHistoryChart').mockReturnValue(1);
+    const sahkoSpy = vi.spyOn(window, 'setupSahkotinData').mockResolvedValue();
+
+    window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: { generatedAt: 0 } }));
+    await flushPromises(4);
+    expect(fetchHistoricalSpy).not.toHaveBeenCalled();
+
+    fetchHistoricalSpy.mockClear();
+    setupSpy.mockClear();
+    sahkoSpy.mockClear();
+
+    window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: { generatedAt: Number.MAX_SAFE_INTEGER } }));
+    await flushPromises(4);
+    expect(fetchHistoricalSpy).toHaveBeenCalledTimes(1);
+    expect(setupSpy).toHaveBeenCalledTimes(1);
+    expect(sahkoSpy).toHaveBeenCalledTimes(1);
+
+    fetchHistoricalSpy.mockRestore();
+    setupSpy.mockRestore();
+    sahkoSpy.mockRestore();
   });
 });

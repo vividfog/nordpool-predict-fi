@@ -35,4 +35,37 @@ describe('deploy/js/narration.js', () => {
 
     expect(errorSpy).toHaveBeenCalled();
   });
+
+  it('skips redundant reloads unless token increases', async () => {
+    vi.useFakeTimers();
+    const now = Date.UTC(2025, 0, 1, 12);
+    vi.setSystemTime(new Date(now));
+
+    document.body.innerHTML = '<div id="narration"></div>';
+    globalThis.marked = { parse: vi.fn(() => '<p>render</p>') };
+    globalThis.fetch.mockImplementation(() => Promise.resolve({
+      ok: true,
+      text: () => Promise.resolve('# Body')
+    }));
+
+    loadScript('deploy/js/config.js');
+    loadScript('deploy/js/narration.js');
+    await flushPromises(6);
+    expect(globalThis.fetch).toHaveBeenCalledTimes(1);
+
+    globalThis.fetch.mockClear();
+    window.dispatchEvent(new CustomEvent('prediction-data-ready', {
+      detail: { generatedAt: now }
+    }));
+    await flushPromises(2);
+    expect(globalThis.fetch).toHaveBeenCalledTimes(0);
+
+    window.dispatchEvent(new CustomEvent('prediction-data-ready', {
+      detail: { generatedAt: now + 1 }
+    }));
+    await flushPromises(6);
+    expect(globalThis.fetch).toHaveBeenCalledTimes(1);
+
+    vi.useRealTimers();
+  });
 });

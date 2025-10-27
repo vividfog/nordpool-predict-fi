@@ -136,4 +136,28 @@ describe('deploy/js/config.js', () => {
     expect(chart.getOption).toHaveBeenCalled();
     expect(chart.setOption).toHaveBeenCalled();
   });
+
+  it('persists appStorage data and falls back gracefully', () => {
+    const key = `np-test-${Date.now()}`;
+    expect(window.appStorage.enabled).toBe(true);
+
+    window.appStorage.set(key, { value: 42 });
+    expect(window.appStorage.get(key)).toEqual({ value: 42 });
+
+    window.appStorage.remove(key);
+    expect(window.appStorage.get(key)).toBeNull();
+    expect(window.appStorage.get(key, 'fallback')).toBe('fallback');
+
+    const previous = window.appStorage.enabled;
+    window.appStorage.enabled = false;
+    expect(window.appStorage.get(key, 'alt')).toBe('alt');
+    window.appStorage.set(key, { shouldNotPersist: true });
+    window.appStorage.enabled = previous;
+  });
+
+  it('creates cache-busted URLs with tokens', () => {
+    const base = 'https://example.com/data.json';
+    expect(createCacheBustedUrl(base, 123)).toBe(`${base}?cb=123`);
+    expect(createCacheBustedUrl(`${base}?foo=bar`, 456)).toBe(`${base}?foo=bar&cb=456`);
+  });
 });

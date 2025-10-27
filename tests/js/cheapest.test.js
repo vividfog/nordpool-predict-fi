@@ -24,6 +24,13 @@ describe('deploy/js/cheapest.js', () => {
 
   async function mountCheapest(options = {}) {
     loadScript('deploy/js/config.js');
+    if (!options.skipClearStorage) {
+      window.appStorage?.remove?.('np_cheapest_preferences');
+    }
+
+    if (options.seedPreferences) {
+      window.appStorage?.set?.('np_cheapest_preferences', options.seedPreferences);
+    }
 
     window.CHEAPEST_WINDOW_DEFAULTS = {
       lookaheadDays: 2,
@@ -73,8 +80,14 @@ describe('deploy/js/cheapest.js', () => {
     vi.useRealTimers();
   });
 
-  it('responds to prediction data updates', async () => {
-    await mountCheapest();
+  it('preserves stored preferences when prediction meta updates arrive', async () => {
+    await mountCheapest({
+      seedPreferences: {
+        lookaheadDays: 5,
+        startHour: 7,
+        endHour: 19
+      }
+    });
     buildPayload.mockClear();
     window.dispatchEvent(new CustomEvent('prediction-data-ready', {
       detail: {
@@ -89,9 +102,9 @@ describe('deploy/js/cheapest.js', () => {
     expect(buildPayload).toHaveBeenCalled();
     const lastCall = buildPayload.mock.calls.at(-1);
     expect(lastCall[2]).toMatchObject({
-      lookaheadDays: 3,
-      startHour: 6,
-      endHour: 20
+      lookaheadDays: 5,
+      startHour: 7,
+      endHour: 19
     });
     vi.useRealTimers();
   });
@@ -102,6 +115,33 @@ describe('deploy/js/cheapest.js', () => {
     lookaheadInput.value = '9';
     lookaheadInput.dispatchEvent(new Event('change'));
     expect(lookaheadInput.value).toBe('7');
+    vi.useRealTimers();
+  });
+
+  it('falls back gracefully when appStorage is disabled', async () => {
+    await mountCheapest();
+
+    const originalEnabled = window.appStorage.enabled;
+    window.appStorage.enabled = false;
+    window.appStorage.remove('np_cheapest_preferences');
+
+    buildPayload.mockClear();
+    window.dispatchEvent(new CustomEvent('prediction-data-ready', {
+        detail: {
+            mergedSeries: [[Date.UTC(2025, 0, 2, 12), 5]],
+            meta: {}
+        }
+    }));
+
+    expect(buildPayload).toHaveBeenCalled();
+    const lastCall = buildPayload.mock.calls.at(-1);
+    expect(lastCall[2]).toMatchObject({
+      lookaheadDays: 2,
+      startHour: 0,
+      endHour: 23
+    });
+
+    window.appStorage.enabled = originalEnabled;
     vi.useRealTimers();
   });
 });

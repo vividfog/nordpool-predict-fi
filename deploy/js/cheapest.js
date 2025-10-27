@@ -1,10 +1,13 @@
+const cheapestStorage = window.appStorage && window.appStorage.enabled ? window.appStorage : null;
+const CHEAPEST_STORAGE_KEY = 'np_cheapest_preferences';
+
 document.addEventListener('DOMContentLoaded', function() {
     const card = document.getElementById('cheapestWindows');
     if (!card) {
         return;
     }
 
-    const tableBody = card.querySelector('tbody');
+const tableBody = card.querySelector('tbody');
     if (!tableBody) {
         return;
     }
@@ -29,7 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
         start: getLocalizedText('cheapest_column_start')
     };
 
-    const defaultsSource = window.CHEAPEST_WINDOW_DEFAULTS || {};
+const defaultsSource = window.CHEAPEST_WINDOW_DEFAULTS || {};
+const hasOwn = Object.hasOwn ? Object.hasOwn.bind(Object) : (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
     const defaults = {
         lookaheadDays: ensureNumber(defaultsSource.lookaheadDays, 4),
         minLookaheadDays: ensureNumber(defaultsSource.minLookaheadDays, 1),
@@ -39,6 +43,22 @@ document.addEventListener('DOMContentLoaded', function() {
         minHour: ensureNumber(defaultsSource.minHour, 0),
         maxHour: ensureNumber(defaultsSource.maxHour, 23)
     };
+    const baseDefaults = Object.assign({}, defaults);
+    const savedCheapest = cheapestStorage ? cheapestStorage.get(CHEAPEST_STORAGE_KEY) : null;
+    let hasStoredCheapest = Boolean(savedCheapest);
+    if (savedCheapest) {
+        if (hasOwn(savedCheapest, 'lookaheadDays')) {
+            defaults.lookaheadDays = clampDays(savedCheapest.lookaheadDays, defaults.lookaheadDays);
+        }
+        if (hasOwn(savedCheapest, 'startHour')) {
+            const fallbackStart = defaults.startHour;
+            defaults.startHour = clampHourValue(savedCheapest.startHour, fallbackStart, baseDefaults.startHour);
+        }
+        if (hasOwn(savedCheapest, 'endHour')) {
+            const fallbackEnd = defaults.endHour;
+            defaults.endHour = clampHourValue(savedCheapest.endHour, fallbackEnd, baseDefaults.endHour);
+        }
+    }
 
     let predictionData = null;
     let latestWindowState = null;
@@ -54,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     syncControlsWithConfig(currentConfig);
     attachControls();
+    persistCheapestSettings();
 
     if (window.latestPredictionData) {
         handlePredictionPayload(window.latestPredictionData);
@@ -138,9 +159,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function syncControlsWithConfig(config) {
         const normalized = {
-            lookaheadDays: clampDays(config?.lookaheadDays, defaults.lookaheadDays),
-            startHour: clampHourValue(config?.startHour, defaults.startHour, defaults.startHour),
-            endHour: clampHourValue(config?.endHour, defaults.endHour, defaults.endHour)
+        lookaheadDays: clampDays(config?.lookaheadDays, defaults.lookaheadDays),
+        startHour: clampHourValue(config?.startHour, defaults.startHour, defaults.startHour),
+        endHour: clampHourValue(config?.endHour, defaults.endHour, defaults.endHour)
         };
 
         if (lookaheadInput) {
@@ -176,6 +197,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
         currentConfig = normalized;
         return normalized;
+    }
+
+    /**
+     * Persists the current cheapest window configuration when storage is available.
+     * Safely no-ops if storage is disabled or unavailable.
+     */
+    function persistCheapestSettings() {
+        if (!cheapestStorage) {
+            return;
+        }
+        hasStoredCheapest = true;
+        cheapestStorage.set(CHEAPEST_STORAGE_KEY, {
+            lookaheadDays: currentConfig.lookaheadDays,
+            startHour: currentConfig.startHour,
+            endHour: currentConfig.endHour
+        });
     }
 
     function formatStart(timestamp) {
@@ -344,13 +381,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         predictionData = payload;
-        const configFromMeta = {
-            lookaheadDays: payload?.meta?.lookaheadDays,
-            startHour: payload?.meta?.startHour,
-            endHour: payload?.meta?.endHour
+        const meta = payload?.meta || {};
+        const mergedPreferences = {
+            lookaheadDays: hasStoredCheapest
+                ? currentConfig.lookaheadDays
+                : (Number.isFinite(meta.lookaheadDays) ? meta.lookaheadDays : currentConfig.lookaheadDays),
+            startHour: hasStoredCheapest
+                ? currentConfig.startHour
+                : (Number.isFinite(meta.startHour) ? meta.startHour : currentConfig.startHour),
+            endHour: hasStoredCheapest
+                ? currentConfig.endHour
+                : (Number.isFinite(meta.endHour) ? meta.endHour : currentConfig.endHour)
         };
 
-        syncControlsWithConfig(configFromMeta);
+        syncControlsWithConfig(mergedPreferences);
+        persistCheapestSettings();
         updateCheapestWindows();
         renderRows();
         startCountdownUpdates();
@@ -368,6 +413,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handleControlsInput() {
         normalizeControlsFromInputs();
+        persistCheapestSettings();
         updateCheapestWindows();
         renderRows();
     }

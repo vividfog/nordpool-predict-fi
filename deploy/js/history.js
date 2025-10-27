@@ -14,6 +14,32 @@ let originalData = [];
 let currentAveragePeriod = 3;
 let currentPruneOption = '120'; // Default to 5-day lookahead
 let sahkotinOriginalData = [];
+const historyStorage = window.appStorage && window.appStorage.enabled ? window.appStorage : null;
+const HISTORY_STORAGE_KEY = 'np_history_preferences';
+let historyRefreshPending = null;
+let lastHistoryToken = 0;
+
+// Align cache-busting with the global helper so history refreshes behave like other modules.
+const historyCacheBustUrl = typeof window.applyCacheToken === 'function'
+    ? window.applyCacheToken
+    : createCacheBustedUrl;
+
+(function restoreHistoryPreferences() {
+    if (!historyStorage) {
+        return;
+    }
+    const saved = historyStorage.get(HISTORY_STORAGE_KEY);
+    if (!saved) {
+        return;
+    }
+    const savedAverage = Number(saved.averagePeriod);
+    if (Number.isFinite(savedAverage) && (savedAverage === 0 || savedAverage === 3 || savedAverage === 6)) {
+        currentAveragePeriod = savedAverage;
+    }
+    if (typeof saved.pruneOption === 'string' && saved.pruneOption.trim() !== '') {
+        currentPruneOption = saved.pruneOption;
+    }
+})();
 
 // ==========================================================================
 // Toggle button event handlers
@@ -24,27 +50,68 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const toggleButtons = document.querySelectorAll('.history-toggle button');
     const pruneDropdown = document.getElementById('pruneDropdown');
+    if (pruneDropdown) {
+        const candidate = Array.from(pruneDropdown.options || []).some(option => option.value === currentPruneOption)
+            ? currentPruneOption
+            : pruneDropdown.value;
+        pruneDropdown.value = candidate;
+        currentPruneOption = pruneDropdown.value;
+    }
+
+    function persistHistorySettings() {
+        if (!historyStorage) {
+            return;
+        }
+        historyStorage.set(HISTORY_STORAGE_KEY, {
+            averagePeriod: currentAveragePeriod,
+            pruneOption: currentPruneOption
+        });
+    }
+
+    function activateAverageButton(period) {
+        let matched = false;
+        toggleButtons.forEach(btn => {
+            const buttonPeriod = Number(btn.getAttribute('data-period'));
+            if (buttonPeriod === period) {
+                btn.classList.add('active');
+                matched = true;
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+        if (!matched && toggleButtons.length) {
+            toggleButtons[0].classList.add('active');
+            const fallbackPeriod = Number(toggleButtons[0].getAttribute('data-period'));
+            if (Number.isFinite(fallbackPeriod)) {
+                currentAveragePeriod = fallbackPeriod;
+            }
+        }
+    }
+
+    activateAverageButton(currentAveragePeriod);
     
     toggleButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Remove active class from all buttons
-            toggleButtons.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            // Get the moving average period from data attribute
-            currentAveragePeriod = parseInt(this.getAttribute('data-period'));
-            
-            // Apply time binning to chart data
+            const nextPeriod = Number(this.getAttribute('data-period'));
+            if (!Number.isFinite(nextPeriod) || nextPeriod === currentAveragePeriod) {
+                return;
+            }
+            currentAveragePeriod = nextPeriod;
+            activateAverageButton(currentAveragePeriod);
+            persistHistorySettings();
             applyPruningAndAveragingToChart();
         });
     });
 
-    pruneDropdown.addEventListener('change', function() {
-        currentPruneOption = this.value;
-        applyPruningAndAveragingToChart();
-    });
+    if (pruneDropdown) {
+        pruneDropdown.addEventListener('change', function() {
+            currentPruneOption = this.value;
+            persistHistorySettings();
+            applyPruningAndAveragingToChart();
+        });
+    }
+
+    persistHistorySettings();
 });
 
 // Apply pruning and then moving average to the chart
@@ -96,27 +163,30 @@ function pruneData(data, option) {
     return data.filter(item => item[0] < cutoffTime);
 }
 
-function fetchHistoricalData(urls) {
+function fetchHistoricalData(urls, options = {}) {
+    const cacheToken = Number.isFinite(options.cacheToken) ? options.cacheToken : null;
     return Promise.all(urls.map(url => {
         console.log(`[fetchHistoricalData] Fetching URL: ${url}`);
 
-        return fetch(url)
+        const requestUrl = Number.isFinite(cacheToken) ? historyCacheBustUrl(url, cacheToken) : url;
+
+        return fetch(requestUrl, { cache: 'no-cache' })
             .then(response => {
-                console.log(`[fetchHistoricalData] Response status: ${response.status} from ${url}`);
+                console.log(`[fetchHistoricalData] Response status: ${response.status} from ${requestUrl}`);
                 if (!response.ok) {
-                    console.warn(`[fetchHistoricalData] Failed to fetch or file not found: ${url}`);
+                    console.warn(`[fetchHistoricalData] Failed to fetch or file not found: ${requestUrl}`);
                 }
                 return response.json();
             })
             .then(jsonData => {
                 if (!jsonData) {
-                    console.warn(`[fetchHistoricalData] No data returned for: ${url}`);
+                    console.warn(`[fetchHistoricalData] No data returned for: ${requestUrl}`);
                     return null;
                 }
 
-                console.log(`[fetchHistoricalData] Raw JSON length for ${url}: ${jsonData.length}`);
+                console.log(`[fetchHistoricalData] Raw JSON length for ${requestUrl}: ${jsonData.length}`);
 
-                const match = url.match(/(\d{4}-\d{2}-\d{2})/);
+                const match = requestUrl.match(/(\d{4}-\d{2}-\d{2})/);
                 if (match) {
                     const snapshotDateString = match[1];
                     const snapshotDateTime = new Date(`${snapshotDateString}T00:00:00Z`).getTime();
@@ -134,14 +204,14 @@ function fetchHistoricalData(urls) {
                          cutoffMs: ${cutoffMs}`
                     );
                 } else {
-                    console.warn(`[fetchHistoricalData] No date found in filename: ${url}`);
+                    console.warn(`[fetchHistoricalData] No date found in filename: ${requestUrl}`);
                 }
 
-                console.log(`[fetchHistoricalData] Final JSON length for ${url}: ${jsonData.length}`);
+                console.log(`[fetchHistoricalData] Final JSON length for ${requestUrl}: ${jsonData.length}`);
                 return jsonData;
             })
             .catch(error => {
-                console.error(`[fetchHistoricalData] Error fetching or parsing ${url}:`, error);
+                console.error(`[fetchHistoricalData] Error fetching or parsing ${requestUrl}:`, error);
                 return null;
             });
     }));
@@ -202,12 +272,10 @@ const historyChartOptions = createBaseChartOptions({
         isHistoryChart: true // Flag to use weekly grid lines
     });
 
-    historyChartOptions.grid = Object.assign({}, historyChartOptions.grid || {}, {
-        left: 8,
-        right: 12,
-        top: 28,
-        bottom: 74
-    });
+    const baseGrid = typeof window.buildChartGrid === 'function'
+        ? window.buildChartGrid(historyChartOptions.grid)
+        : Object.assign({ containLabel: true }, window.CHART_GRID_INSETS || {}, historyChartOptions.grid || {});
+    historyChartOptions.grid = Object.assign({}, baseGrid, { bottom: 96 });
     
     // Add zoom controls to the history chart
     historyChartOptions.dataZoom = [
@@ -216,7 +284,7 @@ const historyChartOptions = createBaseChartOptions({
             xAxisIndex: 0,
             start: 33,
             end: 100,
-            bottom: 10,
+            bottom: 18,
             height: 30
         },
         {
@@ -278,11 +346,11 @@ function addSahkotinDataToChart(sahkotinData) {
 // Sähkötin data fetching and chart integration
 // ==========================================================================
 
-function setupSahkotinData() {
+function setupSahkotinData(cacheToken) {
     const startDate = getPastDateStrings(30).pop();
-    var endDate = addDays(new Date(), 2).toISOString();
+    const endDate = addDays(new Date(), 2).toISOString();
 
-    const sahkotinUrl = 'https://sahkotin.fi/prices.csv';
+    const sahkotinUrl = window.SAHKOTIN_CSV_URL || 'https://sahkotin.fi/prices.csv';
     const sahkotinParams = new URLSearchParams({
         fix: 'true',
         vat: 'true',
@@ -290,7 +358,11 @@ function setupSahkotinData() {
         end: endDate,
     });
 
-    fetch(`${sahkotinUrl}?${sahkotinParams}`)
+    const requestUrl = Number.isFinite(cacheToken)
+        ? historyCacheBustUrl(`${sahkotinUrl}?${sahkotinParams.toString()}`, cacheToken)
+        : `${sahkotinUrl}?${sahkotinParams.toString()}`;
+
+    return fetch(requestUrl, { cache: 'no-cache' })
         .then(response => response.text())
         .then(csvData => {
             const sahkotinData = processSahkotinCsv(csvData);
@@ -307,12 +379,47 @@ function setupSahkotinData() {
 // Initialize history chart with fetched data
 // ==========================================================================
 
-fetchHistoricalData(historicalUrls)
-    .then(data => {
-        setupHistoryChart(data, currentPruneOption);
-        setupSahkotinData();
-    })
-    .catch(error => console.error("Error in chart setup:", error));
+/**
+ * Refreshes history snapshots and Sähkötin data, preventing concurrent loads.
+ * Applies cache-busting when a finite token is provided.
+ * @param {number} [token] Optional cache-busting token (typically a timestamp).
+ * @returns {Promise<void>} Resolves after charts are updated; reuses the in-flight promise.
+ */
+function refreshHistoryData(token) {
+    if (historyRefreshPending) {
+        return historyRefreshPending;
+    }
+
+    const effectiveToken = Number.isFinite(token) ? token : Date.now();
+
+    historyRefreshPending = fetchHistoricalData(historicalUrls, { cacheToken: effectiveToken })
+        .then(data => {
+            setupHistoryChart(data, currentPruneOption);
+            return setupSahkotinData(effectiveToken);
+        })
+        .then(() => {
+            lastHistoryToken = effectiveToken;
+        })
+        .catch(error => console.error("Error in chart setup:", error))
+        .finally(() => {
+            historyRefreshPending = null;
+        });
+
+    return historyRefreshPending;
+}
+
+refreshHistoryData();
+
+window.addEventListener('prediction-data-ready', event => {
+    if (historyRefreshPending) {
+        return;
+    }
+    const generatedAt = Number(event?.detail?.generatedAt);
+    if (!Number.isFinite(generatedAt) || generatedAt <= lastHistoryToken) {
+        return;
+    }
+    refreshHistoryData(generatedAt);
+});
 
 // Setup interval for marker updates
 setInterval(() => updateMarkerPosition(historyChart), 10000);

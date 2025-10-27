@@ -32,3 +32,14 @@ export function createEchartsMock() {
 export function setPathname(pathname) {
   window.history.replaceState({}, '', pathname);
 }
+
+/**
+ * Build a simple Sähkötin-style CSV string from timestamp/value pairs.
+ */
+export function buildPriceCsv(rows) {
+  const header = ['timestamp,price'];
+  const body = (rows || []).map(([timestamp, value]) => {
+    return `${new Date(timestamp).toISOString()},${value}`;
+  });
+  return header.concat(body).join('\n');
+}
