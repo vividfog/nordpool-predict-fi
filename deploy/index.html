@@ -169,7 +169,7 @@
         <h1 class="section-title">Muutokset</h1>
         <p>Sähkövatkain on ollut linjoilla helmikuusta 2024. Alla sen jälkeen tehdyt muutokset.</p>
         <p><strong>28.10.2025:</strong></p>
-        <p>Muokatut asetukset tallentuvat nyt selaimeen, ja sivu hakee viimeisimmät tiedot automaattisesti kuuden tunnin välein.</p>
+        <p>Muokatut asetukset tallentuvat nyt selaimeen, tietolähteet päivittyvät automaattisesti kuuden tunnin välein, ja sivu laskee kävijämääriä anonyymisti ja evästeittä <a href="https://www.simpleanalytics.com" target="_blank">Simple Analyticsin</a> (EU) avulla.</p>
         <p><strong>25.10.2025:</strong></p>
         <p>Lisätty taulukko, joka nostaa esiin ennusteen halvimmat 3/6/12 tunnin aikaikkunat valitulla päivä- ja kellonaikarajauksella. Tämän avulla voi esim. yrittää ajoittaa sähköauton latausta lähipäivien halvimpaan yöhön. Lisäksi lisätty tuntihintakalenteri, joka visualisoi halvat ja kalliit jaksot viikon ajalle.</p>
         <p><strong>16.10.2025:</strong></p>
@@ -231,8 +231,10 @@
     <script src="js/calendar.js"></script>
     <script src="js/cheapest.js"></script>
     <script src="js/windpower.js"></script>
-    <script src="js/history.js"></script>
-    <script src="js/features-umap.js"></script>
-    <script src="js/layout.js"></script>
+<script src="js/history.js"></script>
+<script src="js/features-umap.js"></script>
+<script src="js/layout.js"></script>
+<!-- 100% privacy-first analytics -->
+<script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 </body>
 </html>

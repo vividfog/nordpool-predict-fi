@@ -169,7 +169,7 @@
         <h1 class="section-title">Change log</h1>
         <p>The model has been online since February 2024. The following changes have been made since then.</p>
         <p><strong>October 28, 2025:</strong></p>
-        <p>Customised settings now persist automatically in the browser, and every data source refreshes itself at least once every six hours.</p>
+        <p>Customised settings now persist automatically in the browser, data sources refresh themselves at least once every six hours, and visitor metrics are counted anonymously and without cookies via <a href="https://www.simpleanalytics.com" target="_blank">Simple Analytics</a> (EU).</p>
         <p><strong>October 25, 2025:</strong></p>
         <p>Added a table that surfaces the forecast’s cheapest 3/6/12-hour windows within the selected day and hour span, so you could, for example, line up overnight EV charging for the lowest-cost hours in the coming days. Also introduced a 7-day hourly calendar view that highlights which hours are expected to be cheap or expensive.</p>
         <p><strong>October 16, 2025:</strong></p>
@@ -231,8 +231,10 @@
     <script src="js/calendar.js"></script>
     <script src="js/cheapest.js"></script>
     <script src="js/windpower.js"></script>
-    <script src="js/history.js"></script>
-    <script src="js/features-umap.js"></script>
-    <script src="js/layout.js"></script>
+<script src="js/history.js"></script>
+<script src="js/features-umap.js"></script>
+<script src="js/layout.js"></script>
+<!-- 100% privacy-first analytics -->
+<script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 </body>
 </html>

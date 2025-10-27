@@ -6,6 +6,7 @@ All notable changes will be documented in this file.
 ### Added
 - Browser-side preference storage so history, cheapest-window, and other chart controls reopen with the user’s last selections.
 - Six-hour auto-refresh guardrails that re-fetch every deployed data source (prediction, narration, wind, history, etc.) to avoid stale caches.
+- Anonymous, cookie-free visitor stats powered by <https://www.simpleanalytics.com> so usage can be tracked without compromising privacy.
 
 ## [2025-10-25] - Cheapest Windows Table
 ### Added
