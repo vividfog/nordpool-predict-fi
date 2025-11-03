@@ -1,19 +1,19 @@
-*Power exchange prices will stay very low early in the week and turn negative at times, then rise later; spike risks Thursday–Monday, especially next Monday.*
+*The week will start exceptionally cheap, but as winds ease prices will rise: Thursday–Friday spikes culminate in a clearly priciest next Monday, according to the forecast.*
 
-The forecast was updated on Monday at 12:01.
+The forecast was updated on Monday at 14:19.
 
-|  | avg-<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg-<br>temperature<br>°C |
+|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday** | 0,7 | -0,4 - 2,4 | 3047 - 6404 | 5,0 |
-| **Wednesday** | 0,6 | -0,6 - 1,7 | 4007 - 5458 | 6,9 |
-| **Thursday** | 5,8 | 0,1 - 16,2 | 1311 - 4231 | 7,1 |
-| **Friday** | 4,9 | 1,4 - 11,9 | 1041 - 3394 | 6,6 |
-| **Saturday** | 2,8 | 1,3 - 4,4 | 2391 - 3158 | 6,4 |
-| **Sunday** | 3,5 | 1,4 - 7,8 | 1123 - 3635 | 5,4 |
-| **Monday** | 11,0 | 4,0 - 19,9 | 626 - 1611 | 3,1 |
+| **Tuesday** | 0,4 | 0,1 - 1,0 | 3060 - 6420 | 5,0 |
+| **Wednesday** | 0,6 | -0,5 - 1,7 | 4012 - 5487 | 6,9 |
+| **Thursday** | 5,8 | 0,1 - 16,3 | 1255 - 4249 | 7,1 |
+| **Friday** | 4,8 | 1,2 - 10,7 | 1174 - 3488 | 6,6 |
+| **Saturday** | 2,6 | 1,0 - 4,2 | 2440 - 3237 | 6,4 |
+| **Sunday** | 3,4 | 1,2 - 7,5 | 1151 - 3724 | 5,4 |
+| **Monday** | 10,3 | 4,1 - 18,6 | 715 - 1686 | 3,1 |
 
-Prices will be very low early in the week. **Tuesday** and **Wednesday** will include negative night-time hours. **Thursday** will shift clearly higher as the average reaches 5,8 ¢. **Friday’s** average will be 4,9 ¢ and **Saturday’s** 2,8 ¢. **Sunday’s** average will be 3,5 ¢; it is a holiday, which typically lowers demand. Next **Monday** will already be expensive on average, 11,0 ¢, which will widen the week’s spread.
+Very low prices are expected at the start of the week. On **Tuesday** the average price is expected to be 0,4 ¢ with a 0,1–1,0 ¢ range. On **Wednesday** the level will remain low, average 0,6 ¢, and a few negative night hours are projected (down to −0,5 ¢). The early‑week level will be explained by abundant wind generation.
 
-Spike risk will concentrate on Thursday, Friday, Sunday and Monday. Thursday’s peaks will land around 16–18, on Friday around 8–10 and on Sunday around 9–11. Next Monday the peak hours will most likely occur around 17–19, when the highest level in the forecast, 19,9 ¢, will be reached. Monday’s very low wind minimum (626 MW) will help explain the high maximum price, and individual peaks could materialize above the forecast. Thursday’s spikes will also be linked to the day’s low wind trough (about 1 311 MW).
+After Wednesday, upward pressure is anticipated as winds weaken. On **Thursday** a spike risk will appear: the peak would land around 16:00–18:00 at about 16,3 ¢. On **Friday** the spike would likely hit the morning around 08:00–10:00 (up to 10,7 ¢). On **Saturday** prices should stay more even, 1,0–4,2 ¢. On **Sunday**, a public holiday, the average will be 3,4 ¢, but a single peak may occur around 09:00–11:00 (up to 7,5 ¢). The most expensive day is expected to be next **Monday**: the average rises to 10,3 ¢ and the evening peak would fall around 17:00–19:00 at about 18,6 ¢. The peak will be explained by an exceptionally low wind minimum (715 MW), clearly below 2 000 MW.
 
-*Digest by gpt-5.* ⚡
+*Summary compiled by gpt-5.* 🌬️⚡
