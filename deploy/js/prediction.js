@@ -424,7 +424,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                 data: scaledPriceSeriesData.map(item => [item[0], null]),
                 markPoint: {
                     symbol: 'triangle',  // Options: 'circle', 'rect', 'triangle', 'diamond', 'pin', 'arrow'
-                    symbolSize: [4, 4],
+                    symbolSize: [6, 6],
                     symbolRotate: 0,
                     itemStyle: {
                         color: predictionPalette?.spikeMarker || 'crimson'

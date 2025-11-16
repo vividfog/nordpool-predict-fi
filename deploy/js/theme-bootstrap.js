@@ -132,7 +132,7 @@
                 sahkotinBar: 'lime',
                 sahkotinBarOpacity: 0.10,
                 sahkotinLine: 'lime',
-                spikeMarker: 'crimson',
+                spikeMarker: 'red',
                 outOfRange: '#999999',
                 forecastBackgroundBar: 'deepskyblue',
                 forecastVisualPieces: [
