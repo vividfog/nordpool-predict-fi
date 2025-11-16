@@ -3,6 +3,8 @@
 // ==========================================================================
 
 (function () {
+    const EMBEDDING_EVENT = 'prediction-data-ready';
+    const EVENT_HANDLER_KEY = '__featureEmbeddingHandler';
     //#region setup
     const AUTOROTATE_SPEED = 0.0015; // Radians per frame
     const AUTOROTATE_IDLE_DELAY_MS = 5000;
@@ -393,7 +395,12 @@
     let hasRenderedEmbedding = false;
 
     function applyEmbeddingTheme() {
-        if (!featureEmbeddingContainer || typeof Plotly === 'undefined' || !hasRenderedEmbedding) {
+        if (
+            !featureEmbeddingContainer
+            || typeof Plotly === 'undefined'
+            || typeof Plotly.relayout !== 'function'
+            || !hasRenderedEmbedding
+        ) {
             return;
         }
         const palette = embeddingPalette || {};
@@ -550,9 +557,12 @@
                     responsive: true,
                 };
 
-                const renderPromise = hasRenderedEmbedding
+                const renderResult = hasRenderedEmbedding
                     ? Plotly.react(container, traces, layout, config)
                     : Plotly.newPlot(container, traces, layout, config);
+                const renderPromise = (renderResult && typeof renderResult.then === 'function')
+                    ? renderResult
+                    : Promise.resolve(renderResult);
 
                 return renderPromise
                     .then(() => {
@@ -560,10 +570,12 @@
                         lastEmbeddingToken = effectiveToken;
                         refreshAutorotation(container);
                         applyEmbeddingTheme();
+                        featureEmbeddingPending = null;
                     })
                     .catch((renderErr) => {
                         hasRenderedEmbedding = false;
                         stopAutorotation(true);
+                        featureEmbeddingPending = null;
                         throw renderErr;
                     });
             })
@@ -574,6 +586,7 @@
                     : 'Piirteiden upotusta ei voitu ladata.';
                 hasRenderedEmbedding = false;
                 stopAutorotation(true);
+                featureEmbeddingPending = null;
             })
             .finally(() => {
                 featureEmbeddingPending = null;
@@ -587,7 +600,7 @@
         if (!container) return;
         loadFeatureEmbedding(container);
 
-        window.addEventListener('prediction-data-ready', event => {
+        const handler = event => {
             if (featureEmbeddingPending) {
                 return;
             }
@@ -596,7 +609,12 @@
                 return;
             }
             loadFeatureEmbedding(container, generatedAt);
-        });
+        };
+        if (window[EVENT_HANDLER_KEY]) {
+            window.removeEventListener(EMBEDDING_EVENT, window[EVENT_HANDLER_KEY]);
+        }
+        window.addEventListener(EMBEDDING_EVENT, handler);
+        window[EVENT_HANDLER_KEY] = handler;
     }
 
     if (document.readyState === 'loading') {
