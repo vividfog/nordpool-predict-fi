@@ -84,16 +84,37 @@
         }
     }
 
+    function subscribeTheme(handler) {
+        if (!runtimeTheme || typeof runtimeTheme.subscribe !== 'function' || typeof handler !== 'function') {
+            return () => {};
+        }
+        return runtimeTheme.subscribe(handler);
+    }
+
+    function emitReadyEvent(service) {
+        if (typeof window === 'undefined' || typeof window.dispatchEvent !== 'function') {
+            return;
+        }
+        try {
+            window.dispatchEvent(new CustomEvent('np-theme-service-ready', { detail: service }));
+        } catch (error) {
+            console.warn('themeService ready event failed', error);
+        }
+    }
+
     init();
 
-    window.themeService = Object.freeze({
+    const service = Object.freeze({
         getPalette,
         watchThemePalette,
         getMode,
         getEffectiveMode,
-        setMode
+        setMode,
+        subscribe: subscribeTheme
     });
 
+    window.themeService = service;
     window.watchThemePalette = watchThemePalette;
     window.getChartPalette = getPalette;
+    emitReadyEvent(service);
 })();

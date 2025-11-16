@@ -10,8 +10,30 @@ if (window.location.hostname === "nordpool-predict-fi.web.app") {
 // Determine base URL based on hosting environment
 var baseUrl = window.location.origin;
 
-const nativeThemeService = window.__NP_THEME__ || null;
-const paletteService = window.themeService || null;
+const THEME_SERVICE_READY_EVENT = 'np-theme-service-ready';
+
+function getThemeService() {
+    return window.themeService || window.__NP_THEME__ || null;
+}
+
+function onThemeServiceReady(callback) {
+    if (typeof callback !== 'function') {
+        return;
+    }
+    const existing = getThemeService();
+    if (existing) {
+        callback(existing);
+        return;
+    }
+    if (typeof window === 'undefined' || typeof window.addEventListener !== 'function') {
+        return;
+    }
+    const handler = () => {
+        window.removeEventListener(THEME_SERVICE_READY_EVENT, handler);
+        callback(getThemeService());
+    };
+    window.addEventListener(THEME_SERVICE_READY_EVENT, handler);
+}
 
 function updateGithubLogo(effectiveMode) {
     const logo = document.getElementById('github-logo');
@@ -28,14 +50,29 @@ function updateGithubLogo(effectiveMode) {
     logo.dataset.activeSrc = targetSrc;
 }
 
+let githubLogoWatcherInitialized = false;
+
 function initGithubLogoWatcher() {
-    const service = paletteService || nativeThemeService;
-    const initialMode = service && typeof service.getEffectiveMode === 'function'
+    if (githubLogoWatcherInitialized) {
+        return;
+    }
+    const service = getThemeService();
+    if (!service) {
+        updateGithubLogo(null);
+        onThemeServiceReady(() => initGithubLogoWatcher());
+        return;
+    }
+    githubLogoWatcherInitialized = true;
+    const initialMode = typeof service.getEffectiveMode === 'function'
         ? service.getEffectiveMode()
         : null;
     updateGithubLogo(initialMode);
-    if (service && typeof service.subscribe === 'function') {
-        service.subscribe(({ effectiveMode }) => updateGithubLogo(effectiveMode));
+    if (typeof service.subscribe === 'function') {
+        service.subscribe(payload => {
+            if (payload && typeof payload.effectiveMode !== 'undefined') {
+                updateGithubLogo(payload.effectiveMode);
+            }
+        });
     }
 }
 
@@ -376,11 +413,18 @@ function applyTranslations() {
     });
 }
 
+let themeSwitchInitialized = false;
+
 function initializeThemeSwitch() {
-    const service = paletteService || nativeThemeService;
-    if (!service) {
+    if (themeSwitchInitialized) {
         return;
     }
+    const service = getThemeService();
+    if (!service) {
+        onThemeServiceReady(() => initializeThemeSwitch());
+        return;
+    }
+    themeSwitchInitialized = true;
     const buttons = document.querySelectorAll('[data-theme-option]');
     if (!buttons.length) {
         return;
