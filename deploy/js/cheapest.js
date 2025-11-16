@@ -29,12 +29,7 @@ const tableBody = card.querySelector('tbody');
     const isEnglish = window.location.pathname.includes('index_en');
     const HELSINKI_TIMEZONE = 'Europe/Helsinki';
     const REFRESH_INTERVAL_MS = 60000;
-    let cheapestPalette = resolveCheapestPalette('cheapest');
-    const DOT_COLORS = {
-        3: '#87CEEB',
-        6: '#00BFFF',
-        12: '#1E90FF'
-    };
+    let cheapestPalette = resolveCheapestPalette('cheapest') || window.__NP_THEME__?.getPalette('cheapest') || {};
     const TABLE_HEADERS = {
         duration: getLocalizedText('cheapest_column_duration'),
         average: getLocalizedText('cheapest_column_average'),
@@ -455,9 +450,11 @@ const hasOwn = Object.hasOwn ? Object.hasOwn.bind(Object) : (obj, prop) => Objec
     }
 
     function getDotColor(duration) {
-        const paletteDots = cheapestPalette?.dots || DOT_COLORS;
+        const paletteDots = cheapestPalette?.dots
+            || window.__NP_THEME__?.palettes?.cheapest?.light?.dots
+            || {};
         const key = String(duration);
-        return paletteDots[key] || '#7B68EE';
+        return paletteDots[key] ?? paletteDots.default;
     }
 
     //#region theme

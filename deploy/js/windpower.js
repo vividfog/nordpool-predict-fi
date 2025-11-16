@@ -13,7 +13,7 @@ const subscribeWindPalette = typeof window.subscribeThemePalette === 'function'
     ? window.subscribeThemePalette
     : () => () => {};
 const WIND_THEME_UNSUB_KEY = '__np_windpower_theme_unsub__';
-let windpowerPalette = resolveWindPalette('windpower');
+let windpowerPalette = resolveWindPalette('windpower') || window.__NP_THEME__?.getPalette('windpower') || {};
 let hasWindpowerOptions = false;
 const windpowerEndpoints = window.DATA_ENDPOINTS || {};
 const windPowerUrl = windpowerEndpoints.windpower || `${baseUrl}/windpower.json`;
@@ -21,26 +21,13 @@ const windpowerSahkotinUrl = window.SAHKOTIN_CSV_URL || 'https://sahkotin.fi/pri
 const windpowerPredictionUrl = windpowerEndpoints.prediction || `${baseUrl}/prediction.json`;
 let windPowerPending = null;
 let lastWindPowerToken = 0;
-const DEFAULT_WIND_LEGEND_COLOR = 'dodgerblue';
-const DEFAULT_WIND_BAR_COLOR = '#AEB6BF';
-const DEFAULT_WIND_VISUAL_PIECES = [
-    { lte: 1, color: 'red' },
-    { gt: 1, lte: 2, color: 'skyblue' },
-    { gt: 2, lte: 3, color: 'deepskyblue' },
-    { gt: 3, lte: 4, color: 'dodgerblue' },
-    { gt: 4, lte: 5, color: 'blue' },
-    { gt: 5, lte: 6, color: 'mediumblue' },
-    { gt: 6, lte: 7, color: 'darkblue' },
-    { gt: 7, color: 'midnightblue' }
-];
-const DEFAULT_WIND_BAR_OPACITY = 0.3;
 
 function clonePieces(pieces) {
     return pieces.map(piece => ({ ...piece }));
 }
 
 function getWindLegendColor() {
-    return windpowerPalette?.windLegend || DEFAULT_WIND_LEGEND_COLOR;
+    return windpowerPalette?.windLegend;
 }
 
 function getWindVisualPieces() {
@@ -48,11 +35,12 @@ function getWindVisualPieces() {
     if (Array.isArray(pieces) && pieces.length) {
         return clonePieces(pieces);
     }
-    return clonePieces(DEFAULT_WIND_VISUAL_PIECES);
+    const fallback = window.__NP_THEME__?.palettes?.windpower?.light?.windVisualPieces || [];
+    return clonePieces(fallback);
 }
 
 function getWindBarColor() {
-    return windpowerPalette?.barColor || DEFAULT_WIND_BAR_COLOR;
+    return windpowerPalette?.barColor;
 }
 
 function refreshWindpowerTheme() {
@@ -68,7 +56,7 @@ function refreshWindpowerTheme() {
     const barColor = getWindBarColor();
     const barOpacity = typeof windpowerPalette?.barOpacity === 'number'
         ? windpowerPalette.barOpacity
-        : DEFAULT_WIND_BAR_OPACITY;
+        : undefined;
     const areaFill = windpowerPalette?.areaFill;
     const markLine = createCurrentTimeMarkLine(windpowerPalette);
     const windVisualPieces = getWindVisualPieces();

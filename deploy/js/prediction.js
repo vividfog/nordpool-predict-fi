@@ -13,20 +13,8 @@ const subscribePalette = typeof window.subscribeThemePalette === 'function'
     ? window.subscribeThemePalette
     : () => () => {};
 const PREDICTION_THEME_UNSUB_KEY = '__np_prediction_theme_unsub__';
-let predictionPalette = resolvePalette('prediction');
+let predictionPalette = resolvePalette('prediction') || window.__NP_THEME__?.getPalette('prediction') || {};
 let hasPredictionChartOptions = false;
-
-const DEFAULT_FORECAST_LEGEND_COLOR = 'skyblue';
-const DEFAULT_FORECAST_BACKGROUND_COLOR = 'deepskyblue';
-const DEFAULT_FORECAST_BACKGROUND_OPACITY = 0.10;
-const DEFAULT_FORECAST_VISUAL_PIECES = [
-    { lte: 5, color: 'skyblue', opacity: 1.0 },
-    { gt: 5, lte: 10, color: 'deepskyblue', opacity: 1.0 },
-    { gt: 10, lte: 15, color: 'dodgerblue', opacity: 1.0 },
-    { gt: 15, lte: 20, color: 'blue', opacity: 1.0 },
-    { gt: 20, lte: 30, color: 'darkblue', opacity: 1.0 },
-    { gt: 30, color: 'midnightblue', opacity: 1.0 }
-];
 
 function refreshPredictionTheme() {
     if (!nfpChart || typeof nfpChart.setOption !== 'function') {
@@ -51,16 +39,16 @@ function refreshPredictionTheme() {
         spikeStyle.color = palette.spikeMarker;
     }
     const forecastBgStyle = {};
-    const forecastBgColor = palette.forecastBackgroundBar || DEFAULT_FORECAST_BACKGROUND_COLOR;
+    const forecastBgColor = palette.forecastBackgroundBar;
     if (forecastBgColor) {
         forecastBgStyle.color = forecastBgColor;
     }
-    forecastBgStyle.opacity = typeof palette.forecastBackgroundBarOpacity === 'number'
-        ? palette.forecastBackgroundBarOpacity
-        : DEFAULT_FORECAST_BACKGROUND_OPACITY;
-    const scaledVisualPieces = Array.isArray(palette.forecastVisualPieces) && palette.forecastVisualPieces.length
+    if (typeof palette.forecastBackgroundBarOpacity === 'number') {
+        forecastBgStyle.opacity = palette.forecastBackgroundBarOpacity;
+    }
+    const scaledVisualPieces = Array.isArray(palette.forecastVisualPieces)
         ? palette.forecastVisualPieces
-        : DEFAULT_FORECAST_VISUAL_PIECES;
+        : [];
     nfpChart.setOption({
         series: [
             {
@@ -331,24 +319,17 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
     //#region chart_options
     const sahkotinVisualPieces = typeof getSahkotinVisualMapPieces === 'function'
         ? getSahkotinVisualMapPieces()
-        : [
-            { lte: 5, color: 'lime', opacity: 1.0 },
-            { gt: 5, lte: 10, color: 'limegreen', opacity: 1.0 },
-            { gt: 10, lte: 15, color: 'gold', opacity: 1.0 },
-            { gt: 15, lte: 20, color: 'darkorange', opacity: 1.0 },
-            { gt: 20, lte: 30, color: 'red', opacity: 1.0 },
-            { gt: 30, color: 'darkred', opacity: 1.0 }
-        ];
+        : [];
 
     // Create chart options
-    const forecastLegendColor = predictionPalette?.forecastLegend || DEFAULT_FORECAST_LEGEND_COLOR;
-    const forecastVisualPieces = Array.isArray(predictionPalette?.forecastVisualPieces) && predictionPalette.forecastVisualPieces.length
+    const forecastLegendColor = predictionPalette?.forecastLegend;
+    const forecastVisualPieces = Array.isArray(predictionPalette?.forecastVisualPieces)
         ? predictionPalette.forecastVisualPieces
-        : DEFAULT_FORECAST_VISUAL_PIECES;
-    const forecastBackgroundColor = predictionPalette?.forecastBackgroundBar || DEFAULT_FORECAST_BACKGROUND_COLOR;
+        : [];
+    const forecastBackgroundColor = predictionPalette?.forecastBackgroundBar;
     const forecastBackgroundOpacity = typeof predictionPalette?.forecastBackgroundBarOpacity === 'number'
         ? predictionPalette.forecastBackgroundBarOpacity
-        : DEFAULT_FORECAST_BACKGROUND_OPACITY;
+        : undefined;
 
     const chartOptions = (typeof window.createBaseChartOptions === 'function'
         ? window.createBaseChartOptions
@@ -360,7 +341,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                     name: 'Nordpool',
                     icon: 'circle',
                     itemStyle: {
-                        color: 'lime'
+                        color: predictionPalette?.sahkotinBar
                     }
                 },
                 {
@@ -374,7 +355,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                     name: getLocalizedText('scaled_price'),
                     icon: 'circle',
                     itemStyle: {
-                        color: 'crimson'
+                        color: predictionPalette?.spikeMarker
                     },
                 }
             ],
@@ -395,7 +376,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                 top: 50,
                 right: 10,
                 pieces: sahkotinVisualPieces,
-                outOfRange: { color: predictionPalette?.outOfRange || '#999', opacity: 1.0 }
+                outOfRange: { color: predictionPalette?.outOfRange, opacity: 1.0 }
             },
             {
                 // For predicted price
@@ -405,7 +386,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                 top: 50,
                 right: 10,
                 pieces: forecastVisualPieces,
-                outOfRange: { color: predictionPalette?.outOfRange || '#999', opacity: 1.0 }
+                outOfRange: { color: predictionPalette?.outOfRange, opacity: 1.0 }
             }
         ],
         series: [
@@ -447,10 +428,10 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                 data: sahkotinSeriesData,
                 barWidth: '40%',
                 itemStyle: {
-                    color: predictionPalette?.sahkotinBar || 'lime',
+                    color: predictionPalette?.sahkotinBar,
                     opacity: typeof predictionPalette?.sahkotinBarOpacity === 'number'
                         ? predictionPalette.sahkotinBarOpacity
-                        : 0.10
+                        : undefined
                 },
                 silent: true,
                 z: 1,
@@ -482,7 +463,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                     symbolSize: [6, 6],
                     symbolRotate: 0,
                     itemStyle: {
-                        color: predictionPalette?.spikeMarker || 'crimson'
+                        color: predictionPalette?.spikeMarker
                     },
                     data: scaledPriceSeriesData
                         .filter(item => {
