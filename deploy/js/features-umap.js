@@ -397,12 +397,16 @@
             return;
         }
         const palette = embeddingPalette || {};
+        const gridColor = palette.grid || 'dimgray';
         const update = {
             paper_bgcolor: palette.background || '#ffffff',
             plot_bgcolor: palette.background || '#ffffff',
             'scene.xaxis.backgroundcolor': palette.scenePlane || 'rgba(235, 240, 248, 0.7)',
             'scene.yaxis.backgroundcolor': palette.scenePlane || 'rgba(235, 240, 248, 0.7)',
             'scene.zaxis.backgroundcolor': palette.scenePlane || 'rgba(235, 240, 248, 0.7)',
+            'scene.xaxis.gridcolor': gridColor,
+            'scene.yaxis.gridcolor': gridColor,
+            'scene.zaxis.gridcolor': gridColor,
             legend: {
                 font: {
                     color: palette.legendText || '#666666'
@@ -479,6 +483,7 @@
 
                 const traces = buildTraces(payload);
                 const palette = embeddingPalette || {};
+                const gridColor = palette.grid || 'dimgray';
                 const layout = {
                     margin: { l: 0, r: 0, b: 0, t: 10 },
                     paper_bgcolor: palette.background || '#ffffff',
@@ -492,7 +497,8 @@
                             zeroline: false,
                             ticks: '',
                             title: '',
-                            color: palette.legendText || '#666666'
+                            color: palette.legendText || '#666666',
+                            gridcolor: gridColor
                         },
                         yaxis: {
                             showbackground: true,
@@ -501,7 +507,8 @@
                             zeroline: false,
                             ticks: '',
                             title: '',
-                            color: palette.legendText || '#666666'
+                            color: palette.legendText || '#666666',
+                            gridcolor: gridColor
                         },
                         zaxis: {
                             showbackground: true,
@@ -510,7 +517,8 @@
                             zeroline: false,
                             ticks: '',
                             title: '',
-                            color: palette.legendText || '#666666'
+                            color: palette.legendText || '#666666',
+                            gridcolor: gridColor
                         },
                     },
                     legend: {

@@ -50,7 +50,7 @@
             dark: {
                 vars: {
                     '--np-body-bg': 'black',
-                    '--np-card-bg': 'rgba(24, 24, 24, 1)',
+                    '--np-card-bg': 'rgba(28, 28, 28, 1)',
                     '--np-card-shadow': 'none',
                     '--np-text': 'whitesmoke',
                     '--np-muted': 'silver',
@@ -225,13 +225,15 @@
             light: {
                 background: '#ffffff',
                 scenePlane: 'rgba(235, 240, 248, 0.7)',
+                grid: 'dimgray',
                 legendText: '#666666',
                 hoverBg: '#ffffff',
                 hoverText: 'rgba(51, 51, 51, 0.9)'
             },
             dark: {
                 background: 'black',
-                scenePlane: 'rgba(24, 24, 24, 1)',
+                scenePlane: 'rgba(28, 28, 28, 1)',
+                grid: 'rgba(64, 64, 64, 1)',
                 legendText: 'whitesmoke',
                 hoverBg: 'black',
                 hoverText: 'whitesmoke'
