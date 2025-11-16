@@ -500,7 +500,7 @@ body {
 
 .theme-switch [data-theme-option] {
     cursor: pointer;
-    opacity: 0.6;
+    opacity: 0.4;
     text-decoration: none;
     padding: 2px 0;
     outline: none;
@@ -517,6 +517,11 @@ body {
 .theme-switch [data-theme-option].is-active {
     font-weight: 600;
     opacity: 1;
+}
+
+:root[data-theme="dark"] .theme-switch [data-theme-option="dark"] {
+    color: #bcbd22;
+    text-shadow: 0 0 6px rgba(188, 189, 34, 0.65);
 }
 
 #topdisclaimer {
@@ -548,27 +553,8 @@ body {
     white-space: nowrap;
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
-}
-
-.topbar-links .lang-option {
-    color: var(--np-topbar-text);
-    opacity: 0.6;
-    position: relative;
-    text-decoration: none;
-    cursor: pointer;
-    outline: none;
-}
-
-.topbar-links .lang-option:hover,
-.topbar-links .lang-option:focus-visible {
-    opacity: 0.9;
-    text-decoration: underline;
-}
-
-.topbar-links .lang-option[aria-current="true"] {
-    opacity: 1;
-    font-weight: 600;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #github-logo-container {
@@ -656,6 +642,28 @@ a:hover {
     color: var(--np-link-hover);
     opacity: 1;
     font-weight: 500;
+}
+
+#topdisclaimer .lang-option {
+    color: var(--np-topbar-text);
+    opacity: 0.4;
+    text-decoration: none;
+    border-bottom: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+}
+
+#topdisclaimer .lang-option:hover,
+#topdisclaimer .lang-option:focus-visible {
+    opacity: 0.9;
+    text-decoration: underline;
+}
+
+#topdisclaimer .lang-option[aria-current="true"] {
+    opacity: 1;
+    font-weight: 600;
 }
 
 li {
