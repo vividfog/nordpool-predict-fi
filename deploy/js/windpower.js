@@ -26,6 +26,7 @@ const DEFAULT_WIND_VISUAL_PIECES = [
     { gt: 6, lte: 7, color: 'darkblue' },
     { gt: 7, color: 'midnightblue' }
 ];
+const DEFAULT_WIND_BAR_OPACITY = 0.3;
 
 function clonePieces(pieces) {
     return pieces.map(piece => ({ ...piece }));
@@ -58,6 +59,9 @@ function refreshWindpowerTheme() {
         applyChartTheme(windPowerChart, windpowerPalette);
     }
     const barColor = getWindBarColor();
+    const barOpacity = typeof windpowerPalette?.barOpacity === 'number'
+        ? windpowerPalette.barOpacity
+        : DEFAULT_WIND_BAR_OPACITY;
     const areaFill = windpowerPalette?.areaFill;
     const markLine = createCurrentTimeMarkLine(windpowerPalette);
     const windVisualPieces = getWindVisualPieces();
@@ -65,11 +69,11 @@ function refreshWindpowerTheme() {
         series: [
             {
                 id: 'windpower-price-actual',
-                itemStyle: barColor ? { color: barColor, opacity: 0.3 } : undefined
+                itemStyle: barColor ? { color: barColor, opacity: barOpacity } : undefined
             },
             {
                 id: 'windpower-price-forecast',
-                itemStyle: barColor ? { color: barColor, opacity: 0.3 } : undefined
+                itemStyle: barColor ? { color: barColor, opacity: barOpacity } : undefined
             },
             {
                 id: 'windpower-series',
