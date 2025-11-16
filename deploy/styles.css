@@ -521,13 +521,14 @@ body {
 :root[data-theme="dark"] .theme-switch [data-theme-option="dark"] {
     color: #bcbd22;
     text-shadow: 0 0 6px rgba(188, 189, 34, 0.65);
+    opacity: 1;
 }
 
 #topdisclaimer {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     max-width: 1080px;
     margin: 0 auto;
     padding: 0 16px;
@@ -661,11 +662,11 @@ a:hover {
     font-weight: 600;
 }
 
-@media (max-width: 480px) {
-    #topdisclaimer {
-        flex-direction: column;
-        gap: 16px;
-    }
+#topdisclaimer::before,
+#topdisclaimer::after {
+    content: '';
+    flex: 1 1 0;
+    min-width: 0;
 }
 
 li {
