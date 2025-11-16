@@ -2,6 +2,11 @@
 
 All notable changes will be documented in this file.
 
+## [2025-11-16] - Light/Dark Theme Toggle
+### Added
+- Automatic light/dark theme selection driven by system preferences with manual override controls in the top bar (`deploy/js/theme-bootstrap.js`, `deploy/index.html`, `deploy/index_en.html`).
+- Smooth theme transitions across primary surfaces, respecting reduced-motion settings for accessibility (`deploy/styles.css`, `deploy/js/calendar.js`, `deploy/js/windpower.js`).
+
 ## [2025-10-28] - Persistent Settings & Auto Refresh
 ### Added
 - Browser-side preference storage so history, cheapest-window, and other chart controls reopen with the user’s last selections.
