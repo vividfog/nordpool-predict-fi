@@ -469,6 +469,9 @@ body {
     align-items: center;
     font-size: 0.85em;
     color: var(--np-topbar-text);
+    gap: 12px;
+    white-space: nowrap;
+    margin-left: 32px;
 }
 
 .theme-switch [data-theme-option] {
@@ -477,13 +480,6 @@ body {
     text-decoration: none;
     padding: 2px 0;
     outline: none;
-}
-
-.theme-switch [data-theme-option]:not(:last-child)::after {
-    content: '|';
-    margin: 0 6px;
-    opacity: 0.4;
-    color: var(--np-topbar-text);
 }
 
 .theme-switch [data-theme-option]:hover,
@@ -499,24 +495,31 @@ body {
 
 #topdisclaimer {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     max-width: 1080px;
     margin: 0 auto;
     padding: 16px 16px 8px 16px;
     color: var(--np-topbar-text);
-    gap: 12px;
+    gap: 24px;
     background-color: var(--np-topbar-bg);
     // border-bottom: 1px solid var(--np-topbar-border);
 }
 
+.topbar-links,
+.theme-switch {
+    flex-shrink: 0;
+}
+
 .topbar-links {
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     text-align: left;
     font-size: 0.85em;
     display: inline-flex;
     align-items: center;
+    gap: 8px;
+    white-space: nowrap;
 }
 
 .topbar-links .lang-option {
@@ -526,14 +529,6 @@ body {
     text-decoration: none;
     cursor: pointer;
     outline: none;
-}
-
-.topbar-links .lang-option:not(:last-child)::after {
-    content: '|';
-    display: inline-block;
-    margin: 0 6px;
-    opacity: 0.4;
-    color: var(--np-topbar-text);
 }
 
 .topbar-links .lang-option:hover,
@@ -669,13 +664,6 @@ th, td {
 
     #disclaimer {
         max-width: 320px;
-    }
-
-    #topdisclaimer {
-        padding: 12px 12px 6px 12px;
-        gap: 8px;
-        flex-direction: column;
-        align-items: flex-start;
     }
 
     .history-toggle button {
