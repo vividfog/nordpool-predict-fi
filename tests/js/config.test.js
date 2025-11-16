@@ -9,6 +9,94 @@ describe('deploy/js/config.js', () => {
   }
 
   beforeAll(() => {
+    const palette = {
+      page: { light: { vars: {} }, dark: { vars: {} } },
+      prediction: {
+        light: {
+          axis: '#666666',
+          grid: 'silver',
+          tooltipBg: '#ffffff',
+          tooltipText: '#333333',
+          tooltipBorder: '#cccccc',
+          legendText: '#222222',
+          markLineLabel: 'black',
+          markLineLine: 'black',
+          chartBackground: 'transparent',
+          sahkotinBar: 'lime',
+          sahkotinBarOpacity: 0.1,
+          sahkotinLine: 'lime',
+          spikeMarker: 'crimson',
+          outOfRange: '#999999'
+        }
+      },
+      history: {
+        light: {
+          axis: '#666666',
+          grid: 'silver',
+          tooltipBg: '#ffffff',
+          tooltipText: '#333333',
+          tooltipBorder: '#cccccc',
+          legendText: '#222222',
+          markLineLabel: 'black',
+          markLineLine: 'black',
+          zoomBackground: '#f0f2f5',
+          zoomBorder: '#dddddd'
+        }
+      },
+      windpower: {
+        light: {
+          axis: '#666666',
+          grid: 'silver',
+          tooltipBg: '#ffffff',
+          tooltipText: '#333333',
+          tooltipBorder: '#cccccc',
+          legendText: '#222222',
+          markLineLabel: 'black',
+          markLineLine: 'black',
+          barColor: '#cccccc',
+          areaFill: '#dddddd',
+          outOfRange: '#999999'
+        }
+      },
+      calendar: {
+        light: {
+          axis: '#333333',
+          fallback: '#222222',
+          border: '#ffffff',
+          emphasis: 'dodgerblue'
+        }
+      },
+      cheapest: {
+        light: {
+          dots: {
+            3: '#111111',
+            6: '#222222',
+            12: '#333333'
+          }
+        }
+      },
+      featuresUmap: {
+        light: {
+          background: '#ffffff',
+          scenePlane: '#eeeeee',
+          legendText: '#111111',
+          hoverBg: '#ffffff',
+          hoverText: '#000000'
+        }
+      }
+    };
+    const subscribers = new Set();
+    globalThis.__NP_THEME__ = {
+      palettes: palette,
+      getMode: () => 'light',
+      getPalette: (scope) => palette[scope]?.light || null,
+      setMode: vi.fn(),
+      subscribe: (fn) => {
+        subscribers.add(fn);
+        fn({ mode: 'light', effectiveMode: 'light', palettes: palette });
+        return () => subscribers.delete(fn);
+      }
+    };
     loadScript('deploy/js/config.js');
   });
 

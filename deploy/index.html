@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#f0f2f5" />
+    <script src="js/theme-bootstrap.js"></script>
     <link rel="stylesheet" href="styles.css">
     <script src="js/vendor/marked.min.js"></script>
     <script src="js/vendor/echarts.min.js"></script>
@@ -16,7 +17,17 @@
     <title>Pörssisähkön hintaennuste</title>
 </head>
 <body>
-    <div id="topdisclaimer">FI | <a href="index_en.html">EN</a></div>
+    <div id="topdisclaimer">
+        <div class="topbar-links" role="text">
+            <span class="lang-option" aria-current="true">FI</span>
+            <a class="lang-option" href="index_en.html">EN</a>
+        </div>
+        <div class="theme-switch" role="group" aria-label="Teema">
+            <span role="button" tabindex="0" data-theme-option="auto" aria-pressed="false">Auto</span>
+            <span role="button" tabindex="0" data-theme-option="light" aria-pressed="false">Vaalea</span>
+            <span role="button" tabindex="0" data-theme-option="dark" aria-pressed="false">Tumma</span>
+        </div>
+    </div>
     <div id="predictionText">
         <h1 class="page-title">Pörssisähkön hintaennuste</h1>
         <p><strong>Sähkövatkain haarukoi pörssisähkön hintaa (sis. ALV) noin viikon eteenpäin. Se vertaa mm. sääennusteita ja sähköntuotantoa aiempiin samankaltaisiin ajanjaksoihin ja arvioi näiden perusteella tulevaa hintakehitystä.</strong></p>

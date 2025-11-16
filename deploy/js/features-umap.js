@@ -23,6 +23,10 @@
         handlers: {},
         lastCamera: null,
     };
+    let featureEmbeddingContainer = null;
+    let embeddingPalette = typeof getChartPalette === 'function'
+        ? getChartPalette('featuresUmap')
+        : null;
 
     //#region utilities
     function isAutorotateDisabled() {
@@ -388,6 +392,39 @@
     let lastEmbeddingToken = 0;
     let hasRenderedEmbedding = false;
 
+    function applyEmbeddingTheme() {
+        if (!featureEmbeddingContainer || typeof Plotly === 'undefined' || !hasRenderedEmbedding) {
+            return;
+        }
+        const palette = embeddingPalette || {};
+        const update = {
+            paper_bgcolor: palette.background || '#ffffff',
+            plot_bgcolor: palette.background || '#ffffff',
+            'scene.xaxis.backgroundcolor': palette.scenePlane || 'rgba(235, 240, 248, 0.7)',
+            'scene.yaxis.backgroundcolor': palette.scenePlane || 'rgba(235, 240, 248, 0.7)',
+            'scene.zaxis.backgroundcolor': palette.scenePlane || 'rgba(235, 240, 248, 0.7)',
+            legend: {
+                font: {
+                    color: palette.legendText || '#666666'
+                }
+            },
+            hoverlabel: {
+                bgcolor: palette.hoverBg || '#ffffff',
+                font: {
+                    color: palette.hoverText || 'rgba(51, 51, 51, 0.9)'
+                }
+            }
+        };
+        Plotly.relayout(featureEmbeddingContainer, update).catch(() => {});
+    }
+
+    if (typeof watchThemePalette === 'function') {
+        watchThemePalette('featuresUmap', palette => {
+            embeddingPalette = palette || embeddingPalette;
+            applyEmbeddingTheme();
+        });
+    }
+
     function buildFeatureEmbeddingUrl(token) {
         const base = `${baseUrl}/feature_embedding.json`;
         if (typeof window.applyCacheToken === 'function') {
@@ -423,6 +460,7 @@
             return;
         }
 
+        featureEmbeddingContainer = container;
         const effectiveToken = Number.isFinite(token) ? token : Date.now();
         const requestUrl = buildFeatureEmbeddingUrl(effectiveToken);
         featureEmbeddingPending = fetch(requestUrl, { cache: 'no-cache' })
@@ -440,41 +478,56 @@
                 }
 
                 const traces = buildTraces(payload);
+                const palette = embeddingPalette || {};
                 const layout = {
                     margin: { l: 0, r: 0, b: 0, t: 10 },
+                    paper_bgcolor: palette.background || '#ffffff',
+                    plot_bgcolor: palette.background || '#ffffff',
                     scene: {
                         aspectmode: 'cube',
                         xaxis: {
                             showbackground: true,
-                            backgroundcolor: 'rgba(235,240,248,0.7)',
+                            backgroundcolor: palette.scenePlane || 'rgba(235,240,248,0.7)',
                             showgrid: true,
                             zeroline: false,
                             ticks: '',
                             title: '',
+                            color: palette.legendText || '#666666'
                         },
                         yaxis: {
                             showbackground: true,
-                            backgroundcolor: 'rgba(235,240,248,0.7)',
+                            backgroundcolor: palette.scenePlane || 'rgba(235,240,248,0.7)',
                             showgrid: true,
                             zeroline: false,
                             ticks: '',
                             title: '',
+                            color: palette.legendText || '#666666'
                         },
                         zaxis: {
                             showbackground: true,
-                            backgroundcolor: 'rgba(235,240,248,0.7)',
+                            backgroundcolor: palette.scenePlane || 'rgba(235,240,248,0.7)',
                             showgrid: true,
                             zeroline: false,
                             ticks: '',
                             title: '',
+                            color: palette.legendText || '#666666'
                         },
                     },
                     legend: {
                         orientation: 'h',
                         x: 0,
                         y: 1.05,
+                        font: {
+                            color: palette.legendText || '#666666'
+                        }
                     },
                     hovermode: 'closest',
+                    hoverlabel: {
+                        bgcolor: palette.hoverBg || '#ffffff',
+                        font: {
+                            color: palette.hoverText || 'rgba(51, 51, 51, 0.9)'
+                        }
+                    }
                 };
 
                 const config = {
@@ -491,6 +544,7 @@
                         hasRenderedEmbedding = true;
                         lastEmbeddingToken = effectiveToken;
                         refreshAutorotation(container);
+                        applyEmbeddingTheme();
                     })
                     .catch((renderErr) => {
                         hasRenderedEmbedding = false;

@@ -20,6 +20,9 @@ const tableBody = card.querySelector('tbody');
     const isEnglish = window.location.pathname.includes('index_en');
     const HELSINKI_TIMEZONE = 'Europe/Helsinki';
     const REFRESH_INTERVAL_MS = 60000;
+    let cheapestPalette = typeof getChartPalette === 'function'
+        ? getChartPalette('cheapest')
+        : null;
     const DOT_COLORS = {
         3: '#87CEEB',
         6: '#00BFFF',
@@ -282,7 +285,7 @@ const hasOwn = Object.hasOwn ? Object.hasOwn.bind(Object) : (obj, prop) => Objec
 
     function badgeMarkup(windowInfo) {
         const duration = Number(windowInfo.duration);
-        const accent = DOT_COLORS[duration] || '#7B68EE';
+        const accent = getDotColor(duration);
         const label = Number.isFinite(duration) ? `${duration} h` : '--';
 
         return `
@@ -430,6 +433,19 @@ const hasOwn = Object.hasOwn ? Object.hasOwn.bind(Object) : (obj, prop) => Objec
                 return;
             }
             input.addEventListener('change', handleControlsInput);
+        });
+    }
+
+    function getDotColor(duration) {
+        const paletteDots = cheapestPalette?.dots || DOT_COLORS;
+        const key = String(duration);
+        return paletteDots[key] || '#7B68EE';
+    }
+
+    if (typeof watchThemePalette === 'function') {
+        watchThemePalette('cheapest', palette => {
+            cheapestPalette = palette || cheapestPalette;
+            renderRows({ pulse: false });
         });
     }
 

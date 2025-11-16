@@ -4,12 +4,69 @@
 // ==========================================================================
 
 var windPowerChart = echarts.init(document.getElementById('windPowerChart'));
+let windpowerPalette = typeof getChartPalette === 'function'
+    ? getChartPalette('windpower')
+    : null;
+let hasWindpowerOptions = false;
 const windpowerEndpoints = window.DATA_ENDPOINTS || {};
 const windPowerUrl = windpowerEndpoints.windpower || `${baseUrl}/windpower.json`;
 const windpowerSahkotinUrl = window.SAHKOTIN_CSV_URL || 'https://sahkotin.fi/prices.csv';
 const windpowerPredictionUrl = windpowerEndpoints.prediction || `${baseUrl}/prediction.json`;
 let windPowerPending = null;
 let lastWindPowerToken = 0;
+
+function refreshWindpowerTheme() {
+    if (!windPowerChart || typeof windPowerChart.setOption !== 'function') {
+        return;
+    }
+    if (!hasWindpowerOptions) {
+        return;
+    }
+    if (typeof applyChartTheme === 'function' && windpowerPalette) {
+        applyChartTheme(windPowerChart, windpowerPalette);
+    }
+    const barColor = windpowerPalette?.barColor;
+    const areaFill = windpowerPalette?.areaFill;
+    const markLine = createCurrentTimeMarkLine(windpowerPalette);
+    windPowerChart.setOption({
+        series: [
+            {
+                id: 'windpower-price-actual',
+                itemStyle: barColor ? { color: barColor, opacity: 0.3 } : undefined
+            },
+            {
+                id: 'windpower-price-forecast',
+                itemStyle: barColor ? { color: barColor, opacity: 0.3 } : undefined
+            },
+            {
+                id: 'windpower-series',
+                areaStyle: areaFill ? { color: areaFill } : undefined,
+                markLine
+            }
+        ],
+        visualMap: [
+            {
+                id: 'windpower-visual-map',
+                outOfRange: { color: windpowerPalette?.outOfRange, opacity: 1.0 }
+            },
+            {
+                id: 'windpower-price-actual-map',
+                outOfRange: { color: windpowerPalette?.outOfRange, opacity: 1.0 }
+            },
+            {
+                id: 'windpower-price-forecast-map',
+                outOfRange: { color: windpowerPalette?.outOfRange, opacity: 1.0 }
+            }
+        ]
+    }, false, true);
+}
+
+if (typeof watchThemePalette === 'function') {
+    watchThemePalette('windpower', palette => {
+        windpowerPalette = palette || windpowerPalette;
+        refreshWindpowerTheme();
+    });
+}
 
 // Use the same cache-busting helper as the rest of the app to avoid diverging logic.
 const windpowerCacheBustUrl = typeof window.applyCacheToken === 'function'
@@ -134,6 +191,7 @@ function loadWindPowerData(token) {
             const localizedWindPower = getLocalizedText('windPower');
 
             const sahkotinPriceSeries = {
+                id: 'windpower-price-actual',
                 name: localizedPrice,
                 type: 'bar',
                 barWidth: '40%',
@@ -141,12 +199,13 @@ function loadWindPowerData(token) {
                 yAxisIndex: 1,
                 z: 1,
                 itemStyle: {
-                    color: '#AEB6BF',
+                    color: windpowerPalette?.barColor || '#AEB6BF',
                     opacity: 0.3
                 }
             };
 
             const npfPriceSeries = {
+                id: 'windpower-price-forecast',
                 name: localizedPrice,
                 type: 'bar',
                 barWidth: '40%',
@@ -154,7 +213,7 @@ function loadWindPowerData(token) {
                 yAxisIndex: 1,
                 z: 1,
                 itemStyle: {
-                    color: '#AEB6BF',
+                    color: windpowerPalette?.barColor || '#AEB6BF',
                     opacity: 0.3
                 }
             };
@@ -181,7 +240,7 @@ function loadWindPowerData(token) {
                             name: localizedPrice,
                             icon: 'circle',
                             itemStyle: {
-                                color: '#AEB6BF'
+                                color: windpowerPalette?.barColor || '#AEB6BF'
                             }
                         }
                     ],
@@ -288,6 +347,7 @@ function loadWindPowerData(token) {
                 ],
                 visualMap: [
                     {
+                        id: 'windpower-visual-map',
                         show: false,
                         seriesIndex: 2,
                         pieces: [
@@ -301,27 +361,29 @@ function loadWindPowerData(token) {
                             { gt: 7, color: 'midnightblue' }
                         ],
                         outOfRange: {
-                            color: '#999'
+                            color: windpowerPalette?.outOfRange || '#999'
                         }
                     },
                     {
+                        id: 'windpower-price-actual-map',
                         show: false,
                         seriesIndex: 0,
                         pieces: [
                             { gt: 0, color: '#AEB6BF' }
                         ],
                         outOfRange: {
-                            color: '#999'
+                            color: windpowerPalette?.outOfRange || '#999'
                         }
                     },
                     {
+                        id: 'windpower-price-forecast-map',
                         show: false,
                         seriesIndex: 1,
                         pieces: [
                             { gt: 0, color: '#AEB6BF' }
                         ],
                         outOfRange: {
-                            color: '#999'
+                            color: windpowerPalette?.outOfRange || '#999'
                         }
                     }
                 ],
@@ -329,6 +391,7 @@ function loadWindPowerData(token) {
                     sahkotinPriceSeries,
                     npfPriceSeries,
                     {
+                        id: 'windpower-series',
                         name: localizedWindPower,
                         type: 'line',
                         data: windPowerSeriesData,
@@ -339,14 +402,16 @@ function loadWindPowerData(token) {
                         },
                         step: 'middle',
                         areaStyle: {
-                            color: 'rgba(135, 206, 250, 0.2)'
+                            color: windpowerPalette?.areaFill || 'rgba(135, 206, 250, 0.2)'
                         },
                         opacity: 0.9,
                         z: 2,
-                        markLine: createCurrentTimeMarkLine()
+                        markLine: createCurrentTimeMarkLine(windpowerPalette)
                     }
                 ]
             });
+            hasWindpowerOptions = true;
+            refreshWindpowerTheme();
 
             console.log("Wind Power chart ready.");
         })

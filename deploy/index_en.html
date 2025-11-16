@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#f0f2f5" />
+    <script src="js/theme-bootstrap.js"></script>
     <link rel="stylesheet" href="styles.css">
     <script src="js/vendor/marked.min.js"></script>
     <script src="js/vendor/echarts.min.js"></script>
@@ -16,7 +17,17 @@
     <title>Nordpool FI forecast</title>
 </head>
 <body>
-    <div id="topdisclaimer"><a href="index.html">FI</a> | EN</div>
+    <div id="topdisclaimer">
+        <div class="topbar-links" role="text">
+            <a class="lang-option" href="index.html">FI</a>
+            <span class="lang-option" aria-current="true">EN</span>
+        </div>
+        <div class="theme-switch" role="group" aria-label="Theme">
+            <span role="button" tabindex="0" data-theme-option="auto" aria-pressed="false">Auto</span>
+            <span role="button" tabindex="0" data-theme-option="light" aria-pressed="false">Light</span>
+            <span role="button" tabindex="0" data-theme-option="dark" aria-pressed="false">Dark</span>
+        </div>
+    </div>
     <div id="predictionText">
         <h1 class="page-title">Nordpool Predict FI</h1>
         <p><strong>This experimental, privately-made (no relation to Nordpool) machine learning model estimates the consumer price of electricity in Finland (VAT 25.5%) for about a week ahead. The model correlates predicted weather and electricity production with previous periods where these factors were similar.</strong></p>

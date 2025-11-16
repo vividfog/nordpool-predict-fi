@@ -10,6 +10,40 @@ if (window.location.hostname === "nordpool-predict-fi.web.app") {
 // Determine base URL based on hosting environment
 var baseUrl = window.location.origin;
 
+const themeService = window.__NP_THEME__ || null;
+
+function getChartPalette(scope) {
+    if (!themeService || typeof themeService.getPalette !== 'function') {
+        return null;
+    }
+    return themeService.getPalette(scope);
+}
+
+function watchThemePalette(scope, handler) {
+    if (!themeService || typeof themeService.subscribe !== 'function' || typeof handler !== 'function') {
+        return () => {};
+    }
+    const invoke = () => handler(getChartPalette(scope));
+    const unsubscribe = themeService.subscribe(() => invoke());
+    invoke();
+    return () => unsubscribe && unsubscribe();
+}
+
+window.getChartPalette = getChartPalette;
+window.watchThemePalette = watchThemePalette;
+
+const DEFAULT_CHART_PALETTE = Object.freeze({
+    axis: '#666666',
+    grid: 'silver',
+    tooltipBg: '#ffffff',
+    tooltipText: 'rgba(51, 51, 51, 0.9)',
+    tooltipBorder: 'rgba(31, 35, 40, 0.12)',
+    legendText: '#666666',
+    markLineLabel: 'Black',
+    markLineLine: 'rgba(51, 51, 51, 0.9)',
+    chartBackground: 'transparent'
+});
+
 //#region endpoints
 // ==========================================================================
 // Shared data source endpoints and helpers
@@ -356,6 +390,61 @@ function applyTranslations() {
     });
 }
 
+function initializeThemeSwitch() {
+    if (!themeService) {
+        return;
+    }
+    const buttons = document.querySelectorAll('[data-theme-option]');
+    if (!buttons.length) {
+        return;
+    }
+
+    function syncButtons(mode) {
+        buttons.forEach(button => {
+            const option = button.getAttribute('data-theme-option');
+            const isActive = option === mode;
+            button.setAttribute('aria-pressed', String(isActive));
+            button.classList.toggle('is-active', isActive);
+        });
+    }
+
+    const currentMode = typeof themeService.getMode === 'function'
+        ? themeService.getMode()
+        : 'auto';
+    syncButtons(currentMode);
+
+    function activateOption(option) {
+        if (!option || typeof themeService.setMode !== 'function') {
+            return;
+        }
+        themeService.setMode(option);
+    }
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const option = button.getAttribute('data-theme-option');
+            activateOption(option);
+        });
+
+        button.addEventListener('keydown', event => {
+            if (event.key !== 'Enter' && event.key !== ' ') {
+                return;
+            }
+            event.preventDefault();
+            const option = button.getAttribute('data-theme-option');
+            activateOption(option);
+        });
+    });
+
+    if (typeof themeService.subscribe === 'function') {
+        themeService.subscribe(payload => {
+            syncButtons(payload.mode);
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', initializeThemeSwitch);
+
 // Create vertical gridlines for day or week boundaries
 function createTimeGrids(isWeekOnly = false) {
     return {
@@ -436,18 +525,20 @@ function createXAxisFormatter(showFullDate = false) {
     };
 }
 
-function createCurrentTimeMarkLine() {
+function createCurrentTimeMarkLine(palette) {
+    const labelColor = palette?.markLineLabel || 'Black';
+    const lineColor = palette?.markLineLine || 'rgba(51, 51, 51, 0.9)';
     return {
         symbol: 'none',
         label: {
             formatter: formatCurrentTimeLabel,
             position: 'end',
-            color: 'Black',
+            color: labelColor,
             fontSize: 11
         },
         lineStyle: {
             type: 'dotted',
-            color: 'rgba(51, 51, 51, 0.9)',
+            color: lineColor,
             width: 2,
             opacity: 0.5
         },
@@ -463,20 +554,33 @@ function createCurrentTimeMarkLine() {
 function createBaseChartOptions(config) {
     // Create base options
     const grid = buildChartGrid(config.grid);
+    const palette = Object.assign({}, DEFAULT_CHART_PALETTE, config.palette || {});
     const baseOptions = {
         title: { text: ' ' },
         legend: config.legend || { show: false },
         tooltip: {
             trigger: 'axis',
-            formatter: config.tooltipFormatter || createTooltipFormatter()
+            formatter: config.tooltipFormatter || createTooltipFormatter(),
+            backgroundColor: palette.tooltipBg,
+            borderColor: palette.tooltipBorder,
+            textStyle: {
+                color: palette.tooltipText
+            }
         },
         grid,
+        backgroundColor: palette.chartBackground,
         xAxis: {
             type: 'time',
             boundaryGap: false,
             axisLabel: {
                 interval: 0,
-                formatter: config.xAxisFormatter || createXAxisFormatter()
+                formatter: config.xAxisFormatter || createXAxisFormatter(),
+                color: palette.axis
+            },
+            axisLine: {
+                lineStyle: {
+                    color: palette.axis
+                }
             },
             axisTick: {
                 alignWithLabel: true,
@@ -485,7 +589,7 @@ function createBaseChartOptions(config) {
             splitLine: {
                 show: !config.isHistoryChart, // Show day boundaries for regular charts
                 lineStyle: {
-                    color: 'silver',
+                    color: palette.grid,
                     width: 0.5,
                     type: 'dashed',
                     opacity: 0.40
@@ -508,6 +612,17 @@ function createBaseChartOptions(config) {
             axisLabel: {
                 formatter: function(value) {
                     return value.toFixed(0);
+                },
+                color: palette.axis
+            },
+            axisLine: {
+                lineStyle: {
+                    color: palette.axis
+                }
+            },
+            splitLine: {
+                lineStyle: {
+                    color: palette.grid
                 }
             }
         },
@@ -515,12 +630,24 @@ function createBaseChartOptions(config) {
         series: config.series || []
     };
 
+    if (baseOptions.legend) {
+        if (Array.isArray(baseOptions.legend)) {
+            baseOptions.legend = baseOptions.legend.map(entry => Object.assign({}, entry, {
+                textStyle: Object.assign({}, entry.textStyle, { color: palette.legendText })
+            }));
+        } else {
+            baseOptions.legend = Object.assign({}, baseOptions.legend, {
+                textStyle: Object.assign({}, baseOptions.legend.textStyle, { color: palette.legendText })
+            });
+        }
+    }
+
     // History chart gets week-based grid
     if (config.isHistoryChart) {
         baseOptions.xAxis.splitLine = {
             show: true,
             lineStyle: {
-                color: 'silver',
+                color: palette.grid,
                 width: 0.5,
                 type: 'dashed',
                 opacity: 0.40
@@ -534,6 +661,51 @@ function createBaseChartOptions(config) {
 
     return baseOptions;
 }
+
+function applyChartTheme(chart, palette) {
+    if (!chart || typeof chart.getOption !== 'function' || typeof chart.setOption !== 'function') {
+        return;
+    }
+    const option = chart.getOption();
+    if (!option || typeof option !== 'object') {
+        return;
+    }
+    const resolved = Object.assign({}, DEFAULT_CHART_PALETTE, palette || {});
+    const xAxisCount = Array.isArray(option.xAxis) ? option.xAxis.length : (option.xAxis ? 1 : 0);
+    const yAxisCount = Array.isArray(option.yAxis) ? option.yAxis.length : (option.yAxis ? 1 : 0);
+
+    const axisTemplate = () => ({
+        axisLabel: { color: resolved.axis },
+        axisLine: { lineStyle: { color: resolved.axis } },
+        splitLine: { lineStyle: { color: resolved.grid } }
+    });
+
+    const buildAxis = (count) => {
+        if (count === 0) {
+            return undefined;
+        }
+        if (count === 1) {
+            return axisTemplate();
+        }
+        return Array.from({ length: count }, () => axisTemplate());
+    };
+
+    chart.setOption({
+        backgroundColor: resolved.chartBackground,
+        xAxis: buildAxis(xAxisCount),
+        yAxis: buildAxis(yAxisCount),
+        tooltip: {
+            backgroundColor: resolved.tooltipBg,
+            borderColor: resolved.tooltipBorder,
+            textStyle: { color: resolved.tooltipText }
+        },
+        legend: {
+            textStyle: { color: resolved.legendText }
+        }
+    }, false, true);
+}
+
+window.applyChartTheme = applyChartTheme;
 
 //#region markers
 // ==========================================================================

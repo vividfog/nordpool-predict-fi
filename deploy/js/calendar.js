@@ -8,6 +8,10 @@
     const DAY_MS = 24 * HOUR_MS;
     const MAX_DAY_SLOTS = 27;
     const HELSINKI_TZ = 'Europe/Helsinki';
+    let calendarChartInstance = null;
+    let calendarPalette = typeof getChartPalette === 'function'
+        ? getChartPalette('calendar')
+        : null;
 
     const dtfCache = new Map();
 
@@ -486,7 +490,11 @@
     }
 
     function buildChartOption(matrix) {
-        const fallbackColor = 'rgba(31, 35, 40, 0.12)';
+        const palette = calendarPalette || {};
+        const fallbackColor = palette.fallback || 'rgba(31, 35, 40, 0.12)';
+        const axisColor = palette.axis || 'rgba(31, 35, 40, 0.72)';
+        const borderColor = palette.border || 'rgba(255, 255, 255, 1)';
+        const emphasisColor = palette.emphasis || 'dodgerblue';
         return {
             animation: false,
             grid: {
@@ -520,7 +528,7 @@
                 axisTick: { show: false },
                 axisLabel: {
                     interval: 1,
-                    color: 'rgba(31, 35, 40, 0.72)'
+                    color: axisColor
                 }
             },
             yAxis: {
@@ -530,7 +538,7 @@
                 axisLine: { show: false },
                 axisTick: { show: false },
                 axisLabel: {
-                    color: 'rgba(31, 35, 40, 0.72)',
+                    color: axisColor,
                     margin: 32
                 },
                 splitLine: {
@@ -539,10 +547,11 @@
             },
             series: [
                 {
+                    id: 'price-calendar-heatmap',
                     type: 'heatmap',
                     data: matrix.data,
                     itemStyle: {
-                        borderColor: 'rgba(255, 255, 255, 1)',
+                        borderColor: borderColor,
                         borderWidth: 2,
                         color: function(args) {
                             const payload = args?.data;
@@ -561,13 +570,51 @@
                     },
                     emphasis: {
                         itemStyle: {
-                            borderColor: 'dodgerblue',
+                            borderColor: emphasisColor,
                             borderWidth: 2.8
                         }
                     }
                 }
             ]
         };
+    }
+
+    function applyCalendarThemeToChart() {
+        if (!calendarChartInstance || !calendarPalette) {
+            return;
+        }
+        calendarChartInstance.setOption({
+            xAxis: {
+                axisLabel: {
+                    color: calendarPalette.axis
+                }
+            },
+            yAxis: {
+                axisLabel: {
+                    color: calendarPalette.axis
+                }
+            },
+            series: [
+                {
+                    id: 'price-calendar-heatmap',
+                    itemStyle: {
+                        borderColor: calendarPalette.border
+                    },
+                    emphasis: {
+                        itemStyle: {
+                            borderColor: calendarPalette.emphasis
+                        }
+                    }
+                }
+            ]
+        }, false, true);
+    }
+
+    if (typeof watchThemePalette === 'function') {
+        watchThemePalette('calendar', palette => {
+            calendarPalette = palette || calendarPalette;
+            applyCalendarThemeToChart();
+        });
     }
 
     function hasValues(matrix) {
@@ -597,6 +644,7 @@
 
         clearStatus(statusElement);
         chart.setOption(buildChartOption(matrix), true);
+        applyCalendarThemeToChart();
     }
 
     function setStatus(element, key) {
@@ -624,6 +672,8 @@
 
         const statusElement = document.getElementById('priceCalendarStatus');
         const chart = echarts.init(container);
+        calendarChartInstance = chart;
+        window.priceCalendarChart = chart;
         const legendContainer = document.getElementById('priceCalendarLegend');
         const localeKey = window.location.pathname.includes('index_en') ? 'en' : 'fi';
 

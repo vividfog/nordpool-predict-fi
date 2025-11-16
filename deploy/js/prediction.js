@@ -4,6 +4,59 @@
 // ==========================================================================
 
 var nfpChart = echarts.init(document.getElementById('predictionChart'));
+let predictionPalette = typeof getChartPalette === 'function'
+    ? getChartPalette('prediction')
+    : null;
+let hasPredictionChartOptions = false;
+
+function refreshPredictionTheme() {
+    if (!nfpChart || typeof nfpChart.setOption !== 'function') {
+        return;
+    }
+    if (!hasPredictionChartOptions) {
+        return;
+    }
+    const palette = predictionPalette || {};
+    if (typeof applyChartTheme === 'function') {
+        applyChartTheme(nfpChart, palette);
+    }
+    const bgStyle = {};
+    if (palette.sahkotinBar) {
+        bgStyle.color = palette.sahkotinBar;
+    }
+    if (typeof palette.sahkotinBarOpacity === 'number') {
+        bgStyle.opacity = palette.sahkotinBarOpacity;
+    }
+    const spikeStyle = {};
+    if (palette.spikeMarker) {
+        spikeStyle.color = palette.spikeMarker;
+    }
+    nfpChart.setOption({
+        series: [
+            {
+                id: 'sahkotin-bg',
+                itemStyle: bgStyle
+            },
+            {
+                id: 'scaled-price-markers',
+                markPoint: {
+                    itemStyle: spikeStyle
+                }
+            },
+            {
+                id: 'prediction-markline',
+                markLine: createCurrentTimeMarkLine(palette)
+            }
+        ]
+    }, false, true);
+}
+
+if (typeof watchThemePalette === 'function') {
+    watchThemePalette('prediction', palette => {
+        predictionPalette = palette || predictionPalette;
+        refreshPredictionTheme();
+    });
+}
 
 const HOUR_MS = 60 * 60 * 1000;
 const CHEAPEST_WINDOW_DURATIONS = [3, 6, 12];
@@ -209,6 +262,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
     const chartOptions = (typeof window.createBaseChartOptions === 'function'
         ? window.createBaseChartOptions
         : createBaseChartOptions)({
+        palette: predictionPalette,
         legend: {
             data: [
                 {
@@ -244,15 +298,17 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
         visualMap: [
             {
                 // For realized price
+                id: 'sahkotin-visual-map',
                 show: false,
                 seriesIndex: [3],
                 top: 50,
                 right: 10,
                 pieces: sahkotinVisualPieces,
-                outOfRange: { color: '#999', opacity: 1.0 }
+                outOfRange: { color: predictionPalette?.outOfRange || '#999', opacity: 1.0 }
             },
             {
                 // For predicted price
+                id: 'scaled-visual-map',
                 show: false,
                 seriesIndex: [1],
                 top: 50,
@@ -265,12 +321,13 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                     { gt: 20, lte: 30, color: 'darkblue', opacity: 1.0 },
                     { gt: 30, color: 'midnightblue', opacity: 1.0 }
                 ],
-                outOfRange: { color: '#999', opacity: 1.0 }
+                outOfRange: { color: predictionPalette?.outOfRange || '#999', opacity: 1.0 }
             }
         ],
         series: [
             {
                 // Background bar for prediction data
+                id: 'forecast-bg',
                 name: 'Ennuste BG',
                 type: 'bar',
                 data: npfSeriesData,
@@ -286,6 +343,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                 }
             },
             {
+                id: 'forecast-line',
                 name: getLocalizedText('forecast'),
                 type: 'line',
                 data: npfSeriesData,
@@ -299,13 +357,16 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                 z: 3
             },
             {
+                id: 'sahkotin-bg',
                 name: 'Nordpool BG',
                 type: 'bar',
                 data: sahkotinSeriesData,
                 barWidth: '40%',
                 itemStyle: {
-                    color: 'lime',
-                    opacity: 0.10
+                    color: predictionPalette?.sahkotinBar || 'lime',
+                    opacity: typeof predictionPalette?.sahkotinBarOpacity === 'number'
+                        ? predictionPalette.sahkotinBarOpacity
+                        : 0.10
                 },
                 silent: true,
                 z: 1,
@@ -314,6 +375,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                 }
             },
             {
+                id: 'sahkotin-line',
                 name: 'Nordpool',
                 type: 'line',
                 data: sahkotinSeriesData,
@@ -327,6 +389,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                 z: 3
             },
             {
+                id: 'scaled-price-markers',
                 name: getLocalizedText('scaled_price'),
                 type: 'line',
                 data: scaledPriceSeriesData.map(item => [item[0], null]),
@@ -335,7 +398,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                     symbolSize: [4, 4],
                     symbolRotate: 0,
                     itemStyle: {
-                        color: 'crimson'
+                        color: predictionPalette?.spikeMarker || 'crimson'
                     },
                     data: scaledPriceSeriesData
                         .filter(item => {
@@ -354,7 +417,8 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
             },
             {
                 type: 'line',
-                markLine: createCurrentTimeMarkLine(),
+                id: 'prediction-markline',
+                markLine: createCurrentTimeMarkLine(predictionPalette),
                 z: 4
             }
         ]
@@ -362,6 +426,8 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
 
     // Push the merged options without wiping user zoom/legend state.
     nfpChart.setOption(chartOptions);
+    hasPredictionChartOptions = true;
+    refreshPredictionTheme();
 
     const mergedSeries = mergePriceSeries(sahkotinSeriesData, npfSeriesData);
     const cheapestPayload = buildCheapestWindowPayload(mergedSeries, Date.now());

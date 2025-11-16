@@ -61,7 +61,7 @@ describe('deploy/js/windpower.js', () => {
     loadScript('deploy/js/windpower.js');
     await flushPromises(8);
 
-    expect(chart.setOption).toHaveBeenCalledTimes(1);
+    expect(chart.setOption).toHaveBeenCalled();
     const option = chart.setOption.mock.calls[0][0];
     expect(option.series.some(series => series.name.includes('Tuulivoima'))).toBe(true);
     vi.useRealTimers();

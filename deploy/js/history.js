@@ -4,6 +4,47 @@
 // ==========================================================================
 
 var historyChart = echarts.init(document.getElementById('historyChart'));
+let historyPalette = typeof getChartPalette === 'function'
+    ? getChartPalette('history')
+    : null;
+let hasHistoryChartOptions = false;
+
+function refreshHistoryTheme() {
+    if (!historyChart || typeof historyChart.setOption !== 'function') {
+        return;
+    }
+    if (!hasHistoryChartOptions) {
+        return;
+    }
+    if (typeof applyChartTheme === 'function' && historyPalette) {
+        applyChartTheme(historyChart, historyPalette);
+    }
+    historyChart.setOption({
+        series: [
+            {
+                id: 'history-markline',
+                markLine: createCurrentTimeMarkLine(historyPalette)
+            }
+        ],
+        dataZoom: [
+            {
+                id: 'history-zoom-slider',
+                backgroundColor: historyPalette?.zoomBackground,
+                borderColor: historyPalette?.zoomBorder
+            },
+            {
+                id: 'history-zoom-inside'
+            }
+        ]
+    }, false, true);
+}
+
+if (typeof watchThemePalette === 'function') {
+    watchThemePalette('history', palette => {
+        historyPalette = palette || historyPalette;
+        refreshHistoryTheme();
+    });
+}
 
 // Construct URLs for fetching historical data
 const dateStrings = getPastDateStrings(35); // 30 days plus 5 days of prediction data
@@ -259,17 +300,19 @@ function setupHistoryChart(data, pruneOption) {
 
     // Add a separate series item for the markLine
     series.push({
+        id: 'history-markline',
         type: 'line',
         data: [],
-        markLine: createCurrentTimeMarkLine()
+        markLine: createCurrentTimeMarkLine(historyPalette)
     });
 
     // Create history chart options
-const historyChartOptions = createBaseChartOptions({
+    const historyChartOptions = createBaseChartOptions({
         tooltipFormatter: createTooltipFormatter(),
         xAxisFormatter: createXAxisFormatter(true),
         series: series,
-        isHistoryChart: true // Flag to use weekly grid lines
+        isHistoryChart: true, // Flag to use weekly grid lines
+        palette: historyPalette
     });
 
     const baseGrid = typeof window.buildChartGrid === 'function'
@@ -280,14 +323,18 @@ const historyChartOptions = createBaseChartOptions({
     // Add zoom controls to the history chart
     historyChartOptions.dataZoom = [
         {
+            id: 'history-zoom-slider',
             type: 'slider',
             xAxisIndex: 0,
             start: 33,
             end: 100,
             bottom: 18,
-            height: 30
+            height: 30,
+            backgroundColor: historyPalette?.zoomBackground,
+            borderColor: historyPalette?.zoomBorder
         },
         {
+            id: 'history-zoom-inside',
             type: 'inside',
             xAxisIndex: 0,
             start: 33,
@@ -296,6 +343,8 @@ const historyChartOptions = createBaseChartOptions({
     ];
 
     historyChart.setOption(historyChartOptions);
+    hasHistoryChartOptions = true;
+    refreshHistoryTheme();
     console.log("setupHistoryChart found", series.length, "snapshots");
     originalData = cleanedData.map(seriesData => seriesData.map(item => [item[0], item[1]]));
     return series.length;

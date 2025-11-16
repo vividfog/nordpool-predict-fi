@@ -1,9 +1,50 @@
+:root {
+    --np-body-bg: #f0f2f5;
+    --np-card-bg: #ffffff;
+    --np-card-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    --np-text: rgba(51, 51, 51, 0.9);
+    --np-muted: #666666;
+    --np-heading: rgba(102, 102, 102, 0.8);
+    --np-link: #000000;
+    --np-link-hover: #000000;
+    --np-disclaimer-text: #666666;
+    --np-control-bg: #f0f2f5;
+    --np-control-border: #dddddd;
+    --np-control-hover: #dddddd;
+    --np-control-text: #666666;
+    --np-input-bg: rgba(255, 255, 255, 0.9);
+    --np-input-border: rgba(0, 0, 0, 0.2);
+    --np-input-outline: rgba(65, 131, 215, 0.35);
+    --np-table-header: rgba(0, 0, 0, 0.5);
+    --np-table-divider: rgba(0, 0, 0, 0.08);
+    --np-table-empty: rgba(0, 0, 0, 0.6);
+    --np-mobile-label: rgba(31, 61, 117, 0.6);
+    --np-calendar-status: rgba(51, 51, 51, 0.66);
+    --np-calendar-legend: rgba(31, 35, 40, 0.72);
+    --np-calendar-swatch-border: rgba(31, 35, 40, 0.08);
+    --np-llm-text: rgba(102, 102, 102, 0.7);
+    --np-topbar-text: #666666;
+    --np-topbar-border: rgba(0, 0, 0, 0.08);
+    --np-theme-button-bg: #f0f2f5;
+    --np-theme-button-border: #dddddd;
+    --np-theme-button-text: #666666;
+    --np-theme-button-active: #ffffff;
+    --np-theme-button-active-text: #000000;
+    --np-pulse-a: rgba(135, 206, 235, 0.1);
+    --np-pulse-b: rgba(135, 206, 235, 0.25);
+    --np-price-calendar-border: #ffffff;
+    --np-price-calendar-empty: rgba(255, 255, 255, 0);
+    --np-price-calendar-null: rgba(0, 0, 0, 0);
+    --np-theme-chip-shadow: none;
+    --np-topbar-bg: transparent;
+}
+
 body {
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #666;
+    color: var(--np-muted);
     margin: 20px;
-    background-color: #f0f2f5;
-    color: rgba(51, 51, 51, 0.9);
+    background-color: var(--np-body-bg);
+    color: var(--np-text);
 }
 
 .page-title {
@@ -51,7 +92,7 @@ body {
 
 .price-calendar-status {
     font-size: 0.9rem;
-    color: rgba(51, 51, 51, 0.66);
+    color: var(--np-calendar-status);
     margin-top: 8px;
 }
 
@@ -61,7 +102,7 @@ body {
     gap: 10px;
     margin-top: 10px;
     font-size: 0.82rem;
-    color: rgba(31, 35, 40, 0.72);
+    color: var(--np-calendar-legend);
     justify-content: flex-end;
 }
 
@@ -75,7 +116,7 @@ body {
     width: 14px;
     height: 14px;
     border-radius: 4px;
-    box-shadow: inset 0 0 0 1px rgba(31, 35, 40, 0.08);
+    box-shadow: inset 0 0 0 1px var(--np-calendar-swatch-border);
 }
 
 #cheapestWindows {
@@ -117,7 +158,7 @@ body {
     margin: 0 0 1em 2px;
     font-size: 1em;
     line-height: 1.6;
-    color: rgba(51, 51, 51, 0.88);
+    color: var(--np-text);
 }
 
 .cheapest-sentence span {
@@ -144,17 +185,18 @@ body {
 .cheapest-field input,
 .cheapest-field select {
     border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--np-input-border);
     padding: 3px 8px;
     font: inherit;
     min-width: 3.4ch;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: var(--np-input-bg);
+    color: var(--np-text);
 }
 
 .cheapest-field input:focus,
 .cheapest-field select:focus {
-    outline: 2px solid rgba(65, 131, 215, 0.35);
+    outline: 2px solid var(--np-input-outline);
     outline-offset: 1px;
 }
 
@@ -169,14 +211,14 @@ body {
     text-align: left;
     padding: 6px 6px 10px;
     font-weight: 600;
-    color: rgba(0, 0, 0, 0.5);
+    color: var(--np-table-header);
     font-size: 0.85em;
     text-transform: uppercase;
     letter-spacing: 0.04em;
 }
 
 .cheapest-row {
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-top: 1px solid var(--np-table-divider);
 }
 
 .cheapest-row:first-child {
@@ -197,7 +239,7 @@ body {
 .cheapest-row-empty td {
     padding: 20px 6px;
     text-align: center;
-    color: rgba(0, 0, 0, 0.6);
+    color: var(--np-table-empty);
 }
 
 .cheapest-badge {
@@ -244,7 +286,7 @@ body {
         font-size: 0.72em;
         text-transform: uppercase;
         letter-spacing: 0.04em;
-        color: rgba(31, 61, 117, 0.6);
+        color: var(--np-mobile-label);
         font-weight: 600;
     }
 
@@ -293,8 +335,8 @@ body {
     box-sizing: border-box;
     margin: auto;
     margin-top: 16px;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    box-shadow: var(--np-card-shadow);
+    background-color: var(--np-card-bg);
     padding-left: 60px;
     padding-right: 60px;
     padding-top: 24px;
@@ -313,7 +355,7 @@ body {
     max-width: 1080px;
     margin: auto;
     text-align: left;
-    color: rgba(102, 102, 102, 0.7);
+    color: var(--np-llm-text);
     padding-top: 8px;
     line-height: 1.5;
     box-sizing: border-box;
@@ -363,9 +405,9 @@ body {
 }
 
 .history-prune select {
-    background-color: #f0f2f5;
-    border: 1px solid #ddd;
-    color: #666;
+    background-color: var(--np-control-bg);
+    border: 1px solid var(--np-control-border);
+    color: var(--np-control-text);
     padding: 5px 12px;
     cursor: pointer;
     font-family: 'Inter', sans-serif;
@@ -376,13 +418,13 @@ body {
 }
 
 .history-prune select:hover {
-    background-color: #ddd;
+    background-color: var(--np-control-hover);
 }
 
 .history-toggle button {
-    background-color: #f0f2f5;
-    border: 1px solid #ddd;
-    color: #666;
+    background-color: var(--np-control-bg);
+    border: 1px solid var(--np-control-border);
+    color: var(--np-control-text);
     padding: 5px 12px;
     cursor: pointer;
     font-family: 'Inter', sans-serif;
@@ -406,7 +448,7 @@ body {
 }
 
 .history-toggle button:hover:not(.active) {
-    background-color: #ddd;
+    background-color: var(--np-control-hover);
 }
 
 #disclaimer {
@@ -414,7 +456,7 @@ body {
     max-width: 512px;
     line-height: 1.6;
     margin: 16px auto 0;
-    color: #666;
+    color: var(--np-disclaimer-text);
     font-size: 0.8em;
     opacity: 0.6;
     width: 100%;
@@ -422,18 +464,76 @@ body {
     text-align: center;
 }
 
-#topdisclaimer {
-    position: relative;
-    max-width: 512px;
-    line-height: 1.6;
-    margin: auto;
-    color: #666;
-    font-size: 0.8em;
+.theme-switch {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.85em;
+    color: var(--np-topbar-text);
+}
+
+.theme-switch [data-theme-option] {
+    cursor: pointer;
     opacity: 0.6;
-    width: 100%;
-    padding: 16px;
-    padding-bottom: 8px;
-    text-align: center;
+    text-decoration: none;
+    padding: 2px 0;
+    outline: none;
+}
+
+.theme-switch [data-theme-option]:not(:last-child)::after {
+    content: '|';
+    margin: 0 6px;
+    opacity: 0.4;
+}
+
+.theme-switch [data-theme-option]:hover,
+.theme-switch [data-theme-option]:focus-visible {
+    opacity: 0.9;
+    text-decoration: underline;
+}
+
+.theme-switch [data-theme-option].is-active {
+    font-weight: 600;
+    opacity: 1;
+}
+
+#topdisclaimer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 16px 16px 8px 16px;
+    color: var(--np-topbar-text);
+    gap: 12px;
+    background-color: var(--np-topbar-bg);
+    // border-bottom: 1px solid var(--np-topbar-border);
+}
+
+.topbar-links {
+    flex: 1 1 auto;
+    text-align: left;
+    font-size: 0.85em;
+    display: inline-flex;
+    align-items: center;
+}
+
+.topbar-links .lang-option {
+    color: var(--np-topbar-text);
+    opacity: 0.6;
+    position: relative;
+}
+
+.topbar-links .lang-option:not(:last-child)::after {
+    content: '|';
+    display: inline-block;
+    margin: 0 6px;
+    opacity: 0.4;
+}
+
+.topbar-links .lang-option[aria-current="true"] {
+    opacity: 1;
+    font-weight: 600;
 }
 
 #github-logo-container {
@@ -447,7 +547,7 @@ body {
 }
 
 #source-code-text {
-    color: #666;
+    color: var(--np-muted);
     text-decoration: none;
     font-size: 0.8em;
     opacity: 0.5;
@@ -457,7 +557,7 @@ body {
 }
 
 #source-code-text:hover {
-    color: #666;
+    color: var(--np-muted);
     text-decoration: none;
     opacity: 0.8;
 }
@@ -479,7 +579,7 @@ h4,
 h5,
 h6 {
     font-weight: 200;
-    color: rgba(102, 102, 102, 0.8);
+    color: var(--np-heading);
     margin-bottom: 0;
     line-height: 1.3;
 }
@@ -490,7 +590,7 @@ p {
 }
 
 a {
-    color: #000;
+    color: var(--np-link);
     text-decoration: underline;
     opacity: 0.6;
     border-bottom: 1px solid transparent;
@@ -504,7 +604,7 @@ a:source-code-link {
 
 a:hover {
     text-decoration: underline;
-    color: #000;
+    color: var(--np-link-hover);
     opacity: 1;
     font-weight: 500;
 }
@@ -561,9 +661,10 @@ th, td {
     }
 
     #topdisclaimer {
-        max-width: 320px;
-        padding: 8px;
-        padding-bottom: 4px;
+        padding: 12px 12px 6px 12px;
+        gap: 8px;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .history-toggle button {
