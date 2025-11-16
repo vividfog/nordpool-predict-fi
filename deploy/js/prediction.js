@@ -123,10 +123,42 @@ if (typeof storedFetchTimestamp === 'number' && Number.isFinite(storedFetchTimes
     lastFetchTimestamp = storedFetchTimestamp;
 }
 
-// Keep cache-busting logic in sync with config.js so every module behaves identically.
-const cacheBustUrl = typeof window.applyCacheToken === 'function'
-    ? window.applyCacheToken
-    : createCacheBustedUrl;
+const dataClient = window.dataClient || null;
+const applyRequestInitDefaults = dataClient && typeof dataClient.applyRequestInit === 'function'
+    ? dataClient.applyRequestInit
+    : (overrides) => {
+        if (!overrides) {
+            return { cache: 'no-cache' };
+        }
+        return Object.assign({ cache: 'no-cache' }, overrides);
+    };
+const buildRequestUrl = dataClient && typeof dataClient.buildRequestUrl === 'function'
+    ? (url, token, shouldBust) => dataClient.buildRequestUrl(url, token, shouldBust)
+    : (url, token, shouldBust) => {
+        if (!shouldBust) {
+            return url;
+        }
+        if (typeof window.applyCacheToken === 'function') {
+            return window.applyCacheToken(url, token);
+        }
+        return createCacheBustedUrl(url, token);
+    };
+const fetchJsonWithDefaults = dataClient && typeof dataClient.fetchJson === 'function'
+    ? (url, init) => dataClient.fetchJson(url, init)
+    : (url, init) => fetch(url, applyRequestInitDefaults(init)).then(response => {
+        if (!response.ok) {
+            throw new Error(`Request failed (${response.status}) for ${url}`);
+        }
+        return response.json();
+    });
+const fetchTextWithDefaults = dataClient && typeof dataClient.fetchText === 'function'
+    ? (url, init) => dataClient.fetchText(url, init)
+    : (url, init) => fetch(url, applyRequestInitDefaults(init)).then(response => {
+        if (!response.ok) {
+            throw new Error(`Request failed (${response.status}) for ${url}`);
+        }
+        return response.text();
+    });
 
 // ==========================================================================
 // Fetching and processing prediction data
@@ -155,39 +187,30 @@ function buildSahkotinParams() {
  * @param {{force?: boolean}} [options] When true, bypasses cached timestamps and forces fresh fetches.
  * @returns {Promise<void>} Resolves when data has been processed into chart state; rejects on fetch/parsing errors.
  */
-function fetchPredictionData(options = {}) {
+async function fetchPredictionData(options = {}) {
     if (pendingFetchPromise) {
         return pendingFetchPromise;
     }
 
-    const forceReload = options.force === true;
-    const cacheToken = Date.now();
-    const shouldBust = forceReload || !hasInitialPayload;
-    const requestInit = { cache: 'no-cache' };
+    const loader = (async () => {
+        const forceReload = options.force === true;
+        const cacheToken = Date.now();
+        const shouldBust = forceReload || !hasInitialPayload;
+        const requestInit = applyRequestInitDefaults();
 
-    const predictionRequest = shouldBust ? cacheBustUrl(npfUrl, cacheToken) : npfUrl;
-    const scaledPriceRequest = shouldBust ? cacheBustUrl(scaledPriceUrl, cacheToken) : scaledPriceUrl;
-    const params = buildSahkotinParams();
-    const sahkotinRequestBase = `${sahkotinUrl}?${params.toString()}`;
-    const sahkotinRequest = shouldBust ? cacheBustUrl(sahkotinRequestBase, cacheToken) : sahkotinRequestBase;
+        const predictionRequest = buildRequestUrl(npfUrl, cacheToken, shouldBust);
+        const scaledPriceRequest = buildRequestUrl(scaledPriceUrl, cacheToken, shouldBust);
+        const params = buildSahkotinParams();
+        const sahkotinRequestBase = `${sahkotinUrl}?${params.toString()}`;
+        const sahkotinRequest = buildRequestUrl(sahkotinRequestBase, cacheToken, shouldBust);
 
-    pendingFetchPromise = Promise.all([
-        fetch(predictionRequest, requestInit).then(response => {
-            if (!response.ok) {
-                throw new Error(`Prediction fetch failed: ${response.status}`);
-            }
-            return response.json();
-        }),
-        fetch(scaledPriceRequest, requestInit)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Scaled price fetch failed: ${response.status}`);
-                }
-                return response.text();
-            })
+        const scaledPricePromise = fetchTextWithDefaults(scaledPriceRequest, requestInit)
             .then(text => {
+                if (!text) {
+                    return [];
+                }
                 try {
-                    return text ? JSON.parse(text) : [];
+                    return JSON.parse(text);
                 } catch (error) {
                     console.warn('Failed to parse scaled price data JSON:', error);
                     return [];
@@ -196,29 +219,29 @@ function fetchPredictionData(options = {}) {
             .catch(error => {
                 console.warn('Failed to fetch or parse scaled price data:', error);
                 return [];
-            }),
-        fetch(sahkotinRequest, requestInit).then(response => {
-            if (!response.ok) {
-                throw new Error(`Sähkötin fetch failed: ${response.status}`);
-            }
-            return response.text();
-        })
-    ])
-        .then(([npfData, scaledPriceData, sahkotinCsv]) => {
+            });
+
+        try {
+            const [npfData, scaledPriceData, sahkotinCsv] = await Promise.all([
+                fetchJsonWithDefaults(predictionRequest, requestInit),
+                scaledPricePromise,
+                fetchTextWithDefaults(sahkotinRequest, requestInit),
+            ]);
+
             hasInitialPayload = true;
             lastFetchTimestamp = Date.now();
             if (predictionStorage) {
                 predictionStorage.set(PREDICTION_FETCH_KEY, lastFetchTimestamp);
             }
             processPredictionPayload(npfData, scaledPriceData, sahkotinCsv);
-        })
-        .catch(error => {
+        } catch (error) {
             console.error('Error fetching or processing prediction data:', error);
-        })
-        .finally(() => {
+        } finally {
             pendingFetchPromise = null;
-        });
+        }
+    })();
 
+    pendingFetchPromise = loader;
     return pendingFetchPromise;
 }
 
