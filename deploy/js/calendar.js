@@ -1,9 +1,10 @@
-// #region calendar
+//#region calendar
 // ==========================================================================
 // Hourly price calendar heatmap
 // ==========================================================================
 
 (function() {
+    //#region setup
     const resolveCalendarPalette = typeof window.resolveChartPalette === 'function'
         ? window.resolveChartPalette
         : () => null;
@@ -20,6 +21,7 @@
 
     const dtfCache = new Map();
 
+    //#region timezone_helpers
     function getDateTimeFormatter(timeZone) {
         if (!dtfCache.has(timeZone)) {
             dtfCache.set(timeZone, new Intl.DateTimeFormat('en-US', {
@@ -148,6 +150,8 @@
 
         return result;
     }
+
+    //#region data_processing
 
     function buildPriceMap(series) {
         const map = new Map();
@@ -484,15 +488,17 @@
                     detail
                 ]);
             });
-        }
-
-        return {
-            locale,
-            hourLabels,
-            dayLabels,
-            data
-        };
     }
+
+    return {
+        locale,
+        hourLabels,
+        dayLabels,
+        data
+    };
+}
+
+    //#region chart_build
 
     function buildChartOption(matrix) {
         const palette = calendarPalette || {};
@@ -590,6 +596,8 @@
         };
     }
 
+    //#region theme
+
     function applyCalendarThemeToChart() {
         if (!calendarChartInstance || !calendarPalette) {
             return;
@@ -638,6 +646,8 @@
         applyCalendarThemeToChart();
     });
 
+    //#region render
+
     function hasValues(matrix) {
         if (!matrix?.data) {
             return false;
@@ -684,6 +694,8 @@
         element.textContent = '';
         element.style.display = 'none';
     }
+
+    //#region init
 
     document.addEventListener('DOMContentLoaded', function() {
         const container = document.getElementById('priceCalendar');

@@ -1,7 +1,9 @@
+//#region cheapest
 const cheapestStorage = window.appStorage && window.appStorage.enabled ? window.appStorage : null;
 const CHEAPEST_STORAGE_KEY = 'np_cheapest_preferences';
 
 document.addEventListener('DOMContentLoaded', function() {
+    //#region dom_setup
     const card = document.getElementById('cheapestWindows');
     if (!card) {
         return;
@@ -100,6 +102,8 @@ const hasOwn = Object.hasOwn ? Object.hasOwn.bind(Object) : (obj, prop) => Objec
     }
     predictionStore.subscribe(handlePredictionPayload);
 
+    //#region helpers
+
     function ensureNumber(value, fallback) {
         const numeric = Number(value);
         return Number.isFinite(numeric) ? numeric : fallback;
@@ -162,6 +166,8 @@ const hasOwn = Object.hasOwn ? Object.hasOwn.bind(Object) : (obj, prop) => Objec
         }
         return pivot;
     }
+
+    //#region render
 
     function setMessageRow(text) {
         tableBody.innerHTML = `
@@ -367,6 +373,8 @@ const hasOwn = Object.hasOwn ? Object.hasOwn.bind(Object) : (obj, prop) => Objec
         }
     }
 
+    //#region payload_handling
+
     function updateCheapestWindows() {
         if (!predictionData || typeof window.buildCheapestWindowPayload !== 'function') {
             return;
@@ -452,6 +460,8 @@ const hasOwn = Object.hasOwn ? Object.hasOwn.bind(Object) : (obj, prop) => Objec
         return paletteDots[key] || '#7B68EE';
     }
 
+    //#region theme
+
     if (window[CHEAPEST_THEME_UNSUB_KEY]) {
         try {
             window[CHEAPEST_THEME_UNSUB_KEY]();
@@ -463,6 +473,8 @@ const hasOwn = Object.hasOwn ? Object.hasOwn.bind(Object) : (obj, prop) => Objec
         cheapestPalette = palette || cheapestPalette;
         renderRows({ pulse: false });
     });
+
+    //#region animation
 
     function triggerTablePulse() {
         if (!card) {

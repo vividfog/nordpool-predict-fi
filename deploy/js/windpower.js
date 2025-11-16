@@ -3,6 +3,8 @@
 // Wind power generation chart and data handling
 // ==========================================================================
 
+//#region setup
+
 var windPowerChart = echarts.init(document.getElementById('windPowerChart'));
 const resolveWindPalette = typeof window.resolveChartPalette === 'function'
     ? window.resolveChartPalette
@@ -122,6 +124,8 @@ window[WIND_THEME_UNSUB_KEY] = subscribeWindPalette('windpower', palette => {
     refreshWindpowerTheme();
 });
 
+//#region request_helpers
+
 // Use the same cache-busting helper as the rest of the app to avoid diverging logic.
 const windpowerCacheBustUrl = typeof window.applyCacheToken === 'function'
     ? window.applyCacheToken
@@ -177,6 +181,8 @@ function buildWindpowerSahkotinParams() {
 function cacheTokenUrl(url, token) {
     return Number.isFinite(token) ? windpowerCacheBustUrl(url, token) : url;
 }
+
+//#region fetch_flow
 
 // ==========================================================================
 // Fetching and processing wind power data
@@ -490,6 +496,8 @@ function loadWindPowerData(token) {
 
     return windPowerPending;
 }
+
+//#region refresh
 
 loadWindPowerData();
 

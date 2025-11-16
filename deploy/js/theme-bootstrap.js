@@ -1,4 +1,5 @@
 (function() {
+    //#region palettes
     const DEFAULT_MODE = 'auto';
     const MEDIA_QUERY = '(prefers-color-scheme: dark)';
 
@@ -299,6 +300,8 @@
         }
     };
 
+    //#region utilities
+
     function detectSystemDark() {
         if (typeof window.matchMedia !== 'function') {
             return false;
@@ -327,6 +330,8 @@
             meta.setAttribute('content', pagePalette.metaColor);
         }
     }
+
+    //#region events
 
     const listeners = new Set();
     let preferredMode = DEFAULT_MODE;
@@ -366,6 +371,8 @@
             query.addListener(handleSystemChange);
         }
     }
+
+    //#region exports
 
     window.__NP_THEME__ = {
         palettes,

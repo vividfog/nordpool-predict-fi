@@ -3,6 +3,8 @@
 // Spot price prediction chart initialization and data handling
 // ==========================================================================
 
+//#region theme
+
 var nfpChart = echarts.init(document.getElementById('predictionChart'));
 const resolvePalette = typeof window.resolveChartPalette === 'function'
     ? window.resolveChartPalette
@@ -101,6 +103,8 @@ window[PREDICTION_THEME_UNSUB_KEY] = subscribePalette('prediction', palette => {
     refreshPredictionTheme();
 });
 
+//#region constants
+
 const HOUR_MS = 60 * 60 * 1000;
 const CHEAPEST_WINDOW_DURATIONS = [3, 6, 12];
 const MAX_LOOKAHEAD_HOURS = 168;
@@ -175,6 +179,8 @@ const predictionFetchText = dataClient && typeof dataClient.fetchText === 'funct
         return response.text();
     });
 
+//#region fetch_helpers
+
 // ==========================================================================
 // Fetching and processing prediction data
 // ==========================================================================
@@ -195,6 +201,8 @@ function buildSahkotinParams() {
         end: endIso
     });
 }
+
+//#region fetching
 
 /**
  * Fetches prediction, scaled price, and Sähkötin data, with optional cache-busting.
@@ -260,6 +268,8 @@ async function fetchPredictionData(options = {}) {
     return pendingFetchPromise;
 }
 
+//#region payload_processing
+
 function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
     // Process Sähkötin data
     var sahkotinSeriesData = sahkotinCsv
@@ -318,6 +328,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
 
     console.log("Scaled Price Data loaded:", scaledPriceSeriesData.length, "data points");
 
+    //#region chart_options
     const sahkotinVisualPieces = typeof getSahkotinVisualMapPieces === 'function'
         ? getSahkotinVisualMapPieces()
         : [
@@ -524,6 +535,8 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
 // Prime the chart with the most recent data on initial load.
 fetchPredictionData({ force: true });
 
+//#region refresh
+
 function getLatestDataTimestamp() {
     const latestPayload = predictionStore && typeof predictionStore.getLatest === 'function'
         ? predictionStore.getLatest()
@@ -561,6 +574,8 @@ document.addEventListener('visibilitychange', () => {
 setInterval(() => updateMarkerPosition(nfpChart), 10000);
 
 //#endregion prediction
+
+//#region helpers
 
 function mergePriceSeries(actualSeries, forecastSeries) {
     const merged = new Map();
