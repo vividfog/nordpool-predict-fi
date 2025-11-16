@@ -43,7 +43,9 @@
                     '--np-price-calendar-empty': 'rgba(255, 255, 255, 0)',
                     '--np-price-calendar-null': 'rgba(0, 0, 0, 0)',
                     '--np-theme-chip-shadow': 'none',
-                    '--np-topbar-bg': 'transparent'
+                    '--np-topbar-bg': 'transparent',
+                    '--np-github-logo-opacity': '0.5',
+                    '--np-github-logo-opacity-hover': '0.8'
                 },
                 metaColor: '#f0f2f5'
             },
@@ -86,7 +88,9 @@
                     '--np-price-calendar-empty': 'black',
                     '--np-price-calendar-null': 'black',
                     '--np-theme-chip-shadow': 'none',
-                    '--np-topbar-bg': 'transparent'
+                    '--np-topbar-bg': 'transparent',
+                    '--np-github-logo-opacity': '0.5',
+                    '--np-github-logo-opacity-hover': '0.8'
                 },
                 metaColor: 'black'
             }

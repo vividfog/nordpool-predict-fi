@@ -12,6 +12,37 @@ var baseUrl = window.location.origin;
 
 const themeService = window.__NP_THEME__ || null;
 
+function updateGithubLogo(effectiveMode) {
+    const logo = document.getElementById('github-logo');
+    if (!logo) {
+        return;
+    }
+    const lightSrc = logo.dataset.lightSrc || logo.getAttribute('src');
+    const darkSrc = logo.dataset.darkSrc || lightSrc;
+    const targetSrc = effectiveMode === 'dark' ? darkSrc : lightSrc;
+    if (!targetSrc || logo.dataset.activeSrc === targetSrc) {
+        return;
+    }
+    logo.setAttribute('src', targetSrc);
+    logo.dataset.activeSrc = targetSrc;
+}
+
+function initGithubLogoWatcher() {
+    const initialMode = themeService && typeof themeService.getEffectiveMode === 'function'
+        ? themeService.getEffectiveMode()
+        : null;
+    updateGithubLogo(initialMode);
+    if (themeService && typeof themeService.subscribe === 'function') {
+        themeService.subscribe(({ effectiveMode }) => updateGithubLogo(effectiveMode));
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGithubLogoWatcher, { once: true });
+} else {
+    initGithubLogoWatcher();
+}
+
 function getChartPalette(scope) {
     if (!themeService || typeof themeService.getPalette !== 'function') {
         return null;

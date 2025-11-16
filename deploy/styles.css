@@ -37,6 +37,8 @@
     --np-price-calendar-null: rgba(0, 0, 0, 0);
     --np-theme-chip-shadow: none;
     --np-topbar-bg: transparent;
+    --np-github-logo-opacity: 0.5;
+    --np-github-logo-opacity-hover: 0.8;
 }
 
 body {
@@ -489,7 +491,7 @@ body {
 .theme-switch {
     display: inline-flex;
     align-items: center;
-    font-size: 0.85em;
+    font-size: 1em;
     color: var(--np-topbar-text);
     gap: 12px;
     white-space: nowrap;
@@ -528,7 +530,6 @@ body {
     color: var(--np-topbar-text);
     gap: 24px;
     background-color: var(--np-topbar-bg);
-    // border-bottom: 1px solid var(--np-topbar-border);
 }
 
 .topbar-links,
@@ -594,12 +595,12 @@ body {
 
 #github-logo {
     height: 32px;
-    opacity: 0.5;
+    opacity: var(--np-github-logo-opacity);
     transition: opacity 0.15s ease-in-out;
 }
 
 #github-logo:hover {
-    opacity: 0.8;
+    opacity: var(--np-github-logo-opacity-hover);
 }
 
 h1,
