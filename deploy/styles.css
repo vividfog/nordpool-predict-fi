@@ -689,8 +689,8 @@ th, td {
 }
 
 @media (max-width: 768px) {
-    #body {
-        margin: 4px;
+    body {
+        margin: 12px;
     }
 
     table {
@@ -698,9 +698,9 @@ th, td {
     }
 
     #predictionText {
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 20px;
     }
 
     #predictionChart {
