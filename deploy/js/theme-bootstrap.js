@@ -1,5 +1,5 @@
 (function() {
-    const STORAGE_KEY = 'np_theme_mode';
+    const DEFAULT_MODE = 'auto';
     const MEDIA_QUERY = '(prefers-color-scheme: dark)';
 
     const palettes = {
@@ -239,26 +239,6 @@
         }
     };
 
-    function readStoredMode() {
-        try {
-            const value = window.localStorage.getItem(STORAGE_KEY);
-            if (value === 'light' || value === 'dark' || value === 'auto') {
-                return value;
-            }
-        } catch (error) {
-            return 'auto';
-        }
-        return 'auto';
-    }
-
-    function writeStoredMode(value) {
-        try {
-            window.localStorage.setItem(STORAGE_KEY, value);
-        } catch (error) {
-            /* no-op */
-        }
-    }
-
     function detectSystemDark() {
         if (typeof window.matchMedia !== 'function') {
             return false;
@@ -289,7 +269,7 @@
     }
 
     const listeners = new Set();
-    let preferredMode = readStoredMode();
+    let preferredMode = DEFAULT_MODE;
     let effectiveMode = resolveEffectiveMode(preferredMode);
 
     applyPageVariables(effectiveMode);
@@ -336,9 +316,8 @@
             return effectiveMode;
         },
         setMode(nextMode) {
-            const normalized = nextMode === 'light' || nextMode === 'dark' ? nextMode : 'auto';
+            const normalized = nextMode === 'light' || nextMode === 'dark' ? nextMode : DEFAULT_MODE;
             preferredMode = normalized;
-            writeStoredMode(normalized);
             effectiveMode = resolveEffectiveMode(preferredMode);
             applyPageVariables(effectiveMode);
             notify();

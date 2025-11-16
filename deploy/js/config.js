@@ -399,10 +399,13 @@ function initializeThemeSwitch() {
         return;
     }
 
-    function syncButtons(mode) {
+    function syncButtons(mode, effectiveMode = 'light') {
+        const activeMode = mode === 'auto'
+            ? (effectiveMode === 'dark' ? 'dark' : 'light')
+            : mode;
         buttons.forEach(button => {
             const option = button.getAttribute('data-theme-option');
-            const isActive = option === mode;
+            const isActive = option === activeMode;
             button.setAttribute('aria-pressed', String(isActive));
             button.classList.toggle('is-active', isActive);
         });
@@ -411,7 +414,10 @@ function initializeThemeSwitch() {
     const currentMode = typeof themeService.getMode === 'function'
         ? themeService.getMode()
         : 'auto';
-    syncButtons(currentMode);
+    const currentEffective = typeof themeService.getEffectiveMode === 'function'
+        ? themeService.getEffectiveMode()
+        : 'light';
+    syncButtons(currentMode, currentEffective);
 
     function activateOption(option) {
         if (!option || typeof themeService.setMode !== 'function') {
@@ -438,7 +444,7 @@ function initializeThemeSwitch() {
 
     if (typeof themeService.subscribe === 'function') {
         themeService.subscribe(payload => {
-            syncButtons(payload.mode);
+            syncButtons(payload.mode, payload.effectiveMode);
         });
     }
 }
