@@ -109,6 +109,7 @@
                 spikeMarker: 'crimson',
                 outOfRange: '#999999',
                 forecastBackgroundBar: 'deepskyblue',
+                forecastBackgroundBarOpacity: 0.10,
                 forecastVisualPieces: [
                     { lte: 5, color: 'skyblue', opacity: 1.0 },
                     { gt: 5, lte: 10, color: 'deepskyblue', opacity: 1.0 },
@@ -130,11 +131,12 @@
                 markLineLine: 'gainsboro',
                 chartBackground: 'transparent',
                 sahkotinBar: 'lime',
-                sahkotinBarOpacity: 0.10,
+                sahkotinBarOpacity: 0.16,
                 sahkotinLine: 'lime',
                 spikeMarker: 'red',
                 outOfRange: '#999999',
                 forecastBackgroundBar: 'deepskyblue',
+                forecastBackgroundBarOpacity: 0.16,
                 forecastVisualPieces: [
                     { lte: 5, color: 'rgba(135, 206, 235, 1.0)', opacity: 1.0 },
                     { gt: 5, lte: 10, color: 'rgba(108, 197, 255, 1.0)', opacity: 1.0 },
@@ -210,7 +212,7 @@
                 markLineLine: 'gainsboro',
                 barColor: 'lightgray',
                 barOpacity: 0.18,
-                areaFill: 'rgba(30, 144, 255, 0.1)',
+                areaFill: 'rgba(30, 144, 255, 0.18)',
                 outOfRange: 'darkgray',
                 windLegend: 'dodgerblue',
                 windVisualPieces: [

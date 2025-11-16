@@ -11,6 +11,7 @@ let hasPredictionChartOptions = false;
 
 const DEFAULT_FORECAST_LEGEND_COLOR = 'skyblue';
 const DEFAULT_FORECAST_BACKGROUND_COLOR = 'deepskyblue';
+const DEFAULT_FORECAST_BACKGROUND_OPACITY = 0.10;
 const DEFAULT_FORECAST_VISUAL_PIECES = [
     { lte: 5, color: 'skyblue', opacity: 1.0 },
     { gt: 5, lte: 10, color: 'deepskyblue', opacity: 1.0 },
@@ -47,7 +48,9 @@ function refreshPredictionTheme() {
     if (forecastBgColor) {
         forecastBgStyle.color = forecastBgColor;
     }
-    forecastBgStyle.opacity = 0.10;
+    forecastBgStyle.opacity = typeof palette.forecastBackgroundBarOpacity === 'number'
+        ? palette.forecastBackgroundBarOpacity
+        : DEFAULT_FORECAST_BACKGROUND_OPACITY;
     const scaledVisualPieces = Array.isArray(palette.forecastVisualPieces) && palette.forecastVisualPieces.length
         ? palette.forecastVisualPieces
         : DEFAULT_FORECAST_VISUAL_PIECES;
@@ -294,6 +297,9 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
         ? predictionPalette.forecastVisualPieces
         : DEFAULT_FORECAST_VISUAL_PIECES;
     const forecastBackgroundColor = predictionPalette?.forecastBackgroundBar || DEFAULT_FORECAST_BACKGROUND_COLOR;
+    const forecastBackgroundOpacity = typeof predictionPalette?.forecastBackgroundBarOpacity === 'number'
+        ? predictionPalette.forecastBackgroundBarOpacity
+        : DEFAULT_FORECAST_BACKGROUND_OPACITY;
 
     const chartOptions = (typeof window.createBaseChartOptions === 'function'
         ? window.createBaseChartOptions
@@ -363,7 +369,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                 barWidth: '40%',
                 itemStyle: {
                     color: forecastBackgroundColor,
-                    opacity: 0.10
+                    opacity: forecastBackgroundOpacity
                 },
                 silent: true,
                 z: 1,
