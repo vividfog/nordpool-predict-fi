@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { flushPromises, loadScript } from './utils';
+import { flushPromises, loadScript, setPredictionStorePayload } from './utils';
 
 describe('deploy/js/cheapest.js', () => {
   const buildPayload = vi.fn();
@@ -65,13 +65,8 @@ describe('deploy/js/cheapest.js', () => {
       ],
       meta: {}
     };
-    const store = window.predictionStore;
-    if (store && typeof store.setLatest === 'function') {
-      store.setLatest(null, { silent: true });
-      store.setLatest(initialPrediction, { silent: true });
-    } else {
-      window.latestPredictionData = initialPrediction;
-    }
+    setPredictionStorePayload(null, { silent: true });
+    setPredictionStorePayload(initialPrediction, { silent: true });
 
     vi.useFakeTimers();
     loadScript('deploy/js/cheapest.js', { triggerDOMContentLoaded: true });
@@ -104,12 +99,7 @@ describe('deploy/js/cheapest.js', () => {
         endHour: 20
       }
     };
-    const store = window.predictionStore;
-    if (store && typeof store.setLatest === 'function') {
-      store.setLatest(updatePayload);
-    } else {
-      window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: updatePayload }));
-    }
+    setPredictionStorePayload(updatePayload);
     expect(buildPayload).toHaveBeenCalled();
     const lastCall = buildPayload.mock.calls.at(-1);
     expect(lastCall[2]).toMatchObject({
@@ -141,12 +131,7 @@ describe('deploy/js/cheapest.js', () => {
       mergedSeries: [[Date.UTC(2025, 0, 2, 12), 5]],
       meta: {}
     };
-    const store = window.predictionStore;
-    if (store && typeof store.setLatest === 'function') {
-      store.setLatest(refreshedPayload);
-    } else {
-      window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: refreshedPayload }));
-    }
+    setPredictionStorePayload(refreshedPayload);
 
     expect(buildPayload).toHaveBeenCalled();
     const lastCall = buildPayload.mock.calls.at(-1);

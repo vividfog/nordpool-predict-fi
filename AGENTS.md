@@ -55,6 +55,15 @@
 ## Frontend Map
 - Static shell lives in `deploy/index.html` + `index_en.html`; they load CDN `marked`, `echarts`, `plotly` plus modular scripts under `deploy/js/`.
 - Shared runtime config is centralised in `deploy/js/config.js`: exports `DATA_ENDPOINTS`, Sähkötin URL builders, localization strings, chart factory helpers, and price band palettes consumed across modules.
-- Chart controllers stay isolated by concern: `prediction.js` for live/forecast prices, `history.js` for snapshot comparisons, `windpower.js` for production vs price, `calendar.js` for hourly heatmap, `cheapest.js` for window selection, `features-umap.js` for Plotly embeddings; each dispatches events or sets `window.latestPredictionData` for downstream consumers.
+- Chart controllers stay isolated by concern: `prediction.js` for live/forecast prices, `history.js` for snapshot comparisons, `windpower.js` for production vs price, `calendar.js` for hourly heatmap, `cheapest.js` for window selection, `features-umap.js` for Plotly embeddings; each now reads from `window.predictionStore` (initial payload + `subscribe`) so downstream consumers stay in sync without touching globals directly.
 - Layout glue sits in `deploy/js/layout.js`, which now guards chart existence before resizing and preserves a `window.onresize` shim for legacy callers/tests.
 - Static assets under `deploy/` mirror deployment outputs: JSON feeds (prediction, windpower, narration) are written by the Python pipeline; Vitest suites in `tests/js/` mock fetch/DOM to pin module behavior (`tests/js/setup.js`, `tests/js/utils.js` seed globals).
+
+## Script Loading Order
+1. `deploy/js/fetch-utils.js` – cache-busting helpers and default `RequestInit` cloning used everywhere.
+2. `deploy/js/chart-formatters.js` – tooltip/x-axis formatters consumed by `config.js` and chart modules.
+3. `deploy/js/config.js` – defines global config, localized strings, palette helpers (`resolveChartPalette` / `subscribeThemePalette`), storage adapters, and DOM bootstrap (GitHub logo + theme switcher).
+4. `deploy/js/theme-service.js` – bridges `window.__NP_THEME__` into `window.themeService`, caches palettes, emits `np-theme-service-ready`, and powers the palette helpers above.
+5. `deploy/js/data.js` – wraps `fetch` for JSON/text requests with cache-busting alignment and is consumed by prediction, windpower, history, narration, etc.
+6. `deploy/js/prediction-store.js` – exposes `window.predictionStore` (get/set/subscribe) so feature scripts can share the latest payload without manual events.
+7. Feature scripts (`narration.js`, `prediction.js`, `calendar.js`, `cheapest.js`, `windpower.js`, `history.js`, `features-umap.js`, `layout.js`, etc.) assume all of the above are loaded and call into their helpers directly; keep this order intact (and mirror it in tests) until the stack is converted to ES modules/bundler.

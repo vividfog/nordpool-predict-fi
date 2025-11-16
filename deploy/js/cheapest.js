@@ -17,12 +17,17 @@ const tableBody = card.querySelector('tbody');
     const startHourInput = document.getElementById('cheapestStartHourInput');
     const endHourInput = document.getElementById('cheapestEndHourInput');
 
+    const resolveCheapestPalette = typeof window.resolveChartPalette === 'function'
+        ? window.resolveChartPalette
+        : () => null;
+    const subscribeCheapestPalette = typeof window.subscribeThemePalette === 'function'
+        ? window.subscribeThemePalette
+        : () => () => {};
+    const CHEAPEST_THEME_UNSUB_KEY = '__np_cheapest_theme_unsub__';
     const isEnglish = window.location.pathname.includes('index_en');
     const HELSINKI_TIMEZONE = 'Europe/Helsinki';
     const REFRESH_INTERVAL_MS = 60000;
-    let cheapestPalette = typeof getChartPalette === 'function'
-        ? getChartPalette('cheapest')
-        : null;
+    let cheapestPalette = resolveCheapestPalette('cheapest');
     const DOT_COLORS = {
         3: '#87CEEB',
         6: '#00BFFF',
@@ -80,22 +85,20 @@ const hasOwn = Object.hasOwn ? Object.hasOwn.bind(Object) : (obj, prop) => Objec
     persistCheapestSettings();
 
     const predictionStore = window.predictionStore || null;
-    const initialPrediction = predictionStore && typeof predictionStore.getLatest === 'function'
+    if (!predictionStore || typeof predictionStore.subscribe !== 'function') {
+        console.warn('predictionStore unavailable; cheapest module idle');
+        setMessageRow(getLocalizedText('cheapest_table_loading'));
+        return;
+    }
+    const initialPrediction = typeof predictionStore.getLatest === 'function'
         ? predictionStore.getLatest()
-        : window.latestPredictionData;
+        : null;
     if (initialPrediction) {
         handlePredictionPayload(initialPrediction);
     } else {
         setMessageRow(getLocalizedText('cheapest_table_loading'));
     }
-
-    if (predictionStore && typeof predictionStore.subscribe === 'function') {
-        predictionStore.subscribe(handlePredictionPayload);
-    } else {
-        window.addEventListener('prediction-data-ready', function(event) {
-            handlePredictionPayload(event.detail);
-        });
-    }
+    predictionStore.subscribe(handlePredictionPayload);
 
     function ensureNumber(value, fallback) {
         const numeric = Number(value);
@@ -382,11 +385,6 @@ const hasOwn = Object.hasOwn ? Object.hasOwn.bind(Object) : (obj, prop) => Objec
 
         if (predictionStore && typeof predictionStore.setLatest === 'function') {
             predictionStore.setLatest(predictionData, { silent: true });
-        } else if (window.latestPredictionData) {
-            window.latestPredictionData.windows = payload.windows;
-            window.latestPredictionData.meta = predictionData.meta;
-        } else {
-            window.latestPredictionData = predictionData;
         }
     }
 
@@ -454,12 +452,17 @@ const hasOwn = Object.hasOwn ? Object.hasOwn.bind(Object) : (obj, prop) => Objec
         return paletteDots[key] || '#7B68EE';
     }
 
-    if (typeof watchThemePalette === 'function') {
-        watchThemePalette('cheapest', palette => {
-            cheapestPalette = palette || cheapestPalette;
-            renderRows({ pulse: false });
-        });
+    if (window[CHEAPEST_THEME_UNSUB_KEY]) {
+        try {
+            window[CHEAPEST_THEME_UNSUB_KEY]();
+        } catch (error) {
+            console.warn('Failed to cleanup cheapest palette subscription', error);
+        }
     }
+    window[CHEAPEST_THEME_UNSUB_KEY] = subscribeCheapestPalette('cheapest', palette => {
+        cheapestPalette = palette || cheapestPalette;
+        renderRows({ pulse: false });
+    });
 
     function triggerTablePulse() {
         if (!card) {

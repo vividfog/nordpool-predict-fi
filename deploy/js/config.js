@@ -35,6 +35,47 @@ function onThemeServiceReady(callback) {
     window.addEventListener(THEME_SERVICE_READY_EVENT, handler);
 }
 
+function resolveChartPalette(scope) {
+    const service = getThemeService();
+    if (service && typeof service.getPalette === 'function') {
+        return service.getPalette(scope);
+    }
+    return null;
+}
+
+function subscribeThemePalette(scope, handler) {
+    if (typeof handler !== 'function') {
+        return () => {};
+    }
+    const service = getThemeService();
+    if (!service) {
+        return () => {};
+    }
+    if (typeof service.watchThemePalette === 'function') {
+        return service.watchThemePalette(scope, handler);
+    }
+    if (typeof service.subscribe === 'function') {
+        const invoke = () => handler(resolveChartPalette(scope));
+        let initialEmitted = false;
+        const unsubscribe = service.subscribe(() => {
+            initialEmitted = true;
+            invoke();
+        });
+        if (!initialEmitted) {
+            invoke();
+        }
+        return () => {
+            if (typeof unsubscribe === 'function') {
+                unsubscribe();
+            }
+        };
+    }
+    return () => {};
+}
+
+window.resolveChartPalette = resolveChartPalette;
+window.subscribeThemePalette = subscribeThemePalette;
+
 function updateGithubLogo(effectiveMode) {
     const logo = document.getElementById('github-logo');
     if (!logo) {

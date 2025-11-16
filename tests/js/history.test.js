@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, it, vi } from 'vitest';
-import { createEchartsMock, flushPromises, loadScript, setPathname, buildPriceCsv } from './utils';
+import { createEchartsMock, flushPromises, loadScript, setPathname, buildPriceCsv, setPredictionStorePayload } from './utils';
 
 const HOUR = 60 * 60 * 1000;
 
@@ -113,7 +113,7 @@ describe('deploy/js/history.js', () => {
     const setupSpy = vi.spyOn(window, 'setupHistoryChart').mockReturnValue(1);
     const sahkoSpy = vi.spyOn(window, 'setupSahkotinData').mockResolvedValue();
 
-    window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: { generatedAt: 0 } }));
+    setPredictionStorePayload({ generatedAt: 0 });
     await flushPromises(4);
     expect(fetchHistoricalSpy).not.toHaveBeenCalled();
 
@@ -121,7 +121,7 @@ describe('deploy/js/history.js', () => {
     setupSpy.mockClear();
     sahkoSpy.mockClear();
 
-    window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: { generatedAt: Number.MAX_SAFE_INTEGER } }));
+    setPredictionStorePayload({ generatedAt: Number.MAX_SAFE_INTEGER });
     await flushPromises(4);
     expect(fetchHistoricalSpy).toHaveBeenCalledTimes(1);
     expect(setupSpy).toHaveBeenCalledTimes(1);

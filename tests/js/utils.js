@@ -65,3 +65,11 @@ export function buildPriceCsv(rows) {
   });
   return header.concat(body).join('\n');
 }
+
+export function setPredictionStorePayload(payload, options = {}) {
+  const store = window.predictionStore;
+  if (!store || typeof store.setLatest !== 'function') {
+    throw new Error('predictionStore is not available in the test environment');
+  }
+  store.setLatest(payload, options);
+}

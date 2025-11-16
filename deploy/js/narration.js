@@ -64,13 +64,18 @@ function loadNarration(token) {
 
 loadNarration();
 
-window.addEventListener('prediction-data-ready', event => {
-    if (narrationPending) {
-        return;
-    }
-    const generatedAt = Number(event?.detail?.generatedAt);
-    if (!Number.isFinite(generatedAt) || generatedAt <= lastNarrationToken) {
-        return;
-    }
-    loadNarration(generatedAt);
-});
+const narrationPredictionStore = window.predictionStore || null;
+if (narrationPredictionStore && typeof narrationPredictionStore.subscribe === 'function') {
+    narrationPredictionStore.subscribe(payload => {
+        if (narrationPending) {
+            return;
+        }
+        const generatedAt = Number(payload?.generatedAt);
+        if (!Number.isFinite(generatedAt) || generatedAt <= lastNarrationToken) {
+            return;
+        }
+        loadNarration(generatedAt);
+    });
+} else {
+    console.warn('predictionStore unavailable; narration refresh disabled');
+}

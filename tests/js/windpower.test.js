@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { createEchartsMock, flushPromises, loadScript, setPathname, buildPriceCsv } from './utils';
+import { createEchartsMock, flushPromises, loadScript, setPathname, buildPriceCsv, setPredictionStorePayload } from './utils';
 
 const HOUR = 60 * 60 * 1000;
 
@@ -126,7 +126,7 @@ describe('deploy/js/windpower.js', () => {
     await flushPromises(8);
 
     globalThis.fetch.mockClear();
-    window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: { generatedAt: 0 } }));
+    setPredictionStorePayload({ generatedAt: 0 });
     await flushPromises(2);
     expect(globalThis.fetch).toHaveBeenCalledTimes(0);
 
@@ -143,12 +143,12 @@ describe('deploy/js/windpower.js', () => {
     });
 
     const nextToken = base + 2 * HOUR + 1;
-    window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: { generatedAt: nextToken } }));
+    setPredictionStorePayload({ generatedAt: nextToken });
     await flushPromises(8);
     expect(globalThis.fetch.mock.calls.length).toBeGreaterThanOrEqual(3);
 
     globalThis.fetch.mockClear();
-    window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: { generatedAt: nextToken } }));
+    setPredictionStorePayload({ generatedAt: nextToken });
     await flushPromises(2);
     expect(globalThis.fetch).toHaveBeenCalledTimes(0);
 

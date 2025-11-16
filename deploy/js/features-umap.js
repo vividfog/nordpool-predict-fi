@@ -3,8 +3,14 @@
 // ==========================================================================
 
 (function () {
-    const EMBEDDING_EVENT = 'prediction-data-ready';
+    const resolveEmbeddingPalette = typeof window.resolveChartPalette === 'function'
+        ? window.resolveChartPalette
+        : () => null;
+    const subscribeEmbeddingPalette = typeof window.subscribeThemePalette === 'function'
+        ? window.subscribeThemePalette
+        : () => () => {};
     const EVENT_HANDLER_KEY = '__featureEmbeddingHandler';
+    const EMBEDDING_THEME_UNSUB_KEY = '__np_embedding_theme_unsub__';
     //#region setup
     const AUTOROTATE_SPEED = 0.0015; // Radians per frame
     const AUTOROTATE_IDLE_DELAY_MS = 5000;
@@ -26,9 +32,7 @@
         lastCamera: null,
     };
     let featureEmbeddingContainer = null;
-    let embeddingPalette = typeof getChartPalette === 'function'
-        ? getChartPalette('featuresUmap')
-        : null;
+    let embeddingPalette = resolveEmbeddingPalette('featuresUmap');
 
     //#region utilities
     function isAutorotateDisabled() {
@@ -436,12 +440,17 @@
         Plotly.relayout(featureEmbeddingContainer, update).catch(() => {});
     }
 
-    if (typeof watchThemePalette === 'function') {
-        watchThemePalette('featuresUmap', palette => {
-            embeddingPalette = palette || embeddingPalette;
-            applyEmbeddingTheme();
-        });
+    if (window[EMBEDDING_THEME_UNSUB_KEY]) {
+        try {
+            window[EMBEDDING_THEME_UNSUB_KEY]();
+        } catch (error) {
+            console.warn('Failed to cleanup embedding palette subscription', error);
+        }
     }
+    window[EMBEDDING_THEME_UNSUB_KEY] = subscribeEmbeddingPalette('featuresUmap', palette => {
+        embeddingPalette = palette || embeddingPalette;
+        applyEmbeddingTheme();
+    });
 
     function buildFeatureEmbeddingUrl(token) {
         const base = `${baseUrl}/feature_embedding.json`;
@@ -600,21 +609,29 @@
         if (!container) return;
         loadFeatureEmbedding(container);
 
-        const handler = event => {
+        const predictionStore = window.predictionStore || null;
+        if (!predictionStore || typeof predictionStore.subscribe !== 'function') {
+            console.warn('predictionStore unavailable; feature embedding refresh disabled');
+            return;
+        }
+        const handler = payload => {
             if (featureEmbeddingPending) {
                 return;
             }
-            const generatedAt = Number(event?.detail?.generatedAt);
+            const generatedAt = Number(payload?.generatedAt);
             if (!Number.isFinite(generatedAt) || generatedAt <= lastEmbeddingToken) {
                 return;
             }
             loadFeatureEmbedding(container, generatedAt);
         };
         if (window[EVENT_HANDLER_KEY]) {
-            window.removeEventListener(EMBEDDING_EVENT, window[EVENT_HANDLER_KEY]);
+            try {
+                window[EVENT_HANDLER_KEY]();
+            } catch (error) {
+                console.warn('Failed to remove previous feature embedding subscription', error);
+            }
         }
-        window.addEventListener(EMBEDDING_EVENT, handler);
-        window[EVENT_HANDLER_KEY] = handler;
+        window[EVENT_HANDLER_KEY] = predictionStore.subscribe(handler);
     }
 
     if (document.readyState === 'loading') {

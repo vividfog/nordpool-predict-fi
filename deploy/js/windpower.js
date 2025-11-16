@@ -4,9 +4,14 @@
 // ==========================================================================
 
 var windPowerChart = echarts.init(document.getElementById('windPowerChart'));
-let windpowerPalette = typeof getChartPalette === 'function'
-    ? getChartPalette('windpower')
-    : null;
+const resolveWindPalette = typeof window.resolveChartPalette === 'function'
+    ? window.resolveChartPalette
+    : () => null;
+const subscribeWindPalette = typeof window.subscribeThemePalette === 'function'
+    ? window.subscribeThemePalette
+    : () => () => {};
+const WIND_THEME_UNSUB_KEY = '__np_windpower_theme_unsub__';
+let windpowerPalette = resolveWindPalette('windpower');
 let hasWindpowerOptions = false;
 const windpowerEndpoints = window.DATA_ENDPOINTS || {};
 const windPowerUrl = windpowerEndpoints.windpower || `${baseUrl}/windpower.json`;
@@ -105,12 +110,17 @@ function refreshWindpowerTheme() {
     }, false, true);
 }
 
-if (typeof watchThemePalette === 'function') {
-    watchThemePalette('windpower', palette => {
-        windpowerPalette = palette || windpowerPalette;
-        refreshWindpowerTheme();
-    });
+if (window[WIND_THEME_UNSUB_KEY]) {
+    try {
+        window[WIND_THEME_UNSUB_KEY]();
+    } catch (error) {
+        console.warn('Failed to cleanup windpower palette subscription', error);
+    }
 }
+window[WIND_THEME_UNSUB_KEY] = subscribeWindPalette('windpower', palette => {
+    windpowerPalette = palette || windpowerPalette;
+    refreshWindpowerTheme();
+});
 
 // Use the same cache-busting helper as the rest of the app to avoid diverging logic.
 const windpowerCacheBustUrl = typeof window.applyCacheToken === 'function'
@@ -483,17 +493,21 @@ function loadWindPowerData(token) {
 
 loadWindPowerData();
 
-// Prime the chart once and rely on events for subsequent refreshes.
-window.addEventListener('prediction-data-ready', event => {
-    if (windPowerPending) {
-        return;
-    }
-    const generatedAt = Number(event?.detail?.generatedAt);
-    if (!Number.isFinite(generatedAt) || generatedAt <= lastWindPowerToken) {
-        return;
-    }
-    loadWindPowerData(generatedAt);
-});
+const windpowerPredictionStore = window.predictionStore || null;
+if (windpowerPredictionStore && typeof windpowerPredictionStore.subscribe === 'function') {
+    windpowerPredictionStore.subscribe(payload => {
+        if (windPowerPending) {
+            return;
+        }
+        const generatedAt = Number(payload?.generatedAt);
+        if (!Number.isFinite(generatedAt) || generatedAt <= lastWindPowerToken) {
+            return;
+        }
+        loadWindPowerData(generatedAt);
+    });
+} else {
+    console.warn('predictionStore unavailable; windpower refresh events disabled');
+}
 
 // Setup interval for marker updates
 setInterval(() => updateMarkerPosition(windPowerChart), 10000);

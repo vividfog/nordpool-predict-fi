@@ -4,14 +4,19 @@
 // ==========================================================================
 
 (function() {
+    const resolveCalendarPalette = typeof window.resolveChartPalette === 'function'
+        ? window.resolveChartPalette
+        : () => null;
+    const subscribeCalendarPalette = typeof window.subscribeThemePalette === 'function'
+        ? window.subscribeThemePalette
+        : () => () => {};
+    const CALENDAR_THEME_UNSUB_KEY = '__np_calendar_theme_unsub__';
     const HOUR_MS = 60 * 60 * 1000;
     const DAY_MS = 24 * HOUR_MS;
     const MAX_DAY_SLOTS = 27;
     const HELSINKI_TZ = 'Europe/Helsinki';
     let calendarChartInstance = null;
-    let calendarPalette = typeof getChartPalette === 'function'
-        ? getChartPalette('calendar')
-        : null;
+    let calendarPalette = resolveCalendarPalette('calendar');
 
     const dtfCache = new Map();
 
@@ -621,12 +626,17 @@
         }, false, true);
     }
 
-    if (typeof watchThemePalette === 'function') {
-        watchThemePalette('calendar', palette => {
-            calendarPalette = palette || calendarPalette;
-            applyCalendarThemeToChart();
-        });
+    if (window[CALENDAR_THEME_UNSUB_KEY]) {
+        try {
+            window[CALENDAR_THEME_UNSUB_KEY]();
+        } catch (error) {
+            console.warn('Failed to cleanup calendar palette subscription', error);
+        }
     }
+    window[CALENDAR_THEME_UNSUB_KEY] = subscribeCalendarPalette('calendar', palette => {
+        calendarPalette = palette || calendarPalette;
+        applyCalendarThemeToChart();
+    });
 
     function hasValues(matrix) {
         if (!matrix?.data) {
@@ -696,20 +706,17 @@
         }
 
         const predictionStore = window.predictionStore || null;
-        const initialPayload = predictionStore && typeof predictionStore.getLatest === 'function'
+        if (!predictionStore || typeof predictionStore.subscribe !== 'function') {
+            console.warn('predictionStore unavailable; calendar module idle');
+            return;
+        }
+        const initialPayload = typeof predictionStore.getLatest === 'function'
             ? predictionStore.getLatest()
-            : window.latestPredictionData;
+            : null;
         if (initialPayload) {
             handlePayload(initialPayload);
         }
-
-        if (predictionStore && typeof predictionStore.subscribe === 'function') {
-            predictionStore.subscribe(handlePayload);
-        } else {
-            window.addEventListener('prediction-data-ready', function(event) {
-                handlePayload(event.detail);
-            });
-        }
+        predictionStore.subscribe(handlePayload);
 
         window.addEventListener('resize', function() {
             chart.resize();

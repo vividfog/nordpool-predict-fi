@@ -4,9 +4,14 @@
 // ==========================================================================
 
 var historyChart = echarts.init(document.getElementById('historyChart'));
-let historyPalette = typeof getChartPalette === 'function'
-    ? getChartPalette('history')
-    : null;
+const resolveHistoryPalette = typeof window.resolveChartPalette === 'function'
+    ? window.resolveChartPalette
+    : () => null;
+const subscribeHistoryPalette = typeof window.subscribeThemePalette === 'function'
+    ? window.subscribeThemePalette
+    : () => () => {};
+const HISTORY_THEME_UNSUB_KEY = '__np_history_theme_unsub__';
+let historyPalette = resolveHistoryPalette('history');
 let hasHistoryChartOptions = false;
 
 function refreshHistoryTheme() {
@@ -48,12 +53,17 @@ function refreshHistoryTheme() {
     }, false, true);
 }
 
-if (typeof watchThemePalette === 'function') {
-    watchThemePalette('history', palette => {
-        historyPalette = palette || historyPalette;
-        refreshHistoryTheme();
-    });
+if (window[HISTORY_THEME_UNSUB_KEY]) {
+    try {
+        window[HISTORY_THEME_UNSUB_KEY]();
+    } catch (error) {
+        console.warn('Failed to cleanup history palette subscription', error);
+    }
 }
+window[HISTORY_THEME_UNSUB_KEY] = subscribeHistoryPalette('history', palette => {
+    historyPalette = palette || historyPalette;
+    refreshHistoryTheme();
+});
 
 // Construct URLs for fetching historical data
 const dateStrings = getPastDateStrings(35); // 30 days plus 5 days of prediction data
@@ -496,16 +506,21 @@ function refreshHistoryData(token) {
 
 refreshHistoryData();
 
-window.addEventListener('prediction-data-ready', event => {
-    if (historyRefreshPending) {
-        return;
-    }
-    const generatedAt = Number(event?.detail?.generatedAt);
-    if (!Number.isFinite(generatedAt) || generatedAt <= lastHistoryToken) {
-        return;
-    }
-    refreshHistoryData(generatedAt);
-});
+const historyPredictionStore = window.predictionStore || null;
+if (historyPredictionStore && typeof historyPredictionStore.subscribe === 'function') {
+    historyPredictionStore.subscribe(payload => {
+        if (historyRefreshPending) {
+            return;
+        }
+        const generatedAt = Number(payload?.generatedAt);
+        if (!Number.isFinite(generatedAt) || generatedAt <= lastHistoryToken) {
+            return;
+        }
+        refreshHistoryData(generatedAt);
+    });
+} else {
+    console.warn('predictionStore unavailable; history refresh events disabled');
+}
 
 // Setup interval for marker updates
 setInterval(() => updateMarkerPosition(historyChart), 10000);

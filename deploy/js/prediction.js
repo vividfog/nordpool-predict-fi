@@ -4,9 +4,14 @@
 // ==========================================================================
 
 var nfpChart = echarts.init(document.getElementById('predictionChart'));
-let predictionPalette = typeof getChartPalette === 'function'
-    ? getChartPalette('prediction')
-    : null;
+const resolvePalette = typeof window.resolveChartPalette === 'function'
+    ? window.resolveChartPalette
+    : () => null;
+const subscribePalette = typeof window.subscribeThemePalette === 'function'
+    ? window.subscribeThemePalette
+    : () => () => {};
+const PREDICTION_THEME_UNSUB_KEY = '__np_prediction_theme_unsub__';
+let predictionPalette = resolvePalette('prediction');
 let hasPredictionChartOptions = false;
 
 const DEFAULT_FORECAST_LEGEND_COLOR = 'skyblue';
@@ -84,12 +89,17 @@ function refreshPredictionTheme() {
     }, false, true);
 }
 
-if (typeof watchThemePalette === 'function') {
-    watchThemePalette('prediction', palette => {
-        predictionPalette = palette || predictionPalette;
-        refreshPredictionTheme();
-    });
+if (window[PREDICTION_THEME_UNSUB_KEY]) {
+    try {
+        window[PREDICTION_THEME_UNSUB_KEY]();
+    } catch (error) {
+        console.warn('Failed to cleanup previous prediction palette subscription', error);
+    }
 }
+window[PREDICTION_THEME_UNSUB_KEY] = subscribePalette('prediction', palette => {
+    predictionPalette = palette || predictionPalette;
+    refreshPredictionTheme();
+});
 
 const HOUR_MS = 60 * 60 * 1000;
 const CHEAPEST_WINDOW_DURATIONS = [3, 6, 12];

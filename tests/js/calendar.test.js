@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { createEchartsMock, loadScript, setPathname } from './utils';
+import { createEchartsMock, loadScript, setPathname, setPredictionStorePayload } from './utils';
 
 const HOUR = 60 * 60 * 1000;
 
@@ -17,13 +17,8 @@ function setupCalendar(payload) {
     <div id="priceCalendarLegend"></div>
   `;
 
-  const store = window.predictionStore;
-  if (store && typeof store.setLatest === 'function') {
-    store.setLatest(null, { silent: true });
-    store.setLatest(payload, { silent: true });
-  } else {
-    window.latestPredictionData = payload;
-  }
+  setPredictionStorePayload(null, { silent: true });
+  setPredictionStorePayload(payload, { silent: true });
   loadScript('deploy/js/calendar.js', { triggerDOMContentLoaded: true });
 
   return chart;

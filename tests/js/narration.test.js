@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { flushPromises, loadScript } from './utils';
+import { flushPromises, loadScript, setPredictionStorePayload } from './utils';
 
 describe('deploy/js/narration.js', () => {
   it('renders narration markdown', async () => {
@@ -54,15 +54,11 @@ describe('deploy/js/narration.js', () => {
     expect(globalThis.fetch).toHaveBeenCalledTimes(1);
 
     globalThis.fetch.mockClear();
-    window.dispatchEvent(new CustomEvent('prediction-data-ready', {
-      detail: { generatedAt: now }
-    }));
+    setPredictionStorePayload({ generatedAt: now });
     await flushPromises(2);
     expect(globalThis.fetch).toHaveBeenCalledTimes(0);
 
-    window.dispatchEvent(new CustomEvent('prediction-data-ready', {
-      detail: { generatedAt: now + 1 }
-    }));
+    setPredictionStorePayload({ generatedAt: now + 1 });
     await flushPromises(6);
     expect(globalThis.fetch).toHaveBeenCalledTimes(1);
 

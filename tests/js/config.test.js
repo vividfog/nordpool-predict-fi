@@ -86,6 +86,9 @@ describe('deploy/js/config.js', () => {
       }
     };
     const subscribers = new Set();
+    globalThis.__NP_THEME_NOTIFY__ = payload => {
+      subscribers.forEach(fn => fn(payload));
+    };
     globalThis.__NP_THEME__ = {
       palettes: palette,
       getMode: () => 'light',
@@ -241,6 +244,26 @@ describe('deploy/js/config.js', () => {
     expect(window.appStorage.get(key, 'alt')).toBe('alt');
     window.appStorage.set(key, { shouldNotPersist: true });
     window.appStorage.enabled = previous;
+  });
+
+  it('provides palette helpers backed by the theme service', () => {
+    const palette = window.resolveChartPalette('prediction');
+    expect(palette).toBeDefined();
+    expect(palette.axis).toBe('#666666');
+
+    const handler = vi.fn();
+    const unsubscribe = window.subscribeThemePalette('prediction', handler);
+    expect(typeof unsubscribe).toBe('function');
+    expect(handler).toHaveBeenCalledTimes(1);
+
+    const payload = {
+      mode: 'dark',
+      effectiveMode: 'dark',
+      palettes: globalThis.__NP_THEME__?.palettes
+    };
+    globalThis.__NP_THEME_NOTIFY__(payload);
+    expect(handler).toHaveBeenCalledTimes(2);
+    unsubscribe();
   });
 
   it('creates cache-busted URLs with tokens', () => {

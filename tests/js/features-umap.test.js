@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { flushPromises, loadScript } from './utils';
+import { flushPromises, loadScript, setPredictionStorePayload } from './utils';
 
 describe('deploy/js/features-umap.js', () => {
   it('renders feature embedding when data is available', async () => {
@@ -81,7 +81,7 @@ describe('deploy/js/features-umap.js', () => {
     vi.setSystemTime(new Date('2025-01-01T00:00:00Z'));
 
     loadScript('deploy/js/features-umap.js', { triggerDOMContentLoaded: true });
-    window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: { generatedAt: 0 } }));
+    setPredictionStorePayload({ generatedAt: 0 });
     expect(globalThis.fetch).toHaveBeenCalledTimes(1);
 
     resolvePending({
@@ -98,13 +98,13 @@ describe('deploy/js/features-umap.js', () => {
     });
 
     const nextToken = Date.now() + 1;
-    window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: { generatedAt: nextToken } }));
+    setPredictionStorePayload({ generatedAt: nextToken });
     await flushPromises(8);
     expect(globalThis.fetch.mock.calls.length).toBeGreaterThan(0);
     expect(react).toHaveBeenCalledTimes(1);
 
     const callsBeforeRepeat = globalThis.fetch.mock.calls.length;
-    window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: { generatedAt: nextToken } }));
+    setPredictionStorePayload({ generatedAt: nextToken });
     await flushPromises(4);
     expect(globalThis.fetch.mock.calls.length).toBe(callsBeforeRepeat);
 
