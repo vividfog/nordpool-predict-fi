@@ -96,16 +96,20 @@ describe('deploy/js/cheapest.js', () => {
       }
     });
     buildPayload.mockClear();
-    window.dispatchEvent(new CustomEvent('prediction-data-ready', {
-      detail: {
-        mergedSeries: [[Date.UTC(2025, 0, 2, 10), 4]],
-        meta: {
-          lookaheadDays: 3,
-          startHour: 6,
-          endHour: 20
-        }
+    const updatePayload = {
+      mergedSeries: [[Date.UTC(2025, 0, 2, 10), 4]],
+      meta: {
+        lookaheadDays: 3,
+        startHour: 6,
+        endHour: 20
       }
-    }));
+    };
+    const store = window.predictionStore;
+    if (store && typeof store.setLatest === 'function') {
+      store.setLatest(updatePayload);
+    } else {
+      window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: updatePayload }));
+    }
     expect(buildPayload).toHaveBeenCalled();
     const lastCall = buildPayload.mock.calls.at(-1);
     expect(lastCall[2]).toMatchObject({
@@ -133,12 +137,16 @@ describe('deploy/js/cheapest.js', () => {
     window.appStorage.remove('np_cheapest_preferences');
 
     buildPayload.mockClear();
-    window.dispatchEvent(new CustomEvent('prediction-data-ready', {
-        detail: {
-            mergedSeries: [[Date.UTC(2025, 0, 2, 12), 5]],
-            meta: {}
-        }
-    }));
+    const refreshedPayload = {
+      mergedSeries: [[Date.UTC(2025, 0, 2, 12), 5]],
+      meta: {}
+    };
+    const store = window.predictionStore;
+    if (store && typeof store.setLatest === 'function') {
+      store.setLatest(refreshedPayload);
+    } else {
+      window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: refreshedPayload }));
+    }
 
     expect(buildPayload).toHaveBeenCalled();
     const lastCall = buildPayload.mock.calls.at(-1);

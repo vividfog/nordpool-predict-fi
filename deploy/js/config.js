@@ -10,7 +10,8 @@ if (window.location.hostname === "nordpool-predict-fi.web.app") {
 // Determine base URL based on hosting environment
 var baseUrl = window.location.origin;
 
-const themeService = window.__NP_THEME__ || null;
+const nativeThemeService = window.__NP_THEME__ || null;
+const paletteService = window.themeService || null;
 
 function updateGithubLogo(effectiveMode) {
     const logo = document.getElementById('github-logo');
@@ -28,12 +29,13 @@ function updateGithubLogo(effectiveMode) {
 }
 
 function initGithubLogoWatcher() {
-    const initialMode = themeService && typeof themeService.getEffectiveMode === 'function'
-        ? themeService.getEffectiveMode()
+    const service = paletteService || nativeThemeService;
+    const initialMode = service && typeof service.getEffectiveMode === 'function'
+        ? service.getEffectiveMode()
         : null;
     updateGithubLogo(initialMode);
-    if (themeService && typeof themeService.subscribe === 'function') {
-        themeService.subscribe(({ effectiveMode }) => updateGithubLogo(effectiveMode));
+    if (service && typeof service.subscribe === 'function') {
+        service.subscribe(({ effectiveMode }) => updateGithubLogo(effectiveMode));
     }
 }
 
@@ -42,26 +44,6 @@ if (document.readyState === 'loading') {
 } else {
     initGithubLogoWatcher();
 }
-
-function getChartPalette(scope) {
-    if (!themeService || typeof themeService.getPalette !== 'function') {
-        return null;
-    }
-    return themeService.getPalette(scope);
-}
-
-function watchThemePalette(scope, handler) {
-    if (!themeService || typeof themeService.subscribe !== 'function' || typeof handler !== 'function') {
-        return () => {};
-    }
-    const invoke = () => handler(getChartPalette(scope));
-    const unsubscribe = themeService.subscribe(() => invoke());
-    invoke();
-    return () => unsubscribe && unsubscribe();
-}
-
-window.getChartPalette = getChartPalette;
-window.watchThemePalette = watchThemePalette;
 
 const DEFAULT_CHART_PALETTE = Object.freeze({
     axis: '#666666',
@@ -395,7 +377,8 @@ function applyTranslations() {
 }
 
 function initializeThemeSwitch() {
-    if (!themeService) {
+    const service = paletteService || nativeThemeService;
+    if (!service) {
         return;
     }
     const buttons = document.querySelectorAll('[data-theme-option]');
@@ -415,19 +398,19 @@ function initializeThemeSwitch() {
         });
     }
 
-    const currentMode = typeof themeService.getMode === 'function'
-        ? themeService.getMode()
+    const currentMode = typeof service.getMode === 'function'
+        ? service.getMode()
         : 'auto';
-    const currentEffective = typeof themeService.getEffectiveMode === 'function'
-        ? themeService.getEffectiveMode()
+    const currentEffective = typeof service.getEffectiveMode === 'function'
+        ? service.getEffectiveMode()
         : 'light';
     syncButtons(currentMode, currentEffective);
 
     function activateOption(option) {
-        if (!option || typeof themeService.setMode !== 'function') {
+        if (!option || typeof service.setMode !== 'function') {
             return;
         }
-        themeService.setMode(option);
+        service.setMode(option);
     }
 
     buttons.forEach(button => {
@@ -446,8 +429,8 @@ function initializeThemeSwitch() {
         });
     });
 
-    if (typeof themeService.subscribe === 'function') {
-        themeService.subscribe(payload => {
+    if (typeof service.subscribe === 'function') {
+        service.subscribe(payload => {
             syncButtons(payload.mode, payload.effectiveMode);
         });
     }
