@@ -591,10 +591,24 @@ body {
     margin-bottom: 32px;
 }
 
-#source-code-text:hover {
-    color: var(--np-muted);
+#disclaimer a,
+#source-code-text a {
     text-decoration: none;
-    opacity: 0.8;
+}
+
+#disclaimer a:hover,
+#source-code-text a:hover {
+    text-decoration: underline;
+}
+
+:root[data-theme="dark"] #disclaimer,
+:root[data-theme="dark"] #source-code-text {
+    opacity: 1;
+}
+
+:root[data-theme="dark"] #disclaimer a,
+:root[data-theme="dark"] #source-code-text a {
+    opacity: 1;
 }
 
 #github-logo {
