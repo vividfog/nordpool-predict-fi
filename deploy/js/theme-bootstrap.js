@@ -136,12 +136,12 @@
                 outOfRange: '#999999',
                 forecastBackgroundBar: 'deepskyblue',
                 forecastVisualPieces: [
-                    { lte: 5, color: 'skyblue', opacity: 1.0 },
-                    { gt: 5, lte: 10, color: 'deepskyblue', opacity: 1.0 },
-                    { gt: 10, lte: 15, color: 'dodgerblue', opacity: 1.0 },
-                    { gt: 15, lte: 20, color: 'blue', opacity: 1.0 },
-                    { gt: 20, lte: 30, color: 'darkblue', opacity: 1.0 },
-                    { gt: 30, color: 'midnightblue', opacity: 1.0 }
+                    { lte: 5, color: 'rgba(135, 206, 235, 1.0)', opacity: 1.0 },
+                    { gt: 5, lte: 10, color: 'rgba(108, 197, 255, 1.0)', opacity: 1.0 },
+                    { gt: 10, lte: 15, color: 'rgba(83, 181, 255, 1.0)', opacity: 1.0 },
+                    { gt: 15, lte: 20, color: 'rgba(61, 165, 255, 1.0)', opacity: 1.0 },
+                    { gt: 20, lte: 30, color: 'rgba(42, 148, 255, 1.0)', opacity: 1.0 },
+                    { gt: 30, color: 'rgba(28, 132, 255, 1.0)', opacity: 1.0 }
                 ]
             }
         },
@@ -211,13 +211,13 @@
                 windLegend: 'dodgerblue',
                 windVisualPieces: [
                     { lte: 1, color: 'red' },
-                    { gt: 1, lte: 2, color: 'skyblue' },
-                    { gt: 2, lte: 3, color: 'deepskyblue' },
-                    { gt: 3, lte: 4, color: 'dodgerblue' },
-                    { gt: 4, lte: 5, color: 'blue' },
-                    { gt: 5, lte: 6, color: 'mediumblue' },
-                    { gt: 6, lte: 7, color: 'darkblue' },
-                    { gt: 7, color: 'midnightblue' }
+                    { gt: 1, lte: 2, color: 'rgba(135, 206, 235, 1.0)' },
+                    { gt: 2, lte: 3, color: 'rgba(108, 197, 255, 1.0)' },
+                    { gt: 3, lte: 4, color: 'rgba(83, 181, 255, 1.0)' },
+                    { gt: 4, lte: 5, color: 'rgba(61, 165, 255, 1.0)' },
+                    { gt: 5, lte: 6, color: 'rgba(42, 148, 255, 1.0)' },
+                    { gt: 6, lte: 7, color: 'rgba(32, 134, 255, 1.0)' },
+                    { gt: 7, color: 'rgba(28, 132, 255, 1.0)' }
                 ]
             }
         },
