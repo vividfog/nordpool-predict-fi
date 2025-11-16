@@ -124,14 +124,18 @@ if (typeof storedFetchTimestamp === 'number' && Number.isFinite(storedFetchTimes
 }
 
 const dataClient = window.dataClient || null;
-const applyRequestInitDefaults = dataClient && typeof dataClient.applyRequestInit === 'function'
-    ? dataClient.applyRequestInit
+const fetchUtils = window.fetchUtils || null;
+const fallbackApplyRequestInit = fetchUtils && typeof fetchUtils.applyRequestInit === 'function'
+    ? fetchUtils.applyRequestInit
     : (overrides) => {
         if (!overrides) {
             return { cache: 'no-cache' };
         }
         return Object.assign({ cache: 'no-cache' }, overrides);
     };
+const applyRequestInitDefaults = dataClient && typeof dataClient.applyRequestInit === 'function'
+    ? dataClient.applyRequestInit
+    : fallbackApplyRequestInit;
 const buildRequestUrl = dataClient && typeof dataClient.buildRequestUrl === 'function'
     ? (url, token, shouldBust) => dataClient.buildRequestUrl(url, token, shouldBust)
     : (url, token, shouldBust) => {
@@ -143,7 +147,7 @@ const buildRequestUrl = dataClient && typeof dataClient.buildRequestUrl === 'fun
         }
         return createCacheBustedUrl(url, token);
     };
-const fetchJsonWithDefaults = dataClient && typeof dataClient.fetchJson === 'function'
+const predictionFetchJson = dataClient && typeof dataClient.fetchJson === 'function'
     ? (url, init) => dataClient.fetchJson(url, init)
     : (url, init) => fetch(url, applyRequestInitDefaults(init)).then(response => {
         if (!response.ok) {
@@ -151,7 +155,7 @@ const fetchJsonWithDefaults = dataClient && typeof dataClient.fetchJson === 'fun
         }
         return response.json();
     });
-const fetchTextWithDefaults = dataClient && typeof dataClient.fetchText === 'function'
+const predictionFetchText = dataClient && typeof dataClient.fetchText === 'function'
     ? (url, init) => dataClient.fetchText(url, init)
     : (url, init) => fetch(url, applyRequestInitDefaults(init)).then(response => {
         if (!response.ok) {
@@ -204,7 +208,7 @@ async function fetchPredictionData(options = {}) {
         const sahkotinRequestBase = `${sahkotinUrl}?${params.toString()}`;
         const sahkotinRequest = buildRequestUrl(sahkotinRequestBase, cacheToken, shouldBust);
 
-        const scaledPricePromise = fetchTextWithDefaults(scaledPriceRequest, requestInit)
+        const scaledPricePromise = predictionFetchText(scaledPriceRequest, requestInit)
             .then(text => {
                 if (!text) {
                     return [];
@@ -223,9 +227,9 @@ async function fetchPredictionData(options = {}) {
 
         try {
             const [npfData, scaledPriceData, sahkotinCsv] = await Promise.all([
-                fetchJsonWithDefaults(predictionRequest, requestInit),
+                predictionFetchJson(predictionRequest, requestInit),
                 scaledPricePromise,
-                fetchTextWithDefaults(sahkotinRequest, requestInit),
+                predictionFetchText(sahkotinRequest, requestInit),
             ]);
 
             hasInitialPayload = true;

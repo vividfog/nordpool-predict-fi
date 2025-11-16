@@ -151,33 +151,6 @@ const appStorage = {
 
 window.appStorage = appStorage;
 
-/**
- * Appends a cache-busting query parameter to a URL.
- * When token is undefined, uses the current timestamp; returns the original URL if falsy.
- * @param {string} url The base URL to augment.
- * @param {number} [token] Optional cache key; defaults to Date.now().
- * @returns {string} URL with cache-busting query parameter applied.
- */
-function createCacheBustedUrl(url, token) {
-    if (!url) {
-        return url;
-    }
-    const suffix = typeof token === 'undefined' ? Date.now() : token;
-    const separator = url.includes('?') ? '&' : '?';
-    return `${url}${separator}cb=${suffix}`;
-}
-
-window.createCacheBustedUrl = createCacheBustedUrl;
-
-function applyCacheToken(url, token) {
-    if (!Number.isFinite(token)) {
-        return url;
-    }
-    return createCacheBustedUrl(url, token);
-}
-
-window.applyCacheToken = applyCacheToken;
-
 const CHART_GRID_INSETS = Object.freeze({
     left: 24,
     right: 24,
@@ -506,59 +479,6 @@ function createTimeGrids(isWeekOnly = false) {
                 }
             }
         }
-    };
-}
-
-function createTooltipFormatter(seriesNameMappings = {}) {
-    return function(params) {
-        var weekdays = getLocalizedText('weekdays');
-        var date = new Date(params[0].axisValue);
-        
-        var weekday = weekdays[date.getDay()];
-        var day = date.getDate();
-        var month = date.getMonth() + 1;
-        var hours = ("0" + date.getHours()).slice(-2);
-        var minutes = ("0" + date.getMinutes()).slice(-2);
-        
-        // Use dynamic time prefix
-        var timePrefix = getTimePrefix();
-        var formattedDateString = `${weekday} ${day}.${month}. ${timePrefix} ${hours}:${minutes}`;
-        var result = formattedDateString + '<br/>';
-        
-        // Sort params to show Nordpool data first if it exists
-        params.sort((a, b) => {
-            if (a.seriesName === 'Nordpool') return -1;
-            if (b.seriesName === 'Nordpool') return 1;
-            return 0;
-        });
-        
-        params.forEach(function(item) {
-            if (item.seriesType !== 'line' && item.seriesType !== 'bar') return;
-            
-            // Check if item.value[1] is not null or undefined before calling toFixed
-            var valueRounded = (item.value[1] !== null && typeof item.value[1] !== 'undefined') 
-                               ? item.value[1].toFixed(1) 
-                               : '-'; // Display '-' for null/undefined values
-            var unitLabel = seriesNameMappings[item.seriesName] || '¢/kWh';
-            result += item.marker + " " + item.seriesName + ': ' + valueRounded + ' ' + unitLabel + '<br/>';
-        });
-        
-        return result;
-    };
-}
-
-function createXAxisFormatter(showFullDate = false) {
-    return function(value) {
-        var date = new Date(value);
-        var weekdays = getLocalizedText('weekdays');
-        var weekday = weekdays[date.getDay()];
-        
-        if (showFullDate) {
-            var day = date.getDate();
-            var month = date.getMonth() + 1;
-            return day + '.' + month + '.';
-        }
-        return weekday;
     };
 }
 

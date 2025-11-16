@@ -116,6 +116,37 @@ if (typeof watchThemePalette === 'function') {
 const windpowerCacheBustUrl = typeof window.applyCacheToken === 'function'
     ? window.applyCacheToken
     : createCacheBustedUrl;
+const windpowerDataClient = window.dataClient || null;
+const windpowerFetchUtils = window.fetchUtils || null;
+
+const applyWindpowerRequestInit = windpowerDataClient && typeof windpowerDataClient.applyRequestInit === 'function'
+    ? windpowerDataClient.applyRequestInit
+    : (windpowerFetchUtils && typeof windpowerFetchUtils.applyRequestInit === 'function'
+        ? windpowerFetchUtils.applyRequestInit
+        : (overrides) => {
+            if (!overrides) {
+                return { cache: 'no-cache' };
+            }
+            return Object.assign({ cache: 'no-cache' }, overrides);
+        });
+
+const windpowerFetchJson = windpowerDataClient && typeof windpowerDataClient.fetchJson === 'function'
+    ? (url, init) => windpowerDataClient.fetchJson(url, init)
+    : (url, init) => fetch(url, applyWindpowerRequestInit(init)).then(response => {
+        if (!response.ok) {
+            throw new Error(`Request failed (${response.status}) for ${url}`);
+        }
+        return response.json();
+    });
+
+const windpowerFetchText = windpowerDataClient && typeof windpowerDataClient.fetchText === 'function'
+    ? (url, init) => windpowerDataClient.fetchText(url, init)
+    : (url, init) => fetch(url, applyWindpowerRequestInit(init)).then(response => {
+        if (!response.ok) {
+            throw new Error(`Request failed (${response.status}) for ${url}`);
+        }
+        return response.text();
+    });
 
 // Create a two-day Sähkötin window (today + tomorrow) for the realized price bars.
 // Keep it aligned with the prediction chart by sharing the same helper signature.
@@ -153,24 +184,12 @@ function loadWindPowerData(token) {
     }
 
     const effectiveToken = Number.isFinite(token) ? token : Date.now();
-    const requestInit = { cache: 'no-cache' };
     const sahkotinParams = buildWindpowerSahkotinParams();
     const sahkotinBaseUrl = `${windpowerSahkotinUrl}?${sahkotinParams.toString()}`;
 
     windPowerPending = Promise.all([
-        fetch(cacheTokenUrl(windPowerUrl, effectiveToken), requestInit).then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok: ' + response.statusText);
-            }
-            return response.json();
-        }),
-        fetch(cacheTokenUrl(sahkotinBaseUrl, effectiveToken), requestInit)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Sähkötin fetch failed: ' + response.statusText);
-                }
-                return response.text();
-            })
+        windpowerFetchJson(cacheTokenUrl(windPowerUrl, effectiveToken)),
+        windpowerFetchText(cacheTokenUrl(sahkotinBaseUrl, effectiveToken))
             .then(text => {
                 const sahkotinData = text
                     .split('\n')
@@ -191,12 +210,7 @@ function loadWindPowerData(token) {
                 return sahkotinData;
             }),
         // Add prediction data so the price bars continue past the realized window.
-        fetch(cacheTokenUrl(windpowerPredictionUrl, effectiveToken), requestInit).then(response => {
-            if (!response.ok) {
-                throw new Error('Prediction fetch failed: ' + response.statusText);
-            }
-            return response.json();
-        })
+        windpowerFetchJson(cacheTokenUrl(windpowerPredictionUrl, effectiveToken))
     ])
         .then(([windPowerData, sahkotinData, npfData]) => {
             console.log("Wind Power Data:", windPowerData);

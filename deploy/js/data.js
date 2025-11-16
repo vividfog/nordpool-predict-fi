@@ -3,13 +3,21 @@
 // ==========================================================================
 
 (function () {
-    const DEFAULT_REQUEST_INIT = Object.freeze({ cache: 'no-cache' });
+    const fetchUtils = window.fetchUtils || {};
+    const FALLBACK_DEFAULT_INIT = Object.freeze({ cache: 'no-cache' });
+
+    function getDefaultInit() {
+        return fetchUtils.DEFAULT_REQUEST_INIT || FALLBACK_DEFAULT_INIT;
+    }
 
     function applyRequestInit(overrides) {
-        if (!overrides) {
-            return { ...DEFAULT_REQUEST_INIT };
+        if (typeof fetchUtils.applyRequestInit === 'function') {
+            return fetchUtils.applyRequestInit(overrides);
         }
-        return Object.assign({}, DEFAULT_REQUEST_INIT, overrides);
+        if (!overrides) {
+            return Object.assign({}, getDefaultInit());
+        }
+        return Object.assign({}, getDefaultInit(), overrides);
     }
 
     function ensureOk(response, url) {
@@ -36,6 +44,12 @@
         if (!url) {
             return url;
         }
+        if (typeof fetchUtils.applyCacheToken === 'function') {
+            return fetchUtils.applyCacheToken(url, token);
+        }
+        if (typeof fetchUtils.createCacheBustedUrl === 'function') {
+            return fetchUtils.createCacheBustedUrl(url, token);
+        }
         if (typeof window.applyCacheToken === 'function') {
             return window.applyCacheToken(url, token);
         }
@@ -58,6 +72,6 @@
         withCacheBusting,
         buildRequestUrl,
         applyRequestInit,
-        DEFAULT_REQUEST_INIT,
+        DEFAULT_REQUEST_INIT: getDefaultInit(),
     });
 })();

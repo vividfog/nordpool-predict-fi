@@ -2,9 +2,30 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { vi } from 'vitest';
 
+const loadedScripts = new Set();
+const baseDependencies = [
+  'deploy/js/fetch-utils.js',
+  'deploy/js/chart-formatters.js'
+];
+
 export function loadScript(relativePath, options = {}) {
+  if (!baseDependencies.includes(relativePath)) {
+    for (const dependency of baseDependencies) {
+      if (!loadedScripts.has(dependency)) {
+        loadScript(dependency);
+      }
+    }
+  }
+
+  if (baseDependencies.includes(relativePath) && loadedScripts.has(relativePath)) {
+    return;
+  }
+
   const code = readFileSync(resolve(process.cwd(), relativePath), 'utf-8');
   window.eval(code);
+  if (baseDependencies.includes(relativePath)) {
+    loadedScripts.add(relativePath);
+  }
   if (options.triggerDOMContentLoaded) {
     document.dispatchEvent(new Event('DOMContentLoaded'));
   }

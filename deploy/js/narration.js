@@ -1,6 +1,28 @@
 const narrationFile = window.location.pathname.includes('index_en') ? 'narration_en.md' : 'narration.md';
 let narrationPending = null;
 let lastNarrationToken = 0;
+const narrationDataClient = window.dataClient || null;
+const narrationFetchUtils = window.fetchUtils || null;
+
+const applyNarrationRequestInit = narrationDataClient && typeof narrationDataClient.applyRequestInit === 'function'
+    ? narrationDataClient.applyRequestInit
+    : (narrationFetchUtils && typeof narrationFetchUtils.applyRequestInit === 'function'
+        ? narrationFetchUtils.applyRequestInit
+        : (overrides) => {
+            if (!overrides) {
+                return { cache: 'no-cache' };
+            }
+            return Object.assign({ cache: 'no-cache' }, overrides);
+        });
+
+const fetchNarrationText = narrationDataClient && typeof narrationDataClient.fetchText === 'function'
+    ? (url, init) => narrationDataClient.fetchText(url, init)
+    : (url, init) => fetch(url, applyNarrationRequestInit(init)).then(response => {
+        if (!response.ok) {
+            throw new Error(`Network response was not ok (${response.status})`);
+        }
+        return response.text();
+    });
 
 function buildNarrationUrl(token) {
     const baseUrlPath = `${baseUrl}/${narrationFile}`;
@@ -25,13 +47,7 @@ function loadNarration(token) {
     }
     const effectiveToken = Number.isFinite(token) ? token : Date.now();
     const requestUrl = buildNarrationUrl(effectiveToken);
-    narrationPending = fetch(requestUrl, { cache: 'no-cache' })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
+    narrationPending = fetchNarrationText(requestUrl)
         .then(text => {
             const narrationElement = document.getElementById('narration');
             if (narrationElement) {

@@ -68,6 +68,39 @@ const historyStorage = window.appStorage && window.appStorage.enabled ? window.a
 const HISTORY_STORAGE_KEY = 'np_history_preferences';
 let historyRefreshPending = null;
 let lastHistoryToken = 0;
+const historyDataClient = window.dataClient || null;
+const historyFetchUtils = window.fetchUtils || null;
+
+function buildHistoryRequestInit(overrides) {
+    if (historyDataClient && typeof historyDataClient.applyRequestInit === 'function') {
+        return historyDataClient.applyRequestInit(overrides);
+    }
+    if (historyFetchUtils && typeof historyFetchUtils.applyRequestInit === 'function') {
+        return historyFetchUtils.applyRequestInit(overrides);
+    }
+    if (!overrides) {
+        return { cache: 'no-cache' };
+    }
+    return Object.assign({ cache: 'no-cache' }, overrides);
+}
+
+const historyFetchJson = historyDataClient && typeof historyDataClient.fetchJson === 'function'
+    ? (url, init) => historyDataClient.fetchJson(url, init)
+    : (url, init) => fetch(url, init).then(response => {
+        if (!response.ok) {
+            throw new Error(`Failed to fetch JSON from ${url}: ${response.status}`);
+        }
+        return response.json();
+    });
+
+const historyFetchText = historyDataClient && typeof historyDataClient.fetchText === 'function'
+    ? (url, init) => historyDataClient.fetchText(url, init)
+    : (url, init) => fetch(url, init).then(response => {
+        if (!response.ok) {
+            throw new Error(`Failed to fetch text from ${url}: ${response.status}`);
+        }
+        return response.text();
+    });
 
 // Align cache-busting with the global helper so history refreshes behave like other modules.
 const historyCacheBustUrl = typeof window.applyCacheToken === 'function'
@@ -220,14 +253,7 @@ function fetchHistoricalData(urls, options = {}) {
 
         const requestUrl = Number.isFinite(cacheToken) ? historyCacheBustUrl(url, cacheToken) : url;
 
-        return fetch(requestUrl, { cache: 'no-cache' })
-            .then(response => {
-                console.log(`[fetchHistoricalData] Response status: ${response.status} from ${requestUrl}`);
-                if (!response.ok) {
-                    console.warn(`[fetchHistoricalData] Failed to fetch or file not found: ${requestUrl}`);
-                }
-                return response.json();
-            })
+        return historyFetchJson(requestUrl, buildHistoryRequestInit())
             .then(jsonData => {
                 if (!jsonData) {
                     console.warn(`[fetchHistoricalData] No data returned for: ${requestUrl}`);
@@ -423,8 +449,7 @@ function setupSahkotinData(cacheToken) {
         ? historyCacheBustUrl(`${sahkotinUrl}?${sahkotinParams.toString()}`, cacheToken)
         : `${sahkotinUrl}?${sahkotinParams.toString()}`;
 
-    return fetch(requestUrl, { cache: 'no-cache' })
-        .then(response => response.text())
+    return historyFetchText(requestUrl, buildHistoryRequestInit())
         .then(csvData => {
             const sahkotinData = processSahkotinCsv(csvData);
             addSahkotinDataToChart(sahkotinData);
