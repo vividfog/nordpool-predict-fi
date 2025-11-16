@@ -398,6 +398,7 @@
         }
         const palette = embeddingPalette || {};
         const gridColor = palette.grid || 'dimgray';
+        const legendLayout = featureEmbeddingContainer.layout?.legend || {};
         const update = {
             paper_bgcolor: palette.background || '#ffffff',
             plot_bgcolor: palette.background || '#ffffff',
@@ -408,16 +409,22 @@
             'scene.yaxis.gridcolor': gridColor,
             'scene.zaxis.gridcolor': gridColor,
             legend: {
+                orientation: legendLayout.orientation || 'h',
+                x: legendLayout.x !== undefined ? legendLayout.x : 0,
+                y: legendLayout.y !== undefined ? legendLayout.y : 1.05,
+                xanchor: legendLayout.xanchor || 'left',
+                yanchor: legendLayout.yanchor || 'bottom',
                 font: {
-                    color: palette.legendText || '#666666'
-                }
+                    ...(legendLayout.font || {}),
+                    color: palette.legendText || '#666666',
+                },
             },
             hoverlabel: {
                 bgcolor: palette.hoverBg || '#ffffff',
                 font: {
-                    color: palette.hoverText || 'rgba(51, 51, 51, 0.9)'
-                }
-            }
+                    color: palette.hoverText || 'rgba(51, 51, 51, 0.9)',
+                },
+            },
         };
         Plotly.relayout(featureEmbeddingContainer, update).catch(() => {});
     }
