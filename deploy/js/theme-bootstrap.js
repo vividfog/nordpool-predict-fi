@@ -49,9 +49,9 @@
             },
             dark: {
                 vars: {
-                    '--np-body-bg': 'black',
-                    '--np-card-bg': 'rgba(28, 28, 28, 1)',
-                    '--np-card-shadow': 'none',
+                    '--np-body-bg': 'rgba(24, 24, 24, 1)',
+                    '--np-card-bg': 'rgba(12, 12, 12, 1)',
+                    '--np-card-shadow': '0 6px 8px rgba(0, 0, 0, 0.4)',
                     '--np-text': 'whitesmoke',
                     '--np-muted': 'silver',
                     '--np-heading': 'gainsboro',
@@ -284,7 +284,7 @@
             },
             dark: {
                 background: 'black',
-                scenePlane: 'rgba(28, 28, 28, 1)',
+                scenePlane: 'rgba(24, 24, 24, 1)',
                 grid: 'rgba(64, 64, 64, 1)',
                 legendText: 'whitesmoke',
                 hoverBg: 'black',
