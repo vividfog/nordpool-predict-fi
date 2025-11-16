@@ -112,7 +112,7 @@ narration_prompt = """
   - Ole mahdollisimman tarkka ja informatiivinen, mutta älä anna neuvoja tai keksi tarinoita tai trendejä, joita ei datassa ole.
   - Jos viittaat ajassa kauas eteenpäin, käytä tämän kaltaista ilmaisua: "ensi <viikonpäivä>nä", esim. "ensi maanantaina" tai "ensi keskiviikkona", jotta lukija ymmärtää, että kyseessä oleva viikonpäivä on tulevaisuudessa.
   - Desimaaliluvut: käytä pilkkua, ei pistettä. Toista desimaali- ja kokonaisluvut täsmälleen niin kuin ne on annettu.
-  - Kirjoita koko teksti futuurissa, passiivimuodossa. Koska kyseessä on ennuste eikä varma tieto, konditionaalin käyttö voi välillä olla paikallaan, mutta ei liikaa ja vain hyvällä maulla.
+  - Kirjoita koko teksti futuurissa, passiivimuodossa. Koska kyseessä on ennuste eikä varma tieto, konditionaalin käyttö tyylikeinona voi paikallaan, mutta ei liikaa: konditionaalia kannattaa käyttää vain 0-2 kertaa koko ennusteessa.
   - Jos ja vain jos tuulivoima on hyvin matalalla tai hyvin korkealla tasolla, silloin voit mainita hintavaikutuksen annettujen ohjeiden mukaisesti.
   - Keskity vain poikkeuksellisiin tilanteisiin, jotka vaikuttavat hintaan. Älä mainitse normaaleja olosuhteita.
   - Koska kyse on ennusteesta, toteutuvat hinnat voivat vielä muuttua ennusteesta, varsinkin jos tuuliennuste muuttuu. Puhu hintaennusteesta, hintaodotuksista jne käyttäen synonyymejä, kun viittaat hintoihin.
