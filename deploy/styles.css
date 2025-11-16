@@ -625,7 +625,7 @@ li {
 
 table {
     width: 100%;
-    font-size: 0.8em;
+    font-size: 1em;
     border-collapse: separate;
     border-spacing: 2px;
     margin: auto;
@@ -640,6 +640,10 @@ th, td {
 @media (max-width: 768px) {
     #body {
         margin: 4px;
+    }
+
+    table {
+        font-size: 0.85em;
     }
 
     #predictionText {
