@@ -495,7 +495,6 @@ body {
     color: var(--np-topbar-text);
     gap: 12px;
     white-space: nowrap;
-    margin-left: 32px;
 }
 
 .theme-switch [data-theme-option] {
@@ -526,14 +525,14 @@ body {
 
 #topdisclaimer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
     max-width: 1080px;
     margin: 0 auto;
     padding: 0 16px;
     color: var(--np-topbar-text);
-    gap: 24px;
+    gap: 48px;
     background-color: var(--np-topbar-bg);
     position: relative;
 }
@@ -551,10 +550,6 @@ body {
     align-items: center;
     gap: 8px;
     white-space: nowrap;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
 }
 
 #github-logo-container {
@@ -664,6 +659,13 @@ a:hover {
 #topdisclaimer .lang-option[aria-current="true"] {
     opacity: 1;
     font-weight: 600;
+}
+
+@media (max-width: 480px) {
+    #topdisclaimer {
+        flex-direction: column;
+        gap: 16px;
+    }
 }
 
 li {
