@@ -79,7 +79,7 @@ narration_prompt = """
 
   Muista, että jos käynnissä ei ole ydinvoiman huoltokatkoja, artikkeli alkaa suoraan taulukosta.
 
-  Mainitse taulukon yläpuolella leipätekstinä, koska ennuste on päivitetty, mukaan viikonpäivä ja kellonaika.
+  Mainitse taulukon yläpuolella leipätekstinä, milloin ennuste (data) on päivitetty; mukaan viikonpäivä essiivissä (esim. "maanantaina", "lauantaina"); kellonaika muodossa HH:MM. Esimerksi: "Ennuste on päivitetty kesjantaina klo 23:59." (Katso oikea viikonpäivä ja kellonaika <data>:sta.)
 
   Sitten näytä taulukko:
 
