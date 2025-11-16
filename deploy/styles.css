@@ -520,8 +520,13 @@ body {
 
 :root[data-theme="dark"] .theme-switch [data-theme-option="dark"] {
     color: #bcbd22;
-    text-shadow: 0 0 6px rgba(188, 189, 34, 0.65);
+    text-shadow: 0 0 8px rgba(188, 189, 34, 0.9);
     opacity: 1;
+}
+
+:root[data-theme="dark"] #topdisclaimer .lang-option[aria-current="true"] {
+    color: #f0f0f0;
+    text-shadow: 0 0 10px rgba(192, 192, 192, 0.95);
 }
 
 #topdisclaimer {
@@ -701,7 +706,11 @@ th, td {
     #predictionText {
         padding-left: 16px;
         padding-right: 16px;
-        padding-top: 20px;
+        padding-top: 12px;
+    }
+
+    #predictionText .page-title {
+        margin-top: 0;
     }
 
     #predictionChart {
