@@ -483,6 +483,7 @@ body {
     content: '|';
     margin: 0 6px;
     opacity: 0.4;
+    color: var(--np-topbar-text);
 }
 
 .theme-switch [data-theme-option]:hover,
@@ -522,6 +523,9 @@ body {
     color: var(--np-topbar-text);
     opacity: 0.6;
     position: relative;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
 }
 
 .topbar-links .lang-option:not(:last-child)::after {
@@ -529,6 +533,13 @@ body {
     display: inline-block;
     margin: 0 6px;
     opacity: 0.4;
+    color: var(--np-topbar-text);
+}
+
+.topbar-links .lang-option:hover,
+.topbar-links .lang-option:focus-visible {
+    opacity: 0.9;
+    text-decoration: underline;
 }
 
 .topbar-links .lang-option[aria-current="true"] {
