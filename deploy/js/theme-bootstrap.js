@@ -175,7 +175,7 @@
                 markLineLabel: 'white',
                 markLineLine: 'gainsboro',
                 barColor: 'lightgray',
-                areaFill: 'gray',
+                areaFill: 'rgba(30, 144, 255, 0.1)',
                 outOfRange: 'darkgray'
             }
         },
