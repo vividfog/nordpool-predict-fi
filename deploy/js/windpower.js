@@ -14,6 +14,38 @@ const windpowerSahkotinUrl = window.SAHKOTIN_CSV_URL || 'https://sahkotin.fi/pri
 const windpowerPredictionUrl = windpowerEndpoints.prediction || `${baseUrl}/prediction.json`;
 let windPowerPending = null;
 let lastWindPowerToken = 0;
+const DEFAULT_WIND_LEGEND_COLOR = 'dodgerblue';
+const DEFAULT_WIND_BAR_COLOR = '#AEB6BF';
+const DEFAULT_WIND_VISUAL_PIECES = [
+    { lte: 1, color: 'red' },
+    { gt: 1, lte: 2, color: 'skyblue' },
+    { gt: 2, lte: 3, color: 'deepskyblue' },
+    { gt: 3, lte: 4, color: 'dodgerblue' },
+    { gt: 4, lte: 5, color: 'blue' },
+    { gt: 5, lte: 6, color: 'mediumblue' },
+    { gt: 6, lte: 7, color: 'darkblue' },
+    { gt: 7, color: 'midnightblue' }
+];
+
+function clonePieces(pieces) {
+    return pieces.map(piece => ({ ...piece }));
+}
+
+function getWindLegendColor() {
+    return windpowerPalette?.windLegend || DEFAULT_WIND_LEGEND_COLOR;
+}
+
+function getWindVisualPieces() {
+    const pieces = windpowerPalette?.windVisualPieces;
+    if (Array.isArray(pieces) && pieces.length) {
+        return clonePieces(pieces);
+    }
+    return clonePieces(DEFAULT_WIND_VISUAL_PIECES);
+}
+
+function getWindBarColor() {
+    return windpowerPalette?.barColor || DEFAULT_WIND_BAR_COLOR;
+}
 
 function refreshWindpowerTheme() {
     if (!windPowerChart || typeof windPowerChart.setOption !== 'function') {
@@ -25,9 +57,10 @@ function refreshWindpowerTheme() {
     if (typeof applyChartTheme === 'function' && windpowerPalette) {
         applyChartTheme(windPowerChart, windpowerPalette);
     }
-    const barColor = windpowerPalette?.barColor;
+    const barColor = getWindBarColor();
     const areaFill = windpowerPalette?.areaFill;
     const markLine = createCurrentTimeMarkLine(windpowerPalette);
+    const windVisualPieces = getWindVisualPieces();
     windPowerChart.setOption({
         series: [
             {
@@ -47,14 +80,21 @@ function refreshWindpowerTheme() {
         visualMap: [
             {
                 id: 'windpower-visual-map',
+                pieces: windVisualPieces,
                 outOfRange: { color: windpowerPalette?.outOfRange, opacity: 1.0 }
             },
             {
                 id: 'windpower-price-actual-map',
+                pieces: [
+                    { gt: 0, color: barColor }
+                ],
                 outOfRange: { color: windpowerPalette?.outOfRange, opacity: 1.0 }
             },
             {
                 id: 'windpower-price-forecast-map',
+                pieces: [
+                    { gt: 0, color: barColor }
+                ],
                 outOfRange: { color: windpowerPalette?.outOfRange, opacity: 1.0 }
             }
         ]
@@ -190,6 +230,10 @@ function loadWindPowerData(token) {
             const localizedPrice = getLocalizedText('price') + ' (¢/kWh)';
             const localizedWindPower = getLocalizedText('windPower');
 
+            const barColor = getWindBarColor();
+            const windLegendColor = getWindLegendColor();
+            const windVisualPieces = getWindVisualPieces();
+
             const sahkotinPriceSeries = {
                 id: 'windpower-price-actual',
                 name: localizedPrice,
@@ -199,7 +243,7 @@ function loadWindPowerData(token) {
                 yAxisIndex: 1,
                 z: 1,
                 itemStyle: {
-                    color: windpowerPalette?.barColor || '#AEB6BF',
+                    color: barColor,
                     opacity: 0.3
                 }
             };
@@ -213,7 +257,7 @@ function loadWindPowerData(token) {
                 yAxisIndex: 1,
                 z: 1,
                 itemStyle: {
-                    color: windpowerPalette?.barColor || '#AEB6BF',
+                    color: barColor,
                     opacity: 0.3
                 }
             };
@@ -233,7 +277,7 @@ function loadWindPowerData(token) {
                             name: localizedWindPower,
                             icon: 'circle',
                             itemStyle: {
-                                color: 'dodgerblue'
+                                color: windLegendColor
                             }
                         },
                         {
@@ -350,16 +394,7 @@ function loadWindPowerData(token) {
                         id: 'windpower-visual-map',
                         show: false,
                         seriesIndex: 2,
-                        pieces: [
-                            { lte: 1, color: 'red' },
-                            { gt: 1, lte: 2, color: 'skyblue' },
-                            { gt: 2, lte: 3, color: 'deepskyblue' },
-                            { gt: 3, lte: 4, color: 'dodgerblue' },
-                            { gt: 4, lte: 5, color: 'blue' },
-                            { gt: 5, lte: 6, color: 'mediumblue' },
-                            { gt: 6, lte: 7, color: 'darkblue' },
-                            { gt: 7, color: 'midnightblue' }
-                        ],
+                        pieces: windVisualPieces,
                         outOfRange: {
                             color: windpowerPalette?.outOfRange || '#999'
                         }
@@ -369,7 +404,7 @@ function loadWindPowerData(token) {
                         show: false,
                         seriesIndex: 0,
                         pieces: [
-                            { gt: 0, color: '#AEB6BF' }
+                            { gt: 0, color: barColor }
                         ],
                         outOfRange: {
                             color: windpowerPalette?.outOfRange || '#999'
@@ -380,7 +415,7 @@ function loadWindPowerData(token) {
                         show: false,
                         seriesIndex: 1,
                         pieces: [
-                            { gt: 0, color: '#AEB6BF' }
+                            { gt: 0, color: barColor }
                         ],
                         outOfRange: {
                             color: windpowerPalette?.outOfRange || '#999'

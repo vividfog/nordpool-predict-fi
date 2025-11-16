@@ -9,6 +9,17 @@ let predictionPalette = typeof getChartPalette === 'function'
     : null;
 let hasPredictionChartOptions = false;
 
+const DEFAULT_FORECAST_LEGEND_COLOR = 'skyblue';
+const DEFAULT_FORECAST_BACKGROUND_COLOR = 'deepskyblue';
+const DEFAULT_FORECAST_VISUAL_PIECES = [
+    { lte: 5, color: 'skyblue', opacity: 1.0 },
+    { gt: 5, lte: 10, color: 'deepskyblue', opacity: 1.0 },
+    { gt: 10, lte: 15, color: 'dodgerblue', opacity: 1.0 },
+    { gt: 15, lte: 20, color: 'blue', opacity: 1.0 },
+    { gt: 20, lte: 30, color: 'darkblue', opacity: 1.0 },
+    { gt: 30, color: 'midnightblue', opacity: 1.0 }
+];
+
 function refreshPredictionTheme() {
     if (!nfpChart || typeof nfpChart.setOption !== 'function') {
         return;
@@ -31,6 +42,15 @@ function refreshPredictionTheme() {
     if (palette.spikeMarker) {
         spikeStyle.color = palette.spikeMarker;
     }
+    const forecastBgStyle = {};
+    const forecastBgColor = palette.forecastBackgroundBar || DEFAULT_FORECAST_BACKGROUND_COLOR;
+    if (forecastBgColor) {
+        forecastBgStyle.color = forecastBgColor;
+    }
+    forecastBgStyle.opacity = 0.10;
+    const scaledVisualPieces = Array.isArray(palette.forecastVisualPieces) && palette.forecastVisualPieces.length
+        ? palette.forecastVisualPieces
+        : DEFAULT_FORECAST_VISUAL_PIECES;
     nfpChart.setOption({
         series: [
             {
@@ -46,6 +66,16 @@ function refreshPredictionTheme() {
             {
                 id: 'prediction-markline',
                 markLine: createCurrentTimeMarkLine(palette)
+            },
+            {
+                id: 'forecast-bg',
+                itemStyle: forecastBgStyle
+            }
+        ],
+        visualMap: [
+            {
+                id: 'scaled-visual-map',
+                pieces: scaledVisualPieces
             }
         ]
     }, false, true);
@@ -259,6 +289,12 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
         ];
 
     // Create chart options
+    const forecastLegendColor = predictionPalette?.forecastLegend || DEFAULT_FORECAST_LEGEND_COLOR;
+    const forecastVisualPieces = Array.isArray(predictionPalette?.forecastVisualPieces) && predictionPalette.forecastVisualPieces.length
+        ? predictionPalette.forecastVisualPieces
+        : DEFAULT_FORECAST_VISUAL_PIECES;
+    const forecastBackgroundColor = predictionPalette?.forecastBackgroundBar || DEFAULT_FORECAST_BACKGROUND_COLOR;
+
     const chartOptions = (typeof window.createBaseChartOptions === 'function'
         ? window.createBaseChartOptions
         : createBaseChartOptions)({
@@ -276,7 +312,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                     name: getLocalizedText('forecast'),
                     icon: 'circle',
                     itemStyle: {
-                        color: 'skyblue'
+                        color: forecastLegendColor
                     }
                 },
                 {
@@ -313,14 +349,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                 seriesIndex: [1],
                 top: 50,
                 right: 10,
-                pieces: [
-                    { lte: 5, color: 'skyblue', opacity: 1.0 },
-                    { gt: 5, lte: 10, color: 'deepskyblue', opacity: 1.0 },
-                    { gt: 10, lte: 15, color: 'dodgerblue', opacity: 1.0 },
-                    { gt: 15, lte: 20, color: 'blue', opacity: 1.0 },
-                    { gt: 20, lte: 30, color: 'darkblue', opacity: 1.0 },
-                    { gt: 30, color: 'midnightblue', opacity: 1.0 }
-                ],
+                pieces: forecastVisualPieces,
                 outOfRange: { color: predictionPalette?.outOfRange || '#999', opacity: 1.0 }
             }
         ],
@@ -333,7 +362,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                 data: npfSeriesData,
                 barWidth: '40%',
                 itemStyle: {
-                    color: 'deepskyblue',
+                    color: forecastBackgroundColor,
                     opacity: 0.10
                 },
                 silent: true,

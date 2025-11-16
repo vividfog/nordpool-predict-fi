@@ -99,6 +99,7 @@
                 tooltipText: 'rgba(51, 51, 51, 0.9)',
                 tooltipBorder: 'rgba(31, 35, 40, 0.12)',
                 legendText: '#666666',
+                forecastLegend: 'skyblue',
                 markLineLabel: 'Black',
                 markLineLine: 'rgba(51, 51, 51, 0.9)',
                 chartBackground: 'transparent',
@@ -106,7 +107,16 @@
                 sahkotinBarOpacity: 0.10,
                 sahkotinLine: 'lime',
                 spikeMarker: 'crimson',
-                outOfRange: '#999999'
+                outOfRange: '#999999',
+                forecastBackgroundBar: 'deepskyblue',
+                forecastVisualPieces: [
+                    { lte: 5, color: 'skyblue', opacity: 1.0 },
+                    { gt: 5, lte: 10, color: 'deepskyblue', opacity: 1.0 },
+                    { gt: 10, lte: 15, color: 'dodgerblue', opacity: 1.0 },
+                    { gt: 15, lte: 20, color: 'blue', opacity: 1.0 },
+                    { gt: 20, lte: 30, color: 'darkblue', opacity: 1.0 },
+                    { gt: 30, color: 'midnightblue', opacity: 1.0 }
+                ]
             },
             dark: {
                 axis: 'gainsboro',
@@ -115,6 +125,7 @@
                 tooltipText: 'whitesmoke',
                 tooltipBorder: 'slategray',
                 legendText: 'whitesmoke',
+                forecastLegend: 'skyblue',
                 markLineLabel: 'white',
                 markLineLine: 'gainsboro',
                 chartBackground: 'transparent',
@@ -122,7 +133,16 @@
                 sahkotinBarOpacity: 0.10,
                 sahkotinLine: 'lime',
                 spikeMarker: 'crimson',
-                outOfRange: '#999999'
+                outOfRange: '#999999',
+                forecastBackgroundBar: 'deepskyblue',
+                forecastVisualPieces: [
+                    { lte: 5, color: 'skyblue', opacity: 1.0 },
+                    { gt: 5, lte: 10, color: 'deepskyblue', opacity: 1.0 },
+                    { gt: 10, lte: 15, color: 'dodgerblue', opacity: 1.0 },
+                    { gt: 15, lte: 20, color: 'blue', opacity: 1.0 },
+                    { gt: 20, lte: 30, color: 'darkblue', opacity: 1.0 },
+                    { gt: 30, color: 'midnightblue', opacity: 1.0 }
+                ]
             }
         },
         history: {
@@ -163,7 +183,18 @@
                 markLineLine: 'rgba(51, 51, 51, 0.9)',
                 barColor: '#AEB6BF',
                 areaFill: 'rgba(135, 206, 250, 0.2)',
-                outOfRange: '#999999'
+                outOfRange: '#999999',
+                windLegend: 'dodgerblue',
+                windVisualPieces: [
+                    { lte: 1, color: 'red' },
+                    { gt: 1, lte: 2, color: 'skyblue' },
+                    { gt: 2, lte: 3, color: 'deepskyblue' },
+                    { gt: 3, lte: 4, color: 'dodgerblue' },
+                    { gt: 4, lte: 5, color: 'blue' },
+                    { gt: 5, lte: 6, color: 'mediumblue' },
+                    { gt: 6, lte: 7, color: 'darkblue' },
+                    { gt: 7, color: 'midnightblue' }
+                ]
             },
             dark: {
                 axis: 'gainsboro',
@@ -176,7 +207,18 @@
                 markLineLine: 'gainsboro',
                 barColor: 'lightgray',
                 areaFill: 'rgba(30, 144, 255, 0.1)',
-                outOfRange: 'darkgray'
+                outOfRange: 'darkgray',
+                windLegend: 'dodgerblue',
+                windVisualPieces: [
+                    { lte: 1, color: 'red' },
+                    { gt: 1, lte: 2, color: 'skyblue' },
+                    { gt: 2, lte: 3, color: 'deepskyblue' },
+                    { gt: 3, lte: 4, color: 'dodgerblue' },
+                    { gt: 4, lte: 5, color: 'blue' },
+                    { gt: 5, lte: 6, color: 'mediumblue' },
+                    { gt: 6, lte: 7, color: 'darkblue' },
+                    { gt: 7, color: 'midnightblue' }
+                ]
             }
         },
         calendar: {
