@@ -495,6 +495,9 @@
         const axisColor = palette.axis || 'rgba(31, 35, 40, 0.72)';
         const borderColor = palette.border || 'rgba(255, 255, 255, 1)';
         const emphasisColor = palette.emphasis || 'dodgerblue';
+        const tooltipBg = palette.tooltipBg || '#ffffff';
+        const tooltipText = palette.tooltipText || 'rgba(51, 51, 51, 0.9)';
+        const tooltipBorder = palette.tooltipBorder || 'rgba(31, 35, 40, 0.12)';
         return {
             animation: false,
             grid: {
@@ -506,6 +509,9 @@
             },
             tooltip: {
                 trigger: 'item',
+                backgroundColor: tooltipBg,
+                borderColor: tooltipBorder,
+                textStyle: { color: tooltipText },
                 formatter: function(params) {
                     const payload = params?.data;
                     if (!Array.isArray(payload) || payload.length < 4) {
@@ -584,6 +590,11 @@
             return;
         }
         calendarChartInstance.setOption({
+            tooltip: {
+                backgroundColor: calendarPalette.tooltipBg,
+                borderColor: calendarPalette.tooltipBorder,
+                textStyle: { color: calendarPalette.tooltipText }
+            },
             xAxis: {
                 axisLabel: {
                     color: calendarPalette.axis

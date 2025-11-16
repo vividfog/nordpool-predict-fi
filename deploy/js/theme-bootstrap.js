@@ -232,7 +232,10 @@
                 border: 'rgba(255, 255, 255, 1)',
                 empty: 'rgba(255, 255, 255, 0)',
                 emphasis: 'dodgerblue',
-                legendText: 'rgba(31, 35, 40, 0.72)'
+                legendText: 'rgba(31, 35, 40, 0.72)',
+                tooltipBg: '#ffffff',
+                tooltipText: 'rgba(51, 51, 51, 0.9)',
+                tooltipBorder: 'rgba(31, 35, 40, 0.12)'
             },
             dark: {
                 axis: 'gainsboro',
@@ -240,7 +243,10 @@
                 border: 'black',
                 empty: 'black',
                 emphasis: 'dodgerblue',
-                legendText: 'whitesmoke'
+                legendText: 'whitesmoke',
+                tooltipBg: 'black',
+                tooltipText: 'whitesmoke',
+                tooltipBorder: 'slategray'
             }
         },
         cheapest: {
