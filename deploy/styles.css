@@ -526,10 +526,11 @@ body {
     flex-wrap: nowrap;
     max-width: 1080px;
     margin: 0 auto;
-    padding: 16px 16px 8px 16px;
+    padding: 0 16px;
     color: var(--np-topbar-text);
     gap: 24px;
     background-color: var(--np-topbar-bg);
+    position: relative;
 }
 
 .topbar-links,
@@ -545,6 +546,9 @@ body {
     align-items: center;
     gap: 8px;
     white-space: nowrap;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .topbar-links .lang-option {
