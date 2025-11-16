@@ -58,13 +58,20 @@ describe('deploy/js/cheapest.js', () => {
       <input id="cheapestEndHourInput" />
     `;
 
-    window.latestPredictionData = options.predictionPayload ?? {
+    const initialPrediction = options.predictionPayload ?? {
       mergedSeries: [
         [Date.UTC(2025, 0, 1, 8), 7],
         [Date.UTC(2025, 0, 1, 9), 6]
       ],
       meta: {}
     };
+    const store = window.predictionStore;
+    if (store && typeof store.setLatest === 'function') {
+      store.setLatest(null, { silent: true });
+      store.setLatest(initialPrediction, { silent: true });
+    } else {
+      window.latestPredictionData = initialPrediction;
+    }
 
     vi.useFakeTimers();
     loadScript('deploy/js/cheapest.js', { triggerDOMContentLoaded: true });

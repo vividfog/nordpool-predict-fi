@@ -17,7 +17,13 @@ function setupCalendar(payload) {
     <div id="priceCalendarLegend"></div>
   `;
 
-  window.latestPredictionData = payload;
+  const store = window.predictionStore;
+  if (store && typeof store.setLatest === 'function') {
+    store.setLatest(null, { silent: true });
+    store.setLatest(payload, { silent: true });
+  } else {
+    window.latestPredictionData = payload;
+  }
   loadScript('deploy/js/calendar.js', { triggerDOMContentLoaded: true });
 
   return chart;

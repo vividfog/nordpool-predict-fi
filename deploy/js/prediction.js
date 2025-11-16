@@ -124,6 +124,7 @@ if (typeof storedFetchTimestamp === 'number' && Number.isFinite(storedFetchTimes
 }
 
 const dataClient = window.dataClient || null;
+const predictionStore = window.predictionStore || null;
 const fetchUtils = window.fetchUtils || null;
 const fallbackApplyRequestInit = fetchUtils && typeof fetchUtils.applyRequestInit === 'function'
     ? fetchUtils.applyRequestInit
@@ -493,7 +494,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
 
     const mergedSeries = mergePriceSeries(sahkotinSeriesData, npfSeriesData);
     const cheapestPayload = buildCheapestWindowPayload(mergedSeries, Date.now());
-    window.latestPredictionData = {
+    const payload = {
         mergedSeries,
         sahkotinSeries: sahkotinSeriesData,
         forecastSeries: npfSeriesData,
@@ -502,15 +503,23 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
         windows: cheapestPayload.windows,
         meta: cheapestPayload.meta
     };
-    window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: window.latestPredictionData }));
+    if (predictionStore && typeof predictionStore.setLatest === 'function') {
+        predictionStore.setLatest(payload);
+    } else {
+        window.latestPredictionData = payload;
+        window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: payload }));
+    }
 }
 
 // Prime the chart with the most recent data on initial load.
 fetchPredictionData({ force: true });
 
 function getLatestDataTimestamp() {
-    if (window.latestPredictionData && Number.isFinite(window.latestPredictionData.generatedAt)) {
-        return window.latestPredictionData.generatedAt;
+    const latestPayload = predictionStore && typeof predictionStore.getLatest === 'function'
+        ? predictionStore.getLatest()
+        : window.latestPredictionData;
+    if (latestPayload && Number.isFinite(latestPayload.generatedAt)) {
+        return latestPayload.generatedAt;
     }
     return lastFetchTimestamp;
 }

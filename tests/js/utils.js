@@ -5,7 +5,8 @@ import { vi } from 'vitest';
 const loadedScripts = new Set();
 const baseDependencies = [
   'deploy/js/fetch-utils.js',
-  'deploy/js/chart-formatters.js'
+  'deploy/js/chart-formatters.js',
+  'deploy/js/prediction-store.js'
 ];
 
 export function loadScript(relativePath, options = {}) {

@@ -695,13 +695,21 @@
             updateCalendar(chart, statusElement, payload);
         }
 
-        if (window.latestPredictionData) {
-            handlePayload(window.latestPredictionData);
+        const predictionStore = window.predictionStore || null;
+        const initialPayload = predictionStore && typeof predictionStore.getLatest === 'function'
+            ? predictionStore.getLatest()
+            : window.latestPredictionData;
+        if (initialPayload) {
+            handlePayload(initialPayload);
         }
 
-        window.addEventListener('prediction-data-ready', function(event) {
-            handlePayload(event.detail);
-        });
+        if (predictionStore && typeof predictionStore.subscribe === 'function') {
+            predictionStore.subscribe(handlePayload);
+        } else {
+            window.addEventListener('prediction-data-ready', function(event) {
+                handlePayload(event.detail);
+            });
+        }
 
         window.addEventListener('resize', function() {
             chart.resize();

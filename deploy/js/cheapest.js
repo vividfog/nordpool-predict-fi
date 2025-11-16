@@ -79,15 +79,23 @@ const hasOwn = Object.hasOwn ? Object.hasOwn.bind(Object) : (obj, prop) => Objec
     attachControls();
     persistCheapestSettings();
 
-    if (window.latestPredictionData) {
-        handlePredictionPayload(window.latestPredictionData);
+    const predictionStore = window.predictionStore || null;
+    const initialPrediction = predictionStore && typeof predictionStore.getLatest === 'function'
+        ? predictionStore.getLatest()
+        : window.latestPredictionData;
+    if (initialPrediction) {
+        handlePredictionPayload(initialPrediction);
     } else {
         setMessageRow(getLocalizedText('cheapest_table_loading'));
     }
 
-    window.addEventListener('prediction-data-ready', function(event) {
-        handlePredictionPayload(event.detail);
-    });
+    if (predictionStore && typeof predictionStore.subscribe === 'function') {
+        predictionStore.subscribe(handlePredictionPayload);
+    } else {
+        window.addEventListener('prediction-data-ready', function(event) {
+            handlePredictionPayload(event.detail);
+        });
+    }
 
     function ensureNumber(value, fallback) {
         const numeric = Number(value);
@@ -372,9 +380,13 @@ const hasOwn = Object.hasOwn ? Object.hasOwn.bind(Object) : (obj, prop) => Objec
         predictionData.windows = payload.windows;
         predictionData.meta = Object.assign({}, predictionData.meta, payload.meta, currentConfig);
 
-        if (window.latestPredictionData) {
+        if (predictionStore && typeof predictionStore.setLatest === 'function') {
+            predictionStore.setLatest(predictionData, { silent: true });
+        } else if (window.latestPredictionData) {
             window.latestPredictionData.windows = payload.windows;
             window.latestPredictionData.meta = predictionData.meta;
+        } else {
+            window.latestPredictionData = predictionData;
         }
     }
 
