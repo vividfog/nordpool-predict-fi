@@ -33,7 +33,7 @@
         <p id="predictionChart"></p>
         <div id="priceCalendarSection">
             <h1 class="section-title">Hourly price calendar</h1>
-            <p>The calendar shows how the predicted cheap/expensive periods stack up by hour and by day.</p>
+            <p>The calendar shows how the cheap/expensive periods stack up by hour and by day.</p>
             <div id="priceCalendar" class="price-calendar"></div>
             <p id="priceCalendarStatus" class="price-calendar-status">Loading hourly prices…</p>
             <div id="priceCalendarLegend" class="price-calendar-legend"></div>
@@ -131,11 +131,11 @@
         <h1 class="section-title">Language model interpretation</h1>
         <p id="narration"></p>
         <h1 class="section-title">Wind power forecast</h1>
-        <p>Based on data and forecasts from FMI weather stations on the coast of the Gulf of Bothnia, with price data shown in the background. Wind over 2...3 gigawatts is favorable for the electricity price, and with wind below 1 gigawatt, the price can rise significantly if there are maintenance outages or cold temperatures at the same time.</p>
+        <p>Wind over 2...3 gigawatts is favorable for the electricity price, and with wind below 1 gigawatt, the price can rise significantly if there are maintenance outages or cold temperatures at the same time. Price data shown in the background.</p>
         <div id="windPowerChart"></div>
         <h1 class="section-title">Historical forecasts</h1>
-        <p>The graph shows a 30-day history of previous forecasts. Major changes can occur, for example, if the weather forecast changes significantly, if there is an unexpected production outage, if the cause of the price disturbance is historically new or rare, or if the model has been recently updated. See the change log below.</p>
-        <p>The <strong style="color:limegreen;">green</strong> line is the final Nordpool price. The <strong style="color:dodgerblue;">blue</strong> lines are the forecast ensemble from previous days, before the Nordpool price was known.</p>
+        <p>The graph shows a 30-day history of previous forecasts. Major changes can occur, for example, if the weather forecast changes significantly, if there is an unexpected production outage, or if the cause of the price disturbance is historically new or rare.</p>
+        <p>The <strong style="color:dodgerblue;">blue</strong> lines are the forecast ensemble from previous days, before the Nordpool price was known. The <strong style="color:limegreen;">green</strong> line is the final Nordpool price.</p>
         <div class="history-controls">
             <div class="history-toggle">
                 <button data-period="0" data-i18n="1h_avg">1 h</button>
@@ -155,7 +155,7 @@
         </div>
         <div id="historyChart"></div>
         <h1 class="section-title">What does the forecast take into account?</h1>
-        <p>This is a machine learning model that seeks correlations between different variables and learns what price each combination leads to based on history. This is not a time series forecast, but each hour gets its value independently based on this information:</p>
+        <p>This is a machine learning model that seeks correlations between different variables and learns what price each combination leads to based on history. This is not a time series forecast: each hour gets its value independently based on this information:</p>
         <ul>
             <li><strong>Forecasts for wind power areas in Finland:</strong> FMI weather stations, i.e., indirectly the amount of wind power</li>
             <li><strong>Wind forecasts for the Baltic Sea region:</strong> Open-Meteo: Sweden, Denmark, Germany, and Estonia</li>
@@ -172,7 +172,7 @@
         <p><strong>Try rotating</strong> the <a href="https://pair-code.github.io/understanding-umap/" target="_blank">UMAP</a> chart below. Marker size shows how much each feature influences the predicted price. Points that sit near each other act similarly in the training data and provide reinforcing signals for the model. A negative correlation means the feature tends to push prices down when it increases.</p>
         <div id="featureEmbeddingChart"></div>
         <h1 class="section-title">What does the forecast not consider?</h1>
-        <p>The forecast only sees the factors listed above. The source code is open, and you are welcome to experiment with other features. Training data starts from the beginning of 2023.</p>
+        <p>The forecast only sees the factors listed above. <a href="https://github.com/vividfog/nordpool-predict-fi" target="_blank">The code base is open source</a>, and you are welcome to experiment with other data sources. Training data starts from the beginning of 2023.</p>
         <p>Although the model can "predict" the past and historically familiar types of the future, price estimates in new and exceptional situations can be off. So do not, for example, adjust your house heating based on these numbers if you are not at home.</p>
         <h1 class="section-title">Change log</h1>
         <p>The model has been online since February 2024. The following changes have been made since then.</p>

@@ -33,7 +33,7 @@
         <p id="predictionChart"></p>
         <div id="priceCalendarSection">
             <h1 class="section-title">Tuntihintakalenteri</h1>
-            <p>Kalenteri näyttää, miten ennusteen halvat ja kalliit jaksot asettuvat tunti- ja päiväkohtaisesti.</p>
+            <p>Kalenteri näyttää, miten halvat ja kalliit jaksot asettuvat tunti- ja päiväkohtaisesti.</p>
             <div id="priceCalendar" class="price-calendar"></div>
             <p id="priceCalendarStatus" class="price-calendar-status">Ladataan tuntihintoja…</p>
             <div id="priceCalendarLegend" class="price-calendar-legend"></div>
@@ -131,11 +131,11 @@
         <h1 class="section-title">Kielimallin tulkinta</h1>
         <p id="narration"></p>
         <h1 class="section-title">Tuulivoimaennuste</h1>
-        <p>Perustuu Pohjanlahden rannikon FMI-sääasemien tietoihin ja ennusteisiin. Hintatiedot näkyvät graafin taustalla. Yli 2...3 gigawatin tuuli on sähkön hinnan kannalta suotuisa, ja alle 1 gigawatin tuulella hinta voi nousta korkealle, jos samaan hetkeen osuu huoltotaukoja tai on kylmä.</p>
+        <p>Yli 2...3 gigawatin tuuli on sähkön hinnan kannalta suotuisa, ja alle 1 gigawatin tuulella hinta voi nousta korkealle, jos samaan hetkeen osuu huoltotaukoja tai on kylmä. Hintatiedot näkyvät graafin taustalla.</p>
         <div id="windPowerChart"></div>
         <h1 class="section-title">Aiemmat ennusteet</h1>
-        <p>Graafi kertoo, mitä Sähkövatkain on ennustanut viime aikoina. Isoja mielenmuutoksia voi tulla mm. jos sääennuste on muuttunut paljon, jos tulee odottamaton tuotantokatko, jos hintahäiriön syy on historiallisesti uudenlainen tai harvinainen, tai jos ennustemallia on hiljattain päivitetty. Kts. muutosloki alla.</p>
-        <p><strong style="color:limegreen;">Vihreä</strong> viiva on lopullinen Nordpool-hinta. <strong style="color:dodgerblue;">Siniset</strong> viivat ovat ennusteparvi aiemmilta päiviltä, ennen kuin Nordpool-hinta oli tiedossa.</p>
+        <p>Graafi kertoo, mitä Sähkövatkain on ennustanut viime aikoina. Isoja mielenmuutoksia voi tulla mm. jos sääennuste on muuttunut paljon, jos tulee odottamaton tuotantokatko, tai jos hintahäiriön syy on historiallisesti uudenlainen tai harvinainen.</p>
+        <p><strong style="color:dodgerblue;">Siniset</strong> viivat ovat ennusteparvi aiemmilta päiviltä, ennen kuin Nordpool-hinta oli tiedossa. <strong style="color:limegreen;">Vihreä</strong> viiva on toteutunut Nordpool-hinta. </p>
         <div class="history-controls">
             <div class="history-toggle">
                 <button data-period="0" data-i18n="1h_avg">1 h</button>
@@ -172,7 +172,7 @@
         <p><strong>Kokeile liikuttaa</strong> alla olevaa <a href="https://pair-code.github.io/understanding-umap/" target="_blank">UMAP</a>-kuvaajaa. Pisteen koko kertoo siitä, miten paljon muuttuja vaikuttaa ennustettuun hintaan. Lähellä toisiaan olevat pisteet käyttäytyvät opetusdatassa keskenään samankaltaisesti ja tuovat malliin toisiaan tukevaa tietoa. Negatiivinen korrelaatioluku tarkoittaa, että muuttujan kasvu painaa hintaa alas.</p>
         <div id="featureEmbeddingChart"></div>
         <h1 class="section-title">Mitä ennuste ei huomioi?</h1>
-        <p>Ennuste ei näe muuta kuin mitä yllä on mainittu. Lähdekoodi on avointa, ja olet tervetullut kokeilemaan erilaisia vaihtoehtoja näiden lisäksi tai sijaan. Opetuksessa käytetty data alkaa vuoden 2023 alusta.</p>
+        <p>Ennuste ei näe muuta kuin mitä yllä on mainittu. <a href="https://github.com/vividfog/nordpool-predict-fi" target="_blank">Lähdekoodi on avointa</a>, ja olet tervetullut kokeilemaan erilaisia muuttujavaihtoehtoja. Opetuksessa käytetty data alkaa vuoden 2023 alusta.</p>
         <p>Vaikka malli osaa "ennustaa" menneisyyttä ja historiallisesti tutun tyyppistä tulevaisuutta toisinaan oivasti, hinta-arviot uudenlaisissa poikkeustilanteissa voivat olla pielessä. Älä siis esim. säädä talosi lämmitystä näiden numeroiden perusteella, jos et ole kotona.</p>
         <h1 class="section-title">Muutokset</h1>
         <p>Sähkövatkain on ollut linjoilla helmikuusta 2024. Alla sen jälkeen tehdyt muutokset.</p>
