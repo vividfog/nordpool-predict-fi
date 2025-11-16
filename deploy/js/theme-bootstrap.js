@@ -156,7 +156,8 @@
                 markLineLabel: 'Black',
                 markLineLine: 'rgba(51, 51, 51, 0.9)',
                 zoomBackground: '#f0f2f5',
-                zoomBorder: '#dddddd'
+                zoomBorder: '#dddddd',
+                swarmLine: 'dodgerblue'
             },
             dark: {
                 axis: 'gainsboro',
@@ -168,7 +169,8 @@
                 markLineLabel: 'white',
                 markLineLine: 'gainsboro',
                 zoomBackground: 'dimgrey',
-                zoomBorder: 'slategray'
+                zoomBorder: 'slategray',
+                swarmLine: 'deepskyblue'
             }
         },
         windpower: {

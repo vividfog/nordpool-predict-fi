@@ -19,13 +19,22 @@ function refreshHistoryTheme() {
     if (typeof applyChartTheme === 'function' && historyPalette) {
         applyChartTheme(historyChart, historyPalette);
     }
+    const swarmLineColor = historyPalette?.swarmLine || 'dodgerblue';
+    const currentSeries = historyChart.getOption()?.series || [];
+    const swarmSeriesUpdates = currentSeries
+        .filter(series => series && series.id && series.id.startsWith('history-series-'))
+        .map(series => ({
+            id: series.id,
+            color: swarmLineColor,
+            lineStyle: Object.assign({}, series.lineStyle, { color: swarmLineColor })
+        }));
     historyChart.setOption({
-        series: [
+        series: swarmSeriesUpdates.concat([
             {
                 id: 'history-markline',
                 markLine: createCurrentTimeMarkLine(historyPalette)
             }
-        ],
+        ]),
         dataZoom: [
             {
                 id: 'history-zoom-slider',
@@ -274,6 +283,7 @@ function processSahkotinCsv(csvData) {
 function setupHistoryChart(data, pruneOption) {
     const cleanedData = data.filter(item => item !== null).slice(1);
     console.log("setupHistoryChart found these snapshots: ", cleanedData);
+    const swarmLineColor = historyPalette?.swarmLine || 'dodgerblue';
 
     const series = cleanedData.map((seriesData, index) => {
         // Prune data before rendering
@@ -284,6 +294,7 @@ function setupHistoryChart(data, pruneOption) {
         const opacityValue = index === 0 ? 0.4 : 0.4;
         
         return {
+            id: `history-series-${index}`,
             name: index === 0 ? getLocalizedText('latest') : `${index} ${getLocalizedText('daysAgo')}`,
             type: 'line',
             data: prunedData.map(item => [item[0], item[1]]),
@@ -292,9 +303,10 @@ function setupHistoryChart(data, pruneOption) {
             lineStyle: {
                 width: index === 0 ? 1.5 : 1.5,
                 type: index === 0 ? 'dotted' : 'dotted',
-                opacity: opacityValue
+                opacity: opacityValue,
+                color: swarmLineColor
             },
-            color: 'dodgerblue'
+            color: swarmLineColor
         };
     });
 
