@@ -1,19 +1,19 @@
-*Weekly outlook: Tue–Fri will be expensive with spike risk, Saturday sees a mild risk; prices will fall toward the weekend, Sunday clearly cheapest, next Monday will be moderate.*
+*Next week, Wednesday and Friday prices will climb with spike risk, Sunday will be the cheapest; other days stay moderate, with wind variability in focus.*
 
-The forecast was updated on Monday at 21:01.
+The forecast was updated on Tuesday at 03:01.
 
-|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
+|              | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday** | 13,7 | 9,6 - 20,9 | 246 - 372 | -1,1 |
-| **Wednesday** | 14,0 | 9,1 - 21,3 | 428 - 1327 | -1,7 |
-| **Thursday** | 13,3 | 8,4 - 22,0 | 417 - 1978 | -3,2 |
-| **Friday** | 13,6 | 5,7 - 19,3 | 1080 - 1756 | -3,2 |
-| **Saturday** | 7,9 | 5,9 - 10,5 | 1134 - 2173 | -1,7 |
-| **Sunday** | 4,2 | 2,0 - 6,2 | 1752 - 5128 | -0,8 |
-| **Monday** | 7,4 | 3,5 - 9,6 | 2137 - 4124 | -1,2 |
+| **Wednesday** | 13,7 | 9,0 - 20,8 | 308 - 1527 | -1,7 |
+| **Thursday**  | 9,5  | 6,9 - 12,8 | 1588 - 2869 | -3,2 |
+| **Friday**    | 12,8 | 5,5 - 17,4 | 1263 - 2578 | -3,2 |
+| **Saturday**  | 7,5  | 5,4 - 10,2 | 1246 - 2318 | -1,7 |
+| **Sunday**    | 4,8  | 2,4 - 7,4  | 1951 - 4985 | -0,8 |
+| **Monday**    | 8,4  | 4,1 - 12,3 | 1920 - 3608 | -1,2 |
+| **Tuesday**   | 8,8  | 5,4 - 11,7 | 1922 - 3947 | -0,8 |
 
-In the first half of the week, the price level will remain elevated: from Tuesday to Friday daily averages will be 13,3–14,0 ¢. The highest single hours will be seen especially on **Wednesday** and **Thursday**. On Wednesday the peak will be in the morning around 08:00–10:00, when the hourly price will reach up to 21,3 ¢. On Thursday the peak will fall in the evening at 17:00–19:00 and reach 22,0 ¢. On both days, minimum wind output will remain well below 1 000 MW, which explains the higher maximum price; the prices of individual peak hours can therefore come in higher than forecast. On **Friday**, too, the evening emphasis will occur at 17:00–19:00, with a maximum expected at 19,3 ¢. On **Saturday** a spike risk is noted, and the elevated hours will concentrate in the evening at 18:00–20:00, although the day’s average will be clearly lower.
+The most expensive day will be **on Wednesday**, with an average price of 13,7 ¢ and a peak reaching 20,8 ¢. The risk of hourly price spikes will be high; morning hours around 8–10 and late afternoon–evening 17–19 will stand out. The peaks will be partly explained by an exceptionally low wind minimum, 308 MW. **On Friday**, pronounced peaks will also appear: the average price will be 12,8 ¢ and upper spikes will reach 17,4 ¢ around 16–18 and 18–20, influenced by a low wind minimum of 1 263 MW. **On Thursday** and **on Saturday**, spike risk will exist, but the overall level will remain clearly lower; Thursday’s peak will land around 8–10 (12,8 ¢) and Saturday in the same window (10,2 ¢).
 
-The most affordable periods will fall on the weekend and early next week. On **Sunday** the average price will be 4,2 ¢, and the earliest hours will slide to about 2–3 ¢ (01:00–03:00). Ample wind generation, 1 752–5 128 MW, will push prices down. On **Monday** the price level will remain moderate: the average will be 7,4 ¢ and the range 3,5–9,6 ¢. The week’s most expensive single hours thus look set to fall on Thursday evening, while the cheapest electricity is forecast for the early hours of Sunday.
+The cheapest day will be **Sunday**, with the average at 4,8 ¢ and prices dipping overnight at 2–4 a.m. to below three cents. Low levels will be supported by strong wind (average output 3 896 MW). At the end and start of the week, i.e., **on Monday** and **on Tuesday**, average prices will be 8,4 and 8,8 ¢. The cheapest hours will cluster during the night and early morning, while the clearly priciest periods will fall in Wednesday’s and Friday’s late afternoon–evening.
 
-*Numbers reported by gpt-5.* 🌬️
+*Numbers interpreted by gpt-5.* 🌬️
