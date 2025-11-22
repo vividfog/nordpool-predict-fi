@@ -1,19 +1,19 @@
-*The week will start pricey and spike-prone, but strengthening winds will push prices lower by Thursday, especially on Friday and Saturday.*
+*The week will start costly and spike-prone, but from Thursday strong winds will push prices clearly lower; Saturday will be the cheapest.*
 
-The forecast was updated on Saturday at 12:00.
+The forecast was updated on Saturday at 15:01.
 
 |  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 4,9 | 1,8 - 8,9 | 1460 - 3828 | -0,8 |
-| **Monday** | 10,6 | 5,5 - 14,4 | 956 - 1569 | -1,2 |
-| **Tuesday** | 13,9 | 7,8 - 20,8 | 386 - 1800 | -1,2 |
-| **Wednesday** | 14,9 | 10,0 - 19,5 | 1477 - 2817 | -2,6 |
-| **Thursday** | 7,8 | 3,8 - 12,8 | 2140 - 4711 | -2,3 |
-| **Friday** | 2,9 | 1,4 - 6,0 | 2968 - 5628 | 1,9 |
-| **Saturday** | 1,3 | 0,1 - 2,3 | 4321 - 5526 | 3,1 |
+| **Sunday** | 6,6 | 1,2 - 10,5 | 1457 - 3831 | -0,8 |
+| **Monday** | 11,4 | 7,2 - 16,1 | 948 - 1576 | -1,2 |
+| **Tuesday** | 14,1 | 8,0 - 20,4 | 389 - 2158 | -1,2 |
+| **Wednesday** | 14,4 | 9,8 - 20,2 | 1772 - 3152 | -2,6 |
+| **Thursday** | 7,7 | 4,0 - 11,6 | 2643 - 4930 | -2,3 |
+| **Friday** | 3,3 | 1,8 - 4,9 | 3611 - 5596 | 1,9 |
+| **Saturday** | 2,0 | 0,9 - 3,0 | 4258 - 5373 | 3,1 |
 
-The start of the week will be clearly more expensive. **Monday’s** average price is expected at 10,6 ¢, **Tuesday’s** at 13,9 ¢ and **Wednesday’s** at 14,9 ¢. The day standing out the most will be **Tuesday**, with a maximum reaching 20,8 ¢. High morning peaks will be explained by very low minimum wind output: on Tuesday only 386 MW and on Wednesday 1 477 MW. The risk of price spikes will be elevated on Monday and Tuesday mornings from 08:00–10:00 and on Wednesday 08:00–10:00; on Monday and Wednesday a second rise will occur in the evening around 18:00–20:00. On **Sunday** the risk for isolated higher hours will be present especially from 18:00–20:00, even though the daily average stays at 4,9 ¢.
+Price expectations will diverge at the start of the week. On **Sunday** the average price will settle at 6,6 ¢ with a range of 1,2–10,5 ¢. On **Monday** the average will rise to 11,4 ¢ and the risk of hourly spikes will lean toward the morning at 8–10; the day’s peaks, up to 16,1 ¢, will be linked to a low wind-power minimum (948 MW). On **Tuesday** the maximum will reach 20,4 ¢ and spike hours will fall at 8–10 and 16–18; behind this is an exceptionally low wind minimum, only 389 MW. On **Wednesday** the week’s highest average, 14,4 ¢, will coincide with a 20,2 ¢ peak and a wind minimum of 1 772 MW; the spike risk will center on the morning at 8–10.
 
-In the middle of the week the level will ease. **Thursday’s** daily average will stay at 7,8 ¢, and late-week prices will turn low: **Friday** at 2,9 ¢ and **Saturday** at 1,3 ¢. Behind this will be strong winds that lift average production above 3 000 MW, and even above 5 000 MW on Friday and Saturday. The cheapest hours are anticipated for early Friday morning around 03:00–05:00 and for Saturday 03:00–05:00. From Thursday to Saturday the intraday range will narrow, and the highs will remain under 13 ¢. In the week’s overall picture, the early days will look expensive and the later days inexpensive, with the largest swings occurring in mornings and evenings.
+The latter half of the week will calm down. On **Thursday** the average will drop to 7,7 ¢. Prices will be supported by strong wind, averaging over 3 000 MW. On **Friday** prices will sink to 3,3 ¢ and stay mostly under four cents; behind this is very brisk wind (average 5 206 MW). On **Saturday** the average will be 2,0 ¢ and the minimum will touch 0,9 ¢ while wind stays strong (average 4 904 MW). The week’s cheapest hours will fall in the small hours of Saturday at 2–4, whereas the most expensive moments will be seen on Tuesday morning at 8–10.
 
-*Statistics interpreted by gpt-5.* 💨
+*Analysis by gpt-5.* 🌬️
