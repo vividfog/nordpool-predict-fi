@@ -335,7 +335,7 @@ function setupHistoryChart(data, pruneOption) {
             type: 'line',
             data: prunedData.map(item => [item[0], item[1]]),
             symbol: 'none',
-            step: 'middle',
+            step: 'end',
             lineStyle: {
                 width: index === 0 ? 1.5 : 1.5,
                 type: index === 0 ? 'dotted' : 'dotted',
@@ -407,7 +407,7 @@ function addSahkotinDataToChart(sahkotinData) {
         type: 'line',
         data: sahkotinData,
         symbol: 'none',
-        step: 'middle',
+        step: 'end',
         lineStyle: {
             type: 'solid',
             width: 2,

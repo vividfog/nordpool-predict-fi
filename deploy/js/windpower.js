@@ -465,7 +465,7 @@ function loadWindPowerData(token) {
                             type: 'solid',
                             width: 1.5
                         },
-                        step: 'middle',
+                        step: 'end',
                         areaStyle: {
                             color: windpowerPalette?.areaFill || 'rgba(135, 206, 250, 0.2)'
                         },

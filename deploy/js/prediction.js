@@ -419,7 +419,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                 type: 'line',
                 data: npfSeriesData,
                 symbol: 'none',
-                step: 'middle',
+                step: 'end',
                 lineStyle: {
                     width: 1.5,
                     type: 'solid'
@@ -451,7 +451,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                 type: 'line',
                 data: sahkotinSeriesData,
                 symbol: 'none',
-                step: 'middle',
+                step: 'end',
                 lineStyle: {
                     width: 1.5,
                     type: 'solid'
