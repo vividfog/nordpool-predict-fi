@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, it, vi } from 'vitest';
-import { createEchartsMock, flushPromises, loadScript, setPathname, buildPriceCsv, setPredictionStorePayload } from './utils';
+import { createEchartsMock, flushPromises, loadScript, setPathname, buildPriceCsv, setPredictionStorePayload, stubHelsinkiMidnights } from './utils';
 
 const HOUR = 60 * 60 * 1000;
 
@@ -7,6 +7,7 @@ describe('deploy/js/history.js', () => {
   beforeAll(async () => {
     setPathname('/index.html');
     loadScript('deploy/js/config.js');
+    stubHelsinkiMidnights(Date.UTC(2025, 0, 15));
 
     document.body.innerHTML = `
       <div id="historyChart"></div>
@@ -130,5 +131,26 @@ describe('deploy/js/history.js', () => {
     fetchHistoricalSpy.mockRestore();
     setupSpy.mockRestore();
     sahkoSpy.mockRestore();
+  });
+
+  it('requests Sähkötin history data using Helsinki midnight window', async () => {
+    window.getHelsinkiMidnightISOString = vi.fn(offset => {
+      if (offset === 3) {
+        return '2025-01-04T00:00:00.000Z';
+      }
+      return '2025-01-01T00:00:00.000Z';
+    });
+    const fetchMock = globalThis.fetch.mockImplementation(() => Promise.resolve({
+      ok: true,
+      text: () => Promise.resolve(buildPriceCsv([[Date.UTC(2025, 0, 1), 5]]))
+    }));
+    await setupSahkotinData(Date.now());
+    const call = fetchMock.mock.calls.find(entry => String(entry[0]).includes('prices.csv'));
+    expect(call).toBeDefined();
+    const requestedUrl = String(call[0]);
+    expect(requestedUrl).toContain(encodeURIComponent('2025-01-04T00:00:00.000Z'));
+    expect(window.getHelsinkiMidnightISOString).toHaveBeenCalledWith(3);
+    expect(requestedUrl).toContain('fix=true');
+    globalThis.fetch.mockReset();
   });
 });

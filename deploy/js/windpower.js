@@ -153,8 +153,11 @@ const windpowerFetchText = windpowerDataClient && typeof windpowerDataClient.fet
 // Create a two-day Sähkötin window (today + tomorrow) for the realized price bars.
 // Keep it aligned with the prediction chart by sharing the same helper signature.
 function buildWindpowerSahkotinParams() {
-    const startIso = addDays(new Date(), 0).toISOString();
-    const endIso = addDays(new Date(), 2).toISOString();
+    const buildIso = typeof window.getHelsinkiMidnightISOString === 'function'
+        ? window.getHelsinkiMidnightISOString
+        : (offset) => addDays(new Date(), offset).toISOString();
+    const startIso = buildIso(0);
+    const endIso = buildIso(3);
     if (typeof window.createSahkotinParams === 'function') {
         return window.createSahkotinParams(startIso, endIso);
     }
@@ -220,9 +223,14 @@ function loadWindPowerData(token) {
             console.log("Wind Power Data:", windPowerData);
 
             // Normalize to the start of today so we only render the current window.
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            const todayTimestamp = today.getTime();
+            const buildTimestamp = typeof window.getHelsinkiMidnightTimestamp === 'function'
+                ? window.getHelsinkiMidnightTimestamp
+                : () => {
+                    const fallback = new Date();
+                    fallback.setHours(0, 0, 0, 0);
+                    return fallback.getTime();
+                };
+            const todayTimestamp = buildTimestamp(0);
 
             // Convert Fingrid data from MW to GW for display.
             const windPowerSeriesData = windPowerData

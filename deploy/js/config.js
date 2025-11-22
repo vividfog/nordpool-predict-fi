@@ -147,6 +147,70 @@ const DATA_ENDPOINTS = Object.freeze({
 });
 
 const SAHKOTIN_CSV_URL = 'https://sahkotin.fi/prices.csv';
+const HELSINKI_TIMEZONE = 'Europe/Helsinki';
+const HELSINKI_DATE_FORMATTER = new Intl.DateTimeFormat('en-CA', {
+    timeZone: HELSINKI_TIMEZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+});
+const HELSINKI_OFFSET_FORMATTER = new Intl.DateTimeFormat('en-US', {
+    timeZone: HELSINKI_TIMEZONE,
+    timeZoneName: 'shortOffset'
+});
+const MS_PER_MINUTE = 60 * 1000;
+
+function getHelsinkiDateParts(referenceDate = new Date()) {
+    const parts = HELSINKI_DATE_FORMATTER.formatToParts(referenceDate);
+    const map = {};
+    parts.forEach(part => {
+        if (part.type === 'year' || part.type === 'month' || part.type === 'day') {
+            map[part.type] = Number(part.value);
+        }
+    });
+    const year = Number.isFinite(map.year) ? map.year : referenceDate.getUTCFullYear();
+    const month = Number.isFinite(map.month) ? map.month : (referenceDate.getUTCMonth() + 1);
+    const day = Number.isFinite(map.day) ? map.day : referenceDate.getUTCDate();
+    return { year, month, day };
+}
+
+function getHelsinkiOffsetMs(timestamp) {
+    try {
+        const parts = HELSINKI_OFFSET_FORMATTER.formatToParts(new Date(timestamp));
+        const zonePart = parts.find(part => part.type === 'timeZoneName');
+        if (!zonePart) {
+            return 0;
+        }
+        const match = zonePart.value.match(/(GMT|UTC)([+-])(\d{1,2})(?::(\d{2}))?/i);
+        if (!match) {
+            return 0;
+        }
+        const sign = match[2] === '-' ? -1 : 1;
+        const hours = Number(match[3]) || 0;
+        const minutes = Number(match[4] || '0');
+        const totalMinutes = (hours * 60) + minutes;
+        return sign * totalMinutes * MS_PER_MINUTE;
+    } catch (error) {
+        console.warn('Failed to compute Helsinki offset', error);
+        return 0;
+    }
+}
+
+function getHelsinkiMidnightDate(daysOffset = 0, referenceDate = new Date()) {
+    const offset = Number.isFinite(daysOffset) ? daysOffset : 0;
+    const { year, month, day } = getHelsinkiDateParts(referenceDate);
+    const naiveUtc = Date.UTC(year, month - 1, day + offset);
+    const timezoneShift = getHelsinkiOffsetMs(naiveUtc);
+    return new Date(naiveUtc - timezoneShift);
+}
+
+function getHelsinkiMidnightISOString(daysOffset = 0, referenceDate = new Date()) {
+    return getHelsinkiMidnightDate(daysOffset, referenceDate).toISOString();
+}
+
+function getHelsinkiMidnightTimestamp(daysOffset = 0, referenceDate = new Date()) {
+    return getHelsinkiMidnightDate(daysOffset, referenceDate).getTime();
+}
 
 function createSahkotinParams(startIso, endIso) {
     return new URLSearchParams({
@@ -159,6 +223,9 @@ function createSahkotinParams(startIso, endIso) {
 
 window.DATA_ENDPOINTS = DATA_ENDPOINTS;
 window.SAHKOTIN_CSV_URL = SAHKOTIN_CSV_URL;
+window.HELSINKI_TIMEZONE = HELSINKI_TIMEZONE;
+window.getHelsinkiMidnightISOString = getHelsinkiMidnightISOString;
+window.getHelsinkiMidnightTimestamp = getHelsinkiMidnightTimestamp;
 window.createSahkotinParams = createSahkotinParams;
 
 // Lightweight localStorage adapter with graceful fallback

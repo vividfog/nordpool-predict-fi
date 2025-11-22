@@ -103,7 +103,9 @@ const MIN_DAY_HOUR = 0;
 const MAX_DAY_HOUR = 23;
 const DEFAULT_WINDOW_START_HOUR = 0;
 const DEFAULT_WINDOW_END_HOUR = 23;
-const HELSINKI_TIMEZONE = 'Europe/Helsinki';
+const HELSINKI_TIMEZONE_ID = typeof window !== 'undefined' && window.HELSINKI_TIMEZONE
+    ? window.HELSINKI_TIMEZONE
+    : 'Europe/Helsinki';
 const MAX_DATA_STALENESS_MS = 6 * 60 * 60 * 1000;
 const REFRESH_CHECK_INTERVAL_MS = 15 * 60 * 1000;
 
@@ -177,8 +179,11 @@ const predictionFetchText = dataClient && typeof dataClient.fetchText === 'funct
 // Create a two-day Sähkötin window (today + tomorrow) to capture realized prices.
 // Wrap it in a helper so the parameters stay aligned with the other charts.
 function buildSahkotinParams() {
-    const startIso = addDays(new Date(), 0).toISOString();
-    const endIso = addDays(new Date(), 2).toISOString();
+    const buildIso = typeof window.getHelsinkiMidnightISOString === 'function'
+        ? window.getHelsinkiMidnightISOString
+        : (offset) => addDays(new Date(), offset).toISOString();
+    const startIso = buildIso(0);
+    const endIso = buildIso(3);
     if (typeof window.createSahkotinParams === 'function') {
         return window.createSahkotinParams(startIso, endIso);
     }
@@ -286,15 +291,16 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
     console.log("End of Sähkötin data for today; displaying the Nordpool prediction data from:",
         new Date(lastSahkotinTimestamp).toString());
 
-    // Include one hour from the prediction data that overlaps with the last hour of Sähkötin data
-    // to ensure continuity in the chart
-    const oneHourInMilliseconds = 60 * 60 * 1000;
-    const overlapThreshold = lastSahkotinTimestamp - oneHourInMilliseconds;
+    // Forecasts start immediately after the final realized hour from Sähkötin; if no realized data is present,
+    // start from the current time.
+    const nextForecastTimestamp = Number.isFinite(lastSahkotinTimestamp)
+        ? lastSahkotinTimestamp + HOUR_MS
+        : Date.now();
 
     // Prepare NPF series data
     var npfSeriesData = npfData
         .map(item => [item[0], item[1]])
-        .filter(item => item[0] > overlapThreshold); // Include one overlapping hour
+        .filter(item => item[0] >= nextForecastTimestamp);
 
     // Debug logs
     npfSeriesData.forEach(item => {
@@ -312,7 +318,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
     var scaledPriceSeriesData = scaledPriceData
         // Spike hours get a small red bar on the timeline
         .map(item => [item[0], item[1] !== null ? -0.25 : null])
-        .filter(item => item[0] > overlapThreshold); // Use same threshold as regular predictions, keep nulls for gaps
+        .filter(item => item[0] >= nextForecastTimestamp); // Use same threshold as regular predictions, keep nulls for gaps
 
     console.log("Scaled Price Data loaded:", scaledPriceSeriesData.length, "data points");
 
@@ -790,7 +796,7 @@ function getHelsinkiHour(timestampMs) {
     const formatter = new Intl.DateTimeFormat('en-US', {
         hour: 'numeric',
         hour12: false,
-        timeZone: HELSINKI_TIMEZONE
+        timeZone: HELSINKI_TIMEZONE_ID
     });
     const parts = formatter.formatToParts(date);
     const hourPart = parts.find(part => part.type === 'hour');

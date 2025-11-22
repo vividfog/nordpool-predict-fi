@@ -1,4 +1,6 @@
 (function () {
+    const HOUR_MS = 60 * 60 * 1000;
+
     function getLocalizedTextSafe(key) {
         if (typeof window.getLocalizedText === 'function') {
             return window.getLocalizedText(key);

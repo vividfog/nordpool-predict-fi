@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, it, vi } from 'vitest';
-import { createEchartsMock, loadScript, flushPromises, buildPriceCsv } from './utils';
+import { createEchartsMock, loadScript, flushPromises, buildPriceCsv, stubHelsinkiMidnights } from './utils';
 
 const HOUR = 60 * 60 * 1000;
 
@@ -45,6 +45,7 @@ describe('deploy/js/prediction.js', () => {
     });
 
     loadScript('deploy/js/config.js');
+    stubHelsinkiMidnights(now);
     loadScript('deploy/js/prediction.js');
 
     await flushPromises(4);
@@ -146,5 +147,58 @@ describe('deploy/js/prediction.js', () => {
     expect(payload.meta.lookaheadDays).toBe(4);
     expect(payload.windows).toHaveLength(3);
     expect(window.buildCheapestWindowPayload).toBeTypeOf('function');
+  });
+
+  it('filters forecasts to start right after realized Sähkötin hours', () => {
+    vi.useFakeTimers();
+    const base = Date.UTC(2025, 0, 2, 6);
+    vi.setSystemTime(base);
+    const predictionSeries = [
+      [base, 10],
+      [base + HOUR, 11],
+      [base + 2 * HOUR, 12]
+    ];
+    const scaledSeries = predictionSeries.map(([ts]) => [ts, 1]);
+    const sahkotinCsv = buildPriceCsv([
+      [base, 5],
+      [base + HOUR, 6]
+    ]);
+    const payloads = [];
+    const unsubscribe = window.predictionStore.subscribe(payload => payloads.push(payload));
+    try {
+      processPredictionPayload(predictionSeries, scaledSeries, sahkotinCsv);
+      const payload = payloads[payloads.length - 1];
+      expect(payload.sahkotinSeries[payload.sahkotinSeries.length - 1][0]).toBe(base + HOUR);
+      expect(payload.forecastSeries[0][0]).toBe(base + 2 * HOUR);
+      expect(payload.scaledPriceSeries[0][0]).toBe(base + 2 * HOUR);
+      const mergedTimestamps = payload.mergedSeries.map(item => item[0]);
+      expect(mergedTimestamps).toEqual([base, base + HOUR, base + 2 * HOUR]);
+    } finally {
+      unsubscribe();
+      vi.useRealTimers();
+    }
+  });
+
+  it('falls back to current time when Sähkötin data is empty', () => {
+    vi.useFakeTimers();
+    const base = Date.UTC(2025, 0, 5, 9);
+    vi.setSystemTime(base);
+    const predictions = [
+      [base, 9],
+      [base + HOUR, 10]
+    ];
+    const scaled = predictions.map(([ts]) => [ts, null]);
+    const payloads = [];
+    const unsubscribe = window.predictionStore.subscribe(payload => payloads.push(payload));
+    try {
+      processPredictionPayload(predictions, scaled, 'hour,price\n');
+      const payload = payloads[payloads.length - 1];
+      expect(payload.sahkotinSeries.length).toBe(0);
+      expect(payload.forecastSeries[0][0]).toBe(base + HOUR);
+      expect(payload.mergedSeries[0][0]).toBe(base + HOUR);
+    } finally {
+      unsubscribe();
+      vi.useRealTimers();
+    }
   });
 });

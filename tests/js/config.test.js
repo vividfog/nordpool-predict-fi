@@ -119,6 +119,20 @@ describe('deploy/js/config.js', () => {
     expect(added.getSeconds()).toBe(0);
   });
 
+  it('computes Helsinki midnights independent of host timezone', () => {
+    const winterReference = new Date('2025-02-01T12:00:00Z');
+    const winterMidnight = getHelsinkiMidnightISOString(0, winterReference);
+    expect(winterMidnight).toBe('2025-01-31T22:00:00.000Z');
+
+    const summerReference = new Date('2025-07-01T12:00:00Z');
+    const summerMidnight = getHelsinkiMidnightISOString(0, summerReference);
+    expect(summerMidnight).toBe('2025-06-30T21:00:00.000Z');
+
+    const nextSummerMidnight = getHelsinkiMidnightTimestamp(1, summerReference);
+    const currentSummerMidnight = getHelsinkiMidnightTimestamp(0, summerReference);
+    expect(nextSummerMidnight - currentSummerMidnight).toBe(24 * 60 * 60 * 1000);
+  });
+
   it('returns past date strings', () => {
     vi.useFakeTimers();
     vi.setSystemTime(new Date('2025-03-18T09:00:00Z'));

@@ -55,6 +55,22 @@ export function setPathname(pathname) {
   window.history.replaceState({}, '', pathname);
 }
 
+export function stubHelsinkiMidnights(baseTimestamp) {
+  const HOUR = 60 * 60 * 1000;
+  const base = Number.isFinite(baseTimestamp) ? baseTimestamp : Date.UTC(2025, 0, 1);
+  const isoBuilder = vi.fn(offset => {
+    const hours = Number.isFinite(offset) ? offset * 24 : 0;
+    return new Date(base + hours * HOUR).toISOString();
+  });
+  const tsBuilder = vi.fn(offset => {
+    const hours = Number.isFinite(offset) ? offset * 24 : 0;
+    return base + hours * HOUR;
+  });
+  window.getHelsinkiMidnightISOString = isoBuilder;
+  window.getHelsinkiMidnightTimestamp = tsBuilder;
+  return { isoBuilder, tsBuilder };
+}
+
 /**
  * Build a simple Sähkötin-style CSV string from timestamp/value pairs.
  */

@@ -445,7 +445,10 @@ function addSahkotinDataToChart(sahkotinData) {
 
 function setupSahkotinData(cacheToken) {
     const startDate = getPastDateStrings(30).pop();
-    const endDate = addDays(new Date(), 2).toISOString();
+    const buildIso = typeof window.getHelsinkiMidnightISOString === 'function'
+        ? window.getHelsinkiMidnightISOString
+        : (offset) => addDays(new Date(), offset).toISOString();
+    const endDate = buildIso(3);
 
     const sahkotinUrl = window.SAHKOTIN_CSV_URL || 'https://sahkotin.fi/prices.csv';
     const sahkotinParams = new URLSearchParams({

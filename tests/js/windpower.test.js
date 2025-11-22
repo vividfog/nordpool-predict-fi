@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { createEchartsMock, flushPromises, loadScript, setPathname, buildPriceCsv, setPredictionStorePayload } from './utils';
+import { createEchartsMock, flushPromises, loadScript, setPathname, buildPriceCsv, setPredictionStorePayload, stubHelsinkiMidnights } from './utils';
 
 const HOUR = 60 * 60 * 1000;
 
@@ -13,6 +13,7 @@ describe('deploy/js/windpower.js', () => {
     globalThis.echarts = { init: () => chart };
 
     const base = Date.UTC(2025, 0, 1);
+    stubHelsinkiMidnights(base);
     const windData = [
       [base, 1000],
       [base + HOUR, 1200]
@@ -70,6 +71,7 @@ describe('deploy/js/windpower.js', () => {
   it('logs error when fetch fails', async () => {
     setPathname('/index.html');
     loadScript('deploy/js/config.js');
+    stubHelsinkiMidnights(Date.UTC(2025, 0, 1));
     document.body.innerHTML = '<div id="windPowerChart"></div>';
     const chart = createEchartsMock();
     globalThis.echarts = { init: () => chart };
@@ -96,6 +98,7 @@ describe('deploy/js/windpower.js', () => {
     globalThis.echarts = { init: () => chart };
 
     const base = Date.UTC(2025, 0, 1);
+    stubHelsinkiMidnights(base);
     const windData = [
       [base, 1000],
       [base + HOUR, 1100]
@@ -153,5 +156,43 @@ describe('deploy/js/windpower.js', () => {
     expect(globalThis.fetch).toHaveBeenCalledTimes(0);
 
     vi.useRealTimers();
+  });
+
+  it('requests Sähkötin data using Helsinki midnight parameters', async () => {
+    setPathname('/index.html');
+    loadScript('deploy/js/config.js');
+    document.body.innerHTML = '<div id="windPowerChart"></div>';
+    const chart = createEchartsMock();
+    globalThis.echarts = { init: () => chart };
+
+    const isoSpy = vi.fn()
+      .mockImplementationOnce(() => '2025-01-01T00:00:00.000Z')
+      .mockImplementationOnce(() => '2025-01-04T00:00:00.000Z');
+    window.getHelsinkiMidnightISOString = isoSpy;
+
+    const base = Date.UTC(2025, 0, 1);
+    const windData = [[base, 1000]];
+    const npfData = [[base + HOUR, 8]];
+    globalThis.fetch.mockImplementation(url => {
+      const urlString = String(url);
+      if (urlString.includes('windpower.json')) {
+        return Promise.resolve({ ok: true, json: () => Promise.resolve(windData) });
+      }
+      if (urlString.includes('prices.csv')) {
+        return Promise.resolve({ ok: true, text: () => Promise.resolve(buildPriceCsv([[base, 6]])) });
+      }
+      return Promise.resolve({ ok: true, json: () => Promise.resolve(npfData) });
+    });
+
+    loadScript('deploy/js/windpower.js');
+    await flushPromises(8);
+
+    const priceCall = globalThis.fetch.mock.calls.find(call => String(call[0]).includes('prices.csv'));
+    expect(priceCall).toBeDefined();
+    const requestedUrl = String(priceCall[0]);
+    expect(requestedUrl).toContain(encodeURIComponent('2025-01-01T00:00:00.000Z'));
+    expect(requestedUrl).toContain(encodeURIComponent('2025-01-04T00:00:00.000Z'));
+    expect(isoSpy).toHaveBeenCalledWith(0);
+    expect(isoSpy).toHaveBeenCalledWith(3);
   });
 });
