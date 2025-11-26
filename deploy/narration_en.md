@@ -1,19 +1,19 @@
-*Power exchange prices will remain low through the end of the week, briefly negative overnight on Saturday; clearly higher on Monday, then moderate again Tuesday–Wednesday, with variation focused on morning and evening hours.*
+*The spot electricity price will remain broadly low in the coming days: average prices stay under 4 ¢, Saturday the cheapest and Thursday the highest. Wind power keeps prices in check.*
 
-The forecast was updated on Wednesday at 02:58.
+The forecast was updated on Wednesday at 08:57.
 
 |  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday** | 3,2 | 0,6 - 6,7 | 5242 - 7310 | -2,3 |
-| **Friday** | 2,1 | 0,8 - 2,7 | 5766 - 7195 | 1,9 |
-| **Saturday** | 1,0 | -0,1 - 2,2 | 4936 - 7134 | 3,1 |
-| **Sunday** | 1,9 | 0,8 - 3,5 | 3741 - 4936 | 2,3 |
-| **Monday** | 5,9 | 1,2 - 10,7 | 1626 - 4043 | 1,5 |
-| **Tuesday** | 4,1 | 1,8 - 6,5 | 3285 - 5136 | 2,2 |
-| **Wednesday** | 4,9 | 0,9 - 8,5 | 2211 - 5277 | 3,0 |
+| **Thursday** | 3,3 | 0,6 - 5,9 | 5252 - 7293 | -2,3 |
+| **Friday** | 2,2 | 1,3 - 2,8 | 5770 - 7212 | 1,9 |
+| **Saturday** | 1,4 | 0,2 - 2,5 | 4756 - 7140 | 3,1 |
+| **Sunday** | 2,0 | 1,0 - 3,1 | 4278 - 4802 | 2,3 |
+| **Monday** | 2,7 | 0,7 - 4,8 | 3631 - 5172 | 1,5 |
+| **Tuesday** | 3,0 | 1,1 - 4,8 | 4103 - 5530 | 2,2 |
+| **Wednesday** | 2,6 | 1,2 - 4,0 | 4182 - 5551 | 3,0 |
 
-The week is expected to start on a low note: **Thursday’s** average will be 3,2 ¢, **Friday’s** 2,1 ¢ and **Saturday’s** 1,0 ¢, while **Sunday’s** average will stay at 1,9 ¢. The clear outlier will be **Monday**, with an average of 5,9 ¢ and a daily high of 10,7 ¢. The top hour will fall in the afternoon around 14:00–16:00. On the same day, minimum wind output will drop to 1626 MW, which explains the higher maximum price.
+The week’s overall picture is set to remain inexpensive: all days’ average prices will stay under four cents. **Thursday’s** average would be the highest of the period, 3.3 ¢, and **Saturday’s** clearly the lowest, 1.4 ¢. Differences should remain moderate, as daily maxima mostly fall between 3 and 6 cents. Strong wind generation throughout the period would broadly explain the low price level; wind power is expected on most days to be well above 3,000 MW.
 
-Early in the week prices will ease: **Tuesday’s** average is projected at 4,1 ¢ and **Wednesday’s** at 4,9 ¢; Wednesday’s maximum is estimated at 8,5 ¢ around 18:00–20:00. The cheapest moments will arrive during the weekend night: on **Saturday** there will be a brief negative price around 01:00–03:00 (low −0,1 ¢). Otherwise, prices will mostly stay below six cents, with variation concentrated in the morning and evening hours.
+Within the day, the priciest hours will typically cluster around the morning and evening demand periods, while night and early morning will remain clearly below the daily average. Particularly cheap moments are anticipated in the small hours of the weekend, when prices will come close to just a few tenths of a cent. On weekdays too, night and pre-dawn prices will stay low, and daytime prices will be subdued early in the week as well, even if a few individual hours see somewhat higher readings.
 
-*Numbers interpreted by gpt-5.* 🌬️
+*Numbers interpreted by gpt-5.* 💨
