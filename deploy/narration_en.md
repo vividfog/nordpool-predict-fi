@@ -1,19 +1,19 @@
-*The weekend looks very cheap, with Saturday night briefly negative; early in the week prices will rise moderately, with Monday clearly the most expensive.*
+*Electricity prices will remain low: the weekend will be the cheapest with a few negative hours; Monday and Thursday will be priciest, peaks below 7 ¢.*
 
-The forecast was updated on Thursday at 02:58.
+The forecast was updated on Thursday at 08:58.
 
 |  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday** | 1,3 | 0,1 - 2,2 | 4492 - 7207 | 1,9 |
-| **Saturday** | 0,4 | -0,6 - 1,8 | 6323 - 7208 | 3,1 |
-| **Sunday** | 1,7 | 0,3 - 2,3 | 4106 - 6023 | 2,3 |
-| **Monday** | 5,2 | 2,2 - 7,8 | 2683 - 4743 | 1,5 |
-| **Tuesday** | 2,8 | 1,3 - 4,3 | 4196 - 5531 | 2,2 |
-| **Wednesday** | 4,3 | 0,9 - 7,5 | 3031 - 5551 | 3,0 |
-| **Thursday** | 4,8 | 3,0 - 6,6 | 2401 - 3672 | 3,2 |
+| **Friday** | 1,0 | -0,3 - 1,9 | 4424 - 7242 | 1,9 |
+| **Saturday** | 0,3 | -0,8 - 1,7 | 6366 - 7242 | 3,1 |
+| **Sunday** | 1,4 | 0,4 - 2,1 | 4191 - 6076 | 2,3 |
+| **Monday** | 3,8 | 1,5 - 6,6 | 3266 - 4800 | 1,5 |
+| **Tuesday** | 2,5 | 0,6 - 3,8 | 3812 - 5570 | 2,2 |
+| **Wednesday** | 2,0 | 1,2 - 3,2 | 4732 - 5102 | 3,0 |
+| **Thursday** | 3,8 | 0,9 - 6,7 | 3162 - 4644 | 3,2 |
 
-The weekend will look inexpensive. On Friday the price level will stay within the 0,1–2,2 ¢ range and the daily average will settle at 1,3 ¢. On Saturday prices are pushed even lower: the average is forecast at 0,4 ¢ and individual negative hourly prices will most likely occur overnight around 01:00–03:00. Strong wind power production over the weekend will support the low levels.
+Electricity prices for the week will remain low across the board. **On Friday**, the average price will be 1,0 ¢ and **on Saturday** 0,3 ¢. Both days will include negative hours: on Friday late evening around 22:00–24:00 and in the early hours of Saturday around 01:00–03:00. Sunday’s average will be 1,4 ¢, so the weekend will clearly be the week’s cheapest stretch.
 
-The week’s highest price level will occur at the start of the week. On Monday the average rises to 5,2 ¢ and the price peaks at 7,8 ¢ in the afternoon around 15:00–17:00. On Tuesday the level eases to 2,8 ¢. On Wednesday the average climbs again to 4,3 ¢ and the intraday high is 7,5 ¢ in the afternoon at 16:00–18:00. On Thursday prices remain elevated, with the average at 4,8 ¢ and the daily range at 3,0–6,6 ¢. The week’s cheapest moments will fall during Saturday night and morning hours, whereas the clearly most expensive period will be on Monday afternoon.
+At the start of the week, prices will tick up slightly but stay below four cents. **On Monday**, the average will be 3,8 ¢ with a range of 1,5–6,6 ¢. **On Thursday**, the average will likewise be 3,8 ¢ and the range 0,9–6,7 ¢. Tuesday’s and Wednesday’s averages will land at 2,5 ¢ and 2,0 ¢, respectively. The priciest days of the week will thus be Monday and Thursday, even though their averages remain below four cents. Wind power will be abundant through the week, supporting the low price level especially over the weekend. Variation between days will remain modest: nightly minima will dip toward zero and peaks will stay below 7 ¢.
 
-*Numbers by gpt-5.* 🔌
+*gpt-5 crunched numbers.* 🌬️
