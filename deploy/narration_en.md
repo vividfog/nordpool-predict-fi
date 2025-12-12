@@ -1,19 +1,19 @@
-*Spot electricity prices will stay moderate this week: Sunday will be clearly the cheapest, prices rise from Tuesday to Wednesday and level off later in the week. On Saturday there will be a spike risk for individual hours.*
+*Next week’s spot electricity looks moderate: Saturday’s average price will be highest, Sunday cheapest, and weekdays will settle around 5–8 ¢. Strong winds will push Sunday’s prices down.*
 
-The forecast was updated on Friday at 11:57.
+The forecast was updated on Friday at 14:57.
 
-|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday** | 7,1 | 3,6 - 11,1 | 656 - 4869 | -2,6 |
-| **Sunday** | 2,5 | 1,3 - 5,0 | 3704 - 5661 | -0,8 |
-| **Monday** | 4,3 | 2,5 - 7,1 | 2641 - 4485 | 1,9 |
-| **Tuesday** | 8,1 | 2,8 - 11,7 | 1888 - 3777 | 0,6 |
-| **Wednesday** | 8,5 | 3,2 - 13,0 | 2243 - 4377 | 0,1 |
-| **Thursday** | 6,0 | 3,7 - 8,6 | 1990 - 3979 | 1,1 |
-| **Friday** | 5,5 | 2,7 - 8,2 | 1748 - 4169 | 2,1 |
+| **Saturday** | 8,5 | 4,3 - 12,9 | 676 - 4894 | -2,6 |
+| **Sunday** | 2,7 | 1,7 - 4,3 | 3710 - 5649 | -0,8 |
+| **Monday** | 5,3 | 2,3 - 8,0 | 2736 - 4137 | 1,9 |
+| **Tuesday** | 8,3 | 2,5 - 12,1 | 1704 - 3873 | 0,6 |
+| **Wednesday** | 8,0 | 3,5 - 11,0 | 2153 - 4237 | 0,1 |
+| **Thursday** | 6,4 | 4,5 - 8,9 | 2053 - 3974 | 1,1 |
+| **Friday** | 5,9 | 3,1 - 8,4 | 1778 - 4126 | 2,1 |
 
-In the weekly overview, prices will mostly sit at mid-range levels, with variability increasing after the start of the week. At the very start, on **Saturday**, a spike risk for individual hours will appear in the morning around 7–9. **Sunday** will stand out with a low daily average of 2,5 ¢, and several hours will dip below three cents. The new week will start on **Monday** at a moderate level of 4,3 ¢. After that, the level will rise: on **Tuesday** the average will be 8,1 ¢ and on **Wednesday** 8,5 ¢, with the week’s highest single-hour price, 13,0 ¢, likely in the late morning around 8–10. Later in the week the level will stabilize: **Thursday’s** daily average will be 6,0 ¢ and **Friday’s** 5,5 ¢.
+Prices will vary moderately. The most expensive day of the week is expected to be **Saturday**: the average price will be 8.5 ¢ and the highest hourly price 12.9 ¢, occurring between 12:00–14:00. The clearly cheapest day will be **Sunday**, with an average of 2.7 ¢ and a range of 1.7–4.3 ¢. In the early morning hours 05:00–07:00, prices will dip below two cents. Strong wind power will support the low level.
 
-For those watching the clock, the cheapest hours will cluster on **Sunday** at night and in the early morning, for example around 2–4, when the price will be about 1,3–1,6 ¢. Higher moments will occur on **Tuesday** both late morning and early evening (around 9–11 and 17–19), and on **Wednesday** after the late morning prices will remain above ten cents for an extended stretch. Toward the end of the week, on **Friday** in the evening, the price will drop clearly below eight cents.
+The start of the week (from **Monday** to **Wednesday**) will stay in the 5.3–8.0 ¢ averages. Especially on **Tuesday**, daytime power will become more expensive: midday peaks will rise to the 10–12 ¢ range at 09:00–11:00, and the day’s maximum is estimated at 12.1 ¢. The intraday minimum of wind generation will drop below 2 000 MW, which supports higher midday prices. Later in the week, **Thursday**’s price range will be 4.5–8.9 ¢ (avg 6.4 ¢), and **Friday**’s 3.1–8.4 ¢ (avg 5.9 ¢). On Friday evening, prices are projected to fall around 21:00–23:00 close to three cents.
 
-*gpt-5 summarized.* 📊
+*Summarized by gpt-5.* 🌬️⚡
