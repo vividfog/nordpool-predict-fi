@@ -1,19 +1,19 @@
-*Power exchange prices will stay moderate next week: Sunday will be the lowest, Wednesday clearly highest, and Saturday carries a single-hour spike risk.*
+*Spot electricity prices will stay moderate this week: Sunday will be clearly the cheapest, prices rise from Tuesday to Wednesday and level off later in the week. On Saturday there will be a spike risk for individual hours.*
 
-The forecast was updated on Friday at 08:57.
+The forecast was updated on Friday at 11:57.
 
-|  | avg-<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg-<br>temperature<br>°C |
+|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday** | 7,3 | 3,9 - 11,2 | 634 - 4790 | -2,6 |
-| **Sunday** | 2,3 | 1,3 - 4,3 | 4413 - 6184 | -0,8 |
-| **Monday** | 4,2 | 2,1 - 7,1 | 2485 - 4524 | 1,9 |
-| **Tuesday** | 7,8 | 2,9 - 11,7 | 1917 - 3749 | 0,6 |
-| **Wednesday** | 8,5 | 3,4 - 12,6 | 2270 - 4425 | 0,1 |
-| **Thursday** | 5,9 | 4,0 - 8,4 | 1981 - 3956 | 1,1 |
-| **Friday** | 5,4 | 2,2 - 7,7 | 1715 - 4704 | 1,9 |
+| **Saturday** | 7,1 | 3,6 - 11,1 | 656 - 4869 | -2,6 |
+| **Sunday** | 2,5 | 1,3 - 5,0 | 3704 - 5661 | -0,8 |
+| **Monday** | 4,3 | 2,5 - 7,1 | 2641 - 4485 | 1,9 |
+| **Tuesday** | 8,1 | 2,8 - 11,7 | 1888 - 3777 | 0,6 |
+| **Wednesday** | 8,5 | 3,2 - 13,0 | 2243 - 4377 | 0,1 |
+| **Thursday** | 6,0 | 3,7 - 8,6 | 1990 - 3979 | 1,1 |
+| **Friday** | 5,5 | 2,7 - 8,2 | 1748 - 4169 | 2,1 |
 
-Price levels will remain mostly reasonable. **Saturday** will carry a risk of single-hour spikes, likely in the morning around 07–09. Minimum wind output will dip very low (below 1000 MW) then, which may lift peak-hour prices relative to the rest of the day. **Sunday** will stay low throughout, supported by abundant wind generation. The week’s most expensive day will be **Wednesday**, with an average of 8,5 ¢ and a projected maximum of 12,6 ¢.
+In the weekly overview, prices will mostly sit at mid-range levels, with variability increasing after the start of the week. At the very start, on **Saturday**, a spike risk for individual hours will appear in the morning around 7–9. **Sunday** will stand out with a low daily average of 2,5 ¢, and several hours will dip below three cents. The new week will start on **Monday** at a moderate level of 4,3 ¢. After that, the level will rise: on **Tuesday** the average will be 8,1 ¢ and on **Wednesday** 8,5 ¢, with the week’s highest single-hour price, 13,0 ¢, likely in the late morning around 8–10. Later in the week the level will stabilize: **Thursday’s** daily average will be 6,0 ¢ and **Friday’s** 5,5 ¢.
 
-The week will start off fairly inexpensive: **Monday’s** average will sit a bit above four cents. **Tuesday’s** and Wednesday’s higher levels will cluster in the busier hours; on Tuesday the highs will land in the afternoon around 16–18, and on Wednesday around 08–10. **Thursday** and **Friday** will track near the weekly mean without major swings. The cheapest hours will appear overnight and through Sunday morning, at times dipping below two cents.
+For those watching the clock, the cheapest hours will cluster on **Sunday** at night and in the early morning, for example around 2–4, when the price will be about 1,3–1,6 ¢. Higher moments will occur on **Tuesday** both late morning and early evening (around 9–11 and 17–19), and on **Wednesday** after the late morning prices will remain above ten cents for an extended stretch. Toward the end of the week, on **Friday** in the evening, the price will drop clearly below eight cents.
 
-*Figures compiled by gpt-5.* 🌬️
+*gpt-5 summarized.* 📊
