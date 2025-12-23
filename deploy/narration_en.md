@@ -1,19 +1,19 @@
-*The week’s spot electricity prices will remain mostly low; Wednesday stands out as pricier, while a windy late week pushes prices down and public holidays ease demand.*
+*Holidays and wind will make the electricity week inexpensive: Thursday–Saturday under 3 ¢, Tuesday clearly priciest in the afternoon, average 7,6 ¢.*
 
-The forecast was updated on Monday at 20:57.
+The forecast was updated on Tuesday at 02:57.
 
-|  | avg-<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg-<br>temperature<br>°C |
+|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday** | 4,2 | 1,9 - 7,4 | 1037 - 3011 | 1,5 |
-| **Wednesday** | 6,3 | 1,8 - 12,7 | 1444 - 5192 | -0,1 |
-| **Thursday** | 3,2 | 1,6 - 5,1 | 4154 - 6735 | -0,2 |
-| **Friday** | 3,2 | 0,9 - 5,3 | 4076 - 5585 | 1,3 |
-| **Saturday** | 2,0 | 1,1 - 3,2 | 4956 - 6164 | 1,2 |
-| **Sunday** | 3,4 | 1,9 - 5,5 | 3204 - 5789 | -0,2 |
-| **Monday** | 4,1 | 0,8 - 6,4 | 4625 - 5921 | -1,2 |
+| **Wednesday** | 5,7 | 1,8 - 9,7 | 1485 - 5296 | -0,1 |
+| **Thursday** | 2,7 | 0,7 - 4,8 | 5465 - 7050 | -0,2 |
+| **Friday** | 2,3 | 0,4 - 4,6 | 3702 - 6674 | 1,3 |
+| **Saturday** | 1,9 | 0,5 - 3,3 | 4490 - 6222 | 1,2 |
+| **Sunday** | 3,1 | 1,2 - 4,8 | 3266 - 5940 | -0,2 |
+| **Monday** | 4,1 | 0,5 - 6,4 | 4724 - 5985 | -1,2 |
+| **Tuesday** | 7,6 | 3,4 - 10,9 | 2786 - 5433 | -3,1 |
 
-Price expectations for the week will be mostly low. The most notable day will be **Wednesday**, with an average of 6,3 ¢ and a projected maximum of 12,7 ¢. The lowest hourly wind output (min 1,444 MW) coincides with the same day, which explains the higher peak. Wednesday will be a public holiday, but weak wind can still lift prices. The peak would fall around the morning rush, roughly 7–9 a.m.
+Price expectations for the week will trend low. Three consecutive public holidays starting from **Wednesday**, together with broadly strong wind, are expected to push average prices to 2,7 ¢ on **Thursday**, 2,3 ¢ on **Friday** and 1,9 ¢ on **Saturday**. On these days, nights and early mornings will often price below two cents; early Friday morning will dip to about 0,4 ¢ and Saturday to 0,5 ¢. Wednesday will also stay clearly under five cents, around 5,7 ¢, even though the day’s high will touch 9,7 ¢.
 
-Prices on **Thursday** and **Friday** will be clearly lower (avg 3,2 ¢), and strong wind at 4–7 GW will keep levels down. Both will be public holidays, which lightens demand. The week’s lowest average will be on **Saturday**, about 2,0 ¢; the cheapest hours fall in the early morning, around 2–4 a.m. On **Sunday** and next **Monday**, prices will return to roughly 3,4–4,1 ¢. On **Tuesday**, the price will be slightly higher (avg 4,2 ¢), consistent with a lower average wind level.
+The clearest outlier will be **Tuesday**: the daily average will be 7,6 ¢ and the high 10,9 ¢, likely around 16:00–18:00. On **Monday**, prices are expected to stay near four cents. **Sunday** will land around 3,1 ¢. Overall, the early‑week holidays and windy conditions will keep long stretches below four cents, and the week’s highest moments will cluster on Tuesday afternoon.
 
-*Numbers compiled by gpt-5.* 🌬️
+*Compiled by gpt-5.* 💨
