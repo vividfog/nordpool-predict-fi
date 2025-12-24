@@ -448,9 +448,9 @@
                             }
                             r.isAirborne = false;
                             r.isThrown = false;
-                            r.isDragging = false;
+                            // Note: Do NOT clear isDragging here — that's mouse-controlled
                             r.justSnapped = true; // Prevent progress overwrite this frame
-                            if (r.imageShape) r.imageShape.attr('cursor', 'grab');
+                            if (r.imageShape && !r.isDragging) r.imageShape.attr('cursor', 'grab');
                         });
                     }
 
