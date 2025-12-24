@@ -1,19 +1,19 @@
-*The early week will be affordable thanks to public holidays; from Tuesday onward the price level will strengthen clearly in the forecasts, and Wednesday will rise as the week’s clear price peak compared to the start.*
+*Spot electricity will remain inexpensive from Thursday to Sunday, with Saturday the cheapest; next Tuesday–Wednesday prices will rise clearly, especially in evening and morning hours after the holidays.*
 
-The forecast was updated on Wednesday at 02:57.
+The forecast was updated on Wednesday at 08:57.
 
 | ""  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday**  | 1,8 | 0,2 - 3,6 | 5130 - 7480 | -0,2 |
-| **Friday**| 4,2 | 0,5 - 8,4 | 2236 - 6844 | 1,3 |
-| **Saturday** | 1,8 | 0,8 - 3,2 | 2786 - 6136 | 1,2 |
-| **Sunday**| 2,7 | 1,1 - 5,5 | 3410 - 5843 | -0,2 |
-| **Monday**| 3,4 | 1,2 - 5,1 | 4637 - 5789 | -1,2 |
-| **Tuesday**  | 5,1 | 2,5 - 7,7 | 4769 - 5733 | -3,0 |
-| **Wednesday**| 5,6 | 0,9 - 10,2 | 3094 - 6020 | -4,2 |
+| **Thursday**  | 2.0 | 0.2 - 3.5 | 4989 - 7455 | -0.2 |
+| **Friday**| 3.7 | 0.2 - 7.2 | 2434 - 6754 | 1.3 |
+| **Saturday** | 1.8 | 0.8 - 2.9 | 3203 - 7053 | 1.2 |
+| **Sunday**| 2.5 | 1.3 - 4.3 | 3721 - 5925 | -0.2 |
+| **Monday**| 3.3 | 1.1 - 4.9 | 4668 - 5871 | -1.2 |
+| **Tuesday**  | 6.1 | 2.2 - 8.7 | 4380 - 5951 | -3.0 |
+| **Wednesday**| 5.8 | 1.0 - 11.1 | 2770 - 5920 | -4.2 |
 
-The start of the week looks inexpensive. **Thursday**’s and **Friday**’s public holidays will reduce demand, which will show especially in Thursday’s average price of 1,8 ¢. Thursday’s abundant wind output (5130–7480 MW) will support the low level, and at night 00–02 the price will dip below 0,5 ¢. **Friday**’s average will rise to 4,2 ¢, and toward evening clearly higher hours will appear, around 18–20 about 8–8,4 ¢, as wind is weaker (min 2236 MW). **Saturday**’s average will return to 1,8 ¢ and intraday variation will be small.
+Price expectations for the end of the week will remain mostly low. Already on **Thursday** and **Friday**, which are public holidays, average prices will be 2.0 ¢ and 3.7 ¢. Thursday’s range will be 0.2–3.5 ¢ and Friday’s 0.2–7.2 ¢. **Saturday** will post the week’s lowest average, 1.8 ¢, with several hours around the 1–2 ¢ level. **Sunday’s** average will be 2.5 ¢, and on **Monday** it will hold around 3.3 ¢.
 
-Midweek the price level strengthens. **Sunday** is expected to settle at 2,7 ¢. **Monday**’s average will be 3,4 ¢. **Tuesday**’s average will rise to 5,1 ¢, and in the evening 18–20 the price will reach 7–7,7 ¢. The highest day of the week will be **Wednesday**, with an average of 5,6 ¢ and a daily high of 10,2 ¢. The highest hours will fall on Wednesday evening, about 22–24. Overall, the early week will mostly cluster below four cents, and a clear rise will appear only from Tuesday onward.
+On **Tuesday** and **Wednesday** the level will rise clearly higher. Tuesday’s average will be 6.1 ¢ and the highest hour about 8.7 ¢, concentrated in the morning at 08:00–10:00 and in the evening at 17:00–19:00. On Wednesday the daily average will be 5.8 ¢, and the highest hourly price will reach about 11.1 ¢ in the evening at 21:00–23:00. The period’s lowest hours will fall into the night and morning periods of Thursday and Saturday, when the price will drop at times close to 0.2–1.0 ¢.
 
-*Figures compiled by gpt-5.* 🌬️
+*Data summarized by gpt-5.* 📈
