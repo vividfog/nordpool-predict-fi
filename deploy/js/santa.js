@@ -62,6 +62,7 @@
 
             // Interaction Helpers
             this.lastBobble = 0;
+            this.justSnapped = false; // Prevents progress overwrite after formation snap
         }
 
         load(zr) {
@@ -140,6 +141,12 @@
             // Velocity Tracking
             const dx = mx - this.lastDragX;
             this.dragVelocityX = dx;
+
+            // Immediately update direction while dragging to reflect visual intent
+            if (Math.abs(dx) > 0) {
+                this.direction = Math.sign(dx);
+            }
+
             this.lastDragX = mx;
 
             const now = Date.now();
@@ -213,6 +220,25 @@
                 return;
             }
 
+            // --- Passive Follower Logic ---
+            // If another runner is the "Thrower" (dragged or thrown), and I am not, I am passive.
+            let thrower = null;
+            if (runners.length > 1) {
+                thrower = runners.find(r => r.isThrown || r.isDragging);
+            }
+
+            // If I am not the thrower, but there IS a thrower, I am a passive follower.
+            const isPassive = (thrower && thrower !== this);
+
+            if (isPassive) {
+                // strict obedience to thrower's direction
+                this.direction = thrower.direction;
+
+                // If airborne, I just follow physics (handled below in airborne section)
+                // If thrower is dragging, I am being pulled (handled by leash constraint later)
+                // But I should NOT execute "Rail Logic" (walking).
+            }
+
             // --- Rail Calculation ---
             const startPt = chartInstance.convertToPixel({ seriesId: 'forecast-line' }, forecast[0]);
             const endPt = chartInstance.convertToPixel({ seriesId: 'forecast-line' }, forecast[forecast.length - 1]);
@@ -225,10 +251,30 @@
             this.lastTotalWidth = totalWidth; // Store for physics helpers
 
             // Direction Logic
-            if (this.direction === 1 && this.progress >= 1) {
-                this.direction = -1;
-            } else if (this.direction === -1 && this.progress <= 0) {
-                this.direction = 1;
+            // Reindeer (Poro) is the Leader. He decides when to turn at edges.
+            // Santa (Pukki) follows Reindeer unless he is being dragged/thrown himself.
+            if (this.role === 'reindeer') {
+                if (this.direction === 1 && this.progress >= 1) {
+                    this.direction = -1;
+                } else if (this.direction === -1 && this.progress <= 0) {
+                    this.direction = 1;
+                }
+            } else {
+                // I am Santa
+                if (!this.isDragging && !this.isThrown) {
+                    // If just walking, copy Reindeer
+                    const poro = runners.find(r => r.role === 'reindeer');
+                    if (poro) {
+                        this.direction = poro.direction;
+                    }
+                } else {
+                    // If I am being interacted with, I can turn at edges to stay in bounds
+                    if (this.direction === 1 && this.progress >= 1) {
+                        this.direction = -1;
+                    } else if (this.direction === -1 && this.progress <= 0) {
+                        this.direction = 1;
+                    }
+                }
             }
 
             const screenX = startX + totalWidth * this.progress;
@@ -288,34 +334,47 @@
             const targetY = bestY;
             const targetRotation = -bestAngle;
 
+
             // --- Airborne Logic ---
             if (this.isAirborne) {
                 this.momentum.y += 0.8; // Gravity
                 this.momentum.x *= 0.99;
                 this.momentum.y *= 0.99;
 
-                const nextX = this.group.x + this.momentum.x;
-                const nextY = this.group.y + this.momentum.y;
+                let nextX = this.group.x + this.momentum.x;
+                let nextY = this.group.y + this.momentum.y;
 
-                // Reset check
-                const ch = chartInstance.getHeight();
-                if (nextY > ch + 100) {
-                    this.isAirborne = false;
-                    this.group.hide();
-                    this.progress = 0;
-                    this.direction = 1;
-                    this.currentY = null;
-                    return;
+                // --- Edge Bounce (Bouncy Boundaries) ---
+                const chartW = chartInstance.getWidth();
+                const edgeMargin = 20; // Bounce before going fully off-screen
+                const bounceFactor = 0.6; // Energy loss on bounce
+
+                // Left edge bounce
+                if (nextX < startX - edgeMargin) {
+                    nextX = startX - edgeMargin;
+                    this.momentum.x = -this.momentum.x * bounceFactor;
+                    this.direction = 1; // Now moving right
+                }
+                // Right edge bounce
+                if (nextX > endX + edgeMargin) {
+                    nextX = endX + edgeMargin;
+                    this.momentum.x = -this.momentum.x * bounceFactor;
+                    this.direction = -1; // Now moving left
                 }
 
-                // Landing Logic (Duplicate Hull Logic for nextX)
+                // Bottom edge - bounce back up (instead of falling off)
+                const ch = chartInstance.getHeight();
+                if (nextY > ch - 10) {
+                    nextY = ch - 10;
+                    this.momentum.y = -this.momentum.y * bounceFactor;
+                }
+
+                // Landing Logic (Hull check for ground)
                 const groundPoly = getGroundPolygon(nextX - halfW, nextX + halfW, forecast);
                 let landY = -99999;
                 let landFound = false;
                 let landAngle = 0;
 
-                // (Simplified landing check for brevity, logic identical to above loop)
-                // We'll reuse the exact loop logic for consistency
                 for (let i = 0; i < groundPoly.length; i++) {
                     for (let j = i + 1; j < groundPoly.length; j++) {
                         const p1 = groundPoly[i]; const p2 = groundPoly[j];
@@ -340,74 +399,64 @@
                     this.isAirborne = false;
                     this.currentY = landY;
                     this.group.x = nextX;
-                    this.momentum = { x: 0, y: 0 }; // Clear momentum on landing
+                    this.momentum = { x: 0, y: 0 };
 
-                    // --- Formation Snap (If this was the thrown runner) ---
-                    if (this.isThrown) {
-                        this.isThrown = false;
-                        const peer = runners.find(r => r !== this);
-                        if (peer) {
-                            const spacing = 50;
+                    // --- Formation Snap (Leader Always Wins) ---
+                    // Always snap formation on landing, regardless of who was thrown
+                    const pukki = runners.find(r => r.role === 'santa');
+                    const poro = runners.find(r => r.role === 'reindeer');
 
-                            // 1. Sync Direction
-                            peer.direction = this.direction;
-                            peer.momentum = { x: 0, y: 0 };
+                    if (pukki && poro) {
+                        const OFFSET = 0.02;
+                        let landingProgress = (nextX - startX) / totalWidth;
 
-                            // 2. Determine Ideal X
-                            // "Poro (Reindeer) is always in front"
-                            // If Moving Right (1): Poro > Santa
-                            // If Moving Left (-1): Poro < Santa
+                        // Direction: use this runner's direction (from momentum/bounce)
+                        const landingDir = this.direction;
+                        pukki.direction = landingDir;
+                        poro.direction = landingDir;
 
-                            let peerTargetX;
-                            if (this.role === 'santa') {
-                                // I am Santa. Peer is Reindeer.
-                                // Reindeer should be ahead (direction * spacing)
-                                peerTargetX = nextX + (this.direction * spacing);
-                            } else {
-                                // I am Reindeer. Peer is Santa.
-                                // Santa should be behind (-direction * spacing)
-                                peerTargetX = nextX - (this.direction * spacing);
-                            }
+                        // Stop momentum for both
+                        pukki.momentum = { x: 0, y: 0 };
+                        poro.momentum = { x: 0, y: 0 };
 
-                            // Bounds check
-                            const cw = chartInstance.getWidth();
-                            if (peerTargetX < 0) peerTargetX = 0;
-                            if (peerTargetX > cw) peerTargetX = cw;
-
-                            // 3. Snap Peer Position
-                            peer.group.x = peerTargetX;
-
-                            // 4. Snap Peer to Ground
-                            const groundY = findGroundY(peerTargetX, forecast, chartInstance);
-                            if (groundY !== null) {
-                                peer.currentY = groundY;
-                                peer.group.y = groundY;
-                                peer.isAirborne = false;
-
-                                // Visuals
-                                peer.isDragging = false; // Force release
-                                if (peer.imageShape) peer.imageShape.attr('cursor', 'grab');
-                            }
-
-                            // 5. Sync Progress
-                            if (this.lastTotalWidth) {
-                                peer.progress = (peerTargetX - startX) / this.lastTotalWidth;
-                                if (peer.progress < 0) peer.progress = 0;
-                                if (peer.progress > 1) peer.progress = 1;
-                            }
+                        // Poro is always the leader - establish Poro's position first
+                        if (this.role === 'reindeer') {
+                            // Poro landed - use landing position
+                            poro.progress = landingProgress;
+                        } else {
+                            // Pukki landed - Poro goes in front
+                            poro.progress = landingProgress + (landingDir * OFFSET);
                         }
+
+                        // Clamp Poro
+                        poro.progress = Math.max(0, Math.min(1, poro.progress));
+
+                        // Pukki is always behind Poro
+                        pukki.progress = poro.progress - (landingDir * OFFSET);
+                        pukki.progress = Math.max(0, Math.min(1, pukki.progress));
+
+                        // Apply positions
+                        pukki.group.x = startX + totalWidth * pukki.progress;
+                        poro.group.x = startX + totalWidth * poro.progress;
+
+                        // Ground-snap both and clear states
+                        [pukki, poro].forEach(r => {
+                            const groundY = findGroundY(r.group.x, forecast, chartInstance);
+                            if (groundY !== null) {
+                                r.currentY = groundY;
+                                r.group.y = groundY;
+                            }
+                            r.isAirborne = false;
+                            r.isThrown = false;
+                            r.isDragging = false;
+                            r.justSnapped = true; // Prevent progress overwrite this frame
+                            if (r.imageShape) r.imageShape.attr('cursor', 'grab');
+                        });
                     }
 
-                    // Sync Progress
-                    this.progress = (nextX - startX) / totalWidth;
-                    if (this.progress < 0) this.progress = 0;
-                    if (this.progress > 1) this.progress = 1;
-
-                    // Set Direction from Momentum (Use pre-clear momentum or just keep dir)
-                    // simplified: just keep direction or flip based on last movement if needed
                     this.currentRotation = -landAngle;
                 } else {
-                    // Flying
+                    // Still flying
                     this.group.x = nextX;
                     this.currentY = nextY;
                     this.group.y = nextY;
@@ -418,19 +467,29 @@
                 }
             }
 
+
             // --- Rail Logic (Normal Movement) ---
-            const slope = Math.sin(bestAngle);
-            let speedMod = Math.cos(bestAngle);
-            if (speedMod < 0.01) speedMod = 0.01;
-            const targetSpeed = BASE_SPEED * speedMod;
+            if (!isPassive && !this.justSnapped) {
+                const slope = Math.sin(bestAngle);
+                let speedMod = Math.cos(bestAngle);
+                if (speedMod < 0.01) speedMod = 0.01;
+                const targetSpeed = BASE_SPEED * speedMod;
 
-            this.currentSpeed = this.currentSpeed * 0.95 + targetSpeed * 0.05;
-            this.progress += this.direction * this.currentSpeed;
+                this.currentSpeed = this.currentSpeed * 0.95 + targetSpeed * 0.05;
+                this.progress += this.direction * this.currentSpeed;
 
-            if (this.progress > 1) this.progress = 1;
-            if (this.progress < 0) this.progress = 0;
+                if (this.progress > 1) this.progress = 1;
+                if (this.progress < 0) this.progress = 0;
 
-            this.currentRotation = this.currentRotation * 0.7 + targetRotation * 0.3;
+                this.currentRotation = this.currentRotation * 0.7 + targetRotation * 0.3;
+            } else {
+                // Passive: Just damp rotation towards 0 or similar if grounded? 
+                // Actually, if passive and ground-sliding (dragged), we might want to align to ground?
+                // For now, let's say if grounded & passive, we DO align to ground but DON'T move progress autonomously.
+                if (this.currentY !== null) {
+                    this.currentRotation = this.currentRotation * 0.7 + targetRotation * 0.3;
+                }
+            }
 
             // Wiggle if falling (gap > threshold)
             let extraRot = 0;
@@ -472,6 +531,9 @@
             this.group.rotation = this.currentRotation + extraRot; // Add flutter
             this.group.scaleX = this.scaleX;
             this.group.dirty();
+
+            // Clear justSnapped at end of frame
+            this.justSnapped = false;
         }
     }
 
@@ -524,6 +586,24 @@
             this.line.setShape({
                 points: [[p1_new.x, p1_new.y], [midX, midY], [p2_new.x, p2_new.y]]
             });
+
+            // --- Formation Enforcement (Per-Frame Soft Nudge) ---
+            // When grounded and not interacting, ensure Pukki stays behind Poro
+            const pukki = runners.find(r => r.role === 'santa');
+            const poro = runners.find(r => r.role === 'reindeer');
+
+            if (pukki && poro &&
+                !pukki.isDragging && !poro.isDragging &&
+                !pukki.isAirborne && !poro.isAirborne) {
+
+                const OFFSET = 0.02;
+                const targetPukkiProgress = poro.progress - (poro.direction * OFFSET);
+                const clampedTarget = Math.max(0, Math.min(1, targetPukkiProgress));
+
+                // Soft nudge (10% per frame) to avoid jarring snaps during normal walking
+                const nudgeFactor = 0.1;
+                pukki.progress = pukki.progress * (1 - nudgeFactor) + clampedTarget * nudgeFactor;
+            }
         }
 
         getAttachPoint(runner) {
