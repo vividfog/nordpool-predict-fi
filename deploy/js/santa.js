@@ -231,12 +231,9 @@
             const isPassive = (thrower && thrower !== this);
 
             if (isPassive) {
-                // strict obedience to thrower's direction
-                this.direction = thrower.direction;
-
-                // If airborne, I just follow physics (handled below in airborne section)
-                // If thrower is dragging, I am being pulled (handled by leash constraint later)
-                // But I should NOT execute "Rail Logic" (walking).
+                // Passive follower: do NOT copy thrower's direction during drag.
+                // Direction will sync on landing via formation snap.
+                // Just skip Rail Logic (walking) — handled by leash constraint.
             }
 
             // --- Rail Calculation ---
@@ -505,13 +502,13 @@
 
             // Orientation
             // If direction is -1 (Left), we flip the sprite.
-            // Pukki/Poro face Right by default?
-            // "Poro is always in front... pull effect"
-            // If they are separate sprites, we just flip them based on their own direction.
-            // Pukki.png usually faces Right?
-            // let's assume images face Right.
             const targetScaleVal = this.direction;
             this.scaleX = this.scaleX * 0.85 + targetScaleVal * 0.15;
+
+            // Snap to full flip when close enough (prevents half-flipped states)
+            if (Math.abs(this.scaleX) > 0.95) {
+                this.scaleX = Math.sign(this.scaleX);
+            }
 
             // Bobble
             const bobble = Math.sin(Date.now() / 200 + this.progress * 100) * 1.5;
