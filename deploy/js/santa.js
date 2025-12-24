@@ -19,10 +19,12 @@
      * Encapsulates the state and logic for a single running entity (Santa or Reindeer).
      */
     class SantaRunner {
-        constructor(imagePath, startProgress = 0) {
+        constructor(imagePath, role, startProgress = 0, leashOpts = { x: 0, y: 0 }) {
+            this.role = role; // 'santa' or 'reindeer'
             this.imagePath = imagePath;
             this.group = null; // ZRender Group
             this.imageShape = null; // ZRender Image
+            this.leashOpts = leashOpts;
 
             // Dimensions (Calculated on load)
             const isMobile = window.innerWidth < 800; // Mobile breakpoint
@@ -56,6 +58,10 @@
 
             // Lifecycle
             this.isDestroyed = false;
+            this.isThrown = false; // True if flight was initiated by drag
+
+            // Interaction Helpers
+            this.lastBobble = 0;
         }
 
         load(zr) {
@@ -168,7 +174,16 @@
             if (Math.abs(this.momentum.x) < 2) this.momentum.x = 0;
             if (Math.abs(this.momentum.y) < 2) this.momentum.y = 0;
 
+            if (Math.abs(this.momentum.x) > 1) {
+                this.direction = Math.sign(this.momentum.x);
+            }
+
             this.isAirborne = true;
+            this.isThrown = true;
+
+            // Clear isThrown on others to establish leadership
+            runners.forEach(r => { if (r !== this) r.isThrown = false; });
+
             this.currentY = this.group.y;
         }
 
@@ -207,6 +222,7 @@
             const startX = startPt[0];
             const endX = endPt[0];
             const totalWidth = endX - startX;
+            this.lastTotalWidth = totalWidth; // Store for physics helpers
 
             // Direction Logic
             if (this.direction === 1 && this.progress >= 1) {
@@ -324,16 +340,71 @@
                     this.isAirborne = false;
                     this.currentY = landY;
                     this.group.x = nextX;
+                    this.momentum = { x: 0, y: 0 }; // Clear momentum on landing
+
+                    // --- Formation Snap (If this was the thrown runner) ---
+                    if (this.isThrown) {
+                        this.isThrown = false;
+                        const peer = runners.find(r => r !== this);
+                        if (peer) {
+                            const spacing = 50;
+
+                            // 1. Sync Direction
+                            peer.direction = this.direction;
+                            peer.momentum = { x: 0, y: 0 };
+
+                            // 2. Determine Ideal X
+                            // "Poro (Reindeer) is always in front"
+                            // If Moving Right (1): Poro > Santa
+                            // If Moving Left (-1): Poro < Santa
+
+                            let peerTargetX;
+                            if (this.role === 'santa') {
+                                // I am Santa. Peer is Reindeer.
+                                // Reindeer should be ahead (direction * spacing)
+                                peerTargetX = nextX + (this.direction * spacing);
+                            } else {
+                                // I am Reindeer. Peer is Santa.
+                                // Santa should be behind (-direction * spacing)
+                                peerTargetX = nextX - (this.direction * spacing);
+                            }
+
+                            // Bounds check
+                            const cw = chartInstance.getWidth();
+                            if (peerTargetX < 0) peerTargetX = 0;
+                            if (peerTargetX > cw) peerTargetX = cw;
+
+                            // 3. Snap Peer Position
+                            peer.group.x = peerTargetX;
+
+                            // 4. Snap Peer to Ground
+                            const groundY = findGroundY(peerTargetX, forecast, chartInstance);
+                            if (groundY !== null) {
+                                peer.currentY = groundY;
+                                peer.group.y = groundY;
+                                peer.isAirborne = false;
+
+                                // Visuals
+                                peer.isDragging = false; // Force release
+                                if (peer.imageShape) peer.imageShape.attr('cursor', 'grab');
+                            }
+
+                            // 5. Sync Progress
+                            if (this.lastTotalWidth) {
+                                peer.progress = (peerTargetX - startX) / this.lastTotalWidth;
+                                if (peer.progress < 0) peer.progress = 0;
+                                if (peer.progress > 1) peer.progress = 1;
+                            }
+                        }
+                    }
 
                     // Sync Progress
                     this.progress = (nextX - startX) / totalWidth;
                     if (this.progress < 0) this.progress = 0;
                     if (this.progress > 1) this.progress = 1;
 
-                    // Set Direction from Momentum
-                    if (Math.abs(this.momentum.x) > 0.1) {
-                        this.direction = this.momentum.x > 0 ? 1 : -1;
-                    }
+                    // Set Direction from Momentum (Use pre-clear momentum or just keep dir)
+                    // simplified: just keep direction or flip based on last movement if needed
                     this.currentRotation = -landAngle;
                 } else {
                     // Flying
@@ -385,6 +456,8 @@
 
             // Bobble
             const bobble = Math.sin(Date.now() / 200 + this.progress * 100) * 1.5;
+            this.lastBobble = bobble;
+
             // Added progress*100 to bobble to desync the bobble of two runners slightly
 
             // Update Y
@@ -399,6 +472,150 @@
             this.group.rotation = this.currentRotation + extraRot; // Add flutter
             this.group.scaleX = this.scaleX;
             this.group.dirty();
+        }
+    }
+
+    /**
+     * Leash Class
+     * visually connects two runners and handles constraints.
+     */
+    class Leash {
+        constructor() {
+            this.line = null;
+            this.maxDistance = 60; // Max pixels between attachment points
+        }
+
+        init(zr) {
+            const Polyline = echarts.graphic.Polyline;
+            this.line = new Polyline({
+                shape: { points: [] },
+                style: {
+                    stroke: 'red',
+                    lineWidth: 2,
+                    lineDash: [0, 0] // Solid red line
+                },
+                z: 0 // Behind runners
+            });
+            zr.add(this.line);
+        }
+
+        update(runner1, runner2, chart) {
+            if (!this.line || !runner1.group || !runner2.group) return;
+
+            // 1. Get Attachment Points
+            // Runner 1 is usually Santa (left/back), Runner 2 is Poro (right/front)
+            // But we can check positions.
+            const p1 = this.getAttachPoint(runner1);
+            const p2 = this.getAttachPoint(runner2);
+
+            // 2. Resolve Constraints (Physics)
+            // If dragging, pull the other.
+            this.resolveConstraint(runner1, runner2, p1, p2, chart);
+
+            // 3. Draw Leash (with gravity sag)
+            // Recalculate points after constraint possibly moved them
+            const p1_new = this.getAttachPoint(runner1);
+            const p2_new = this.getAttachPoint(runner2);
+
+            // Simple catenary-like curve
+            const midX = (p1_new.x + p2_new.x) / 2;
+            const midY = (p1_new.y + p2_new.y) / 2 + 10; // Dip by 10px
+
+            this.line.setShape({
+                points: [[p1_new.x, p1_new.y], [midX, midY], [p2_new.x, p2_new.y]]
+            });
+        }
+
+        getAttachPoint(runner) {
+            // pivotX is width/2, pivotY is height. 
+            // group.x, group.y is the pivot point (bottom center).
+            const offsetX = (runner.leashOpts?.x || 0) * runner.width * runner.direction;
+            const offsetY = (runner.leashOpts?.y || 0) * runner.height;
+
+            return {
+                x: runner.group.x + offsetX,
+                y: runner.group.y - (runner.height / 2) + offsetY
+            };
+        }
+
+        resolveConstraint(r1, r2, p1, p2, chart) {
+            // "Leash" logic:
+            // 1. If dragging one, the other is pulled if distance > max.
+            // 2. If neither is dragging (both airborne/thrown), they pull each other.
+
+            const dx = p2.x - p1.x;
+            const dy = p2.y - p1.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            // Allow some slack, but if exceeding max, pull.
+            if (dist <= this.maxDistance) return;
+
+            // Calculate Correction
+            // How much to move to satisfy distance = maxDistance
+            const correction = (dist - this.maxDistance) / dist;
+            const cx = dx * correction;
+            const cy = dy * correction;
+
+            // Determine weights (0 = anchor, 0.5 = shared, 1 = pulled)
+            // By default, share the correction (free flight)
+            let w1 = 0.5;
+            let w2 = 0.5;
+
+            // If one is dragging, it becomes the rigid anchor (weight 0)
+            if (r1.isDragging && !r2.isDragging) {
+                w1 = 0; w2 = 1;
+            } else if (r2.isDragging && !r1.isDragging) {
+                w1 = 1; w2 = 0;
+            } else if (r1.isDragging && r2.isDragging) {
+                return; // Both fixed by mouse, can't resolve constraint
+            }
+
+            // Apply corrections
+            // If we need to bring them closer:
+            // r1 should move towards r2 (positive cx, cy)
+            // r2 should move towards r1 (negative cx, cy)
+
+            if (w1 > 0) {
+                const mx = cx * w1;
+                const my = cy * w1;
+                r1.group.x += mx;
+                r1.group.y += my;
+
+                // If pulled UP specifically (my < -2), or already airborne, stay airborne.
+                // Otherwise (sliding on ground), stay grounded.
+                if (r1.isAirborne || my < -2) {
+                    r1.isAirborne = true;
+                }
+
+                // Remove bobble from visual Y to get physics Y
+                r1.currentY = r1.group.y - (r1.lastBobble || 0);
+
+                // Sync Progress (approximate based on shift)
+                if (r1.lastTotalWidth) {
+                    r1.progress += mx / r1.lastTotalWidth;
+                    if (r1.progress < 0) r1.progress = 0;
+                    if (r1.progress > 1) r1.progress = 1;
+                }
+            }
+
+            if (w2 > 0) {
+                const mx = -cx * w2;
+                const my = -cy * w2;
+                r2.group.x += mx;
+                r2.group.y += my;
+
+                if (r2.isAirborne || my < -2) {
+                    r2.isAirborne = true;
+                }
+
+                r2.currentY = r2.group.y - (r2.lastBobble || 0);
+
+                if (r2.lastTotalWidth) {
+                    r2.progress += mx / r2.lastTotalWidth;
+                    if (r2.progress < 0) r2.progress = 0;
+                    if (r2.progress > 1) r2.progress = 1;
+                }
+            }
         }
     }
 
@@ -445,7 +662,65 @@
         return points;
     }
 
+    function findGroundY(x, forecast, chart) {
+        // Quick lookup of ground Y at exactly X
+        // We use the same hull logic but simplified for a single vertical line
+        // A simple range around X
+        const poly = getGroundPolygon(x - 5, x + 5, forecast);
+
+        let bestY = -99999;
+        let found = false;
+
+        // Concave hull walker for the small segment
+        for (let i = 0; i < poly.length; i++) {
+            for (let j = i + 1; j < poly.length; j++) {
+                const p1 = poly[i]; const p2 = poly[j];
+                const dx = p2.x - p1.x; const dy = p2.y - p1.y;
+                if (Math.abs(dx) < 0.1) continue;
+
+                const m = dy / dx; const c = p1.y - m * p1.x;
+                let valid = true;
+                for (let k = 0; k < poly.length; k++) {
+                    if (k === i || k === j) continue;
+                    // Check if any point is strictly ABOVE the line (since Y is pixel coords, 'above' means smaller Y? 
+                    // No, standard coord system here: higher Y is DOWN usually in canvas, but eCharts?
+                    // "pk.y < lineY - 0.5" in main loop. 
+                    // This implies Y increases downwards? Or upwards?
+                    // Ground usually implies we want the "Highest" visual point (Lowest Y in canvas?).
+                    // But code uses `yC > bestY`.
+                    // If `yC > bestY`, we are maximizing Y.
+                    // If Y increases Down, maximizing Y means finding the lowest point?
+                    // Wait, chart ground is usually at bottom.
+                    // If Y axis is standard screen coords (0 at top), high Y is bottom.
+                    // "pk.y < lineY" -> point is above line.
+                    // If we want a "Concave Hull" representing the surface we walk on (the 'top' of the area chart),
+                    // we usually want the minimal Y envelop (highest on screen).
+                    // But the loop does `yC > bestY`.
+                    // Let's stick to strict copy of the logic in `update` to be safe.
+                    // Logic in update:
+                    // if (pk.y < lineY - 0.5) { valid = false; }
+                    // if (valid && yC > bestY) { bestY = yC }
+
+                    if (poly[k].y < (m * poly[k].x + c) - 0.5) { valid = false; break; }
+                }
+
+                if (valid) {
+                    const yC = m * x + c;
+                    if (yC > bestY) {
+                        bestY = yC;
+                        found = true;
+                    }
+                }
+            }
+        }
+        if (found) return bestY;
+        if (poly.length > 0) return poly[0].y;
+        return null;
+    }
+
     // --- Main Initialization ---
+    let leash = null;
+
     function initSanta() {
         const container = document.getElementById('predictionChart');
         if (!container) return;
@@ -469,16 +744,12 @@
         runners.forEach(r => r.destroy(zr));
         runners = [];
 
-        // Global Mouse Listeners (Shared)
-        // We need to route events to appropriate runners
-        // Or just let listeners loop?
-        // Easiest is to add one listener to ZR that iterates
-        // But the class adds its own listeners to its Group for mousedown
-        // and we need global mousemove/up.
+        if (leash && leash.line) {
+            zr.remove(leash.line);
+        }
 
-        // Remove old global listeners if any (tricky without named functions)
-        // We'll attach named functions to ZR and check a flag?
-        // Actually, let's just use a singleton pattern for the global listener
+        // Global Mouse Listeners (Shared)
+        // ... (Keep existing listener logic)
         if (!zr._santaGlobalListenersAttached) {
             zr.on('mousemove', function (e) {
                 runners.forEach(r => r.handleGlobalMouseMove(e));
@@ -494,15 +765,19 @@
 
         // Create Runners
         // 1. Pukki
-        const pukki = new SantaRunner('pukki.png', 0.0);
+        const pukki = new SantaRunner('pukki.png', 'santa', 0.0);
         pukki.load(zr);
 
         // 2. Poro (Reindeer) - Starts slightly ahead
-        const poro = new SantaRunner('poro.png', 0.03);
+        const poro = new SantaRunner('poro.png', 'reindeer', 0.02);
         poro.load(zr);
 
         runners.push(pukki);
         runners.push(poro);
+
+        // Init Leash
+        leash = new Leash();
+        leash.init(zr);
 
         startAnimation();
     }
@@ -518,6 +793,11 @@
             if (elapsed > fpsInterval) {
                 lastTime = timestamp - (elapsed % fpsInterval);
                 runners.forEach(r => r.update());
+
+                // Update Leash
+                if (leash && runners.length >= 2) {
+                    leash.update(runners[0], runners[1], chartInstance);
+                }
             }
             animationFrameId = requestAnimationFrame(animate);
         }
