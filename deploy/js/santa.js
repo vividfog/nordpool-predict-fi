@@ -404,7 +404,7 @@
                     const poro = runners.find(r => r.role === 'reindeer');
 
                     if (pukki && poro) {
-                        const OFFSET = 0.02;
+                        const OFFSET = 0.03;
                         let landingProgress = (nextX - startX) / totalWidth;
 
                         // Direction: use this runner's direction (from momentum/bounce)
@@ -593,7 +593,7 @@
                 !pukki.isDragging && !poro.isDragging &&
                 !pukki.isAirborne && !poro.isAirborne) {
 
-                const OFFSET = 0.02;
+                const OFFSET = 0.03;
                 const targetPukkiProgress = poro.progress - (poro.direction * OFFSET);
                 const clampedTarget = Math.max(0, Math.min(1, targetPukkiProgress));
 
@@ -846,7 +846,7 @@
         pukki.load(zr);
 
         // 2. Poro (Reindeer) - Starts slightly ahead
-        const poro = new SantaRunner('poro.png', 'reindeer', 0.02);
+        const poro = new SantaRunner('poro.png', 'reindeer', 0.03);
         poro.load(zr);
 
         runners.push(pukki);
