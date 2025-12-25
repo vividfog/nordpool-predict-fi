@@ -20,6 +20,7 @@
 
 ## Data Enrichment Patterns
 - All API fetchers convert to UTC timestamps; merges cleaned by `util.dataframes.coalesce_merged_columns`.
+- When patching an existing DF from another DF, use `util.dataframes.update_df_from_df(..., cols=[...])` to keep overwrites explicit.
 - FMI helpers: `_update_station_series` fetches forecast/history, linear interpolation, deduped index.
 - Fingrid nuclear: fetch in 3-min cadence, resample hourly, forward-fill gaps.
 - Wind model (`util/fingrid_windpower_xgb.py`) blends Fingrid measurements, forecasts, capacity, then infers missing hours with an in-memory XGB regressor (training artifacts generated only by offline experiments in `data/create/91_model_experiments`).
@@ -29,6 +30,7 @@
 ## Modeling Notes
 - Price model trained fresh in-memory each run (`util/train_xgb.py`); no model files written. Hyperparams tracked there; GPU auto-enabled via `util/xgb_utils.configure_cuda`.
 - Wind-power gap filler also retrains in-memory before inference; persisting models is handled only by experimental scripts under `data/create/`.
+- Pricing feature engineering + feature column selection is centralized in `util/features_pricing.py` and reused by training, prediction, and feature embedding exports.
 - Feature sets include weather station temps (`t_*`), wind speeds (`ws_*`), irradiance summary stats, transmission caps, wind power, holiday flags.
 - Volatility classifier (XGB) aggregates daily stats; outputs `volatile_likelihood` (currently optional in feature set, always present in DF).
 

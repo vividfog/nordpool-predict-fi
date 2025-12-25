@@ -4,39 +4,51 @@ dataframes.py
 This module provides functions for manipulating and updating pandas DataFrames.
 
 Functions:
-- update_df_from_df(df1, df2): Updates `df1` with values from `df2` based on matching 'timestamp' and common columns.
+- update_df_from_df(df, updates, cols=...): Patch selected columns by timestamp.
 - coalesce_merged_columns(df): Consolidates duplicate columns (e.g. *_x, *_y) produced by merge operations.
 """
 
-from .logger import logger
 import pandas as pd
 
 
-def update_df_from_df(df1, df2):
-    # Ensure df1's 'timestamp' column is in the correct format and UTC
-    df1['timestamp'] = pd.to_datetime(df1['timestamp'], utc=True)
-    
-    # Dynamically identify the timestamp column in df2, we've seen both uppercase and lowercase
-    timestamp_col_df2 = 'timestamp' if 'timestamp' in df2.columns else 'timestamp'
-    
-    # Convert df2's timestamp column to datetime and to UTC
-    df2[timestamp_col_df2] = pd.to_datetime(df2[timestamp_col_df2], utc=True)
-    
-    # Standardize column names for the operation
-    df2.rename(columns={timestamp_col_df2: 'timestamp'}, inplace=True)
-    
-    # Find the common column to update, excluding 'timestamp'
-    common_cols = set(df1.columns).intersection(set(df2.columns)) - {'timestamp'}
-    if not common_cols:
-        logger.info("No common columns to update.")
-        return df1
-    common_col = common_cols.pop()
+def update_df_from_df(df, updates, *, cols):
+    if not cols:
+        raise ValueError("cols must contain at least one column")
 
-    # Iterate through DF2 and update DF1 based on matching Timestamps and the common column
-    for index, row in df2.iterrows():
-        df1.loc[df1['timestamp'] == row['timestamp'], common_col] = row[common_col]
+    if "timestamp" not in df.columns:
+        raise ValueError("df must contain a 'timestamp' column")
 
-    return df1
+    timestamp_cols = [col for col in updates.columns if col.lower() == "timestamp"]
+    if not timestamp_cols:
+        raise ValueError("updates must contain a 'timestamp' column")
+
+    updates_ts = timestamp_cols[0]
+
+    left = df.copy()
+    right = updates.copy()
+
+    left["timestamp"] = pd.to_datetime(left["timestamp"], utc=True)
+    if updates_ts != "timestamp":
+        right = right.rename(columns={updates_ts: "timestamp"})
+    right["timestamp"] = pd.to_datetime(right["timestamp"], utc=True)
+
+    right = right[["timestamp"] + list(cols)].drop_duplicates(
+        subset=["timestamp"], keep="last"
+    )
+    right = right.rename(columns={col: f"{col}_new" for col in cols})
+
+    merged = pd.merge(left, right, on="timestamp", how="left")
+
+    for col in cols:
+        col_new = f"{col}_new"
+        if col not in merged.columns:
+            merged[col] = merged[col_new]
+        else:
+            merged[col] = merged[col_new].combine_first(merged[col])
+
+        merged.drop(columns=[col_new], inplace=True)
+
+    return merged
 
 
 def coalesce_merged_columns(df):
@@ -51,7 +63,7 @@ def coalesce_merged_columns(df):
     columns_to_drop = set()
 
     for col in list(df.columns):
-        if not col.endswith('_x'):
+        if not col.endswith("_x"):
             continue
 
         base_name = col[:-2]
@@ -60,7 +72,9 @@ def coalesce_merged_columns(df):
         df[base_name] = df[col].copy()
 
         if duplicate_name in df.columns:
-            df[base_name] = df[base_name].where(df[base_name].notna(), df[duplicate_name])
+            df[base_name] = df[base_name].where(
+                df[base_name].notna(), df[duplicate_name]
+            )
             columns_to_drop.add(duplicate_name)
 
         columns_to_drop.add(col)
