@@ -550,7 +550,7 @@
                 shape: { points: [] },
                 style: {
                     stroke: 'red',
-                    lineWidth: 2,
+                    lineWidth: 1,
                     lineDash: [0, 0] // Solid red line
                 },
                 z: 0 // Behind runners
@@ -578,7 +578,7 @@
 
             // Simple catenary-like curve
             const midX = (p1_new.x + p2_new.x) / 2;
-            const midY = (p1_new.y + p2_new.y) / 2 + 10; // Dip by 10px
+            const midY = (p1_new.y + p2_new.y) / 2 + 5; // Dip by 5px
 
             this.line.setShape({
                 points: [[p1_new.x, p1_new.y], [midX, midY], [p2_new.x, p2_new.y]]
