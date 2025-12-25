@@ -1,19 +1,19 @@
-*Electricity prices stay low over the weekend and early week, but rise clearly on Thursday; an evening spike risk and severe cold are expected.*
+*Affordable weekend and early week: prices below 4–5 ¢, rising from Wednesday; Thursday clearly pricier with spike risk amid severe cold.*
 
-The forecast was updated on Thursday at 02:57.
+The forecast was updated on Thursday at 08:57.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | avg-<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg-<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday** | 3,1 | -0,1 - 7,1 | 2320 - 5678 | 1,3 |
-| **Saturday** | 1,3 | 0,3 - 2,5 | 3521 - 7214 | 1,2 |
-| **Sunday** | 2,3 | 0,9 - 4,4 | 3466 - 7280 | -0,2 |
-| **Monday** | 3,0 | 0,7 - 5,2 | 4590 - 5861 | -1,2 |
-| **Tuesday** | 5,2 | 1,5 - 7,7 | 4295 - 6012 | -3,0 |
-| **Wednesday** | 4,9 | 1,1 - 9,4 | 3446 - 5957 | -4,7 |
-| **Thursday** | 11,9 | 6,1 - 18,1 | 2072 - 3802 | -7,0 |
+| **Friday** | 2,7 | -0,0 - 6,0 | 2371 - 5480 | 1,3 |
+| **Saturday** | 1,1 | 0,1 - 2,1 | 3196 - 7265 | 1,2 |
+| **Sunday** | 1,8 | 0,8 - 3,2 | 3257 - 7255 | -0,2 |
+| **Monday** | 2,8 | 0,6 - 5,0 | 4514 - 5717 | -1,2 |
+| **Tuesday** | 3,6 | 1,1 - 5,5 | 4737 - 5975 | -3,0 |
+| **Wednesday** | 5,3 | 0,3 - 10,3 | 3198 - 5815 | -4,7 |
+| **Thursday** | 11,6 | 6,9 - 15,8 | 2225 - 3311 | -7,0 |
 
-The weekly price picture will be split. The public holiday on **Friday** will ease demand, and the level will stay low. A night-time exception will also be seen: around 00:00–02:00 prices will briefly dip negative (-0,1 ¢). On **Saturday** the level will be the week’s lowest (avg 1,3 ¢), and strong wind will support the cheapness. On Sunday prices will remain below four cents. At the start of the week Monday will stay moderate, but on **Tuesday** and **Wednesday** averages will rise closer to five cents, while still remaining clearly below ten.
+The weekend and the start of the week will be inexpensive. **Friday** will be a public holiday, and the daily average will stay at 2,7 ¢; the cheapest hours will fall around 00:00–02:00 near zero. **Saturday** will see the average dip to 1,1 ¢, with the early morning 05:00–07:00 around 0–0,2 ¢. Strong wind over the weekend and early week will support the low price level through **Tuesday**, when the average will be 3,6 ¢.
 
-The clear outlier will be **Thursday**, which will be a public holiday yet the most expensive day: the average will be 11,9 ¢ and the day’s high 18,1 ¢. Severe cold (-7,0 °C) will support the elevated level. A pronounced risk of hourly spikes will be projected for Thursday. The highest hour will likely fall in the evening, around 17:00–19:00. Daytime will also remain well above average for long stretches, so Thursday will stand out from the other days.
+Prices will rise on **Wednesday** (avg 5,3 ¢), and the evening 18:00–20:00 hours will hover around 10 ¢. **Thursday** will be a public holiday and will stand out clearly: the daily average will be 11,6 ¢ and the maximum will reach 15,8 ¢. Severe cold (-7,0 °C) will likely explain the high level. A high spike risk will be anticipated for Thursday in individual hours; it will most likely occur around 17:00–19:00.
 
-*Summarized by gpt-5.* 🧊⚡
+*Briefly gpt-5.* 🥶
