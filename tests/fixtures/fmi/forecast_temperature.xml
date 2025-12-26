@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wfs:FeatureCollection timeStamp="2025-12-26T12:00:00Z" numberMatched="24" numberReturned="24" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd http://www.opengis.net/swe/2.0 http://schemas.opengis.net/swe/2.0/sweCommon.xsd" xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:BsWfs="http://www.opengis.net/wfs/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:om="http://www.opengis.net/om/2.0" xmlns:fmis="http://xml.fmi.fi/schema/fmis/1.0" xmlns:swe="http://www.opengis.net/swe/2.0">
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-1">
+<BsWfs:Time>2025-12-26T00:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>2.33</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-2">
+<BsWfs:Time>2025-12-26T01:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>2.45</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-3">
+<BsWfs:Time>2025-12-26T02:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>2.38</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-4">
+<BsWfs:Time>2025-12-26T03:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>2.29</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-5">
+<BsWfs:Time>2025-12-26T04:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>2.35</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-6">
+<BsWfs:Time>2025-12-26T05:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>2.41</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-7">
+<BsWfs:Time>2025-12-26T06:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>2.33</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-8">
+<BsWfs:Time>2025-12-26T07:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>2.52</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-9">
+<BsWfs:Time>2025-12-26T08:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>2.89</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-10">
+<BsWfs:Time>2025-12-26T09:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>3.25</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-11">
+<BsWfs:Time>2025-12-26T10:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>3.68</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-12">
+<BsWfs:Time>2025-12-26T11:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>4.15</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-13">
+<BsWfs:Time>2025-12-26T12:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>4.52</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-14">
+<BsWfs:Time>2025-12-26T13:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>4.89</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-15">
+<BsWfs:Time>2025-12-26T14:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>5.65</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-16">
+<BsWfs:Time>2025-12-26T15:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>5.42</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-17">
+<BsWfs:Time>2025-12-26T16:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>5.18</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-18">
+<BsWfs:Time>2025-12-26T17:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>4.85</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-19">
+<BsWfs:Time>2025-12-26T18:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>4.52</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-20">
+<BsWfs:Time>2025-12-26T19:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>4.28</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-21">
+<BsWfs:Time>2025-12-26T20:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>4.05</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-22">
+<BsWfs:Time>2025-12-26T21:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>3.82</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-23">
+<BsWfs:Time>2025-12-26T22:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>3.58</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+<wfs:member>
+<BsWfs:BsWfsElement gml:id="bswfs-element-24">
+<BsWfs:Time>2025-12-26T23:00:00Z</BsWfs:Time>
+<BsWfs:ParameterName>temperature</BsWfs:ParameterName>
+<BsWfs:ParameterValue>3.41</BsWfs:ParameterValue>
+</BsWfs:BsWfsElement>
+</wfs:member>
+</wfs:FeatureCollection>
