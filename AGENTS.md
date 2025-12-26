@@ -4,7 +4,7 @@
 - Python app; activate local env with `source .venv/bin/activate`, install deps via `uv pip install -r requirements.txt`.
 - Primary entrypoint `nordpool_predict_fi.py` (CLI flags: `--predict`, `--deploy`, `--narrate`, `--commit`, `--dump`).
 - Data stored in SQLite (`data/prediction.db`, `data/archive.db`); helper utilities live in `util/`.
-- Tests: `pytest tests -q` (no live API calls; heavy I/O mocked). Pytest pinned in `requirements.txt`.
+- Tests: `pytest tests -q -n auto` (no live API calls; heavy I/O mocked). Pytest pinned in `requirements.txt`.
 - Logging handled by `util/logger.py` (Rich console + rotating files under `logs/`).
 
 ## Core Workflow
