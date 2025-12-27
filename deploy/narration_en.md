@@ -1,19 +1,19 @@
-*Over the weekend, spot electricity will remain very inexpensive, but prices will rise through the week and peak toward the end of the week.*
+*Electricity will be very cheap early in the week, but prices will rise from Tuesday onward, and the rest of the week will stay clearly higher.*
 
-The forecast was updated on Friday at 20:57.
+The forecast was updated on Saturday at 02:57.
 
-|  | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday** | 0,1 | -0,0 - 0,4 | 2974 - 6723 | 1,2 |
-| **Sunday** | 2,0 | 0,0 - 4,1 | 3886 - 7295 | -0,2 |
-| **Monday** | 3,0 | 0,9 - 4,7 | 4695 - 5751 | -1,2 |
-| **Tuesday** | 5,9 | 1,3 - 9,4 | 3767 - 5383 | -3,0 |
-| **Wednesday** | 6,6 | 1,8 - 11,6 | 2018 - 5651 | -4,7 |
-| **Thursday** | 8,1 | 5,2 - 10,8 | 1910 - 3847 | -7,4 |
-| **Friday** | 7,7 | 3,9 - 12,1 | 2938 - 5260 | -8,5 |
+| **Monday** | 2.7 | 0.6 - 4.5 | 5166 - 6078 | -1.2 |
+| **Tuesday** | 6.2 | 0.6 - 11.2 | 3291 - 6078 | -3.0 |
+| **Wednesday** | 8.0 | 3.2 - 14.1 | 2003 - 4907 | -4.7 |
+| **Thursday** | 8.7 | 5.7 - 13.9 | 1401 - 3206 | -7.4 |
+| **Friday** | 7.8 | 4.0 - 12.0 | 2668 - 5280 | -8.5 |
+| **Saturday** | 8.8 | 5.3 - 13.1 | 1832 - 4317 | -8.1 |
+| **Sunday** | 2.1 | 0.0 - 4.5 | 3967 - 7292 | -0.2 |
 
-The price level will stay low at the start of the week, and the cheapest day will be **Saturday**, when the average price will drop to 0,1 ¢ and the price will also dip slightly into negative territory. On **Sunday** and **Monday**, average prices will still remain below four cents. By midweek, daily averages will rise clearly. On **Wednesday**, the daily average will climb to 6,6 ¢ and the day’s highest quotation will reach 11,6 ¢.
+At the start of the week, prices will remain low. On **Monday**, the average price will come in at 2.7 cents, and the range will stay at 0.6–4.5 cents. On **Tuesday**, expectations will shift clearly higher, as the average rises to 6.2 cents and the day’s peak reaches 11.2 cents. On **Wednesday**, the average climbs to 8.0 cents, and hourly prices reach 14.1 cents, making it one of the pricier days in the period.
 
-The highest daily average will fall on **Thursday**, which will be a public holiday. The average will then be forecast at 8,1 ¢, with a range of 5,2–10,8 ¢. A hard frost is forecast for **Thursday** and **Friday**, as the average temperature will fall below -5 degrees. The week’s highest single-hour price is forecast for **Friday**, when the maximum will rise to 12,1 ¢.
+On **Thursday**, it will be a public holiday, and the day’s average price is forecast at 8.7 cents. For Thursday, there is also a risk of hourly price spikes, and in the hourly forecast the highest level lands in the evening around 19:00–21:00, when the price briefly touches 14.1 cents. On **Friday**, the average slips to 7.8 cents, and on **Saturday** it rises to 8.8 cents. The cheapest day of the week is expected to be **Sunday**, when the average stays at 2.1 cents and the lowest hourly price briefly dips to zero.
 
-*Forecast compiled by gpt-5.2.* 📈
+*Forecasts compiled by gpt-5.2.* 📈
