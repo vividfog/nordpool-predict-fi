@@ -1,19 +1,21 @@
-*The exchange electricity outlook for the week will be clearly split: Tuesday will stay distinctly cheaper, while Wednesday and next Monday will be the most expensive.*
+*Tuesday will be the cheapest day of the week, but on Wednesday and next Monday prices will rise and the risk of peak-price hours will increase.*
 
-The forecast was updated on Monday at 11:57.
+The forecast was updated on Monday at 14:57.
 
-|  | avg-<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
+|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday** | 5.0 | -0.1 - 10.4 | 2532 - 6583 | -3.0 |
-| **Wednesday** | 10.7 | 4.6 - 19.4 | 827 - 2417 | -4.7 |
-| **Thursday** | 9.0 | 6.6 - 11.6 | 860 - 3995 | -7.4 |
-| **Friday** | 7.1 | 4.2 - 9.4 | 2062 - 5521 | -8.5 |
-| **Saturday** | 7.9 | 4.9 - 11.0 | 3944 - 5059 | -8.3 |
-| **Sunday** | 8.3 | 6.0 - 10.3 | 3908 - 4854 | -10.0 |
-| **Monday** | 10.8 | 5.1 - 15.2 | 2170 - 3943 | -8.9 |
+| **Tuesday** | 3.8 | 0.2 - 11.7 | 2564 - 6547 | -3.0 |
+| **Wednesday** | 11.1 | 4.9 - 20.1 | 911 - 2433 | -4.7 |
+| **Thursday** | 9.6 | 5.6 - 13.9 | 1006 - 3291 | -7.4 |
+| **Friday** | 7.6 | 5.3 - 10.0 | 1084 - 4916 | -8.5 |
+| **Saturday** | 7.2 | 4.7 - 10.3 | 3944 - 4477 | -8.3 |
+| **Sunday** | 7.5 | 5.0 - 9.5 | 3798 - 4838 | -10.0 |
+| **Monday** | 10.6 | 5.2 - 15.5 | 2161 - 3965 | -8.9 |
 
-The price level will vary clearly between weekdays. On **Tuesday**, the average price will settle at 5.0 cents, and the night hours will also include a negative minimum (-0.1 ¢). The highest average price will fall on **Wednesday**, when the expected daily average will be 10.7 ¢ and the maximum will reach 19.4 cents. **Thursday** will be a public holiday, and the average price will ease to 9.0 cents, even though intraday variation will remain fairly moderate.
+There will be a clear jump during the week from a low-price level to higher expected prices. On **Tuesday**, the average price will be 3.8 cents, and the late-night and early-morning hours will drop as low as 0.2–0.3 ¢. The most expensive period of the day will fall in the evening, when the price will rise to 10–11.7 cents.
 
-The risk of price spikes will stand out on **Wednesday** and **Thursday** in individual hours. On Wednesday, the highest hours will appear in the forecast around early evening from 18:00 to 20:00, when the price will climb close to 20 cents. Next **Monday**, the average price will rise to 10.8 cents, and the risk of price spikes will also be high. The most expensive hours in the forecast will fall in the evening from 17:00 to 19:00, when the price will reach about 15 cents.
+On **Wednesday**, the average price will climb to 11.1 cents, and the day’s highest hourly price will reach 20.1 ¢. The day will also carry a high risk of price spikes in individual hours, and in the hourly forecast the peak will land around 18:00–20:00. On **Monday** as well, the average price will rise to 10.6 cents and the maximum price to 15.5 ¢, and a high spike-risk is flagged; the highest hours will fall around 17:00–19:00.
 
-*Figures interpreted by gpt-5.2.* 📈
+**Thursday** is a public holiday, which may lower demand and push the price down. Toward the end of the week, average prices will mostly settle around 7–8 cents, even as the frost intensifies.
+
+*Interpreted by gpt-5.2.* 📈
