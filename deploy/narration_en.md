@@ -1,19 +1,19 @@
-*Weekly average prices will range roughly between 5 and 11 cents, with the most expensive hours concentrated on Wednesday and next Monday evening.*
+*The exchange electricity outlook for the week will be clearly split: Tuesday will stay distinctly cheaper, while Wednesday and next Monday will be the most expensive.*
 
-The forecast was updated on Monday at 08:57.
+The forecast was updated on Monday at 11:57.
 
-|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
+|  | avg-<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday** | 5,0 | 0,0 - 10,6 | 2218 - 6868 | -3,0 |
-| **Wednesday** | 11,3 | 5,0 - 20,6 | 705 - 2227 | -4,7 |
-| **Thursday** | 8,9 | 6,1 - 11,9 | 982 - 3970 | -7,4 |
-| **Friday** | 7,3 | 4,4 - 9,3 | 2015 - 5366 | -8,5 |
-| **Saturday** | 7,6 | 4,4 - 10,7 | 4003 - 5160 | -8,3 |
-| **Sunday** | 8,5 | 6,1 - 10,5 | 3887 - 4995 | -10,0 |
-| **Monday** | 11,1 | 5,4 - 16,0 | 2220 - 3988 | -8,8 |
+| **Tuesday** | 5.0 | -0.1 - 10.4 | 2532 - 6583 | -3.0 |
+| **Wednesday** | 10.7 | 4.6 - 19.4 | 827 - 2417 | -4.7 |
+| **Thursday** | 9.0 | 6.6 - 11.6 | 860 - 3995 | -7.4 |
+| **Friday** | 7.1 | 4.2 - 9.4 | 2062 - 5521 | -8.5 |
+| **Saturday** | 7.9 | 4.9 - 11.0 | 3944 - 5059 | -8.3 |
+| **Sunday** | 8.3 | 6.0 - 10.3 | 3908 - 4854 | -10.0 |
+| **Monday** | 10.8 | 5.1 - 15.2 | 2170 - 3943 | -8.9 |
 
-Over the next few days, average prices will vary between about five cents and a little over 11 cents. On **Tuesday**, the forecast will start from very low night-time levels, and the day’s range will be 0,0–10,6 ¢. The clearly highest daily averages will fall on **Wednesday** and next **Monday**, with expected averages of 11,3 ¢ and 11,1 ¢.
+The price level will vary clearly between weekdays. On **Tuesday**, the average price will settle at 5.0 cents, and the night hours will also include a negative minimum (-0.1 ¢). The highest average price will fall on **Wednesday**, when the expected daily average will be 10.7 ¢ and the maximum will reach 19.4 cents. **Thursday** will be a public holiday, and the average price will ease to 9.0 cents, even though intraday variation will remain fairly moderate.
 
-The week’s highest forecast single-hour price will rise to 20,6 cents on **Wednesday**. The risk of price spikes will be high on Wednesday, and the most expensive window will fall in the evening in the forecast, around 18–20. On **Thursday**, the risk of single-hour spikes will also be high, even though the day’s range will remain 6,1–11,9 cents. Thursday is a public holiday, and demand may be lower than normal, which could push prices down. Next **Monday**, the highest prices will fall in the forecast around 17–19, and the spike risk will be high.
+The risk of price spikes will stand out on **Wednesday** and **Thursday** in individual hours. On Wednesday, the highest hours will appear in the forecast around early evening from 18:00 to 20:00, when the price will climb close to 20 cents. Next **Monday**, the average price will rise to 10.8 cents, and the risk of price spikes will also be high. The most expensive hours in the forecast will fall in the evening from 17:00 to 19:00, when the price will reach about 15 cents.
 
-*Numbers packaged by gpt-5.2.* 📊
+*Figures interpreted by gpt-5.2.* 📈
