@@ -1,19 +1,19 @@
-*In the coming days, spot electricity will remain mostly expensive: Saturday will be the cheapest, and Wednesday will see the period’s clearly highest hourly price.*
+*The spot electricity price will trend upward as the week progresses: the cheapest stretch falls on Friday–Saturday, and Wednesday will be clearly the most expensive.*
 
-The forecast was updated on Tuesday at 20:57.
+The forecast was updated on Wednesday at 02:57.
 
 |  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 12.4 | 6.6 - 20.3 | 609 - 2328 | -4.7 |
-| **Thursday** | 9.5 | 6.9 - 12.1 | 860 - 4279 | -7.4 |
-| **Friday** | 8.6 | 5.6 - 10.2 | 3768 - 5030 | -8.5 |
-| **Saturday** | 8.3 | 4.7 - 11.0 | 2674 - 4827 | -8.3 |
-| **Sunday** | 10.2 | 6.5 - 15.1 | 2276 - 3841 | -10.0 |
-| **Monday** | 12.9 | 8.2 - 16.3 | 1931 - 3335 | -8.9 |
-| **Tuesday** | 13.0 | 8.7 - 15.7 | 1190 - 2724 | -8.5 |
+| **Thursday** | 10.3 | 7.7 - 12.4 | 625 - 3620 | -7.4 |
+| **Friday** | 9.3 | 7.1 - 11.1 | 3675 - 4375 | -8.5 |
+| **Saturday** | 9.2 | 6.2 - 12.1 | 2675 - 4104 | -8.3 |
+| **Sunday** | 11.9 | 7.9 - 16.2 | 2008 - 3005 | -10.0 |
+| **Monday** | 13.6 | 8.8 - 19.9 | 1359 - 3071 | -8.9 |
+| **Tuesday** | 13.2 | 9.1 - 15.8 | 1141 - 2736 | -8.5 |
+| **Wednesday** | 17.6 | 11.7 - 25.3 | 754 - 1383 | -7.9 |
 
-The price level will remain mostly expensive, with daily averages ranging between 8.3 and 13.0 cents. The lowest average will fall on **Saturday** (8.3¢), and the highest average will fall on **Tuesday** (13.0¢). The clearly highest single-hour price will appear on **Wednesday**, when the maximum will rise to 20.3 cents. Wednesday’s price peak will be placed in the forecast in the early evening, around 16:00–18:00.
+The week will begin from **Thursday**, and prices will initially stay at an expensive level. **Thursday** will be a public holiday, and the average price will settle at 10.3 cents. A high risk of price spikes will be noted for the day, and in the hourly forecast the day’s peak will fall around 10:00–12:00 (12.4 ¢). On **Friday** and **Saturday**, average prices will remain below ten cents, and the week’s lowest hourly price will appear overnight on Saturday (6.2 ¢).
 
-A public holiday will fall on **Thursday** and **Tuesday**, and demand is expected to remain below normal. The risk of price spikes will stand out on **Sunday**, **Monday**, and **Tuesday**. Sunday’s highest price will be placed in the forecast in the early evening at 17:00–19:00, and Monday’s peak will be set in the same time window. On Tuesday, the highest price will be weighted toward the late morning at 08:00–10:00.
+Toward the end of the week, the price level will rise. On **Sunday**, the average price will climb to 11.9 cents and the maximum to 16.2 cents, and the risk of spikes will be described as high. **Monday** and **Tuesday** will stay clearly above 13 cents, and on Monday a 19.9 ¢ peak hour will be forecast around 16:00–18:00. **Tuesday** will be a public holiday, but despite that a high spike risk will be attached to the day. Next **Wednesday**, the week will culminate with an average price of 17.6 cents and a forecast maximum of 25.3 cents, and the highest hours will be timed around 17:00–19:00.
 
-*Forecast interpreted today by gpt-5.2.* 📊
+*Forecast summarized by gpt-5.2.* 📈
