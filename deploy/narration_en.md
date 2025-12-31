@@ -1,19 +1,19 @@
-*The spot electricity price will trend upward as the week progresses: the cheapest stretch falls on Friday–Saturday, and Wednesday will be clearly the most expensive.*
+*The electricity price over the next few days will mostly stay at 8–13 cents, but next Monday the average will rise and peak hours will stand out.*
 
-The forecast was updated on Wednesday at 02:57.
+The forecast was updated on Wednesday at 08:57.
 
 |  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday** | 10.3 | 7.7 - 12.4 | 625 - 3620 | -7.4 |
-| **Friday** | 9.3 | 7.1 - 11.1 | 3675 - 4375 | -8.5 |
-| **Saturday** | 9.2 | 6.2 - 12.1 | 2675 - 4104 | -8.3 |
-| **Sunday** | 11.9 | 7.9 - 16.2 | 2008 - 3005 | -10.0 |
-| **Monday** | 13.6 | 8.8 - 19.9 | 1359 - 3071 | -8.9 |
-| **Tuesday** | 13.2 | 9.1 - 15.8 | 1141 - 2736 | -8.5 |
-| **Wednesday** | 17.6 | 11.7 - 25.3 | 754 - 1383 | -7.9 |
+| **Thursday** | 11.3 | 8.2 - 14.4 | 488 - 3095 | -7.4 |
+| **Friday** | 8.7 | 6.0 - 10.4 | 3095 - 4242 | -8.5 |
+| **Saturday** | 8.6 | 5.7 - 11.2 | 2865 - 4140 | -8.3 |
+| **Sunday** | 11.4 | 7.3 - 15.1 | 2053 - 3431 | -10.0 |
+| **Monday** | 15.0 | 9.0 - 21.9 | 921 - 2351 | -8.9 |
+| **Tuesday** | 11.8 | 8.5 - 14.7 | 1191 - 2681 | -8.5 |
+| **Wednesday** | 12.5 | 8.5 - 16.6 | 1692 - 2683 | -7.9 |
 
-The week will begin from **Thursday**, and prices will initially stay at an expensive level. **Thursday** will be a public holiday, and the average price will settle at 10.3 cents. A high risk of price spikes will be noted for the day, and in the hourly forecast the day’s peak will fall around 10:00–12:00 (12.4 ¢). On **Friday** and **Saturday**, average prices will remain below ten cents, and the week’s lowest hourly price will appear overnight on Saturday (6.2 ¢).
+The price level will largely remain in the 8–13 cent range, but next **Monday** will stand out. The day’s expected average will rise to 15.0 cents, and the maximum is forecast at 21.9 ¢. The higher peak aligns with weak wind, because the minimum wind power output is forecast at just 921 megawatts.
 
-Toward the end of the week, the price level will rise. On **Sunday**, the average price will climb to 11.9 cents and the maximum to 16.2 cents, and the risk of spikes will be described as high. **Monday** and **Tuesday** will stay clearly above 13 cents, and on Monday a 19.9 ¢ peak hour will be forecast around 16:00–18:00. **Tuesday** will be a public holiday, but despite that a high spike risk will be attached to the day. Next **Wednesday**, the week will culminate with an average price of 17.6 cents and a forecast maximum of 25.3 cents, and the highest hours will be timed around 17:00–19:00.
+The days marked as public holidays, **Thursday** and **Tuesday**, will come in with average prices of 11.3–11.8 cents. Thursday is flagged as having a high risk of price spikes, and in the hourly forecast the day’s peak will fall around 16:00–18:00. The same risk is also highlighted for **Sunday**, with the price peak expected around 16:00–18:00, and for **Wednesday**, when the highest hours will be concentrated around 08:00–10:00. The lowest average prices of the week will land on Friday and Saturday, at about 8.6–8.7 cents.
 
-*Forecast summarized by gpt-5.2.* 📈
+*Forecast read by gpt-5.2.* 🔎
