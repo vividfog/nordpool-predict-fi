@@ -1,19 +1,19 @@
-*The spot electricity price will remain moderate toward the end of the week, but will rise clearly at the start of the week, when single-hour risks will also stand out.*
+*Spot electricity will stay inexpensive on Friday, but the average price will rise from the weekend into next week, with Tue–Wed standing out for spike risk.*
 
-The forecast was updated on Thursday at 11:56.
+The forecast was updated on Thursday at 14:56.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday** | 8.2 | 2.3 - 10.7 | 3551 - 4735 | -8.5 |
-| **Saturday** | 8.9 | 5.8 - 11.6 | 3076 - 4525 | -8.3 |
-| **Sunday** | 11.4 | 8.0 - 14.8 | 2201 - 3039 | -10.0 |
-| **Monday** | 13.5 | 8.9 - 18.3 | 1539 - 2439 | -8.9 |
-| **Tuesday** | 15.9 | 9.5 - 23.2 | 1170 - 1836 | -8.5 |
-| **Wednesday** | 12.6 | 8.3 - 19.4 | 1120 - 3593 | -8.4 |
-| **Thursday** | 11.0 | 7.2 - 14.9 | 2231 - 4101 | -6.5 |
+| **Friday** | 4.7 | 1.0 - 8.1 | 3561 - 4752 | -8.5 |
+| **Saturday** | 7.2 | 3.9 - 10.5 | 3022 - 4537 | -8.3 |
+| **Sunday** | 10.7 | 7.7 - 13.9 | 2032 - 3012 | -10.0 |
+| **Monday** | 11.6 | 8.7 - 14.9 | 2073 - 3460 | -8.9 |
+| **Tuesday** | 12.4 | 6.1 - 16.3 | 1806 - 3420 | -8.5 |
+| **Wednesday** | 11.4 | 7.8 - 20.5 | 1187 - 3651 | -8.4 |
+| **Thursday** | 9.7 | 5.3 - 14.9 | 2409 - 4081 | -6.5 |
 
-Prices in the early part of the period will settle at a clearly lower level than in the middle of the week. **Friday** will have an average price of 8.2¢, and the cheapest hour will fall at night from 00:00–02:00, when the price drops to 2.3¢. **Saturday** will see the average rise slightly to 8.9¢, and the day’s highest level will be reached in the afternoon from 14:00–16:00, when the forecast shows 11.6¢.
+The coming days will be clearly split into two parts. On **Friday**, the average price will stay at 4.7 cents, and the range will be 1.0–8.1 cents. After that, average prices will rise from the weekend toward the start of next week. On **Sunday**, the average will climb to 10.7 cents, and on **Monday** to 11.6 cents. Frost will also be forecast for every day, as the average temperature will remain below −5 degrees.
 
-**Sunday** will bring the average up to 11.4¢, and there will be a risk of price spikes for individual hours. **Monday** will see larger variation, and the high-risk peak hours will tilt toward early evening from 16:00–18:00, when the forecast shows 18.3¢. **Tuesday** (a public holiday) will have the highest average of the period at 15.9¢, and the high-risk peak will fall in the morning from 08:00–10:00, when the maximum is forecast at 23.2¢. **Wednesday** will keep the risk of price spikes high, and the day’s most expensive window will be in the morning from 08:00–10:00, when the price reaches 19.4¢.
+The week’s highest hourly prices will be forecast for **Tuesday**, when the maximum will reach 16.3 cents. The day will be a public holiday, and demand may be lower than normal. Even so, a high risk of price spikes will be expected for individual hours. In the hourly forecast, the tightest period will fall on Tuesday roughly between 10:00 and 12:00. On **Wednesday**, the maximum will climb even higher, to 20.5 cents, and a high spike risk will also be forecast for this day. The forecast peak hours on Wednesday will fall around 9:00–11:00.
 
-*Numbers distilled by gpt-5.2* 📈
+*Forecast packaged by gpt-5.2.* 📈
