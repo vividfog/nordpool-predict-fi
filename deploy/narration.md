@@ -1,19 +1,19 @@
-*Pörssisähkön hinta vaihtelee viikon aikana alle neljästä sentistä yli 20 senttiin, ja useana päivänä on piikkiriski.*
+*Pörssisähkön hinta vaihtelee ensi viikolla noin 8–16 sentin tasolla, ja korkeimmat huipputunnit painottuvat maanantaiaamuun ja keskiviikkoon.*
 
-Ennuste on päivitetty perjantaina klo 02:56.
+Ennuste on päivitetty perjantaina klo 08:56.
 
 |  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **lauantai** | 7,4 | 3,4 - 11,1 | 3452 - 4058 | -8,3 |
-| **sunnuntai** | 11,4 | 6,0 - 17,6 | 1450 - 3439 | -10,0 |
-| **maanantai** | 13,4 | 9,1 - 17,6 | 1432 - 2653 | -8,9 |
-| **tiistai** | 12,5 | 6,4 - 16,7 | 1451 - 2915 | -8,5 |
-| **keskiviikko** | 13,3 | 8,9 - 19,0 | 1452 - 3670 | -8,4 |
-| **torstai** | 13,4 | 8,0 - 20,8 | 2003 - 3665 | -6,5 |
-| **perjantai** | 11,1 | 6,9 - 14,9 | 2240 - 3650 | -6,4 |
+| **lauantai** | 7,8 | 4,0 - 11,0 | 3187 - 4081 | -8,3 |
+| **sunnuntai** | 10,6 | 6,4 - 15,9 | 939 - 3380 | -10,0 |
+| **maanantai** | 14,6 | 11,8 - 23,8 | 547 - 3443 | -8,9 |
+| **tiistai** | 14,9 | 10,3 - 18,8 | 1096 - 2190 | -8,5 |
+| **keskiviikko** | 15,6 | 9,5 - 21,8 | 1533 - 2832 | -8,4 |
+| **torstai** | 11,2 | 6,4 - 17,5 | 1863 - 4141 | -6,5 |
+| **perjantai** | 10,8 | 5,7 - 15,6 | 1796 - 2597 | -6,4 |
 
-Viikon hintaodotus vaihtelee selvästi päivän mukaan. **Lauantaina** keskihinta jää 7,4 senttiin, ja alimmmat tunnit painuvat alle neljän sentin. **Sunnuntaina** keskihinta nousee 11,4 senttiin, ja riskinä ovat yksittäiset hintapiikit. Tuntien kallein jakso ajoittuu arviolta klo 17–19, jolloin hintaennuste yltää 17,6 senttiin.
+Hintaodotus tulee asettumaan viikon aikana enimmäkseen 10–16 sentin välille. Viikon edullisin keskihinta tullaan näkemään **lauantaina**, jolloin päivän odotettu keskihinta jää 7,8 senttiin ja hinnat liikkuvat 4,0–11,0 sentissä. Kallein päiväkeskiarvo ennustetaan **keskiviikolle** (15,6 ¢), ja päivän ylin tuntihinta nousee 21,8 senttiin.
 
-Viikon kallein päivä odotetaan olevan **torstai**, jolloin keskihinta asettuu 13,4 senttiin ja päivän ylin hinta käy 20,8 sentissä. Myös **keskiviikkona** ylin tuntihinta nousee korkealle, 19,0 senttiin, ja hintapiikkien riski korostuu. Lisäksi **tiistai** on pyhäpäivä, ja kysyntä voi jäädä tavanomaista matalammaksi, vaikka päivän keskihinta ennustetaan silti 12,5 senttiin. Viikon lopulla **perjantaina** keskihinta laskee 11,1 senttiin, ja vaihteluväli pysyy 6,9–14,9 sentissä.
+Hintapiikkien riski on ennusteen mukaan korkea useana päivänä. **Sunnuntaina** korkein tuntihinta osuu arviolta klo 18–20 ja nousee noin 15,9 senttiin. **Maanantaina** piikki painottuu aamuun klo 7–9, ja ennusteen ylin tuntihinta käy 23,8 sentissä. **Torstaina** huipputunnit ajoittuvat klo 16–18 (enintään 17,5 ¢), ja **perjantaina** klo 17–19 (enintään 15,6 ¢). Lisäksi **tiistai** on pyhäpäivä, ja kysyntä voi jäädä tavanomaista matalammaksi.
 
-*Ennusteen luki gpt-5.2.* 🔎
+*Ennustetta naputti gpt-5.2.* 📈
