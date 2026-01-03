@@ -4,6 +4,13 @@
  */
 
 (function () {
+    // === Date Gate: Only run Dec 23-31 ===
+    const now = new Date();
+    const month = now.getMonth();
+    const day = now.getDate();
+    const isHolidaySeason = month === 11 && day >= 23 && day <= 31;
+    if (!isHolidaySeason) return;
+
     // --- Global Shared State ---
     let chartInstance = null;
     let animationFrameId = null;
