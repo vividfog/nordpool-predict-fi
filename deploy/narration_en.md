@@ -1,19 +1,19 @@
-*Thursday will be the cheapest day of the week, but over the weekend and early next week average prices rise and some individual hours may become clearly more expensive.*
+*The rest of the week will remain mostly moderate, but prices will rise over the weekend and early next week, and isolated hourly spikes will become more common.*
 
-The forecast was updated on Tuesday at 11:56.
+The forecast was updated on Tuesday at 14:56.
 
 |  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 9,9 | 6,4 - 12,9 | 3157 - 4008 | -8,4 |
-| **Thursday** | 7,2 | 4,6 - 10,9 | 4033 - 5936 | -6,5 |
-| **Friday** | 8,0 | 5,2 - 10,8 | 2848 - 3966 | -7,1 |
-| **Saturday** | 10,7 | 5,5 - 19,0 | 1236 - 3140 | -9,2 |
-| **Sunday** | 13,5 | 11,1 - 18,0 | 1395 - 1876 | -9,1 |
-| **Monday** | 15,9 | 10,6 - 22,2 | 1390 - 1756 | -9,1 |
-| **Tuesday** | 14,5 | 10,8 - 19,3 | 1587 - 2358 | -10,2 |
+| **Wednesday** | 10.3 | 5.0 - 14.7 | 3237 - 4017 | -8.4 |
+| **Thursday** | 7.2 | 4.1 - 10.6 | 4042 - 5981 | -6.5 |
+| **Friday** | 8.4 | 5.2 - 11.2 | 2532 - 4010 | -7.1 |
+| **Saturday** | 11.2 | 5.8 - 20.0 | 1143 - 2893 | -9.2 |
+| **Sunday** | 12.8 | 9.9 - 16.1 | 1371 - 2299 | -9.1 |
+| **Monday** | 15.3 | 8.7 - 22.2 | 1434 - 2220 | -9.1 |
+| **Tuesday** | 14.7 | 10.5 - 19.6 | 1612 - 2432 | -10.2 |
 
-The price level will vary clearly as the week progresses. On **Thursday**, the average price will come in at 7,2 cents and the day’s low will dip to 4,6 cents, while on **Monday** the average is expected to rise to 15,9 cents and the day’s maximum is forecast at 22,2 cents. **Wednesday’s** average price will be 9,9 cents, and the day’s intraday range will span 6,4–12,9 cents. Frost will be expected every day, as the average temperature will remain below -5 degrees throughout the period.
+The price level will vary clearly between the latter part of the week and the start of next week. On **Thursday**, the average price will stay at 7.2 cents, and the day’s range will run from 4.1 to 10.6 cents. On **Wednesday**, the average will rise to 10.3 cents, and the day’s most expensive hours will fall in the evening. Severe frost will persist throughout the period, as the average temperature will remain below −5°C every day.
 
-From the weekend onward, the more expensive hours will stand out. On **Saturday**, there will be a high risk of price spikes in individual hours, and the hourly peak will fall in the forecast around 17:00–19:00, when the price reaches about 19 cents. On **Sunday**, a similar risk will appear especially at 17:00–19:00, when the price rises to about 18 cents. On **Monday**, the risk of price spikes will increase further, and the highest stretch will occur in the forecast at 08:00–10:00, when the price reaches 22,2 cents. On **Tuesday**, the spike risk will continue, and the day’s peak will be weighted toward 08:00–10:00 at about 19,3 cents.
+The highest daily average price is forecast for **next Monday**, when the average will climb to 15.3 cents and the maximum is expected to reach 22.2 cents. The risk of price spikes is specifically flagged for **Saturday**, **Sunday**, **next Monday**, and **next Tuesday**. On Saturday, the peak will be concentrated in the early evening, roughly between 17:00 and 19:00, and on Monday the highest stretch will occur in the morning, roughly between 08:00 and 10:00.
 
-*Forecasts parsed by gpt-5.2.* 🔎
+*Forecast parsed by gpt-5.2.* 🔎
