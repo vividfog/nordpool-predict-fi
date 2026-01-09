@@ -1,19 +1,19 @@
-*The average spot price of electricity will remain expensive, Friday will stand out, and early week will see a risk of hourly price spikes.*
+*Exchange-traded electricity will remain expensive in the coming days, with the week’s peaks landing early; from Sunday to Tuesday there is also spike risk.*
 
-The forecast was updated on Thursday at 20:56.
+The forecast was updated on Friday at 02:56.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday** | 15,6 | 7,3 - 22,7 | 1881 - 4351 | -7,1 |
-| **Saturday** | 10,2 | 7,4 - 13,4 | 3155 - 4303 | -9,2 |
-| **Sunday** | 13,4 | 9,1 - 18,6 | 1571 - 3097 | -9,1 |
-| **Monday** | 13,9 | 10,3 - 18,0 | 1481 - 2131 | -9,1 |
-| **Tuesday** | 14,4 | 9,1 - 18,6 | 1816 - 2764 | -10,2 |
-| **Wednesday** | 11,6 | 8,6 - 14,6 | 2213 - 4325 | -12,0 |
-| **Thursday** | 10,5 | 7,2 - 15,5 | 3290 - 4581 | -11,1 |
+| **Saturday** | 10,0 | 7,1 - 13,4 | 3816 - 4558 | -9,2 |
+| **Sunday** | 12,3 | 8,8 - 18,1 | 2376 - 4415 | -9,1 |
+| **Monday** | 13,6 | 9,5 - 18,1 | 1553 - 2304 | -9,1 |
+| **Tuesday** | 14,4 | 9,1 - 20,5 | 2006 - 2847 | -10,2 |
+| **Wednesday** | 11,8 | 8,4 - 14,7 | 2650 - 4228 | -12,0 |
+| **Thursday** | 10,8 | 7,4 - 15,6 | 3471 - 4688 | -11,1 |
+| **Friday** | 10,2 | 6,8 - 12,5 | 3778 - 4468 | -7,8 |
 
-The period will mostly see average prices between 10 and 16 cents, so the overall level will be expensive. The highest average price of the week is expected on **Friday**, when the mean will be 15,6 ¢ and the day’s highest hourly price will reach 22,7 ¢. The price range will remain more moderate on the other days, and the lowest average prices will fall on **Saturday** and next **Thursday**.
+The price level will, according to the forecast, remain clearly expensive throughout the week. The highest daily average will fall on **Tuesday**, when the average is expected to be 14,4 ¢ and the day’s maximum 20,5 ¢. On **Monday**, the average is estimated to rise to 13,6 cents, and the day’s peak will also reach 18,1 ¢. It will be well below freezing across the entire period, as the average temperature will stay under -5 degrees every day.
 
-Frost will be forecast for every day, as the average temperature will stay below -7 degrees throughout, and the coldest will be **Wednesday** (-12,0 °C). The risk of price spikes will rise on **Sunday**, **Monday**, and **Tuesday**, when the most expensive hours in the forecast will cluster around early evening from 16–20. Also next **Thursday**, individual hours may climb clearly above the rest of the day, and the peak in the forecast will fall around midday from 10–12.  
+A risk of price spikes is expected on **Sunday** as well as on **Monday** and **Tuesday**, and the emphasis of the peak hours will settle into the evening. On Sunday, the day’s highest price will, in the forecast, fall in the window 18:00–20:00. On Monday, the corresponding peak will occur at 07:00–10:00, and on Tuesday at 08:00–10:00. The lowest daily average of the week will be found, in the forecast, on **Saturday** (10,0 ¢), while later in the week the averages will ease back to around 10–11 cents.
 
-*Forecasts weighed by gpt-5.2.* 📈
+*Forecasts summarized by gpt-5.2.* 🔎
