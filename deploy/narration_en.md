@@ -1,19 +1,19 @@
-*Early in the week, exchange electricity will stay at a higher level and the risk of price spikes will stand out, but average prices will fall toward the weekend.*
+*At the start of the week, exchange-traded electricity will remain expensive and may spike by the hour, but average prices will fall clearly toward the weekend.*
 
-The forecast was updated on Sunday at 11:56.
+The forecast was updated on Sunday at 14:56.
 
 |  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 13.9 | 8.4 - 18.7 | 1343 - 3096 | -9.1 |
-| **Tuesday** | 14.8 | 10.0 - 20.8 | 1618 - 2475 | -10.2 |
-| **Wednesday** | 10.6 | 8.0 - 12.8 | 2360 - 4007 | -12.0 |
-| **Thursday** | 10.5 | 7.7 - 15.2 | 2394 - 4268 | -11.1 |
-| **Friday** | 11.9 | 6.6 - 15.1 | 2511 - 4152 | -7.4 |
-| **Saturday** | 8.1 | 4.8 - 11.3 | 2142 - 4197 | -3.6 |
-| **Sunday** | 6.4 | 4.0 - 9.8 | 3047 - 3794 | -1.8 |
+| **Monday** | 16.0 | 9.6 - 25.8 | 1346 - 3073 | -9.1 |
+| **Tuesday** | 15.2 | 9.4 - 22.2 | 1597 - 2515 | -10.2 |
+| **Wednesday** | 11.1 | 8.0 - 13.5 | 2605 - 4048 | -12.0 |
+| **Thursday** | 10.9 | 7.7 - 15.7 | 2403 - 4286 | -11.1 |
+| **Friday** | 12.4 | 6.6 - 15.6 | 2440 - 4237 | -7.4 |
+| **Saturday** | 8.2 | 4.9 - 11.6 | 2145 - 4292 | -3.6 |
+| **Sunday** | 6.4 | 3.9 - 9.9 | 2942 - 3788 | -1.8 |
 
-The week’s highest average prices will fall on **Tuesday** and **Monday**. Tuesday’s average price will rise to 14.8 cents, and the day’s peak hour is forecast to land around 08:00–10:00, when the price reaches 20.8 cents. On Monday, the average price will settle at 13.9 cents, and the highest level will occur in the afternoon around 16:00–18:00, when the price climbs to 18.7 cents. A high risk of individual price spikes is expected for both days.
+The beginning of the week will look very expensive in terms of average prices. On **Monday**, the day’s average price would come in at 16.0 cents, and the highest hourly price in the forecast would reach 25.8 cents. Severe frost would also be visible in the background, as the day’s average temperature would drop to -9.1°C. On **Tuesday**, the average price would ease slightly to 15.2 cents, but a high risk of hourly price spikes would be expected. In the forecast, the most expensive period of the day would fall roughly between 08:00 and 10:00, when hourly prices would climb above 20 cents.
 
-Later in the week, the price level will ease. On **Wednesday** and **Thursday**, average prices will drop to around 10.5–10.6 cents, even though the forecast calls for well below -5°C. Thursday is also marked with a risk of individual price spikes. On **Friday**, the average price will be 11.9 cents, and the day’s top level will reach 15.1 cents around 18:00–20:00. The lowest average prices of the week will arrive over the weekend: 8.1 cents on Saturday and 6.4 cents on Sunday, when prices stay below 10 cents.
+As the week progresses, the price level would decline. On **Wednesday**, the average price would be 11.1 cents, and the day’s peak would be 13.5 cents. On **Thursday**, the average price would be 10.9 cents, but this day would also carry a risk of isolated price spikes, with the priciest window around 10:00–12:00. On **Friday**, the average price would rise to 12.4 cents, and the risk of price spikes would be high. The lowest average price of the week would be on **Sunday**, when the average would stay at 6.4 cents and prices would remain below ten cents.
 
-*Forecasts condensed by gpt-5.2.* 📈
+*Numbers parsed by gpt-5.2* 🔎
