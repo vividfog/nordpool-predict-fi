@@ -1,19 +1,19 @@
-*Alkuviikko näyttää selvästi kalliimmalta kuin loppuviikko, ja suurin vaihtelu osuu tiistaille sekä torstaille yksittäisten tuntien tasolla.*
+*Tiistai erottuu viikon kalleimpana ja vaihtelevimpana, mutta loppuviikolla hinnat painuvat selvästi alemmaksi viikonloppua kohti.*
 
-Ennuste on päivitetty maanantaina klo 08:56.
+Ennuste on päivitetty maanantaina klo 11:56.
 
 |  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **tiistai** | 16,2 | 9,4 - 22,9 | 1322 - 2170 | -10,2 |
-| **keskiviikko** | 12,3 | 8,5 - 14,5 | 2240 - 4192 | -12,0 |
-| **torstai** | 11,3 | 6,8 - 17,7 | 2491 - 4413 | -11,1 |
-| **perjantai** | 10,7 | 6,2 - 13,3 | 3088 - 4529 | -7,4 |
-| **lauantai** | 8,0 | 5,6 - 10,9 | 2823 - 4590 | -3,6 |
-| **sunnuntai** | 7,4 | 4,5 - 10,5 | 2708 - 3238 | -1,8 |
-| **maanantai** | 11,2 | 6,1 - 15,2 | 2122 - 3395 | -3,6 |
+| **tiistai** | 15,1 | 9,4 - 20,3 | 1489 - 2335 | -10,2 |
+| **keskiviikko** | 12,1 | 8,5 - 15,8 | 2391 - 4628 | -12,0 |
+| **torstai** | 11,5 | 6,9 - 16,8 | 2383 - 4688 | -11,1 |
+| **perjantai** | 10,4 | 6,4 - 13,4 | 3054 - 4458 | -7,4 |
+| **lauantai** | 7,7 | 5,4 - 10,5 | 2859 - 4542 | -3,6 |
+| **sunnuntai** | 7,2 | 4,5 - 10,3 | 2669 - 3218 | -1,8 |
+| **maanantai** | 10,5 | 6,3 - 13,2 | 2563 - 3391 | -3,3 |
 
-Hintaodotukset tulevat asettumaan korkeimmilleen **tiistaina**, jolloin päivän keskihinnan arvioidaan nousevan 16,2 senttiin ja päivän maksimihinnan 22,9 senttiin. Tiistain sisällä kalleimmat tunnit ajoittuvat ennusteessa aamupäivään klo 08–10. Päivälle on lisäksi merkitty korkea riski yksittäisille hintapiikeille.
+Viikon korkeimmat hintaodotukset osuvat **tiistaille**, jolloin päivän keskihinta nousee 15,1 senttiin ja ylin tuntihinta käy ennusteessa 20,3 sentissä. Tiistain tuulivoiman minimi jää 1489 megawattiin, ja samaan päivään osuu myös viikon korkein maksimihinta. Kova pakkanen jatkuu vielä **keskiviikkona** ja **torstaina**, jolloin keskilämpötila pysyy noin -11…-12 asteessa.
 
-Tämän jälkeen keskihinnat tulevat painumaan. **Keskiviikkona** keskihinta arvioidaan 12,3 senttiin, ja **torstaina** 11,3 senttiin, vaikka torstain ylin tuntihinta yltää 17,7 senttiin. Torstain korkein hintajakso osuu ennusteessa aamuun klo 08–10, ja myös torstaille on merkitty korkea riski yksittäisille hintapiikeille. Viikon edullisimmat keskihinnat odotetaan viikonlopulle, kun **sunnuntain** keskihinta ennustetaan 7,4 senttiin ja minimi 4,5 senttiin.
+Hintavaihtelu tasoittuu loppuviikkoa kohti. **Lauantaina** ja **sunnuntaina** keskihinnat painuvat selvästi alemmaksi, 7,7 ja 7,2 senttiin, ja viikon matalin yksittäinen tuntihinta näkyy sunnuntaina 4,5 sentissä. Hintapiikkien riski korostuu tiistaina ja keskiviikkona. Tiistaina päivän huippu asettuu ennusteessa klo 09–11 ja keskiviikkona klo 18–20. Torstain korkein tuntihinta osuu ennusteessa klo 11–13.  
 
-*Ennusteen purki gpt-5.2.* 📊
+*Lukuja perkkasi gpt-5.2.* 🔎
