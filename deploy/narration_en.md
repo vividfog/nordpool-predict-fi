@@ -1,19 +1,19 @@
-*The weekend will remain comparatively affordable, but next week the price level will rise clearly and single-hour peaks will become more common.*
+*Prices stay moderate over the weekend, but next week the level rises clearly and, on several days, individual peak hours stand out.*
 
-The forecast was updated on Thursday at 11:56.
+The forecast was updated on Thursday at 14:56.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday** | 9.4 | 6.7 - 11.8 | 2804 - 6375 | -7.4 |
-| **Saturday** | 6.1 | 3.9 - 8.6 | 4696 - 6672 | -3.6 |
-| **Sunday** | 8.2 | 4.6 - 12.8 | 1614 - 4422 | -1.8 |
-| **Monday** | 13.0 | 7.9 - 17.3 | 1566 - 2185 | -3.3 |
-| **Tuesday** | 16.1 | 10.1 - 23.1 | 953 - 1869 | -3.6 |
-| **Wednesday** | 14.5 | 9.4 - 19.8 | 908 - 2117 | -5.0 |
-| **Thursday** | 15.8 | 9.2 - 22.2 | 1022 - 2093 | -5.4 |
+| **Friday** | 5.8 | 2.5 - 8.4 | 2717 - 6379 | -7.4 |
+| **Saturday** | 4.2 | 2.6 - 6.2 | 4694 - 6684 | -3.6 |
+| **Sunday** | 7.4 | 3.9 - 12.4 | 1686 - 4420 | -1.8 |
+| **Monday** | 12.7 | 7.8 - 16.4 | 1595 - 2259 | -3.3 |
+| **Tuesday** | 15.3 | 9.7 - 21.1 | 1003 - 1947 | -3.6 |
+| **Wednesday** | 13.8 | 8.9 - 19.0 | 985 - 2024 | -5.0 |
+| **Thursday** | 14.4 | 8.9 - 21.9 | 1020 - 2156 | -5.4 |
 
-The price level will vary clearly lower at first and then rise next week. **Friday’s** average price will settle at 9.4 cents, and on **Saturday** the daily average will drop to 6.1 cents. On **Sunday** the average will climb to 8.2 cents, and the most expensive hours will fall toward the afternoon and early evening.
+In the coming days, the price level is expected to vary clearly. **Saturday’s** average price will settle below five cents (4.2 ¢), while **Tuesday** will climb to the highest daily average of the week at 15.3 ¢. On **Friday**, the range will stretch from 2.5 to 8.4 cents, and the day’s average temperature will dip to -7.4 °C.
 
-The highest daily averages will arrive next week. On **Tuesday** the average will rise to 16.1 cents and the day’s maximum will reach 23.1 cents. The risk of price spikes will be high on **Monday**, **Tuesday**, **Wednesday**, and **Thursday** in individual hours. In the hourly forecast, the most expensive periods will be weighted especially toward the morning and early evening, and Tuesday’s peak will be positioned roughly between 17:00 and 19:00.
+The week’s clearest peak level will appear on **Tuesday**, when the maximum price will reach 21.1 cents. On **Thursday**, the maximum will also rise to 21.9 cents. The risk of price spikes is assessed as high on **Monday** (forecast peak 09:00–11:00), **Tuesday** (16:00–18:00), **Wednesday** (17:00–19:00) and **Thursday** (08:00–10:00). During these windows, individual hours may stand out clearly from the day’s average price.
 
-*Forecast condensed by gpt-5.2.* 📈
+*Forecast compiled by gpt-5.2.* 📈
