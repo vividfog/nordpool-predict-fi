@@ -1,19 +1,19 @@
-*Next week’s prices will vary clearly: Sunday will be the cheapest, Tuesday the most expensive, and spikes may hit mornings and early evenings.*
+*The start of the week will be clearly pricier, Tuesday will peak highest, and several days are forecast to carry hourly spike risk.*
 
-The forecast was updated on Saturday at 08:56.
+The forecast was updated on Saturday at 11:56.
 
 |  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 7.6 | 4.6 - 10.9 | 1375 - 3795 | -1.8 |
-| **Monday** | 13.8 | 7.2 - 21.0 | 798 - 1288 | -3.3 |
-| **Tuesday** | 15.3 | 10.0 - 25.6 | 532 - 1784 | -3.6 |
-| **Wednesday** | 11.9 | 8.5 - 15.0 | 1006 - 2244 | -5.0 |
-| **Thursday** | 11.0 | 6.0 - 16.7 | 1098 - 2222 | -5.4 |
-| **Friday** | 12.1 | 7.5 - 17.7 | 1229 - 2235 | -6.4 |
-| **Saturday** | 9.6 | 6.6 - 12.9 | 1495 - 2403 | -9.4 |
+| **Monday** | 14.3 | 7.7 - 21.7 | 670 - 1231 | -3.3 |
+| **Tuesday** | 16.4 | 10.6 - 25.8 | 509 - 1644 | -3.6 |
+| **Wednesday** | 12.3 | 8.2 - 15.3 | 968 - 2065 | -5.0 |
+| **Thursday** | 11.1 | 6.1 - 16.5 | 1080 - 2087 | -5.4 |
+| **Friday** | 12.1 | 7.6 - 17.8 | 1233 - 2117 | -6.4 |
+| **Saturday** | 10.0 | 6.8 - 13.8 | 1474 - 2419 | -9.3 |
+| **Sunday** | 8.0 | 5.0 - 11.7 | 1337 - 3820 | -1.8 |
 
-Overall, the week’s price level will mostly settle into average prices of 10–15 cents. **Sunday** will stand out as clearly lower, with an average of 7.6 cents and a range of 4.6–10.9 cents. The highest daily average will fall on **Tuesday**, when the average will reach 15.3 cents and the maximum will climb to 25.6 cents.
+The highest day-ahead average is expected on **Tuesday**, when the average price will be 16.4¢ and the daily peak will reach 25.8¢. **Monday** will also be elevated, with an average of 14.3¢ and a maximum of 21.7¢. The cheapest day will be **Sunday**, with an average of 8.0¢ and a daily maximum of 11.7¢.
 
-The risk of price spikes will rise on **Monday**, and peak hours will be expected in the morning from 08:00–10:00 and in the early evening from 16:00–18:00. On **Tuesday**, spike risk will be emphasized, and the highest hourly price will land in the morning from 07:00–09:00, which will also contain the week’s highest single hour in the forecast. **Thursday** and **Friday** may also see spike prices in individual hours, with the highest points leaning toward the afternoon and early evening. Frost will deepen toward the end of the week, as **Friday’s** average temperature will drop to -6.4°C and **Saturday’s** to -9.4°C.
+A risk of price spikes is highlighted on several days. On **Monday**, the highest hours will fall around 16:00–18:00. On **Tuesday**, the sharpest stretch will land in the morning, around 08:00–10:00. On **Wednesday**, the day’s top price will appear in late morning around 09:00–11:00, and on **Thursday** the corresponding peak will occur around 08:00–10:00. In addition, on **Friday** the peak will land in the afternoon around 16:00–18:00, and on **Sunday** the highest hours will be weighted toward the evening around 17:00–19:00.
 
-*Forecast compiled by gpt-5.2.* 📈
+*Forecast parsed today by gpt-5.2.* 🔌
