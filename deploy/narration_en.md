@@ -1,19 +1,19 @@
-*Weekly average prices will range around 11–14 cents, with Thursday the most expensive; several days are expected to see hourly spikes.*
+*In the coming days, the average spot price of electricity will stay around 11–15 cents, with spike risk forecast for peak hours on Thursday and Friday.*
 
-The forecast was updated on Tuesday at 20:56.
+The forecast was updated on Wednesday at 02:56.
 
-|  | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 14,1 | 11,2 - 18,9 | 428 - 778 | -5,0 |
-| **Thursday** | 14,4 | 8,6 - 21,2 | 476 - 795 | -5,4 |
-| **Friday** | 13,5 | 7,3 - 19,7 | 730 - 1947 | -6,4 |
-| **Saturday** | 11,0 | 7,3 - 15,6 | 1480 - 2567 | -9,3 |
-| **Sunday** | 10,9 | 8,5 - 15,0 | 8,5 - 15,0 | 1598 - 2590 | -10,0 |
-| **Monday** | 14,3 | 8,5 - 20,6 | 1778 - 3022 | -9,7 |
-| **Tuesday** | 12,7 | 8,8 - 17,5 | 2187 - 3429 | -10,3 |
+| **Thursday** | 14,8 | 8,2 - 22,5 | 380 - 671 | -5,4 |
+| **Friday** | 14,3 | 8,3 - 22,4 | 493 - 1319 | -6,4 |
+| **Saturday** | 11,1 | 7,7 - 15,0 | 1418 - 2620 | -9,3 |
+| **Sunday** | 11,4 | 8,5 - 17,2 | 1481 - 2735 | -10,0 |
+| **Monday** | 14,0 | 8,5 - 18,6 | 1737 - 2795 | -9,7 |
+| **Tuesday** | 13,1 | 9,1 - 18,4 | 2115 - 3376 | -10,3 |
+| **Wednesday** | 12,4 | 8,0 - 16,6 | 2405 - 3342 | -12,0 |
 
-On **Wednesday**, the average price will settle at 14,1 cents in the forecast, and the day’s highest hourly price will rise to 18,9 cents. On **Thursday**, the week will see the highest average price, 14,4 ¢, and also the highest maximum price, 21,2 ¢. Thursday is flagged with a high risk of individual price spikes, and in the hourly forecast the peak will fall around 08–10. On **Friday**, the average price will drop to 13,5 cents, but the risk of spikes will remain, and the highest hours will land around 16–18.
+Over the next few days, average prices will mostly fall in the 11–15 cent range. The highest daily average is expected on **Thursday** (14,8 ¢/kWh), and the day’s top hourly price is forecast to reach 22,5 cents. **Friday** will be at almost the same level (14,3 ¢), with a daily maximum of 22,4 cents. A high risk of individual price spikes is flagged for both days, and on an hourly basis the peak is expected around 08:00–10:00 on Thursday and around 16:00–18:00 on Friday.
 
-On **Saturday** and **Sunday**, average prices will be the lowest of the week, at 11,0 and 10,9 cents. On Saturday, intra-day variation will stay narrower, but the weekend is also marked with a high risk of individual spikes. On **Monday**, the average price will climb again to 14,3 cents and the maximum will reach 20,6 cents, and the risk peaks will be around 17–19. On **Tuesday**, the average price will fall to 12,7 cents, and spike risk will be most pronounced in the morning around 08–10.
+The lowest daily averages of the week are forecast for **Saturday** (11,1 ¢) and **Sunday** (11,4 ¢), although on Sunday the top hourly price reaches 17,2 cents and the spike risk is marked as high. Next **Monday**, the daily average rises to 14,0 cents, with the highest hours falling around 16:00–18:00. Next **Tuesday** and **Wednesday**, the daily averages are 13,1 and 12,4 cents, but a high spike risk is still flagged for both days.
 
-*Forecast interpreted by gpt-5.2.* 🔎
+*Forecast compiled by gpt-5.2.* 🔎
