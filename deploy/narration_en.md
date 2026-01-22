@@ -1,19 +1,19 @@
-*The day-ahead average prices mostly stay in the 12–18 cent range, but Friday is forecast to bring the week’s sharpest peak and spike risk.*
+*In the coming days, spot electricity will mostly stay around 11–13 cents, but Friday and Monday will be clearly higher, and hourly spikes may occur.*
 
-The forecast was updated on **Wednesday** at 20:56.
+The forecast was updated on Thursday at 02:56.
 
-|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday** | 16.6 | 10.3 - 23.4 | 282 - 650 | -5.4 |
-| **Friday** | 17.6 | 10.4 - 27.2 | 263 - 841 | -6.4 |
-| **Saturday** | 12.3 | 8.9 - 15.6 | 893 - 2623 | -9.3 |
-| **Sunday** | 12.2 | 8.3 - 18.9 | 1428 - 2859 | -10.0 |
-| **Monday** | 14.3 | 8.9 - 24.4 | 1359 - 3125 | -9.7 |
-| **Tuesday** | 12.9 | 8.3 - 19.5 | 1521 - 2922 | -10.3 |
-| **Wednesday** | 12.8 | 8.2 - 17.7 | 1715 - 2914 | -12.0 |
+| **Friday** | 17,8 | 10,8 - 28,1 | 375 - 741 | -6,4 |
+| **Saturday** | 13,2 | 9,1 - 17,9 | 780 - 2449 | -9,3 |
+| **Sunday** | 11,4 | 8,4 - 15,1 | 1593 - 2877 | -10,0 |
+| **Monday** | 16,0 | 10,3 - 23,7 | 1343 - 2241 | -9,7 |
+| **Tuesday** | 11,6 | 8,4 - 15,2 | 1842 - 3211 | -10,3 |
+| **Wednesday** | 11,9 | 7,1 - 17,2 | 1646 - 3202 | -12,0 |
+| **Thursday** | 12,3 | 9,0 - 16,4 | 1599 - 2685 | -11,8 |
 
-In the week-ahead forecast for exchange electricity, daily averages mostly settle between 12 and 18 cents. Overall, the level will be expensive, and the highest daily averages will fall on **Thursday** (16.6 ¢) and **Friday** (17.6 ¢). The lowest daily averages of the week are expected over the weekend, as **Sunday’s** average dips to 12.2 cents and **Saturday’s** to 12.3 cents.
+Average prices will mostly remain around 11–13 cents, but the most expensive day will be **Friday**, when the average price will be 17.8 cents and the highest hourly price will reach 28.1 cents. The hourly peak on Friday will be expected around 16:00–18:00. **Monday** will also stand out, with an average price of 16.0 cents and a daily high of 23.7 cents. Monday’s clearest upswing will be expected around 15:00–17:00.
 
-The highest single hourly price is clearly forecast for **Friday**, when the day’s maximum rises to 27.2 cents. The risk of price spikes is assessed as high on **Friday** around 16:00–18:00. The same risk is also highlighted on **Saturday** (around 16:00–18:00), **Sunday** (around 16:00–18:00), **Monday** (around 16:00–18:00), **Tuesday** (around 08:00–10:00), and **Wednesday** (around 16:00–18:00). Frost is forecast for every day, and the average temperature will remain below -5 degrees throughout the period.
+On the other days, the range will stay clearly more moderate, and the week’s lowest hourly price will occur on **Wednesday**, when the price will dip to 7.1 cents. The risk of price spikes will be most pronounced on Friday as well as over the weekend and on Monday. Saturday’s highest hourly price will be expected around 16:00–18:00, and Sunday’s peak will be concentrated in the same time window.
 
-*Forecast interpreted by gpt-5.2.* 📈
+*Forecasts reviewed by gpt-5.2.* 🧾
