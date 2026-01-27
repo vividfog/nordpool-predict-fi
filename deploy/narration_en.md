@@ -1,19 +1,21 @@
-*The start of the week will look very expensive and volatile, the weekend clearly cheaper, and price peaks will concentrate in the morning and early evening.*
+*Early in the week, prices will remain high and volatile, but electricity will clearly get cheaper over the weekend, ahead of a possible spike on Tuesday.*
 
-The forecast was updated on Tuesday at 08:56.
+The forecast was updated on Tuesday at 11:56.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 23.8 | 13.1 - 36.8 | 207 - 658 | -12.0 |
-| **Thursday** | 20.9 | 14.5 - 29.5 | 616 - 961 | -11.7 |
-| **Friday** | 15.1 | 8.6 - 26.6 | 869 - 3919 | -11.2 |
-| **Saturday** | 11.8 | 7.5 - 15.1 | 2963 - 3866 | -10.6 |
-| **Sunday** | 11.6 | 8.0 - 14.6 | 3250 - 3984 | -11.8 |
-| **Monday** | 15.8 | 9.7 - 20.1 | 1874 - 3632 | -12.8 |
-| **Tuesday** | 20.2 | 12.6 - 28.2 | 1281 - 2484 | -11.0 |
+| **Wednesday** | 23.9 | 13.6 - 37.2 | 185 - 568 | -12.0 |
+| **Thursday** | 21.8 | 14.3 - 31.6 | 375 - 690 | -11.7 |
+| **Friday** | 17.0 | 8.5 - 30.4 | 585 - 3832 | -11.2 |
+| **Saturday** | 11.5 | 7.7 - 14.5 | 2967 - 3779 | -10.6 |
+| **Sunday** | 11.0 | 7.6 - 13.8 | 3283 - 3868 | -11.8 |
+| **Monday** | 15.3 | 9.6 - 19.4 | 1959 - 3550 | -12.8 |
+| **Tuesday** | 21.3 | 12.2 - 44.4 | 863 - 2535 | -11.1 |
 
-The highest average prices of the week will fall on **Wednesday**, when the average price is expected to be 23.8¢ and the day’s maximum 36.8¢. A high risk of hourly price spikes is also forecast for Wednesday, and in the hourly forecast the most expensive window will land around 16:00–18:00. On **Thursday** the average price is expected to drop to 20.9¢, but a high spike risk is also flagged for Thursday, and the day’s peak price will likely occur around 08:00–10:00.
+The overall level will remain very expensive from Wednesday to Friday, and average prices will then fall clearly for the weekend. The highest daily average will fall on **Wednesday**, when the expected average will be 23.9¢ and the daily maximum 37.2¢. On Wednesday, wind power will stay at a very weak level, and the day’s average temperature will also drop to -12.0°C.
 
-On **Friday** the average price will sink to 15.1¢, but the day will still start with higher morning prices and the spike risk will remain high. On **Saturday** and **Sunday** the average prices will settle at roughly 11–12 cents, and the week’s lowest minimum is forecast for Saturday (7.5¢). On **Monday** the average price will rise to 15.8¢ and the spike risk will be high. On **Tuesday** the average price will climb to 20.2¢, and the most expensive window will likely fall around 16:00–18:00.
+On Thursday, the average will settle at 21.8 cents. On Friday, the average is expected to fall to 17.0 cents, but in the late morning hourly prices will still climb to around 30 cents. On Saturday and Sunday, averages will drop to about 11 cents, and the range will remain clearly narrower than on weekdays.
 
-*Forecast parsed by gpt-5.2.* 📊
+The forecast shows a high risk of price spikes on **Wednesday** (peak around 16:00–18:00), **Thursday** (around 07:00–09:00), **Friday** (around 10:00–12:00), **Monday** (around 11:00–13:00) and **Tuesday** (around 15:00–17:00). Tuesday also features the week’s highest single hourly forecast, 44.4¢.
+
+*Interpreted by gpt-5.2.* 🔎
