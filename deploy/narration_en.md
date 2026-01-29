@@ -1,19 +1,19 @@
-*The spot electricity week will vary clearly: Friday and Tuesday will stand out as high, while the weekend will sit at a much lower level.*
+*The price level will vary clearly: Friday will be the most expensive day of the week, Sunday the cheapest, and several days will feature hourly volatility.*
 
-The forecast was updated on Thursday at 11:56.
+The forecast was updated on Thursday at 14:56.
 
-|  | avg-<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg-<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday** | 24.9 | 14.8 - 37.8 | 218 - 608 | -11.2 |
-| **Saturday** | 12.0 | 6.4 - 15.1 | 634 - 4712 | -10.6 |
-| **Sunday** | 10.2 | 5.5 - 14.9 | 3224 - 5213 | -11.8 |
-| **Monday** | 14.7 | 9.1 - 22.3 | 1305 - 3064 | -12.8 |
-| **Tuesday** | 21.6 | 10.6 - 45.6 | 759 - 2131 | -11.1 |
-| **Wednesday** | 20.2 | 12.3 - 29.0 | 838 - 1435 | -10.9 |
-| **Thursday** | 16.1 | 9.4 - 23.7 | 940 - 2455 | -10.5 |
+| **Friday** | 31,1 | 18,5 - 42,0 | 213 - 601 | -11,2 |
+| **Saturday** | 16,1 | 7,1 - 23,5 | 625 - 4705 | -10,6 |
+| **Sunday** | 11,4 | 5,9 - 14,4 | 3128 - 5215 | -11,8 |
+| **Monday** | 15,1 | 9,4 - 24,0 | 1268 - 3062 | -12,8 |
+| **Tuesday** | 22,1 | 10,4 - 45,2 | 755 - 2119 | -11,1 |
+| **Wednesday** | 20,5 | 12,1 - 29,1 | 777 - 1405 | -10,9 |
+| **Thursday** | 15,6 | 9,7 - 23,9 | 993 - 2565 | -10,5 |
 
-A very expensive average price is forecast for several days in the period ahead. The highest weekly average is expected on **Friday**, when the average will land at 24.9 cents and the day’s intraday range will reach a 37.8-cent maximum. On **Tuesday**, the average will also climb to 21.6 cents, and the maximum will rise to 45.6 cents. A hard frost is forecast for every day, as average temperatures will remain below -10 degrees.
+The week’s highest price expectations will fall on **Friday**, when the average price is forecast to settle at 31,1 cents and the day’s highest hourly price will reach 42,0 cents. **Tuesday** will also see large price swings, as the day’s maximum climbs to 45,2 cents and the average price is 22,1 cents. Across the whole period, frost will be severe, as average temperatures will remain clearly below −5 degrees.
 
-The risk of price spikes is highlighted specifically for **Friday**, with timing leaning toward late morning between 10:00 and 12:00. A similar risk is noted for **Saturday**, and the highest hours are expected around 08:00–10:00. On **Monday**, the peak will fall in the forecast at 10:00–12:00. On **Tuesday**, the spike risk will concentrate in the afternoon at 15:00–17:00, and on **Wednesday** at 10:00–12:00. On **Thursday**, the highest hours in the forecast will be at 15:00–17:00.
+The cheapest day will be **Sunday**, when the average price is expected to stay at 11,4 cents and prices will remain within 5,9–14,4 cents. The risk of price spikes will stand out on **Saturday** and **Monday**, and it will also come through on **Tuesday**, **Wednesday**, and **Thursday**. In the hourly forecast, **Tuesday’s** most expensive window will likely fall around 15:00–17:00, with the peak at 16:00.
 
-*Figures parsed by gpt-5.2.* 📈
+*Forecast weighed by gpt-5.2.* 🔎
