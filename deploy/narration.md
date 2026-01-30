@@ -1,19 +1,19 @@
-*Viikon pörssisähkö pysyy enimmäkseen yli 10 sentissä, ja tiistai erottuu selvästi kalleimpana päivänä sekä korkealla huipulla.*
+*Pörssisähkön hintataso heilahtelee lähipäivinä: sunnuntai jää selvästi edullisimmaksi, kun taas tiistaina nähdään viikon kallein taso.*
 
-Ennuste on päivitetty perjantaina klo 02:56.
+Ennuste on päivitetty perjantaina klo 08:56.
 
 |  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **lauantai** | 14,9 | 7,0 - 22,1 | 859 - 4751 | -10,6 |
-| **sunnuntai** | 11,2 | 6,0 - 15,4 | 3874 - 4989 | -11,8 |
-| **maanantai** | 13,7 | 8,9 - 18,6 | 1599 - 3926 | -12,8 |
-| **tiistai** | 22,7 | 11,5 - 45,9 | 750 - 2013 | -11,1 |
-| **keskiviikko** | 21,6 | 13,4 - 30,3 | 764 - 1272 | -10,9 |
-| **torstai** | 16,6 | 11,1 - 23,7 | 984 - 2175 | -10,5 |
-| **perjantai** | 15,7 | 9,6 - 20,9 | 1776 - 2528 | -10,5 |
+| **lauantai** | 15,0 | 7,4 - 20,7 | 1061 - 4600 | -10,6 |
+| **sunnuntai** | 11,7 | 6,3 - 15,5 | 3508 - 4890 | -11,8 |
+| **maanantai** | 13,9 | 9,2 - 18,2 | 1552 - 3759 | -12,8 |
+| **tiistai** | 22,8 | 12,0 - 45,0 | 724 - 1835 | -11,1 |
+| **keskiviikko** | 21,5 | 13,6 - 30,4 | 781 - 1295 | -10,9 |
+| **torstai** | 16,9 | 11,2 - 23,3 | 911 - 2010 | -10,5 |
+| **perjantai** | 15,1 | 9,6 - 19,6 | 1766 - 2243 | -10,5 |
 
-Alkuviikolla keskihinnat pysyvät pääosin selvästi yli 10 sentissä, ja viikolle osuu myös hyvin kallis jakso. Selvästi kallein päivä tulee olemaan **tiistai**, jolloin keskihinta asettuu 22,7 senttiin ja päivän maksimiksi ennustetaan 45,9 senttiä. Hintahuippu osuu tuntien perusteella iltapäivään, noin klo 15–17. Myös **keskiviikkona** keskihinta pysyy korkealla tasolla (21,6 ¢), vaikka päivän maksimihinta jää selvästi tiistaita matalammaksi.
+Hintataso tulee vaihtelemaan selvästi päivien välillä. **Sunnuntaina** keskihinta painuu 11,7 senttiin, ja tuulivoimaa tulee olemaan runsaasti, keskimäärin 4174 MW. Pakkasta tulee olemaan koko jaksolla reilusti, sillä keskilämpötilat tulevat pysymään noin -10 ja -13 asteen välillä.
 
-Hintoja nostaa useana päivänä kova pakkanen, sillä vuorokausien keskilämpötilat pysyvät kautta linjan alle -10 asteen. Lisäksi tuulivoima jää **tiistaina** ja **keskiviikkona** hyvin heikolle tasolle, kun vuorokauden keskiarvo asettuu noin 1000–1300 megawattiin ja minimit putoavat alle 1000 megawatin. Hintapiikkien riski tulee olemaan korkea **lauantaina**, **maanantaina**, **tiistaina**, **keskiviikkona**, **torstaina** ja **perjantaina** yksittäisinä tunteina.
+Korkein keskihinta ajoittuu **tiistaille**, jolloin päivän keskiarvo nousee 22,8 senttiin ja maksimihinta yltää 45,0 senttiin. Tuulivoiman minimi jää silloin 724 megawattiin, ja heikko minimituotanto osuu samaan päivään ennusteen korkeimman huipputunnin kanssa. **Keskiviikkona** keskihinta pysyy myös korkeana, 21,5 sentissä. Hintapiikkien riski tullaan mainitsemaan **lauantaina**, **sunnuntaina**, **maanantaina**, **tiistaina**, **keskiviikkona**, **torstaina** ja **perjantaina**, ja ennusteen selvin yksittäinen huippu osuu **tiistaina** klo 15–17.
 
-*Ennustetta tiivisti gpt-5.2* 🔌
+*Ennustetta tiivisti gpt-5.2.* 📈
