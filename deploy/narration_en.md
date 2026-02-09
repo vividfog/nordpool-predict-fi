@@ -1,19 +1,19 @@
-*Weekdays are expected to be clearly pricier than the weekend, with Tuesday standing out as the most expensive and prone to hourly spikes.*
+*Tuesday and Wednesday will be the most expensive days of the week, and prices will clearly soften over the weekend, although individual spikes may still hit on weekdays.*
 
-The forecast was updated on Sunday at 20:56.
+The forecast was updated on Monday at 02:56.
 
-|  | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 21,1 | 12,3 - 30,5 | 465 - 2018 | -11,0 |
-| **Tuesday** | 25,7 | 14,1 - 41,9 | 290 - 998 | -11,5 |
-| **Wednesday** | 22,6 | 13,3 - 31,0 | 828 - 1414 | -12,4 |
-| **Thursday** | 19,2 | 11,7 - 27,7 | 1408 - 2505 | -14,9 |
-| **Friday** | 19,1 | 12,6 - 26,8 | 1889 - 2579 | -15,2 |
-| **Saturday** | 9,6 | 6,3 - 12,8 | 1902 - 3972 | -14,3 |
-| **Sunday** | 9,6 | 4,4 - 12,9 | 2349 - 3860 | -10,2 |
+| **Tuesday** | 25,1 | 14,2 - 39,0 | 353 - 1016 | -11,5 |
+| **Wednesday** | 23,9 | 12,7 - 36,1 | 488 - 1249 | -12,4 |
+| **Thursday** | 18,9 | 11,8 - 27,9 | 1208 - 2539 | -14,9 |
+| **Friday** | 19,3 | 12,8 - 27,0 | 1866 - 2649 | -15,2 |
+| **Saturday** | 9,9 | 6,6 - 13,9 | 1808 - 3992 | -14,3 |
+| **Sunday** | 9,8 | 4,6 - 13,9 | 2256 - 3800 | -10,2 |
+| **Monday** | 14,2 | 6,8 - 22,2 | 1962 - 4581 | -8,1 |
 
-Overall, very high average prices are expected for the week, and the most expensive day will be **Tuesday**. Its expected daily average will be 25,7 cents, and the maximum will rise to 41,9 cents. The risk of price spikes will be high on **Tuesday**, and in the hourly forecast the day’s peak is expected to fall roughly between 08:00 and 10:00. **Wednesday** and **Thursday** are also flagged as having a high risk of price spikes in individual hours.
+The highest average price of the week will be seen on **Tuesday**, when the expected daily average will settle at 25,1 cents and the day’s highest hourly price will climb to 39,0 cents. **Wednesday** will also remain expensive, with an average of 23,9 cents and a maximum reaching 36,1 cents. On both days, the cold will be severe, and the average temperature will stay below −10 degrees.
 
-The cheapest moments of the week will be expected over the weekend. On **Sunday**, the minimum will drop to 4,4 cents, and on **Saturday** the price will stay below 12,8 cents all day. On the scale of the whole week, the cold will be severe every day, since the average temperature will remain between -10,2 and -15,2 degrees, and it will support high demand and a higher price level on weekdays.
+The risk of price spikes will stand out on **Tuesday** and **Wednesday**, and according to the forecast the peaks will fall around 08:00–10:00 on Tuesday and around 10:00–12:00 on Wednesday. On **Thursday** and **Friday**, the average price will ease to around 19 cents, but an elevated risk of individual spikes is also marked for those days. The cheapest stretch of the week will come over the weekend, as the average prices on **Saturday** and **Sunday** will drop to around ten cents, and the lowest hourly price will dip to 4,6 cents on Sunday.
 
-*Forecast distilled by gpt-5.2.* 🔌
+*Numbers interpreted today by gpt-5.2.* 📈
