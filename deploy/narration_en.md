@@ -1,19 +1,19 @@
-*Early in the week, spot electricity will remain clearly more expensive and the risk of price spikes will stand out, while the average price will fall toward the weekend.*
+*The next few days will remain very expensive, with the highest average prices on Thursday and Friday; toward the end of the week, the price level will drop clearly.*
 
-The forecast was updated on Tuesday at 11:56.
+The forecast was updated on Tuesday at 14:56.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | avg-<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 24,4 | 13,4 - 37,9 | 449 - 1325 | -12,4 |
-| **Thursday** | 24,8 | 13,7 - 37,9 | 425 - 1466 | -14,9 |
-| **Friday** | 22,9 | 12,6 - 36,6 | 615 - 2311 | -15,2 |
-| **Saturday** | 19,8 | 11,7 - 25,6 | 1302 - 2594 | -14,3 |
-| **Sunday** | 11,9 | 7,9 - 15,6 | 1361 - 3595 | -10,2 |
-| **Monday** | 13,3 | 6,5 - 21,3 | 1970 - 3289 | -8,7 |
-| **Tuesday** | 11,3 | 6,5 - 15,4 | 2710 - 4267 | -9,1 |
+| **Wednesday** | 18.3 | 12.4 - 25.7 | 454 - 1329 | -12.4 |
+| **Thursday** | 22.5 | 12.4 - 34.2 | 431 - 1465 | -14.9 |
+| **Friday** | 22.1 | 14.5 - 34.4 | 616 - 2309 | -15.2 |
+| **Saturday** | 19.5 | 12.5 - 26.1 | 1242 - 2422 | -14.3 |
+| **Sunday** | 12.1 | 6.9 - 15.7 | 1504 - 3267 | -10.2 |
+| **Monday** | 12.8 | 5.4 - 22.8 | 1987 - 3548 | -8.7 |
+| **Tuesday** | 11.4 | 5.5 - 15.8 | 2745 - 4310 | -9.1 |
 
-Prices early in the week will remain clearly higher than later in the week. The highest average price is expected on **Thursday**, when the day’s average will be 24,8 cents and the highest hourly price will reach 37,9 cents. **Wednesday** will also show an equally high maximum price in the forecast. The peak will occur roughly between 10:00 and 12:00. Both days will be flagged with a high risk of price spikes in individual hours.
+This week’s spot electricity price will mostly settle at a very expensive level from Wednesday to Saturday. The highest daily average price will be seen on **Thursday**, when the average will come in at 22.5 cents and the day’s peak hourly price will rise to 34.2 cents. On **Friday**, the average price will remain almost the same at 22.1 cents, and the maximum price will reach 34.4 cents. Wednesday’s range will be more moderate, but the daily average will still stand at 18.3 cents.
 
-The price level will ease toward the weekend. On **Saturday**, the average price will fall to 19,8 cents, and prices will stay within 11,7–25,6 cents. The clearly cheapest period will be on **Sunday**, when the average price is expected to be 11,9 cents and hourly prices will remain at most 15,6 cents. However, Sunday will also be marked with a risk of price spikes in individual hours. Next **Monday**, the average price will rise to 13,3 cents, and next **Tuesday** it will settle at 11,3 cents.
+A high risk of individual price spikes is flagged for Thursday, Friday, Saturday, Sunday, Monday, and Tuesday. On an hourly basis, Thursday’s peak is expected around 10:00–12:00. Friday’s highest period will fall roughly at 07:00–09:00, and Saturday’s peak will be concentrated around 17:00–19:00. The most affordable average prices of the week will be weighted toward the latter part. On **Tuesday**, the average price will drop to 11.4 cents, and prices will dip as low as 5.5 cents.
 
-*Forecast parsed by gpt-5.2.* 📈
+*Numbers condensed by gpt-5.2* 📊
