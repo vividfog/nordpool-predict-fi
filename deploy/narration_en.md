@@ -1,19 +1,19 @@
-*Next week’s spot electricity prices will mostly stay around 10–13 cents, but Saturday will stand out as the most expensive and most volatile day.*
+*Spot electricity average prices will mostly stay around 10–17 cents next week, and Saturday will stand out with the highest price level.*
 
-The forecast was updated on Friday at 08:56.
+The forecast was updated on Friday at 11:56.
 
-|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday** | 16.8 | 12.8 - 21.3 | 1373 - 2836 | -14.3 |
-| **Sunday** | 10.4 | 6.4 - 12.9 | 2699 - 4803 | -10.2 |
-| **Monday** | 12.2 | 5.0 - 17.1 | 2116 - 4901 | -8.7 |
-| **Tuesday** | 13.1 | 8.8 - 17.4 | 2199 - 4036 | -9.1 |
-| **Wednesday** | 11.8 | 6.4 - 15.7 | 2661 - 3654 | -8.9 |
-| **Thursday** | 12.6 | 7.4 - 21.2 | 1640 - 3665 | -11.2 |
-| **Friday** | 12.6 | 6.7 - 16.1 | 2302 - 3488 | -11.2 |
+| **Saturday** | 16.8 | 13.3 - 22.5 | 1581 - 2809 | -14.3 |
+| **Sunday** | 10.6 | 6.6 - 13.7 | 1944 - 4888 | -10.2 |
+| **Monday** | 12.2 | 5.4 - 17.2 | 2144 - 5348 | -8.7 |
+| **Tuesday** | 12.5 | 8.1 - 17.0 | 2148 - 3973 | -9.1 |
+| **Wednesday** | 11.7 | 6.0 - 16.2 | 2623 - 3572 | -8.9 |
+| **Thursday** | 12.6 | 7.4 - 21.1 | 1706 - 3633 | -11.2 |
+| **Friday** | 13.2 | 7.1 - 17.2 | 2187 - 3274 | -11.1 |
 
-The price week will, overall, look expensive. Daily average prices will settle at roughly 10–17 cents. The highest average price will fall on **Saturday**, when the expected average will be 16.8 ¢ and the day’s highest hourly price 21.3 ¢. On **Thursday**, the maximum price will also rise to 21.2 cents.
+Across the week, the forecast calls for an expensive average price level. The most expensive day is expected to be **Saturday**, when the daily average price will be 16.8 ¢ and the highest hourly price will reach 22.5 ¢. The forecast also shows severe cold, as every day will have an average temperature below -5 degrees.
 
-The cheapest day of the week will be **Sunday**, when the average price will remain at 10.4 cents and prices will drop clearly lower in the evening. The risk of price spikes will be highlighted on **Saturday** and **Monday**, when the peak hours will, in the forecast, fall in the late morning around 06:00–08:00 and 10:00–12:00. On **Thursday**, individual hourly prices will also run high around 10:00–12:00. The cold spell will persist throughout the period, as daily average temperatures will remain well below −5 degrees.
+The cheapest day will be **Sunday**, when the average price will be 10.6 ¢ and prices will drop in the evening around 21:00–23:00 to roughly 6.6–6.7 cents. However, the risk of price spikes is noted for **Saturday**, **Sunday**, **Monday**, **Tuesday**, **Wednesday**, **Thursday**, and **Friday**. The highest individual hourly prices in the forecast will occur especially on **Saturday** around 10:00–12:00 and on **Thursday** around 10:00–12:00.
 
-*Forecast condensed by gpt-5.2* 📊
+*Forecast shaped by gpt-5.2.* 📈
