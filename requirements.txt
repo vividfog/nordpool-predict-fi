@@ -4,7 +4,7 @@ matplotlib==3.8.2
 optuna==4.0.0
 openai==2.3.0
 pandas==2.2.0
-pip==25.3
+pip==26.0
 pipdeptree==2.14.0
 pyarrow==15.0.0
 pytz==2024.1
