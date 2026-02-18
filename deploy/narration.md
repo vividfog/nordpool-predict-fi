@@ -1,19 +1,19 @@
-*Pörssisähkön viikko pysyy enimmäkseen hyvin kalliina, ja torstai erottuu sekä korkeimmalla keskihinnalla että selkeällä piikkiriskillä.*
+*Pörssisähkön hinta vaihtelee selvästi viikon aikana: loppuviikko on kallein ja lyhyitä piikkejä voi osua aamuun tai iltaan.*
 
-Ennuste on päivitetty tiistaina klo 20:57.
+Ennuste on päivitetty keskiviikkona klo 02:56.
 
 |  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **keskiviikko** | 16,1 | 6,9 - 24,8 | 2167 - 4294 | -8,9 |
-| **torstai** | 21,1 | 11,4 - 34,1 | 273 - 2983 | -11,2 |
-| **perjantai** | 19,4 | 10,5 - 29,9 | 795 - 2759 | -11,1 |
-| **lauantai** | 15,7 | 8,4 - 26,2 | 1212 - 2697 | -10,8 |
-| **sunnuntai** | 11,1 | 7,2 - 14,5 | 1928 - 3348 | -10,4 |
-| **maanantai** | 19,4 | 10,7 - 31,0 | 929 - 2798 | -9,6 |
-| **tiistai** | 18,5 | 10,3 - 30,3 | 1202 - 2701 | -9,3 |
+| **torstai** | 21,9 | 11,5 - 35,5 | 248 - 2894 | -11,2 |
+| **perjantai** | 23,6 | 10,8 - 37,3 | 412 - 2934 | -11,1 |
+| **lauantai** | 15,4 | 7,1 - 26,0 | 1276 - 4788 | -10,8 |
+| **sunnuntai** | 12,5 | 10,2 - 16,4 | 1351 - 3647 | -10,4 |
+| **maanantai** | 14,2 | 7,7 - 24,2 | 1555 - 3261 | -9,6 |
+| **tiistai** | 18,6 | 10,4 - 30,4 | 1123 - 2582 | -9,3 |
+| **keskiviikko** | 14,2 | 9,3 - 23,3 | 1000 - 2271 | -8,2 |
 
-Hintataso pysyy lähipäivinä pääosin hyvin kalliina. Päivien välille tulee silti selvä hajonta, sillä **torstaina** päivän keskihinta nousee ennusteessa 21,1 senttiin ja ylin tuntihinta käy 34,1 sentissä. Torstaille on merkitty korkea riski yksittäisille hintapiikeille, ja huippu osuu ennusteessa klo 10–12. Taustalla näkyy myös hyvin matala tuulivoiman minimi, 273 MW, joka osuu samaan päivään korkeimman maksimihinnan kanssa.
+Hintaviikko arvioidaan kokonaisuutena hyvin kalliiksi. Korkein päivän keskihinta odotetaan **perjantaina**, jolloin keskiarvo asettuu 23,6 senttiin ja päivän maksimi yltää 37,3 senttiin. Myös **torstaina** keskihinta nousee 21,9 senttiin ja maksimi käy 35,5 sentissä.
 
-Matalin päivän keskihinta osuu **sunnuntaille**, jolloin keskiarvo jää 11,1 senttiin ja päivän tuntihinnat pysyvät 7,2–14,5 sentin välillä. Keskiviikolla edullisin yksittäinen tunti osuu yöhön, ja alin lukema on 6,9 senttiä. Perjantaille, lauantaille, maanantaille ja tiistaille on ennusteessa kirjattu korkea hintapiikkiriski, ja korkeimmat tuntihinnat painottuvat päiväsaikaan sekä alkuillan suuntaan. Lisäksi koko jaksoa leimaa kova pakkanen, sillä keskilämpötila pysyy jokaisena päivänä alle -5 asteessa.
+Hintapiikkien riski korostuu loppuviikolla. **Torstaina** kalleimmat tunnit ajoittuvat arviolta klo 17–19, jolloin ennusteessa näkyy 34,3–35,5 sentin taso, ja tuulivoima painuu päivällä hyvin alas, jopa 248 megawattiin. **Perjantaina** kallein jakso asettuu arviolta klo 09–11, jolloin hinta käy 36,0–37,3 sentissä, ja tuulivoiman minimi jää 412 megawattiin. **Lauantaina** hintahuippu osuu arviolta klo 17–19, jolloin ennuste käy 24,2–26,0 sentissä.
 
-*Lukuja tulkitsi gpt-5.2.* 📊
+*Ennustetta tiivisti gpt-5.2.* 🔎
