@@ -1,19 +1,19 @@
-*Early in the week, spot electricity will rise clearly, and a risk of price spikes will be expected on Monday and Tuesday, while the level will fall toward the weekend.*
+*Early in the week, spot electricity will remain very expensive and fluctuate sharply, but average prices will drop clearly toward the end of the week.*
 
-The forecast was updated on Sunday at 08:56.
+The forecast was updated on Sunday at 11:56.
 
-|  | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 20.1 | 9.1 - 31.9 | 291 - 2412 | -9.6 |
-| **Tuesday** | 23.6 | 13.4 - 42.1 | 518 - 1208 | -9.3 |
-| **Wednesday** | 12.2 | 6.7 - 18.6 | 878 - 3284 | -8.3 |
-| **Thursday** | 8.2 | 3.7 - 16.3 | 1990 - 3906 | -5.8 |
-| **Friday** | 5.4 | 3.2 - 7.9 | 2771 - 3647 | -2.6 |
-| **Saturday** | 4.1 | 1.7 - 6.1 | 3189 - 4078 | -2.7 |
-| **Sunday** | 6.4 | 3.9 - 9.8 | 2122 - 3789 | -3.8 |
+| **Monday** | 21,5 | 9,1 - 38,3 | 265 - 2213 | -9,6 |
+| **Tuesday** | 24,6 | 14,4 - 45,0 | 398 - 1373 | -9,3 |
+| **Wednesday** | 13,9 | 6,5 - 24,9 | 525 - 3356 | -8,3 |
+| **Thursday** | 8,2 | 3,9 - 16,4 | 1970 - 4081 | -5,8 |
+| **Friday** | 5,6 | 3,0 - 8,1 | 2658 - 3739 | -2,6 |
+| **Saturday** | 4,1 | 1,5 - 6,1 | 3197 - 4281 | -2,7 |
+| **Sunday** | 6,6 | 3,5 - 10,4 | 2216 - 3987 | -3,9 |
 
-For the start of the week, average prices will be expected to be clearly higher than for the rest of the week. The average price on **Monday** will come in at 20.1 cents, and a daily maximum of 31.9 ¢ will be forecast. Within the day, minimum wind power output will drop to 291 megawatts, and at the same time the cold will fall to an average of -9.6 degrees. The data also notes a high risk of price spikes in individual hours. In the hourly forecast, the most expensive window will be expected roughly between 07:00 and 09:00.
+The highest average price of the week will fall on **Tuesday**, when the average is expected to be 24,6 cents and the maximum will reach 45,0 cents. **Monday** will also keep the average very high at 21,5 cents, and the day’s peak will climb to 38,3 cents. The price level will be supported by severe frost, because the average temperature will stay around -9 degrees on **Monday** and **Tuesday**.
 
-On **Tuesday**, the average price will rise to the highest of the week, 23.6 cents, and the maximum will reach 42.1 ¢. Minimum wind power will be 518 megawatts, and the average temperature will stay at -9.3 degrees. Tuesday is also marked with a high spike-risk, and the peak hour in the forecast will fall around 08:00–10:00. From **Wednesday** onward, the price level will drop clearly, and toward the end of the week average prices will stay mostly below about six cents, as wind power will be forecast to be abundant.
+Price swings will be concentrated early in the week. On **Monday**, the peak will fall in the forecast between 07:00 and 09:00, as the highest hourly price lands at 08:00. On **Tuesday**, the corresponding peak will occur between 08:00 and 10:00, with the most expensive hour at 09:00. Both days are marked as having a high risk of single-hour price spikes. The average price will drop clearly on **Wednesday** to 13,9 cents, and toward the end of the week the level will move lower, as **Saturday**’s average remains at 4,1 cents and the minimum dips to 1,5 cents.
 
-*Forecast condensed by gpt-5.2.* 📈
+*Prices summarized by gpt-5.2* 📊
