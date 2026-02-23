@@ -1,19 +1,19 @@
-*The price forecast will swing from high early-week levels toward the cheapest hours of the weekend, and spike risk will stand out especially in the mornings.*
+*The spot electricity price will vary clearly: Tuesday will be the week’s most expensive, the rest of the week will get cheaper, and Wednesday and next Monday may spike.*
 
-The forecast was updated on Monday at 11:56.
+The forecast was updated on Monday at 14:56.
 
 |  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday** | 22,1 | 11,7 - 40,1 | 489 - 1538 | -9,3 |
-| **Wednesday** | 14,1 | 7,6 - 25,1 | 529 - 5770 | -8,3 |
-| **Thursday** | 8,7 | 4,0 - 15,5 | 2111 - 5668 | -5,8 |
-| **Friday** | 5,0 | 2,4 - 6,9 | 2744 - 3826 | -2,6 |
-| **Saturday** | 3,7 | 1,6 - 5,0 | 3314 - 4072 | -2,7 |
-| **Sunday** | 6,3 | 3,1 - 9,7 | 2392 - 3968 | -3,9 |
-| **Monday** | 14,2 | 6,1 - 24,9 | 1021 - 2245 | -3,4 |
+| **Tuesday** | 16.0 | 11.1 - 22.9 | 488 - 1541 | -9.3 |
+| **Wednesday** | 13.7 | 6.2 - 25.7 | 524 - 5775 | -8.3 |
+| **Thursday** | 8.1 | 3.4 - 15.9 | 2494 - 5669 | -5.8 |
+| **Friday** | 4.3 | 1.9 - 6.8 | 3154 - 4572 | -2.6 |
+| **Saturday** | 3.1 | 1.6 - 4.4 | 3528 - 4375 | -2.7 |
+| **Sunday** | 5.9 | 1.9 - 9.6 | 2507 - 4185 | -3.9 |
+| **Monday** | 13.9 | 5.9 - 25.4 | 849 - 2306 | -3.4 |
 
-A clear price drop will be expected over the week, from a very expensive level early in the week toward the cheapest figures over the weekend. On **Tuesday**, the day’s average price will be 22,1 ¢, and the highest hourly price will rise to 40,1 ¢. Wind power will remain below 1000 megawatts on average, and the average temperature will fall to -9,3 °C. A high risk of individual price spikes will also be noted for Tuesday, and in the hourly forecast the peak will stand out in the late morning, around 08–10.
+A clear split is expected in the week’s price picture. On **Tuesday**, the average price will climb to very expensive levels, 16.0 cents, and the range will reach up to 22.9 cents. Wind power will at the same time remain very weak, and the average temperature will stay in severe мороз. On **Wednesday**, the average will settle at 13.7 cents, but a large spread is expected within the day. The price peak will fall in the morning around 07:00–09:00, when the forecast shows an hourly price of 25.7 cents, and a high risk of individual price spikes has been flagged for the day.
 
-On **Wednesday**, the average price will fall to 14,1 cents, but the day will still be marked with a high spike risk. On **Thursday**, the average will drop to 8,7 ¢, and spike risk will again be anticipated for individual hours. On **Friday** and **Saturday**, average prices will settle at 5,0 and 3,7 cents, and the week’s lowest average will land on Saturday. On **Sunday**, the average will rise to 6,3 cents, and next **Monday** the forecast will return to a 14,2-cent average, with the day’s highest hourly price reaching 24,9 cents.
+On **Thursday**, the average will drop to 8.1 cents, although a high price-spike risk has been marked for individual hours. Toward the end of the week, the price level will fall to inexpensive. **Friday’s** average will remain at 4.3 cents and **Saturday’s** at 3.1 cents. On **Sunday**, the average will rise to 5.9 cents, and on **next Monday** the forecast will return to a clearly higher level. The day’s maximum is forecast at 25.4 cents, and the high spike risk will be concentrated in the morning around 07:00–09:00.
 
-*Figures distilled by gpt-5.2.* 📈
+*Forecast parsed by gpt-5.2.* 🔎
