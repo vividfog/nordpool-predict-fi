@@ -1,19 +1,19 @@
-*Early in the week prices will rise clearly, but from Tuesday onward electricity will get cheaper for several days and the weekend will settle in between.*
+*Prices are expected to vary noticeably: Monday is forecast to be the week’s most expensive day with spike risk, while Tue–Wed stay clearly below five cents.*
 
-The forecast was updated on Saturday at 15:18.
+The forecast was updated on Saturday at 21:03.
 
 |  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 10,1 | 8,0 - 12,9 | 719 - 1642 | -3,9 |
-| **Monday** | 13,1 | 5,4 - 22,8 | 191 - 2204 | -3,4 |
-| **Tuesday** | 4,3 | 1,3 - 6,6 | 2942 - 6049 | -1,7 |
-| **Wednesday** | 4,0 | 1,6 - 6,4 | 3073 - 4672 | -1,1 |
-| **Thursday** | 6,5 | 4,0 - 9,3 | 2726 - 4123 | -0,7 |
-| **Friday** | 6,4 | 3,2 - 10,0 | 1875 - 4074 | -0,1 |
-| **Saturday** | 7,5 | 4,9 - 11,3 | 1365 - 3084 | -0,8 |
+| **Sunday** | 10,1 | 8,0 - 12,9 | 1087 - 1824 | -3,9 |
+| **Monday** | 13,0 | 6,0 - 22,3 | 213 - 2033 | -3,4 |
+| **Tuesday** | 4,5 | 3,0 - 6,4 | 1538 - 4810 | -1,7 |
+| **Wednesday** | 3,8 | 1,4 - 6,4 | 3048 - 4702 | -1,1 |
+| **Thursday** | 6,4 | 3,5 - 9,1 | 2720 - 4145 | -0,7 |
+| **Friday** | 6,0 | 3,1 - 9,5 | 1814 - 4059 | -0,1 |
+| **Saturday** | 7,9 | 5,3 - 12,6 | 1411 - 3119 | -0,8 |
 
-The week’s price level will vary clearly. **Monday** will stand out as the most expensive day, as the expected average price will rise to 13,1 cents and the day’s maximum price will reach 22,8 cents. Monday will also be flagged for a risk of price spikes in individual hours. In the hourly forecast, the highest period will fall roughly between 08–10, when the price will climb above 20 cents. On the same day, the minimum wind power output will drop to 191 megawatts, and this will coincide with the high hourly prices.
+A clear shift is expected at the start of the week. **Monday’s** average price is forecast to rise to 13,0 cents, and the day’s maximum is expected to reach 22,3 cents. The day also carries a risk of individual price spikes, and the highest readings in the hourly outlook cluster around 08–10. On Monday, wind power is expected to vary unusually widely between 213 and 2033 MW, and the particularly low minimum output coincides with the week’s highest maximum price.
 
-On **Tuesday** and **Wednesday**, the average price will drop below five cents, and the cheapest hour of the week will be found in the early hours of Tuesday around 04–06, when the price will dip to 1,3 cents. On **Thursday** and **Friday**, the level will return to around 6–7 cents. On **Saturday**, the average price will rise to 7,5 cents, and a risk of price spikes will be expected for the day. In the hourly forecast, the highest hours will be roughly between 18–20, when the price will increase to about 11,3 cents.  
+**Tuesday** and **Wednesday** are expected to drop to a clearly lower price level. On Tuesday, the average is expected to be 4,5 cents, and on Wednesday 3,8 cents. The cheapest single hour of the week appears in the forecast in the small hours of Wednesday morning, when the price briefly dips to 1,4 cents. Toward the end of the week, prices are expected to settle closer to a more typical level again, and on **Saturday** there is still a risk of isolated price spikes, with the day’s highest hourly price in the forecast landing in the evening around 17–19.
 
-*Numbers interpreted by gpt-5.2.* 🧮
+*Numbers interpreted today by gpt-5.2.* 📊
