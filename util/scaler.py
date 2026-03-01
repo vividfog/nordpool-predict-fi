@@ -21,13 +21,13 @@ from .logger import logger
 
 # region constants
 # Constants for wind-based linear scaling for spike hours
-WIND_SCALE_MAX_MW = 2000.0  # Wind power (MW) at or above which the minimum multiplier is applied
-WIND_SCALE_MIN_MW = 50.0   # Wind power (MW) at which the maximum multiplier is applied
-MAX_WIND_MULTIPLIER = 1.5   # Multiplier applied when wind power is at WIND_SCALE_MIN_MW
+WIND_SCALE_MAX_MW = 1004.1304  # Wind power (MW) at or above which the minimum multiplier is applied
+WIND_SCALE_MIN_MW = 412.8883   # Wind power (MW) at which the maximum multiplier is applied
+MAX_WIND_MULTIPLIER = 1.3340   # Multiplier applied when wind power is at WIND_SCALE_MIN_MW
 MIN_WIND_MULTIPLIER = 1.0   # Multiplier applied when wind power is at or above WIND_SCALE_MAX_MW
 
 # Constant for price percentile threshold
-DAILY_PRICE_RANK_FRACTION = 0.5  # Scale the top X% most expensive hours for their specific day (Helsinki time).
+DAILY_PRICE_RANK_FRACTION = 0.19  # Scale the top X% most expensive hours for their specific day (Helsinki time).
 # endregion constants
 
 # region scaling
