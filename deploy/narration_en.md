@@ -1,19 +1,19 @@
-*The week’s prices will vary clearly: Wednesday is expected to be the cheapest, Thursday the most expensive, with an elevated risk of hourly spikes.*
+*Prices over the coming days will stay mostly moderate, but Thursday will stand out as clearly pricier and hour-to-hour variation will increase.*
 
-The forecast was updated on Tuesday at 08:56.
+The forecast was updated on Tuesday at 11:56.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 3.0 | 0.4 - 5.6 | 3153 - 5764 | -1.1 |
-| **Thursday** | 8.8 | 5.9 - 12.7 | 882 - 2953 | -0.7 |
-| **Friday** | 4.8 | 3.0 - 6.6 | 3077 - 4370 | -0.1 |
-| **Saturday** | 6.2 | 3.0 - 9.8 | 1629 - 4194 | -0.8 |
-| **Sunday** | 5.3 | 3.5 - 6.7 | 2432 - 3887 | -0.3 |
-| **Monday** | 7.8 | 5.8 - 10.4 | 1328 - 3388 | 0.9 |
-| **Tuesday** | 6.8 | 4.8 - 10.3 | 1774 - 2979 | -0.3 |
+| **Wednesday** | 3,1 | 0,3 - 6,2 | 2581 - 5575 | -1,1 |
+| **Thursday** | 9,2 | 5,6 - 13,2 | 582 - 3232 | -0,7 |
+| **Friday** | 4,2 | 2,4 - 6,0 | 3227 - 5062 | -0,1 |
+| **Saturday** | 6,2 | 2,5 - 10,5 | 1351 - 4347 | -0,8 |
+| **Sunday** | 4,6 | 2,5 - 6,6 | 2635 - 4199 | -0,3 |
+| **Monday** | 7,1 | 3,9 - 10,5 | 1410 - 3958 | 0,9 |
+| **Tuesday** | 6,3 | 3,2 - 8,5 | 2590 - 4067 | 0,1 |
 
-The cheapest day of the week will be **Wednesday**, when the average price will settle at 3.0 cents. The day’s lowest hourly price will drop to 0.4 cents, and the highest figures will rise to 5.6 cents in the evening. The clearly highest average price will fall on **Thursday**, when the expected average will be 8.8 ¢ and the day’s highest hourly price 12.7 ¢.
+The price level will vary noticeably from day to day. On **Wednesday**, the day’s average price will drop to 3,1 cents, and the lowest hourly price will sit at 0,3 cents. The highest daily average price will be seen on **Thursday**, when the average rises to 9,2 cents and the day’s maximum reaches 13,2 cents.
 
-On Thursday, the wind-power minimum will fall to 882 megawatts, and at the same time the day’s price level will climb well above the rest of the period. Thursday is also expected to carry a high risk of price spikes in individual hours, and in the forecast the peak will be weighted toward the afternoon, roughly 16:00–18:00. Another rise in average prices will appear next Monday and Tuesday, and both days are flagged with a risk of individual spikes.
+Thursday’s higher level will coincide with clearly weaker wind power. The day’s minimum wind output will fall to 582 MW, and at the same time the price spread will widen. In the hourly forecast, Thursday’s most expensive hours will be concentrated in the afternoon and early evening, with the peak falling in the window from 16:00 to 18:00. There will also be a high risk of individual price spikes on this day.
 
-*Forecast interpreted by gpt-5.2.* 🔎
+*Forecast voice by gpt-5.2.* 📈
