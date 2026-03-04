@@ -28,8 +28,8 @@
       "color": "#f1c40f"
     },
     "hydrology": {
-      "fi": "Hydrologia (SYKE)",
-      "en": "Hydrology (SYKE)",
+      "fi": "Vesitilanne (Syke)",
+      "en": "Hydrology (Syke)",
       "color": "#8c564b"
     },
     "temperature": {

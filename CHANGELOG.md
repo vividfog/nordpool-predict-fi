@@ -2,6 +2,15 @@
 
 All notable changes will be documented in this file.
 
+## [2026-03-05] - Syke Hydrology Features
+### Added
+- Syke Hydrologiarajapinta aggregate hydrology features for pricing: 5-day areal precipitation and snow water equivalent (median + p10).
+- Deterministic SQLite backfill tool for hydrology columns (`data/create/70_hydro/hydro_backfill.py`).
+
+### Changed
+- Prediction pipeline now updates hydrology features during `--predict` runs (`util/hydrology.py`, `nordpool_predict_fi.py`).
+- Feature embedding explorer groups hydrology features under "Hydrology (Syke)" (`util/features_umap.py`).
+
 ## [2025-11-16] - Light/Dark Theme Toggle
 ### Added
 - Automatic light/dark theme selection driven by system preferences with manual override controls in the top bar (`deploy/js/theme-bootstrap.js`, `deploy/index.html`, `deploy/index_en.html`).

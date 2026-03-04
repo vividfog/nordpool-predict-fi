@@ -35,6 +35,11 @@ GROUP_DEFS = {
         "en": "Solar irradiance",
         "color": "#f1c40f",
     },
+    "hydrology": {
+        "fi": "Vesitilanne (Syke)",
+        "en": "Hydrology (Syke)",
+        "color": "#8c564b",
+    },
     "temperature": {
         "fi": "Lämpötila (FMI)",
         "en": "Temperature (FMI)",
@@ -63,6 +68,8 @@ def _categorize_feature(name: str) -> str:
         "holiday",
     }:
         return "calendar"
+    if name.startswith("Hydro") or name in pricing.hydro:
+        return "hydrology"
     if name in {"NuclearPowerMW", "WindPowerMW"}:
         return "generation"
     if name in {"ImportCapacityMW", "SE1_FI", "SE3_FI", "EE_FI"}:

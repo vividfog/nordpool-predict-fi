@@ -18,6 +18,7 @@ from util.sql import db_update, db_query_all
 from util.dataframes import update_df_from_df
 from util import features_pricing as pricing
 from util.openmeteo_solar import update_solar
+from util.hydrology import update_hydrology
 from util.fingrid_nuclear import update_nuclear
 from util.openmeteo_windpower import update_eu_ws
 from util.jao_imports import update_import_capacity
@@ -229,6 +230,9 @@ if args.predict:
     # Update solar irradiation data
     df_recent = update_solar(df_recent)
 
+    # Update hydrology aggregate features (complete-day observations only)
+    df_recent = update_hydrology(df_recent)
+
     # Set 'timestamp' as index in df_recent
     df_recent.set_index("timestamp", inplace=True)
 
@@ -270,6 +274,7 @@ if args.predict:
             "holiday",
         ]
         + pricing.solar
+        + pricing.hydro
         + fmisid_t
         + fmisid_ws
     )

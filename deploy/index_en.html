@@ -158,6 +158,7 @@
         <p>This is a machine learning model that seeks correlations between different variables and learns what price each combination leads to based on history. This is not a time series forecast: each hour gets its value independently based on this information:</p>
         <ul>
             <li><strong>Forecasts for wind power areas in Finland:</strong> FMI weather stations, i.e., indirectly the amount of wind power</li>
+            <li><strong>Hydrology:</strong> Syke: Areal precipitation and snow water equivalent, i.e., hydropower availability</li>
             <li><strong>Wind forecasts for the Baltic Sea region:</strong> Open-Meteo: Sweden, Denmark, Germany, and Estonia</li>
             <li><strong>Temperature forecasts:</strong> FMI weather stations, i.e., indirectly heating demand and season</li>
             <li><strong>Nuclear power production:</strong> Fingrid (model training) and ENTSO-E REMIT UMM (maintenance schedules)</li>
@@ -176,6 +177,8 @@
         <p>Although the model can "predict" the past and historically familiar types of the future, price estimates in new and exceptional situations can be off. So do not, for example, adjust your house heating based on these numbers if you are not at home.</p>
         <h1 class="section-title">Change log</h1>
         <p>The model has been online since February 2024. The following changes have been made since then.</p>
+        <p><strong>March 5, 2026:</strong></p>
+        <p>Added areal precipitation and snow water equivalent from Finnish Environment Institute (Syke) hydrology data. Their long-term level is an indicator of hydropower availability.</p>
         <p><strong>November 16, 2025:</strong></p>
         <p>The site now supports light and dark themes. The default follows your browser preference, and you can flip the mode manually using the toggle in the top bar.</p>
         <p><strong>October 28, 2025:</strong></p>
@@ -191,7 +194,7 @@
         <p><strong>May 7, 2025:</strong></p>
         <p>Experimental volatility model/scaler now aims to identify hours with higher risk of strong price fluctuations due to low wind power forecast. Updated the forecast chart to display hours with spike risk, where upwards scaling was applied. This significantly impacts the daily mean price forecasts on low-wind days.</p>
         <p><strong>April 25, 2025:</strong></p>
-        <p>Line chart included in the forecast. Wind power chart now visualizes the possible correlation between wind power and price. History chart can now visualize 3 and 6 hour mean price values, and has a zoom control.</p>        
+        <p>Line chart included in the forecast. Wind power chart now visualizes the possible correlation between wind power and price. History chart can now visualize 3 and 6 hour mean price values, and has a zoom control.</p>
         <p><strong>February 5, 2025:</strong></p>
         <p>Language model selection may now change dynamically based on model availability.</p>
         <p><strong>January 30, 2025:</strong></p>
@@ -217,7 +220,7 @@
         <p><strong>October 20, 2024:</strong></p>
         <p>The language model now sees advance information on transmission connections and nuclear power plant maintenance.</p>
         <p><strong>October 17, 2024:</strong></p>
-        <p>Reported maintenance outages and future production capacities of nuclear power plants (ENTSO-E) returned to the forecast. Price forecast changed to a bar chart.</p> 
+        <p>Reported maintenance outages and future production capacities of nuclear power plants (ENTSO-E) returned to the forecast. Price forecast changed to a bar chart.</p>
         <p><strong>September 22, 2024:</strong></p>
         <p>Planned transmission capacity (Fingrid) is now considered in the transmission forecast. Wind power data included in the language model's explanation. Wind power model tuned.</p>
         <p><strong>September 16, 2024:</strong></p>
@@ -231,7 +234,7 @@
         <p>Monthly data (January-December) has been removed from model training because the monthly averages of previous years can be very different from this year due to market conditions. The seasonal price effect is also evident in training from the weather when temperatures drop below freezing and consumption increases.</p>
         <div id="disclaimer" style="padding-bottom: 24px; padding-top: 24px;"><a id="source-code-link" href="mailto:judo.farming0u@icloud.com" target="_blank">email</a></div>
     </div>
-    <div id="disclaimer">Sources: <a href="https://transparency.entsoe.eu" target="_blank">ENTSO-E</a>, <a href="https://data.fingrid.fi" target="_blank">Fingrid</a>, <a href="https://www.ilmatieteenlaitos.fi/havaintojen-lataus" target="_blank">FMI</a>, <a href="https://publicationtool.jao.eu/nordic/maxBorderFlow" target="_blank">JAO</a>, <a href="https://open-meteo.com/en/docs" target="_blank">Open-Meteo</a>, <a href="https://pyhäpäivä.fi" target="_blank">Pyhäpäivä</a>, <a href="https://sahkotin.fi/api" target="_blank">Sähkötin</a></div>
+    <div id="disclaimer">Sources: <a href="https://transparency.entsoe.eu" target="_blank">ENTSO-E</a>, <a href="https://data.fingrid.fi" target="_blank">Fingrid</a>, <a href="https://www.ilmatieteenlaitos.fi/havaintojen-lataus" target="_blank">FMI</a>, <a href="https://publicationtool.jao.eu/nordic/maxBorderFlow" target="_blank">JAO</a>, <a href="https://open-meteo.com/en/docs" target="_blank">Open-Meteo</a>, <a href="https://pyhäpäivä.fi" target="_blank">Pyhäpäivä</a>, <a href="https://sahkotin.fi/api" target="_blank">Sähkötin</a>, <a href="https://rajapinnat.ymparisto.fi/api/Hydrologiarajapinta/1.0/" target="_blank">Syke</a></div>
     <div id="github-logo-container"><a href="https://github.com/vividfog/nordpool-predict-fi" target="_blank"><img src="github-dark.png" data-light-src="github-dark.png" data-dark-src="github-white.png" alt="GitHub Repo" id="github-logo"></a></div>
     <div id="source-code-text"><a id="source-code-link" href="https://github.com/vividfog/nordpool-predict-fi" target="_blank">vividfog/nordpool-predict-fi</a></div>
     <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
@@ -246,11 +249,11 @@
     <script src="js/calendar.js"></script>
     <script src="js/cheapest.js"></script>
     <script src="js/windpower.js"></script>
-<script src="js/history.js"></script>
-<script src="js/features-umap.js"></script>
-<script src="js/layout.js"></script>
-<script src="js/santa.js"></script>
-<!-- 100% privacy-first analytics -->
-<script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+    <script src="js/history.js"></script>
+    <script src="js/features-umap.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/santa.js"></script>
+    <!-- 100% privacy-first analytics -->
+    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 </body>
 </html>

@@ -16,6 +16,13 @@ border = ["SE1_FI", "SE3_FI", "EE_FI"]
 
 eu_wind = [code for code, _, _ in LOCATIONS]
 
+hydro = [
+    "HydroPrecip_5d_median",
+    "HydroPrecip_5d_p10",
+    "HydroSWE_median",
+    "HydroSWE_p10",
+]
+
 time = [
     "year",
     "day_of_week",
@@ -80,6 +87,7 @@ def cols(ws: list[str], t: list[str]) -> list[str]:
         + solar
         + border
         + eu_wind
+        + hydro
     )
 
     combined = base + t + ws
@@ -93,6 +101,7 @@ __all__ = [
     "cols",
     "eu_wind",
     "feat",
+    "hydro",
     "solar",
     "temp",
     "time",

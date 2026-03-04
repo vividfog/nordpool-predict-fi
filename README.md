@@ -51,6 +51,8 @@ The repository remains an evaluation tool for testing new LLMs and what can be d
 
 **Oct 15, 2025:** Added a UMAP-based feature map exporter ([util/features_umap.py](util/features_umap.py)) and a new Plotly 3D chart on the FI/EN landing pages showing how modelling features cluster together. Regenerated automatically during `--deploy`, producing `deploy/feature_embedding.json`.
 
+**Mar 5, 2026:** Added hydrology background features from Syke (areal precipitation, 5-day; and snow water equivalent), including a deterministic DB backfill tool and a UMAP group for hydrology features.
+
 For details, see [CHANGELOG.md](CHANGELOG.md).
 
 ## Installation
@@ -125,6 +127,7 @@ Currently, the training data set includes:
 - **Day of week, hour** of day, provided as cyclical features (sin, cos) so the model can “understand” Monday vs. Sunday, or 0:00 vs. 12:00.
 - **Import capacity** from Sweden (SE1, SE3) and Estonia (EE), from JAO’s border flow data.
 - **Solar irradiation** from Open-Meteo’s data, which may help in certain hours or seasons.
+- **Hydrology** aggregates (Syke): areal precipitation (5-day) and snow water equivalent.
 
 ### Hidden patterns in weather/price data
 
