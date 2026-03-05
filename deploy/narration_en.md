@@ -1,19 +1,19 @@
-*Over the weekend, exchange electricity will stay mostly inexpensive, but next week average prices will rise, with Wednesday looking the priciest.*
+*The end of the week will stay clearly below four cents in average prices, but at the start of next week prices will rise and Wednesday will stand out.*
 
-The forecast was updated on Thursday at 11:56.
+The forecast was updated on Thursday at 14:56.
 
 |  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday** | 3.7 | 1.7 - 5.9 | 2106 - 5500 | -0.1 |
-| **Saturday** | 3.5 | 1.6 - 6.3 | 2966 - 6380 | -0.8 |
-| **Sunday** | 3.8 | 1.5 - 7.1 | 1886 - 6381 | -0.3 |
-| **Monday** | 7.1 | 5.2 - 10.6 | 1406 - 3212 | 0.9 |
-| **Tuesday** | 8.0 | 4.2 - 11.8 | 1475 - 2948 | 0.1 |
-| **Wednesday** | 8.6 | 4.3 - 14.6 | 1115 - 2115 | -0.1 |
-| **Thursday** | 6.2 | 2.5 - 9.4 | 1418 - 3056 | -0.2 |
+| **Friday** | 2,4 | 1,3 - 4,7 | 2091 - 5516 | -0,1 |
+| **Saturday** | 2,9 | 1,2 - 5,9 | 2873 - 6391 | -0,8 |
+| **Sunday** | 3,4 | 1,1 - 8,4 | 1704 - 6396 | -0,3 |
+| **Monday** | 5,8 | 2,8 - 8,8 | 1520 - 3638 | 0,9 |
+| **Tuesday** | 4,8 | 1,7 - 8,8 | 2390 - 3763 | 0,1 |
+| **Wednesday** | 7,9 | 3,8 - 13,7 | 1276 - 2416 | -0,1 |
+| **Thursday** | 5,7 | 2,7 - 8,7 | 1506 - 2919 | -0,2 |
 
-Over the weekend, prices will be weighted toward a level below four cents. The average price on **Friday** is expected to be 3.7 ¢, and on **Saturday** 3.5 ¢. On Sunday, the average price is forecast to edge up slightly to 3.8 cents. The cheapest moments in the forecast will fall in the late evening and early morning over the weekend, with Friday expected to dip to 1.7 ¢ and Sunday to 1.5 ¢.
+The price level will be mostly low toward the end of the week. On **Friday**, the average price will settle at 2,4 cents, and hourly prices will dip in the evening to around 1,3 cents. On **Saturday**, the average price will rise to 2,9 cents, and the day’s highest hourly price will reach 5,9 cents. On **Sunday**, the average price will climb to 3,4 cents, and a clear daily peak will fall in the evening, when the forecast reaches 8,4 cents.
 
-At the start of next week, the price level will rise clearly. On **Monday**, the average price will settle at 7.1 cents, and the day’s most expensive hours are expected in the morning from 7–9, when the price will climb to about 10.6 ¢. **Wednesday** will stand out as the priciest day of the week, with an average price reaching 8.6 cents and a daily maximum forecast at 14.6 ¢. From Monday to Thursday, there is also a risk of individual price spikes in some hours.
+The start of the week will be more expensive. On **Monday**, the average price will rise to 5,8 cents, and the most expensive period will be expected around 16:00–18:00, when the price reaches 8,8 cents, and the risk of price spikes will apply to individual hours. On **Tuesday**, the average price will fall to 4,8 cents. On **Wednesday**, the week’s highest average price will rise to 7,9 cents, and during the morning from 07:00–09:00 the price will reach 13,7 cents, and the risk of price spikes will also apply to individual hours. On **Thursday**, the average price will settle at 5,7 cents, and the highest hours will be concentrated in the morning, around 07:00–09:00, when the forecast reaches 8,7 cents, and the risk of price spikes will apply.
 
 *Prices parsed by gpt-5.2.* 📈
