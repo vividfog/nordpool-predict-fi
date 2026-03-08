@@ -36,7 +36,7 @@ GROUP_DEFS = {
         "color": "#f1c40f",
     },
     "hydrology": {
-        "fi": "Vesitilanne (Syke)",
+        "fi": "Vesitilanne (Ympäristökeskus)",
         "en": "Hydrology (Syke)",
         "color": "#8c564b",
     },
