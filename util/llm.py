@@ -33,6 +33,56 @@ if None in (LLM_API_BASE, LLM_API_KEY, LLM_MODEL):
 
 logger.debug(f"LLM conf: '{LLM_API_BASE}': '{LLM_MODEL}'")
 
+FINNISH_MONTHS_PARTITIVE = {
+    1: "tammikuuta",
+    2: "helmikuuta",
+    3: "maaliskuuta",
+    4: "huhtikuuta",
+    5: "toukokuuta",
+    6: "kesäkuuta",
+    7: "heinäkuuta",
+    8: "elokuuta",
+    9: "syyskuuta",
+    10: "lokakuuta",
+    11: "marraskuuta",
+    12: "joulukuuta",
+}
+
+
+def _format_weekday_name(timestamp_value):
+    return pd.Timestamp(timestamp_value).strftime("%A").lower()
+
+
+def _format_finnish_calendar_date(date_value):
+    month_name = FINNISH_MONTHS_PARTITIVE[date_value.month]
+    weekday_name = date_value.strftime("%A").lower()
+    return f"{weekday_name} {date_value.day}. {month_name} {date_value.year}"
+
+
+def build_narration_prompt(df_daily, df_intraday, helsinki_tz, nuclear_outage_data=None):
+    if nuclear_outage_data is None:
+        nuclear_outage_data = []
+
+    today = datetime.date.today()
+    weekday_today = today.strftime("%A")
+    time_now = datetime.datetime.now().strftime("%H:%M")
+    today_label = _format_finnish_calendar_date(today)
+
+    forecast_start_weekday = _format_weekday_name(df_daily.iloc[0]["timestamp"])
+    forecast_end_weekday = _format_weekday_name(df_daily.iloc[-1]["timestamp"])
+
+    # Build the prompt
+    prompt = "<data>\n"
+    prompt += (
+        f"  Nyt on {today_label} klo {time_now}.\n\n"
+        "  Olet osa Sähkövatkain-nimistä verkkopalvelua, joka arvioi pörssisähkön hintaa noin "
+        "viikon verran eteenpäin. Alla on aikajärjestyksessä tulevien päivien hintatiedot "
+        f"(viimeksi päivitetty: {weekday_today.lower()}na klo {time_now}). Ensimmäinen "
+        f"aineiston päivä on {forecast_start_weekday}. Viimeinen aineiston päivä on "
+        f"{forecast_end_weekday}. Tämä aineisto kuvaa ennustejaksoa, ei välttämättä kalenteriviikkoa.\n\n"
+    )
+    return prompt
+
 # region spike risk
 def spike_price_risk(df):
     """Calculate the risk of price spikes for each day."""
@@ -192,12 +242,9 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
     )
 
     today = datetime.date.today()
-    weekday_today = today.strftime("%A")
-    time_now = datetime.datetime.now().strftime("%H:%M")
-
-    # Build the prompt
-    prompt = "<data>\n"
-    prompt += f"  Olet osa Sähkövatkain-nimistä verkkopalvelua, joka arvioi pörssisähkön hintaa noin viikon verran eteenpäin. Nordpool-sähköpörssin verolliset Suomen markkinan hintaennusteet lähipäiville ovat seuraavat (viimeksi päivitetty: {weekday_today.lower()}na klo {time_now}).\n"
+    prompt = build_narration_prompt(
+        df_daily, df_intraday, helsinki_tz, nuclear_outage_data=NUCLEAR_OUTAGE_DATA
+    )
 
     # region _hourly
     prompt += "  <tuntikohtainen_ennuste huom='Yksityiskohdat tiedoksi sinulle — mutta huomaathan että lopulliseen artikkeliin tulee *päiväkohtainen* ennuste, ei tuntikohtainen. Kts. alempana.'>\n"
