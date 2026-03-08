@@ -57,13 +57,23 @@ For details, see [CHANGELOG.md](CHANGELOG.md).
 
 ## Installation
 
-Clone the repository, `pip install -r requirements.txt` in a dedicated Python environment:
+Clone the repository and install dependencies in a dedicated Python environment. The preferred workflow in this repo uses `uv pip`:
+
+```bash
+uv venv
+source .venv/bin/activate
+uv pip install -r requirements.txt
+```
+
+If you prefer the standard library venv flow instead, this also works because `python -m venv` normally bootstraps `pip` unless you create the environment with `--without-pip`:
 
 ```bash
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
+
+Note that `uv venv` does not seed a `pip` binary by default. If you specifically want one inside `.venv`, use `uv venv --seed` or install `pip` explicitly afterward.
 
 The repo uses environment variables for configuration. These can be set in a file called `.env.local`. Check  `.env.local.template` [and the comments](.env.local.template) on what the variables are. Most of the defaults should be OK.
 
