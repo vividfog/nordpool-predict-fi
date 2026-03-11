@@ -1,19 +1,19 @@
-*Exchange electricity will stay low on most days, but next Tuesday will stand out as clearly pricier before prices ease again on Wednesday.*
+*Exchange electricity will remain mostly very affordable from Thursday to Monday, but Tuesday is expected to bring clearly higher prices than the rest of the period.*
 
-The forecast was updated on Wednesday at 08:57.
+The forecast was updated on Wednesday at 11:57.
 
 |  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday** | 1,9 | 0,8 - 3,0 | 4664 - 6861 | -0,2 |
-| **Friday** | 1,5 | 1,0 - 2,8 | 6825 - 7329 | 2,2 |
-| **Saturday** | 1,9 | 1,0 - 3,7 | 3292 - 6893 | 3,5 |
-| **Sunday** | 2,7 | 1,4 - 3,9 | 1592 - 4066 | 2,5 |
-| **Monday** | 2,4 | 1,0 - 3,7 | 3567 - 4296 | 2,0 |
-| **Tuesday** | 7,0 | 2,1 - 12,7 | 1370 - 4242 | 1,7 |
-| **Wednesday** | 4,8 | 2,6 - 8,8 | 1719 - 4484 | 1,4 |
+| **Thursday** | 1,8 | 0,5 - 2,9 | 4653 - 6797 | -0,2 |
+| **Friday** | 1,3 | 0,7 - 2,6 | 6888 - 7416 | 2,2 |
+| **Saturday** | 1,9 | 0,7 - 3,3 | 3223 - 7376 | 3,5 |
+| **Sunday** | 2,6 | 1,5 - 3,8 | 1653 - 3922 | 2,5 |
+| **Monday** | 2,4 | 1,1 - 3,7 | 3523 - 4244 | 2,0 |
+| **Tuesday** | 7,2 | 1,9 - 13,1 | 1395 - 4204 | 1,7 |
+| **Wednesday** | 4,6 | 2,2 - 8,9 | 1704 - 4238 | 1,8 |
 
-During the forecast period, prices will remain fairly low from **Thursday** to **Monday**. Expected daily average prices will range from 1,5 to 2,7 cents, and the cheapest hours will be seen overnight into Thursday as well as on Friday and Saturday, when the price will dip to 0,8–1,0 cents at its lowest. The cheapest day of the whole period will be **Friday**, with a forecast daily average of 1,5 cents. On Sunday, prices will rise somewhat, but the average will still stay below three cents.
+The price period will begin with several inexpensive days. On **Thursday**, **Friday** and **Saturday**, the daily average prices will stay at 1,3–1,9 cents. On **Sunday** and **Monday**, the expected level will also remain below three cents. The lowest single hourly price of the period will be seen on Thursday, when the price will dip to 0,5 cents in the afternoon. On Friday, the price range will be the most even of the week, with the whole day staying between 0,7 and 2,6 cents. The low level on Thursday and Friday will be explained by strong wind power, which is forecast to average 5600–7275 megawatts.
 
-The clearest change will come on **Tuesday**, when the daily average will climb to 7,0 cents and the peak will reach 12,7 cents. Wind power will fall to a daily minimum of 1370 megawatts, and that low level will explain the higher maximum price. The highest hourly price will land in the evening, around 18:00–20:00, and that same period will also carry a risk of individual price spikes. On **Wednesday**, the price level will ease from that, but it will still remain above the rest of the period, with a forecast daily average of 4,8 cents and the most expensive morning hour reaching 8,8 cents.
+The clearest change will be seen on **Tuesday**, when the daily average price will rise to 7,2 cents and the highest hourly price to 13,1 cents. On Tuesday, wind power will remain weak, with output forecast to average 2459 megawatts and the day’s lowest level falling to 1395 megawatts. This will also show in the day’s intraday variation, as prices will climb from morning into evening and the highest readings will fall around 18:00–20:00. Tuesday will also carry a risk of individual price spikes during those evening hours. On **next Wednesday**, the price outlook will already ease clearly, and the daily average will settle at 4,6 cents.
 
-*Price watch, gpt-5.4* ⚡
+*Price watch, gpt-5.4* 💡
