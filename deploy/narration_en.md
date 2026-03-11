@@ -1,19 +1,19 @@
-*Exchange electricity will remain very inexpensive toward the end of the week, but next Tuesday the price will rise clearly above the rest of the forecast period.*
+*The spot electricity price forecast would remain mostly low in the coming days, but Sunday and Tuesday would stand out with higher prices than the rest of the period.*
 
-The forecast was updated on Wednesday at 14:57.
+The forecast was updated on Wednesday at 20:57.
 
-|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday** | 1.5 | 0.4 - 3.3 | 4728 - 6815 | -0.2 |
-| **Friday** | 1.0 | 0.3 - 2.1 | 6904 - 7437 | 2.2 |
-| **Saturday** | 1.8 | 0.6 - 4.0 | 3057 - 7404 | 3.5 |
-| **Sunday** | 3.2 | 1.5 - 4.4 | 1674 - 3802 | 2.5 |
-| **Monday** | 2.7 | 1.6 - 4.1 | 3227 - 4156 | 2.0 |
-| **Tuesday** | 7.3 | 2.6 - 12.9 | 1407 - 3715 | 1.7 |
-| **Wednesday** | 4.6 | 2.0 - 9.4 | 1710 - 4252 | 1.8 |
+| **Thursday** | 1,5 | 0,4 - 3,3 | 5052 - 6712 | -0,2 |
+| **Friday** | 1,1 | 0,4 - 2,4 | 6365 - 7417 | 2,2 |
+| **Saturday** | 1,8 | 0,8 - 3,6 | 3751 - 7176 | 3,5 |
+| **Sunday** | 3,8 | 1,3 - 7,0 | 1497 - 3741 | 2,5 |
+| **Monday** | 2,6 | 1,8 - 4,3 | 3071 - 4266 | 2,0 |
+| **Tuesday** | 3,6 | 2,1 - 6,1 | 2909 - 3876 | 1,7 |
+| **Wednesday** | 1,8 | 0,6 - 3,3 | 3514 - 4503 | 1,8 |
 
-A clear divide will be seen in the forecast period between an inexpensive start and a more expensive finish. On **Thursday** and **Friday**, the daily power price outlook will remain very low, with average prices at 1.5 and 1.0 cents. Thursday’s highest quote will briefly reach 3.3 cents in the late morning, but otherwise the price level will stay close to one cent. On **Saturday**, the average price will rise to 1.8 cents, and by evening it will already reach 4.0 cents. On **Sunday**, the price level will climb further, and the day’s average is forecast at 3.2 cents.
+Over the forecast period, electricity prices would stay mostly inexpensive. The lowest daily average prices would be seen on **Friday** and **Thursday**, when the expected level would settle at 1,1–1,5 cents per kilowatt-hour. On Thursday, the daily low would fall to 0,4 cents late in the evening, and on Friday the lowest level would also reach 0,4 cents. The highest daily average price of the whole period would be seen on **Sunday**, when the expected price would rise to 3,8 cents and the day’s highest hourly price would reach 7,0 cents.
 
-By far the most expensive day will be **Tuesday**, when the average price will rise to 7.3 cents and the day’s highest forecast will reach 12.9 cents. At the same time, wind power will remain at a weak average level of 2347 megawatts, and the day’s lowest production will fall to 1407 megawatts. This low minimum in wind generation will explain the day’s high maximum price. On Tuesday, there will also be a risk of individual price spikes, and the highest-priced hours are forecast to fall roughly between 17:00 and 19:00. **Next Wednesday**, the price will already ease from that level, but it will still remain above the beginning of the forecast period, with an expected average of 4.6 cents.
+Sunday’s higher price level compared with the rest of the week would be explained by weak wind power output. The day’s average wind generation would remain at 2591 megawatts, and minimum production would drop to 1497 megawatts. At the same time, the highest maximum price of the whole period would also be forecast for Sunday. On an hourly basis, the peak would be seen on Sunday around 9–11. On **next Tuesday**, prices would also climb clearly above the rest of the period, with a daily average of 3,6 cents and a highest hourly price of 6,1 cents in the morning. On **next Wednesday**, prices would return to a lower level, and during the night hours the price would dip to 0,6 cents.
 
-*Read by gpt-5.4.* ⚡
+*Price lines parsed by gpt-5.4.* ⚡
