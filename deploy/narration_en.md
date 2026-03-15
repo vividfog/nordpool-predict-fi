@@ -1,19 +1,19 @@
-*The spot electricity forecast points to a mostly moderate week, with the lowest prices expected on Wednesday and Thursday and the highest on Saturday.*
+*The spot electricity forecast for the week will remain mostly moderate, but Wednesday will stand out as the cheapest day and Saturday as the most expensive.*
 
-The forecast was updated on Sunday at 08:57.
+The forecast was updated on Sunday at 11:57.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|              | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 3,2 | 1,6 - 4,8 | 3077 - 5222 | 2,0 |
-| **Tuesday** | 3,7 | 2,0 - 7,1 | 2806 - 5644 | 1,7 |
-| **Wednesday** | 1,7 | 0,1 - 3,1 | 3980 - 6528 | 1,8 |
-| **Thursday** | 1,9 | 0,5 - 3,4 | 3480 - 4831 | 2,5 |
-| **Friday** | 4,7 | 2,3 - 6,8 | 1972 - 3719 | 2,0 |
-| **Saturday** | 5,6 | 3,8 - 10,0 | 1464 - 3536 | 1,8 |
-| **Sunday** | 2,9 | 1,8 - 3,9 | 3004 - 3985 | 2,5 |
+| **Monday**    | 3,5 | 1,7 - 5,0 | 2632 - 4813 | 2,0 |
+| **Tuesday**   | 3,7 | 2,0 - 6,0 | 3480 - 6526 | 1,7 |
+| **Wednesday** | 1,7 | 0,3 - 2,8 | 3979 - 7050 | 1,8 |
+| **Thursday**  | 2,1 | 0,7 - 3,5 | 3486 - 4889 | 2,5 |
+| **Friday**    | 4,4 | 2,3 - 6,6 | 1970 - 3768 | 2,0 |
+| **Saturday**  | 5,4 | 3,5 - 10,2 | 1492 - 3558 | 1,8 |
+| **Sunday**    | 3,0 | 1,8 - 4,4 | 2871 - 3725 | 2,6 |
 
-On **Monday** and **Tuesday**, the expected average spot electricity price would remain below four cents. On **Wednesday** and **Thursday**, prices would fall to the lowest level of the forecast period, with average prices at 1,7 and 1,9 cents. On Wednesday, the lowest hourly price would dip to 0,1 cents during the night, while Thursday’s lowest reading would be 0,5 cents. On those days, strong wind power generation would also support the low price level, as Wednesday’s average output would rise to 5006 megawatts and Thursday’s to 4213 megawatts.
+On **Monday** and **Tuesday**, the price outlook will stay below an average of four cents, even though the highest hourly prices of the day will rise to 5,0 and 6,0 cents. The clearest shift will be seen on **Wednesday**, when the daily average price is forecast at 1,7 cents and the lowest hourly price will fall to 0,3 cents during the night. Electricity is also expected to remain fairly cheap on **Thursday**, as the average price will settle at 2,1 cents and the day’s highest reading will stay at 3,5 cents.
 
-On **Friday**, the price level would climb again, and the average price would be 4,7 cents. On **Saturday**, the highest prices of the period would be seen, with the daily average rising to 5,6 cents and the highest hourly price reaching 10,0 cents. Saturday’s higher prices would be explained by weak wind power, as output would average 2377 megawatts and fall to a low of 1464 megawatts. That day would also carry a risk of individual price spikes, and the highest-price period would fall, based on the forecast, roughly between 08:00 and 10:00. On **Sunday**, the price level would drop back to an average below three cents.
+On **Friday**, the price level will rise again to a daily average of 4,4 cents. At the same time, wind power will remain somewhat lower than usual during the day, and minimum production will drop to 1970 megawatts. That will explain why the day’s highest hourly price will climb to 6,6 cents. The highest prices of the week are forecast for **Saturday**, when the average price will rise to 5,4 cents and the highest hourly price will reach 10,2 cents in the late morning. On the same day, wind power will remain very low, and the minimum output of 1492 megawatts will lift prices especially in the morning. Saturday will also carry a risk of isolated price spikes, and the highest period in the forecast will fall roughly between 08:00 and 10:00. On **Sunday**, the price level will fall back to an average of 3,0 cents.
 
-*Price lines read by gpt-5.4.* 💡
+*Data read by gpt-5.4* 💡
