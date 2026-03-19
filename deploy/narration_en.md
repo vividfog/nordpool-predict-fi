@@ -1,19 +1,19 @@
-*The spot electricity forecast would stay mostly inexpensive in the coming days, although Friday would stand out with a higher price level than the rest of the period.*
+*The spot electricity forecast will stay mostly inexpensive in the coming days, although Friday and next Thursday will rise above the rest of the period.*
 
-The forecast has been updated on Wednesday at 20:57.
+The forecast was updated on Thursday at 02:57.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday** | 1,1 | 0,2 - 2,3 | 5228 - 6557 | 2,5 |
-| **Friday** | 4,4 | 1,8 - 8,0 | 976 - 5674 | 2,0 |
-| **Saturday** | 2,1 | 1,1 - 3,5 | 3713 - 4987 | 1,8 |
-| **Sunday** | 2,0 | 1,2 - 3,4 | 3616 - 4713 | 2,6 |
-| **Monday** | 1,8 | 0,9 - 3,4 | 3534 - 4812 | 2,1 |
-| **Tuesday** | 2,2 | 0,8 - 3,9 | 3480 - 4734 | 1,8 |
-| **Wednesday** | 2,1 | 0,8 - 3,7 | 3272 - 4096 | 2,3 |
+| **Friday** | 4.0 | 1.2 - 7.5 | 1074 - 5604 | 2.0 |
+| **Saturday** | 1.6 | -0.4 - 3.5 | 3990 - 5902 | 1.8 |
+| **Sunday** | 1.9 | 0.8 - 3.5 | 2915 - 4816 | 2.6 |
+| **Monday** | 2.0 | 1.2 - 3.2 | 3650 - 4642 | 2.1 |
+| **Tuesday** | 2.2 | 1.4 - 3.3 | 3155 - 4903 | 1.8 |
+| **Wednesday** | 2.3 | 1.0 - 3.5 | 3239 - 4109 | 2.3 |
+| **Thursday** | 4.6 | 2.2 - 6.3 | 2374 - 3448 | 1.8 |
 
-The price period would remain mostly inexpensive. Daily average prices would range from Thursday’s 1,1 cents to Wednesday’s 2,1 cents, but **Friday** would be a clear exception: the expected daily average would rise to 4,4 cents and the highest hourly price to 8,0 cents. Thursday would be the cheapest day of the period, and the lowest prices would be seen overnight, when the price would dip to 0,2 cents at its lowest. On the other days, variation would stay more moderate, and average prices would remain below three cents.
+The price period will remain mostly inexpensive. **Friday** and next **Thursday** will stand out as clearly the most expensive days. Friday’s expected average price will rise to 4.0 cents, and the day’s highest hourly price will reach 7.5 cents. At the same time, wind power will briefly fall to a very low 1074 megawatts, which will explain the higher peak compared with the rest of the day. Next Thursday, the average price will climb further to 4.6 cents and the highest hourly price to 6.3 cents, as average wind generation will stay clearly below the rest of the forecast period at 2793 megawatts.
 
-Friday’s higher price level would be explained by weak wind. Average wind power production would remain at 2842 megawatts, and the day’s minimum output would fall to 976 megawatts. At the same time, the highest price of the day would land in the morning, in practice between 08:00 and 10:00. That day would also carry a risk of individual price spikes above the forecast. On **Saturday** and **Sunday**, the price level would settle back to around two cents. Next **Monday**, **Tuesday** and **Wednesday**, the evening would lift prices slightly, but expectations would still remain fairly low.
+The cheapest day will be **Saturday**, when the average price is expected to be 1.6 cents and the lowest hourly price will drop to -0.4 cents during the night. On **Sunday**, **Monday**, **Tuesday**, and **Wednesday**, prices will also remain fairly steady, with daily average prices settling between 1.9 and 2.3 cents. On the hourly level, the lowest prices will be concentrated in the night and early morning around the weekend, while the highest readings will be seen on Friday late in the morning and next Thursday in the morning and evening. Even so, variation within the period will remain fairly moderate.
 
-*Price watch, gpt-5.4* 💡
+*Read by gpt-5.4.* ⚡
