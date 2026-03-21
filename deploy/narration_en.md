@@ -1,19 +1,19 @@
-*The weekly electricity price forecast points to several inexpensive days, but on Friday and Saturday the price will rise clearly above the rest of the period.*
+*The spot electricity forecast will stay low from Sunday to Wednesday, but prices will rise toward the end of the week and peak on Friday.*
 
-The forecast was updated on Saturday at 02:57.
+The forecast was updated on Saturday at 08:57.
 
-|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 2,1 | 1,6 - 2,8 | 2870 - 6894 | 2,6 |
-| **Monday** | 1,6 | 0,9 - 2,3 | 5870 - 7135 | 2,1 |
-| **Tuesday** | 2,2 | 0,9 - 3,6 | 3385 - 6233 | 1,8 |
-| **Wednesday** | 3,4 | 1,4 - 5,2 | 2576 - 3880 | 2,3 |
-| **Thursday** | 2,9 | 1,4 - 5,8 | 3078 - 4902 | 1,8 |
-| **Friday** | 6,8 | 3,5 - 10,3 | 1245 - 3156 | 1,8 |
-| **Saturday** | 6,4 | 3,7 - 8,7 | 1062 - 1780 | 1,7 |
+| **Sunday** | 2,3 | 1,4 - 3,1 | 2667 - 6839 | 2,6 |
+| **Monday** | 2,0 | 1,0 - 3,3 | 5049 - 7165 | 2,1 |
+| **Tuesday** | 2,0 | 1,0 - 4,5 | 3276 - 4868 | 1,8 |
+| **Wednesday** | 2,9 | 0,8 - 4,6 | 3114 - 4588 | 2,3 |
+| **Thursday** | 4,4 | 2,1 - 7,9 | 2237 - 3618 | 1,8 |
+| **Friday** | 5,2 | 2,5 - 8,5 | 1654 - 3565 | 1,8 |
+| **Saturday** | 5,6 | 3,3 - 8,0 | 1227 - 2608 | 1,7 |
 
-During the forecast period, prices will remain mostly below four cents from **Sunday** to **Thursday**, and the cheapest day will be **Monday**, when the daily average is expected to be 1,6 c/kWh. The lowest hourly prices will be seen overnight into Monday and again on **Tuesday**, when the price will dip to 0,9 cents. On **Wednesday**, the price level will rise somewhat, and the day’s highest figure will reach 5,2 cents. On **Thursday**, the variation will widen further as the daily peak climbs to 5,8 cents in the evening.
+The lowest daily price expectations in the forecast period will fall on **Monday** and **Tuesday**, when the average price will remain at 2,0 cents. On **Sunday**, too, the average will stay low at 2,3 cents. On **Wednesday**, the expectation will rise to 2,9 cents, even though the day’s lowest hourly price will drop to 0,8 cents. The highest daily price expectations will be seen on **Friday** and **Saturday**, when average prices will climb to 5,2 and 5,6 cents. The highest single hourly price of the period is forecast for next Friday at 8,5 cents, and next Saturday’s top reading will remain very close at 8,0 cents.
 
-The clearest shift will be seen on **Friday**, when the average price is forecast at 6,8 cents and the day’s highest quote rises to 10,3 cents. At the same time, wind power will remain weak, with average production at 1926 megawatts and the lowest hourly level at 1245 megawatts. This will explain the rise in prices. The highest hours will fall on Friday in the morning from 07:00 to 09:00 and again in the evening from 19:00 to 21:00, when there will also be a risk of price spikes in individual hours. On **Saturday**, the price level will remain elevated, with the average expected at 6,4 cents. Wind power will stay weak then as well, averaging 1422 megawatts.
+Prices will be pushed down especially next Monday, when wind power is forecast to be abundant at an average of 6153 megawatts. Part of the rise toward Thursday, Friday and Saturday will be explained by weaker wind generation. Next Friday, minimum wind output will fall to 1654 megawatts, and at the same time the day’s highest hourly price will climb to the highest level of the period. On next Saturday as well, minimum wind output will remain low at 1227 megawatts, which will be reflected in a high price level throughout the day. Friday and Saturday will also carry a risk of individual price spikes. On Friday, the highest hours will be concentrated in the morning around 08–10, and on Saturday a similar period will fall around 07–09.
 
-*From the data, gpt-5.4* 💡
+*Price watch, gpt-5.4* 💡
