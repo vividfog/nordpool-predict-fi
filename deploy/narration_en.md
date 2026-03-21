@@ -1,19 +1,19 @@
-*The spot electricity forecast will stay low from Sunday to Wednesday, but prices will rise toward the end of the week and peak on Friday.*
+*The spot electricity forecast will stay low early in the week, but prices will rise as the week goes on, with the most expensive hours falling on Thursday and Friday evening.*
 
-The forecast was updated on Saturday at 08:57.
+The forecast was updated on Saturday at 11:57.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | aver-<br>age price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | aver-<br>age temp-<br>erature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 2,3 | 1,4 - 3,1 | 2667 - 6839 | 2,6 |
-| **Monday** | 2,0 | 1,0 - 3,3 | 5049 - 7165 | 2,1 |
-| **Tuesday** | 2,0 | 1,0 - 4,5 | 3276 - 4868 | 1,8 |
-| **Wednesday** | 2,9 | 0,8 - 4,6 | 3114 - 4588 | 2,3 |
-| **Thursday** | 4,4 | 2,1 - 7,9 | 2237 - 3618 | 1,8 |
-| **Friday** | 5,2 | 2,5 - 8,5 | 1654 - 3565 | 1,8 |
-| **Saturday** | 5,6 | 3,3 - 8,0 | 1227 - 2608 | 1,7 |
+| **Sunday** | 2.1 | 1.5 - 2.8 | 2865 - 6845 | 2.6 |
+| **Monday** | 2.0 | 1.0 - 3.3 | 5007 - 7029 | 2.1 |
+| **Tuesday** | 1.8 | 0.6 - 3.5 | 3458 - 5460 | 1.8 |
+| **Wednesday** | 2.9 | 0.7 - 4.6 | 3145 - 4584 | 2.3 |
+| **Thursday** | 4.9 | 2.3 - 8.4 | 2131 - 3503 | 1.8 |
+| **Friday** | 5.4 | 2.2 - 8.5 | 1675 - 3488 | 1.8 |
+| **Saturday** | 5.1 | 2.0 - 7.6 | 1242 - 3013 | 1.8 |
 
-The lowest daily price expectations in the forecast period will fall on **Monday** and **Tuesday**, when the average price will remain at 2,0 cents. On **Sunday**, too, the average will stay low at 2,3 cents. On **Wednesday**, the expectation will rise to 2,9 cents, even though the day’s lowest hourly price will drop to 0,8 cents. The highest daily price expectations will be seen on **Friday** and **Saturday**, when average prices will climb to 5,2 and 5,6 cents. The highest single hourly price of the period is forecast for next Friday at 8,5 cents, and next Saturday’s top reading will remain very close at 8,0 cents.
+On **Sunday**, **Monday** and **Tuesday**, the spot electricity price outlook will remain low. Daily average prices will range between 1.8 and 2.1 cents, and the cheapest hours are expected during the night leading into Tuesday, when the price will fall as low as 0.6 cents. On **Wednesday**, the level will rise somewhat, with the daily average forecast at 2.9 cents. The most expensive hours on Wednesday will occur in the late morning, when the price will reach 4.6 cents.
 
-Prices will be pushed down especially next Monday, when wind power is forecast to be abundant at an average of 6153 megawatts. Part of the rise toward Thursday, Friday and Saturday will be explained by weaker wind generation. Next Friday, minimum wind output will fall to 1654 megawatts, and at the same time the day’s highest hourly price will climb to the highest level of the period. On next Saturday as well, minimum wind output will remain low at 1227 megawatts, which will be reflected in a high price level throughout the day. Friday and Saturday will also carry a risk of individual price spikes. On Friday, the highest hours will be concentrated in the morning around 08–10, and on Saturday a similar period will fall around 07–09.
+The clearest increase will come on **Thursday**, when the average price will climb to 4.9 cents and the day’s peak of 8.4 cents will occur in the evening. On **Friday**, the highest average price of the forecast period, 5.4 cents, will coincide with the week’s highest hourly price of 8.5 cents. That day will also see an exceptionally low minimum in wind power output, 1675 MW, which will explain the higher maximum price. There will be a risk of price spikes in individual hours on Friday, especially around 8–10 a.m. On **Saturday**, the average price will remain elevated at 5.1 cents. Wind power will also at times stay very low then, and there will be a risk of price spikes in individual hours especially around 7–9 a.m.
 
-*Price watch, gpt-5.4* 💡
+*Read by gpt-5.4* ⚡
