@@ -1,20 +1,20 @@
-*The spot electricity price forecast will stay low at the start of the week, rise clearly toward the end of the week, and then turn downward again after the weekend.*
+*The spot electricity forecast points to low prices at the start of the week, but from Thursday onward a clearly more expensive stretch is expected before prices ease on Sunday.*
 
-The forecast has been updated on Sunday at 02:57.
+The forecast was updated on Sunday at 08:57.
 
-|               | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 1,7 | 0,6 - 2,8 | 4547 - 7144 | 2,1 |
-| **Tuesday** | 1,7 | 0,7 - 4,3 | 2657 - 7186 | 1,8 |
-| **Wednesday** | 3,3 | 0,4 - 5,6 | 2859 - 7175 | 2,3 |
-| **Thursday** | 4,3 | 2,1 - 6,5 | 1623 - 3283 | 1,8 |
-| **Friday** | 6,4 | 3,6 - 9,9 | 1526 - 3054 | 1,8 |
-| **Saturday** | 5,5 | 2,2 - 7,7 | 1316 - 1977 | 1,8 |
-| **Sunday** | 3,1 | 1,4 - 5,8 | 1987 - 3453 | 2,0 |
-| **Monday** | 3,2 | 3,2 - 3,2 | 3521 - 3521 | 1,0 |
+| **Monday** | 1,7 | 0,6 - 3,0 | 5017 - 7152 | 2,1 |
+| **Tuesday** | 1,6 | 0,8 - 3,4 | 4148 - 6305 | 1,8 |
+| **Wednesday** | 3,5 | 0,5 - 5,5 | 2392 - 6198 | 2,3 |
+| **Thursday** | 6,0 | 3,8 - 10,0 | 1415 - 2433 | 1,8 |
+| **Friday** | 7,8 | 4,9 - 11,3 | 1243 - 2075 | 1,8 |
+| **Saturday** | 7,0 | 3,4 - 9,4 | 1102 - 1540 | 1,8 |
+| **Sunday** | 4,3 | 1,9 - 7,0 | 1085 - 3469 | 2,0 |
+| **Monday** | 2,6 | 2,6 - 2,6 | 3370 - 3370 | 1,0 |
 
-During the forecast period, the electricity price will remain very low on **Monday** and **Tuesday**, with the daily average settling at 1,7 cents. On Monday, the cheapest hours will fall at night, when the price will dip to 0,6 cents. On **Wednesday**, the price level will already rise more clearly, and the daily average will climb to 3,3 cents. The lowest single hourly price of the period will then be seen at night, when the price will fall to 0,4 cents.
+During the forecast period, electricity prices would first remain low. On **Monday**, the average price would be expected to come in at 1,7 cents, and on **Tuesday** at 1,6 cents per kilowatt-hour. On **Wednesday**, too, the average price would still stay at 3,5 cents, although the day’s highest hourly price would rise to 5,5 cents. The lowest hourly price of the period would be seen on the night before Wednesday, when the price would fall to 0,5 cents. For next Monday, the forecast would so far show only one hour, at 2,6 cents.
 
-The clearest increase will be seen on **Thursday** and especially on **Friday**, when the daily average will rise to 6,4 cents and the day’s highest quote will reach 9,9 cents in the morning. The price will be lifted by weak wind power, as Friday’s average production will remain at 2043 megawatts. At the same time, the day’s minimum wind power output, 1526 megawatts, will explain the high maximum price. There will be a risk of price spikes in individual hours on Friday, and the highest point in the forecast will be centered around 7–9 a.m. On **Saturday**, the average price will still remain at 5,5 cents because of weak wind power, but on **Sunday** a clear decline to 3,1 cents is already expected. For next Monday, only one hour is visible so far, at 3,2 cents.
+The clearest increase would arrive on **Thursday**, when the average price would be expected to climb to 6,0 cents and the day’s highest hourly price to 10,0 cents. Wind power output would remain weak then, and the day’s lowest production level, 1415 MW, would explain the higher maximum price. **Friday** would stand out as the most expensive day of the period. The average price would rise to 7,8 cents and the highest hourly price to 11,3 cents. Wind power would also stay at a low level there, and the minimum output of 1243 MW would lift the peak price. There would be a risk of price spikes on Thursday in the 18:00–20:00 window, on Friday at 07:00–09:00, on Saturday at 08:00–10:00, and on Sunday at 05:00–07:00. On **Saturday**, the average price would be 7,0 cents, after which on **Sunday** it would fall to 4,3 cents.
 
-*Price watch, gpt-5.4* 💡
+*Read by gpt-5.4.* 💡
