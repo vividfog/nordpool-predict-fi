@@ -1,20 +1,20 @@
-*Exchange electricity is expected to stay very cheap at the start of the week, but the price is forecast to rise clearly toward higher weekend levels.*
+*The spot electricity price forecast will stay very low at the start of the week, but will rise clearly toward the weekend, with the price level climbing from Friday onward.*
 
-The forecast was updated on Sunday at 14:57.
+The forecast has been updated on Sunday at 20:57.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 0.9 | 0.3 - 1.5 | 4966 - 7112 | 2.1 |
-| **Tuesday** | 1.6 | 0.5 - 4.5 | 2831 - 7090 | 1.8 |
-| **Wednesday** | 3.0 | 0.5 - 6.9 | 2211 - 6982 | 2.3 |
-| **Thursday** | 4.9 | 3.4 - 7.6 | 1983 - 2714 | 1.8 |
-| **Friday** | 7.6 | 4.6 - 11.6 | 1207 - 2563 | 1.8 |
-| **Saturday** | 7.0 | 3.5 - 9.7 | 1126 - 1536 | 1.8 |
-| **Sunday** | 5.2 | 2.8 - 7.0 | 894 - 2169 | 2.0 |
-| **Monday** | 3.4 | 3.4 - 3.4 | 2216 - 2216 | 0.9 |
+| **Monday**    | 0,9 | 0,3 - 1,5 | 4996 - 7092 | 2,1 |
+| **Tuesday**   | 1,9 | 0,8 - 3,9 | 2961 - 6912 | 1,8 |
+| **Wednesday** | 2,0 | 0,8 - 3,2 | 3809 - 6702 | 2,3 |
+| **Thursday**  | 3,8 | 1,9 - 5,3 | 2767 - 4187 | 1,8 |
+| **Friday**    | 6,4 | 3,1 - 10,0 | 1494 - 3134 | 1,8 |
+| **Saturday**  | 5,7 | 2,0 - 7,5 | 1185 - 2503 | 1,8 |
+| **Sunday**    | 5,1 | 2,2 - 6,7 | 985 - 2607 | 2,0 |
+| **Monday**    | 2,2 | 2,2 - 2,2 | 2821 - 2821 | 0,9 |
 
-A clear rise will be seen in the price forecast over the course of the week. On **Monday**, the expected average price will remain at 0.9 cents, and hourly prices during the day will range from 0.3 to 1.5 cents. Electricity is also expected to stay fairly inexpensive on **Tuesday** and **Wednesday**, although Wednesday will already bring a clear rise toward the evening. Wednesday’s highest hourly price, 6.9 cents, will fall at 19:00. On **Thursday**, the average price will climb to 4.9 cents, and the highest hourly prices of the period so far are forecast for the evening.
+The start of the forecast period looks inexpensive. On **Monday**, the average price will fall to 0,9 cents, and the cheapest night-time hours will drop to 0,3 cents. On **Tuesday** and **Wednesday**, the price outlook will also remain below two cents or very close to it. On **Thursday**, the average price will rise to 3,8 cents, but for most of the week it will still stay below four cents. The lowest hourly price of the period will be seen during the night into Monday, when the forecast dips to 0,3 cents.
 
-The most expensive day of the period will be **Friday**, when the average price is expected to rise to 7.6 cents and the day’s peak quotation to 11.6 cents at 20:00. The price level will be lifted by weak wind power, as Friday’s production will average 1731 megawatts. The very low minimum output, 1207 megawatts, also explains the high maximum price. On **Saturday**, the price level will remain almost as high, with the average price at 7.0 cents. **Sunday** is expected to be somewhat cheaper, and the day’s lowest price, 2.8 cents, will be seen in the afternoon. For next **Monday**, only one hourly forecast is currently available: 3.4 cents at midnight.
+The clearest price increase will be seen on **Friday**, when the daily average is expected to reach 6,4 cents and the highest hourly price 10,0 cents. The higher level will be explained by weak wind power, as production will range between 1494 and 3134 megawatts during the day, and the exceptionally low minimum output will also explain the day’s highest price. On **Saturday** and **Sunday**, the price level will remain elevated, even though it will ease somewhat from Friday’s peak. Friday, Saturday and Sunday will also carry a risk of individual hourly price spikes. On Friday, the highest point would fall in the evening around 18:00–20:00, when the forecast moves between nine and ten cents.
 
-*Data read by gpt-5.4.* 💡
+*Price watch, gpt-5.4* ⚡
