@@ -1,20 +1,20 @@
-*In the spot electricity forecast, the start of the week will remain low-priced, but prices will climb clearly above the rest of the period by the weekend.*
+*The forecast for exchange electricity will stay low at the start of the week, rise clearly for the weekend, and then fall again by next Monday.*
 
-The forecast was updated on Monday at 12:02.
+The forecast was updated on Monday at 14:57.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday** | 1,7 | 0,7 - 3,8 | 3173 - 7263 | 1,8 |
-| **Wednesday** | 2,2 | 0,5 - 3,6 | 4118 - 6945 | 2,3 |
-| **Thursday** | 2,5 | 1,3 - 4,3 | 2734 - 7005 | 1,8 |
-| **Friday** | 5,2 | 1,9 - 9,0 | 1364 - 4460 | 1,8 |
-| **Saturday** | 5,2 | 2,8 - 7,9 | 944 - 2909 | 1,8 |
-| **Sunday** | 4,6 | 2,6 - 8,0 | 1023 - 2880 | 2,0 |
-| **Monday** | 2,7 | 1,5 - 4,1 | 2362 - 4782 | 2,3 |
-| **Tuesday** | 2,9 | 2,9 - 2,9 | 3529 - 3529 | 1,8 |
+| **Tuesday** | 1.1 | 0.4 - 1.8 | 3188 - 7267 | 1.8 |
+| **Wednesday** | 2.0 | 0.1 - 3.7 | 4150 - 6945 | 2.3 |
+| **Thursday** | 2.1 | 0.6 - 4.1 | 2617 - 7023 | 1.8 |
+| **Friday** | 4.7 | 2.3 - 7.2 | 1918 - 3734 | 1.8 |
+| **Saturday** | 4.9 | 2.5 - 8.4 | 1402 - 3300 | 1.8 |
+| **Sunday** | 4.4 | 2.5 - 8.2 | 1002 - 3334 | 2.0 |
+| **Monday** | 2.4 | 1.1 - 3.9 | 2424 - 4755 | 2.3 |
+| **Tuesday** | 2.9 | 2.9 - 2.9 | 3514 - 3514 | 1.8 |
 
-During the forecast period, electricity will mostly be expected to remain inexpensive. The clearly lowest average prices will be seen on **Tuesday** and **Wednesday**, when daily expectations will stay at 1,7 and 2,2 cents per kilowatt-hour. On Tuesday, the cheapest hours will fall in the afternoon, when the price will dip to 0,7 cents. The highest single hourly price of the period will be seen on **Friday**, when the price will rise to 9,0 cents in the evening and the daily average will climb to 5,2 cents.
+The price level is expected to remain quite low at the start of the forecast period. On **Tuesday**, the daily average price would be 1.1 cents, and the cheapest hours would occur in the afternoon, when the price would dip to 0.4 cents. On **Wednesday** and **Thursday**, the outlook would rise slightly, but the daily average would still remain below 2.5 cents. Wednesday’s lowest hourly price would be 0.1 cents during the night. On Thursday, the price would climb toward the evening, with the highest reading at 4.1 cents.
 
-Friday’s price level will be explained by weak wind power, as average output for the day will remain at 2624 megawatts and the minimum will drop to 1364 megawatts. On **Saturday** and **Sunday** as well, the price level will stay higher than during the rest of the period because wind power will remain low. On Saturday, minimum wind generation will fall to 944 megawatts, which will explain the day’s higher peak hours. Saturday’s highest-price period will fall in the morning, around 7–9 am. On Sunday, the highest hours will be seen in the evening, around 6–8 pm, when the price will reach 8,0 cents. By **next Monday**, expectations will ease lower again, and the forecast for **next Tuesday** will for now be based on only one hour.
+The clearest shift would be seen on **Friday**, when the daily average would rise to 4.7 cents and the highest hourly price of the day would be 7.2 cents. The price level would remain elevated on **Saturday** and **Sunday** as well. Saturday would stand out as the most expensive day of the period, with an average price of 4.9 cents and a peak hourly price of 8.4 cents. Weak wind generation would lift prices for the weekend, and on Saturday the low output of 1402 megawatts would explain the higher hourly prices. There is also a risk of price spikes in individual hours on Saturday, in the morning around 7–9 am. On **Monday**, the outlook would fall again to 2.4 cents, and for next **Tuesday** only the first hour of the night is available so far, at 2.9 cents.
 
-*Data read by gpt-5.4* 💡
+*Price notes by gpt-5.4* 💡
