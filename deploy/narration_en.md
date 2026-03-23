@@ -1,20 +1,20 @@
-*The spot electricity price forecast will stay very low at the start of the week, but will rise clearly toward the weekend, with the price level climbing from Friday onward.*
+*The spot electricity forecast will start very cheaply, become more expensive toward the end of the week as wind weakens, and then level off again next Monday.*
 
-The forecast has been updated on Sunday at 20:57.
+The forecast was updated on Monday at 02:57.
 
-|              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday**    | 0,9 | 0,3 - 1,5 | 4996 - 7092 | 2,1 |
-| **Tuesday**   | 1,9 | 0,8 - 3,9 | 2961 - 6912 | 1,8 |
-| **Wednesday** | 2,0 | 0,8 - 3,2 | 3809 - 6702 | 2,3 |
-| **Thursday**  | 3,8 | 1,9 - 5,3 | 2767 - 4187 | 1,8 |
-| **Friday**    | 6,4 | 3,1 - 10,0 | 1494 - 3134 | 1,8 |
-| **Saturday**  | 5,7 | 2,0 - 7,5 | 1185 - 2503 | 1,8 |
-| **Sunday**    | 5,1 | 2,2 - 6,7 | 985 - 2607 | 2,0 |
-| **Monday**    | 2,2 | 2,2 - 2,2 | 2821 - 2821 | 0,9 |
+| **Tuesday** | 1.7 | 0.8 - 5.1 | 2804 - 7083 | 1.8 |
+| **Wednesday** | 2.6 | 0.5 - 4.3 | 4269 - 6890 | 2.3 |
+| **Thursday** | 4.6 | 1.6 - 7.4 | 1837 - 6768 | 1.8 |
+| **Friday** | 6.9 | 3.4 - 11.3 | 1363 - 2534 | 1.8 |
+| **Saturday** | 5.7 | 3.1 - 8.1 | 1182 - 2400 | 1.8 |
+| **Sunday** | 5.2 | 2.4 - 7.1 | 966 - 2577 | 2.0 |
+| **Monday** | 2.4 | 0.8 - 4.3 | 2768 - 4606 | 2.2 |
+| **Tuesday** | 4.2 | 4.2 - 4.2 | 2657 - 2657 | 1.3 |
 
-The start of the forecast period looks inexpensive. On **Monday**, the average price will fall to 0,9 cents, and the cheapest night-time hours will drop to 0,3 cents. On **Tuesday** and **Wednesday**, the price outlook will also remain below two cents or very close to it. On **Thursday**, the average price will rise to 3,8 cents, but for most of the week it will still stay below four cents. The lowest hourly price of the period will be seen during the night into Monday, when the forecast dips to 0,3 cents.
+The forecast period will begin on an inexpensive note. On **Tuesday**, the daily average price will stay at 1.7 cents, and on **Wednesday** at 2.6 cents. Tuesday’s lowest hourly price will drop to 0.8 cents, and during the daytime the price will mostly hover around 1 cent or close to it. Next **Monday** is also expected to remain fairly low, with an average price of 2.4 cents. The most expensive day of the period will be **Friday**, when the average price is forecast at 6.9 cents and the daily peak will rise to 11.3 cents.
 
-The clearest price increase will be seen on **Friday**, when the daily average is expected to reach 6,4 cents and the highest hourly price 10,0 cents. The higher level will be explained by weak wind power, as production will range between 1494 and 3134 megawatts during the day, and the exceptionally low minimum output will also explain the day’s highest price. On **Saturday** and **Sunday**, the price level will remain elevated, even though it will ease somewhat from Friday’s peak. Friday, Saturday and Sunday will also carry a risk of individual hourly price spikes. On Friday, the highest point would fall in the evening around 18:00–20:00, when the forecast moves between nine and ten cents.
+The price outlook will climb on **Thursday** to an average of 4.6 cents, as average wind power generation will fall to 3250 megawatts and drop as low as 1837 megawatts during the day. This will also show up in the day’s higher peak of 7.4 cents. On **Friday**, wind will weaken further, averaging 1888 megawatts, and the day’s minimum wind output of 1363 megawatts will partly explain the highest price level of the week. There will be a risk of individual hourly price spikes on Friday, especially in the evening around 18:00–20:00. On **Saturday** and **Sunday**, average prices will remain at 5.7 and 5.2 cents, while for next **Tuesday** the forecast so far contains only one hour, at 4.2 cents.
 
-*Price watch, gpt-5.4* ⚡
+*Price notes, gpt-5.4* 💡
