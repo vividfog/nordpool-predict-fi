@@ -1,20 +1,20 @@
-*The spot electricity price forecast will remain moderate on most days, but next Tuesday is expected to bring the period’s clearly highest evening and average prices.*
+*The spot electricity forecast will stay low at first, but the price level will rise over the coming days, and next Tuesday is expected to be clearly the most expensive day of the period.*
 
-The forecast was updated on Tuesday at 11:57.
+The forecast was updated on Tuesday at 14:57.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 2,4 | 0,5 - 3,9 | 4507 - 6819 | 2,3 |
-| **Thursday** | 1,9 | 1,2 - 3,0 | 5858 - 7151 | 1,8 |
-| **Friday** | 4,4 | 1,6 - 7,2 | 1697 - 5680 | 1,8 |
-| **Saturday** | 3,9 | 1,5 - 6,0 | 1339 - 3301 | 1,8 |
-| **Sunday** | 3,9 | 2,3 - 6,0 | 1236 - 3165 | 2,0 |
-| **Monday** | 2,9 | 1,4 - 5,2 | 2907 - 4852 | 2,3 |
-| **Tuesday** | 6,6 | 2,1 - 12,1 | 1050 - 3413 | 2,4 |
-| **Wednesday** | 8,1 | 8,1 - 8,1 | 1073 - 1073 | 1,0 |
+| **Wednesday** | 1.7 | 0.5 - 3.4 | 4480 - 6772 | 2.3 |
+| **Thursday** | 1.6 | 1.1 - 2.4 | 5898 - 7134 | 1.8 |
+| **Friday** | 4.3 | 1.4 - 7.5 | 1636 - 5717 | 1.8 |
+| **Saturday** | 3.7 | 1.3 - 5.3 | 1354 - 3240 | 1.8 |
+| **Sunday** | 3.7 | 1.9 - 6.0 | 1338 - 3115 | 2.0 |
+| **Monday** | 2.6 | 1.2 - 5.0 | 3004 - 4836 | 2.3 |
+| **Tuesday** | 6.4 | 1.8 - 12.2 | 1097 - 3378 | 2.4 |
+| **Wednesday** | 8.1 | 8.1 - 8.1 | 1069 - 1069 | 1.0 |
 
-Across the forecast period, prices will remain mostly inexpensive or ordinary from **Wednesday** through **Monday**. The lowest readings of the period will be seen already on **Wednesday**, when the night price will fall to 0,5 cents and the daily average will stay at 2,4 cents. On **Thursday**, the average price will drop even lower to 1,9 cents. On **Friday**, variation will increase, and the price will reach 7,2 cents in the evening. That higher daily peak will be explained by wind power falling exceptionally low, to a minimum of 1697 megawatts.
+Across the forecast period, the electricity price will remain mostly low on **Wednesday** and **Thursday**, when the daily average will come in at 1.7 and 1.6 cents. The lowest expected level will fall on Wednesday night, when the price will drop to 0.5 cents. On **Friday**, the price level will rise clearly, and the daily average is expected at 4.3 cents. At the same time, the day’s highest hourly price will climb to 7.5 cents. The increase will be explained by weakening wind power, as output will dip as low as 1636 megawatts during the day.
 
-The clearly most expensive day will fall on **Tuesday**, when the average price is forecast at 6,6 cents and the evening peak at 12,1 cents. At the same time, wind power will remain at a low level and dip to 1050 megawatts at its lowest, which will lift the price outlook. For Sunday, a risk of price spikes is forecast for individual hours, and the highest readings will be concentrated in the evening, around 18:00–22:00. An even clearer rise will be seen next **Tuesday**, when the day’s most expensive stretch will fall around 18:00–22:00. For next **Wednesday**, only an early forecast is available so far, but the first hour already stands at 8,1 cents.
+On **Saturday** and **Sunday**, the daily average will settle at 3.7 cents, but individual hours will carry a risk of price spikes. On Saturday, the highest prices will be expected in the evening, roughly between 19:00 and 21:00, when the forecast reaches 5.3 cents. On Sunday, the highest-price window will fall roughly between 18:00 and 20:00, with the peak rising to 6.0 cents. On **next Monday**, the average price will ease to 2.6 cents, but on **next Tuesday**, the most expensive day of the period will lift the expected average to 6.4 cents and the peak to 12.2 cents around 19:00–21:00. Weak wind power will be one reason behind that, as output will average 1974 megawatts and fall to a low of 1097 megawatts.
 
-*Rows read by gpt-5.4* 💡
+*Price lines: gpt-5.4* 💡
