@@ -1,20 +1,20 @@
-*The spot electricity forecast will stay low at first, but the price level will rise over the coming days, and next Tuesday is expected to be clearly the most expensive day of the period.*
+*The spot electricity price forecast would remain mostly low in the coming days, but next Tuesday would be expected to bring clearly the highest price level of the period.*
 
-The forecast was updated on Tuesday at 14:57.
+The forecast was updated on Tuesday at 20:57.
 
-|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|               | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 1.7 | 0.5 - 3.4 | 4480 - 6772 | 2.3 |
-| **Thursday** | 1.6 | 1.1 - 2.4 | 5898 - 7134 | 1.8 |
-| **Friday** | 4.3 | 1.4 - 7.5 | 1636 - 5717 | 1.8 |
-| **Saturday** | 3.7 | 1.3 - 5.3 | 1354 - 3240 | 1.8 |
-| **Sunday** | 3.7 | 1.9 - 6.0 | 1338 - 3115 | 2.0 |
-| **Monday** | 2.6 | 1.2 - 5.0 | 3004 - 4836 | 2.3 |
-| **Tuesday** | 6.4 | 1.8 - 12.2 | 1097 - 3378 | 2.4 |
-| **Wednesday** | 8.1 | 8.1 - 8.1 | 1069 - 1069 | 1.0 |
+| **Wednesday** | 1.7 | 0.5 - 3.4 | 4552 - 6899 | 2.3 |
+| **Thursday** | 1.7 | 0.9 - 2.7 | 5358 - 7303 | 1.8 |
+| **Friday** | 3.6 | 1.4 - 6.0 | 2080 - 5024 | 1.8 |
+| **Saturday** | 3.5 | 1.3 - 7.6 | 1485 - 4053 | 1.8 |
+| **Sunday** | 3.2 | 1.9 - 5.4 | 1411 - 3703 | 2.0 |
+| **Monday** | 2.6 | 1.2 - 5.3 | 2716 - 5274 | 2.3 |
+| **Tuesday** | 6.2 | 1.9 - 10.9 | 1100 - 3532 | 2.4 |
+| **Wednesday** | 6.7 | 6.7 - 6.7 | 1143 - 1143 | 1.0 |
 
-Across the forecast period, the electricity price will remain mostly low on **Wednesday** and **Thursday**, when the daily average will come in at 1.7 and 1.6 cents. The lowest expected level will fall on Wednesday night, when the price will drop to 0.5 cents. On **Friday**, the price level will rise clearly, and the daily average is expected at 4.3 cents. At the same time, the day’s highest hourly price will climb to 7.5 cents. The increase will be explained by weakening wind power, as output will dip as low as 1636 megawatts during the day.
+Over the forecast period, electricity prices would stay mostly low on **Wednesday** and **Thursday**, when the daily average would settle at 1.7 cents. On Wednesday, the lowest hourly prices would dip to 0.5 cents overnight, and the highest reading would be seen in the evening at 3.4 cents. On **Friday** and **Saturday**, the price level would rise closer to four cents, but the daily averages would still remain below that mark. On Saturday, the day’s highest hourly price would climb to 7.6 cents.
 
-On **Saturday** and **Sunday**, the daily average will settle at 3.7 cents, but individual hours will carry a risk of price spikes. On Saturday, the highest prices will be expected in the evening, roughly between 19:00 and 21:00, when the forecast reaches 5.3 cents. On Sunday, the highest-price window will fall roughly between 18:00 and 20:00, with the peak rising to 6.0 cents. On **next Monday**, the average price will ease to 2.6 cents, but on **next Tuesday**, the most expensive day of the period will lift the expected average to 6.4 cents and the peak to 12.2 cents around 19:00–21:00. Weak wind power will be one reason behind that, as output will average 1974 megawatts and fall to a low of 1097 megawatts.
+The clearly highest price level would be forecast for **Tuesday**, when the daily average would rise to 6.2 cents and the highest hourly price to 10.9 cents. That would be explained by weak wind power, with average generation remaining at 1997 megawatts. The most expensive evening hours would fall roughly between 18:00 and 20:00. There would also be a risk of individual hourly price spikes on **Sunday** and next **Wednesday**. On Sunday, the highest price would land in the evening, around 18:00–20:00. For next Wednesday, only the first hour of the day is visible so far, and its price expectation would be 6.7 cents.
 
-*Price lines: gpt-5.4* 💡
+*Price desk, gpt-5.4.* 💡
