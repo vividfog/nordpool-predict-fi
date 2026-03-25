@@ -1,20 +1,20 @@
-*Electricity prices would stay mostly moderate in the coming days, but next Tuesday would stand out as the clearly most expensive day of the forecast period.*
+*The spot electricity forecast will stay fairly affordable toward the end of the week, but prices will rise clearly at the start of next week before easing again by Wednesday.*
 
-The forecast was updated on **Wednesday** at 02:57.
+The forecast was updated on Wednesday at 08:57.
 
-|               | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday** | 1.8 | 1.1 - 2.6 | 5732 - 7258 | 1.8 |
-| **Friday** | 3.9 | 1.5 - 6.6 | 1834 - 5457 | 1.8 |
-| **Saturday** | 4.3 | 1.3 - 7.1 | 1598 - 4199 | 1.8 |
-| **Sunday** | 3.5 | 2.3 - 5.1 | 1327 - 3287 | 2.0 |
-| **Monday** | 4.4 | 1.9 - 8.4 | 1761 - 3057 | 2.3 |
-| **Tuesday** | 6.7 | 3.7 - 11.4 | 1253 - 2637 | 2.4 |
-| **Wednesday** | 3.5 | 1.2 - 7.0 | 1361 - 3769 | 2.0 |
-| **Thursday** | 2.7 | 2.7 - 2.7 | 3131 - 3131 | 0.6 |
+| **Thursday** | 1.8 | 1.0 - 3.0 | 5714 - 7143 | 1.8 |
+| **Friday** | 3.6 | 1.1 - 6.8 | 2772 - 5768 | 1.8 |
+| **Saturday** | 3.6 | 1.4 - 6.0 | 1884 - 3996 | 1.8 |
+| **Sunday** | 3.4 | 2.1 - 5.1 | 1296 - 3151 | 2.0 |
+| **Monday** | 4.6 | 1.8 - 8.9 | 1808 - 3074 | 2.3 |
+| **Tuesday** | 6.7 | 3.9 - 11.2 | 1174 - 2743 | 2.4 |
+| **Wednesday** | 3.3 | 0.9 - 6.7 | 1301 - 3788 | 2.0 |
+| **Thursday** | 2.7 | 2.7 - 2.7 | 3453 - 3453 | 0.6 |
 
-Over the forecast period, electricity prices would remain mostly low or fairly typical, but a clear increase would be seen next **Tuesday**. On that day, the expected daily average would rise to 6.7 cents, with the highest hourly price reaching 11.4 cents. The cheapest day of the period would be **Thursday**, when the average price would stay at 1.8 cents and the daily range would be 1.1–2.6 cents. Prices would also fall very low next **Wednesday** afternoon, with the cheapest hours occurring roughly between 14:00 and 17:00, when prices would move in the 1.2–1.7 cent range.
+During the forecast period, prices will remain mostly below five cents, although volatility will increase at the start of next week. On **Thursday**, the expected average price will stay at 1.8 cents, and prices during the day will range from 1.0 to 3.0 cents. On **Friday** and **Saturday**, the daily average will also come in at 3.6 cents. On **Sunday**, the expected daily average will be 3.4 cents, but there will be a risk of price spikes in individual hours, especially in the evening between 19:00 and 21:00, when the forecast rises to around five cents.
 
-The price trend would be explained above all by changes in wind power output. On **Friday**, **Saturday**, **Sunday**, **Monday** and **Tuesday**, average wind generation would remain at a low level. The clearest link would appear next Tuesday, when the day’s lowest wind power figure would drop to 1253 megawatts and the highest hourly price of the forecast period would be recorded at the same time. Next Monday, too, a low minimum production level of 1761 megawatts would lift the day’s top price to 8.4 cents. In addition, a risk of isolated price spikes would be noted for Sunday and Monday, and on Tuesday the most expensive hours would be expected in the evening, around 19:00–21:00.
+The clearest increase will be seen on **Monday** and especially on **Tuesday**. Monday’s average price is expected to reach 4.6 cents, with the evening peak climbing to 8.9 cents. Tuesday will stand out as the most expensive day of the period. Its expected average price will rise to 6.7 cents, and the highest price will reach 11.2 cents. The day’s higher price level will be explained by weak wind power output, with average generation staying at 1786 megawatts and falling as low as 1174 megawatts. On **Wednesday**, the price level will ease again, and in the afternoon it will dip to as low as 0.9 cents.
 
-*Parsed by gpt-5.4* 💡
+*Data parsed by gpt-5.4.* 💡
