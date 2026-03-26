@@ -1,20 +1,20 @@
-*The spot electricity forecast will remain mostly moderate, although Friday and Tuesday are expected to bring clearly more expensive hours than the rest of the period.*
+*Exchange electricity prices will vary quite a bit in the coming days: Tuesday will stand out as the most expensive, while Wednesday and the holiday at the end of the period are expected to be clearly cheaper.*
 
-The forecast was updated on Wednesday at 20:57.
+The forecast was updated on **Thursday** at 02:57.
 
-|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday** | 1.4 | 0.6 - 2.1 | 5279 - 7197 | 1.8 |
-| **Friday** | 4.0 | 1.2 - 8.6 | 2034 - 5164 | 1.8 |
-| **Saturday** | 2.5 | 0.9 - 3.6 | 2858 - 5206 | 1.8 |
-| **Sunday** | 3.9 | 2.4 - 6.0 | 1298 - 2735 | 2.0 |
-| **Monday** | 4.5 | 2.6 - 8.1 | 1916 - 3060 | 2.3 |
-| **Tuesday** | 4.7 | 1.6 - 9.6 | 1924 - 3072 | 2.4 |
-| **Wednesday** | 2.9 | 1.0 - 4.9 | 1706 - 3997 | 1.9 |
-| **Thursday** | 3.2 | 3.2 - 3.2 | 2474 - 2474 | 0.3 |
+| **Friday** | 4.6 | 1.2 - 9.3 | 1842 - 5696 | 1.8 |
+| **Saturday** | 2.4 | 0.7 - 3.7 | 2611 - 5312 | 1.8 |
+| **Sunday** | 3.9 | 1.7 - 8.0 | 1029 - 5280 | 2.0 |
+| **Monday** | 4.6 | 2.0 - 8.3 | 2029 - 3167 | 2.3 |
+| **Tuesday** | 5.9 | 3.6 - 9.1 | 1487 - 2793 | 2.4 |
+| **Wednesday** | 1.6 | 0.5 - 2.6 | 2984 - 4787 | 1.9 |
+| **Thursday** | 2.4 | 0.4 - 5.4 | 3032 - 4967 | 1.5 |
+| **Friday** | 1.9 | 1.9 - 1.9 | 3313 - 3313 | 0.5 |
 
-During the forecast period, the average electricity price would mostly stay below five cents. The cheapest day would be **Thursday**, when the daily average would be 1.4 cents and hourly prices would dip as low as 0.6 cents. **Saturday** would also remain at a low level, with the daily average expected at 2.5 cents. The highest daily average of the period would be seen on **Tuesday**, when electricity would cost 4.7 cents on average and the day’s peak quotation would rise to 9.6 cents. On **Friday**, the highest hourly price would reach 8.6 cents.
+A clear difference will be seen in price levels between the days. The most expensive day will be **Tuesday**, when the average price is forecast at 5.9 cents and the daily peak at 9.1 cents. **Friday** and **Monday** will also reach an average price of 4.6 cents, and Friday’s highest hourly price will climb to 9.3 cents. On **Saturday** and next **Thursday**, prices will stay clearly lower, averaging 2.4 cents. The cheapest day in the forecast period will be next **Wednesday**, when the average price is expected to be 1.6 cents and the lowest hourly price to fall to 0.5 cents.
 
-Price variation would be greatest during the daytime hours on Friday and Tuesday, when hourly prices would climb clearly above the rest of the period. On Sunday, average wind power would be only 1918 megawatts, and the day’s minimum output would fall to 1298 megawatts. That would help explain why prices would rise into the 5.0-6.0 cent range in the evening. In the daily forecast, a risk of individual price spikes has been marked for Sunday and next **Thursday**. Based on the hourly forecast, the highest point would fall on Sunday evening around 20:00-22:00.
+Clearly strong wind power will push prices down especially on **Saturday**, next **Wednesday** and next **Thursday**. Tuesday’s higher price level will be explained by weaker wind generation, as output will average only 2126 megawatts. **Sunday** will also see large variation within the day. Wind power will fall to a minimum of 1029 megawatts, while the day’s highest price rises to 8.0 cents. In addition, a risk of individual price spikes will be indicated for Sunday evening, in practice around 17:00–19:00. A similar risk will apply to next **Tuesday**, when the highest hours will fall in the morning around 08:00–10:00 and again in the evening around 19:00–21:00. The final **Friday** of the forecast period will be a holiday, and lower-than-usual demand will push the price down.
 
-*Price watch, gpt-5.4* ⚡
+*Data read by gpt-5.4* ⚡
