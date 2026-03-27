@@ -1,20 +1,20 @@
-*Spot electricity will stay inexpensive over the weekend and the holiday, rise clearly on Tuesday, and then level off again to a lower range.*
+*Exchange electricity will stay inexpensive over the weekend, rise clearly on Tuesday and Wednesday, and then ease again toward the end of the week.*
 
-The forecast was updated on Friday at 12:05.
+The forecast was updated on Friday at 15:05.
 
-|               | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday** | 2,2 | 0,7 - 3,3 | 3398 - 5643 | 1,8 |
-| **Sunday** | 2,5 | 1,6 - 4,0 | 3584 - 4971 | 2,0 |
-| **Monday** | 3,1 | 1,1 - 5,6 | 2412 - 4986 | 2,3 |
-| **Tuesday** | 6,5 | 3,6 - 10,9 | 1131 - 2895 | 2,4 |
-| **Wednesday** | 5,4 | 3,4 - 8,6 | 1682 - 4223 | 1,9 |
-| **Thursday** | 4,6 | 2,7 - 7,1 | 1802 - 4342 | 1,7 |
-| **Friday** | 1,5 | 0,3 - 3,1 | 3083 - 4484 | 2,0 |
-| **Saturday** | 3,4 | 3,4 - 3,4 | 3208 - 3208 | 0,8 |
+| **Saturday** | 1.7 | 0.9 - 2.8 | 3410 - 5656 | 1.8 |
+| **Sunday** | 2.3 | 0.8 - 4.3 | 3597 - 4989 | 2.0 |
+| **Monday** | 2.9 | 1.2 - 5.4 | 2324 - 5006 | 2.3 |
+| **Tuesday** | 6.9 | 3.3 - 11.3 | 1120 - 2957 | 2.4 |
+| **Wednesday** | 6.1 | 1.7 - 12.3 | 1083 - 4533 | 1.9 |
+| **Thursday** | 3.7 | 1.8 - 6.7 | 2261 - 4292 | 1.7 |
+| **Friday** | 1.4 | 0.4 - 3.2 | 3101 - 4558 | 2.0 |
+| **Saturday** | 3.2 | 3.2 - 3.2 | 3147 - 3147 | 0.8 |
 
-During the forecast period, prices will vary quite clearly from one day to the next. The lowest-priced electricity is expected on **Friday**, which will be a public holiday. The daily average price will fall to 1,5 cents, and the lowest hourly price will dip to 0,3 cents. **Saturday** and **Sunday** will also remain at a low price level, and on **Monday** the average price will still rise only to 3,1 cents. On these days, strong wind power will support the low price level, as average production will remain above 3000 megawatts.
+The price level will remain inexpensive at the start of the forecast period, as on **Saturday**, **Sunday** and **Monday** the daily average prices will range from 1.7 to 2.9 cents. Expectations will also remain very low on **next Friday**, when the daily average is forecast to stay at 1.4 cents. Friday will also be affected by a public holiday, when demand may be lower than usual. The highest daily price expectation of the period will be seen on **Tuesday**, when the average price will rise to 6.9 cents and the daily peak will reach 11.3 cents. Wind power will remain weak then, averaging 1917 megawatts, and the day’s minimum production will fall to 1120 megawatts.
 
-The most expensive day will be **Tuesday**, when the average price is expected to rise to 6,5 cents and the highest hourly price to 10,9 cents. Wind power will remain weak that day, averaging 1975 megawatts, and minimum production will fall to 1131 megawatts. This will also explain the highest prices of the forecast period. On Tuesday, the highest-priced hours will fall in the evening, with the peak appearing between 19:00 and 21:00. On **Wednesday**, the price will ease from that level, but will still remain somewhat elevated, with an average price of 5,4 cents. On **Thursday**, the decline will continue to 4,6 cents, and for **next Saturday** the only hour currently in the forecast stands at 3,4 cents.
+Also on **Wednesday**, the price level will remain above the usual range. The daily average is forecast at 6.1 cents, and the highest hourly price will reach 12.3 cents. Wednesday’s elevated peak will be explained by wind power minimum production staying at 1083 megawatts. A risk of isolated price spikes has been flagged for Tuesday, and the highest-price period in the forecast will fall in the evening at around 19:00–21:00. On Wednesday, the corresponding risk will appear in the morning at around 8:00–10:00. After that, the price level will ease on Thursday to an average below four cents, and for next Saturday the only hour published so far stands at 3.2 cents.
 
-*Price notes, gpt-5.4* ⚡
+*Written from the data by gpt-5.4.* 💡
