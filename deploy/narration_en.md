@@ -1,20 +1,20 @@
-*The spot electricity forecast will stay mostly low, but Tuesday and Wednesday are expected to bring the week’s highest prices and the widest daily swings.*
+*Exchange electricity is expected to remain mostly moderate, but Tuesday will stand out as the most expensive day of the period because of weak wind power and higher hourly prices.*
 
-The forecast was updated on Saturday at 08:57.
+The forecast was updated on Saturday at 11:57.
 
-|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|              | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 2.3 | 0.8 - 4.1 | 3065 - 4885 | 2.0 |
-| **Monday** | 2.6 | 0.8 - 4.5 | 3537 - 4903 | 2.3 |
-| **Tuesday** | 6.9 | 3.1 - 12.3 | 1272 - 3438 | 2.4 |
-| **Wednesday** | 6.1 | 2.7 - 11.4 | 1231 - 4094 | 1.9 |
-| **Thursday** | 4.5 | 2.2 - 8.6 | 2216 - 5027 | 1.7 |
-| **Friday** | 1.5 | 0.9 - 2.7 | 3596 - 5232 | 2.0 |
-| **Saturday** | 4.0 | 1.9 - 6.4 | 1191 - 4075 | 1.8 |
-| **Sunday** | 5.0 | 5.0 - 5.0 | 1212 - 1212 | 0.7 |
+| **Sunday**     | 2,6 | 1,2 - 4,3 | 2988 - 5076 | 2,0 |
+| **Monday**     | 2,7 | 1,0 - 5,3 | 2446 - 5100 | 2,3 |
+| **Tuesday**    | 6,6 | 2,8 - 12,1 | 725 - 4218 | 2,4 |
+| **Wednesday**  | 5,3 | 2,9 - 8,2 | 1686 - 4202 | 1,9 |
+| **Thursday**   | 5,3 | 3,3 - 8,4 | 1860 - 3979 | 1,7 |
+| **Friday**     | 3,6 | 1,7 - 7,4 | 1991 - 4330 | 2,0 |
+| **Saturday**   | 3,7 | 1,3 - 7,3 | 1471 - 4540 | 1,9 |
+| **Sunday**     | 4,7 | 4,7 - 4,7 | 1793 - 1793 | 0,9 |
 
-Over the forecast period, electricity will remain mostly inexpensive, but a clear gap will emerge between the days. On **Sunday** and **Monday**, the average price will stay at 2.3–2.6 cents, and on **Friday** the expectation will drop very low, to 1.5 cents. Friday will also be weighed down by a public holiday, when demand may remain lower than usual. The most expensive day of the period will be **Tuesday**, when the average price will rise to 6.9 cents and the daily peak will reach 12.3 cents. Tuesday’s higher prices will be explained by weak wind power output, as production will average 1921 megawatts and fall as low as 1272 megawatts.
+The price outlook will show a fairly inexpensive start. On **Sunday** and **Monday**, the daily average will stay below three cents. On Monday, the lowest hourly price will dip to 1,0 cents. **Tuesday** will be the most expensive day, with an expected average of 6,6 cents and a daily peak of 12,1 cents. On Tuesday, the rise in hourly prices will be concentrated in the morning and evening, and the highest readings will fall around 18:00–20:00. There will also be a risk of isolated price spikes on that day.
 
-Price variation will stand out especially on Tuesday and Wednesday. On **Tuesday**, the highest-priced stretch will fall in the evening from 19:00 to 21:00, when the price will move around 11.5–12.3 cents. The day has also been flagged for a risk of individual price spikes. On **Wednesday**, the morning hours from 8:00 to 10:00 are expected to become the day’s most expensive period, with the peak reaching 11.4 cents. Wind power will also stay low during the day, which will lift the price level. On **Saturday**, the average price will settle at 4.0 cents, but the end of the day will become more expensive, rising to 5.7–6.4 cents from evening into late evening. The forecast for the following **Sunday** currently shows only one hour so far, at 5.0 cents.
+Tuesday’s higher prices will be explained by weak wind power. The day’s average production will remain at 2136 megawatts, and the minimum will drop to 725 megawatts. At the same time, the highest maximum price of the period will occur on Tuesday. On **Wednesday** and **Thursday**, the average price will hold at 5,3 cents, after which the outlook will ease again. **Friday** will be a holiday, and lower-than-normal demand will push the forecast down to 3,6 cents. On **Saturday**, the average price will be 3,7 cents. By next **Sunday**, the forecast will so far extend only to the start of the day, so the current estimate for the day is 4,7 cents.
 
-*Price desk gpt-5.4* 💡
+*Price lines by gpt-5.4* ⚡
