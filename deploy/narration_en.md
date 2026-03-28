@@ -1,20 +1,20 @@
-*Exchange electricity will remain fairly inexpensive on most days, but next Tuesday and Wednesday prices will rise above the rest of the forecast period.*
+*The spot electricity forecast will stay mostly low, but Tuesday and Wednesday are expected to bring the week’s highest prices and the widest daily swings.*
 
-The forecast was updated on Saturday at 02:57.
+The forecast was updated on Saturday at 08:57.
 
-|              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 2.1 | 0.4 - 3.9 | 3497 - 5030 | 2.0 |
-| **Monday** | 3.0 | 1.3 - 5.2 | 2108 - 5014 | 2.3 |
-| **Tuesday** | 7.1 | 2.5 - 12.3 | 1212 - 4136 | 2.4 |
-| **Wednesday** | 6.1 | 3.0 - 11.4 | 1064 - 4169 | 1.9 |
-| **Thursday** | 4.4 | 2.2 - 8.9 | 2036 - 5025 | 1.7 |
-| **Friday** | 1.1 | 0.1 - 2.1 | 3683 - 5322 | 2.0 |
-| **Saturday** | 4.3 | 1.9 - 6.8 | 1233 - 3929 | 1.8 |
-| **Sunday** | 5.5 | 5.5 - 5.5 | 1249 - 1249 | 0.7 |
+| **Sunday** | 2.3 | 0.8 - 4.1 | 3065 - 4885 | 2.0 |
+| **Monday** | 2.6 | 0.8 - 4.5 | 3537 - 4903 | 2.3 |
+| **Tuesday** | 6.9 | 3.1 - 12.3 | 1272 - 3438 | 2.4 |
+| **Wednesday** | 6.1 | 2.7 - 11.4 | 1231 - 4094 | 1.9 |
+| **Thursday** | 4.5 | 2.2 - 8.6 | 2216 - 5027 | 1.7 |
+| **Friday** | 1.5 | 0.9 - 2.7 | 3596 - 5232 | 2.0 |
+| **Saturday** | 4.0 | 1.9 - 6.4 | 1191 - 4075 | 1.8 |
+| **Sunday** | 5.0 | 5.0 - 5.0 | 1212 - 1212 | 0.7 |
 
-A clear difference will be seen between the days in this forecast period. On **Sunday** and **Monday**, the electricity price outlook will stay low, and next **Friday** is expected to be the cheapest day of the period. Friday is also a public holiday, which may push prices lower. The daily average price will remain at 1.1 cents, and the lowest hourly price will fall to 0.1 cents. Next **Thursday** will also stay below five cents on average.
+Over the forecast period, electricity will remain mostly inexpensive, but a clear gap will emerge between the days. On **Sunday** and **Monday**, the average price will stay at 2.3–2.6 cents, and on **Friday** the expectation will drop very low, to 1.5 cents. Friday will also be weighed down by a public holiday, when demand may remain lower than usual. The most expensive day of the period will be **Tuesday**, when the average price will rise to 6.9 cents and the daily peak will reach 12.3 cents. Tuesday’s higher prices will be explained by weak wind power output, as production will average 1921 megawatts and fall as low as 1272 megawatts.
 
-The most expensive day in the forecast will be next **Tuesday**, when the average price rises to 7.1 cents and the daily peak reaches 12.3 cents. The higher price level will be explained by weak wind power, as average production for the day will stay at 2136 megawatts and the minimum will drop to 1212 megawatts. Next **Wednesday** and **Saturday** will also see low wind power, which will show up as higher prices than elsewhere in the period. On Tuesday, the peak is expected around 17:00–19:00, on Wednesday around 08:00–10:00, and on Saturday around 22:00–00:00. The final **Sunday** of the period is still based on a very limited forecast, and for now the expected price is 5.5 cents.
+Price variation will stand out especially on Tuesday and Wednesday. On **Tuesday**, the highest-priced stretch will fall in the evening from 19:00 to 21:00, when the price will move around 11.5–12.3 cents. The day has also been flagged for a risk of individual price spikes. On **Wednesday**, the morning hours from 8:00 to 10:00 are expected to become the day’s most expensive period, with the peak reaching 11.4 cents. Wind power will also stay low during the day, which will lift the price level. On **Saturday**, the average price will settle at 4.0 cents, but the end of the day will become more expensive, rising to 5.7–6.4 cents from evening into late evening. The forecast for the following **Sunday** currently shows only one hour so far, at 5.0 cents.
 
-*Price watch, gpt-5.4* ⚡
+*Price desk gpt-5.4* 💡
