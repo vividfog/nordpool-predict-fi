@@ -1,20 +1,20 @@
-*Exchange electricity is expected to remain mostly moderate, but Tuesday will stand out as the most expensive day of the period because of weak wind power and higher hourly prices.*
+*The spot electricity forecast points to a mostly moderate week, but Tuesday will stand out clearly with a higher price level than the other days.*
 
-The forecast was updated on Saturday at 11:57.
+The forecast was updated on Saturday at 14:57.
 
-|              | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday**     | 2,6 | 1,2 - 4,3 | 2988 - 5076 | 2,0 |
-| **Monday**     | 2,7 | 1,0 - 5,3 | 2446 - 5100 | 2,3 |
-| **Tuesday**    | 6,6 | 2,8 - 12,1 | 725 - 4218 | 2,4 |
-| **Wednesday**  | 5,3 | 2,9 - 8,2 | 1686 - 4202 | 1,9 |
-| **Thursday**   | 5,3 | 3,3 - 8,4 | 1860 - 3979 | 1,7 |
-| **Friday**     | 3,6 | 1,7 - 7,4 | 1991 - 4330 | 2,0 |
-| **Saturday**   | 3,7 | 1,3 - 7,3 | 1471 - 4540 | 1,9 |
-| **Sunday**     | 4,7 | 4,7 - 4,7 | 1793 - 1793 | 0,9 |
+| **Sunday** | 2.0 | 1.2 - 2.9 | 3028 - 5085 | 2.0 |
+| **Monday** | 2.6 | 0.7 - 5.2 | 2443 - 5108 | 2.3 |
+| **Tuesday** | 6.6 | 2.6 - 11.0 | 690 - 4247 | 2.4 |
+| **Wednesday** | 4.5 | 1.7 - 7.7 | 1740 - 4049 | 1.9 |
+| **Thursday** | 3.4 | 2.3 - 5.4 | 2334 - 3755 | 1.7 |
+| **Friday** | 2.4 | 0.7 - 5.9 | 2024 - 4536 | 2.0 |
+| **Saturday** | 3.6 | 1.4 - 7.5 | 1365 - 4464 | 1.9 |
+| **Sunday** | 4.3 | 4.3 - 4.3 | 1826 - 1826 | 0.9 |
 
-The price outlook will show a fairly inexpensive start. On **Sunday** and **Monday**, the daily average will stay below three cents. On Monday, the lowest hourly price will dip to 1,0 cents. **Tuesday** will be the most expensive day, with an expected average of 6,6 cents and a daily peak of 12,1 cents. On Tuesday, the rise in hourly prices will be concentrated in the morning and evening, and the highest readings will fall around 18:00–20:00. There will also be a risk of isolated price spikes on that day.
+The price period will remain mostly inexpensive, as on most days the average price will settle below four cents. The most clearly distinct day will be **Tuesday**, when the daily average price will rise to 6.6 cents and the highest forecast will reach 11.0 cents. Weak wind will be visible behind Tuesday, as average wind power will remain at 2060 megawatts. The day’s lowest wind production will drop to 690 megawatts, and that will also explain the week’s highest price peak. According to the forecast, the highest-price period will fall on **Tuesday** evening, around 18:00–20:00.
 
-Tuesday’s higher prices will be explained by weak wind power. The day’s average production will remain at 2136 megawatts, and the minimum will drop to 725 megawatts. At the same time, the highest maximum price of the period will occur on Tuesday. On **Wednesday** and **Thursday**, the average price will hold at 5,3 cents, after which the outlook will ease again. **Friday** will be a holiday, and lower-than-normal demand will push the forecast down to 3,6 cents. On **Saturday**, the average price will be 3,7 cents. By next **Sunday**, the forecast will so far extend only to the start of the day, so the current estimate for the day is 4,7 cents.
+The other days will remain clearly below that level. On **Sunday** and **Monday**, average prices of 2.0–2.6 cents are expected, and on **Friday** the price will likely stay at 2.4 cents because of the public holiday. The lowest individual hourly price of the forecast period will be seen on **Monday** and **Friday**, when the lowest quotation will dip to 0.7 cents. On **Saturday**, the price will rise to 7.5 cents by the evening, and on the following **Sunday** the only published hour shows a price of 4.3 cents. A risk of price spikes is also attached to next **Sunday**, but a more precise timing is not yet visible in the daily forecast.
 
-*Price lines by gpt-5.4* ⚡
+*Price watch, gpt-5.4* 💡
