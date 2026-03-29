@@ -1,19 +1,19 @@
-*Spot electricity prices for the coming week will stay mostly low, but Tuesday will stand out as clearly more expensive than the rest of the period.*
+*Spot electricity prices next week would remain mostly moderate, but Tuesday would stand out as clearly more expensive than the other days.*
 
-The forecast was updated on Sunday at 11:57.
+The forecast was updated on Sunday at 14:57.
 
 |  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 2.4 | 0.4 - 5.3 | 2892 - 5010 | 2.3 |
-| **Tuesday** | 6.6 | 2.6 - 10.5 | 904 - 4594 | 2.4 |
-| **Wednesday** | 2.6 | 1.3 - 5.1 | 2538 - 5671 | 1.9 |
-| **Thursday** | 2.7 | 1.3 - 5.1 | 3216 - 5105 | 1.7 |
-| **Friday** | 2.6 | 1.4 - 5.0 | 1926 - 4240 | 2.0 |
-| **Saturday** | 1.8 | 0.5 - 4.1 | 2545 - 5175 | 1.9 |
-| **Sunday** | 1.7 | 0.9 - 2.8 | 1909 - 4695 | 1.9 |
+| **Monday** | 2,6 | 0,6 - 5,8 | 2902 - 5036 | 2,3 |
+| **Tuesday** | 6,7 | 2,8 - 10,9 | 935 - 4624 | 2,4 |
+| **Wednesday** | 2,6 | 1,3 - 4,9 | 2578 - 6403 | 1,9 |
+| **Thursday** | 2,7 | 1,4 - 5,2 | 3214 - 5132 | 1,7 |
+| **Friday** | 2,8 | 1,7 - 5,3 | 1904 - 4373 | 2,0 |
+| **Saturday** | 1,9 | 0,4 - 4,6 | 2448 - 5155 | 1,9 |
+| **Sunday** | 1,8 | 0,7 - 3,0 | 1885 - 4544 | 1,9 |
 
-Across the forecast period, prices will remain mostly low, but **Tuesday** will clearly reach the highest level of the week. The day’s expected average price will rise to 6.6 cents, and the top quotation will reach 10.5 cents. That will be explained by weak wind power, as output will fall to a very low level during the day and bottom out at 904 megawatts. At the same time, intraday variation will become larger than on the other days of the week. The highest hourly prices will be concentrated on Tuesday evening, in practice around 17:00–19:00, and there will also be a risk of price spikes in individual hours.
+On **Monday**, the expected average electricity price would settle at 2,6 cents per kilowatt-hour. The price would dip to 0,6 cents at its lowest and rise to 5,8 cents in the evening. The clearly most expensive day, however, would be **Tuesday**, when the average price is forecast to climb to 6,7 cents and the day’s peak would reach 10,9 cents. Tuesday’s higher price level would be explained by weak wind power, as output would average only 2224 megawatts. At the same time, the day’s lowest wind generation would fall to 935 megawatts, which would also explain the high maximum price. The highest-priced hours would fall on Tuesday around 17:00–19:00.
 
-On the other days, expectations will stay clearly lower. On **Monday**, the price will dip to 0.4 cents during the night, and on **Wednesday** and **Thursday**, the average price will settle at about 2.6–2.7 cents. On **Friday**, the public holiday may reduce demand below normal, which will be reflected in a moderate price level. The cheapest days of the week will fall on **Saturday** and **Sunday**, and on the latter, the holiday will support the low price level. Sunday’s average price will remain at 1.7 cents, and the day’s highest price will be only 2.8 cents.
+On **Wednesday**, the price level would return to an average of 2,6 cents, and on **Thursday** and **Friday** daily averages would still remain below three cents. Friday would be a public holiday, which could push prices lower as demand is expected to be lower than usual. Next **Saturday** and **Sunday** would be the cheapest days of the forecast period. Saturday’s average price would stay at 1,9 cents, and in the afternoon the price would fall to 0,4 cents for several hours. On Sunday, the average price would be even slightly lower at 1,8 cents, and the day’s highest hourly price would remain at 3,0 cents. Sunday would also be a public holiday, which would support the low price level.
 
-*Price lines by gpt-5.4* ⚡
+*Price watch, gpt-5.4* ⚡
