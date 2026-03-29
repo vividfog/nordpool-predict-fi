@@ -1,19 +1,19 @@
-*Pörssisähkö pysyy suurimman osan viikosta verraten edullisena, mutta tiistaille ennustetaan selvästi muuta jaksoa korkeampaa hintatasoa.*
+*Pörssisähkön ennusteessa tiistai erottuu viikon kalleimpana päivänä, mutta viikonlopulle ja ensi maanantaille odotetaan selvästi matalampia hintoja.*
 
-Ennuste on päivitetty sunnuntaina klo 21:04.
+Ennuste on päivitetty maanantaina klo 02:57.
 
-|  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|              | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **maanantai** | 2,6 | 0,6 - 5,8 | 2919 - 4944 | 2,3 |
-| **tiistai** | 7,6 | 2,8 - 13,3 | 622 - 4064 | 2,4 |
-| **keskiviikko** | 3,3 | 0,9 - 6,5 | 984 - 5771 | 1,9 |
-| **torstai** | 3,3 | 2,0 - 5,5 | 2378 - 5096 | 1,7 |
-| **perjantai** | 2,6 | 1,1 - 4,5 | 2332 - 4224 | 2,0 |
-| **lauantai** | 1,8 | 0,3 - 3,7 | 2738 - 5105 | 1,9 |
-| **sunnuntai** | 1,3 | -0,0 - 3,2 | 1972 - 4910 | 1,9 |
+| **tiistai** | 8,0 | 3,0 - 16,2 | 493 - 3886 | 2,4 |
+| **keskiviikko** | 3,2 | 1,4 - 7,1 | 1262 - 6109 | 1,9 |
+| **torstai** | 3,4 | 2,2 - 5,6 | 3365 - 5317 | 1,7 |
+| **perjantai** | 4,2 | 2,5 - 8,7 | 1179 - 3963 | 2,0 |
+| **lauantai** | 2,6 | 0,5 - 4,7 | 2090 - 5029 | 1,9 |
+| **sunnuntai** | 1,2 | 0,4 - 2,3 | 2750 - 4967 | 1,9 |
+| **maanantai** | 1,5 | 0,5 - 3,4 | 2906 - 5422 | 2,7 |
 
-Ensi **maanantaina** sähkön hintaodotus pysyy matalana, ja päivän keskihinta tulee olemaan 2,6 senttiä. Selvästi kallein päivä ennustejaksolla tulee olemaan **tiistai**, jolloin keskihinnaksi odotetaan 7,6 senttiä ja ylin tuntihinta nousee 13,3 senttiin. Tiistain korkeaa hintatasoa selittää heikko tuulivoima, sillä tuotanto jää keskimäärin 1826 megawattiin ja käy alimmillaan vain 622 megawatissa. Samalla päivän korkein hinta osuu iltaan, joten yksittäisille tunneille liittyy korostunut hintapiikkien riski noin klo 18–20.
+Ennustejaksolla nähdään selvä ero viikonpäivien välillä. **Tiistaina** odotetaan jakson kalleinta päivää, ja keskihinta nousee 8,0 senttiin. Päivän ylin tuntihinta käy 16,2 sentissä. Taustalla on heikko tuulivoima, sillä tuotanto jää keskimäärin 1599 megawattiin ja käy alimmillaan vain 493 megawatissa. Samalla juuri tiistain korkea maksimihinta selittyy sillä, että tuulivoiman minimituotanto jää poikkeuksellisen alas. Korkea riski yksittäisille hintapiikeille sijoittuu etenkin illan tunteihin klo 17–19, jolloin tuntihinta nousee jyrkimmin.
 
-**Keskiviikkona** hinta laskee takaisin 3,3 senttiin, kun tuulivoimaa on tarjolla paljon. **Torstaina** hintataso jatkuu lähes samana. **Perjantaina** hintaodotus painuu 2,6 senttiin, ja pyhäpäivä tulee tukemaan maltillista tasoa. Viikon edullisimmat päivät nähdään **lauantaina** ja **sunnuntaina**. Sunnuntain keskihinta jää 1,3 senttiin, ja iltapäivällä käydään hetkellisesti nollahinnan tuntumassa klo 14–16. Koko ennustejaksolla alin odotus osuu siis sunnuntaille, kun taas korkein hintataso keskittyy tiistai-iltaan.
+**Keskiviikkona** hinta painuu jo selvästi alemmaksi, ja keskihinta jää 3,2 senttiin. **Torstaina** odotus pysyy lähes samalla tasolla, 3,4 sentissä. **Perjantaina** kyseessä on pyhäpäivä, mikä voi painaa kysyntää alemmas, mutta päivästä tulee silti hieman torstaita kalliimpi 4,2 sentin keskihinnalla. Perjantaille on merkitty myös riski yksittäisille hintapiikeille, ja korkeimmat tunnit asettuvat illalle noin klo 19–21. Edullisimmat päivät osuvat **sunnuntaille** ja ensi **maanantaille**, jolloin keskihinnat jäävät 1,2 ja 1,5 senttiin. Sunnuntain alin tuntihinta käy 0,4 sentissä, joten viikon loppupuolella hinnat asettuvat hyvin alas.
 
-*Hintavihjeet gpt-5.4* 💡
+*Hintavahti gpt-5.4* 💡

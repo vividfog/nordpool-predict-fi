@@ -1,19 +1,19 @@
-*Spot electricity will remain relatively inexpensive for most of the week, but Tuesday is forecast to stand out with clearly higher prices than the rest of the period.*
+*In the spot electricity forecast, Tuesday will stand out as the most expensive day of the period, while clearly lower prices are expected for the weekend and next Monday.*
 
-The forecast was updated on Sunday at 21:04.
+The forecast was updated on Monday at 02:57.
 
-|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 2.6 | 0.6 - 5.8 | 2919 - 4944 | 2.3 |
-| **Tuesday** | 7.6 | 2.8 - 13.3 | 622 - 4064 | 2.4 |
-| **Wednesday** | 3.3 | 0.9 - 6.5 | 984 - 5771 | 1.9 |
-| **Thursday** | 3.3 | 2.0 - 5.5 | 2378 - 5096 | 1.7 |
-| **Friday** | 2.6 | 1.1 - 4.5 | 2332 - 4224 | 2.0 |
-| **Saturday** | 1.8 | 0.3 - 3.7 | 2738 - 5105 | 1.9 |
-| **Sunday** | 1.3 | -0.0 - 3.2 | 1972 - 4910 | 1.9 |
+| **Tuesday** | 8,0 | 3,0 - 16,2 | 493 - 3886 | 2,4 |
+| **Wednesday** | 3,2 | 1,4 - 7,1 | 1262 - 6109 | 1,9 |
+| **Thursday** | 3,4 | 2,2 - 5,6 | 3365 - 5317 | 1,7 |
+| **Friday** | 4,2 | 2,5 - 8,7 | 1179 - 3963 | 2,0 |
+| **Saturday** | 2,6 | 0,5 - 4,7 | 2090 - 5029 | 1,9 |
+| **Sunday** | 1,2 | 0,4 - 2,3 | 2750 - 4967 | 1,9 |
+| **Monday** | 1,5 | 0,5 - 3,4 | 2906 - 5422 | 2,7 |
 
-On **Monday**, the electricity price outlook will stay low, and the daily average will come in at 2.6 cents. The clearly most expensive day in the forecast period will be **Tuesday**, when the average price is expected to reach 7.6 cents and the highest hourly price will climb to 13.3 cents. Tuesday’s elevated price level will be explained by weak wind power output, as generation will average only 1826 megawatts and fall to a low of just 622 megawatts. At the same time, the day’s peak price will land in the evening, so there will be a heightened risk of price spikes in individual hours around 18:00–20:00.
+A clear difference will be seen between the days in the forecast period. **Tuesday** will be expected to be the most expensive day of the period, with the average price rising to 8,0 cents. The day’s highest hourly price will reach 16,2 cents. The background factor will be weak wind power, as production will average 1599 megawatts and fall to as low as 493 megawatts. At the same time, Tuesday’s high maximum price will be explained specifically by the exceptionally low minimum in wind generation. A high risk of individual price spikes will be concentrated especially in the evening hours from 17:00 to 19:00, when the hourly price will rise most steeply.
 
-On **Wednesday**, the price will drop back to 3.3 cents as wind power generation rises strongly. On **Thursday**, the price level will remain almost unchanged. On **Friday**, the price outlook will ease to 2.6 cents, and the public holiday will support a moderate level. The cheapest days of the period will be **Saturday** and **Sunday**. On Sunday, the average price will stay at 1.3 cents, and prices will briefly approach zero in the afternoon around 14:00–16:00. Across the whole forecast period, the lowest expected prices will therefore fall on Sunday, while the highest price level will be concentrated on Tuesday evening.
+On **Wednesday**, the price will already drop clearly lower, and the average price will remain at 3,2 cents. On **Thursday**, the expectation will stay at nearly the same level, 3,4 cents. **Friday** will be a public holiday, which may reduce demand, but the day will still be slightly more expensive than Thursday with an average price of 4,2 cents. Friday will also carry a risk of individual price spikes, and the highest hours will fall in the evening around 19:00–21:00. The cheapest days will arrive on **Sunday** and next **Monday**, when average prices will remain at 1,2 and 1,5 cents. Sunday’s lowest hourly price will dip to 0,4 cents, so prices will settle at a very low level toward the end of the period.
 
-*Price notes by gpt-5.4* 💡
+*Grid notes by gpt-5.4* 💡
