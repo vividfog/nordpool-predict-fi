@@ -1,19 +1,19 @@
-*The spot electricity forecast shows a clear turn: Tuesday will stand out as expensive, but prices will fall toward around one cent as the week goes on.*
+*In the spot electricity forecast, Tuesday will stand out as the most expensive day of the week, after which prices will fall and drop to very low levels for the weekend.*
 
-The forecast was updated on Monday at 08:58.
+The forecast was updated on Monday at 12:05.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|              | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday** | 7,9 | 2,8 - 16,1 | 466 - 4284 | 2,4 |
-| **Wednesday** | 3,4 | 1,4 - 7,3 | 1277 - 6340 | 1,9 |
-| **Thursday** | 4,0 | 2,4 - 7,3 | 1622 - 4058 | 1,7 |
-| **Friday** | 3,3 | 2,0 - 5,6 | 1672 - 4188 | 2,0 |
-| **Saturday** | 2,6 | 0,5 - 4,9 | 2251 - 4995 | 1,9 |
-| **Sunday** | 1,5 | 0,9 - 2,4 | 2606 - 4902 | 1,9 |
-| **Monday** | 1,7 | 0,6 - 4,5 | 2986 - 5334 | 2,7 |
+| **Tuesday** | 8.1 | 2.9 - 16.8 | 348 - 4408 | 2.4 |
+| **Wednesday** | 3.6 | 1.6 - 7.4 | 1111 - 6080 | 1.9 |
+| **Thursday** | 4.2 | 2.2 - 8.1 | 1048 - 4949 | 1.7 |
+| **Friday** | 2.8 | 1.6 - 4.5 | 2219 - 3423 | 2.0 |
+| **Saturday** | 3.0 | 1.1 - 5.5 | 1794 - 4457 | 1.9 |
+| **Sunday** | 1.4 | -0.1 - 3.1 | 1781 - 5035 | 1.9 |
+| **Monday** | 1.5 | 0.3 - 4.3 | 2980 - 5201 | 2.9 |
 
-A clear gap will be seen between the beginning and the end of the forecast period. **Tuesday** will be the most expensive day of the period by a wide margin, and the daily average price is expected to rise to 7,9 cents. The highest forecast is 16,1 ¢, so this will no longer be a low-price day. The price will be lifted by exceptionally low wind power, as production will drop to just 466 megawatts at its lowest. At the same time, the day’s highest price will arrive in the evening. A high risk of individual price spikes will be seen on Tuesday around 17:00–19:00.
+Across the forecast period, prices will vary clearly from day to day. **On Tuesday**, the expected average price will rise to 8.1 cents, which will be the highest level of the period. The day’s top quote will reach 16.8 cents, and that high peak will coincide with an exceptionally low minimum in wind power output, which will fall to 348 megawatts. The highest price level will occur in the evening, around 17:00–19:00. Tuesday will also carry a high risk of individual price spikes. **On Wednesday**, the price will already move clearly lower, and the average will remain at 3.6 cents. That will be explained by strong wind power, which is forecast to average 4221 megawatts.
 
-Already on **Wednesday**, prices are expected to fall clearly lower, as the average price will stay at 3,4 cents and strong wind power will support the lower level. On **Friday**, **Sunday** and next **Monday**, the price will also be pushed down by a public holiday, when demand may remain lower than usual. The cheapest moments of the period will be seen on **Saturday** and next **Monday**, when the lowest hourly price will dip to 0,5 and 0,6 cents. The lowest daily price of the whole period will still fall on **Sunday**, when the average price is expected to remain at 1,5 cents. From Sunday to next Monday, the price level will stay very low, and most hours will settle at around 1–2 cents.
+**On Thursday**, the expected average price will settle at 4.2 cents, and **on Friday** it will fall to 2.8 cents. Friday is a public holiday, which may keep demand lower than usual. **On Saturday**, the price level will stay close to Friday’s, but **on Sunday** the average price will drop to 1.4 cents and the lowest hourly price will dip to -0.1 cents. Also next **Monday**, the price level is expected to remain very low, with the day’s average at 1.5 cents. Sunday and Monday are public holidays, which will further support the low price level.
 
-*Read by gpt-5.4* ⚡
+*Read by gpt-5.4* 💡
