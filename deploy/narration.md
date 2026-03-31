@@ -1,19 +1,19 @@
-*Pörssisähkön hinta vaihtelee lähipäivinä melko paljon: kalleimmat päivät osuvat torstaille ja perjantaille, edullisimmat sunnuntaille ja maanantaille.*
+*Pörssisähkön ennusteessa keskiviikko ja pyhäpäivät näyttävät edullisilta, kun taas torstai ja etenkin perjantai nostavat viikon kalleimmat tuntihinnat esiin.*
 
-Ennuste on päivitetty tiistaina klo 14:57.
+Ennuste on päivitetty tiistaina klo 20:57.
 
-|  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **keskiviikko** | 3,4 | 1,7 - 5,7 | 1696 - 6610 | 1,9 |
-| **torstai** | 5,9 | 2,0 - 12,2 | 746 - 5696 | 1,7 |
-| **perjantai** | 5,5 | 3,0 - 11,8 | 135 - 2157 | 2,0 |
-| **lauantai** | 3,1 | 0,9 - 5,1 | 1806 - 3558 | 1,9 |
-| **sunnuntai** | 2,0 | 1,0 - 3,3 | 1278 - 4584 | 1,9 |
-| **maanantai** | 2,1 | 0,7 - 3,6 | 3159 - 4692 | 2,9 |
-| **tiistai** | 4,1 | 1,6 - 8,5 | 2095 - 3997 | 2,9 |
+|              | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:-------------|:------------------------:|:------------------:|:-----------------------------:|:-------------------------:|
+| **keskiviikko** | 1,7 | 0,3 - 5,7 | 1459 - 6638 | 1,9 |
+| **torstai**     | 5,1 | 1,6 - 8,4 | 918 - 5957  | 1,7 |
+| **perjantai**   | 5,5 | 3,5 - 10,2 | 579 - 1823  | 2,0 |
+| **lauantai**    | 3,2 | 0,9 - 6,1 | 1789 - 4099 | 1,9 |
+| **sunnuntai**   | 2,1 | 0,1 - 4,3 | 1351 - 4981 | 1,9 |
+| **maanantai**   | 1,9 | 0,2 - 5,7 | 1967 - 4716 | 2,9 |
+| **tiistai**     | 3,9 | 1,5 - 8,2 | 2081 - 4051 | 2,9 |
 
-Lähipäivien hintaodotus vaihtelee melko selvästi. Edullisimmat päivät osuvat **sunnuntaille** ja **maanantaille**, jolloin päivän keskihinta jää 2,0-2,1 senttiin. Kallein päivä on **torstai**, jolloin keskihinta nousee 5,9 senttiin ja päivän ylin noteeraus käy 12,2 sentissä. Torstain korkeaa huippua selittää hyvin matalalle painuva tuulivoiman minimituotanto, joka jää 746 megawattiin. Myös **perjantaina** tuuli jää heikoksi, sillä päivän keskituotanto jää 986 megawattiin ja minimi painuu 135 megawattiin. Siksi keskihinta pysyy 5,5 sentissä, vaikka päivä on pyhäpäivä ja kysyntä jäänee tavallista matalammaksi.
+Hintajakso jakautuu kahtia. **Keskiviikkona** sähkön odotetaan olevan ennustejakson edullisinta, ja päivän keskihinta jää 1,7 senttiin. Hinta painuu iltapäivällä alimmillaan 0,3 senttiin. Korkeimmat päiväkohtaiset keskihinnat nähdään **torstaina** ja **perjantaina**, jolloin odotukset nousevat 5,1 ja 5,5 senttiin. Perjantai erottuu jakson kalleimpana päivänä myös huipputunnilla, sillä maksimihinnan odotetaan kohoavan 10,2 senttiin. Taustalla on heikko tuuli, ja erityisesti perjantaina tuulivoimaa ennustetaan keskimäärin vain 1024 megawattia. Myös päivän alin tuotanto, 579 megawattia, selittää korkeaa maksimihintaa.
 
-Tuntitasolla suurimmat huiput osuvat **torstaina** iltaan noin klo 17-19, jolloin hintapiikkien riski on korkea ja ennuste käy korkeimmillaan 12,2 sentissä. **Perjantaina** korkein jakso sijoittuu aamupäivään noin klo 8-10, jolloin hinta nousee enimmillään 11,8 senttiin ja yksittäisille tunneille liittyy myös hintapiikkien riski. Selvästi matalimmat lukemat nähdään ensi **maanantaina** varhain aamulla, jolloin hinta käy 0,7 sentissä. Ensi **lauantaina** ja ensi **sunnuntaina** hintataso pysyy muutenkin varsin matalana, ja erityisesti sunnuntai asettuu tasaiseksi alle neljän sentin päiväksi.
+**Torstaina** yksittäisille tunneille liittyy hintapiikkien riski, ja korkein jakso ajoittuisi illalle noin klo 18–20, jolloin ennuste käy 8,4 sentissä. **Perjantaina** vastaava riski liittyy aamupäivään noin klo 8–10, jolloin hinta käy yli 10 sentissä. **Sunnuntai** ja **maanantai** ovat pyhäpäiviä, mikä painaa odotuksia alas. Sunnuntaina hinta painuu illalla alimmillaan 0,1 senttiin, ja maanantaina keskihinta jää 1,9 senttiin. Ensi **tiistaina** taso nousee taas 3,9 senttiin, ja iltahuippu käy 8,2 sentissä.
 
-*Dataa luki gpt-5.4.* 💡
+*Dataa luki gpt-5.4* 💡

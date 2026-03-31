@@ -1,19 +1,19 @@
-*Spot electricity prices will vary quite a bit in the coming days: the most expensive days will be Thursday and Friday, while the cheapest will be Sunday and Monday.*
+*The spot electricity forecast shows Wednesday and the public holidays as inexpensive, while Thursday and especially Friday will bring the week’s highest hourly prices.*
 
-The forecast was updated on Tuesday at 14:57.
+The forecast was updated on Tuesday at 20:57.
 
-|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 3.4 | 1.7 - 5.7 | 1696 - 6610 | 1.9 |
-| **Thursday** | 5.9 | 2.0 - 12.2 | 746 - 5696 | 1.7 |
-| **Friday** | 5.5 | 3.0 - 11.8 | 135 - 2157 | 2.0 |
-| **Saturday** | 3.1 | 0.9 - 5.1 | 1806 - 3558 | 1.9 |
-| **Sunday** | 2.0 | 1.0 - 3.3 | 1278 - 4584 | 1.9 |
-| **Monday** | 2.1 | 0.7 - 3.6 | 3159 - 4692 | 2.9 |
-| **Tuesday** | 4.1 | 1.6 - 8.5 | 2095 - 3997 | 2.9 |
+|              | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:-------------|:-------------------------:|:------------------:|:-----------------------------:|:---------------------------:|
+| **Wednesday** | 1,7 | 0,3 - 5,7 | 1459 - 6638 | 1,9 |
+| **Thursday**  | 5,1 | 1,6 - 8,4 | 918 - 5957  | 1,7 |
+| **Friday**    | 5,5 | 3,5 - 10,2 | 579 - 1823  | 2,0 |
+| **Saturday**  | 3,2 | 0,9 - 6,1 | 1789 - 4099 | 1,9 |
+| **Sunday**    | 2,1 | 0,1 - 4,3 | 1351 - 4981 | 1,9 |
+| **Monday**    | 1,9 | 0,2 - 5,7 | 1967 - 4716 | 2,9 |
+| **Tuesday**   | 3,9 | 1,5 - 8,2 | 2081 - 4051 | 2,9 |
 
-The price outlook for the coming days will vary fairly clearly. The cheapest days will fall on **Sunday** and **Monday**, when the daily average price will stay at 2.0-2.1 cents. The most expensive day will be **Thursday**, when the average price will rise to 5.9 cents and the daily peak will reach 12.2 cents. Thursday’s high peak will be explained by wind power output dropping very low, with the minimum falling to 746 megawatts. On **Friday**, too, wind will remain weak, as average output for the day will stay at 986 megawatts and the minimum will drop to 135 megawatts. That is why the average price will remain at 5.5 cents, even though the day is a holiday and demand will likely stay lower than usual.
+The price period will split into two parts. On **Wednesday**, electricity is expected to be at its cheapest for the forecast period, and the daily average price will remain at 1,7 cents. In the afternoon, the price will fall to as low as 0,3 cents. The highest daily average prices will be seen on **Thursday** and **Friday**, when expectations will rise to 5,1 and 5,5 cents. Friday will also stand out as the most expensive day of the period at the peak hour, as the maximum price is expected to climb to 10,2 cents. The background factor will be weak wind, and on Friday in particular, wind power is forecast to average only 1024 megawatts. The day’s minimum production, 579 megawatts, will also explain the high maximum price.
 
-On the hourly level, the biggest peaks will occur on **Thursday** evening around 17:00-19:00, when the risk of price spikes will be high and the forecast will peak at 12.2 cents. On **Friday**, the highest period will fall in the late morning around 08:00-10:00, when the price will climb to as much as 11.8 cents, and there will also be a risk of price spikes in individual hours. The clearly lowest figures will be seen early on **Monday** morning, when the price will dip to 0.7 cents. On next **Saturday** and next **Sunday**, the price level will otherwise remain quite low as well, and Sunday in particular will settle into a steady day below four cents.
+On **Thursday**, there will be a risk of price spikes in individual hours, and the highest period would fall in the evening around 18:00–20:00, when the forecast reaches 8,4 cents. On **Friday**, a similar risk will be tied to the morning and late morning around 8:00–10:00, when the price rises above 10 cents. **Sunday** and **Monday** are public holidays, which will push expectations lower. On Sunday, the price will drop to as low as 0,1 cents in the evening, and on Monday the average price will stay at 1,9 cents. By next **Tuesday**, the level will rise again to 3,9 cents, and the evening peak will reach 8,2 cents.
 
-*Data read by gpt-5.4.* 💡
+*Data read by gpt-5.4* 💡
