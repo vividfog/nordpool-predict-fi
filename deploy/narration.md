@@ -1,19 +1,19 @@
-*Pörssisähkön ennuste pysyisi enimmäkseen maltillisena, mutta torstai erottuisi jakson kalleimpana päivänä ja sunnuntai tarjoaisi halvimmat tunnit.*
+*Pörssisähkön ennusteessa loppuviikko vaihtelee kohtalaisesti, mutta pyhäpäivät painavat hintatasoa alas ja sunnuntaista odotetaan jakson edullisinta päivää.*
 
-Ennuste on päivitetty tiistaina klo 02:57.
+Ennuste on päivitetty tiistaina klo 08:57.
 
-|               | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **keskiviikko** | 3,7 | 1,9 - 5,7 | 1714 - 6455 | 1,9 |
-| **torstai** | 6,4 | 2,6 - 10,0 | 702 - 5319 | 1,7 |
-| **perjantai** | 4,5 | 2,7 - 7,7 | 986 - 2724 | 2,0 |
-| **lauantai** | 4,5 | 1,7 - 8,1 | 1655 - 2767 | 1,9 |
-| **sunnuntai** | 3,0 | 0,6 - 5,5 | 1348 - 4909 | 1,9 |
-| **maanantai** | 3,0 | 1,6 - 8,3 | 1911 - 4631 | 2,9 |
-| **tiistai** | 4,4 | 2,0 - 7,9 | 2098 - 4279 | 2,4 |
+|              | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:-------------|:------------------------:|:------------------:|:-----------------------------:|:------------------------:|
+| **keskiviikko** | 3,4 | 1,6 - 5,7 | 1556 - 6649 | 1,9 |
+| **torstai** | 5,2 | 2,5 - 9,0 | 1433 - 5599 | 1,7 |
+| **perjantai** | 4,8 | 2,0 - 7,3 | 940 - 2888 | 2,0 |
+| **lauantai** | 3,4 | 0,5 - 7,0 | 2000 - 3306 | 1,9 |
+| **sunnuntai** | 1,9 | 0,7 - 3,1 | 1183 - 4847 | 1,9 |
+| **maanantai** | 2,6 | 1,0 - 7,5 | 1908 - 4555 | 2,9 |
+| **tiistai** | 4,1 | 2,0 - 7,6 | 2089 - 4249 | 2,4 |
 
-Ennustejaksolla nähtäisiin enimmäkseen varsin edullisia tai tavanomaisia sähkönhintoja. Selvin poikkeus olisi **torstai**, jolloin päivän odotettu keskihinta nousisi 6,4 senttiin ja ylin tuntihinta 10,0 senttiin. Torstain korkeampaa hintatasoa selittäisi heikko tuuli, sillä tuulivoiman keskimääräinen tuotanto jäisi 1856 megawattiin. Samalla tuulivoiman minimituotanto putoaisi 702 megawattiin, mikä selittäisi päivän korkeampaa maksimihintaa. Korkeimmat tuntihinnat painottuisivat torstaina aamusta iltaan, ja yksittäisten tuntien hintapiikkien riskiä olisi etenkin noin klo 18–20.
+Hintaodotus vaihtelee ennustejaksolla melko paljon. Edullisimmat päivät osuvat **sunnuntaille** ja ensi **maanantaille**, joilla keskihinta jää 1,9 ja 2,6 senttiin. Sunnuntaina kyseessä on lisäksi pyhäpäivä, mikä painaa kulutusta ja hintaa alaspäin. Jakson korkein keskihinta nähdään **torstaina**, jolloin odotettu päivän keskihinta nousee 5,2 senttiin ja ylin tuntihinta 9,0 senttiin. Torstaina tuulivoiman keskimääräinen tuotanto jää 2388 megawattiin, ja päivän alin tuotanto painuu 1433 megawattiin. Tämä selittää korkeampia hintoja. Myös **perjantaina** tuuli jää heikoksi, keskimäärin 1829 megawattiin, ja päivän alin tuotanto painuu 940 megawattiin, mikä nostaa hintatasoa.
 
-Myös **perjantaina** ja **lauantaina** hinnat vaihtelisivat päivän sisällä tavallista enemmän. Perjantai olisi pyhäpäivä, mikä painaisi kysyntää alemmaksi, mutta heikko tuuli ja 986 megawatin minimituotanto pitäisivät hinnan ajoittain ylempänä. Lauantaina tuulivoiman alin taso jäisi 1655 megawattiin, ja se näkyisi etenkin illalla, jolloin hinta nousisi noin klo 19–21 enimmillään 8,1 senttiin. Edullisimmat hetket osuisivat **sunnuntaille**, joka olisi niin ikään pyhäpäivä. Tuolloin hinta laskisi iltapäivällä ja illalla laajasti 1–2 sentin tuntumaan, ja alin ennuste olisi 0,6 senttiä klo 15.
+Tuntitasolla edullisimmat hetket painottuvat **lauantaina** iltapäivään ja **sunnuntaina** iltaan. Lauantaina alin ennustettu tuntihinta käy 0,5 sentissä klo 15, ja sunnuntaina alin hinta painuu 0,7 senttiin klo 20 ja klo 22. Korkeimmat tuntihinnat osuvat torstain aamupäivään sekä ensi tiistain iltaan. Torstaille ja perjantaille liittyy myös riski yksittäisistä hintapiikeistä. Torstaina korkeimmat tunnit keskittyvät noin klo 08–10 ja perjantaina noin klo 07–09. Pyhäpäivät perjantai, sunnuntai ja maanantai pitävät hintatasoa muutenkin tavallista alempana.
 
-*Hinnoissa mukana gpt-5.4* 💡
+*Hintarivit gpt-5.4* ⚡
