@@ -1,19 +1,19 @@
-*Spot electricity prices will vary clearly in the coming days: the more expensive hours over the weekend will give way to very low price expectations at the start of next week.*
+*The spot electricity forecast will stay low at the start of the week, but pricier hours on Wednesday and Friday will lift the top end of the period.*
 
-The forecast was updated on Thursday at 21:03.
+The forecast was updated on Friday at 03:12.
 
-|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|              | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday** | 5.4 | 2.6 - 10.2 | 79 - 1224 | 2.0 |
-| **Saturday** | 5.9 | 3.8 - 12.0 | 440 - 1763 | 1.9 |
-| **Sunday** | 2.5 | 1.2 - 4.1 | 1089 - 4579 | 1.9 |
-| **Monday** | 1.4 | -0.2 - 2.7 | 3867 - 5437 | 2.9 |
-| **Tuesday** | 3.1 | 1.2 - 6.1 | 3026 - 4636 | 2.9 |
-| **Wednesday** | 4.6 | 2.4 - 8.0 | 1732 - 3301 | 3.2 |
-| **Thursday** | 4.2 | 2.4 - 7.2 | 2216 - 3952 | 1.5 |
+| **Saturday** | 5,7 | 2,8 - 9,7 | 625 - 1674 | 1,9 |
+| **Sunday** | 2,4 | 1,2 - 3,8 | 913 - 5444 | 1,9 |
+| **Monday** | 1,4 | -0,0 - 3,0 | 3611 - 5506 | 2,9 |
+| **Tuesday** | 1,6 | 0,5 - 3,7 | 3636 - 4982 | 2,9 |
+| **Wednesday** | 4,4 | 1,0 - 10,9 | 1550 - 3976 | 3,2 |
+| **Thursday** | 4,4 | 2,7 - 7,1 | 2251 - 3449 | 1,5 |
+| **Friday** | 5,8 | 3,9 - 9,1 | 1394 - 2446 | 1,2 |
 
-A clear difference will be seen in price levels between the days. On **Friday** and **Saturday**, the average price will rise to the highest levels of the forecast period, at 5.4 and 5.9 cents. Friday’s high peak of 10.2 cents and Saturday’s highest reading of the period, 12.0 cents, will be explained in part by weak wind power output. On Friday, wind power will fall to a minimum of 79 megawatts, and on Saturday to 440 megawatts. At the same time, both days will be the most expensive in the forecast. Friday will also be a public holiday, which will push the day’s cheapest hours down to 2.6 cents in the afternoon. On Saturday, there will be a risk of a price spike in the evening, roughly between 18:00 and 20:00.
+During the forecast period, the price level will vary clearly from day to day. The lowest daily expectations will be seen on **Monday** and **Tuesday**, when the average price will stay at 1,4–1,6 cents. On Monday, the period’s lowest hourly price will also be seen at -0,0 ¢ early in the morning. On **Sunday**, the price will also be pushed down by the public holiday, and the day’s average will remain at 2,4 cents. On Saturday, wind power will stay at a very low level, averaging 1012 megawatts, and that will raise the price clearly above most of the rest of the period.
 
-On **Sunday** and next **Monday**, electricity prices will drop clearly lower. Sunday’s average price will remain at 2.5 cents, and Monday is expected to be the cheapest day of the period, averaging 1.4 cents. Monday will also bring the only negative hourly price, when the price dips to -0.2 cents during the day. This will be supported by strong wind power, which will average 4593 megawatts on Monday. Sunday and Monday will also be public holidays. Next **Tuesday**, the price will remain fairly low, but on **Wednesday** it will climb again to an average of 4.6 cents and at most 8.0 cents. On Wednesday, the risk of a price spike will fall in the evening, roughly between 19:00 and 21:00. Next **Thursday**, the expectation will level off at 4.2 cents.
+The most expensive day will be **Friday**, when the average price will rise to 5,8 cents. The highest single-hour forecast, however, will be seen on **Wednesday**, when the price will reach 10,9 cents in the evening. Wednesday’s high peak will be explained by the fact that minimum wind generation will fall to 1550 megawatts, which will lift the day’s maximum price. On **Saturday**, the risk of a price spike will be concentrated in the evening around 19–21, when the forecast reaches 9,0–9,7 cents. On **Sunday** and **Friday**, the risk of individual hourly spikes will also remain present, even though Sunday’s full-day level will stay low.
 
-*By gpt-5.4, from the numbers* 💡
+*Read by gpt-5.4* ⚡
