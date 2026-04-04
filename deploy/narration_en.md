@@ -1,19 +1,19 @@
-*The spot electricity forecast will stay very low from Sunday to Tuesday, but from Wednesday to Saturday the price level will rise clearly.*
+*The spot electricity forecast will stay mostly inexpensive in the coming days, but prices will rise clearly above the early week level by Wednesday and over the weekend.*
 
-The forecast was updated on Saturday at 14:57.
+The forecast was updated on Saturday at 20:57.
 
-|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|               | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 1.2 | 0.5 - 3.3 | 669 - 5546 | 1.9 |
-| **Monday** | 1.8 | -0.5 - 3.4 | 1310 - 5378 | 2.9 |
-| **Tuesday** | 2.5 | 1.2 - 5.2 | 2587 - 3621 | 2.9 |
-| **Wednesday** | 5.3 | 2.8 - 9.1 | 1588 - 2565 | 3.2 |
-| **Thursday** | 4.9 | 2.5 - 8.9 | 1859 - 2815 | 1.5 |
-| **Friday** | 4.8 | 2.7 - 8.0 | 1598 - 2745 | 1.3 |
-| **Saturday** | 4.6 | 1.3 - 7.2 | 931 - 1981 | 2.6 |
+| **Sunday**    | 1,2 | 0,5 - 3,3 | 677 - 5489 | 1,9 |
+| **Monday**    | 1,8 | 0,1 - 3,1 | 1430 - 5376 | 2,9 |
+| **Tuesday**   | 2,5 | 1,2 - 5,3 | 2658 - 4076 | 2,9 |
+| **Wednesday** | 4,5 | 2,3 - 8,6 | 1607 - 3136 | 3,2 |
+| **Thursday**  | 3,1 | 0,8 - 5,9 | 2149 - 4664 | 1,5 |
+| **Friday**    | 4,3 | 1,6 - 8,9 | 1584 - 4269 | 1,3 |
+| **Saturday**  | 4,3 | 1,5 - 6,2 | 944 - 2024 | 2,6 |
 
-During the forecast period, prices will remain mostly low. The lowest daily average prices will be seen on **Sunday** and **Monday**, both of which will be public holidays. On Sunday, the daily average price will fall to 1.2 cents, and from the afternoon into the evening prices will stay for long stretches around 0.5–1.1 cents. On Monday, the lowest hourly price will dip to -0.5 cents in the early morning. On **Tuesday**, the daily average will rise to 2.5 cents, but the day will still remain clearly below four cents for most hours.
+The forecast period will be mostly inexpensive overall. The clearly lowest price expectations will be seen on **Sunday** and **Monday**, which will both be public holidays. On Sunday, the daily average price will remain at 1,2 cents, and the lowest hourly price will fall to 0,5 cents. On Monday, the average price will rise slightly to 1,8 cents, but the lowest hour will still dip to 0,1 cents. Sunday’s low price level will also be explained by abundant wind power, which will climb as high as 5489 megawatts in the evening. On **Tuesday**, the price level will still stay below an average of three cents, even though 5,3 cents will be reached by evening.
 
-The clearest change will be seen on **Wednesday**, when the daily average price will climb to 5.3 cents and the highest hourly price to 9.1 cents. The high peak for the day will be explained in part by wind power dropping at times to a low level, with a minimum of 1588 megawatts. Wednesday will also carry a risk of price spikes during individual hours, and the highest-priced period will fall in the morning around 8–10. On **Thursday**, **Friday** and **Saturday**, the price level will remain below that, although individual hours will still rise to around 7–9 cents. On Saturday, the price will fall again in the afternoon, when the lowest hourly price will touch 1.3 cents.
+The highest daily price expectation will fall on **Wednesday**, when the average price will rise to 4,5 cents and the day’s peak quotation to 8,6 cents. The higher maximum level that day will be explained by wind power dropping to as low as 1607 megawatts. On Wednesday, the risk of price spikes in individual hours will be concentrated especially in the morning, around 8–10, when the forecast peak will be seen. On **Friday**, the day’s highest hourly price will rise slightly higher still, to 8,9 cents, but the average price will remain at 4,3 cents. On **Saturday**, the price level will settle at the same average level, 4,3 cents, and the intraday variation will run from 6,2 cents in the morning to 1,5 cents in the afternoon.
 
-*Price watch, gpt-5.4* 💡
+*Read by gpt-5.4* ⚡
