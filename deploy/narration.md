@@ -1,19 +1,19 @@
-*Pörssisähkön ensi viikon ennusteessa alku pysyy hyvin edullisena, keskiviikko käy jakson kalleimmaksi ja viikonlopulla hinnat tasaantuvat uudelleen.*
+*Pörssisähkön ennuste pysyy enimmäkseen edullisena, mutta keskiviikolle, perjantaille ja lauantaille odotetaan viikon korkeimmat hinnat ja suurimmat vaihtelut.*
 
-Ennuste on päivitetty sunnuntaina klo 15:03.
+Ennuste on päivitetty sunnuntaina klo 20:57.
 
-|  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|               | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **maanantai** | 1,0 | 0,3 - 3,1 | 1738 - 5650 | 2,9 |
-| **tiistai** | 2,6 | 0,7 - 5,7 | 2416 - 3748 | 2,9 |
-| **keskiviikko** | 4,8 | 2,5 - 10,0 | 601 - 3683 | 3,2 |
-| **torstai** | 3,1 | 1,4 - 5,6 | 3272 - 4398 | 1,5 |
-| **perjantai** | 3,9 | 1,6 - 7,6 | 1847 - 4043 | 1,3 |
-| **lauantai** | 4,2 | 1,0 - 7,7 | 1476 - 3641 | 2,6 |
-| **sunnuntai** | 3,0 | 1,2 - 5,7 | 1479 - 3379 | 4,3 |
+| **maanantai** | 1,0 | 0,3 - 3,1 | 1678 - 5765 | 2,9 |
+| **tiistai** | 2,3 | 0,7 - 4,4 | 2868 - 3875 | 2,9 |
+| **keskiviikko** | 4,3 | 2,0 - 7,7 | 1646 - 3409 | 3,2 |
+| **torstai** | 2,8 | 1,2 - 5,2 | 3199 - 4609 | 1,5 |
+| **perjantai** | 4,5 | 2,0 - 8,5 | 1442 - 3849 | 1,3 |
+| **lauantai** | 4,4 | 1,0 - 7,9 | 923 - 3821 | 2,6 |
+| **sunnuntai** | 2,9 | 0,9 - 5,8 | 1427 - 3491 | 4,3 |
 
-Ensi **maanantaina** pörssisähkö tulee olemaan jakson selvästi edullisinta. Päivä on pyhäpäivä, ja se painaa hintaodotusta alas. Päivän keskihinnaksi ennustetaan 1,0 senttiä, ja alin tuntihinta jää 0,3 senttiin. Myös **tiistaina** hinta pysyy varsin matalana, kun päivän keskihinta asettuu 2,6 senttiin. Koko jakson korkein päiväkohtainen keskihinta nähdään **keskiviikkona**, jolloin odotus nousee 4,8 senttiin ja päivän ylin tuntihinta käy 10,0 sentissä. Sitä selittää heikko tuuli, sillä tuulivoiman keskimääräinen tuotanto jää 2236 megawattiin ja päivän minimituotanto painuu 601 megawattiin.
+Ensi **maanantaina** hintaodotus jää hyvin matalaksi, ja päivän keskihinnaksi ennustetaan 1,0 senttiä. Päivä on pyhäpäivä, mikä painaa kysyntää ja näkyy ennusteessa. Edullisimmat tunnit sijoittuvat yölle ja varhaiseen aamuun, jolloin hinta käy 0,3 sentissä. Myös **tiistaina** sähkön odotetaan pysyvän varsin edullisena, sillä keskihinta asettuu 2,3 senttiin. Selvin nousu nähdään **keskiviikkona**, jolloin keskihinta nousee 4,3 senttiin ja päivän korkein noteeraus käy 7,7 sentissä aamupäivällä. Tuulivoima jää silloin tavanomaista matalammalle tasolle, mikä tukee korkeampaa hintatasoa.
 
-**Keskiviikkona** yksittäisille tunneille liittyy myös hintapiikkien riski, ja korkeimmat hinnat ajoittuvat ennusteen mukaan aamupäivään noin klo 8–10. **Lauantaina** päivän keskihinta kohoaa 4,2 senttiin, vaikka iltapäivällä nähdään myös selvästi halvempia tunteja ja alin hinta käy 1,0 sentissä. Päivän korkein noteeraus, 7,7 senttiä, osuu aamupäivälle. **Sunnuntaina** hintaodotus laskee jälleen 3,0 senttiin, mutta iltaan mennessä tuntihinnat nousevat uudelleen, ja korkeimmat lukemat asettuvat noin klo 19–21. Jakso näyttäytyy kokonaisuutena enimmäkseen edullisena, mutta keskiviikko ja lauantai erottuvat muuta viikkoa kalliimpina päivinä.
+Myös **perjantaina** ja **lauantaina** päivän keskihinnat nousevat yli neljän sentin. Jakson korkein yksittäinen tuntihinta ennustetaan perjantaille, jolloin iltahuippu kohoaa 8,5 senttiin. Perjantain korkeaa huippua selittää myös tuulivoiman päivänsisäinen notkahdus, sillä tuotanto käy alimmillaan 1442 megawatissa. **Lauantaina** tuulivoima putoaa hetkittäin vielä tätäkin alemmas, 923 megawattiin, ja siksi yksittäisille tunneille liittyy hintapiikkien riski erityisesti aamulla noin klo 8–10. Myös **keskiviikkona** ja **sunnuntaina** yksittäiset piikit painottuvat ennusteen perusteella iltaan, keskiviikkona noin klo 19–21 ja sunnuntaina noin klo 19–21.
 
-*Dataa luki gpt-5.4.* 💡
+*Hintahetket gpt-5.4* 💡
