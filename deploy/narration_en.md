@@ -1,19 +1,19 @@
-*The spot electricity forecast will stay mostly inexpensive in the coming days, but prices will rise clearly above the early week level by Wednesday and over the weekend.*
+*The spot electricity forecast suggests a mostly inexpensive week, but Wednesday and Saturday will lift the price level above the rest of the period.*
 
-The forecast was updated on Saturday at 20:57.
+The forecast was updated on Sunday at 03:10.
 
-|               | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday**    | 1,2 | 0,5 - 3,3 | 677 - 5489 | 1,9 |
-| **Monday**    | 1,8 | 0,1 - 3,1 | 1430 - 5376 | 2,9 |
-| **Tuesday**   | 2,5 | 1,2 - 5,3 | 2658 - 4076 | 2,9 |
-| **Wednesday** | 4,5 | 2,3 - 8,6 | 1607 - 3136 | 3,2 |
-| **Thursday**  | 3,1 | 0,8 - 5,9 | 2149 - 4664 | 1,5 |
-| **Friday**    | 4,3 | 1,6 - 8,9 | 1584 - 4269 | 1,3 |
-| **Saturday**  | 4,3 | 1,5 - 6,2 | 944 - 2024 | 2,6 |
+| **Monday** | 1.1 | -0.5 - 3.0 | 1846 - 5572 | 2.9 |
+| **Tuesday** | 2.5 | 1.5 - 5.0 | 2911 - 4478 | 2.9 |
+| **Wednesday** | 5.4 | 2.0 - 10.1 | 1610 - 4220 | 3.2 |
+| **Thursday** | 3.3 | 1.0 - 6.4 | 2307 - 4874 | 1.5 |
+| **Friday** | 4.5 | 2.1 - 7.7 | 1639 - 3958 | 1.3 |
+| **Saturday** | 5.0 | 1.6 - 7.1 | 986 - 2445 | 2.6 |
+| **Sunday** | 2.7 | 0.5 - 4.1 | 2087 - 3741 | 4.3 |
 
-The forecast period will be mostly inexpensive overall. The clearly lowest price expectations will be seen on **Sunday** and **Monday**, which will both be public holidays. On Sunday, the daily average price will remain at 1,2 cents, and the lowest hourly price will fall to 0,5 cents. On Monday, the average price will rise slightly to 1,8 cents, but the lowest hour will still dip to 0,1 cents. Sunday’s low price level will also be explained by abundant wind power, which will climb as high as 5489 megawatts in the evening. On **Tuesday**, the price level will still stay below an average of three cents, even though 5,3 cents will be reached by evening.
+On **Monday**, spot electricity will stay at the lowest level of the week. The day will be a public holiday, and that will push the price expectation down. During the night and early morning hours, the price will briefly turn negative, with the lowest forecast at -0.5 cents per kilowatt-hour. **Tuesday** will also remain fairly low-priced, although the evening will briefly rise to 5.0 cents. The highest daily average price of the forecast period will be seen on **Wednesday**, when the average will climb to 5.4 cents and the highest hourly price to 10.1 cents.
 
-The highest daily price expectation will fall on **Wednesday**, when the average price will rise to 4,5 cents and the day’s peak quotation to 8,6 cents. The higher maximum level that day will be explained by wind power dropping to as low as 1607 megawatts. On Wednesday, the risk of price spikes in individual hours will be concentrated especially in the morning, around 8–10, when the forecast peak will be seen. On **Friday**, the day’s highest hourly price will rise slightly higher still, to 8,9 cents, but the average price will remain at 4,3 cents. On **Saturday**, the price level will settle at the same average level, 4,3 cents, and the intraday variation will run from 6,2 cents in the morning to 1,5 cents in the afternoon.
+Wednesday’s higher price level will be explained by weak wind power, with an average of 2373 MW. The day’s lowest wind generation will fall to 1610 MW, and this low minimum output will also explain why the day’s highest price will stand out more clearly than on the rest of the week. There will be a risk of price spikes on Wednesday especially in the evening around 17:00–19:00. On **Saturday**, wind power will also remain at the weakest level of the week, averaging 1466 MW, and that will lift the day’s average price to 5.0 cents. Possible price spikes on Saturday will be concentrated in the night and morning hours around 00:00–02:00. On **Sunday**, the price level will ease again, and in the afternoon it will dip as low as 0.5 cents.
 
-*Read by gpt-5.4* ⚡
+*Read from the numbers by gpt-5.4* 💡
