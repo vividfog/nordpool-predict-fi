@@ -1,19 +1,19 @@
-*The spot electricity forecast suggests a mostly inexpensive week, but Wednesday and Saturday will lift the price level above the rest of the period.*
+*The spot electricity forecast will start the week at a very low level, but clearly higher prices than on other days are expected for Wednesday and Saturday.*
 
-The forecast was updated on Sunday at 03:10.
+The forecast was updated on Sunday at 08:57.
 
 |  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 1.1 | -0.5 - 3.0 | 1846 - 5572 | 2.9 |
-| **Tuesday** | 2.5 | 1.5 - 5.0 | 2911 - 4478 | 2.9 |
-| **Wednesday** | 5.4 | 2.0 - 10.1 | 1610 - 4220 | 3.2 |
-| **Thursday** | 3.3 | 1.0 - 6.4 | 2307 - 4874 | 1.5 |
-| **Friday** | 4.5 | 2.1 - 7.7 | 1639 - 3958 | 1.3 |
-| **Saturday** | 5.0 | 1.6 - 7.1 | 986 - 2445 | 2.6 |
-| **Sunday** | 2.7 | 0.5 - 4.1 | 2087 - 3741 | 4.3 |
+| **Monday** | 1.2 | -0.6 - 3.2 | 1848 - 5554 | 2.9 |
+| **Tuesday** | 2.8 | 1.5 - 5.8 | 2898 - 3799 | 2.9 |
+| **Wednesday** | 5.2 | 2.3 - 9.5 | 1484 - 3509 | 3.2 |
+| **Thursday** | 3.0 | 0.8 - 5.6 | 2705 - 4682 | 1.5 |
+| **Friday** | 4.7 | 1.9 - 7.8 | 1625 - 4205 | 1.3 |
+| **Saturday** | 5.2 | 1.4 - 7.3 | 973 - 2363 | 2.6 |
+| **Sunday** | 2.6 | 0.3 - 4.3 | 1940 - 3697 | 4.3 |
 
-On **Monday**, spot electricity will stay at the lowest level of the week. The day will be a public holiday, and that will push the price expectation down. During the night and early morning hours, the price will briefly turn negative, with the lowest forecast at -0.5 cents per kilowatt-hour. **Tuesday** will also remain fairly low-priced, although the evening will briefly rise to 5.0 cents. The highest daily average price of the forecast period will be seen on **Wednesday**, when the average will climb to 5.4 cents and the highest hourly price to 10.1 cents.
+On **Monday**, the electricity price forecast will fall to the lowest level of the week. Because the day will be a public holiday, demand is expected to be softer than usual, and the average price will remain at 1.2 cents. During the early night, the price will also dip below zero, with the lowest reading at -0.6 c. **Tuesday** and **Thursday** will also remain fairly moderate, as average daily prices are expected at 2.8 and 3.0 cents. On **Sunday**, the price will ease again, and in the afternoon it will drop as low as 0.3 cents.
 
-Wednesday’s higher price level will be explained by weak wind power, with an average of 2373 MW. The day’s lowest wind generation will fall to 1610 MW, and this low minimum output will also explain why the day’s highest price will stand out more clearly than on the rest of the week. There will be a risk of price spikes on Wednesday especially in the evening around 17:00–19:00. On **Saturday**, wind power will also remain at the weakest level of the week, averaging 1466 MW, and that will lift the day’s average price to 5.0 cents. Possible price spikes on Saturday will be concentrated in the night and morning hours around 00:00–02:00. On **Sunday**, the price level will ease again, and in the afternoon it will dip as low as 0.5 cents.
+The clearest increase will be seen on **Wednesday**, when the daily average price is forecast at 5.2 c and the highest reading at 9.5 c. At the same time, wind power will fall to the lowest average level of the week, 2460 megawatts, and the daily minimum output will sink to 1484 megawatts, which will explain the higher peak price. On Wednesday, the risk of a price spike will be concentrated especially around 17:00–19:00. **Saturday** will also rise to an average of 5.2 cents, and wind power will remain at a very low level, averaging 1427 megawatts. The day's highest reading will be 7.3 c, and the risk of a price spike will be focused in the early morning around 03:00–05:00. On **Friday**, the average price will climb to 4.7 cents, and in the evening it will reach 7.8 cents.
 
-*Read from the numbers by gpt-5.4* 💡
+*Price watch, gpt-5.4* 💡
