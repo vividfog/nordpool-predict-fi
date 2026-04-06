@@ -1,19 +1,19 @@
-*Day-ahead electricity price forecasts for the coming days will show clear differences between days: Tuesday and Sunday will be the cheapest, Friday the most expensive.*
+*The spot electricity forecast will show clear price variation: Tuesday will be the cheapest day, while next Monday will be the most expensive of the period.*
 
-The forecast was updated on Monday at 08:57.
+The forecast was updated on Monday at 11:57.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday** | 2,0 | 0,7 - 4,6 | 3350 - 4465 | 2,9 |
-| **Wednesday** | 4,0 | 2,0 - 8,1 | 1692 - 4371 | 3,2 |
-| **Thursday** | 3,8 | 1,1 - 6,3 | 2463 - 4513 | 1,5 |
-| **Friday** | 4,9 | 1,7 - 9,2 | 1314 - 4100 | 1,3 |
-| **Saturday** | 4,2 | 1,3 - 6,9 | 938 - 3217 | 2,6 |
-| **Sunday** | 2,3 | 0,1 - 3,5 | 1018 - 3364 | 4,3 |
-| **Monday** | 3,6 | 1,2 - 8,8 | 1214 - 2810 | 4,9 |
+| **Tuesday** | 3,3 | 0,7 - 5,7 | 3055 - 4768 | 2,9 |
+| **Wednesday** | 7,3 | 2,3 - 15,7 | 612 - 4499 | 3,2 |
+| **Thursday** | 4,9 | 2,4 - 10,1 | 1393 - 4537 | 1,5 |
+| **Friday** | 6,5 | 2,3 - 9,9 | 1756 - 3986 | 1,3 |
+| **Saturday** | 6,6 | 3,2 - 11,1 | 746 - 3558 | 2,6 |
+| **Sunday** | 4,8 | 2,4 - 8,4 | 1046 - 3482 | 4,3 |
+| **Monday** | 9,9 | 4,7 - 16,8 | 448 - 1401 | 5,1 |
 
-The forecast period will show fairly large differences between days. The cheapest day will be **Tuesday**, when the average daily price will stay at 2,0 cents and the lowest hourly price will dip to 0,7 cents. **Sunday** will also remain inexpensive, with the average price settling at 2,3 cents and dropping as low as 0,1 cents in the afternoon. The highest daily average price of the period will be seen on **Friday**, when the expected level will rise to 4,9 cents and the evening peak will reach 9,2 cents.
+Clear differences will be seen between the days in this forecast period. On **Tuesday**, electricity is expected to be the cheapest of the period, and the daily average price will stay at 3,3 cents. The low level will be supported by abundant wind power, which is forecast to average 3681 megawatts. On **Wednesday**, the average price will rise to 7,3 cents and the day’s highest reading will reach 15,7 cents. At the same time, wind power will drop very low at times, with minimum production forecast at only 612 megawatts. This low minimum in wind power will explain the day’s high maximum price. A high risk of individual price spikes will fall on Wednesday around 18:00–20:00.
 
-The highest individual hourly prices will also occur on **next Monday**, when the price will climb to 8,8 cents in the late morning. On **Wednesday**, the evening price will rise to 8,1 cents, while wind power production will fall to 1692 megawatts during the day, which will explain the higher maximum price. On **Friday**, minimum wind production will drop to 1314 megawatts, and that will show up as the week’s highest hourly price in the evening. On **Saturday** and **Sunday**, there will be a risk of price spikes during individual hours. On Saturday, the most sensitive period will fall in the morning from 7 to 9, and on Sunday the most closely watched period will be in the evening from 19 to 21.
+On **Thursday**, the price level will fall back to an average of 4,9 cents as wind power becomes abundant again. On **Saturday** and **Sunday**, prices will remain mostly at a mid-range level, but a risk of price spikes is forecast for individual hours. Next **Monday**, the highest average price of the period, 9,9 cents, will coincide with the highest hourly price in the whole forecast, 16,8 cents. Wind power will then remain exceptionally weak, with the daily average forecast at only 811 megawatts and the minimum dropping to 448 megawatts. A high risk of individual price spikes will fall on Monday around 8:00–10:00, when the most expensive morning hours will be seen.
 
-*Price watch, gpt-5.4* ⚡
+*Price read by gpt-5.4* 💡
