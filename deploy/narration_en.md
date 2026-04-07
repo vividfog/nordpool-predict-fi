@@ -1,19 +1,19 @@
-*The spot electricity forecast suggests the weekend will be clearly the cheapest part of the period, while next Monday and Tuesday are expected to bring the highest prices.*
+*The spot electricity forecast shows clear day-to-day variation: Sunday will be distinctly the cheapest, while next Monday will be the most expensive day of the period.*
 
-The forecast was updated on Tuesday at 20:57.
+The forecast was updated on Wednesday at 02:57.
 
-|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | avg.<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 9,4 | 3,2 - 21,4 | 893 - 4555 | 3,2 |
-| **Thursday** | 7,3 | 3,1 - 11,9 | 981 - 3705 | 1,5 |
-| **Friday** | 7,7 | 3,1 - 13,6 | 1260 - 3996 | 1,3 |
-| **Saturday** | 5,9 | 2,9 - 10,5 | 1166 - 3764 | 2,6 |
-| **Sunday** | 4,7 | 2,3 - 9,3 | 1416 - 3196 | 4,3 |
-| **Monday** | 12,2 | 4,7 - 20,8 | 657 - 2246 | 5,1 |
-| **Tuesday** | 11,0 | 6,3 - 20,4 | 747 - 1353 | 5,5 |
+| **Thursday** | 8,1 | 3,1 - 14,8 | 781 - 4336 | 1,5 |
+| **Friday** | 9,4 | 2,5 - 15,2 | 649 - 4848 | 1,3 |
+| **Saturday** | 7,9 | 3,6 - 15,4 | 894 - 3242 | 2,6 |
+| **Sunday** | 4,9 | 2,5 - 6,7 | 1246 - 2588 | 4,3 |
+| **Monday** | 12,8 | 4,8 - 24,4 | 703 - 2287 | 5,1 |
+| **Tuesday** | 9,5 | 5,8 - 17,1 | 792 - 2236 | 5,5 |
+| **Wednesday** | 11,4 | 7,5 - 18,4 | 948 - 2382 | 4,9 |
 
-Across the forecast period, the price level is expected to vary fairly clearly from day to day. The cheapest day will be **Sunday**, when the average price is expected to be 4,7 cents and the lowest hourly price 2,3 cents. The most expensive day will be next **Monday**, when the daily average is forecast to rise to 12,2 cents and the highest hourly price to 20,8 cents. On **Tuesday**, the average price will also remain high at 11,0 cents, with the daily peak reaching 20,4 cents. The highest hourly price of the whole period will, however, be seen already on **Wednesday**, when the price will rise in the evening between 19:00 and 21:00 to 21,4 cents.
+Clear variation will appear in the price level between the days. The cheapest day will be **Sunday**, when the average price will stay at 4,9 cents and the day’s range will be 2,5–6,7 cents. The most expensive day will be next **Monday**, when the average price will rise to 12,8 cents and the peak will reach 24,4 cents. At the same time, wind power will remain at the weakest level of the forecast period on Monday, averaging 1129 megawatts, and the day’s minimum output will fall to 703 megawatts. That low minimum in wind generation will explain the high maximum price. **Tuesday** and next **Wednesday** will also remain fairly expensive, with average prices of 9,5 and 11,4 cents.
 
-The price level will be explained above all by weak wind power on several days. On **Monday**, wind power is forecast to average only 1063 megawatts, and the daily minimum will fall to 657 megawatts. That low production will also explain the day’s high peak price. On **Tuesday**, wind power will similarly remain very low, averaging 1076 megawatts, which will support the elevated price level. The risk of price spikes is also noted for **Thursday**, **Friday**, **Saturday** and **Sunday** during individual hours. The highest risk will still be on next **Monday** around 9:00–11:00 and on next **Tuesday** around 8:00–10:00.
+Intra-day variation will be large especially on **Thursday**, **Friday** and **Saturday**, when prices will be clearly lower at night or late in the evening than during the late morning. Thursday’s peak will fall around 08–10, and Friday’s highest period around 18–20. On Saturday, the highest-price period will be seen around 10–12. A high risk of individual price spikes has also been marked for those days. The clearest spike risks, however, will fall on next **Monday**, when the highest period will be around 16–18, and on next **Wednesday**, when the highest price level will be concentrated around 08–10.
 
-*Prices read by gpt-5.4* 💡
+*Price watch, gpt-5.4* ⚡
