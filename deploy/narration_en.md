@@ -1,19 +1,19 @@
-*Exchange electricity prices will vary clearly over the coming days: Sunday will stand out as the cheapest day, while more expensive hours are expected early next week.*
+*The spot electricity price will vary clearly over the coming days, with the highest price level expected next Monday, while Sunday will look the cheapest.*
 
-The forecast was updated on Wednesday at 08:57.
+The forecast has been updated on Wednesday at 11:57.
 
-|              | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday** | 8,0 | 3,1 - 14,6 | 756 - 4413 | 1,5 |
-| **Friday** | 8,2 | 1,8 - 13,9 | 1085 - 4884 | 1,3 |
-| **Saturday** | 8,4 | 5,2 - 12,9 | 885 - 2586 | 2,6 |
-| **Sunday** | 5,2 | 2,3 - 9,7 | 1631 - 2426 | 4,3 |
-| **Monday** | 11,4 | 6,1 - 18,3 | 718 - 2031 | 5,1 |
-| **Tuesday** | 9,6 | 5,7 - 16,6 | 851 - 2264 | 5,5 |
-| **Wednesday** | 10,4 | 6,8 - 17,0 | 943 - 2412 | 4,9 |
+| **Thursday** | 8,6 | 3,1 - 16,7 | 725 - 4405 | 1,5 |
+| **Friday** | 9,6 | 2,4 - 15,2 | 540 - 4716 | 1,3 |
+| **Saturday** | 7,8 | 5,1 - 14,3 | 340 - 2708 | 2,6 |
+| **Sunday** | 5,8 | 3,0 - 10,7 | 1356 - 2368 | 4,3 |
+| **Monday** | 11,8 | 5,2 - 22,9 | 713 - 2079 | 5,1 |
+| **Tuesday** | 8,1 | 5,2 - 14,4 | 1432 - 2250 | 5,5 |
+| **Wednesday** | 8,4 | 4,4 - 15,8 | 1031 - 2073 | 5,1 |
 
-The price level will remain variable over the forecast period. **Sunday** will be the cheapest day, with the average price expected at 5,2 cents and the daily low falling to 2,3 cents. The most expensive day will be next **Monday**, when the average price will rise to 11,4 cents and the highest hourly price to 18,3 cents. Next **Wednesday** will also reach 17,0 cents, and next **Tuesday** 16,6 cents, so the latter part of the period will be clearly higher in price than the beginning.
+The price level will vary quite clearly over the forecast period. The cheapest day will be **Sunday**, when the average price will stay at 5,8 cents and the lowest hourly price will fall to 3,0 cents. The most expensive day will be next **Monday**, when the daily average price is expected to reach 11,8 cents and the highest hourly price 22,9 cents. On **Friday** too, the average price will rise to 9,6 cents. The lowest single hourly price of the period will be seen on **Friday** at night, when the price will dip to 2,4 cents at 01:00. The highest hourly price will occur on next **Monday** in the late morning.
 
-High individual hourly prices will already appear on **Thursday**, when the intraday range will stretch from 3,1 to 14,6 cents. At the same time, wind power output will dip very low, to a minimum of 756 megawatts, which will explain the higher peak price. The risk of price spikes on Thursday will be greatest around 09–11. A similar link will be seen next **Monday**, when the wind power minimum will remain at 718 megawatts and the highest price will occur around 08–10. Next **Tuesday**, the peak will be concentrated in the same morning window, and next **Wednesday**, the highest level will likewise be seen around 07–09.
+The highest peaks are linked to days when wind power minimum production will drop very low. On **Thursday**, wind power will fall to 725 megawatts at its lowest, and at the same time the daily peak will climb to 16,7 cents. The risk of price spikes will then be high especially around 09:00–11:00. The same pattern will appear on **Friday**, when wind power will dip to 540 megawatts and the daily price will rise to as much as 15,2 cents. Next **Monday**, average wind power production will remain the lowest of the period, at 1116 megawatts, and that will explain the highest price level of the stretch. Then too, the risk of price spikes during individual hours will be high around 08:00–10:00. On next **Wednesday** as well, the spike risk will stay elevated around 08:00–10:00, even though the daily average price will remain at 8,4 cents.
 
-*Read by gpt-5.4.* ⚡
+*Data read by gpt-5.4* ⚡
