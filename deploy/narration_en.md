@@ -1,19 +1,19 @@
-*Next week’s exchange electricity forecast shows clear price variation: Sunday will be the cheapest day, while Monday and Thursday will be the most expensive.*
+*The spot electricity forecast will show the start of the week as the most expensive part of the period, while Sunday and next Saturday will remain clearly cheaper.*
 
-The forecast was updated on Saturday at 02:57.
+The forecast was updated on Saturday at 08:57.
 
-|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 6.2 | 2.7 - 11.1 | 513 - 2319 | 4.3 |
-| **Monday** | 12.4 | 6.2 - 20.3 | 145 - 1776 | 5.1 |
-| **Tuesday** | 8.7 | 4.5 - 14.8 | 840 - 2304 | 5.5 |
-| **Wednesday** | 9.7 | 4.5 - 18.5 | 947 - 2218 | 5.1 |
-| **Thursday** | 12.2 | 7.7 - 18.0 | 831 - 1637 | 4.8 |
-| **Friday** | 10.4 | 6.8 - 15.9 | 976 - 1911 | 5.3 |
-| **Saturday** | 7.6 | 5.0 - 10.4 | 1060 - 2215 | 6.0 |
+| **Sunday** | 5.9 | 2.6 - 10.9 | 547 - 2319 | 4.3 |
+| **Monday** | 11.7 | 6.6 - 22.2 | 334 - 2012 | 5.1 |
+| **Tuesday** | 9.2 | 3.9 - 16.8 | 828 - 1886 | 5.5 |
+| **Wednesday** | 11.1 | 6.6 - 20.3 | 677 - 1806 | 5.1 |
+| **Thursday** | 8.1 | 3.9 - 13.6 | 940 - 2555 | 4.8 |
+| **Friday** | 10.0 | 6.3 - 15.3 | 967 - 1907 | 5.3 |
+| **Saturday** | 7.2 | 4.5 - 10.5 | 1071 - 2142 | 6.0 |
 
-The price period will vary quite a bit. The cheapest day will be **Sunday**, when the daily average price will remain at 6.2 cents and the lowest hourly price will fall to 2.7 cents. The most expensive day will be **Monday**, when the average price will rise to 12.4 cents and the highest hourly price will reach 20.3 cents. Monday’s high price outlook will be explained by exceptionally weak wind power, as the day’s average output will remain at 774 megawatts and the lowest output will drop to 145 megawatts. At the same time, that low minimum output will also explain the day’s highest price. On **Thursday**, too, the average price will stay high at 12.2 cents, as average wind generation will remain at 1087 megawatts.
+Fairly large differences will appear between the days in this forecast period. The cheapest day will be **Sunday**, when the daily average price is expected to be 5.9 cents and the lowest hourly price will dip to 2.6 cents in the afternoon. The most expensive day will be **Monday**, when the average price will rise to 11.7 cents and the daily peak will reach 22.2 cents. **Wednesday** will also remain expensive, with an average price of 11.1 cents and a maximum of 20.3 cents. The highest individual hourly prices of the period will therefore fall on next Monday and next Wednesday.
 
-At the hourly level, the greatest spike risks will fall in the mornings and evenings. On **Monday**, individual price spikes will be more likely around 08:00–10:00, when the forecast peak reaches 20.3 cents, and again around 18:00–20:00. On **Wednesday**, the highest hourly price, 18.5 cents, will land in the morning around 08:00–10:00. On **Thursday**, the price peak will fall at the same time, around 08:00–10:00, when the price will reach 18.0 cents. Toward the end of the period, expectations will even out, and next **Saturday** daily prices will remain between 5.0 and 10.4 cents.
+Price levels will be pushed up on several days by weak wind power generation. This will be clearest on **Monday**, when average wind power will remain at 919 megawatts and minimum production will drop to 334 megawatts. At the same time, the day’s high peak price will be well explained by very low wind output. A similar link will also be seen on **Tuesday**, when the wind power minimum stays at 828 megawatts and the price climbs to 16.8 cents at most, and on **Friday**, when a minimum output of 967 megawatts coincides with a peak of 15.3 cents. The risk of price spikes will stand out on Sunday around 19:00–21:00, Monday around 08:00–10:00, Tuesday around 07:00–09:00, Wednesday around 08:00–10:00, Thursday around 21:00–23:00, Friday around 07:00–09:00 and Saturday around 19:00–21:00.
 
-*Data read by gpt-5.4.* ⚡
+*Price watch, gpt-5.4* ⚡
