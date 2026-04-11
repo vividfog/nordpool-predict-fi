@@ -1,19 +1,19 @@
-*The spot electricity forecast for the coming week will vary clearly from day to day, and the highest hourly prices will be concentrated especially on Monday and Friday.*
+*The spot electricity forecast shows the week starting clearly more expensive than the rest of the period, while prices are expected to ease noticeably by the weekend.*
 
-The forecast was updated on Saturday at 20:57.
+The forecast was updated on Sunday at 02:57.
 
 |  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 7,9 | 4,2 - 16,2 | 412 - 2565 | 4,3 |
-| **Monday** | 12,7 | 7,5 - 21,2 | 162 - 2429 | 5,1 |
-| **Tuesday** | 9,5 | 6,0 - 20,6 | 471 - 2926 | 5,5 |
-| **Wednesday** | 10,1 | 4,6 - 18,6 | 704 - 2500 | 5,1 |
-| **Thursday** | 9,0 | 6,4 - 13,0 | 865 - 2451 | 4,8 |
-| **Friday** | 11,6 | 6,5 - 22,6 | 764 - 2623 | 5,3 |
-| **Saturday** | 8,0 | 4,3 - 13,1 | 1015 - 1960 | 5,8 |
+| **Monday** | 13,3 | 7,1 - 23,7 | 164 - 2149 | 5,1 |
+| **Tuesday** | 10,4 | 6,4 - 19,1 | 195 - 1197 | 5,5 |
+| **Wednesday** | 10,9 | 6,0 - 24,2 | 746 - 1944 | 5,1 |
+| **Thursday** | 8,3 | 5,1 - 13,0 | 853 - 2193 | 4,8 |
+| **Friday** | 9,4 | 5,6 - 16,8 | 763 - 2236 | 5,3 |
+| **Saturday** | 7,1 | 3,7 - 10,5 | 903 - 1727 | 5,8 |
+| **Sunday** | 8,4 | 4,9 - 15,6 | 599 - 1694 | 6,2 |
 
-The price forecast shows large differences between the days. The lowest average prices are expected on **Sunday** and next **Saturday**, when the daily average will remain around eight cents. The most expensive day will be **Monday**, when the average price will rise to 12,7 cents and the highest hourly price to 21,2 cents. A high level is also expected on **Friday**, as the daily average will climb to 11,6 cents and the highest hourly price to 22,6 cents. The lowest hourly prices of the whole period will be seen on Sunday and next Saturday, at 4,2–4,3 cents.
+On **Monday**, the price outlook will rise to the highest level of the period. The daily average is forecast at 13,3 c, and the peak quote would reach 23,7 cents. **Wednesday** will also stand out with a high peak, as the maximum is forecast at 24,2 c and the daily average at 10,9 c. On both days, wind power will drop to very low levels at times, and that low minimum output will explain the higher peak hours. The same link will also be seen on **Tuesday**, when wind power falls to a minimum of 195 megawatts and the day’s highest price climbs to 19,1 cents. A high risk of price spikes for individual hours is noted for Monday, Tuesday and Wednesday. According to the forecast, the peaks will fall in the morning to late morning, roughly between 8 and 10.
 
-The highest individual hourly prices are expected to fall mainly in the morning or evening. On **Monday**, the risk of a price spike will be high especially around 18:00–20:00, and at the same time wind power will drop very low, which explains the high peak. On **Tuesday**, the highest-priced period will fall around 8:00–10:00, when the price will move above 20 cents. On **Wednesday**, the peak will be concentrated in the morning around 7:00–9:00. On **Friday**, the highest level will occur around 9:00–11:00, and the day’s low wind power minimum of 764 megawatts will partly explain the week’s highest peak price.
+The cheapest day of the period would be **Saturday**, when the daily average would stay at 7,1 cents and the lowest hourly price would drop to 3,7 cents in the afternoon. On **Thursday**, the price level will remain more even overall, with the day ranging between 5,1 and 13,0 cents. On **Friday**, the average price will rise to 9,4 cents, and a high spike risk is also noted for individual hours on that day. On **Sunday**, the daily average will be 8,4 cents, but prices are expected to increase toward the evening, as rates between 19:00 and 21:00 will reach about 15–16 cents. Across the whole period, the cheapest moment will fall on Saturday afternoon, while the most expensive single hour will be seen on Wednesday late morning.
 
-*For readers, gpt-5.4* ⚡
+*Price brief by gpt-5.4* 💡
