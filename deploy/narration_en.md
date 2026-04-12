@@ -1,19 +1,19 @@
-*In the spot electricity forecast, weekdays would be clearly pricier than the weekend, and the highest hourly prices would cluster especially around midweek.*
+*Spot electricity will stay mostly fairly elevated in the coming days, drop clearly over the weekend, and show notable hour-to-hour swings at times.*
 
-The forecast was updated on Sunday at 20:57.
+The forecast was updated on Monday at 02:57.
 
 |  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 13,1 | 6,2 - 22,4 | 128 - 2009 | 5,1 |
-| **Tuesday** | 11,3 | 7,8 - 20,6 | 172 - 1294 | 5,5 |
-| **Wednesday** | 13,4 | 8,4 - 30,0 | 378 - 1588 | 5,1 |
-| **Thursday** | 12,2 | 8,5 - 17,8 | 746 - 1554 | 4,8 |
-| **Friday** | 11,8 | 8,4 - 21,4 | 779 - 1369 | 5,3 |
-| **Saturday** | 7,7 | 3,5 - 11,1 | 1037 - 1666 | 5,8 |
-| **Sunday** | 6,0 | 2,4 - 10,7 | 846 - 1922 | 6,4 |
+| **Tuesday** | 11,3 | 7,6 - 20,1 | 158 - 1375 | 5,5 |
+| **Wednesday** | 13,1 | 8,5 - 28,6 | 111 - 1906 | 5,1 |
+| **Thursday** | 11,2 | 7,3 - 16,4 | 754 - 1842 | 4,8 |
+| **Friday** | 11,1 | 7,8 - 19,1 | 827 - 1824 | 5,3 |
+| **Saturday** | 7,4 | 4,4 - 10,6 | 1129 - 1864 | 5,8 |
+| **Sunday** | 6,6 | 2,8 - 8,9 | 949 - 1755 | 6,4 |
+| **Monday** | 10,9 | 5,2 - 20,6 | 675 - 1786 | 6,5 |
 
-Next **Monday** and **Wednesday**, the daily price level would sit at the top end of the forecast period. Wednesday would stand out the most, as the day’s average price would rise to 13,4 cents and the highest hourly price would reach 30,0 cents. In the hourly forecast, the peak would fall on Wednesday roughly between 8:00 and 10:00. Monday would also bring a clear morning spike around 7:00–9:00, when the price would climb to as much as 22,4 cents. The overall price level across the forecast period would otherwise remain fairly high, since the average price on every weekday would exceed 11 cents.
+Over the forecast period, the electricity price will remain fairly high on most days. The most expensive day will be **Wednesday**, when the average price is expected to reach 13,1 c/kWh and the highest hourly price will climb to 28,6 cents. On **Tuesday** and next **Monday** as well, the highest hourly price will rise to around 20 cents. The cheapest days will fall on the weekend. On **Sunday**, the daily average price will drop to 6,6 cents and the lowest hourly price will dip to 2,8 cents. On **Saturday**, the average price will stay at 7,4 cents.
 
-The price level would be explained on several days by weak wind power generation. On **Tuesday**, **Wednesday**, **Thursday** and **Friday**, average wind generation would remain below 1000–1050 megawatts, and during individual hours output would drop very low. On Wednesday in particular, the minimum output of 378 megawatts would coincide with the week’s highest maximum price. On Tuesday, Wednesday, Thursday and Friday there would also be a high risk of individual price spikes. Wednesday’s spike could fall around 8:00–10:00, Tuesday’s around 18:00–20:00, Thursday’s around 19:00–21:00 and Friday’s around 7:00–9:00. On **Saturday** and **Sunday**, the price level would fall clearly. Sunday would be expected to bring the cheapest electricity of the period, and in the afternoon around 13:00–15:00 the price would drop as low as 2,4 cents.
+Prices will be lifted by weak wind power throughout the period. On **Tuesday**, wind generation will fall to as low as 158 megawatts, and at the same time the most expensive evening stretch will land around 18:00–20:00. On **Wednesday**, the wind power minimum will remain at 111 megawatts, which will explain the period’s highest price spike in the morning around 08:00–10:00. On **Thursday**, **Friday** and next **Monday** as well, there will be a high risk of price spikes during individual hours. Over the weekend, price variation will ease, although on **Sunday** the cheapest hours of the period will still be seen in the afternoon around 13:00–16:00.
 
-*Data parsed by gpt-5.4.* 💡
+*On price watch, gpt-5.4* ⚡
