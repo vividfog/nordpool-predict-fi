@@ -1,19 +1,19 @@
-*In the spot electricity forecast, weekdays will appear more expensive than the weekend, and the week will include several risks of hourly price spikes.*
+*In the spot electricity forecast, weekdays would be clearly pricier than the weekend, and the highest hourly prices would cluster especially around midweek.*
 
-The forecast was updated on Sunday at 14:57.
+The forecast was updated on Sunday at 20:57.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 13,1 | 6,2 - 22,4 | 169 - 2505 | 5,1 |
-| **Tuesday** | 11,1 | 7,6 - 19,9 | 217 - 1219 | 5,5 |
-| **Wednesday** | 12,6 | 5,4 - 32,2 | 99 - 2169 | 5,1 |
-| **Thursday** | 11,8 | 7,5 - 17,3 | 712 - 1884 | 4,8 |
-| **Friday** | 11,9 | 7,0 - 21,9 | 701 - 1436 | 5,3 |
-| **Saturday** | 8,1 | 3,3 - 11,3 | 920 - 1430 | 5,8 |
-| **Sunday** | 6,7 | 2,6 - 12,2 | 763 - 1882 | 6,4 |
+| **Monday** | 13,1 | 6,2 - 22,4 | 128 - 2009 | 5,1 |
+| **Tuesday** | 11,3 | 7,8 - 20,6 | 172 - 1294 | 5,5 |
+| **Wednesday** | 13,4 | 8,4 - 30,0 | 378 - 1588 | 5,1 |
+| **Thursday** | 12,2 | 8,5 - 17,8 | 746 - 1554 | 4,8 |
+| **Friday** | 11,8 | 8,4 - 21,4 | 779 - 1369 | 5,3 |
+| **Saturday** | 7,7 | 3,5 - 11,1 | 1037 - 1666 | 5,8 |
+| **Sunday** | 6,0 | 2,4 - 10,7 | 846 - 1922 | 6,4 |
 
-Next **Monday**, the average spot electricity price would be the highest of the week at 13,1 cents, and the day’s peak hourly price would rise to 22,4 cents. **Wednesday** would also stand out with a clear single peak, as the average price would be 12,6 cents while the highest hourly price would reach 32,2 cents. High daily peaks would also be seen on **Tuesday**, **Thursday** and **Friday**. The price level would remain relatively expensive throughout the working-week period. As the week progresses, however, expectations would ease, and on **Saturday** the average price would fall to 8,1 cents and on **Sunday** already to 6,7 cents.
+Next **Monday** and **Wednesday**, the daily price level would sit at the top end of the forecast period. Wednesday would stand out the most, as the day’s average price would rise to 13,4 cents and the highest hourly price would reach 30,0 cents. In the hourly forecast, the peak would fall on Wednesday roughly between 8:00 and 10:00. Monday would also bring a clear morning spike around 7:00–9:00, when the price would climb to as much as 22,4 cents. The overall price level across the forecast period would otherwise remain fairly high, since the average price on every weekday would exceed 11 cents.
 
-The highest individual hourly prices would be explained on several days by wind power dropping very low. On **Monday**, minimum wind generation would fall to 169 megawatts, which would be reflected in the high maximum price. The same link would be especially pronounced on **Wednesday**, when wind power would drop to as low as 99 megawatts and the price peak would occur in the morning around 8–10. For Tuesday, a high risk of price spikes would be forecast around 18–20, for Wednesday around 8–10, for Thursday around 19–21, and for Friday around 7–9. The cheapest moments would be seen over the weekend, when on Sunday the price would dip in the afternoon around 14–16 to just 2,6–3,0 cents.
+The price level would be explained on several days by weak wind power generation. On **Tuesday**, **Wednesday**, **Thursday** and **Friday**, average wind generation would remain below 1000–1050 megawatts, and during individual hours output would drop very low. On Wednesday in particular, the minimum output of 378 megawatts would coincide with the week’s highest maximum price. On Tuesday, Wednesday, Thursday and Friday there would also be a high risk of individual price spikes. Wednesday’s spike could fall around 8:00–10:00, Tuesday’s around 18:00–20:00, Thursday’s around 19:00–21:00 and Friday’s around 7:00–9:00. On **Saturday** and **Sunday**, the price level would fall clearly. Sunday would be expected to bring the cheapest electricity of the period, and in the afternoon around 13:00–15:00 the price would drop as low as 2,4 cents.
 
-*Price watch, gpt-5.4* ⚡
+*Data parsed by gpt-5.4.* 💡
