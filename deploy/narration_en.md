@@ -1,19 +1,19 @@
-*The spot electricity forecast shows the week starting clearly more expensive than the rest of the period, while prices are expected to ease noticeably by the weekend.*
+*The spot electricity forecast points to a pricier and more volatile start to the week, while the weekend is expected to bring a clearly steadier price level.*
 
-The forecast was updated on Sunday at 02:57.
+The forecast was updated on Sunday at 08:57.
 
 |  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 13,3 | 7,1 - 23,7 | 164 - 2149 | 5,1 |
-| **Tuesday** | 10,4 | 6,4 - 19,1 | 195 - 1197 | 5,5 |
-| **Wednesday** | 10,9 | 6,0 - 24,2 | 746 - 1944 | 5,1 |
-| **Thursday** | 8,3 | 5,1 - 13,0 | 853 - 2193 | 4,8 |
-| **Friday** | 9,4 | 5,6 - 16,8 | 763 - 2236 | 5,3 |
-| **Saturday** | 7,1 | 3,7 - 10,5 | 903 - 1727 | 5,8 |
-| **Sunday** | 8,4 | 4,9 - 15,6 | 599 - 1694 | 6,2 |
+| **Monday** | 12.5 | 7.4 - 21.7 | 175 - 2066 | 5.1 |
+| **Tuesday** | 9.6 | 5.9 - 16.8 | 461 - 1712 | 5.5 |
+| **Wednesday** | 11.5 | 6.6 - 25.9 | 665 - 1788 | 5.1 |
+| **Thursday** | 8.3 | 6.0 - 12.5 | 830 - 2641 | 4.8 |
+| **Friday** | 9.5 | 5.3 - 16.4 | 832 - 2813 | 5.3 |
+| **Saturday** | 7.7 | 4.2 - 10.9 | 926 - 1718 | 5.8 |
+| **Sunday** | 8.0 | 4.5 - 15.2 | 617 - 1570 | 6.2 |
 
-On **Monday**, the price outlook will rise to the highest level of the period. The daily average is forecast at 13,3 c, and the peak quote would reach 23,7 cents. **Wednesday** will also stand out with a high peak, as the maximum is forecast at 24,2 c and the daily average at 10,9 c. On both days, wind power will drop to very low levels at times, and that low minimum output will explain the higher peak hours. The same link will also be seen on **Tuesday**, when wind power falls to a minimum of 195 megawatts and the day’s highest price climbs to 19,1 cents. A high risk of price spikes for individual hours is noted for Monday, Tuesday and Wednesday. According to the forecast, the peaks will fall in the morning to late morning, roughly between 8 and 10.
+On **Monday**, the average electricity price is expected to rise to the highest level of the week, at 12.5 cents, while the day’s peak hourly price would climb to 21.7 cents. **Wednesday** will also stand out with a high spike, as the maximum price is forecast to reach 25.9 cents and the average price 11.5 cents. On **Tuesday** and **Friday** as well, the average price will remain clearly above 9 cents. These high peak hours will be explained by exceptionally low minimum wind power output, which will fall to 175 megawatts on Monday, 461 on Tuesday, 665 on Wednesday and 832 on Friday.
 
-The cheapest day of the period would be **Saturday**, when the daily average would stay at 7,1 cents and the lowest hourly price would drop to 3,7 cents in the afternoon. On **Thursday**, the price level will remain more even overall, with the day ranging between 5,1 and 13,0 cents. On **Friday**, the average price will rise to 9,4 cents, and a high spike risk is also noted for individual hours on that day. On **Sunday**, the daily average will be 8,4 cents, but prices are expected to increase toward the evening, as rates between 19:00 and 21:00 will reach about 15–16 cents. Across the whole period, the cheapest moment will fall on Saturday afternoon, while the most expensive single hour will be seen on Wednesday late morning.
+The risk of price spikes will be most pronounced on **Monday** around 08:00–10:00, with the peak centered near 09:00. On **Tuesday**, a similar period will fall around 07:00–09:00, and on **Wednesday** the week’s highest single peak will be seen around 07:00–09:00. On **Friday**, the most expensive period will also settle into the morning, around 07:00–09:00. The cheapest days will be **Saturday** and **Sunday**, when the average price will stay at 7.7–8.0 cents and the lowest readings will drop to 4.2–4.5 cents. On Thursday, the price level will remain the most even of the week, with the day’s range stretching from 6.0 cents to 12.5 cents.
 
-*Price brief by gpt-5.4* 💡
+*Price watch, gpt-5.4* ⚡
