@@ -1,19 +1,19 @@
-*Spot electricity will stay mostly fairly elevated in the coming days, drop clearly over the weekend, and show notable hour-to-hour swings at times.*
+*Exchange electricity prices will remain mostly fairly high in the coming days, rise clearly on Wednesday, and ease toward the weekend, although hourly variation will stay wide.*
 
-The forecast was updated on Monday at 02:57.
+The forecast was updated on Monday at 08:57.
 
-|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday** | 11,3 | 7,6 - 20,1 | 158 - 1375 | 5,5 |
-| **Wednesday** | 13,1 | 8,5 - 28,6 | 111 - 1906 | 5,1 |
-| **Thursday** | 11,2 | 7,3 - 16,4 | 754 - 1842 | 4,8 |
-| **Friday** | 11,1 | 7,8 - 19,1 | 827 - 1824 | 5,3 |
-| **Saturday** | 7,4 | 4,4 - 10,6 | 1129 - 1864 | 5,8 |
-| **Sunday** | 6,6 | 2,8 - 8,9 | 949 - 1755 | 6,4 |
-| **Monday** | 10,9 | 5,2 - 20,6 | 675 - 1786 | 6,5 |
+| **Tuesday** | 10,7 | 7,1 - 18,2 | 222 - 1353 | 5,5 |
+| **Wednesday** | 13,0 | 8,8 - 29,0 | 288 - 1384 | 5,1 |
+| **Thursday** | 10,0 | 6,6 - 18,8 | 786 - 1698 | 4,8 |
+| **Friday** | 10,3 | 7,1 - 16,6 | 927 - 1893 | 5,3 |
+| **Saturday** | 7,4 | 4,1 - 10,0 | 920 - 1454 | 5,8 |
+| **Sunday** | 6,2 | 2,1 - 8,9 | 962 - 1824 | 6,4 |
+| **Monday** | 10,3 | 5,2 - 19,0 | 687 - 1788 | 6,5 |
 
-Over the forecast period, the electricity price will remain fairly high on most days. The most expensive day will be **Wednesday**, when the average price is expected to reach 13,1 c/kWh and the highest hourly price will climb to 28,6 cents. On **Tuesday** and next **Monday** as well, the highest hourly price will rise to around 20 cents. The cheapest days will fall on the weekend. On **Sunday**, the daily average price will drop to 6,6 cents and the lowest hourly price will dip to 2,8 cents. On **Saturday**, the average price will stay at 7,4 cents.
+The price level is expected to stay fairly high for most of the period, and the most expensive day will fall on **Wednesday**. That day, the average daily price is forecast at 13,0 ¢/kWh and the highest hourly price will climb to 29,0 cents. Very weak wind power will be visible in the background, as average output will remain at 744 megawatts and the lowest hourly level will dip to 288 megawatts. That low minimum in wind generation will explain why the maximum price rises to the highest level of the whole period. On **Tuesday**, too, wind power will remain exceptionally low, averaging 816 megawatts, and the price expectation will rise to 10,7 cents. Tuesday’s highest hourly price will fall in the evening, around 18:00–20:00, and Wednesday’s peak in the late morning, around 08:00–10:00. Both days carry a high risk of individual price spikes.
 
-Prices will be lifted by weak wind power throughout the period. On **Tuesday**, wind generation will fall to as low as 158 megawatts, and at the same time the most expensive evening stretch will land around 18:00–20:00. On **Wednesday**, the wind power minimum will remain at 111 megawatts, which will explain the period’s highest price spike in the morning around 08:00–10:00. On **Thursday**, **Friday** and next **Monday** as well, there will be a high risk of price spikes during individual hours. Over the weekend, price variation will ease, although on **Sunday** the cheapest hours of the period will still be seen in the afternoon around 13:00–16:00.
+On **Thursday**, **Friday** and next **Monday**, the average price will settle at around ten cents, but individual hours will rise clearly above that level. Thursday’s highest quote will be seen in the morning around 07:00–09:00, Friday’s around 07:00–09:00, and next Monday’s around 07:00–10:00. These days, too, are marked by a high risk of isolated price spikes. The cheapest prices of the period are expected on **Sunday**, when the average price will fall to 6,2 cents and the lowest hourly price to 2,1 cents in the afternoon. On **Saturday** as well, the general price level will stay below the rest of the period, even if the very cheapest hours are not yet reached.
 
-*On price watch, gpt-5.4* ⚡
+*Read by gpt-5.4.* 💡
