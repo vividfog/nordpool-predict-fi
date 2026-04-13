@@ -1,19 +1,19 @@
-*In the spot electricity price forecast, the weekend would appear clearly cheaper than the rest of the period, while the highest peaks would be expected for Wednesday and next Monday.*
+*The spot electricity forecast starts out above typical levels, but the price trend will ease over the week and the cheapest hours will arrive later in the period.*
 
-The forecast was updated on Monday at 20:57.
+The forecast was updated on Tuesday at 02:57.
 
-|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|               | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday** | 11,9 | 7,5 - 16,4 | 202 - 1416 | 5,5 |
-| **Wednesday** | 13,9 | 8,8 - 28,5 | 128 - 1500 | 5,1 |
-| **Thursday** | 11,5 | 8,8 - 16,4 | 660 - 1827 | 4,8 |
-| **Friday** | 11,4 | 6,2 - 16,5 | 823 - 2349 | 5,3 |
-| **Saturday** | 7,3 | 2,9 - 10,4 | 950 - 2413 | 5,8 |
-| **Sunday** | 6,2 | 2,1 - 10,6 | 568 - 1675 | 6,4 |
-| **Monday** | 11,7 | 6,3 - 23,8 | 472 - 1406 | 6,1 |
+| **Wednesday** | 13.5 | 8.8 - 28.2 | 184 - 1523 | 5.1 |
+| **Thursday** | 10.5 | 6.7 - 19.5 | 490 - 3081 | 4.8 |
+| **Friday** | 9.8 | 5.7 - 16.8 | 860 - 3054 | 5.3 |
+| **Saturday** | 7.4 | 3.7 - 10.1 | 961 - 1477 | 5.8 |
+| **Sunday** | 5.7 | 1.9 - 8.0 | 806 - 1805 | 6.4 |
+| **Monday** | 9.1 | 5.0 - 20.5 | 689 - 2452 | 6.1 |
+| **Tuesday** | 7.0 | 3.8 - 13.1 | 1610 - 2853 | 5.4 |
 
-Over the forecast period, electricity prices would remain around an average of more than 10 cents on most days, so the period as a whole would be considered expensive. The clearly cheapest days would fall on the weekend. **Sunday’s** average price would be expected at 6,2 cents and **Saturday’s** at 7,3 cents. The most expensive day would be **Wednesday**, when the daily average would rise to 13,9 cents and the highest hourly price would reach 28,5 cents. Next **Monday** would also bring a high peak, with the price rising to as much as 23,8 cents.
+A clear divide will be seen in the forecast period between the more expensive opening days and the cheaper latter half. The most expensive day will be **Wednesday**, when the average price will rise to 13.5 cents and the day’s highest hourly price will reach 28.2 cents. At the same time, wind power will remain very low, with output falling to a minimum of 184 megawatts. That will also explain the highest price peak of the period. A high risk of isolated price spikes is forecast for Wednesday, with the strongest pressure expected roughly between 08:00 and 10:00. **Thursday** and **Friday** will also still bring fairly elevated daily averages, and Thursday will carry a high spike risk roughly between 07:00 and 09:00.
 
-The price level would be lifted on several days by weak wind power production. On **Wednesday**, the lowest wind power forecast would fall to 128 megawatts, and at the same time the day’s highest price would land in the morning around 8–10. A high risk of individual price spikes would also need to be noted for that day. On **Thursday** and **Friday**, the risk of peaks would be concentrated in the evening around 18–20, and next **Monday** the highest-price period would settle in the morning around 7–9. The lowest hourly price of the period would be seen on **Sunday** afternoon, when electricity would cost as little as 2,1 cents around 14–16.
+The price level will fall clearly on **Saturday**, when the daily average will stay at 7.4 cents. **Sunday** will be the cheapest day, with an average of 5.7 cents and the lowest hours dropping to around two cents in the afternoon. Next **Monday** will bring another upswing, as the hourly price will climb to 20.5 cents in the morning, roughly between 07:00 and 09:00, and the day will again carry a high risk of isolated price spikes. Next **Tuesday**, the price level will level off again, and the daily average will remain at 7.0 cents.
 
-*Price watch, gpt-5.4* 💡
+*Read by gpt-5.4.* ⚡
