@@ -1,19 +1,19 @@
-*Spot electricity is forecast to stay relatively expensive through the weekend and early next week, but prices will drop clearly to a lower level later in the period.*
+*The spot electricity price forecast will begin with a variable and at times expensive stretch, but expectations will drop clearly toward the end of the period.*
 
-The forecast was updated on Thursday at 02:57.
+The forecast was updated on Thursday at 08:57.
 
-|  | aver-<br>age price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | aver-<br>age temperature<br>°C |
+|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday** | 11.8 | 8.6 - 21.0 | 375 - 3301 | 5.3 |
-| **Saturday** | 9.2 | 6.3 - 12.7 | 404 - 3345 | 5.8 |
-| **Sunday** | 7.3 | 2.9 - 11.0 | 558 - 3598 | 6.4 |
-| **Monday** | 11.9 | 8.0 - 21.4 | 385 - 2372 | 6.1 |
-| **Tuesday** | 11.9 | 7.3 - 19.2 | 709 - 2498 | 5.5 |
-| **Wednesday** | 8.0 | 3.7 - 15.4 | 1372 - 4178 | 5.5 |
-| **Thursday** | 4.9 | 3.7 - 7.4 | 3432 - 4468 | 4.4 |
+| **Friday** | 10.9 | 7.5 - 19.3 | 406 - 3458 | 5.3 |
+| **Saturday** | 8.6 | 5.1 - 12.2 | 642 - 2540 | 5.8 |
+| **Sunday** | 6.1 | 2.5 - 10.9 | 447 - 2799 | 6.4 |
+| **Monday** | 11.0 | 6.0 - 23.9 | 333 - 2546 | 6.1 |
+| **Tuesday** | 12.0 | 6.7 - 21.3 | 630 - 2306 | 5.5 |
+| **Wednesday** | 7.4 | 3.5 - 14.3 | 1506 - 4268 | 5.5 |
+| **Thursday** | 5.3 | 3.9 - 7.9 | 3228 - 4633 | 4.4 |
 
-A clear drop in price levels is expected toward next **Thursday**. The most expensive days will be **Friday**, **Monday** and **Tuesday**, when the average price rises to 11.8–11.9 cents. The highest hourly price of the whole period is forecast for next **Monday**, when the price reaches 21.4 cents. **Friday** will also climb to 21.0 cents. On these days, the high peak hours are explained by exceptionally low minimum wind power output. On Friday, wind generation will fall as low as 375 megawatts, and on Monday to 385 megawatts. On Tuesday, the corresponding minimum level is 709 megawatts, while the day’s peak reaches 19.2 cents.
+Prices will vary clearly from one day to the next during the forecast period. The most expensive day will be **Tuesday**, when the average price rises to 12.0 cents and the day’s highest hourly price reaches 21.3 cents. **Monday** will also stand out on the high side, with an average of 11.0 cents and a peak of 23.9 cents. On both days, wind power will remain at a weak level, and the daily minimum output drops clearly below 1000 megawatts. That will explain the highest peak hours. The risk of price spikes will be high on Monday around 08:00–10:00 and on Tuesday around 20:00–22:00.
 
-At the hourly level, the highest prices will be concentrated in the morning. On **Friday**, the risk of price spikes will stand out especially around 8–10, with the peak at 9. On **Monday**, the corresponding period will fall around 7–9. On **Tuesday**, the increase will appear around 8–10. **Sunday** will stand out as the cheaper point of the period, and in the afternoon prices will dip as low as 2.9 cents. Next **Wednesday**, prices will fall clearly by the afternoon, as strong wind power pushes expectations down. The cheapest day will be next **Thursday**, when the average price stays at 4.9 cents and hourly prices remain within 3.7–7.4 cents throughout the day.
+On **Friday**, the average price will settle at 10.9 cents, and a single peak will rise to 19.3 cents around 08:00–10:00. Then too, the minimum wind output will fall very low, which will lift the most expensive hours of the day. On **Saturday**, the average price will ease to 8.6 cents, and on **Sunday** to 6.1 cents, although a risk of isolated price spikes is also noted for Sunday. The clearly cheapest days will be **Wednesday** and **Thursday**, when abundant wind power will push price expectations lower. On Thursday, the average price for the day will remain at 5.3 cents, and hourly prices will stay within a narrow range of 3.9 to 7.9 cents throughout the day.
 
-*Price watch, gpt-5.4* 🌬️
+*Data read by gpt-5.4* 💡
