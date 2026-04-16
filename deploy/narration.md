@@ -1,19 +1,19 @@
-*Pörssisähkön hintaennusteessa alkujakso näyttäytyy vaihtelevana ja ajoittain kalliina, mutta loppua kohti odotukset painuvat selvästi alemmalle tasolle.*
+*Pörssisähkön hinta vaihtelee lähipäivinä selvästi: alkujaksolla odotetaan kalliimpia päiviä, mutta loppua kohti hintataso painuu tuntuvasti alemmaksi.*
 
-Ennuste on päivitetty torstaina klo 08:57.
+Ennuste on päivitetty torstaina klo 11:57.
 
-|  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|                | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **perjantai** | 10,9 | 7,5 - 19,3 | 406 - 3458 | 5,3 |
-| **lauantai** | 8,6 | 5,1 - 12,2 | 642 - 2540 | 5,8 |
-| **sunnuntai** | 6,1 | 2,5 - 10,9 | 447 - 2799 | 6,4 |
-| **maanantai** | 11,0 | 6,0 - 23,9 | 333 - 2546 | 6,1 |
-| **tiistai** | 12,0 | 6,7 - 21,3 | 630 - 2306 | 5,5 |
-| **keskiviikko** | 7,4 | 3,5 - 14,3 | 1506 - 4268 | 5,5 |
-| **torstai** | 5,3 | 3,9 - 7,9 | 3228 - 4633 | 4,4 |
+| **perjantai** | 10,9 | 7,9 - 20,2 | 446 - 3401 | 5,3 |
+| **lauantai** | 8,7 | 5,3 - 11,8 | 571 - 3022 | 5,8 |
+| **sunnuntai** | 6,9 | 2,8 - 13,0 | 342 - 3091 | 6,4 |
+| **maanantai** | 12,2 | 7,0 - 22,0 | 363 - 2408 | 6,1 |
+| **tiistai** | 9,1 | 5,9 - 13,6 | 1036 - 2818 | 5,5 |
+| **keskiviikko** | 7,0 | 3,4 - 13,8 | 1627 - 4731 | 5,5 |
+| **torstai** | 4,2 | 2,5 - 6,1 | 4108 - 5237 | 4,6 |
 
-Ennustejaksolla hinnat vaihtelevat selvästi päivästä toiseen. Kallein päivä tulee olemaan **tiistai**, jolloin keskihinta nousee 12,0 senttiin ja päivän ylin tuntihinta 21,3 senttiin. Myös **maanantaina** odotus on korkealla, sillä keskihinta on 11,0 senttiä ja huippu käy 23,9 sentissä. Molempina päivinä tuulivoima jää heikolle tasolle, ja päivän alin tuotanto painuu selvästi alle 1000 megawatin. Se tulee selittämään korkeita huipputunteja. Hintapiikkien riski on korkea maanantaina noin klo 08–10 ja tiistaina noin klo 20–22.
+Ennustejaksolla nähtäisiin selvä ero kalleimpien ja edullisimpien päivien välillä. Kallein päivä olisi **maanantai**, jolloin keskihinnaksi odotettaisiin 12,2 ¢/kWh ja ylin tuntihinta nousisi 22,0 senttiin. Hintaa nostaisi hyvin heikko tuulivoima, sillä päivän keskituotanto jäisi 843 megawattiin. Myös **perjantaina** hinta olisi tavanomaista korkeampi, keskimäärin 10,9 senttiä, ja päivän huippu kävisi 20,2 sentissä. Tämänkin päivän korkeaa maksimia selittäisi erittäin matala tuulivoiman minimituotanto, joka painuisi 446 megawattiin. Perjantaille, sunnuntaille ja maanantaille liittyisi lisäksi korkea riski yksittäisille hintapiikeille. Perjantain korkein kohta painottuisi noin klo 8–10 ja maanantain illalla noin klo 19–21.
 
-**Perjantaina** keskihinta asettuu 10,9 senttiin, ja yksittäinen huippu kohoaa 19,3 senttiin noin klo 08–10. Myös silloin tuulivoiman minimituotanto jää hyvin alas, mikä tulee nostamaan päivän kalleimpia tunteja. **Lauantaina** keskihinta laskee 8,6 senttiin ja **sunnuntaina** jo 6,1 senttiin, vaikka sunnuntaillekin on merkitty riski yksittäisille hintapiikeille. Selvästi edullisimmat päivät nähdään **keskiviikkona** ja **torstaina**, jolloin runsas tuulivoima painaa hintaodotusta alas. Torstaina päivän keskihinta jää 5,3 senttiin ja tuntihinnat pysyvät koko päivän välillä 3,9–7,9 senttiä.
+Edullisin päivä olisi **torstai**, jolloin keskihinta jäisi 4,2 senttiin ja tuntihinta liikkuisi 2,5–6,1 sentin välillä. Matalaa hintatasoa selittäisi poikkeuksellisen runsas tuulivoima, jota ennustettaisiin keskimäärin 4615 megawattia. Myös **keskiviikkona** hintataso painuisi selvästi alas, kun tuulivoiman keskiarvo nousisi 3417 megawattiin ja iltapäivän sekä illan tunnit asettuisivat enimmäkseen noin 3,4–5,9 senttiin. **Sunnuntaina** alin tuntihinta kävisi 2,8 sentissä ja **lauantaina** sekä **tiistaina** hinnat pysyisivät näiden ääripäiden välissä, vaikka lauantaillakin puhuttaisiin vielä yksittäisten tuntien hintapiikkiriskistä.
 
-*Datan äärellä gpt-5.4* 💡
+*Dataa luki gpt-5.4* 💨
