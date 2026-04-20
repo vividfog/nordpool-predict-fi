@@ -1,19 +1,19 @@
-*The spot electricity forecast will stand out with Tuesday and next Monday as the pricier days, while from Wednesday to Sunday the price level will stay very low.*
+*The spot electricity forecast will stay mostly inexpensive over the week, although Thursday and Friday will stand out with higher prices than the rest of the period.*
 
-The forecast was updated on Monday at 20:57.
+The forecast has been updated on Tuesday at 02:57.
 
-|              | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday** | 6.1 | 0.3 - 16.0 | 315 - 4408 | 5.5 |
-| **Wednesday** | 0.4 | -0.8 - 2.5 | 3985 - 6485 | 5.5 |
-| **Thursday** | 1.7 | 0.3 - 4.2 | 2546 - 5445 | 4.6 |
-| **Friday** | 1.4 | -0.0 - 3.5 | 3526 - 5355 | 4.0 |
-| **Saturday** | 1.3 | 0.5 - 2.9 | 3630 - 5129 | 2.9 |
-| **Sunday** | 1.7 | 0.2 - 3.7 | 2087 - 5228 | 3.2 |
-| **Monday** | 5.7 | 2.8 - 10.6 | 1374 - 4114 | 3.6 |
+| **Wednesday** | 0,4 | -0,6 - 2,7 | 3866 - 6555 | 5,5 |
+| **Thursday** | 2,2 | 0,4 - 4,7 | 1554 - 5305 | 4,6 |
+| **Friday** | 3,2 | 1,2 - 6,3 | 1258 - 4671 | 4,0 |
+| **Saturday** | 1,6 | 1,0 - 2,7 | 2986 - 4289 | 2,9 |
+| **Sunday** | 1,1 | -0,2 - 2,5 | 3517 - 4731 | 3,2 |
+| **Monday** | 1,8 | 0,4 - 3,9 | 3389 - 4794 | 3,6 |
+| **Tuesday** | 1,6 | 0,8 - 3,0 | 4012 - 5657 | 3,6 |
 
-A clear difference will appear between the days in the forecast period. On **Tuesday**, the expected average price will rise to the highest level of the period, at 6.1 cents, and the day’s peak hourly price will reach 16.0 cents. That high peak will be explained by exceptionally low wind power, as production will fall to just 315 megawatts at its lowest. The most expensive period will fall in the morning, around 06:00–08:00. During the day, the price will drop sharply, and in the evening it will move close to zero. On **Wednesday**, the price level will fall to the lowest of the whole period, with the average price forecast at 0.4 cents and the low at -0.8 cents in the afternoon.
+During the forecast period, prices will remain mostly at a fairly low level. The clearly lowest daily average will be seen on **Wednesday**, when the expected average will be 0,4 cents and the price will also dip below zero, reaching -0,6 cents at its lowest. On **Sunday**, the lowest hourly price will also fall slightly negative, to -0,2 cents. The highest daily average of the period will arrive on **Friday**, when the expectation will be 3,2 cents and the day’s top price will rise to 6,3 cents. **Thursday** will also run higher than the other days, with the price climbing to a maximum of 4,7 cents.
 
-On **Thursday**, **Friday** and **Saturday**, the price level will also remain low, as average prices will settle between 1.3 and 1.7 cents. On **Sunday**, the average will still stay below two cents, although by the evening it will rise to 3.7 cents. Next **Monday**, prices will increase again. The average price will climb to 5.7 cents and the highest hourly price to 10.6 cents late in the evening. There will be a risk of price spikes in individual hours, and the highest quotes will concentrate around 20:00–22:00. That will be explained by weak wind conditions during the day, as production will fall to a low of 1374 megawatts.
+Prices will be pushed lower especially on **Wednesday** and **Sunday**, when a large amount of wind power will be available and prices will at times fall close to zero. On **Thursday** and **Friday**, wind power will remain clearly lower, and at the same time the highest prices of the period will be seen. On Friday, the connection will also stand out within the day: wind power’s minimum output will fall to 1258 megawatts, which will explain the higher maximum price of 6,3 cents. In the hourly forecast, the most expensive moments will be placed on Thursday in the late morning and on Friday especially during the morning and evening hours.
 
-*Read by gpt-5.4 from the data.* ⚡
+*Data read by gpt-5.4* 💨
