@@ -1,19 +1,19 @@
-*The spot electricity forecast will stay low on most days, but hourly prices will clearly rise next Wednesday and Thursday.*
+*The spot electricity forecast will stay low on most days, but next Wednesday and Thursday the price level will rise clearly above the rest of the period.*
 
-The forecast was updated on Thursday at 11:57.
+The forecast was updated on Thursday at 14:57.
 
-|              | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday**      | 2,4 | 0,2 - 5,6 | 1342 - 5690 | 4,0 |
-| **Saturday**    | 1,6 | 0,4 - 4,1 | 1231 - 5252 | 2,9 |
-| **Sunday**      | 1,2 | -0,3 - 3,6 | 3508 - 5263 | 3,2 |
-| **Monday**      | 2,8 | 0,9 - 5,6 | 3057 - 4362 | 3,6 |
-| **Tuesday**     | 1,9 | 1,0 - 3,6 | 3896 - 5474 | 3,6 |
-| **Wednesday**   | 6,1 | 2,0 - 16,0 | 764 - 4110 | 3,5 |
-| **Thursday**    | 6,3 | 3,5 - 10,7 | 1021 - 2873 | 4,2 |
+| **Friday** | 2,7 | 0,2 - 9,5 | 1316 - 5675 | 4,0 |
+| **Saturday** | 1,9 | 0,9 - 5,6 | 1205 - 5249 | 2,9 |
+| **Sunday** | 1,2 | -0,0 - 3,6 | 3434 - 5278 | 3,2 |
+| **Monday** | 2,9 | 1,0 - 5,4 | 3044 - 4446 | 3,6 |
+| **Tuesday** | 2,0 | 0,8 - 3,8 | 3880 - 5600 | 3,6 |
+| **Wednesday** | 6,4 | 2,0 - 17,2 | 733 - 4126 | 3,5 |
+| **Thursday** | 6,4 | 3,8 - 10,9 | 956 - 2929 | 4,2 |
 
-Prices will remain low on most days in the forecast period. On **Friday**, the average price is expected to be 2,4 cents, and by evening it will rise to just over five cents. On **Saturday** and **Sunday**, the expected level will be even lower. The lowest individual hourly price of the period, -0,3 c, is forecast for Sunday, and it will fall during the daytime. On **Monday** and **Tuesday**, the price level will still remain fairly low, although Monday morning will briefly reach 5,6 cents.
+Several inexpensive days will be seen during the forecast period, as the expected average price will remain below four cents on **Friday**, **Saturday**, **Sunday**, **Monday** and **Tuesday**. The lowest reading of the period will be seen on **Sunday**, when the price will dip to -0,0 cents during the day. Sunday’s average price will stay at 1,2 cents, and Tuesday’s 2,0-cent level will also look low. On **Friday**, however, intraday variation will be large: overnight prices will hover near zero, but in the evening they will climb to 9,5 cents. The higher evening peak will be explained by wind power production falling very low during the day, reaching a minimum of 1316 megawatts.
 
-The clearest change will be seen next **Wednesday**, when the daily average price climbs to 6,1 cents and the highest forecast reaches 16,0 cents. At the same time, wind power will fall to a very low level during the day, with the minimum dropping to 764 megawatts. This will explain the high peak price. There will be a high risk of individual price spikes on Wednesday evening around 19:00–21:00. Next **Thursday**, the average price will stay at 6,3 cents, and the highest hourly price will be 10,7 cents in the morning. Thursday will also carry a risk of individual price spikes, and based on the forecast they will occur around 7:00–9:00.
+The clearly most distinct day will be **Wednesday**, when the average price will rise to 6,4 cents and the day’s highest hourly price will reach 17,2 cents. At the same time, wind power will remain exceptionally low, and the day’s minimum production will fall to 733 megawatts. This will explain the high peak price. On Wednesday, there will be a high risk of individual price spikes especially in the evening around 19:00–21:00. On **Thursday**, the average price will remain at the same 6,4-cent level, but the day’s peak will stay at 10,9 cents. Thursday will also carry a risk of individual price spikes, and the highest price levels will be concentrated in the morning around 8:00–10:00.
 
-*Read by gpt-5.4* ⚡
+*Data interpreted by gpt-5.4* ⚡
