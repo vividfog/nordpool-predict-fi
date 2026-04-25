@@ -1,19 +1,19 @@
-*The week-ahead electricity price forecast will remain mostly low, but Wednesday is expected to stand out with clearly higher prices and stronger variation.*
+*The spot electricity price is expected to stay mostly low in the coming days, but Wednesday is forecast to bring the week’s highest price level and Friday strong variation.*
 
-The forecast was updated on Saturday at 15:20.
+The forecast was updated on Saturday at 20:57.
 
-|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
+|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 0,7 | -0,1 - 2,5 | 3264 - 5388 | 3,2 |
-| **Monday** | 1,8 | 0,3 - 5,3 | 2846 - 5818 | 3,6 |
-| **Tuesday** | 1,8 | 0,4 - 4,3 | 2785 - 6582 | 3,6 |
-| **Wednesday** | 5,0 | 1,6 - 9,3 | 1615 - 3459 | 3,5 |
-| **Thursday** | 2,7 | 1,1 - 7,0 | 2021 - 4635 | 4,2 |
-| **Friday** | 1,4 | -1,4 - 5,7 | 1002 - 3475 | 5,7 |
-| **Saturday** | 0,6 | -1,0 - 1,8 | 2088 - 3517 | 6,7 |
+| **Sunday** | 0,7 | -0,1 - 2,5 | 3296 - 5072 | 3,2 |
+| **Monday** | 1,9 | 0,4 - 5,0 | 3076 - 5712 | 3,6 |
+| **Tuesday** | 2,4 | 0,6 - 6,1 | 3109 - 6318 | 3,6 |
+| **Wednesday** | 5,9 | 2,7 - 11,0 | 1605 - 3727 | 3,5 |
+| **Thursday** | 3,5 | 1,6 - 6,1 | 2026 - 3172 | 4,2 |
+| **Friday** | 1,9 | -1,2 - 8,3 | 777 - 3071 | 5,7 |
+| **Saturday** | 0,6 | -0,8 - 2,2 | 1994 - 3501 | 6,7 |
 
-Over the forecast period, the electricity price will stay mostly low. The clearest exception will be **Wednesday**, when the expected daily average will rise to 5,0 cents and the peak price to 9,3 cents. That will be explained by weak wind conditions, as average wind power output will be only 2401 megawatts. The day’s lowest wind production will drop to 1615 megawatts, and that low minimum output will also explain the day’s highest price. The top quotation will fall in the morning, in practice around 7–9, when there will also be a risk of price spikes in individual hours.
+The price level is expected to remain fairly low for most of the forecast period. On **Sunday**, the daily average price is expected to be 0,7 cents, and during the afternoon the price will briefly dip below zero. Next **Saturday** is also expected to stay low, with an average of 0,6 cents and the day’s lowest quotation falling to -0,8 cents. On **Monday** and **Tuesday**, prices are still expected to remain fairly moderate, although on Tuesday evening they will briefly rise to 6,1 cents.
 
-On the other days, the price level will mostly remain below average prices of four cents. **On Sunday** and next **Saturday**, electricity will be at its cheapest in the period, and on both days negative hourly prices will also be seen around midday. The lowest expected reading will fall on Friday evening, when the price will dip as low as -1,4 cents. **On Friday**, the price level will also be pushed down by a public holiday, which will reduce demand below normal. At the same time, Friday will still carry a risk of price spikes in individual morning hours around 7–9, even though the daily average will remain only 1,4 cents.
+The clearly most expensive day of the period is expected to be **Wednesday**, when the average price will rise to 5,9 cents and the highest hourly price to 11,0 cents. Weak wind power lies behind this, as average production for the day will remain at 2076 megawatts and the minimum will fall to 1605 megawatts. This will also explain the higher peak price. On Wednesday, the risk of price spikes in individual hours will increase especially in the evening, as the highest forecast falls around 19:00–21:00. On **Friday**, price variation will be wide on the holiday: in the morning the price will reach 8,3 cents, but from afternoon into evening it will remain negative for several hours. On Friday as well, the risk of price spikes in individual hours will be concentrated in the morning, around 8:00–10:00.
 
-*Price watch, gpt-5.4* 💡
+*Price lines by gpt-5.4* 💡
