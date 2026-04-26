@@ -1,19 +1,19 @@
-*Pörssisähkön viikkoennusteessa hinnat pysyvät pääosin matalina, mutta keskiviikko erottuu selvästi kalleimpana päivänä ja viikonloppu edullisimpana.*
+*Pörssisähkö pysyy ensi viikolla enimmäkseen edullisena, mutta keskiviikolle ja perjantaille ennustetaan viikon korkeimmat tuntihinnat.*
 
-Ennuste on päivitetty sunnuntaina klo 14:57.
+Ennuste on päivitetty sunnuntaina klo 20:57.
 
-|               | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **maanantai**  | 2,1 | 0,4 - 9,1  | 2736 - 5170 | 3,6 |
-| **tiistai**    | 2,6 | 0,8 - 5,4  | 3017 - 6074 | 3,6 |
-| **keskiviikko**| 6,8 | 3,3 - 12,4 | 765 - 2895  | 3,5 |
-| **torstai**    | 3,2 | 1,2 - 5,7  | 2332 - 3455 | 4,2 |
-| **perjantai**  | 3,5 | 1,4 - 9,9  | 523 - 3560  | 5,7 |
-| **lauantai**   | 1,1 | -0,4 - 2,8 | 1621 - 3339 | 6,7 |
-| **sunnuntai**  | 1,1 | 0,2 - 2,9  | 1567 - 4374 | 6,5 |
+| **maanantai** | 2,1 | 0,4 - 9,1 | 3164 - 5536 | 3,6 |
+| **tiistai** | 2,6 | 0,8 - 5,1 | 3086 - 6230 | 3,6 |
+| **keskiviikko** | 5,8 | 3,1 - 10,2 | 1647 - 2962 | 3,5 |
+| **torstai** | 4,4 | 2,0 - 8,0 | 1824 - 2809 | 4,2 |
+| **perjantai** | 4,0 | 1,2 - 10,4 | 560 - 3203 | 5,7 |
+| **lauantai** | 1,0 | 0,1 - 2,7 | 1598 - 3302 | 6,7 |
+| **sunnuntai** | 1,2 | 0,1 - 2,7 | 1522 - 4110 | 6,5 |
 
-Ennustejaksolla hinnat pysyvät enimmäkseen matalina, ja useimpina päivinä päivän keskihinta asettuisi alle neljän sentin. Selvästi eniten erottuisi **keskiviikko**, jolloin odotettu keskihinta nousisi 6,8 senttiin ja päivän ylin noteeraus 12,4 senttiin. Hintatasoa selittäisi heikko tuulivoima, sillä tuotanto jäisi keskimäärin 1674 megawattiin ja painuisi alimmillaan 765 megawattiin. Juuri matala minimituotanto selittäisi myös päivän korkeaa huippuhintaa. Korkeimmat tunnit osuisivat aamuun ja iltaan, käytännössä noin klo 07–09 sekä klo 19–21. Myös **perjantaina** nähtäisiin tavallista suurempaa vaihtelua, kun hinta nousisi aamulla lähelle kymmentä senttiä ja tuulivoima kävisi hyvin matalalla, alimmillaan 523 megawatissa. Päivä olisi lisäksi pyhäpäivä, mikä laskisi kysyntää.
+Ensi **maanantaina** ja **tiistaina** pörssisähkön hintaodotus pysyy edullisena, ja päivän keskihinta asettuu 2,1–2,6 senttiin. Maanantaina nähdään kuitenkin selvä aamupiikki, kun hinta käy 9,1 sentissä klo 7–8. Kallein päivä tulee olemaan **keskiviikko**, jolloin päivän odotettu keskihinta nousee 5,8 senttiin ja korkein tuntihinta 10,2 senttiin. Keskiviikon korkeampia tuntihintoja selittää heikko tuulivoima, sillä tuotanto jää keskimäärin 2220 megawattiin ja käy alimmillaan 1647 megawatissa. Samasta syystä myös **torstaina** hintataso pysyy tavanomaista korkeampana, vaikka päivän keskihinta jää 4,4 senttiin.
 
-Matalimmat lukemat nähtäisiin **lauantaina**, jolloin hinta painuisi iltapäivällä hetkeksi pakkaselle ja päivän keskihinta jäisi 1,1 senttiin. Myös **sunnuntaina** odotettaisiin hyvin edullista tasoa, ja koko päivä pysyisi alle kolmen sentin. **Maanantaina** vaihtelu olisi viikon alun suurinta, sillä aamulla klo 07–08 käytäisiin 9,1 sentissä, mutta iltapäivällä liikuttaisiin jo 0,4–0,6 sentissä. **Tiistaina** hinnat pysyisivät tasaisempina, kun taas **torstaina** odotettaisiin keskitasoltaan rauhallista päivää ilman suurempia liikkeitä.
+**Perjantaina** hintatasoa painaa alaspäin pyhäpäivä, mutta päivä ei silti muodostu viikon halvimpien joukkoon. Päivän keskihinta on 4,0 senttiä, ja yksittäisillä tunneilla hinta nousee 10,4 senttiin klo 8–10. Tähän liittyy poikkeuksellisen matala tuulivoiman minimituotanto, joka putoaa 560 megawattiin. **Lauantaina** ja **sunnuntaina** hintataso laskee jälleen hyvin matalaksi. Molempina päivinä keskihinta jää noin yhteen senttiin, ja halvimmat tunnit painuvat 0,1 senttiin. Viikon edullisimmat hetket sijoittuvatkin viikonloppuun, kun taas korkeimmat hintaodotukset nähdään keskiviikkona ja perjantaina.
 
-*Hintavahti gpt-5.4* ⚡
+*Hintavahdin gpt-5.4* ⚡

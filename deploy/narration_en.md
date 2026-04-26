@@ -1,19 +1,19 @@
-*In the weekly spot electricity forecast, prices will stay mostly low, but Wednesday will stand out as the most expensive day and the weekend as the cheapest.*
+*Exchange electricity will stay mostly inexpensive next week, but the week’s highest hourly prices are forecast for Wednesday and Friday.*
 
-The forecast has been updated on Sunday at 14:57.
+The forecast was updated on Sunday at 20:57.
 
-|               | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday**    | 2,1 | 0,4 - 9,1  | 2736 - 5170 | 3,6 |
-| **Tuesday**   | 2,6 | 0,8 - 5,4  | 3017 - 6074 | 3,6 |
-| **Wednesday** | 6,8 | 3,3 - 12,4 | 765 - 2895  | 3,5 |
-| **Thursday**  | 3,2 | 1,2 - 5,7  | 2332 - 3455 | 4,2 |
-| **Friday**    | 3,5 | 1,4 - 9,9  | 523 - 3560  | 5,7 |
-| **Saturday**  | 1,1 | -0,4 - 2,8 | 1621 - 3339 | 6,7 |
-| **Sunday**    | 1,1 | 0,2 - 2,9  | 1567 - 4374 | 6,5 |
+| **Monday** | 2,1 | 0,4 - 9,1 | 3164 - 5536 | 3,6 |
+| **Tuesday** | 2,6 | 0,8 - 5,1 | 3086 - 6230 | 3,6 |
+| **Wednesday** | 5,8 | 3,1 - 10,2 | 1647 - 2962 | 3,5 |
+| **Thursday** | 4,4 | 2,0 - 8,0 | 1824 - 2809 | 4,2 |
+| **Friday** | 4,0 | 1,2 - 10,4 | 560 - 3203 | 5,7 |
+| **Saturday** | 1,0 | 0,1 - 2,7 | 1598 - 3302 | 6,7 |
+| **Sunday** | 1,2 | 0,1 - 2,7 | 1522 - 4110 | 6,5 |
 
-During the forecast period, prices will remain mostly low, and on most days the daily average will settle below four cents. **Wednesday** will stand out the most, as the expected average price will rise to 6,8 cents and the day’s peak quote to 12,4 cents. The price level will be explained by weak wind power, as production will average 1674 megawatts and fall to a low of 765 megawatts. That low minimum output will also explain the day’s high peak price. The highest hourly prices will fall in the morning and evening, in practice around 07–09 and 19–21. **Friday** will also see larger-than-usual variation, as the price will climb close to ten cents in the morning and wind power will dip very low, to a minimum of 523 megawatts. The day will also be a public holiday, which will lower demand.
+Next **Monday** and **Tuesday**, the exchange electricity price forecast will remain inexpensive, and the daily average will settle at 2,1–2,6 cents. On Monday, however, a clear morning spike will be seen, as the price rises to 9,1 cents at 7–8. The most expensive day will be **Wednesday**, when the expected daily average climbs to 5,8 cents and the highest hourly price reaches 10,2 cents. Wednesday’s higher hourly prices are explained by weak wind power, as output averages only 2220 megawatts and falls to a low of 1647 megawatts. For the same reason, **Thursday** will also remain at a somewhat higher price level, even though the daily average stays at 4,4 cents.
 
-The lowest readings will be seen on **Saturday**, when the price will briefly fall below zero in the afternoon and the day’s average will remain at 1,1 cents. **Sunday** will also be expected to stay very inexpensive, with the whole day remaining below three cents. **Monday** will show the biggest variation at the start of the week, as the price will reach 9,1 cents at 07–08 in the morning, but by the afternoon it will already move in the 0,4–0,6 cent range. **Tuesday** will stay more even, while **Thursday** will be expected to be a calm mid-range day without larger moves.
+On **Friday**, the holiday will weigh prices down, but the day will still not rank among the week’s cheapest. The daily average will be 4,0 cents, and during individual hours the price rises to 10,4 cents at 8–10. This is linked to an exceptionally low wind power minimum, which drops to 560 megawatts. On **Saturday** and **Sunday**, the price level falls back to very low levels. On both days, the average stays around one cent, and the cheapest hours dip to 0,1 cents. The week’s lowest prices will therefore occur over the weekend, while the highest price expectations will be seen on Wednesday and Friday.
 
-*Price watch, gpt-5.4* ⚡
+*Price desk, gpt-5.4* ⚡
