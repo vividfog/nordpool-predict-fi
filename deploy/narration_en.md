@@ -1,19 +1,19 @@
-*In the weekly electricity price forecast, prices will stay mostly low, but Wednesday will stand out as the clearest high-price day and Saturday will dip below zero.*
+*The exchange electricity week would appear to begin with low prices, turn more expensive on Wednesday, and become fairly inexpensive again toward the end.*
 
-The forecast was updated on Sunday at 02:57.
+The forecast was updated on Sunday at 08:57.
 
 |  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 2,0 | 0,6 - 4,5 | 2805 - 5139 | 3,6 |
-| **Tuesday** | 2,7 | 1,1 - 4,9 | 4178 - 6089 | 3,6 |
-| **Wednesday** | 6,4 | 2,3 - 11,8 | 1372 - 4137 | 3,5 |
-| **Thursday** | 4,1 | 2,3 - 7,0 | 1645 - 2939 | 4,2 |
-| **Friday** | 3,1 | 0,7 - 8,4 | 547 - 3044 | 5,7 |
-| **Saturday** | 1,5 | -0,5 - 3,6 | 1255 - 3172 | 6,7 |
-| **Sunday** | 1,7 | 0,3 - 5,1 | 981 - 4081 | 6,5 |
+| **Monday** | 2,2 | 0,7 - 4,8 | 2989 - 5431 | 3,6 |
+| **Tuesday** | 2,6 | 1,5 - 5,2 | 3905 - 5891 | 3,6 |
+| **Wednesday** | 5,6 | 2,6 - 10,8 | 1184 - 3825 | 3,5 |
+| **Thursday** | 4,7 | 2,6 - 8,2 | 1744 - 2876 | 4,2 |
+| **Friday** | 2,7 | -0,6 - 7,9 | 913 - 3182 | 5,7 |
+| **Saturday** | 1,6 | -0,3 - 3,9 | 1224 - 3112 | 6,7 |
+| **Sunday** | 1,8 | 0,3 - 5,1 | 1046 - 4038 | 6,5 |
 
-Next **Monday** and **Tuesday**, the exchange electricity price outlook will remain low. The daily average prices will come in at 2,0 and 2,7 cents. Tuesday’s wind power generation will be exceptionally strong, averaging 5198 MW, and that will support the moderate price level. Next **Wednesday**, the clearly highest price level of the forecast period will lift the daily average to 6,4 cents, and the day’s top reading will reach 11,8 cents. That will be explained by weak wind power, with the average dropping to 2105 MW and the lowest hourly level to 1372 MW. The highest price is forecast for the evening, around 19:00–21:00, when there will also be a risk of price spikes in individual hours.
+On next **Monday** and **Tuesday**, exchange electricity prices would remain fairly low, as the daily average would stay at 2,2 and 2,6 cents. These low expectations would be explained by abundant wind power, which would be forecast at clearly above 3000 megawatts on average for both days. The clearly most expensive day of the forecast period would be **Wednesday**, when the average price would rise to 5,6 cents and the highest hourly price to 10,8 cents. The price level would be lifted by weak wind, as average wind power would remain at 2423 megawatts and the day’s lowest output would fall to 1184 megawatts. The highest hourly price of the period would also be linked to that same pattern.
 
-Next **Thursday**, the price level will ease, but it will remain higher than on the cheapest days of the week. Thursday’s higher peak hours will also be explained by a low minimum in wind power production, which will stay at 1645 MW. On **Friday**, the public holiday will push demand lower, and the daily average price will remain at 3,1 cents, even though a morning peak of 8,4 cents will be seen around 8:00–10:00. On **Saturday**, the lowest hourly price of the forecast period will fall below zero, and around 12:00–14:00 electricity is forecast to reach as low as -0,5 cents. On **Sunday**, the average price will still remain low at 1,7 cents, but toward the evening it will rise to around five cents.
+On **Thursday**, the average price would settle at 4,7 cents and the highest hourly price at 8,2 cents. There would be a risk of price spikes in individual hours, especially in the morning around 07–09 and in the evening around 20–22. **Friday** would be a public holiday, which would push demand below normal. The daily average would still remain at 2,7 cents, although the morning would reach 7,9 cents. In the evening, the lowest hourly price of the forecast period would also be seen, as the price would dip below zero between 20–22 and fall as low as -0,6 cents. **Saturday** would be expected to be the cheapest day of the week, with an average price of 1,6 cents, and around midday the price would briefly slip slightly negative. On **Sunday**, prices would stay mostly low, but would rise in the evening to around 4–5 cents.
 
-*Read by gpt-5.4* ⚡
+*Data read by gpt-5.4* 💡
