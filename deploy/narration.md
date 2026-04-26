@@ -1,19 +1,19 @@
-*Pörssisähkön viikko näyttäisi alkavan matalissa hinnoissa, kallistuvan keskiviikkona ja palautuvan loppua kohti jälleen varsin edulliseksi.*
+*Pörssisähkön viikko näyttää enimmäkseen edulliselta, mutta keskiviikko erottuu selvästi kalleimpana päivänä ja viikonloppuna hinnat painuvat hyvin alas.*
 
-Ennuste on päivitetty sunnuntaina klo 08:57.
+Ennuste on päivitetty sunnuntaina klo 11:57.
 
-|  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|              | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **maanantai** | 2,2 | 0,7 - 4,8 | 2989 - 5431 | 3,6 |
-| **tiistai** | 2,6 | 1,5 - 5,2 | 3905 - 5891 | 3,6 |
-| **keskiviikko** | 5,6 | 2,6 - 10,8 | 1184 - 3825 | 3,5 |
-| **torstai** | 4,7 | 2,6 - 8,2 | 1744 - 2876 | 4,2 |
-| **perjantai** | 2,7 | -0,6 - 7,9 | 913 - 3182 | 5,7 |
-| **lauantai** | 1,6 | -0,3 - 3,9 | 1224 - 3112 | 6,7 |
-| **sunnuntai** | 1,8 | 0,3 - 5,1 | 1046 - 4038 | 6,5 |
+| **maanantai** | 2,5 | 1,2 - 5,2 | 2734 - 5182 | 3,6 |
+| **tiistai** | 2,8 | 1,0 - 6,0 | 3097 - 6072 | 3,6 |
+| **keskiviikko** | 6,9 | 4,1 - 12,4 | 804 - 2971 | 3,5 |
+| **torstai** | 3,4 | 1,8 - 5,9 | 2355 - 3463 | 4,2 |
+| **perjantai** | 3,7 | 1,8 - 10,8 | 544 - 3552 | 5,7 |
+| **lauantai** | 1,4 | -0,2 - 2,6 | 1558 - 3325 | 6,7 |
+| **sunnuntai** | 1,4 | 0,4 - 3,2 | 1429 - 4301 | 6,5 |
 
-Ensi **maanantaina** ja **tiistaina** pörssisähkön hinta pysyttelisi varsin matalana, kun päivän keskihinta jäisi 2,2 ja 2,6 senttiin. Matalia odotuksia selittäisi runsas tuulivoima, jota ennustettaisiin molemmille päiville selvästi yli 3000 megawatin keskimäärin. Ennustejakson selvästi kallein päivä olisi **keskiviikko**, jolloin keskihinta nousisi 5,6 senttiin ja korkein tuntihinta 10,8 senttiin. Hintatasoa nostaisi heikko tuuli, sillä tuulivoiman keskiarvo jäisi 2423 megawattiin ja päivän alin tuotanto putoaisi 1184 megawattiin. Samaan yhteyteen liittyisi myös jakson korkein tuntihinta.
+Ensi **maanantaina** ja **tiistaina** pörssisähkön hinta pysyy verraten matalana, ja vuorokausien keskihinnat asettuvat 2,5 ja 2,8 senttiin. Kallein päivä tulee olemaan **keskiviikko**, jolloin päivän odotettu keskihinta nousee 6,9 senttiin ja ylin tuntihinta 12,4 senttiin. Nousua selittää heikko tuulivoimatuotanto, sillä päivän keskimääräinen tuotanto jää 1839 megawattiin ja alin tuntitaso painuu 804 megawattiin. Korkein hintajakso osuu aamuun noin klo 7–9. Myös illalla noin klo 19–21 nähdään selvästi muuta päivää korkeampia hintoja, ja yksittäisille tunneille liittyy hintapiikkien riski.
 
-**Torstaina** keskihinta asettuisi 4,7 senttiin ja ylin tuntihinta 8,2 senttiin. Hintapiikkien riskiä esiintyisi yksittäisillä tunneilla etenkin aamulla noin klo 07–09 ja illalla noin klo 20–22. **Perjantai** olisi pyhäpäivä, mikä painaisi kysyntää tavanomaista alemmaksi. Päivän keskihinta jäisi silti 2,7 senttiin, vaikka aamulla käytäisiin 7,9 sentissä. Illalla nähtäisiin myös ennustejakson alin tuntihinta, kun hinta painuisi klo 20–22 välillä miinukselle ja kävisi alimmillaan -0,6 sentissä. **Lauantaina** odotus olisi viikon edullisin, keskihinta 1,6 senttiä, ja hinta kävisi keskipäivällä niukasti pakkasella. **Sunnuntaina** hinta pysyisi enimmäkseen matalana, mutta nousisi illalla 4–5 sentin tuntumaan.
+**Torstaina** hinta laskee takaisin 3,4 sentin keskihintaan. **Perjantaina** odotus pysyy 3,7 sentissä, vaikka päivän ylin tuntihinta kohoaa 10,8 senttiin. Päivä on pyhäpäivä, mikä voi painaa kysyntää tavanomaista alemmaksi. Perjantain korkea huippu selittyy myös sillä, että tuulivoiman minimituotanto jää poikkeuksellisen alas, 544 megawattiin. Huippu sijoittuu aamupäivään noin klo 8–10, ja yksittäisille tunneille liittyy hintapiikkien riski. **Lauantaina** sähkö on jakson edullisinta. Päivän keskihinta jää 1,4 senttiin, ja iltapäivällä noin klo 15–17 käydään hetkellisesti jopa pakkasen puolella. **Sunnuntaina** keskihinta pysyy samassa 1,4 sentissä, mutta iltapuolella noin klo 18–20 nähdään viikonlopun korkeimmat tunnit, enimmillään 3,2 senttiä.
 
-*Dataa luki gpt-5.4* 💡
+*Hintavahdissa gpt-5.4* ⚡
