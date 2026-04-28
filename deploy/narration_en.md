@@ -1,19 +1,19 @@
-*Exchange electricity prices will vary clearly between days: Saturday looks set to be the cheapest in the period, while Wednesday and next Tuesday will be the most expensive.*
+*Spot electricity prices will vary clearly over the coming days: Wednesday and Tuesday will be the most expensive, while the weekend is expected to be very cheap.*
 
-The forecast was updated on Tuesday at 11:57.
+The forecast was updated on Tuesday at 14:57.
 
 |              | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 7.2 | 3.7 - 12.1 | 1076 - 3032 | 3.5 |
-| **Thursday** | 6.0 | 2.9 - 10.7 | 1087 - 2057 | 4.2 |
-| **Friday** | 2.4 | -0.2 - 6.3 | 1137 - 2741 | 5.7 |
-| **Saturday** | 0.6 | -0.3 - 2.0 | 2721 - 3802 | 6.7 |
-| **Sunday** | 2.2 | 0.9 - 4.8 | 1086 - 3804 | 6.5 |
-| **Monday** | 4.1 | 2.6 - 5.3 | 1080 - 2605 | 7.5 |
-| **Tuesday** | 5.7 | 2.7 - 11.6 | 671 - 2080 | 8.0 |
+| **Wednesday** | 8,2 | 2,0 - 16,0 | 1097 - 3067 | 3,5 |
+| **Thursday** | 6,8 | 3,0 - 11,4 | 1116 - 2064 | 4,2 |
+| **Friday** | 2,7 | -0,2 - 6,9 | 1161 - 2842 | 5,7 |
+| **Saturday** | 0,5 | -0,5 - 1,8 | 2707 - 3875 | 6,7 |
+| **Sunday** | 2,4 | 1,1 - 5,2 | 1045 - 3824 | 6,5 |
+| **Monday** | 4,3 | 2,9 - 5,7 | 1072 - 2620 | 7,5 |
+| **Tuesday** | 6,1 | 2,8 - 13,4 | 567 - 2096 | 8,0 |
 
-Price expectations will vary quite a lot over the forecast period. The most expensive day will be **Wednesday**, when the average price is expected to be 7.2 cents and the daily peak 12.1 cents. Wednesday’s higher maximum will be explained in part by wind power production dropping as low as 1076 megawatts during the day. **Tuesday** will also see one of the highest peaks of the period, at 11.6 cents, while wind power minimum output will fall to the weakest level in the forecast, 671 megawatts. The risk of price spikes will stand out on Wednesday in the evening around 19:00–21:00, on Thursday in the morning around 8:00–10:00, and next Tuesday in the morning around 8:00–10:00.
+The price outlook will show clear variation between days. The most expensive day will be **Wednesday**, when the daily average price will rise to 8,2 cents and the highest hourly price will reach 16,0 cents. Intra-day variation will be large, because the price will fall to 2,0 cents in the afternoon but rise clearly higher in the morning and evening. The high peak will be explained by wind power dropping to a fairly low level during the day, with a minimum of 1097 megawatts. **Tuesday** will also stand out with the second-highest readings of the period, as the average price will climb to 6,1 cents and the day’s highest hourly price of 13,4 cents will occur in the morning. Wind power will then remain exceptionally weak, averaging 987 megawatts and falling to as low as 567 megawatts.
 
-The cheapest phase will fall on **Friday** and especially **Saturday**. Friday is a public holiday, and lower-than-normal demand will push the price outlook down. On Friday, the price will briefly dip below zero in the afternoon around 14:00–17:00. On Saturday, the average daily price will remain at just 0.6 cents, and the lowest reading will fall to -0.3 cents. At that point, abundant wind power will support the low price level, as production will climb to as much as 3802 megawatts. **Sunday** will still remain fairly cheap, but **Monday** the level will rise again to just over four cents.
+The cheapest day will be **Saturday**, when the average price will stay at 0,5 cents and several hours will dip below zero. Strong wind will support the low price level, as wind power is forecast to average 3221 megawatts. **Friday** will also remain inexpensive, and the public holiday will push demand below normal. The forecast period’s only negative hourly price will be seen then in the afternoon. On **Thursday**, **Sunday** and **Monday**, prices will be more even, although those days will still carry a risk of individual price spikes. The highest spike risk will concern Tuesday, when the most expensive hours are expected roughly between 7 and 9.
 
-*Data read by gpt-5.4* ⚡
+*Price watch, gpt-5.4* 💡
