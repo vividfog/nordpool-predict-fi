@@ -1,19 +1,19 @@
-*Spot electricity will be pricier on Wednesday, but the holiday will push prices very low through the weekend before another rise next Tuesday.*
+*In the spot electricity forecast, Thursday will stand out as the most expensive day of the period, but clearly lower and at times even negative prices are expected for the weekend.*
 
-The forecast was updated on Tuesday at 20:57.
+The forecast was updated on Wednesday at 02:57.
 
-|              | aver-<br>age price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | aver-<br>age temperature<br>°C |
+|  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 8.2 | 2.0 - 16.0 | 1087 - 3064 | 3.5 |
-| **Thursday** | 6.8 | 3.2 - 11.4 | 1053 - 1895 | 4.2 |
-| **Friday** | 2.3 | -0.7 - 5.8 | 1754 - 3451 | 5.7 |
-| **Saturday** | 1.4 | -0.1 - 2.8 | 1890 - 3468 | 6.7 |
-| **Sunday** | 1.6 | 0.1 - 3.7 | 1730 - 4387 | 6.5 |
-| **Monday** | 4.3 | 2.6 - 6.1 | 1327 - 2468 | 7.5 |
-| **Tuesday** | 6.0 | 2.7 - 13.1 | 571 - 1965 | 8.0 |
+| **Thursday** | 6.7 | 3.1 - 11.0 | 995 - 2495 | 4.2 |
+| **Friday** | 2.4 | -0.5 - 6.5 | 1248 - 3336 | 5.7 |
+| **Saturday** | 1.1 | -0.6 - 2.7 | 2105 - 3868 | 6.7 |
+| **Sunday** | 1.8 | 0.7 - 3.9 | 1602 - 4135 | 6.5 |
+| **Monday** | 3.8 | 1.9 - 8.2 | 1221 - 2783 | 7.5 |
+| **Tuesday** | 4.7 | 1.7 - 9.5 | 763 - 2179 | 8.0 |
+| **Wednesday** | 3.7 | 0.9 - 8.1 | 1300 - 3420 | 7.4 |
 
-The widest price swings during the forecast period will be seen on **Wednesday**, when the daily average price will rise to 8.2 cents and the peak will reach 16.0 cents. At the same time, wind power output will remain fairly low during the day, with the minimum at 1087 megawatts. This will explain the high peak price. The most expensive hours will fall around the morning and evening, and individual hourly prices will climb clearly above the rest of the day’s level. On **Thursday**, too, the price level will remain elevated, although the daily average will stay at 6.8 cents. Thursday will also carry a risk of individual price spikes.
+There will be a clear difference in price levels between the days. The most expensive day will be **Thursday**, when the average price is forecast at 6.7 cents and the day’s highest reading will rise to 11.0 cents. Thursday’s higher peak will be explained in part by wind power dropping to an exceptionally low level during the day, bottoming out at 995 megawatts. There will also be a risk of price spikes in individual hours, and the highest period will fall in the late morning, around 08:00–10:00. **Friday** will also carry a risk of brief hourly spikes, although the public holiday will push the daily average down to 2.4 cents and prices will briefly turn negative in the afternoon.
 
-The clearly cheapest phase will fall on **Friday**, which will be a public holiday. Then the average price will drop to 2.3 cents, and in the evening the price will briefly turn negative, with the low at -0.7 cents. On **Saturday** and **Sunday**, the price level will remain very low, and daily averages will settle at 1.4-1.6 cents. Next **Monday**, the price will rise back to 4.3 cents, and that day, too, will carry a risk of price spikes in individual hours. Next **Tuesday**, wind power will be the weakest of the period, averaging 1007 megawatts, while the minimum will fall to 571 megawatts. Because of that, the daily average price will climb to 6.0 cents and the highest forecast to 13.1 cents. Tuesday will carry a high risk of individual price spikes, and the highest-priced hours will be concentrated in the morning, roughly from 7 to 9.
+The cheapest days will fall on **Saturday** and **Sunday**. Saturday’s average price will stay at 1.1 cents, and the lowest hourly price will slip to -0.6 cents. On Sunday, the price level will remain steadier, with the daily average expected at 1.8 cents. Next **Monday**, the price will rise again to an average below four cents, and next **Tuesday**, the weakest wind conditions of the period will lift the expectation to 4.7 cents. Tuesday’s highest hourly price, 9.5 cents, will occur in the evening around 19:00–21:00. Next **Wednesday**, the price will ease again, although an evening peak of 8.1 cents will still be seen around 21:00–23:00.
 
-*Price watch, gpt-5.4* 💡
+*Data read by gpt-5.4.* 💡
