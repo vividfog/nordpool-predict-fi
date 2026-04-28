@@ -1,19 +1,19 @@
-*Spot electricity prices will vary clearly in the coming days: Wednesday and next Tuesday will stand out as pricier, while the weekend is forecast to remain very inexpensive.*
+*Exchange electricity prices will vary widely in the coming days: Wednesday and next Tuesday will be the most expensive, while the weekend is expected to be very cheap.*
 
-The forecast was updated on Tuesday at 02:57.
+The forecast was updated on Tuesday at 09:03.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | avg.<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 7,4 | 4,4 - 11,7 | 1151 - 3027 | 3,5 |
-| **Thursday** | 5,6 | 2,6 - 10,6 | 1245 - 2262 | 4,2 |
-| **Friday** | 2,5 | -1,2 - 6,7 | 1052 - 3334 | 5,7 |
-| **Saturday** | 0,4 | -0,6 - 1,7 | 2158 - 3943 | 6,7 |
-| **Sunday** | 2,0 | 0,5 - 4,9 | 1234 - 3643 | 6,5 |
-| **Monday** | 4,5 | 2,7 - 7,5 | 1162 - 1965 | 7,5 |
-| **Tuesday** | 5,5 | 3,2 - 11,5 | 745 - 1716 | 8,3 |
+| **Wednesday** | 7,1 | 4,1 - 11,1 | 1310 - 3347 | 3,5 |
+| **Thursday** | 5,4 | 2,3 - 8,5 | 1498 - 2754 | 4,2 |
+| **Friday** | 2,0 | -1,8 - 5,0 | 1598 - 3535 | 5,7 |
+| **Saturday** | 0,3 | -0,9 - 1,3 | 2871 - 4292 | 6,7 |
+| **Sunday** | 2,1 | 0,7 - 4,4 | 1122 - 4118 | 6,5 |
+| **Monday** | 4,7 | 2,8 - 8,0 | 1148 - 1900 | 7,5 |
+| **Tuesday** | 5,4 | 3,0 - 11,8 | 748 - 1756 | 8,3 |
 
-Prices during the forecast period will vary quite a bit. The most expensive day will be **Wednesday**, when the expected average price will rise to 7,4 cents and the highest hourly price to 11,7 cents. Intraday variation will be wide, and the highest evening peak will fall around 19:00–21:00. **Tuesday** will also see the top hourly price climb to 11,5 cents around 08:00–10:00. That will be explained by an exceptionally low minimum in wind power production, which will fall to 745 megawatts. **Thursday** will reach a slightly lower peak, 10,6 cents, while wind power will dip to 1245 megawatts.
+Large differences will be seen between the days in this forecast period. The highest daily average price is expected on **Wednesday**, when the average will be 7,1 c and the day’s highest hourly price 11,1 c. At the same time, wind power will average only 1786 megawatts, which will lift the price level. Wednesday’s high peak is also explained by wind power’s minimum output falling to 1310 megawatts. On **Tuesday**, the highest hourly price will rise even above that, to 11,8 cents, while the day’s wind power minimum will drop to 748 megawatts. That very low minimum output will also explain the higher maximum price then. The risk of price spikes is also noted for Wednesday, Thursday, Friday, Sunday, Monday and Tuesday. Around the forecast peak hours, the highest prices will fall for example on **Wednesday** around 19–21 and next **Tuesday** around 08–10.
 
-The cheapest stretch will arrive on **Friday** and **Saturday**. Friday will also be a public holiday, which will push demand lower. Prices will then slip below zero in the evening and at night, with the lowest reading reaching -1,2 cents around 20:00–22:00. An even lower overall daily price level will be seen on Saturday, when the average price will remain at 0,4 cents and strong wind will support the low level. **Sunday** will still stay clearly below five cents, after which the level will rise closer to normal again on **Monday** and next **Tuesday**.
+The clearly cheapest day will be **Saturday**, when the average price will stay at 0,3 cents and the hourly price will dip as low as -0,9 cents. **Friday** is also expected to be inexpensive, because it will be a public holiday and demand may remain lower than usual. Friday evening will stand out as the cheapest period of the whole forecast span, when the price will fall around 20–22 and bottom out at -1,8 cents. On Saturday, prices will remain very low for nearly the entire day, and no price spikes are highlighted for that day. On **Sunday**, the price level will still remain moderate, but next **Monday** and next **Tuesday** are expected to bring clearly higher morning and evening hours again.
 
-*Read by gpt-5.4.* ⚡
+*Read by gpt-5.4* ⚡
