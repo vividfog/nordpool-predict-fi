@@ -1,19 +1,19 @@
-*Exchange electricity will stay very cheap over the weekend, but prices will rise during next week, with the highest readings on Wednesday and Thursday.*
+*In the spot electricity forecast, the cheapest day of the week will fall on Saturday, and the price level will rise toward the end of the week, although there will be variation along the way.*
 
-The forecast was updated on Thursday at 20:57.
+The forecast was updated on Friday at 02:58.
 
 |  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday** | 1.4 | 0.0 - 3.1 | 1194 - 3600 | 5.7 |
-| **Saturday** | 0.7 | -0.5 - 2.9 | 1691 - 3289 | 6.7 |
-| **Sunday** | 2.3 | 0.7 - 5.2 | 1010 - 2365 | 6.5 |
-| **Monday** | 2.6 | 1.1 - 3.9 | 1705 - 2974 | 7.5 |
-| **Tuesday** | 1.9 | 0.1 - 6.2 | 982 - 4077 | 8.0 |
-| **Wednesday** | 4.4 | 2.0 - 9.8 | 479 - 2425 | 6.6 |
-| **Thursday** | 6.7 | 3.4 - 11.7 | 431 - 2677 | 5.6 |
+| **Saturday** | 0,7 | -0,4 - 2,2 | 1403 - 3447 | 6,7 |
+| **Sunday** | 2,7 | 0,5 - 5,3 | 798 - 2722 | 6,5 |
+| **Monday** | 3,7 | 1,2 - 6,6 | 762 - 3090 | 7,5 |
+| **Tuesday** | 2,3 | -0,3 - 6,1 | 1033 - 4261 | 8,0 |
+| **Wednesday** | 4,5 | 2,6 - 7,3 | 706 - 2145 | 6,6 |
+| **Thursday** | 4,6 | 3,2 - 6,3 | 901 - 2552 | 5,6 |
+| **Friday** | 4,4 | 1,7 - 8,3 | 964 - 3923 | 5,5 |
 
-The price period will begin on **Friday** at exceptionally low levels, and the public holiday will push expectations down. During the day, the price will touch zero, and on **Saturday** the lowest quote of the whole period will be seen at -0.5 c. Saturday will also be the cheapest day of the period, with an average price of 0.7 cents. On **Sunday**, the level will already rise to 2.3 cents, and in the evening it will reach 5.2 cents. The higher daily peak will be linked to wind power dropping to as low as 1010 megawatts. The risk of price spikes will be limited to individual hours, especially in the evening around 19:00–21:00.
+During the forecast period, electricity will be expected to remain mostly cheap or at a typical price level. The clearly lowest daily expectation will be seen on **Saturday**, when the average price will stay at 0,7 cents and the day’s lowest hourly price will dip to -0,4 cents. A negative hourly price will also be seen next **Tuesday**, when the lowest quote will reach -0,3 cents. The highest daily average price will fall on **Thursday**, at 4,6 cents, but the highest individual hourly price of the period will be seen next **Friday**: 8,3 cents.
 
-On **Monday**, the price level will remain fairly even, but on **Tuesday** variation will widen again. Tuesday’s 6.2-cent peak will coincide with a day when wind power falls to a minimum of 982 megawatts. The risk of price spikes will then be concentrated in the evening around 19:00–21:00. The most notable day, however, will be **Wednesday**, when the average price will rise to 4.4 cents and the morning peak will reach 9.8 cents around 7:00–9:00. Wind power will then remain very low, at a minimum of 479 megawatts. The most expensive day of the period will be next **Thursday**, when the average price will climb to 6.7 cents and the daily high will reach 11.7 cents. On that day too, a very low wind power minimum of 431 megawatts will explain the higher price level, and individual peak hours are expected in the morning around 7:00–9:00 and in the evening around 18:00–20:00.
+The price level will rise over the week from Saturday through Sunday and Monday, ease on Tuesday, and then climb again from Wednesday to Friday. On **Wednesday** and **Thursday**, the price level will be lifted by weak wind power, which will average about 1400 megawatts. Next **Friday**, the day’s high peak will also be explained by wind power minimum production staying at 964 megawatts. On Sunday, Monday, Tuesday, Wednesday, Thursday and Friday, there will be a risk of price spikes in individual hours. In the current forecast, the highest hours will fall on Sunday evening around 20–22 and on Friday late in the evening around 21–23.
 
-*Price desk, gpt-5.4* ⚡
+*gpt-5.4 interpreted it* ⚡
