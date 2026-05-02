@@ -1,19 +1,19 @@
-*The spot electricity forecast will stay mostly moderate in the coming days, but Tuesday is expected to bring the week’s biggest swings and highest price peak.*
+*The spot electricity price will vary fairly moderately over the coming days, but Sunday evening and individual hours on Tuesday will stand out in the forecast.*
 
-The forecast was updated on Saturday at 11:57.
+The forecast has been updated on Saturday at 14:57.
 
 |  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 2.8 | 1.3 - 6.2 | 1021 - 2783 | 6.5 |
-| **Monday** | 5.4 | 3.0 - 8.6 | 625 - 1914 | 7.5 |
-| **Tuesday** | 3.8 | 0.0 - 11.9 | 645 - 5033 | 8.0 |
-| **Wednesday** | 4.8 | 2.0 - 8.2 | 676 - 2308 | 6.6 |
-| **Thursday** | 5.4 | 3.0 - 9.1 | 846 - 2810 | 5.6 |
-| **Friday** | 5.4 | 3.0 - 8.4 | 917 - 2499 | 5.4 |
-| **Saturday** | 3.7 | 0.5 - 6.9 | 523 - 1580 | 5.9 |
+| **Sunday** | 5.7 | 1.3 - 15.1 | 1011 - 2857 | 6.5 |
+| **Monday** | 7.3 | 4.7 - 11.8 | 563 - 1909 | 7.5 |
+| **Tuesday** | 4.7 | 1.0 - 13.4 | 682 - 5275 | 8.0 |
+| **Wednesday** | 5.8 | 3.1 - 9.5 | 658 - 2226 | 6.6 |
+| **Thursday** | 6.9 | 4.3 - 11.6 | 836 - 2686 | 5.6 |
+| **Friday** | 6.4 | 3.3 - 9.3 | 992 - 2532 | 5.4 |
+| **Saturday** | 5.0 | 1.3 - 8.6 | 493 - 1553 | 5.9 |
 
-Over the forecast period, the price outlook will remain mostly fairly moderate. The cheapest day will be **Sunday**, when the daily average price will be 2.8 cents and the range will run from 1.3 to 6.2 cents. Next **Tuesday** will also stay at a daily average of 3.8 cents, although intraday variation will be the largest of the week. On Tuesday, the price will touch zero in the morning, but climb as high as 11.9 cents in the evening. That high upper end will be explained in part by wind power minimum output falling to 645 megawatts. The same day is also marked with a high risk of hourly price spikes, and the highest hour would fall roughly between 19:00 and 21:00.
+The price level will likely remain mostly typical throughout the forecast period, but clear differences will be seen between the days. The lowest average price is expected on **Tuesday**, when the daily average will stay at 4.7 cents, even though the daily high will rise to 13.4 cents. The highest single hourly price is forecast for **Sunday**, when the price will reach 15.1 cents and the daily average will settle at 5.7 cents. At the same time on Sunday, minimum wind power production will fall to 1011 megawatts, which will explain the day’s high peak price. On Monday, the average price will rise to the highest level of the period, 7.3 cents, while average wind power production will remain weak at 1056 megawatts.
 
-The highest average prices will be seen on **Monday**, **Thursday** and **Friday**, each with an expected daily average of 5.4 cents. Monday’s high upper end of 8.6 cents will be explained by a very low wind power minimum of 625 megawatts. On **Wednesday** as well, the lowest wind level will remain at 676 megawatts, and the price will rise to at most 8.2 cents during the day. A risk of price spikes is also marked for **Sunday**, **Monday**, **Wednesday**, **Thursday**, **Friday** and **Saturday**. Sunday’s peak will fall around 18:00–20:00, Monday’s around 17:00–19:00, and Thursday’s around 7:00–9:00.
+At the hourly level, the cheapest moments will fall on Tuesday in the early morning and afternoon, when the price drops to 1.0–1.5 cents. On Sunday, the evening peak will occur around 20:00–22:00, when the price will exceed 15 cents. Because of the risk noted in the data, individual price spikes may become pronounced on **Monday** around 18:00–20:00, **Tuesday** around 19:00–21:00, **Wednesday** around 20:00–22:00, **Thursday** around 8:00–10:00 and 18:00–20:00, **Friday** around 21:00–23:00, and **Saturday** around 20:00–22:00. Saturday otherwise appears to be one of the cheaper days in the period, as the price will dip as low as 1.3 cents in the afternoon.
 
-*On price watch, gpt-5.4* ⚡
+*Price desk, gpt-5.4* ⚡
