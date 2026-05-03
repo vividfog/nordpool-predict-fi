@@ -39,10 +39,10 @@ narration_prompt = """
   - Jos käyttöaste on nolla prosenttia, silloin käytä termiä huoltokatko. Muuten kyseessä on tuotantovajaus.
 
   ## 1.6. Piikkihintojen riski yksittäisille tunneille
-  - Yli 15 c/kWh ennustettu maksimihinta ja selvästi alle 1000 MW tuulivoiman min voi olla riski: todellinen maksimihinta voi olla korkeampi kuin ennuste. Tällöin yksittäisten huipputuntien maksimihinnat voivat olla korkeampia ennustettuun maksimihintaan nähden. Tarkista tuntikohtainen ennuste.
-  - Saat puhua hintapiikeistä vain, jos <data> mainitsee niistä, yksittäisten päivin kohdalla. Älä spekuloi, jos riskiä ei erikseen ole tietyn päivän kohdalla mainittu.
-  - Jos hintapiikkejä ei ole <data>:ssa mainittu, riskiä ei kyseisen päivän kohdalla silloin ole, eikä hintapiikeistä ole tarpeen puhua kyseisen päivän kohdalla ollenkaan. Älä siis koskaan käytä esimerkiksi tällaista lausetta, koska se on tarpeeton: "Muina päivinä hintapiikkien riski on pieni."
-  - Koska huippuhintojen ajankohtaa on vaikea ennustaa täsmälleen oikein, käytä artikkelissa 2 tunnin aikahaarukkaa, jossa huippu on keskellä. Esimerkiksi: Jos huippuhinta tuntikohtaisessa ennusteessa olisi <data>:n mukaan klo 13, tällöin käyttäisit aikahaarukkaa klo 12-14.
+  - <data> sisältää <hintapiikkiriskit>-lohkon. Se on ainoa lähde sille, saako yksittäisen päivän kohdalla puhua hintapiikkiriskistä.
+  - Saat mainita hintapiikkiriskin vain päiville, joiden rivillä on muoto "klo H–H". Käytä artikkelissa juuri tätä annettua aikahaarukkaa.
+  - Jos päivän rivillä lukee "ei", älä puhu kyseisen päivän hintapiikkiriskistä lainkaan. Älä myöskään kirjoita, että riski on pieni tai että piikkejä ei odoteta.
+  - Älä päättele hintapiikkiriskiä itse maksimihinnan, tuulivoiman tai tuntikohtaisen taulukon perusteella. Ne voivat selittää hintatasoa, mutta eivät anna lupaa käyttää hintapiikki-sanaa ilman <hintapiikkiriskit>-lohkon kellonaikaa.
 
   ## 1.7. Muita ohjeita
   - Älä lisää omia kommenttejasi, arvioita tai mielipiteitä. Älä käytä ilmauksia kuten 'mikä ei aiheuta erityistä lämmitystarvetta' tai 'riittävän korkea'.
@@ -102,7 +102,7 @@ narration_prompt = """
   - Kuvaile hintakehitystä neutraalisti ja informatiivisesti.
   - Voit luoda vaihtelua käyttämällä tuntikohtaista ennustetta: Voit mainita muutaman yksittäisen tunnin, jos ne korostuvat jonkin päivän sisällä. Tai voit viitata ajankohtaan päivän sisällä.
   - Sinun ei ole pakko käyttää ¢/kWh-lyhennettä joka kerta. Voit luoda vaihtelua käyttämällä kansankielisiä ilmaisuja kuten "alle neljän sentin" tai "yli 15 ¢". kWh-lyhenteen voi usein jättää pois. Sentit voit lyhentää myös ¢:ksi.
-  - Mahdolliset hintapiikit sijoittuvat tyypillisesti aamun (noin klo 8) tai illan (noin klo 18) tunneille. Tarkista mahdollisten hintapiikkien ajankohdat tuntikohtaisesta ennusteesta, ja riskit päiväkohtaisesta datasta.
+  - Mahdolliset hintapiikit näkyvät <hintapiikkiriskit>-lohkossa. Jos mainitset hintapiikin, käytä lohkon antamaa päivää ja kellonaikahaarukkaa.
   - Muotoile **viikonpäivät** sijapäätteineen lihavoinnilla: esim. **maananatai**, **keskiviikkona**, **perjantain** — mutta vain silloin kun mainitset ne tekstikappaleessa ensimmäisen kerran. Samaa päivää ei lihavoida kahdesti samassa tekstikappaleessa, koska se olisi toistoa.
   - Kevennyksenä: Viimeisen kappaleen alle tulee lyhyt "allekirjoituksesi", kursiivilla, esim. tähän tapaan: \n*Numeroita tulkitsi tänään {LLM_MODEL}.* 💡
     ... ja päätä rivi ennustejaksoa parhaiten kuvaavaan tai hauskaan emojiin. Ethän kuitenkaan käytä yo. esimerkkiä täysin sellaisenaan, vaan tee allekirjoituksestasi **persoonallinen**. Allekirjoitus on pituudeltaan lyhyt, vain 2-4 sanaa, ja siinä pitää aina mainita {LLM_MODEL}.

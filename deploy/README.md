@@ -27,9 +27,13 @@ Sample contents:
 [[1708300800000.0, 9.563463154063907], [1708387200000.0, 8.957010347447694], [1708473600000.0, 6.178894845644102], [1708560000000.0, 3.004293814227683], [1708646400000.0, 2.4571863121034263], [1708732800000.0, 2.122324842971843]]
 ```
 
+## prediction_scaled.json for spike-risk markers
+
+This file has the same timestamp format as `prediction.json`, but the second value is only populated for forecast hours that should be highlighted as higher-risk hours. Other rows contain `null`. The frontend uses these non-null rows for the red markers.
+
 ## narration.md
 
-Same as above, but narrated (in Finnish) by a large language model. In the prompt, you could ask it to produce the response in English instead.
+Same forecast, narrated in Finnish by a large language model. English output is written separately to `narration_en.md`.
 
 Sample contents:
 

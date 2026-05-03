@@ -1,4 +1,5 @@
 import os
+import inspect
 
 import pandas as pd
 import pytz
@@ -59,7 +60,7 @@ def test_build_narration_prompt_keeps_original_plaintext_preamble_shape():
 
     prompt = llm.build_narration_prompt(df_daily, pd.DataFrame(), pytz.timezone("Europe/Helsinki"))
 
-    lines = prompt.splitlines()
+    lines = [line for line in prompt.splitlines() if line]
     assert lines[0] == "<data>"
     assert lines[1].startswith("  Nyt on ")
     assert lines[2].startswith("  Olet osa Sähkövatkain")
@@ -70,3 +71,56 @@ def test_narration_prompt_uses_forecast_period_wording():
     assert "Kirjoita yleiskuvaus ennustejakson hintakehityksestä, futuurissa." in llm.narration_prompt
     assert "Ennustejakson edullisimmat ja kalleimmat ajankohdat ovat kiinnostavia tietoja" in llm.narration_prompt
     assert "Suosi viikonpäivien nimiä, kun kuvaat tulevien päivien kehitystä." in llm.narration_prompt
+
+
+def test_format_spike_risk_block_uses_shared_hourly_mask():
+    helsinki_tz = pytz.timezone("Europe/Helsinki")
+    timestamps = pd.date_range("2026-05-04", periods=48, freq="h", tz=helsinki_tz)
+    prices = [1.0] * 48
+    prices[24 + 8] = 10.0
+    prices[24 + 9] = 10.6
+    prices[24 + 20] = 17.0
+    prices[24 + 21] = 15.7
+    wind = [2000.0] * 24 + [700.0] * 24
+
+    df_intraday = pd.DataFrame(
+        {
+            "timestamp": timestamps,
+            "PricePredict_cpkWh": prices,
+            "WindPowerMW": wind,
+        }
+    )
+    df_daily = pd.DataFrame(
+        {
+            "timestamp": [
+                helsinki_tz.localize(pd.Timestamp("2026-05-04")),
+                helsinki_tz.localize(pd.Timestamp("2026-05-05")),
+            ]
+        },
+        index=["maanantai", "tiistai"],
+    )
+
+    block = llm.format_spike_risk_block(
+        df_daily,
+        df_intraday,
+        helsinki_tz,
+        now=pd.Timestamp("2026-05-03 10:00", tz=helsinki_tz),
+    )
+
+    assert block.count("<hintapiikkiriskit>") == 1
+    assert "maanantai: ei" in block
+    assert "tiistai: klo 19–21" in block
+
+
+def test_llm_generate_no_longer_adds_scattered_spike_notes():
+    source = inspect.getsource(llm.llm_generate)
+
+    assert "TÄRKEÄÄ MAINITA" not in source
+    assert "HUOM: Riski hintapiikeille" not in source
+    assert "älä puhu hintapiikeistä" not in source
+
+
+def test_narration_prompt_references_structured_spike_block():
+    assert "<hintapiikkiriskit>" in llm.narration_prompt
+    assert "Saat mainita hintapiikkiriskin vain päiville" in llm.narration_prompt
+    assert "Älä päättele hintapiikkiriskiä itse" in llm.narration_prompt

@@ -14,21 +14,14 @@ import pandas as pd
 import numpy as np
 import os
 import json
-import pytz  # Use pytz directly
-import math  # Import math for ceil
 
 from .logger import logger
-
-# region constants
-# Constants for wind-based linear scaling for spike hours
-WIND_SCALE_MAX_MW = 1004.1304  # Wind power (MW) at or above which the minimum multiplier is applied
-WIND_SCALE_MIN_MW = 412.8883   # Wind power (MW) at which the maximum multiplier is applied
-MAX_WIND_MULTIPLIER = 1.3340   # Multiplier applied when wind power is at WIND_SCALE_MIN_MW
-MIN_WIND_MULTIPLIER = 1.0   # Multiplier applied when wind power is at or above WIND_SCALE_MAX_MW
-
-# Constant for price percentile threshold
-DAILY_PRICE_RANK_FRACTION = 0.19  # Scale the top X% most expensive hours for their specific day (Helsinki time).
-# endregion constants
+from .spike_risk import (
+    DAILY_PRICE_RANK_FRACTION,
+    SPIKE_RISK_COLUMNS,
+    WIND_SCALE_MAX_MW,
+    compute_spike_risk_hours,
+)
 
 # region scaling
 def scale_predicted_prices(df, deploy=False, deploy_folder_path=None):
@@ -57,7 +50,7 @@ def scale_predicted_prices(df, deploy=False, deploy_folder_path=None):
     # region [init]
     # Create a copy to avoid modifying the original
     df_result = df.copy()
-    original_tz = df_result['timestamp'].dt.tz  # Store original timezone if exists
+    original_tz = df_result['timestamp'].dt.tz if pd.api.types.is_datetime64_any_dtype(df_result['timestamp']) else None
 
     # Check if required columns exist
     if 'PricePredict_cpkWh' not in df_result.columns:
@@ -66,178 +59,15 @@ def scale_predicted_prices(df, deploy=False, deploy_folder_path=None):
         df_result['PricePredict_cpkWh_scaled'] = np.nan
         return df_result
 
-    # Ensure timestamp is datetime and UTC for internal calculations
-    try:
-        # If timezone-naive, assume UTC. If timezone-aware, convert to UTC.
-        if df_result['timestamp'].dt.tz is None:
-            df_result['timestamp'] = pd.to_datetime(df_result['timestamp']).dt.tz_localize('UTC')
-            logger.warning("Scaler: Input timestamp column was timezone-naive, assuming UTC.")
-        else:
-            df_result['timestamp'] = pd.to_datetime(df_result['timestamp']).dt.tz_convert('UTC')
-    except Exception as e:
-        logger.error(f"Scaler: Failed to process timestamp column: {e}. Cannot proceed with scaling.", exc_info=True)
-        df_result['PricePredict_cpkWh_scaled'] = np.nan
-        return df_result
+    df_result = compute_spike_risk_hours(df_result)
     # endregion [init]
-
-    # region [helsinki_time_filter]
-    # Add Helsinki time-of-day filter (06:00-22:00)
-    helsinki_tz = pytz.timezone('Europe/Helsinki')
-    df_result['helsinki_hour'] = df_result['timestamp'].dt.tz_convert(helsinki_tz).dt.hour
-    helsinki_time_filter = (df_result['helsinki_hour'] >= 6) & (df_result['helsinki_hour'] < 22)
-    # endregion [helsinki_time_filter]
-
-    # region [top_daily_hours]
-    # Calculate Daily Top Expensive Hours (Helsinki Time) ONLY for hours within the Helsinki time window
-    is_top_daily_hour_mask = pd.Series(False, index=df_result.index)  # Initialize mask
-    top_hours_calculated = False
-    try:
-        df_result['helsinki_date'] = df_result['timestamp'].dt.tz_convert(helsinki_tz).dt.date
-
-        # Function to identify top N hours within each daily group
-        def get_top_hours_indices(group):
-            # Only consider hours within the Helsinki time window (06:00-21:00)
-            valid_hours = group[helsinki_time_filter.loc[group.index]]
-            
-            # Drop NaNs before sorting and selecting
-            valid_prices = valid_hours['PricePredict_cpkWh'].dropna()
-            if valid_prices.empty:
-                return pd.Series(False, index=group.index)  # No valid prices, no top hours
-
-            # Calculate total number of top hours to select
-            n_hours_in_day = len(valid_prices)
-            n_top_hours = math.ceil(n_hours_in_day * DAILY_PRICE_RANK_FRACTION)
-            if n_top_hours == 0:
-                return pd.Series(False, index=group.index)  # No hours to select
-                
-            # Split the selection between morning (06:00-12:00) and evening (16:00-22:00)
-            morning_mask = (valid_hours['helsinki_hour'] >= 6) & (valid_hours['helsinki_hour'] < 12)
-            evening_mask = (valid_hours['helsinki_hour'] >= 16) & (valid_hours['helsinki_hour'] < 22)
-            
-            morning_prices = valid_prices[morning_mask.loc[valid_prices.index]]
-            evening_prices = valid_prices[evening_mask.loc[valid_prices.index]]
-            
-            # Calculate how many hours to select from each period (half from each)
-            n_morning_hours = math.ceil(n_top_hours / 2)
-            n_evening_hours = math.ceil(n_top_hours / 2)
-            
-            # Adjust if there aren't enough hours in one of the periods
-            if len(morning_prices) < n_morning_hours:
-                n_morning_hours = len(morning_prices)
-                n_evening_hours = min(len(evening_prices), n_top_hours - n_morning_hours)
-            elif len(evening_prices) < n_evening_hours:
-                n_evening_hours = len(evening_prices)
-                n_morning_hours = min(len(morning_prices), n_top_hours - n_evening_hours)
-                
-            # Get indices of the top hours from morning and evening periods
-            top_morning_indices = morning_prices.nlargest(n_morning_hours).index if not morning_prices.empty else []
-            top_evening_indices = evening_prices.nlargest(n_evening_hours).index if not evening_prices.empty else []
-            
-            # Combine the indices
-            top_indices = list(top_morning_indices) + list(top_evening_indices)
-            
-            # Create a boolean series for the original group index
-            is_top = pd.Series(False, index=group.index)
-            is_top.loc[top_indices] = True
-            return is_top
-
-        # Apply the function to each group and combine results
-        is_top_daily_hour_mask = df_result.groupby('helsinki_date', group_keys=False).apply(get_top_hours_indices)
-        # Ensure the mask has the correct index and handles potential NaNs from grouping/applying
-        is_top_daily_hour_mask = is_top_daily_hour_mask.reindex(df_result.index, fill_value=False)
-
-        logger.info(f"Scaler: Identifying top {DAILY_PRICE_RANK_FRACTION*100:.0f}% most expensive hours per day (split between 06:00-12:00 and 16:00-22:00 Helsinki time).")
-        top_hours_calculated = True
-
-    except Exception as e:
-        logger.error(f"Scaler: Could not identify top daily hours: {e}. Scaling will not be applied based on daily price rank.", exc_info=True)
-
-    if not top_hours_calculated:
-        # Fallback: disable price-based filtering if calculation failed
-        is_top_daily_hour_mask = pd.Series(False, index=df_result.index)  # Ensure all False
-        logger.warning("Scaler: Proceeding without daily price rank filtering.")
-    # endregion [top_daily_hours]
-
-    # region [wind_multiplier]
-    # Calculate Wind Multiplier
-    if 'WindPowerMW' not in df_result.columns:
-        logger.warning("Scaler: Missing 'WindPowerMW' column required for wind-based scaling. Applying minimum multiplier (1.0) to all future hours (if price threshold met).")
-        # Apply minimum scaling if wind data is missing
-        df_result['wind_multiplier'] = MIN_WIND_MULTIPLIER
-    else:
-        # Calculate wind multiplier using linear interpolation
-        # Ensure wind power is clipped within the scaling range before interpolation
-        clipped_wind = df_result['WindPowerMW'].clip(WIND_SCALE_MIN_MW, WIND_SCALE_MAX_MW)
-
-        # Linear interpolation formula: y = y1 + (x - x1) * (y2 - y1) / (x2 - x1)
-        # Here: x = clipped_wind, x1 = WIND_SCALE_MAX_MW, y1 = MIN_WIND_MULTIPLIER, x2 = WIND_SCALE_MIN_MW, y2 = MAX_WIND_MULTIPLIER
-        # Avoid division by zero if thresholds are the same
-        denominator = WIND_SCALE_MIN_MW - WIND_SCALE_MAX_MW
-        if denominator == 0:
-            # If thresholds are the same, apply min multiplier unless wind is exactly at that threshold
-            df_result['wind_multiplier'] = np.where(df_result['WindPowerMW'] <= WIND_SCALE_MIN_MW, MAX_WIND_MULTIPLIER, MIN_WIND_MULTIPLIER)
-        else:
-            df_result['wind_multiplier'] = MIN_WIND_MULTIPLIER + (clipped_wind - WIND_SCALE_MAX_MW) * \
-                                           (MAX_WIND_MULTIPLIER - MIN_WIND_MULTIPLIER) / \
-                                           denominator
-
-        # Apply minimum multiplier directly if wind is above the max threshold
-        df_result.loc[df_result['WindPowerMW'] >= WIND_SCALE_MAX_MW, 'wind_multiplier'] = MIN_WIND_MULTIPLIER
-        # Apply maximum multiplier directly if wind is at or below the min threshold
-        df_result.loc[df_result['WindPowerMW'] <= WIND_SCALE_MIN_MW, 'wind_multiplier'] = MAX_WIND_MULTIPLIER
-
-        # Clip final multiplier just in case (e.g., floating point inaccuracies)
-        df_result['wind_multiplier'] = df_result['wind_multiplier'].clip(MIN_WIND_MULTIPLIER, MAX_WIND_MULTIPLIER)
-    # endregion [wind_multiplier]
-
-    # region [future_hours]
-    # Define 'now' rounded up to the nearest hour (UTC)
-    now = pd.Timestamp.utcnow().ceil('h')  # Already UTC
-
-    # Convert to Helsinki time to check the time threshold
-    helsinki_tz = pytz.timezone('Europe/Helsinki')
-    now_helsinki = now.tz_convert(helsinki_tz)
-    helsinki_hour = now_helsinki.hour
-
-    # Define the start timestamp for future hours based on Helsinki time
-    if 0 <= helsinki_hour < 14:
-        # Between 00:00-14:00 Helsinki time: scale from tomorrow 01:00 onwards
-        # Get tomorrow's date in Helsinki time
-        tomorrow_helsinki = now_helsinki + pd.Timedelta(days=1)
-        tomorrow_helsinki = tomorrow_helsinki.replace(hour=1, minute=0, second=0)
-        
-        # Convert back to UTC for comparison
-        future_start = tomorrow_helsinki.tz_convert('UTC')
-        logger.info(f"Scaler: Current time in Helsinki ({now_helsinki.strftime('%H:%M')}) is before 14:00, scaling from tomorrow 01:00 onwards")
-    else:
-        # Between 14:00-00:00 Helsinki time: scale from day after tomorrow 01:00 onwards
-        # First get tomorrow's date in Helsinki time
-        tomorrow_helsinki = now_helsinki + pd.Timedelta(days=1)
-        tomorrow_helsinki = tomorrow_helsinki.replace(hour=0, minute=0, second=0)
-        
-        # Then get day after tomorrow at 01:00 Helsinki time
-        day_after_tomorrow_helsinki = tomorrow_helsinki + pd.Timedelta(days=1, hours=1)
-        
-        # Convert back to UTC for comparison
-        future_start = day_after_tomorrow_helsinki.tz_convert('UTC')
-        logger.info(f"Scaler: Current time in Helsinki ({now_helsinki.strftime('%H:%M')}) is after 14:00, scaling from day after tomorrow 01:00 onwards")
-
-    # Create a mask for future hours based on the conditional start time
-    future_hours_mask = df_result['timestamp'] >= future_start
-    # endregion [future_hours]
 
     # region [apply]
     # Initialize scaled price with NaN
     df_result['PricePredict_cpkWh_scaled'] = np.nan
 
-    # Define the mask for rows where scaling should actually be applied
-    # (Future hours with valid price AND is a top daily hour AND a multiplier > 1.0)
-    # Note: Helsinki time filter (06:00-22:00) is already applied when calculating top daily hours
+    apply_scaling_mask = df_result['is_spike_risk_hour']
     valid_price_mask = df_result['PricePredict_cpkWh'].notna()
-    multiplier_above_min_mask = df_result['wind_multiplier'] > MIN_WIND_MULTIPLIER
-
-    # is_top_daily_hour_mask already includes the Helsinki time filter, so we don't need helsinki_time_filter here
-    apply_scaling_mask = future_hours_mask & valid_price_mask & is_top_daily_hour_mask & multiplier_above_min_mask
 
     # Apply the wind multiplier ONLY to rows matching the mask
     df_result.loc[apply_scaling_mask, 'PricePredict_cpkWh_scaled'] = \
@@ -249,6 +79,7 @@ def scale_predicted_prices(df, deploy=False, deploy_folder_path=None):
 
     # region [logging]
     # Log some statistics about the scaling applied to future hours
+    future_hours_mask = df_result['is_future_hour']
     if future_hours_mask.any():
         # Consider only future hours with valid original prices for stats
         valid_future_mask = future_hours_mask & valid_price_mask
@@ -267,10 +98,7 @@ def scale_predicted_prices(df, deploy=False, deploy_folder_path=None):
             original_mean = original_future.dropna().mean()
 
             logger.info(f"Scaler: Evaluated {valid_future_mask.sum()} future hours with valid prices.")
-            if top_hours_calculated:
-                logger.info(f"  Price Threshold: Top {DAILY_PRICE_RANK_FRACTION*100:.0f}% most expensive hours per day (Helsinki Time)")
-            else:
-                logger.info("  Price Threshold: Daily price rank filtering disabled.")
+            logger.info(f"  Price Threshold: Top {DAILY_PRICE_RANK_FRACTION*100:.0f}% most expensive hours per day (Helsinki Time)")
             logger.info(f"  Wind Threshold for Scaling: < {WIND_SCALE_MAX_MW:.0f} MW")
             logger.info(f"  Hours meeting ALL scaling criteria: {scaled_hours_count}")
 
@@ -347,7 +175,7 @@ def scale_predicted_prices(df, deploy=False, deploy_folder_path=None):
 
     # region [cleanup]
     # Drop intermediate columns before returning
-    columns_to_drop = ['wind_multiplier', 'helsinki_date', 'helsinki_hour']  # Removed 'daily_price_threshold'
+    columns_to_drop = SPIKE_RISK_COLUMNS
     existing_cols_to_drop = [col for col in columns_to_drop if col in df_result.columns]
     if existing_cols_to_drop:
         df_result = df_result.drop(columns=existing_cols_to_drop)

@@ -12,6 +12,7 @@ from datetime import datetime as dt
 from .sql import db_query
 from .logger import logger
 from .llm_prompts import narration_prompt
+from .spike_risk import compute_spike_risk_hours
 
 # Attempt to set the locale to Finnish for day names
 try:
@@ -84,30 +85,31 @@ def build_narration_prompt(df_daily, df_intraday, helsinki_tz, nuclear_outage_da
     return prompt
 
 # region spike risk
-def spike_price_risk(df):
-    """Calculate the risk of price spikes for each day."""
-    df["Price_Range"] = df["PricePredict_cpkWh_max"] - df["PricePredict_cpkWh_min"]
-    df["Price_StdDev"] = df["PricePredict_cpkWh_mean"].rolling(window=2).std().fillna(0)
+def format_spike_risk_block(df_daily, df_intraday, helsinki_tz, now=None):
+    """Build the structured spike-risk block from the shared hourly scaler logic."""
+    risk_df = compute_spike_risk_hours(df_intraday, now=now, helsinki_tz=helsinki_tz)
+    risk_df["timestamp_helsinki"] = risk_df["timestamp"].dt.tz_convert(helsinki_tz)
 
-    df["Spike_Risk"] = 0
+    lines = ["  <hintapiikkiriskit>"]
+    for weekday, row in df_daily.iterrows():
+        weekday_label = str(weekday).lower()
+        day = pd.Timestamp(row["timestamp"]).tz_convert(helsinki_tz).date()
+        day_risk = risk_df[
+            (risk_df["helsinki_date"] == day) & risk_df["is_spike_risk_hour"]
+        ]
 
-    # Price or range thresholds
-    df.loc[df["PricePredict_cpkWh_max"] > 15, "Spike_Risk"] += 2
-    df.loc[df["Price_Range"] > 10, "Spike_Risk"] += 1
-    df.loc[df["Price_StdDev"] > 4, "Spike_Risk"] += 1
+        if day_risk.empty:
+            lines.append(f"    {weekday_label}: ei")
+            continue
 
-    # Wind thresholds
-    df.loc[df["WindPowerMW_min"] < 1000, "Spike_Risk"] += 1
-    df.loc[df["WindPowerMW_mean"] < 2500, "Spike_Risk"] += 1
-    df.loc[
-        df["WindPowerMW_mean"] > 3000, "Spike_Risk"
-    ] -= 1  # Less likely to spike if wind is strong
+        peak_idx = day_risk["PricePredict_cpkWh"].idxmax()
+        peak_hour = int(day_risk.loc[peak_idx, "timestamp_helsinki"].hour)
+        window_start = max(0, peak_hour - 1)
+        window_end = min(23, peak_hour + 1)
+        lines.append(f"    {weekday_label}: klo {window_start}–{window_end}")
 
-    # Temperature thresholds
-    df.loc[df["Avg_Temperature_mean"] < -5, "Spike_Risk"] += 1
-    df.loc[df["Avg_Temperature_mean"] > 15, "Spike_Risk"] -= 1
-
-    return df
+    lines.append("  </hintapiikkiriskit>")
+    return "\n".join(lines) + "\n"
 
 # region df
 def narrate_prediction(deploy=False, commit=False):
@@ -192,9 +194,6 @@ def narrate_prediction(deploy=False, commit=False):
         }
     )
 
-    # Apply spike risk logic to daily
-    df_daily = spike_price_risk(df_daily)
-
     # Round columns
     df_daily["PricePredict_cpkWh_min"] = df_daily["PricePredict_cpkWh_min"].round(1)
     df_daily["PricePredict_cpkWh_max"] = df_daily["PricePredict_cpkWh_max"].round(1)
@@ -272,9 +271,8 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
         prompt += "    </päivä>\n"
     prompt += "  </tuntikohtainen_ennuste>\n"
 
-    # We'll need the current Helsinki time for the "after 14:00 for tomorrow" check
-    now_hel = datetime.datetime.now(helsinki_tz)
-    tomorrow_date = (now_hel + datetime.timedelta(days=1)).date()
+    prompt += "\n"
+    prompt += format_spike_risk_block(df_daily, df_intraday, helsinki_tz)
 
     # region _daily
     # Daily rows
@@ -294,22 +292,6 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
             f"keskimäärin {row['WindPowerMW_mean']} MW.\n"
         )
         prompt += f"  - Päivän keskilämpötila: {row['Avg_Temperature_mean']} °C.\n"
-
-        # Skip spike risk if it's tomorrow AND the current time is >=14:00
-        skip_spike_for_tomorrow = (
-            row["timestamp"].date() == tomorrow_date and now_hel.hour >= 14
-        )
-
-        if not skip_spike_for_tomorrow:
-            # Spike risk note
-            if row["Spike_Risk"] >= 3:
-                prompt += f"  - TÄRKEÄÄ MAINITA: Korkea riski hintapiikeille {weekday}na yksittäisinä tunteina.\n"
-
-            elif row["Spike_Risk"] >= 1:
-                prompt += f"  - HUOM: Riski hintapiikeille {weekday}na yksittäisinä tunteina.\n"
-
-            else:
-                prompt += f"  - Hintapiikkien riski tälle päivälle on niin pieni, että älä puhu hintapiikeistä artikkelissa ollenkaan, kun puhut {weekday}sta.\n\n"
 
     # region _nuclear
     # Add nuclear outages if any

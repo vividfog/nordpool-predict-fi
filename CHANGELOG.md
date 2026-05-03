@@ -2,6 +2,14 @@
 
 All notable changes will be documented in this file.
 
+## [2026-05-03] - Spike Risk Consistency
+### Added
+- Shared hourly spike-risk calculation for frontend markers and LLM narration.
+- Tests covering spike-risk hour selection, wind cutoffs, future-hour cutoff handling, and narration prompt output.
+
+### Changed
+- Price scaling and narration now use the same spike-risk signal, reducing mismatch between chart markers and generated text.
+
 ## [2026-03-05] - Syke Hydrology Features
 ### Added
 - Syke Hydrologiarajapinta aggregate hydrology features for pricing: 5-day areal precipitation and snow water equivalent (median + p10).

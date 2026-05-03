@@ -47,7 +47,7 @@ The repository remains an evaluation tool for testing new LLMs and what can be d
 
 **Dec 21, 2024:** Wind power model now uses in-memory live training for a hands-free model update just before prediction. For hyperparameter optimization, the older [routines](https://github.com/vividfog/nordpool-predict-fi/tree/main/data/create/91_model_experiments) are still valid.
 
-**May-July, 2025:** Ongoing volatility experiments. Two-stage volatility handling: a model predicts volatility likelihood ([util/volatility_xgb.py](util/volatility_xgb.py)), and (or) a scaler ([util/scaler.py](util/scaler.py)) adjusts prices for high-risk hours on low wind. Frontend can highlight these hours ([deploy/scripts.js](deploy/scripts.js)), and LLM narration incorporates volatility assessment ([util/llm.py](util/llm.py)). Testing and calibration ongoing. The exact models and methods may change and could be removed if ineffective.
+**May-July, 2025:** Ongoing volatility experiments. Two-stage volatility handling: a model predicts volatility likelihood ([util/volatility_xgb.py](util/volatility_xgb.py)), and a scaler ([util/scaler.py](util/scaler.py)) adjusts prices for high-risk hours on low wind. Frontend modules under `deploy/js/` can highlight these hours, and LLM narration can incorporate intraday risk context. Testing and calibration ongoing. The exact models and methods may change and could be removed if ineffective.
 
 **Oct 15, 2025:** Added a UMAP-based feature map exporter ([util/features_umap.py](util/features_umap.py)) and a new Plotly 3D chart on the FI/EN landing pages showing how modelling features cluster together. Regenerated automatically during `--deploy`, producing `deploy/feature_embedding.json`.
 
