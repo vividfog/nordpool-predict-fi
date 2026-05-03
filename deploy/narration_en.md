@@ -1,19 +1,19 @@
-*The spot electricity forecast will split the week into more expensive days at the start and midweek, followed by a clearly cheaper second half, when prices will often fall low.*
+*Spot electricity would stay mostly fairly moderate through the week, but Thursday would stand out clearly as the most expensive day and Tuesday as the cheapest.*
 
-The forecast was updated on Sunday at 08:57.
+The forecast was updated on Sunday at 11:57.
 
 |  | average<br>price<br>c/kWh | min - max<br>c/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 7,0 | 4,7 - 11,8 | 896 - 2249 | 7,5 |
-| **Tuesday** | 2,3 | 1,0 - 4,5 | 2240 - 5111 | 8,0 |
-| **Wednesday** | 6,0 | 2,0 - 11,4 | 735 - 3608 | 6,6 |
-| **Thursday** | 8,0 | 5,0 - 10,8 | 841 - 2089 | 5,6 |
-| **Friday** | 5,2 | 2,0 - 8,9 | 1150 - 2843 | 5,4 |
-| **Saturday** | 3,9 | 1,9 - 7,0 | 579 - 2723 | 5,9 |
-| **Sunday** | 2,9 | 1,0 - 6,4 | 1168 - 3008 | 7,0 |
+| **Monday** | 6,9 | 4,5 - 11,8 | 1048 - 2139 | 7,5 |
+| **Tuesday** | 3,0 | 1,7 - 5,0 | 1636 - 5183 | 8,0 |
+| **Wednesday** | 5,1 | 1,8 - 11,8 | 1069 - 4759 | 6,6 |
+| **Thursday** | 9,4 | 6,1 - 16,5 | 693 - 1870 | 5,6 |
+| **Friday** | 5,9 | 1,9 - 10,3 | 1193 - 3368 | 5,4 |
+| **Saturday** | 5,1 | 1,9 - 8,3 | 1168 - 3028 | 5,9 |
+| **Sunday** | 4,0 | 1,1 - 6,4 | 1124 - 2073 | 7,0 |
 
-On **Monday**, the price outlook will settle at 7,0 cents, and the highest hourly price of the period will rise to 11,8 cents. At the same time, the day’s lowest wind power production will remain at 896 megawatts, which will explain the higher price peak. There will be a risk of price spikes during individual hours. **Wednesday** and **Thursday** will also stand out as the more expensive days of the week. Wednesday’s top quotation will reach 11,4 cents and Thursday’s 10,8 cents. On both days, minimum wind power production will stay below 1000 megawatts, which will lift the highest hourly prices of the day. On Wednesday, a possible peak will fall in the evening around 20:00–22:00, and on Thursday the highest hours will be concentrated around 19:00–23:00.
+On **Monday**, the expected average electricity price would settle at 6,9 cents, and the day would also see a peak of 11,8 cents. On **Tuesday**, the cheapest day of the period would stand out clearly, as the average price would remain at 3,0 cents and the price would dip as low as 1,7 cents. Low prices would be explained by strong wind power output, whose average would rise to 3605 megawatts. On **Wednesday**, prices would vary widely within the day. The day would begin and continue into the afternoon mostly below five cents, but in the evening prices would climb above 10 cents, with the peak falling around 20:00–22:00.
 
-On **Tuesday**, electricity will be expected to be the cheapest of the week, with the average price staying at 2,3 cents and prices moving between 1,0 and 4,5 cents. Strong wind will push the price lower, as wind power production will average 4092 megawatts. On **Friday**, there will still be clear variation within the day, as the price will dip to 2,0 cents in the afternoon and climb to 8,9 cents late in the evening. On **Saturday**, the average price will remain at 3,9 cents, but there will still be a risk of price spikes during individual hours. On **Sunday**, the price will fall again. The public holiday will reduce demand, and the day’s average price will stay at 2,9 cents.
+On **Thursday**, the period’s highest average price, 9,4 cents, would make the day more expensive than the rest of the week. At the same time, the week’s highest hourly price, 16,5 cents, would be seen around 19:00–21:00. The high peak would be explained by very low wind power, as output would drop to a low of 693 megawatts. Thursday would also carry a high risk of price spikes during individual hours. On **Friday**, the price would fall in the afternoon to close to two cents, while on **Saturday** intraday variation would remain more moderate. On **Sunday**, the public holiday would lower demand, and the price would fall during the day to around 1,1–1,9 cents before rising again in the evening.
 
-*Read by gpt-5.4.* ⚡
+*Price watch, gpt-5.4* ⚡
