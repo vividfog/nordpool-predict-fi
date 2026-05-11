@@ -1,23 +1,19 @@
-*Electricity prices will fluctuate over the coming week: Thursday's public holiday and strong wind power push prices down, while calm days drive them up.*
+*Electricity prices will fluctuate over the coming week based on wind power: Thursday's public holiday offers affordable hours, while price spikes are expected on Friday and Monday.*
 
-Ennuste on päivitetty maanantaina klo 08:57.
+Forecast updated on Monday at 14:58.
 
-|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
+| | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday** | 11.6 | 8.5 - 15.7 | 758 - 1451 | 8.0 |
-| **Wednesday** | 9.8 | 5.7 - 12.9 | 1345 - 3273 | 8.7 |
-| **Thursday** | 4.0 | 2.7 - 8.2 | 1697 - 3687 | 7.8 |
-| **Friday** | 9.9 | 6.2 - 14.5 | 820 - 2394 | 8.7 |
-| **Saturday** | 7.2 | 5.2 - 11.0 | 764 - 2268 | 10.0 |
-| **Sunday** | 7.6 | 3.8 - 12.7 | 421 - 1196 | 10.9 |
-| **Monday** | 10.6 | 5.8 - 19.5 | 287 - 2226 | 11.0 |
+| **Tuesday** | 13.3 | 10.8 - 17.6 | 788 - 1736 | 8.0 |
+| **Wednesday** | 10.5 | 5.3 - 14.6 | 1203 - 4117 | 8.7 |
+| **Thursday** | 4.1 | 3.0 - 6.4 | 1945 - 4970 | 7.8 |
+| **Friday** | 10.3 | 6.2 - 18.9 | 450 - 2124 | 8.7 |
+| **Saturday** | 7.0 | 4.0 - 10.4 | 752 - 2171 | 10.0 |
+| **Sunday** | 7.6 | 4.5 - 11.1 | 528 - 1727 | 10.9 |
+| **Monday** | 8.8 | 6.3 - 13.1 | 431 - 2741 | 11.2 |
 
-There is significant variation in the electricity price forecast. **Tuesday's** average price rises to 11.6 cents, and the maximum price for the day is expected to be 15.7 cents. Average wind power production remains under a thousand megawatts, which explains the higher price level. There is a risk of price spikes in the morning between 8:00 and 10:00.
+Average electricity prices will remain within a wide range during the forecast period. **Tuesday** is the most expensive day with an average price of 13.3 cents. Low wind power weakens the price level, and the daily maximum rises to 17.6 cents toward the evening. On **Wednesday**, wind power strengthens significantly, which pushes prices down as the day progresses. At its lowest, the hourly price drops to 5.3 cents in the evening when wind power production reaches over 4000 MW.
 
-**Wednesday's** average price drops to 9.8 cents as wind power strengthens. **Thursday** is a public holiday, and demand is estimated to be lower than normal. Average wind power production rises above 3000 megawatts, which pushes the day's average price to an affordable level of 4.0 cents.
+**Thursday** is a public holiday, during which demand remains low and there is plenty of wind power available. The average price stays at 4.1 cents, and the cheapest hours are around 3 cents. On **Friday**, average wind power production drops significantly, which pushes the maximum price to 18.9 cents. A price spike risk is noted for Friday morning between 7:00 and 9:00. Prices remain moderate on **Saturday** and **Sunday**, but Sunday morning from 6:00 to 8:00 has its own price spike risk. **Next Monday**, the wind power minimum is very low, explaining the morning maximum of 13.1 cents. Monday's price spike risk occurs between 8:00 and 10:00.
 
-On **Friday**, the average price rises back to 9.9 cents. Minimum wind power production reaches 820 megawatts, which explains the day's peak price of 14.5 cents. There is a risk of price spikes between 7:00 and 9:00. **Saturday's** average price stays at 7.2 cents and wind power is weak. On **Sunday**, the average price is 7.6 cents, and wind power remains low. There is a risk of price spikes in the morning between 6:00 and 8:00.
-
-**Next Monday**, the average price is 10.6 cents. The maximum price for the day is forecast to be 19.5 cents in the morning. Minimum wind power production is only 287 megawatts, which explains the high maximum price. There is a risk of price spikes in the morning between 8:00 and 10:00.
-
-*Interpreted by sahkovatkain-gemma4-31b-mlx@8bit.* 🌬️
+*Sähkövatkain-gemma4-31b-mlx@8bit calculated the numbers.* 🌬️
