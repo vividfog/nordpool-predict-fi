@@ -1,21 +1,21 @@
-*The affordable start of the public holiday gives way to weak wind power and rising prices, peaking next Monday and Tuesday.*
+*Thursday's public holiday and strong winds keep prices low at first, but as the week progresses, calming weather and price spikes drive costs up.*
 
-Forecast updated on Wednesday at 09:04.
+Ennuste on päivitetty keskiviikkona klo 11:57.
 
-| | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
+|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday** | 3.0 | 0.8 - 7.0 | 1583 - 5332 | 7.8 |
-| **Friday** | 6.4 | 3.5 - 12.0 | 742 - 2825 | 8.7 |
-| **Saturday** | 5.8 | 3.6 - 8.6 | 606 - 1969 | 10.0 |
-| **Sunday** | 5.9 | 2.8 - 8.1 | 545 - 1879 | 10.9 |
-| **Monday** | 9.0 | 6.8 - 16.3 | 386 - 1902 | 11.2 |
-| **Tuesday** | 10.0 | 7.6 - 16.7 | 490 - 1906 | 11.6 |
-| **Wednesday** | 8.5 | 5.1 - 12.7 | 1136 - 3251 | 11.8 |
+| **Thursday** | 2.9 | 0.9 – 6.7 | 1484 – 5095 | 7.8 |
+| **Friday** | 7.2 | 3.2 – 14.8 | 540 – 2869 | 8.7 |
+| **Saturday** | 5.9 | 3.0 – 9.4 | 541 – 1374 | 10.0 |
+| **Sunday** | 5.6 | 2.8 – 7.5 | 620 – 1940 | 10.9 |
+| **Monday** | 8.0 | 4.5 – 15.2 | 321 – 2359 | 11.2 |
+| **Tuesday** | 9.3 | 6.2 – 13.5 | 760 – 1790 | 11.6 |
+| **Wednesday** | 8.4 | 5.5 – 11.9 | 895 – 1683 | 12.3 |
 
-At the start of the forecast period, **Thursday** is a public holiday, keeping the average electricity price affordable at 3.0 cents. Wind power remains abundant with an average of 3655 MW. Prices stay low for most of the day but rise to 7 cents by evening.
+The electricity price forecast is divided into two phases. **Thursday** is a public holiday, during which the average price remains affordable at 2.9 cents. Wind power is strong on Thursday, averaging 3535 MW, which pushes prices down. Night hours are particularly cheap, reaching a minimum of 0.9 cents.
 
-On **Friday**, the average price increases to 6.4 cents as wind power generation drops. There is a risk of price spikes between 18:00 and 20:00, with prices potentially reaching 12 cents. On **Saturday**, wind power is weak, averaging 1181 MW, which raises the average price. A price spike risk is observed between 08:00 and 10:00, when the price may hit 8.6 cents. On **Sunday**, wind power is calm with an average of 1051 MW, and there is a risk of price spikes from 06:00 to 08:00.
+The situation changes on **Friday**: the average price rises to 7.2 cents and wind power decreases. There is a risk of price spikes on Friday between 18:00 and 20:00, when the price may rise to 14.8 cents. The minimum wind power production drops to only 540 MW, which explains the high maximum price of the day. Average prices for **Saturday** and **Sunday** remain moderate, but there are price spike risks on Saturday from 19:00 to 21:00 and Sunday from 6:00 to 8:00. Wind power remains calm on both days, with an average below 1000 MW.
 
-Next **Monday** and **Tuesday**, prices rise significantly. Tuesday's average price is 10.0 cents, while Monday settles at nine cents. On both days, wind power is very weak, below 1000 MW. There are risks of price spikes on Monday between 07:00 and 09:00 and Tuesday between 08:00 and 10:00, when prices may exceed 16 cents. On **Wednesday**, wind power recovers and the average price drops to 8.5 cents.
+On **Monday**, the price rises again, with an expected average of 8.0 cents. There is a price spike risk in the morning from 8:00 to 10:00, and the maximum price climbs to 15.2 cents. The wind power minimum is only 321 MW. **Tuesday** becomes the most expensive day of the forecast period with an average price of 9.3 cents. Tuesday has a price spike risk from 19:00 to 21:00, when the price can reach 13.5 cents. Wind power is weak on Tuesday, averaging 963 MW. Next **Wednesday**, the price stabilizes at 8.4 cents without a separate spike risk.
 
-*Interpreted today by sahkovatkain-gemma4-31b-mlx@8bit. 🌬️*
+*Interpreted today by sahkovatkain-gemma4-31b-mlx@8bit.* 🌬️
