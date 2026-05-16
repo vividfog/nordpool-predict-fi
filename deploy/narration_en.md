@@ -1,21 +1,19 @@
-*Next week's average electricity prices will settle between 6.8–10.1 cents. Fluctuations in wind power raise prices on Tuesday and Thursday, while Sunday remains affordable.*
+*Average electricity prices will remain between 7–10 cents per kilowatt-hour during the forecast period. Fluctuations in wind power and several price peak risks in the mornings and evenings will drive up individual hourly prices.*
 
-Forecast updated on Saturday at 08:57.
+Ennuste on päivitetty lauantaina klo 11:57.
 
-| | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 6.8 | 4.9 - 9.8 | 1192 - 3129 | 10.9 |
-| **Monday** | 9.2 | 6.0 - 14.0 | 378 - 2755 | 11.2 |
-| **Tuesday** | 10.1 | 7.5 - 13.7 | 744 - 1647 | 11.6 |
-| **Wednesday** | 8.3 | 5.9 - 12.1 | 873 - 3317 | 12.3 |
-| **Thursday** | 9.9 | 7.5 - 12.1 | 1229 - 2177 | 12.8 |
-| **Friday** | 9.7 | 6.5 - 13.9 | 834 - 1527 | 12.7 |
-| **Saturday** | 8.1 | 4.4 - 13.2 | 484 - 1706 | 13.1 |
+| **Sunday** | 7.0 | 5.1 - 9.8 | 1274 - 3863 | 10.9 |
+| **Monday** | 9.6 | 5.7 - 15.6 | 293 - 2618 | 11.2 |
+| **Tuesday** | 10.4 | 7.6 - 13.8 | 743 - 2110 | 11.6 |
+| **Wednesday** | 8.4 | 6.0 - 12.6 | 890 - 3313 | 12.3 |
+| **Thursday** | 10.1 | 8.1 - 12.2 | 1218 - 2234 | 12.8 |
+| **Friday** | 9.9 | 6.2 - 15.2 | 716 - 1512 | 12.7 |
+| **Saturday** | 8.3 | 4.8 - 14.2 | 490 - 1818 | 12.9 |
 
-During the coming week, average electricity prices will mostly remain at the 8–10 cent level. The most expensive days are **Tuesday** and **Thursday**, with average prices rising over 10 cents and nearly 10 cents, respectively. **Sunday** is the most affordable day of the period with an average price of 6.8 cents.
+During the forecast period, average electricity prices will stay mostly between 7 and 10 cents, but there is significant variation within individual days. **Sunday** will be the cheapest day of the period with an average price of 7.0 cents. Wind power will be abundant, with daily average production rising above 2100 megawatts. On **Monday**, the average price will rise to 9.6 cents as wind power decreases significantly. Monday's minimum production drops to 293 megawatts, which explains the day's highest maximum price of 15.6 cents. A price peak risk is also expected on Monday between 8:00 and 10:00.
 
-Notable price fluctuations are seen on several days as wind power weakens. On **Monday**, **Tuesday**, and **Friday**, the average wind power production falls below 1300 MW, which raises average prices. In particular, the maximum prices for Monday and Tuesday climb above 13 cents when wind power reaches very low levels during the day. On **Saturday**, wind power is weak on average, but the cheapest hours of the day dip to 4.4 cents.
+**Tuesday's** average price will be the highest of the period at 10.4 cents. Wind power remains weak, averaging 1249 megawatts, and the daily minimum production falls below 800 megawatts. There is a price peak risk on Tuesday between 18:00 and 20:00, when the price reaches 13.8 cents. On **Wednesday**, wind power will strengthen again, and the average price will drop to 8.4 cents. **Thursday's** average price will be 10.1 cents. On **Friday**, wind power weakens to an average of 1233 megawatts, and there is a price peak risk in the morning between 6:00 and 8:00. Friday's maximum price will reach 15.2 cents. On **Saturday**, wind power is weak, and a price peak risk occurs between 6:00 and 8:00 in the morning. Saturday's cheapest hours will drop to 4.8 cents in the afternoon.
 
-Price spike risks exist on **Monday** from 19:00–21:00, **Tuesday** from 18:00–20:00, **Wednesday** from 19:00–21:00, as well as on **Friday** and **Saturday** mornings between 6:00–8:00. However, the maximum price on Wednesday remains moderate despite wind power dropping below 900 MW during the day.
-
-*Sähkövatkain-gemma4-31b-mlx@8bit calculated the figures.* 🌬️
+*Following the electricity pulse sahkovatkain-gemma4-31b-mlx@8bit.* 🌬️
