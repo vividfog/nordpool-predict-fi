@@ -1,21 +1,19 @@
-*Electricity prices remain largely affordable, but weakening wind power and occasional price spikes will push costs up towards the end of the week and early next week.*
+*The coming week brings affordable electricity prices and abundant wind power, though weakening winds will push prices up during the weekend and Monday.*
 
-The forecast was updated on Wednesday at 12:20.
+Ennuste on päivitetty keskiviikkona klo 14:57.
 
-| | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
+|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday** | 1.7 | 0.5 - 3.8 | 2314 - 5578 | 9.5 |
-| **Friday** | 4.3 | 1.9 - 7.4 | 1080 - 2802 | 9.2 |
-| **Saturday** | 4.3 | 1.1 - 7.6 | 444 - 2121 | 9.0 |
-| **Sunday** | 4.5 | 1.1 - 7.8 | 408 - 1045 | 10.6 |
-| **Monday** | 5.8 | 3.3 - 9.7 | 653 - 1687 | 11.8 |
-| **Tuesday** | 3.4 | 1.7 - 6.2 | 1448 - 2424 | 12.6 |
-| **Wednesday** | 4.5 | 1.7 - 12.6 | 322 - 2839 | 13.2 |
+| **Thursday**   | 2.2              | 0.2 - 10.7       | 2311 - 5573   | 9.5           |
+| **Friday**     | 4.4              | 1.5 - 8.3        | 1083 - 2811   | 9.2           |
+| **Saturday**   | 4.7              | 1.6 - 9.5        | 390 - 2134    | 9.0           |
+| **Sunday**     | 4.8              | 1.7 - 7.9        | 438 - 1031    | 10.6          |
+| **Monday**     | 6.4              | 3.8 - 10.8       | 605 - 1730    | 11.8          |
+| **Tuesday**    | 4.1              | 2.2 - 6.7        | 1490 - 2455   | 12.6          |
+| **Wednesday**  | 5.1              | 2.3 - 13.7       | 317 - 2849    | 13.2          |
 
-Average prices for the forecast period stay mostly at an affordable level, though there is some variation. **Thursday** will be the cheapest day of the period with an average price of 1.7 cents. Wind power is abundant, with daily average production reaching 4343 megawatts, which keeps the price low.
+Average prices for the forecast period will remain mostly at an affordable level, though some variation occurs. **Thursday** stands out as the cheapest day with an average price of 2.2 cents. Wind power is abundant on Thursday, and the daily average production reaches 4329 megawatts. However, prices rise to 10.7 cents per hour in the evening, while the daily minimum drops to 0.2 cents during the morning.
 
-On **Friday**, the average price rises to 4.3 cents as wind power weakens. On **Saturday** and **Sunday**, average wind production drops below 1000 megawatts, which increases electricity prices. On Saturday, minimum wind power is 444 megawatts, and the maximum price for the day reaches 7.6 cents. On Sunday, minimum production is only 408 megawatts, explaining the day's highest price. **Monday** will have the period's highest average price at 5.8 cents. On **Tuesday**, the price drops back to 3.4 cents as wind power strengthens. Next **Wednesday**, the average price is 4.5 cents.
+The amount of wind power decreases significantly toward the weekend, which is reflected in the prices. On **Saturday** and **Sunday**, average wind production stays below 1000 megawatts. On Saturday, production dips to a minimum of only 390 megawatts, which explains the maximum price rising to 9.5 cents. A risk of price spikes is noted for both days between 7 PM and 9 PM. On **Monday**, the average price rises to the period's highest at 6.4 cents. Monday morning between 7 AM and 9 AM also carries a price spike risk, with the maximum price reaching 10.8 cents. **Tuesday** balances the situation with an affordable average of 4.1 cents. Next **Wednesday**, wind power is very weak at times, and there is a price spike risk between 7 AM and 9 AM. Wednesday's maximum price rises to 13.7 cents, although the average remains at 5.1 cents.
 
-Price spikes are expected on **Saturday** from 19:00 to 21:00, **Sunday** from 6:00 to 8:00, **Monday** from 7:00 to 9:00, and next **Wednesday** from 7:00 to 9:00. The maximum price on Wednesday reaches 12.6 cents for a single hour. The cheapest hours occur on Thursday morning, when the price dips to 0.5 cents.
-
-*Interpreted today by sahkovatkain-gemma4-31b-mlx@8bit.* 🌬️
+*In the pulse of electricity sahkovatkain-gemma4-31b-mlx@8bit.* 🌬️
