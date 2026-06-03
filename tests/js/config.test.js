@@ -260,6 +260,47 @@ describe('deploy/js/config.js', () => {
     window.appStorage.enabled = previous;
   });
 
+  it('restores and persists chart legend selections safely', () => {
+    const key = `np-legend-test-${Date.now()}`;
+    const defaults = { Nordpool: true, Forecast: true, Hidden: false };
+    const validNames = ['Nordpool', 'Forecast', 'Hidden'];
+
+    window.appStorage.remove(key);
+    expect(restoreChartLegendSelection(key, defaults, validNames)).toEqual(defaults);
+
+    window.appStorage.set(key, {
+      Nordpool: false,
+      Forecast: true,
+      Unknown: true
+    });
+    expect(restoreChartLegendSelection(key, defaults, validNames)).toEqual({
+      Nordpool: false,
+      Forecast: true,
+      Hidden: false
+    });
+
+    persistChartLegendSelection(key, {
+      Nordpool: true,
+      Forecast: false,
+      Unknown: false
+    }, validNames);
+    expect(window.appStorage.get(key)).toEqual({
+      Nordpool: true,
+      Forecast: false
+    });
+
+    const previous = window.appStorage.enabled;
+    window.appStorage.enabled = false;
+    expect(restoreChartLegendSelection(key, defaults, validNames)).toEqual(defaults);
+    persistChartLegendSelection(key, { Nordpool: false }, validNames);
+    window.appStorage.enabled = previous;
+    expect(window.appStorage.get(key)).toEqual({
+      Nordpool: true,
+      Forecast: false
+    });
+    window.appStorage.remove(key);
+  });
+
   it('provides palette helpers backed by the theme service', () => {
     const palette = window.resolveChartPalette('prediction');
     expect(palette).toBeDefined();

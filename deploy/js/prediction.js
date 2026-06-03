@@ -125,6 +125,7 @@ const sahkotinUrl = window.SAHKOTIN_CSV_URL || 'https://sahkotin.fi/prices.csv';
 
 const predictionStorage = window.appStorage && window.appStorage.enabled ? window.appStorage : null;
 const PREDICTION_FETCH_KEY = 'np_prediction_last_fetch';
+const PREDICTION_LEGEND_STORAGE_KEY = 'np_prediction_legend_selection';
 const DAILY_AVERAGE_LINE_COLOR = 'DeepPink';
 let lastFetchTimestamp = 0;
 let pendingFetchPromise = null;
@@ -394,6 +395,13 @@ function renderPredictionChart() {
         ? predictionPalette.forecastBackgroundBarOpacity
         : undefined;
     const dailyLineColor = DAILY_AVERAGE_LINE_COLOR;
+    const legendNames = ['Nordpool', forecastName, scaledName, dailyName];
+    const legendSelected = restorePredictionLegendSelection({
+        'Nordpool': true,
+        [forecastName]: true,
+        [scaledName]: true,
+        [dailyName]: false
+    }, legendNames);
 
     const chartOptions = (typeof window.createBaseChartOptions === 'function'
         ? window.createBaseChartOptions
@@ -431,12 +439,7 @@ function renderPredictionChart() {
                 }
             ],
             right: 16,
-            selected: {
-                'Nordpool': true,
-                [forecastName]: true,
-                [scaledName]: true,
-                [dailyName]: false
-            }
+            selected: legendSelected
         },
         tooltipFormatter: createTooltipFormatter(),
         visualMap: [
@@ -587,6 +590,7 @@ function renderPredictionChart() {
 
     // Push the merged options without wiping user zoom/legend state.
     nfpChart.setOption(chartOptions);
+    installPredictionLegendPersistence(legendNames);
 }
 
 // Prime the chart with the most recent data on initial load.
@@ -662,6 +666,31 @@ function mergePriceSeries(actualSeries, forecastSeries) {
     return Array.from(merged.entries())
         .map(([timestamp, value]) => [Number(timestamp), Number(value)])
         .sort((a, b) => a[0] - b[0]);
+}
+
+function restorePredictionLegendSelection(defaults, legendNames) {
+    if (typeof window.restoreChartLegendSelection === 'function') {
+        return window.restoreChartLegendSelection(PREDICTION_LEGEND_STORAGE_KEY, defaults, legendNames);
+    }
+    return Object.assign({}, defaults);
+}
+
+function persistPredictionLegendSelection(selected, legendNames) {
+    if (typeof window.persistChartLegendSelection === 'function') {
+        window.persistChartLegendSelection(PREDICTION_LEGEND_STORAGE_KEY, selected, legendNames);
+    }
+}
+
+function installPredictionLegendPersistence(legendNames) {
+    if (!nfpChart || typeof nfpChart.on !== 'function') {
+        return;
+    }
+    if (typeof nfpChart.off === 'function') {
+        nfpChart.off('legendselectchanged');
+    }
+    nfpChart.on('legendselectchanged', event => {
+        persistPredictionLegendSelection(event && event.selected, legendNames);
+    });
 }
 
 function buildDailyAverageSeries(series) {

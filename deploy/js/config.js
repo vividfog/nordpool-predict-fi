@@ -278,6 +278,42 @@ const appStorage = {
 
 window.appStorage = appStorage;
 
+function normalizeLegendSelection(selection, defaults = {}, validNames = []) {
+    const allowed = Array.isArray(validNames) && validNames.length
+        ? new Set(validNames)
+        : null;
+    const normalized = {};
+
+    Object.entries(defaults || {}).forEach(([name, value]) => {
+        if (!allowed || allowed.has(name)) {
+            normalized[name] = Boolean(value);
+        }
+    });
+    Object.entries(selection || {}).forEach(([name, value]) => {
+        if (!allowed || allowed.has(name)) {
+            normalized[name] = Boolean(value);
+        }
+    });
+    return normalized;
+}
+
+function restoreChartLegendSelection(storageKey, defaults = {}, validNames = []) {
+    const storage = window.appStorage && window.appStorage.enabled ? window.appStorage : null;
+    const saved = storage && storageKey ? storage.get(storageKey) : null;
+    return normalizeLegendSelection(saved, defaults, validNames);
+}
+
+function persistChartLegendSelection(storageKey, selected, validNames = []) {
+    const storage = window.appStorage && window.appStorage.enabled ? window.appStorage : null;
+    if (!storage || !storageKey) {
+        return;
+    }
+    storage.set(storageKey, normalizeLegendSelection(selected, {}, validNames));
+}
+
+window.restoreChartLegendSelection = restoreChartLegendSelection;
+window.persistChartLegendSelection = persistChartLegendSelection;
+
 const CHART_GRID_INSETS = Object.freeze({
     left: 24,
     right: 24,

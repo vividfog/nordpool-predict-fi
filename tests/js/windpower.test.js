@@ -89,6 +89,71 @@ describe('deploy/js/windpower.js', () => {
     expect(errorSpy).toHaveBeenCalled();
   });
 
+  it('restores and persists wind power legend selections', async () => {
+    setPathname('/index.html');
+    loadScript('deploy/js/config.js');
+    document.body.innerHTML = '<div id="windPowerChart"></div>';
+
+    const storageKey = 'np_windpower_legend_selection';
+    const chart = createEchartsMock();
+    globalThis.echarts = { init: () => chart };
+
+    const base = Date.UTC(2025, 0, 1);
+    stubHelsinkiMidnights(base);
+    const localizedWindPower = getLocalizedText('windPower');
+    const localizedPrice = `${getLocalizedText('price')} (¢/kWh)`;
+    window.appStorage.set(storageKey, {
+      [localizedWindPower]: false,
+      [localizedPrice]: true,
+      stale: false
+    });
+
+    const windData = [[base, 1000]];
+    const csv = buildPriceCsv([[base, 7]]);
+    const npfData = [[base + HOUR, 9]];
+
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date(base));
+
+    globalThis.fetch.mockImplementation(url => {
+      const urlString = String(url);
+      if (urlString.includes('windpower.json')) {
+        return Promise.resolve({ ok: true, json: () => Promise.resolve(windData) });
+      }
+      if (urlString.includes('prices.csv')) {
+        return Promise.resolve({ ok: true, text: () => Promise.resolve(csv) });
+      }
+      return Promise.resolve({ ok: true, json: () => Promise.resolve(npfData) });
+    });
+
+    try {
+      loadScript('deploy/js/windpower.js');
+      await flushPromises(8);
+
+      const optionCall = chart.setOption.mock.calls
+        .find(call => call[0]?.legend?.selected);
+      expect(optionCall[0].legend.selected).toEqual({
+        [localizedWindPower]: false,
+        [localizedPrice]: true
+      });
+
+      chart.trigger('legendselectchanged', {
+        selected: {
+          [localizedWindPower]: true,
+          [localizedPrice]: false,
+          stale: true
+        }
+      });
+      expect(window.appStorage.get(storageKey)).toEqual({
+        [localizedWindPower]: true,
+        [localizedPrice]: false
+      });
+    } finally {
+      window.appStorage.remove(storageKey);
+      vi.useRealTimers();
+    }
+  });
+
   it('only refetches when prediction token increases', async () => {
     setPathname('/index.html');
     loadScript('deploy/js/config.js');

@@ -220,6 +220,63 @@ describe('deploy/js/prediction.js', () => {
     expect(dailySeries.tooltip.show).toBe(true);
   });
 
+  it('restores and persists prediction legend selections', () => {
+    const storageKey = 'np_prediction_legend_selection';
+    const base = Date.UTC(2025, 0, 9, 8);
+    const dailyName = getLocalizedText('daily_avg');
+    const forecastName = getLocalizedText('forecast');
+    const scaledName = getLocalizedText('scaled_price');
+
+    window.appStorage.set(storageKey, {
+      Nordpool: false,
+      [forecastName]: true,
+      [scaledName]: false,
+      [dailyName]: true,
+      stale: true
+    });
+
+    try {
+      processPredictionPayload(
+        [
+          [base, 10],
+          [base + HOUR, 11],
+          [base + 2 * HOUR, 12]
+        ],
+        [[base + 2 * HOUR, 1]],
+        buildPriceCsv([[base, 8]])
+      );
+
+      const chartCall = [...chartMock.setOption.mock.calls]
+        .reverse()
+        .find(call => Array.isArray(call[0]?.series) && call[0].legend?.selected?.[dailyName] === true);
+      expect(chartCall[0].legend.selected).toMatchObject({
+        Nordpool: false,
+        [forecastName]: true,
+        [scaledName]: false,
+        [dailyName]: true
+      });
+      expect(chartCall[0].legend.selected.stale).toBeUndefined();
+
+      chartMock.trigger('legendselectchanged', {
+        selected: {
+          Nordpool: true,
+          [forecastName]: false,
+          [scaledName]: true,
+          [dailyName]: false,
+          stale: true
+        }
+      });
+      expect(window.appStorage.get(storageKey)).toEqual({
+        Nordpool: true,
+        [forecastName]: false,
+        [scaledName]: true,
+        [dailyName]: false
+      });
+    } finally {
+      window.appStorage.remove(storageKey);
+    }
+  });
+
   it('clamps lookahead days within configured window', () => {
     expect(clampLookaheadDays(NaN)).toBe(4);
     expect(clampLookaheadDays(0)).toBe(1);

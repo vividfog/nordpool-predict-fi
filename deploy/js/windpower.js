@@ -13,6 +13,7 @@ const subscribeWindPalette = typeof window.subscribeThemePalette === 'function'
     ? window.subscribeThemePalette
     : () => () => {};
 const WIND_THEME_UNSUB_KEY = '__np_windpower_theme_unsub__';
+const WINDPOWER_LEGEND_STORAGE_KEY = 'np_windpower_legend_selection';
 let windpowerPalette = resolveWindPalette('windpower') || window.__NP_THEME__?.getPalette('windpower') || {};
 let hasWindpowerOptions = false;
 const windpowerEndpoints = window.DATA_ENDPOINTS || {};
@@ -296,6 +297,11 @@ function loadWindPowerData(token) {
             const gridConfig = typeof window.buildChartGrid === 'function'
                 ? window.buildChartGrid(gridOverrides)
                 : Object.assign({ containLabel: true }, window.CHART_GRID_INSETS || {}, gridOverrides);
+            const legendNames = [localizedWindPower, localizedPrice];
+            const legendSelected = restoreWindpowerLegendSelection({
+                [localizedWindPower]: true,
+                [localizedPrice]: true
+            }, legendNames);
 
             // Create custom options for wind power chart, merging them without resetting user interactions.
             windPowerChart.setOption({
@@ -319,10 +325,7 @@ function loadWindPowerData(token) {
                         }
                     ],
                     right: 16,
-                    selected: {
-                        [localizedWindPower]: true,
-                        [localizedPrice]: true
-                    }
+                    selected: legendSelected
                 },
                 tooltip: {
                     trigger: 'axis',
@@ -475,6 +478,7 @@ function loadWindPowerData(token) {
                     }
                 ]
             });
+            installWindpowerLegendPersistence(legendNames);
             hasWindpowerOptions = true;
             refreshWindpowerTheme();
 
@@ -491,6 +495,31 @@ function loadWindPowerData(token) {
         });
 
     return windPowerPending;
+}
+
+function restoreWindpowerLegendSelection(defaults, legendNames) {
+    if (typeof window.restoreChartLegendSelection === 'function') {
+        return window.restoreChartLegendSelection(WINDPOWER_LEGEND_STORAGE_KEY, defaults, legendNames);
+    }
+    return Object.assign({}, defaults);
+}
+
+function persistWindpowerLegendSelection(selected, legendNames) {
+    if (typeof window.persistChartLegendSelection === 'function') {
+        window.persistChartLegendSelection(WINDPOWER_LEGEND_STORAGE_KEY, selected, legendNames);
+    }
+}
+
+function installWindpowerLegendPersistence(legendNames) {
+    if (!windPowerChart || typeof windPowerChart.on !== 'function') {
+        return;
+    }
+    if (typeof windPowerChart.off === 'function') {
+        windPowerChart.off('legendselectchanged');
+    }
+    windPowerChart.on('legendselectchanged', event => {
+        persistWindpowerLegendSelection(event && event.selected, legendNames);
+    });
 }
 
 //#region refresh
