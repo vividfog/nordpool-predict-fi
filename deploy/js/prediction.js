@@ -46,6 +46,7 @@ function refreshPredictionTheme() {
     if (typeof palette.forecastBackgroundBarOpacity === 'number') {
         forecastBgStyle.opacity = palette.forecastBackgroundBarOpacity;
     }
+    const dailyLineStyle = { color: DAILY_AVERAGE_LINE_COLOR };
     const scaledVisualPieces = Array.isArray(palette.forecastVisualPieces)
         ? palette.forecastVisualPieces
         : [];
@@ -68,6 +69,13 @@ function refreshPredictionTheme() {
             {
                 id: 'forecast-bg',
                 itemStyle: forecastBgStyle
+            },
+            {
+                id: 'daily-average-line',
+                lineStyle: dailyLineStyle,
+                itemStyle: {
+                    color: DAILY_AVERAGE_LINE_COLOR
+                }
             }
         ],
         visualMap: [
@@ -117,9 +125,11 @@ const sahkotinUrl = window.SAHKOTIN_CSV_URL || 'https://sahkotin.fi/prices.csv';
 
 const predictionStorage = window.appStorage && window.appStorage.enabled ? window.appStorage : null;
 const PREDICTION_FETCH_KEY = 'np_prediction_last_fetch';
+const DAILY_AVERAGE_LINE_COLOR = 'DeepPink';
 let lastFetchTimestamp = 0;
 let pendingFetchPromise = null;
 let hasInitialPayload = false;
+let latestPredictionChartState = null;
 
 // Persist last refresh across reloads so we keep the six-hour guardrails even after closing the tab.
 const storedFetchTimestamp = predictionStorage ? predictionStorage.get(PREDICTION_FETCH_KEY) : null;
@@ -236,12 +246,17 @@ async function fetchPredictionData(options = {}) {
                 console.warn('Failed to fetch or parse scaled price data:', error);
                 return [];
             });
+        const sahkotinPromise = predictionFetchText(sahkotinRequest, requestInit)
+            .catch(error => {
+                console.warn('Failed to fetch Sähkötin data for prediction chart; using forecast-only data:', error);
+                return 'timestamp,price\n';
+            });
 
         try {
             const [npfData, scaledPriceData, sahkotinCsv] = await Promise.all([
                 predictionFetchJson(predictionRequest, requestInit),
                 scaledPricePromise,
-                predictionFetchText(sahkotinRequest, requestInit),
+                sahkotinPromise,
             ]);
 
             hasInitialPayload = true;
@@ -322,12 +337,54 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
 
     console.log("Scaled Price Data loaded:", scaledPriceSeriesData.length, "data points");
 
-    //#region chart_options
+    const mergedSeries = mergePriceSeries(sahkotinSeriesData, npfSeriesData);
+    latestPredictionChartState = {
+        sahkotinSeriesData,
+        npfSeriesData,
+        scaledPriceSeriesData,
+        priceByTimestamp,
+        mergedSeries,
+        dailyAverageSeriesData: buildDailyAverageSeries(mergedSeries)
+    };
+    renderPredictionChart();
+    hasPredictionChartOptions = true;
+    refreshPredictionTheme();
+
+    const cheapestPayload = buildCheapestWindowPayload(mergedSeries, Date.now());
+    const payload = {
+        mergedSeries,
+        sahkotinSeries: sahkotinSeriesData,
+        forecastSeries: npfSeriesData,
+        scaledPriceSeries: scaledPriceSeriesData,
+        generatedAt: cheapestPayload.generatedAt,
+        windows: cheapestPayload.windows,
+        meta: cheapestPayload.meta
+    };
+    if (predictionStore && typeof predictionStore.setLatest === 'function') {
+        predictionStore.setLatest(payload);
+    } else {
+        window.latestPredictionData = payload;
+        window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: payload }));
+    }
+}
+
+function renderPredictionChart() {
+    if (!latestPredictionChartState) {
+        return;
+    }
+    const forecastName = getLocalizedText('forecast');
+    const scaledName = getLocalizedText('scaled_price');
+    const dailyName = getLocalizedText('daily_avg');
+    const {
+        sahkotinSeriesData,
+        npfSeriesData,
+        scaledPriceSeriesData,
+        priceByTimestamp,
+        dailyAverageSeriesData
+    } = latestPredictionChartState;
     const sahkotinVisualPieces = typeof getSahkotinVisualMapPieces === 'function'
         ? getSahkotinVisualMapPieces()
         : [];
-
-    // Create chart options
     const forecastLegendColor = predictionPalette?.forecastLegend;
     const forecastVisualPieces = Array.isArray(predictionPalette?.forecastVisualPieces)
         ? predictionPalette.forecastVisualPieces
@@ -336,6 +393,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
     const forecastBackgroundOpacity = typeof predictionPalette?.forecastBackgroundBarOpacity === 'number'
         ? predictionPalette.forecastBackgroundBarOpacity
         : undefined;
+    const dailyLineColor = DAILY_AVERAGE_LINE_COLOR;
 
     const chartOptions = (typeof window.createBaseChartOptions === 'function'
         ? window.createBaseChartOptions
@@ -351,25 +409,33 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                     }
                 },
                 {
-                    name: getLocalizedText('forecast'),
+                    name: forecastName,
                     icon: 'circle',
                     itemStyle: {
                         color: forecastLegendColor
                     }
                 },
                 {
-                    name: getLocalizedText('scaled_price'),
+                    name: scaledName,
                     icon: 'circle',
                     itemStyle: {
                         color: predictionPalette?.spikeMarker
                     },
+                },
+                {
+                    name: dailyName,
+                    icon: 'circle',
+                    itemStyle: {
+                        color: dailyLineColor
+                    }
                 }
             ],
             right: 16,
             selected: {
                 'Nordpool': true,
-                [getLocalizedText('forecast')]: true,
-                [getLocalizedText('scaled_price')]: true
+                [forecastName]: true,
+                [scaledName]: true,
+                [dailyName]: false
             }
         },
         tooltipFormatter: createTooltipFormatter(),
@@ -415,7 +481,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
             },
             {
                 id: 'forecast-line',
-                name: getLocalizedText('forecast'),
+                name: forecastName,
                 type: 'line',
                 data: npfSeriesData,
                 symbol: 'none',
@@ -461,7 +527,7 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
             },
             {
                 id: 'scaled-price-markers',
-                name: getLocalizedText('scaled_price'),
+                name: scaledName,
                 type: 'line',
                 data: scaledPriceSeriesData.map(item => [item[0], null]),
                 markPoint: {
@@ -487,6 +553,30 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
                 z: 5
             },
             {
+                id: 'daily-average-line',
+                name: dailyName,
+                type: 'line',
+                data: dailyAverageSeriesData,
+                symbol: 'none',
+                step: 'end',
+                lineStyle: {
+                    width: 2,
+                    type: 'dotted',
+                    color: dailyLineColor
+                },
+                itemStyle: {
+                    color: dailyLineColor
+                },
+                opacity: 1.0,
+                tooltip: {
+                    show: true
+                },
+                emphasis: {
+                    disabled: false
+                },
+                z: 3
+            },
+            {
                 type: 'line',
                 id: 'prediction-markline',
                 markLine: createCurrentTimeMarkLine(predictionPalette),
@@ -497,26 +587,6 @@ function processPredictionPayload(npfData, scaledPriceData, sahkotinCsv) {
 
     // Push the merged options without wiping user zoom/legend state.
     nfpChart.setOption(chartOptions);
-    hasPredictionChartOptions = true;
-    refreshPredictionTheme();
-
-    const mergedSeries = mergePriceSeries(sahkotinSeriesData, npfSeriesData);
-    const cheapestPayload = buildCheapestWindowPayload(mergedSeries, Date.now());
-    const payload = {
-        mergedSeries,
-        sahkotinSeries: sahkotinSeriesData,
-        forecastSeries: npfSeriesData,
-        scaledPriceSeries: scaledPriceSeriesData,
-        generatedAt: cheapestPayload.generatedAt,
-        windows: cheapestPayload.windows,
-        meta: cheapestPayload.meta
-    };
-    if (predictionStore && typeof predictionStore.setLatest === 'function') {
-        predictionStore.setLatest(payload);
-    } else {
-        window.latestPredictionData = payload;
-        window.dispatchEvent(new CustomEvent('prediction-data-ready', { detail: payload }));
-    }
 }
 
 // Prime the chart with the most recent data on initial load.
@@ -592,6 +662,116 @@ function mergePriceSeries(actualSeries, forecastSeries) {
     return Array.from(merged.entries())
         .map(([timestamp, value]) => [Number(timestamp), Number(value)])
         .sort((a, b) => a[0] - b[0]);
+}
+
+function buildDailyAverageSeries(series) {
+    const bins = new Map();
+    if (!Array.isArray(series)) {
+        return [];
+    }
+    const points = [];
+
+    series.forEach(item => {
+        if (!Array.isArray(item) || item.length < 2) {
+            return;
+        }
+        const timestamp = Number(item[0]);
+        if (item[1] === null || typeof item[1] === 'undefined') {
+            return;
+        }
+        const value = Number(item[1]);
+        if (!Number.isFinite(timestamp) || !Number.isFinite(value)) {
+            return;
+        }
+        points.push([timestamp, value]);
+        const day = getHelsinkiDayBoundary(timestamp);
+        if (!day) {
+            return;
+        }
+        const bin = bins.get(day.key) || {
+            key: day.key,
+            start: day.start,
+            end: day.end,
+            sum: 0,
+            count: 0
+        };
+        bin.sum += value;
+        bin.count += 1;
+        bins.set(day.key, bin);
+    });
+
+    if (!points.length) {
+        return [];
+    }
+
+    return points
+        .sort((a, b) => a[0] - b[0])
+        .map(([timestamp]) => {
+            const day = getHelsinkiDayBoundary(timestamp);
+            const bin = day ? bins.get(day.key) : null;
+            const average = bin && bin.count > 0 ? bin.sum / bin.count : null;
+            return [timestamp, average];
+        })
+        .filter(item => item[1] !== null);
+}
+
+function getHelsinkiDayBoundary(timestampMs) {
+    const parts = getHelsinkiDatePartsFromTimestamp(timestampMs - HOUR_MS);
+    if (!parts) {
+        return null;
+    }
+    const key = `${parts.year}-${String(parts.month).padStart(2, '0')}-${String(parts.day).padStart(2, '0')}`;
+    const referenceDate = new Date(Date.UTC(parts.year, parts.month - 1, parts.day, 12));
+    const buildTimestamp = typeof window.getHelsinkiMidnightTimestamp === 'function'
+        ? window.getHelsinkiMidnightTimestamp
+        : null;
+    const start = buildTimestamp
+        ? buildTimestamp(0, referenceDate)
+        : Date.UTC(parts.year, parts.month - 1, parts.day);
+    const end = buildTimestamp
+        ? buildTimestamp(1, referenceDate)
+        : start + 24 * HOUR_MS;
+    return {
+        key,
+        start: start + HOUR_MS,
+        end: end + HOUR_MS
+    };
+}
+
+function getHelsinkiDatePartsFromTimestamp(timestampMs) {
+    try {
+        const formatter = new Intl.DateTimeFormat('en-CA', {
+            timeZone: HELSINKI_TIMEZONE_ID,
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+        });
+        const parts = formatter.formatToParts(new Date(timestampMs));
+        const values = {};
+        parts.forEach(part => {
+            if (part.type === 'year' || part.type === 'month' || part.type === 'day') {
+                values[part.type] = Number(part.value);
+            }
+        });
+        if (Number.isFinite(values.year) && Number.isFinite(values.month) && Number.isFinite(values.day)) {
+            return {
+                year: values.year,
+                month: values.month,
+                day: values.day
+            };
+        }
+    } catch (error) {
+        console.warn('Failed to resolve Helsinki day for prediction chart', error);
+    }
+    const fallback = new Date(timestampMs);
+    if (!Number.isFinite(fallback.getTime())) {
+        return null;
+    }
+    return {
+        year: fallback.getUTCFullYear(),
+        month: fallback.getUTCMonth() + 1,
+        day: fallback.getUTCDate()
+    };
 }
 
 function clampLookaheadDays(days) {

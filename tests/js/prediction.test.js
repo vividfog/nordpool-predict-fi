@@ -4,9 +4,11 @@ import { createEchartsMock, loadScript, flushPromises, buildPriceCsv, stubHelsin
 const HOUR = 60 * 60 * 1000;
 
 describe('deploy/js/prediction.js', () => {
+  let chartMock;
+
   beforeAll(async () => {
     document.body.innerHTML = '<div id="predictionChart"></div>';
-    const chartMock = createEchartsMock();
+    chartMock = createEchartsMock();
     globalThis.echarts = {
       init: () => chartMock
     };
@@ -69,6 +71,153 @@ describe('deploy/js/prediction.js', () => {
       [base, 10],
       [base + HOUR, 11]
     ]);
+  });
+
+  it('builds daily averages by Helsinki 01:00 publishing day', () => {
+    const originalMidnightBuilder = window.getHelsinkiMidnightTimestamp;
+    window.getHelsinkiMidnightTimestamp = vi.fn((offset, referenceDate) => {
+      const reference = new Date(referenceDate);
+      return Date.UTC(
+        reference.getUTCFullYear(),
+        reference.getUTCMonth(),
+        reference.getUTCDate() + offset,
+        -2
+      );
+    });
+    try {
+      const jan2MidnightLocal = Date.UTC(2025, 0, 1, 22);
+      const series = [
+        [jan2MidnightLocal, 10],
+        [jan2MidnightLocal + HOUR, 14],
+        [jan2MidnightLocal + 2 * HOUR, 30],
+        ['bad', 99]
+      ];
+      const daily = buildDailyAverageSeries(series);
+      expect(daily).toEqual([
+        [jan2MidnightLocal, 10],
+        [jan2MidnightLocal + HOUR, 22],
+        [jan2MidnightLocal + 2 * HOUR, 22]
+      ]);
+    } finally {
+      window.getHelsinkiMidnightTimestamp = originalMidnightBuilder;
+    }
+  });
+
+  it('clips daily average segments to the hourly chart range', () => {
+    const originalMidnightBuilder = window.getHelsinkiMidnightTimestamp;
+    window.getHelsinkiMidnightTimestamp = vi.fn((offset, referenceDate) => {
+      const reference = new Date(referenceDate);
+      return Date.UTC(
+        reference.getUTCFullYear(),
+        reference.getUTCMonth(),
+        reference.getUTCDate() + offset,
+        -2
+      );
+    });
+    try {
+      const firstHour = Date.UTC(2025, 0, 2, 8);
+      const series = [
+        [firstHour, 10],
+        [firstHour + HOUR, 12],
+        [firstHour + 2 * HOUR, 14],
+        [firstHour + 3 * HOUR, 16]
+      ];
+      const daily = buildDailyAverageSeries(series);
+      expect(daily[0][0]).toBe(firstHour);
+      expect(daily[daily.length - 1][0]).toBe(firstHour + 3 * HOUR);
+      expect(daily).toHaveLength(4);
+    } finally {
+      window.getHelsinkiMidnightTimestamp = originalMidnightBuilder;
+    }
+  });
+
+  it('does not duplicate daily average tooltip points at day boundaries', () => {
+    const originalMidnightBuilder = window.getHelsinkiMidnightTimestamp;
+    window.getHelsinkiMidnightTimestamp = vi.fn((offset, referenceDate) => {
+      const reference = new Date(referenceDate);
+      return Date.UTC(
+        reference.getUTCFullYear(),
+        reference.getUTCMonth(),
+        reference.getUTCDate() + offset,
+        -2
+      );
+    });
+    try {
+      const jan2MidnightLocal = Date.UTC(2025, 0, 1, 22);
+      const series = [
+        [jan2MidnightLocal, 10],
+        [jan2MidnightLocal + HOUR, 20],
+        [jan2MidnightLocal + 2 * HOUR, 22],
+        [jan2MidnightLocal + 24 * HOUR, 30],
+        [jan2MidnightLocal + 25 * HOUR, 40]
+      ];
+      const daily = buildDailyAverageSeries(series);
+      const countsByTimestamp = daily.reduce((counts, [timestamp]) => {
+        counts.set(timestamp, (counts.get(timestamp) || 0) + 1);
+        return counts;
+      }, new Map());
+      expect([...countsByTimestamp.values()].every(count => count === 1)).toBe(true);
+      expect(daily.find(item => item[0] === jan2MidnightLocal)[1]).toBe(10);
+      expect(daily.find(item => item[0] === jan2MidnightLocal + HOUR)[1]).toBe(24);
+      expect(daily.find(item => item[0] === jan2MidnightLocal + 24 * HOUR)[1]).toBe(24);
+      expect(daily.find(item => item[0] === jan2MidnightLocal + 25 * HOUR)[1]).toBe(40);
+    } finally {
+      window.getHelsinkiMidnightTimestamp = originalMidnightBuilder;
+    }
+  });
+
+  it('defaults the prediction chart to hourly mode', () => {
+    const base = Date.UTC(2025, 0, 6, 8);
+    processPredictionPayload(
+      [
+        [base, 10],
+        [base + HOUR, 11],
+        [base + 2 * HOUR, 12]
+      ],
+      [],
+      buildPriceCsv([[base, 8]])
+    );
+    const fullOptionCall = [...chartMock.setOption.mock.calls]
+      .reverse()
+      .find(call => call[0]?.legend && Array.isArray(call[0]?.series) && call[0].series.some(series => series.id === 'daily-average-line'));
+    expect(fullOptionCall).toBeTruthy();
+    const option = fullOptionCall[0];
+    const forecast = option.series.find(series => series.id === 'forecast-line');
+    const daily = option.series.find(series => series.id === 'daily-average-line');
+    expect(forecast.data.length).toBeGreaterThan(0);
+    expect(daily.data.length).toBeGreaterThan(0);
+    expect(option.legend.selected[getLocalizedText('daily_avg')]).toBe(false);
+  });
+
+  it('adds daily average as a normal optional legend series', () => {
+    const base = Date.UTC(2025, 0, 7, 8);
+    processPredictionPayload(
+      [
+        [base, 10],
+        [base + HOUR, 11],
+        [base + 2 * HOUR, 12]
+      ],
+      [[base + 2 * HOUR, 1]],
+      buildPriceCsv([[base, 8]])
+    );
+    const dailyName = getLocalizedText('daily_avg');
+    const forecastName = getLocalizedText('forecast');
+
+    const chartCall = [...chartMock.setOption.mock.calls]
+      .reverse()
+      .find(call => Array.isArray(call[0]?.series) && call[0].legend?.selected?.[dailyName] === false);
+    const chartOption = chartCall[0];
+    expect(chartOption.legend.selected[forecastName]).toBe(true);
+    expect(chartOption.legend.selected[dailyName]).toBe(false);
+    expect(chartOption.series.find(series => series.id === 'forecast-line').data.length).toBeGreaterThan(0);
+    expect(chartOption.series.find(series => series.id === 'sahkotin-line').data.length).toBeGreaterThan(0);
+    expect(chartOption.series.find(series => series.id === 'scaled-price-markers').markPoint.data.length).toBeGreaterThanOrEqual(0);
+    const dailySeries = chartOption.series.find(series => series.id === 'daily-average-line');
+    expect(dailySeries.data.length).toBeGreaterThan(0);
+    expect(dailySeries.lineStyle.color).toBe('DeepPink');
+    expect(dailySeries.lineStyle.type).toBe('dotted');
+    expect(dailySeries.itemStyle.color).toBe('DeepPink');
+    expect(dailySeries.tooltip.show).toBe(true);
   });
 
   it('clamps lookahead days within configured window', () => {
@@ -198,6 +347,52 @@ describe('deploy/js/prediction.js', () => {
       expect(payload.mergedSeries[0][0]).toBe(base + HOUR);
     } finally {
       unsubscribe();
+      vi.useRealTimers();
+    }
+  });
+
+  it('renders forecast-only chart data when Sähkötin fetch fails', async () => {
+    vi.useFakeTimers();
+    const base = Date.UTC(2025, 0, 8, 9);
+    vi.setSystemTime(base);
+    const predictionSeries = [
+      [base, 9],
+      [base + HOUR, 10],
+      [base + 2 * HOUR, 11]
+    ];
+    const scaledSeries = predictionSeries.map(([ts]) => [ts, null]);
+
+    try {
+      globalThis.fetch.mockImplementation(url => {
+        if (String(url).includes('prediction.json')) {
+          return Promise.resolve({
+            ok: true,
+            json: () => Promise.resolve(predictionSeries)
+          });
+        }
+        if (String(url).includes('prediction_scaled')) {
+          return Promise.resolve({
+            ok: true,
+            text: () => Promise.resolve(JSON.stringify(scaledSeries))
+          });
+        }
+        if (String(url).includes('sahkotin')) {
+          return Promise.reject(new Error('sahkotin unavailable'));
+        }
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve([])
+        });
+      });
+
+      await fetchPredictionData({ force: true });
+      await flushPromises(2);
+
+      const payload = window.predictionStore.getLatest();
+      expect(payload.sahkotinSeries).toEqual([]);
+      expect(payload.forecastSeries[0][0]).toBe(base + HOUR);
+      expect(payload.mergedSeries.length).toBeGreaterThan(0);
+    } finally {
       vi.useRealTimers();
     }
   });

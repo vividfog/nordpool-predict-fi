@@ -39,15 +39,31 @@ export async function flushPromises(times = 2) {
 }
 
 export function createEchartsMock() {
+  const handlers = new Map();
   const resize = vi.fn();
   const setOption = vi.fn();
   const clear = vi.fn();
   const getOption = vi.fn(() => ({ series: [] }));
+  const on = vi.fn((eventName, handler) => {
+    handlers.set(eventName, handler);
+  });
+  const off = vi.fn((eventName) => {
+    handlers.delete(eventName);
+  });
+  const trigger = (eventName, payload) => {
+    const handler = handlers.get(eventName);
+    if (handler) {
+      handler(payload);
+    }
+  };
   return {
     resize,
     setOption,
     clear,
-    getOption
+    getOption,
+    on,
+    off,
+    trigger
   };
 }
 
@@ -58,13 +74,25 @@ export function setPathname(pathname) {
 export function stubHelsinkiMidnights(baseTimestamp) {
   const HOUR = 60 * 60 * 1000;
   const base = Number.isFinite(baseTimestamp) ? baseTimestamp : Date.UTC(2025, 0, 1);
-  const isoBuilder = vi.fn(offset => {
+  const resolveBase = referenceDate => {
+    if (referenceDate instanceof Date && Number.isFinite(referenceDate.getTime())) {
+      return Date.UTC(
+        referenceDate.getUTCFullYear(),
+        referenceDate.getUTCMonth(),
+        referenceDate.getUTCDate()
+      );
+    }
+    return base;
+  };
+  const isoBuilder = vi.fn((offset, referenceDate) => {
+    const resolvedBase = resolveBase(referenceDate);
     const hours = Number.isFinite(offset) ? offset * 24 : 0;
-    return new Date(base + hours * HOUR).toISOString();
+    return new Date(resolvedBase + hours * HOUR).toISOString();
   });
-  const tsBuilder = vi.fn(offset => {
+  const tsBuilder = vi.fn((offset, referenceDate) => {
+    const resolvedBase = resolveBase(referenceDate);
     const hours = Number.isFinite(offset) ? offset * 24 : 0;
-    return base + hours * HOUR;
+    return resolvedBase + hours * HOUR;
   });
   window.getHelsinkiMidnightISOString = isoBuilder;
   window.getHelsinkiMidnightTimestamp = tsBuilder;

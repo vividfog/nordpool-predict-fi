@@ -436,6 +436,7 @@ function getLocalizedText(key) {
         '1h_avg': isEnglish ? '1 h' : '1 h',
         '3h_avg': isEnglish ? 'average 3 h' : 'keskiarvo 3 h',
         '6h_avg': isEnglish ? 'average 6 h' : 'keskiarvo 6 h',
+        'daily_avg': isEnglish ? 'Daily avg' : 'Keskihinta',
         'scaled_price': isEnglish ? 'Price spikes' : 'Hintapiikkejä',
         'weekdays': isEnglish ?
             ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] :
