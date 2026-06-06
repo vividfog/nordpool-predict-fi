@@ -1,19 +1,21 @@
-*Sunday remains affordable, but early in the week, fading wind power pushes the average electricity price over ten cents and brings a risk of price spikes.*
+*Wind power fluctuations swing from Sunday's affordability to expensive price peaks on Monday and Tuesday, until Thursday returns prices to a moderate level.*
 
-The forecast was updated on Saturday at 08:57.
+Ennuste on päivitetty lauantaina klo 11:57.
 
-| | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
+|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 4.5 | 1.9 - 7.9 | 2649 - 5193 | 15.9 |
-| **Monday** | 10.6 | 6.7 - 17.3 | 536 - 3746 | 16.2 |
-| **Tuesday** | 11.9 | 6.8 - 19.3 | 360 - 1948 | 15.5 |
-| **Wednesday** | 6.8 | 3.7 - 10.6 | 1001 - 2373 | 15.3 |
-| **Thursday** | 8.2 | 5.4 - 11.7 | 1377 - 3411 | 15.4 |
-| **Friday** | 8.3 | 5.5 - 12.0 | 971 - 2687 | 14.1 |
-| **Saturday** | 7.7 | 4.4 - 11.2 | 800 - 1826 | 14.0 |
+| **Sunday** | 2.9 | 0.9 – 6.5 | 2517 – 5214 | 15.9 |
+| **Monday** | 9.3 | 5.6 – 16.6 | 298 – 3827 | 16.2 |
+| **Tuesday** | 9.8 | 5.1 – 16.2 | 245 – 1514 | 15.5 |
+| **Wednesday** | 6.3 | 2.7 – 10.8 | 654 – 2757 | 15.3 |
+| **Thursday** | 4.6 | 2.2 – 6.8 | 1779 – 3942 | 15.4 |
+| **Friday** | 6.5 | 4.0 – 12.2 | 656 – 2800 | 14.1 |
+| **Saturday** | 5.3 | 2.7 – 9.5 | 749 – 1846 | 14.2 |
 
-The average electricity price will remain affordable on **Sunday** at 4.5 cents. Wind power is abundant, and the cheapest hour of the day occurs at 3 a.m. at 1.9 cents. On **Monday**, the average price rises significantly to 10.6 cents. Minimum wind power production drops to 536 megawatts, which explains the day's maximum price climbing to 17.3 cents. There is a risk of price spikes during the evening hours from 7 p.m. to 9 p.m.
+**Sunday** offers the lowest average price at 2.9 cents per kilowatt-hour. The day's minimum price dips to just 0.9 cents in the early morning, but rises toward 6.5 cents by evening. Average wind power production on Sunday is strong, exceeding 4000 MW.
 
-**Tuesday** will be the most expensive day of the forecast period with an average price of 11.9 cents. Wind power is weak, and the day's minimum production falls to only 360 megawatts. This pushes the maximum price to 19.3 cents in the morning hours. A risk of price spikes is noted for Tuesday between 6 a.m. and 8 a.m. On **Wednesday**, the price stabilizes with an average of 6.8 cents. Average prices for **Thursday** and **Friday** settle around 8 cents. Friday has a price spike risk between 6 a.m. and 8 a.m., and minimum wind power remains below a thousand megawatts. On **Saturday**, the average price is 7.7 cents, with a risk of price spikes from 5 a.m. to 7 a.m.
+The most expensive days are **Monday** and **Tuesday**, with average prices remaining around 9–10 cents. On Monday, the price rises sharply after the afternoon, and there is a risk of price spikes between 20:00 and 22:00. Wind power collapses significantly below 1000 MW on Monday, which pushes the maximum price to 16.6 cents. On Tuesday, wind power remains very low, averaging 800 MW, which explains the day's high price level. On Tuesday morning between 6:00 and 8:00, a price spike is expected, with the maximum price reaching 16.2 cents.
 
-*Analyzed by sahkovatkain-gemma4-31b-mlx@8bit. 🌬️*
+On **Wednesday**, the average price drops to 6.3 cents as wind power strengthens. **Thursday** is the second cheapest day of the period with an average price of 4.6 cents and a minimum of 2.2 cents. On **Friday**, wind power weakens again to an average of 1376 MW, and there is a risk of price spikes during the morning hours between 6:00 and 8:00. On **Saturday**, wind power remains weak, and the day's maximum price reaches 9.5 cents in the evening. A risk of price spikes is also observed on Saturday morning between 6:00 and 8:00.
+
+*Sähkövatkain – data and wind by sahkovatkain-gemma4-31b-mlx@8bit.* 🌬️
