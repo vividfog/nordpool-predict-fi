@@ -1,19 +1,19 @@
-*Electricity price forecasts start with higher levels on Monday and Tuesday, but will level off starting Wednesday. Some days have individual price spike risks.*
+*The beginning of the electricity week is most expensive due to calm winds, but prices stabilize from Wednesday onwards with occasional evening price spike risks.*
 
-Forecast updated on Sunday at 11:57.
+Ennuste on päivitetty sunnuntaina klo 14:57.
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+| | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 9.1 | 4.1 - 15.5 | 443 - 3836 | 16.2 |
-| **Tuesday** | 9.6 | 5.1 - 14.5 | 120 - 1269 | 15.5 |
-| **Wednesday** | 5.8 | 2.9 - 9.0 | 1219 - 2373 | 15.3 |
-| **Thursday** | 7.0 | 4.4 - 10.0 | 1495 - 3191 | 15.4 |
-| **Friday** | 7.3 | 4.1 - 11.6 | 510 - 2357 | 14.1 |
-| **Saturday** | 6.1 | 2.5 - 9.7 | 537 - 1834 | 14.2 |
-| **Sunday** | 7.3 | 4.2 - 11.6 | 578 - 944 | 14.1 |
+| **maanantai** | 12,8 | 4,4 – 25,8 | 433 – 3806 | 16,2 |
+| **tiistai** | 12,5 | 7,3 – 19,5 | 119 – 1288 | 15,5 |
+| **keskiviikko** | 7,0 | 4,1 – 10,7 | 1206 – 2583 | 15,3 |
+| **torstai** | 8,2 | 5,6 – 11,4 | 1477 – 3081 | 15,4 |
+| **perjantai** | 8,3 | 4,2 – 13,9 | 454 – 2075 | 14,1 |
+| **lauantai** | 7,6 | 3,9 – 12,6 | 482 – 1820 | 14,2 |
+| **sunnuntai** | 8,8 | 5,2 – 13,2 | 539 – 943 | 14,1 |
 
-Electricity price forecasts fluctuate during the period. The most expensive days are **Monday** and **Tuesday**, with average prices remaining above 9 cents. On Monday, the price rises toward the evening and reaches its maximum of 15.5 cents at 21:00. On Tuesday, the highest price is 14.5 cents during the morning hours. On both days, minimum wind power production falls below 2000 megawatts, which explains the higher maximum prices. There is a price spike risk on Monday from 20:00–22:00 and Tuesday from 6:00–8:00.
+Average electricity prices remain moderate over the forecast period, but **Monday** and **Tuesday** stand out as more expensive than the rest of the week. Monday's average price is 12.8 ¢ and Tuesday's is 12.5 ¢. Monday's maximum price rises to 25.8 cents toward the evening. On Tuesday, average wind power production remains very low at 408 megawatts, which pushes the average price up. There is a risk of price spikes on Tuesday evening between 19:00 and 21:00.
 
-**Wednesday** is the cheapest day of the period, with an average price of 5.8 cents and the lowest hour dropping to 2.9 cents. **Thursday's** average price is 7.0 cents, and on **Friday**, it rises slightly higher. For Friday, a price spike risk is noted from 19:00–21:00, when the price may rise to 11.6 cents. On **Saturday**, electricity is more affordable again with an average price of 6.1 cents. However, there is a price spike risk on Saturday from 20:00–22:00, with a maximum price of 9.7 cents. On **Sunday**, the average price remains at 7.3 cents, and the price spike risk occurs from 18:00–20:00.
+The cheapest hours occur on **Wednesday**, when the price drops to a minimum of 4.1 cents. On the same day, average wind power production is 1778 megawatts, though production varies within the day. **Thursday's** average price is 8.2 ¢, and wind power production reaches the highest daily average at 2145 megawatts. **Friday's** evening prices rise to 13.9 cents, and there is a price spike risk between 20:00 and 22:00. On **Saturday**, the average price is 7.6 ¢, and a price spike risk occurs during the evening hours from 20:00 to 22:00. On **Sunday**, the average price is 8.8 ¢, and wind power remains weak. Sunday evening prices spike between 20:00 and 22:00.
 
-*Sähkövatkain-gemma4-31b-mlx@8bit analyzed.* 🌬️
+*Sähkövatkain-gemma4-31b-mlx@8bit calculated.* 🌬️
