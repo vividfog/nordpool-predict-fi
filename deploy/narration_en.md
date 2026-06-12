@@ -1,19 +1,21 @@
-*Sunday is the most affordable day of the forecast period, but price spike risks on Thursday and Saturday, along with weak wind power on Monday, will occasionally drive up electricity prices.*
+*Electricity prices remain moderate, but fluctuations in wind power will raise average prices early in the week and bring a few hours of price spike risk.*
 
-Forecast updated Friday at 02:57.
+Ennuste on päivitetty perjantaina klo 08:57.
 
-| | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday** | 6.1 | 1.4 – 11.6 | 505 – 4394 | 14.2 |
-| **Sunday** | 3.6 | 1.4 – 6.8 | 2042 – 5822 | 14.1 |
-| **Monday** | 8.2 | 6.2 – 11.7 | 914 – 2086 | 14.2 |
-| **Tuesday** | 7.5 | 6.0 – 9.2 | 1478 – 3194 | 13.5 |
-| **Wednesday** | 6.7 | 4.4 – 10.5 | 1712 – 3757 | 13.3 |
-| **Thursday** | 8.0 | 5.1 – 10.9 | 681 – 3004 | 13.7 |
-| **Friday** | 6.7 | 4.2 – 9.2 | 1089 – 1920 | 14.7 |
+| **Saturday** | 5.5 | 1.4 - 11.3 | 486 - 3802 | 14.2 |
+| **Sunday** | 3.4 | 1.2 - 6.3 | 2036 - 6187 | 14.1 |
+| **Monday** | 7.6 | 5.5 - 10.7 | 851 - 2001 | 14.2 |
+| **Tuesday** | 8.2 | 6.5 - 10.2 | 1255 - 2228 | 13.5 |
+| **Wednesday** | 7.1 | 4.4 - 9.5 | 1086 - 2373 | 13.3 |
+| **Thursday** | 7.1 | 4.2 - 10.3 | 682 - 2954 | 13.7 |
+| **Friday** | 6.2 | 3.7 - 8.7 | 1013 - 1831 | 14.7 |
 
-Spot electricity price expectations for the coming week vary daily. The most affordable day is **Sunday**, with an average price of 3.6 cents and the cheapest hours dropping to 1.4 cents. Average wind power production on Sunday is strong, exceeding 4300 megawatts. On **Saturday**, the average price is 6.1 cents, but it rises toward the evening. At 7:00 PM, the price reaches 11.6 cents, and there is a risk of price spikes between 6:00 PM and 8:00 PM.
+Average electricity prices will fluctuate between 3.4 and 8.2 cents. The most affordable day is **Sunday**, when the average price remains at 3.4 cents. Wind power will be abundant on Sunday, averaging 4284 MW, which explains the low price level. The day's cheapest hour will occur around midday at 1.2 cents.
 
-**Monday** stands out as the most expensive day with an average price of 8.2 cents. Wind power remains at a weak level, and the daily maximum price reaches 11.7 cents. On **Tuesday**, wind strengthens slightly, and the average price is 7.5 cents. On **Wednesday**, there is again abundant wind power, keeping the average price at 6.7 cents. On **Thursday**, minimum wind production drops to 681 megawatts, which explains the day's highest hourly price of 10.9 cents and a risk of price spikes in the morning from 8:00 AM to 10:00 AM. **Friday** is a public holiday, during which demand may be lower than normal. The average price is 6.7 cents, and the cheapest hour occurs at 3:00 PM at 4.2 cents.
+The most expensive days are **Monday** and **Tuesday**. Monday's average price is 7.6 cents, and on Tuesday it rises to 8.2 cents. On both days, wind power remains weak with an average under 2500 MW, which raises the price level. On Monday, wind power drops to a minimum of 851 MW, explaining the day's highest hourly price of 10.7 cents. There is also a risk of price spikes on Monday between 6 a.m. and 8 a.m.
 
-*Numbers interpreted today by sahkovatkain-gemma4-31b-mlx@8bit.* 🌬️
+The average price for **Wednesday** is 7.1 cents, and it will be the same on **Thursday**. On Thursday, the minimum wind power of 682 MW is very low, pushing the day's maximum price to 10.3 cents. A price spike risk is noted for Thursday between 8 a.m. and 10 a.m. On **Saturday**, wind power is weak on average, and the day's maximum price rises to 11.3 cents. There is a price spike risk on Saturday between 6 p.m. and 8 p.m. **Friday** is a public holiday, during which demand is expected to be lower than normal, potentially lowering the price. Friday's average price remains at 6.2 cents.
+
+*Interpretations by sahkovatkain-gemma4-31b-mlx@8bit.* 🌬️
