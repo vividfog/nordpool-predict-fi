@@ -1,19 +1,19 @@
-*The coming week brings strong price fluctuations: Wednesday's windy, cheap electricity gives way to Thursday's high costs and windless spikes during the public holidays.*
+*Fluctuations in wind power are reflected in electricity prices, which range from a cheap Wednesday to the most expensive hours on Thursday and Tuesday, including risks of price spikes.*
 
-Forecast updated on Tuesday at 14:57.
+The forecast was updated on Tuesday at 20:57.
 
-| | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+| | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 1.4 | 0.2 - 4.1 | 2694 - 5258 | 13.3 |
-| **Thursday** | 6.8 | 2.8 - 14.1 | 618 - 2596 | 13.7 |
-| **Friday** | 5.2 | 2.7 - 9.1 | 124 - 1572 | 14.6 |
-| **Saturday** | 2.6 | 0.2 - 5.0 | 1456 - 3664 | 15.1 |
-| **Sunday** | 3.4 | 0.7 - 7.9 | 870 - 3853 | 15.8 |
-| **Monday** | 5.8 | 3.3 - 9.7 | 1064 - 3239 | 14.8 |
-| **Tuesday** | 6.1 | 2.3 - 11.1 | 738 - 3213 | 14.6 |
+| **Wednesday** | 1,4 | 0,2 – 4,1 | 2724 – 5057 | 13,3 |
+| **Thursday** | 6,6 | 2,8 – 12,5 | 575 – 2775 | 13,7 |
+| **Friday** | 5,1 | 3,0 – 9,0 | 261 – 1774 | 14,6 |
+| **Saturday** | 2,3 | 0,6 – 4,1 | 1427 – 3376 | 15,1 |
+| **Sunday** | 2,6 | 0,6 – 6,4 | 1377 – 3867 | 15,8 |
+| **Monday** | 5,0 | 2,2 – 9,1 | 1077 – 3290 | 14,8 |
+| **Tuesday** | 5,8 | 2,2 – 10,2 | 765 – 3227 | 14,6 |
 
-Forecast prices will fluctuate significantly. **Wednesday** is clearly the most affordable day, with an average price of 1.4 cents. Wind power is abundant that day; maximum production rises over 5200 MW, which pushes the price down. **Thursday** is the most expensive day of the period with an average price of 6.8 cents. Wind power weakens considerably on Thursday, and the day's minimum production drops to 618 MW. This explains Thursday's high maximum price, which rises to 14.1 cents by the evening. There is a risk of price spikes on **Thursday** between 20:00 and 22:00.
+The most affordable day of the forecast period is **Wednesday**, with an average price of 1.4 cents. There is plenty of wind power available, and the cheapest hour of the day occurs in the early morning at 0.2 cents. The most expensive day is **Thursday** with an average price of 6.6 cents. Thursday's maximum price rises to 12.5 cents in the late afternoon and evening. Minimum wind power production on Thursday drops to 575 megawatts, which explains the day's high maximum price. There is a risk of a price spike on Thursday between 20:00 and 22:00.
 
-**Friday** and **Saturday** are public holidays, which may lower demand. Friday's average price is 5.2 cents and Saturday's is 2.6 cents. On Friday, wind power remains very calm, averaging only 751 MW. This raises the price level for the day, and there is a risk of price spikes during the morning hours 5–7. On Saturday, wind power strengthens and prices drop, reaching a daily low of 0.2 cents. On **Sunday**, prices rise in the evening, and there is a risk of price spikes between 19:00 and 21:00. **Monday** and **Tuesday** remain in the range of 5.8–6.1 cents on average. On Tuesday, an evening peak could reach 11.1 cents between 19:00 and 21:00.
+**Friday** and **Saturday** are public holidays, which may lower demand. On Friday, wind power is very weak with an average of 733 megawatts, which pushes the price level up. There is a risk of a price spike on Friday between 05:00 and 07:00, and the day's highest price reaches 9.0 cents. On Saturday, wind power strengthens and the average price drops to 2.3 cents. Prices remain low on **Sunday**, but rise to 6.4 cents in the evening. On **Monday** and **Tuesday**, average prices settle between 5.0–5.8 cents. On Tuesday, there is a possibility of a price spike between 19:00 and 21:00, with the maximum price reaching 10.2 cents.
 
-*Sähkövatkain-gemma4-31b-mlx@8bit in billing.* 🌪️
+*Sähkövatkain-gemma4-31b-mlx@8bit squeezes the cents.* ⚡
