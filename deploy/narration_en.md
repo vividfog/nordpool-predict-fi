@@ -1,21 +1,19 @@
-*Electricity prices for the coming week will fluctuate due to public holidays and variations in wind power, remaining low over the weekend but rising on Tuesday.*
+*Electricity prices will fluctuate over the coming week: calmest days drive up costs on Thursday and Tuesday, while the weekend offers affordable hours.*
 
-Forecast updated Wednesday at 08:57.
+Ennuste on päivitetty keskiviikkona klo 11:58.
 
 |  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday** | 6.1 | 2.8 – 12.9 | 612 – 2866 | 13.7 |
-| **Friday** | 5.4 | 2.8 – 9.2 | 284 – 999 | 14.6 |
-| **Saturday** | 1.8 | -0.5 – 5.3 | 905 – 3992 | 15.1 |
-| **Sunday** | 2.2 | 0.7 – 4.7 | 1478 – 3756 | 15.8 |
-| **Monday** | 4.5 | 1.5 – 8.1 | 1124 – 3837 | 14.8 |
-| **Tuesday** | 6.5 | 3.4 – 11.6 | 626 – 2531 | 14.6 |
-| **Wednesday** | 2.3 | 0.5 – 5.2 | 1782 – 3656 | 14.6 |
+| **Thursday** | 6.0 | 2.8 - 12.7 | 666 - 2925 | 13.7 |
+| **Friday** | 5.7 | 2.9 - 9.8 | 226 - 933 | 14.6 |
+| **Saturday** | 2.1 | -0.3 - 5.3 | 964 - 4070 | 15.1 |
+| **Sunday** | 2.3 | 0.7 - 5.1 | 1477 - 3819 | 15.8 |
+| **Monday** | 4.6 | 1.6 - 8.2 | 1018 - 3795 | 14.8 |
+| **Tuesday** | 6.7 | 3.5 - 11.4 | 611 - 2492 | 14.6 |
+| **Wednesday** | 2.2 | 0.9 - 4.0 | 1834 - 3737 | 14.4 |
 
-Electricity price forecasts vary daily over the coming period. **Thursday's** expected average price is 6.1 cents, with a maximum of 12.9 cents. **Friday** and **Saturday** are public holidays, which may lower demand. Saturday's average price will be 1.8 cents, and prices will dip into negative territory during the day. **Sunday's** average price is 2.2 cents, and on **Monday** it rises to an average of 4.5 cents. Next **Tuesday**, the price will reach its highest with an average of 6.5 cents. Next **Wednesday** is more affordable with an average price of 2.3 cents.
+Electricity price forecasts start on **Thursday** with an average price of 6.0 cents. Thursday evening's hourly price rises to a maximum of 12.7 cents at 21:00. Wind power minimum production drops to only 666 megawatts on Thursday, which explains the high maximum price. There is also a price spike risk marked for Thursday between 20:00 and 22:00. **Friday** is a public holiday, with an average price of 5.7 cents. On Friday, wind power remains very low throughout the day with an average of 524 megawatts, which pushes prices up. A price spike risk occurs Friday evening between 19:00 and 21:00, with the price rising toward 9.8 cents in the evening.
 
-The amount of wind power influences the price fluctuations. On Thursday, wind power drops to a minimum of 612 MW, which explains the day's high maximum price. On Friday, average wind power remains at 652 MW, which is calm and raises the average price. On Saturday, there is abundant wind power, and a maximum production of 3992 MW pushes prices down. On Tuesday, average wind power is only 1305 MW, and the daily minimum falls to 626 MW. This explains Tuesday's high maximum price, which reaches 11.6 cents.
+On **Saturday**, which is also a public holiday, the average price drops to 2.1 cents. In the Saturday afternoon, the price dips into negative territory: at 15:00, the price is -0.3 cents. **Sunday's** average price remains affordable at 2.3 cents. On **Monday**, the average price rises to 4.6 cents, with a maximum of 8.2 cents in the morning at 08:00. **Tuesday** is the most expensive day of the forecast period with an average price of 6.7 cents. Tuesday's maximum price reaches 11.4 cents at 09:00. A price spike risk is noted for Tuesday between 8:00 and 10:00, and wind power minimum remains at only 611 megawatts. Next **Wednesday**, the average price returns to 2.2 cents.
 
-There is a risk of price spikes on Thursday from 20:00–22:00 and Friday from 19:00–21:00. There is also a risk of price spikes on Tuesday between 6:00 and 8:00.
-
-*Sähkövatkain-gemma4-31b-mlx@8bit blows the wind.* 🌬️
+*Interpreted today by sahkovatkain-gemma4-31b-mlx@8bit.* 🌬️
