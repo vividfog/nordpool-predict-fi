@@ -35,17 +35,21 @@ def test_fmi_station_updates_merge_forecast_and_history(
     call_log = {"forecast": [], "history": []}
 
     def fake_get_forecast(fmisid, start_date, parameters, end_date=None):
-        assert parameters == [forecast_param]
+        expected_parameters = [forecast_param]
+        if update_func is fmi.update_temperature:
+            expected_parameters.append("WeatherSymbol3")
+        assert parameters == expected_parameters
         call_log["forecast"].append((fmisid, start_date, end_date))
-        return pd.DataFrame(
-            {
-                "timestamp": [
-                    (base_ts + timedelta(hours=offset)).strftime("%Y-%m-%dT%H:%M:%SZ")
-                    for offset in (0, 1)
-                ],
-                forecast_param: expected,
-            }
-        )
+        data = {
+            "timestamp": [
+                (base_ts + timedelta(hours=offset)).strftime("%Y-%m-%dT%H:%M:%SZ")
+                for offset in (0, 1)
+            ],
+            forecast_param: expected,
+        }
+        if update_func is fmi.update_temperature:
+            data["WeatherSymbol3"] = [1, 32]
+        return pd.DataFrame(data)
 
     def fake_get_history(fmisid, start_date, parameters, end_date=None):
         assert parameters == [history_param]
@@ -69,11 +73,40 @@ def test_fmi_station_updates_merge_forecast_and_history(
 
     column_name = f"{prefix}101"
     assert list(result[column_name]) == expected
+    if update_func is fmi.update_temperature:
+        assert list(result["weather_symbol_101"]) == [1, 32]
     # Ensure merge artefacts are cleaned up
     assert not any(col.endswith(("_x", "_y")) for col in result.columns)
     # Ensure the stubbed helpers were called exactly once per station
     assert len(call_log["forecast"]) == 1
     assert len(call_log["history"]) == 1
+
+
+def test_temperature_update_tolerates_missing_optional_weather_symbol(monkeypatch):
+    timestamp = datetime(2025, 1, 1, tzinfo=timezone.utc)
+    frame = pd.DataFrame({"timestamp": [timestamp], "t_101": [None]})
+
+    monkeypatch.setattr(
+        fmi,
+        "get_forecast",
+        lambda *args, **kwargs: pd.DataFrame({
+            "timestamp": [timestamp.isoformat()],
+            "temperature": [4.5],
+        }),
+    )
+    monkeypatch.setattr(
+        fmi,
+        "get_history",
+        lambda *args, **kwargs: pd.DataFrame({
+            "timestamp": [timestamp.isoformat()],
+            "TA_PT1H_AVG": [4.0],
+        }),
+    )
+
+    result = fmi.update_temperature(frame)
+
+    assert result.loc[0, "t_101"] == 4.5
+    assert pd.isna(result.loc[0, "weather_symbol_101"])
 
 
 # --- Unit tests for XML parsing ---

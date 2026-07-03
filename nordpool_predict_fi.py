@@ -31,6 +31,7 @@ from util.scaler import scale_predicted_prices
 from util.logger import logger
 from util.xgb_utils import booster_predict
 from util.features_umap import build_feature_embedding
+from util.weather_summary import WEATHER_COLUMN_PREFIX, write_daily_weather
 
 # Wind power model choices: nn vs xgb
 # from util.fingrid_windpower_nn import update_windpower
@@ -336,7 +337,9 @@ if args.predict:
 if args.commit:
     # Drop unnecessary columns before committing to the database
     # These columns were needed for prediction/scaling but are not stored
-    columns_to_drop_before_commit = pricing.tmp
+    columns_to_drop_before_commit = pricing.tmp + [
+        column for column in df_recent.columns if column.startswith(WEATHER_COLUMN_PREFIX)
+    ]
     # Ensure columns exist before trying to drop them
     columns_to_drop_existing = [
         col for col in columns_to_drop_before_commit if col in df_recent.columns
@@ -384,6 +387,10 @@ if args.deploy and not args.commit:
 
 if args.deploy and args.commit:
     logger.info(f"Deploying the latest prediction data to: '{deploy_folder_path}' ...")
+
+    weather_path = os.path.join(deploy_folder_path, "weather.json")
+    weather_records = write_daily_weather(df_recent, weather_path)
+    logger.info(f"→ Daily weather summary saved to '{weather_path}' ({len(weather_records)} days)")
 
     deploy_df = db_query_all(db_path)
     deploy_df["timestamp"] = pd.to_datetime(deploy_df["timestamp"])

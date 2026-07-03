@@ -30,7 +30,10 @@
     <div id="predictionText">
         <h1 class="page-title">Pörssisähkön hintaennuste</h1>
         <p><strong>Sähkövatkain haarukoi pörssisähkön hintaa (sis. ALV) noin viikon eteenpäin. Se vertaa mm. sääennusteita ja sähköntuotantoa aiempiin samankaltaisiin ajanjaksoihin ja arvioi näiden perusteella tulevaa hintakehitystä.</strong></p>
-        <p id="predictionChart"></p>
+        <div id="predictionChartShell" class="prediction-chart-shell">
+            <div id="predictionWeather" class="prediction-weather" aria-label="Seitsemän vuorokauden sää- ja tuulivoimaennuste"></div>
+            <div id="predictionChart"></div>
+        </div>
         <div id="priceCalendarSection">
             <h1 class="section-title">Tuntihintakalenteri</h1>
             <p>Kalenteri näyttää, miten halvat ja kalliit jaksot asettuvat tunti- ja päiväkohtaisesti.</p>
@@ -177,6 +180,8 @@
         <p>Vaikka malli osaa "ennustaa" menneisyyttä ja historiallisesti tutun tyyppistä tulevaisuutta toisinaan oivasti, hinta-arviot uudenlaisissa poikkeustilanteissa voivat olla pielessä. Älä siis esim. säädä talosi lämmitystä näiden numeroiden perusteella, jos et ole kotona.</p>
         <h1 class="section-title">Muutokset</h1>
         <p>Sähkövatkain on ollut linjoilla helmikuusta 2024. Alla sen jälkeen tehdyt muutokset.</p>
+        <p><strong>3.7.2026:</strong></p>
+        <p>Ennustegraafin uudet kuvakkeet yhdistävät eri puolilta Suomea kootun päivän yleissään ja koko maan tuulivoimaennusteen.</p>
         <p><strong>3.6.2026:</strong></p>
         <p>Ennustegraafin selitteestä voi nyt kytkeä näkyviin tuntihintojen rinnalle päivän keskihinnan. Osa graafiasetuksista tallentuu selaimeen.</p>
         <p><strong>3.5.2026:</strong></p>
@@ -250,6 +255,7 @@
     <script src="js/prediction-store.js"></script>
     <script src="js/narration.js"></script>
     <script src="js/prediction.js"></script>
+    <script src="js/weather-icons.js"></script>
     <script src="js/calendar.js"></script>
     <script src="js/cheapest.js"></script>
     <script src="js/windpower.js"></script>

@@ -161,7 +161,14 @@ def get_history(fmisid, start_date, parameters, end_date=None):
     return df_pivot
 
 # region helpers
-def _update_station_series(df, prefix, forecast_param, history_param, log_label):
+def _update_station_series(
+    df,
+    prefix,
+    forecast_param,
+    history_param,
+    log_label,
+    extra_forecast_prefixes=None,
+):
     """
     Shared workflow for combining FMI forecast and historical data for a group of stations.
     """
@@ -172,13 +179,28 @@ def _update_station_series(df, prefix, forecast_param, history_param, log_label)
 
     logger.info(f"FMI: Fetching {log_label} forecast and historical data between {history_date} and {end_date}")
 
+    extra_forecast_prefixes = extra_forecast_prefixes or {}
+
     for col in [c for c in df.columns if c.startswith(prefix)]:
         fmisid = int(col.split('_')[1])
 
-        forecast_df = get_forecast(fmisid, current_date, [forecast_param], end_date=end_date)
+        forecast_params = [forecast_param, *extra_forecast_prefixes]
+        forecast_df = get_forecast(fmisid, current_date, forecast_params, end_date=end_date)
         history_df = get_history(fmisid, history_date, [history_param], end_date=end_date)
 
-        forecast_df.rename(columns={forecast_param: col}, inplace=True)
+        for parameter in extra_forecast_prefixes:
+            if parameter not in forecast_df.columns:
+                logger.warning(
+                    f"FMI: Optional forecast parameter '{parameter}' is unavailable "
+                    f"for FMISID {fmisid}."
+                )
+                forecast_df[parameter] = pd.NA
+
+        extra_columns = {
+            parameter: f"{column_prefix}{fmisid}"
+            for parameter, column_prefix in extra_forecast_prefixes.items()
+        }
+        forecast_df.rename(columns={forecast_param: col, **extra_columns}, inplace=True)
         history_df.rename(columns={history_param: col}, inplace=True)
 
         forecast_df[col] = forecast_df[col].interpolate(method='linear')
@@ -192,7 +214,8 @@ def _update_station_series(df, prefix, forecast_param, history_param, log_label)
         df['timestamp'] = pd.to_datetime(df['timestamp'], utc=True)
         combined_df.index = pd.to_datetime(combined_df.index, utc=True).unique()
 
-        df = pd.merge(df, combined_df[[col]], left_on='timestamp', right_index=True, how='left')
+        merge_columns = [col, *extra_columns.values()]
+        df = pd.merge(df, combined_df[merge_columns], left_on='timestamp', right_index=True, how='left')
         df = coalesce_merged_columns(df)
 
         nan_count = df[col].isna().sum()
@@ -231,7 +254,14 @@ def update_temperature(df):
 
     The function ensures that the 'timestamp' column in the input DataFrame and the index of the combined forecast and historical data are aligned and timezone-aware (UTC). It also removes potential duplicates after combining the forecast and historical data. After updating the temperature data, the function performs a clean-up to handle any issues arising from the merge operation.
     """
-    return _update_station_series(df, 't_', 'temperature', 'TA_PT1H_AVG', 'temperature')
+    return _update_station_series(
+        df,
+        't_',
+        'temperature',
+        'TA_PT1H_AVG',
+        'temperature',
+        extra_forecast_prefixes={'WeatherSymbol3': 'weather_symbol_'},
+    )
 
 # Main function for testing the FMI API functions
 if __name__ == "__main__":

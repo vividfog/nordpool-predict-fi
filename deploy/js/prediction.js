@@ -407,6 +407,7 @@ function renderPredictionChart() {
         ? window.createBaseChartOptions
         : createBaseChartOptions)({
         palette: predictionPalette,
+        grid: { top: 120 },
         legend: {
             data: [
                 {

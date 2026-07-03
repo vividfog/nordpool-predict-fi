@@ -186,6 +186,7 @@ describe('deploy/js/prediction.js', () => {
     const daily = option.series.find(series => series.id === 'daily-average-line');
     expect(forecast.data.length).toBeGreaterThan(0);
     expect(daily.data.length).toBeGreaterThan(0);
+    expect(option.grid.top).toBe(120);
     expect(option.legend.selected[getLocalizedText('daily_avg')]).toBe(false);
   });
 

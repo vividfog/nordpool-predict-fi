@@ -143,7 +143,8 @@ const DEFAULT_CHART_PALETTE = Object.freeze({
 const DATA_ENDPOINTS = Object.freeze({
     prediction: `${baseUrl}/prediction.json`,
     predictionScaled: `${baseUrl}/prediction_scaled.json`,
-    windpower: `${baseUrl}/windpower.json`
+    windpower: `${baseUrl}/windpower.json`,
+    weather: `${baseUrl}/weather.json`
 });
 
 const SAHKOTIN_CSV_URL = 'https://sahkotin.fi/prices.csv';

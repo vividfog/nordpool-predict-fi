@@ -30,7 +30,10 @@
     <div id="predictionText">
         <h1 class="page-title">Nordpool Predict FI</h1>
         <p><strong>This experimental, privately-made (no relation to Nordpool) machine learning model estimates the consumer price of electricity in Finland (VAT 25.5%) for about a week ahead. The model correlates predicted weather and electricity production with previous periods where these factors were similar.</strong></p>
-        <p id="predictionChart"></p>
+        <div id="predictionChartShell" class="prediction-chart-shell">
+            <div id="predictionWeather" class="prediction-weather" aria-label="Seven-day weather and wind-power forecast"></div>
+            <div id="predictionChart"></div>
+        </div>
         <div id="priceCalendarSection">
             <h1 class="section-title">Hourly price calendar</h1>
             <p>The calendar shows how the cheap/expensive periods stack up by hour and by day.</p>
@@ -177,6 +180,8 @@
         <p>Although the model can "predict" the past and historically familiar types of the future, price estimates in new and exceptional situations can be off. So do not, for example, adjust your house heating based on these numbers if you are not at home.</p>
         <h1 class="section-title">Change log</h1>
         <p>The model has been online since February 2024. The following changes have been made since then.</p>
+        <p><strong>July 3, 2026:</strong></p>
+        <p>New forecast chart icons combine the day’s general weather compiled from around Finland with the nationwide wind-power forecast.</p>
         <p><strong>June 3, 2026:</strong></p>
         <p>The forecast chart legend can now show the daily average price alongside the hourly prices. Some chart settings are saved in the browser.</p>
         <p><strong>May 3, 2026:</strong></p>
@@ -250,6 +255,7 @@
     <script src="js/prediction-store.js"></script>
     <script src="js/narration.js"></script>
     <script src="js/prediction.js"></script>
+    <script src="js/weather-icons.js"></script>
     <script src="js/calendar.js"></script>
     <script src="js/cheapest.js"></script>
     <script src="js/windpower.js"></script>
