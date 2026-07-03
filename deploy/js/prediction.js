@@ -16,6 +16,15 @@ const PREDICTION_THEME_UNSUB_KEY = '__np_prediction_theme_unsub__';
 let predictionPalette = resolvePalette('prediction') || window.__NP_THEME__?.getPalette('prediction') || {};
 let hasPredictionChartOptions = false;
 
+function getPredictionGridTop() {
+    const shell = document.getElementById('predictionChartShell');
+    const rawValue = shell && typeof window.getComputedStyle === 'function'
+        ? window.getComputedStyle(shell).getPropertyValue('--np-prediction-grid-top')
+        : '';
+    const parsedValue = Number.parseFloat(rawValue);
+    return Number.isFinite(parsedValue) ? parsedValue : 120;
+}
+
 function refreshPredictionTheme() {
     if (!nfpChart || typeof nfpChart.setOption !== 'function') {
         return;
@@ -407,7 +416,7 @@ function renderPredictionChart() {
         ? window.createBaseChartOptions
         : createBaseChartOptions)({
         palette: predictionPalette,
-        grid: { top: 120 },
+        grid: { top: getPredictionGridTop() },
         legend: {
             data: [
                 {
@@ -588,7 +597,6 @@ function renderPredictionChart() {
             }
         ]
     });
-
     // Push the merged options without wiping user zoom/legend state.
     nfpChart.setOption(chartOptions);
     installPredictionLegendPersistence(legendNames);

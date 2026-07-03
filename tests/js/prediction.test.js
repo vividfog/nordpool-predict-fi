@@ -73,6 +73,15 @@ describe('deploy/js/prediction.js', () => {
     ]);
   });
 
+  it('uses the responsive grid offset from the chart shell', () => {
+    const shell = document.createElement('div');
+    shell.id = 'predictionChartShell';
+    shell.style.setProperty('--np-prediction-grid-top', '80px');
+    document.body.append(shell);
+    expect(getPredictionGridTop()).toBe(80);
+    shell.remove();
+  });
+
   it('builds daily averages by Helsinki 01:00 publishing day', () => {
     const originalMidnightBuilder = window.getHelsinkiMidnightTimestamp;
     window.getHelsinkiMidnightTimestamp = vi.fn((offset, referenceDate) => {

@@ -218,6 +218,8 @@ td {
 }
 
 .prediction-chart-shell {
+    --np-prediction-grid-top: 120px;
+    --np-weather-top: 56px;
     position: relative;
     width: 100%;
     padding-top: 24px;
@@ -226,7 +228,7 @@ td {
 .prediction-weather {
     position: absolute;
     z-index: 2;
-    top: 56px;
+    top: var(--np-weather-top);
     left: 0;
     width: 100%;
     height: 64px;
@@ -888,5 +890,28 @@ td {
 @media (max-width: 620px) {
     .cheapest-wrap {
         flex-basis: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .prediction-chart-shell {
+        --np-prediction-grid-top: 80px;
+        --np-weather-top: 20px;
+        padding-top: 0;
+    }
+
+    .prediction-weather {
+        height: 36px;
+    }
+
+    .np-weather-mark {
+        top: 0;
+    }
+
+    .np-weather-icon {
+        display: block;
+        width: 28px;
+        height: 28px;
+        margin: 0 auto;
     }
 }
