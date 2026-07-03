@@ -12,7 +12,8 @@
     const EVENT_HANDLER_KEY = '__featureEmbeddingHandler';
     const EMBEDDING_THEME_UNSUB_KEY = '__np_embedding_theme_unsub__';
     //#region setup
-    const AUTOROTATE_SPEED = 0.0015; // Radians per frame
+    const AUTOROTATE_SPEED = 0.09; // Radians per second
+    const AUTOROTATE_INTERVAL_MS = 1000 / 24;
     const AUTOROTATE_IDLE_DELAY_MS = 5000;
     const AUTOROTATE_PREFERS_REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
     // Maintains a gentle autorotation that pauses while the user interacts.
@@ -30,6 +31,9 @@
         listenersAttached: false,
         handlers: {},
         lastCamera: null,
+        lastStepAt: null,
+        isVisible: false,
+        observer: null,
     };
     let featureEmbeddingContainer = null;
     let embeddingPalette = resolveEmbeddingPalette('featuresUmap');
@@ -113,30 +117,53 @@
             autorotateState.pausedUntil,
             now + AUTOROTATE_IDLE_DELAY_MS,
         );
+        autorotateState.lastStepAt = null;
+    }
+
+    function cancelAutorotationTimer() {
+        if (autorotateState.animationId === null) return;
+        window.clearTimeout(autorotateState.animationId);
+        autorotateState.animationId = null;
+    }
+
+    function canAutorotate() {
+        return Boolean(
+            autorotateState.container
+            && autorotateState.isVisible
+            && !document.hidden
+            && !isAutorotateDisabled()
+        );
+    }
+
+    function scheduleAutorotation(delay = AUTOROTATE_INTERVAL_MS) {
+        if (!canAutorotate() || autorotateState.animationId !== null) return;
+        autorotateState.animationId = window.setTimeout(autorotateLoop, delay);
     }
 
     function autorotateLoop() {
-        if (!autorotateState.container) {
-            autorotateState.animationId = null;
-            return;
-        }
+        autorotateState.animationId = null;
+        if (!canAutorotate()) return;
         const now = getNow();
         if (now < autorotateState.pausedUntil) {
-            autorotateState.animationId = window.requestAnimationFrame(autorotateLoop);
+            scheduleAutorotation(autorotateState.pausedUntil - now);
             return;
         }
         if (!Number.isFinite(autorotateState.baseAngle)) {
             const camera = getCurrentCamera(autorotateState.container)
                 || autorotateState.lastCamera;
             if (!updateBaseCamera(camera)) {
-                autorotateState.animationId = window.requestAnimationFrame(autorotateLoop);
+                scheduleAutorotation();
                 return;
             }
         }
-        autorotateState.angleOffset += autorotateState.speed;
+        const elapsedMs = autorotateState.lastStepAt === null
+            ? AUTOROTATE_INTERVAL_MS
+            : Math.min(now - autorotateState.lastStepAt, 1000);
+        autorotateState.lastStepAt = now;
+        autorotateState.angleOffset += autorotateState.speed * (elapsedMs / 1000);
         const nextEye = computeNextEye();
         if (!nextEye) {
-            autorotateState.animationId = window.requestAnimationFrame(autorotateLoop);
+            scheduleAutorotation();
             return;
         }
         const currentCamera = cloneCamera(
@@ -160,18 +187,39 @@
             })
             .finally(() => {
                 autorotateState.isProgrammatic = false;
-                if (autorotateState.container) {
-                    autorotateState.animationId = window.requestAnimationFrame(autorotateLoop);
-                } else {
-                    autorotateState.animationId = null;
-                }
+                scheduleAutorotation();
             });
     }
 
     function startAutorotation() {
-        if (!autorotateState.container) return;
-        if (autorotateState.animationId !== null) return;
-        autorotateState.animationId = window.requestAnimationFrame(autorotateLoop);
+        scheduleAutorotation(0);
+    }
+
+    function disconnectAutorotateObserver() {
+        if (autorotateState.observer) {
+            autorotateState.observer.disconnect();
+            autorotateState.observer = null;
+        }
+        autorotateState.isVisible = false;
+    }
+
+    function observeAutorotateVisibility(container) {
+        disconnectAutorotateObserver();
+        if (typeof window.IntersectionObserver !== 'function') {
+            return;
+        }
+        autorotateState.observer = new window.IntersectionObserver((entries) => {
+            const entry = entries.find(item => item.target === container);
+            if (!entry) return;
+            autorotateState.isVisible = entry.isIntersecting && entry.intersectionRatio > 0;
+            autorotateState.lastStepAt = null;
+            if (autorotateState.isVisible) {
+                startAutorotation();
+            } else {
+                cancelAutorotationTimer();
+            }
+        }, { threshold: 0.01 });
+        autorotateState.observer.observe(container);
     }
 
     function detachAutorotateListeners() {
@@ -194,12 +242,10 @@
     }
 
     function stopAutorotation(detach = false) {
-        if (autorotateState.animationId !== null) {
-            window.cancelAnimationFrame(autorotateState.animationId);
-            autorotateState.animationId = null;
-        }
+        cancelAutorotationTimer();
         if (detach) {
             detachAutorotateListeners();
+            disconnectAutorotateObserver();
             autorotateState.container = null;
         }
         autorotateState.pausedUntil = 0;
@@ -207,6 +253,7 @@
         autorotateState.radius = null;
         autorotateState.baseEyeZ = null;
         autorotateState.lastCamera = null;
+        autorotateState.lastStepAt = null;
     }
 
     //#region camera_merge
@@ -322,8 +369,17 @@
         autorotateState.container = container;
         attachAutorotateListeners(container);
         updateBaseCamera(getCurrentCamera(container));
-        startAutorotation();
+        observeAutorotateVisibility(container);
     }
+
+    document.addEventListener('visibilitychange', () => {
+        autorotateState.lastStepAt = null;
+        if (document.hidden) {
+            cancelAutorotationTimer();
+        } else {
+            startAutorotation();
+        }
+    });
 
     //#region embed_helpers
     function isEnglish() {

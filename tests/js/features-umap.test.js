@@ -2,6 +2,83 @@ import { describe, expect, it, vi } from 'vitest';
 import { flushPromises, loadScript, setPredictionStorePayload } from './utils';
 
 describe('deploy/js/features-umap.js', () => {
+  it('autorotates only while the embedding is visible', async () => {
+    loadScript('deploy/js/config.js');
+    document.body.innerHTML = '<div id="featureEmbeddingChart"></div>';
+    const container = document.getElementById('featureEmbeddingChart');
+    const observerCallbacks = [];
+    const disconnect = vi.fn();
+    const observe = vi.fn();
+    window.IntersectionObserver = class {
+      constructor(callback) {
+        observerCallbacks.push(callback);
+      }
+
+      observe(target) {
+        observe(target);
+      }
+
+      disconnect() {
+        disconnect();
+      }
+    };
+
+    const relayout = vi.fn(() => Promise.resolve());
+    const newPlot = vi.fn(target => {
+      target._fullLayout = {
+        scene: {
+          camera: {
+            eye: { x: 1.25, y: 1.25, z: 1.25 },
+            center: { x: 0, y: 0, z: 0 },
+            up: { x: 0, y: 0, z: 1 }
+          }
+        }
+      };
+      return Promise.resolve();
+    });
+    globalThis.Plotly = { newPlot, relayout };
+    globalThis.fetch.mockResolvedValue({
+      ok: true,
+      json: () => Promise.resolve({
+        groups: { weather: { fi: 'Sää' } },
+        features: [
+          { group: 'weather', label: 'Temp', corr_price: 0.4, x: 1, y: 2, z: 3 }
+        ]
+      })
+    });
+
+    vi.useFakeTimers();
+    loadScript('deploy/js/features-umap.js', { triggerDOMContentLoaded: true });
+    await flushPromises(8);
+
+    expect(observe).toHaveBeenCalledWith(container);
+    const cameraUpdates = () => relayout.mock.calls.filter(call => call[1]['scene.camera']);
+    expect(cameraUpdates()).toHaveLength(0);
+
+    observerCallbacks[0]([{
+      target: container,
+      isIntersecting: true,
+      intersectionRatio: 1
+    }]);
+    await vi.advanceTimersByTimeAsync(0);
+    expect(cameraUpdates()).toHaveLength(1);
+    await vi.advanceTimersByTimeAsync(40);
+    expect(cameraUpdates()).toHaveLength(1);
+    await vi.advanceTimersByTimeAsync(2);
+    expect(cameraUpdates()).toHaveLength(2);
+
+    observerCallbacks[0]([{
+      target: container,
+      isIntersecting: false,
+      intersectionRatio: 0
+    }]);
+    await vi.advanceTimersByTimeAsync(1000);
+    expect(cameraUpdates()).toHaveLength(2);
+
+    delete window.IntersectionObserver;
+    vi.useRealTimers();
+  });
+
   it('renders feature embedding when data is available', async () => {
     loadScript('deploy/js/config.js');
     document.body.innerHTML = '<div id="featureEmbeddingChart"></div>';
