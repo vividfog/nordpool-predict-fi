@@ -1,23 +1,19 @@
-*Electricity prices remain affordable, but weakening wind power pushes up maximum prices and brings several local price spike risks toward the end of the week.*
+*Electricity average prices remain moderate, but weakening wind power raises prices towards the end of the week and brings local price spikes.*
 
-Forecast updated on Saturday at 11:58.
+The forecast was updated on Saturday at 14:58.
 
-|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
+|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 2.6 | 0.1 - 5.2 | 657 - 2631 | 15.2 |
-| **Monday** | 3.3 | 0.8 - 6.6 | 1493 - 2710 | 14.8 |
-| **Tuesday** | 3.5 | 1.7 - 6.4 | 825 - 2312 | 15.0 |
-| **Wednesday** | 4.5 | 1.9 - 7.4 | 764 - 2356 | 15.0 |
-| **Thursday** | 5.5 | 2.6 - 8.1 | 774 - 1762 | 15.3 |
-| **Friday** | 5.5 | 4.3 - 8.2 | 745 - 1497 | 16.9 |
-| **Saturday** | 4.7 | 1.5 - 8.6 | 462 - 930 | 18.1 |
+| **Sunday** | 2.1 | 0.4 - 3.9 | 676 - 2656 | 15.2 |
+| **Monday** | 3.4 | 1.2 - 6.9 | 1476 - 2733 | 14.8 |
+| **Tuesday** | 3.7 | 1.3 - 6.8 | 669 - 2259 | 15.0 |
+| **Wednesday** | 4.2 | 1.3 - 7.1 | 643 - 2693 | 15.0 |
+| **Thursday** | 4.9 | 1.9 - 7.7 | 957 - 2151 | 15.3 |
+| **Friday** | 5.1 | 3.7 - 7.1 | 938 - 1685 | 16.9 |
+| **Saturday** | 4.4 | 2.0 - 8.5 | 525 - 1003 | 18.1 |
 
-The average electricity price will remain at an affordable level throughout the forecast period. The cheapest day is **Sunday**, with an average price of 2.6 ¢/kWh. The most affordable hour of the day occurs at 13:00, when the price drops to 0.1 cents. **Monday's** average price is also moderate at 3.3 ¢/kWh.
+Average spot electricity prices will remain moderate during the forecast period, ranging between 2.1 and 5.1 cents. **Sunday** is the cheapest day, with an average price of 2.1 cents and the lowest hourly prices dipping to 0.4 cents in the afternoon. **Friday** is the most expensive day on average at 5.1 cents. Starting Wednesday, average prices will rise steadily to Thursday's 4.9 cents and Friday's level over five cents.
 
-Prices will rise toward the end of the week, and **Thursday** and **Friday** are expected to have the highest average prices at 5.5 ¢/kWh. On **Thursday**, the price rises to 8.0 cents in the morning and reaches 8.1 cents at 20:00. On **Friday**, the maximum price of 8.2 ¢ is reached in the evening. The average price for **Saturday** is 4.7 ¢/kWh, but the day's maximum price climbs to 8.6 cents around 20:00.
+**Saturday** stands out from other days with the highest maximum price, rising to 8.5 cents towards the evening. Average wind power production on Saturday falls clearly below 1000 MW, which raises the average price. During the day, wind power drops to a minimum of 525 megawatts, explaining the evening price peaks. There is a risk of price spikes on Saturday between 19:00 and 21:00. There is also a risk of price spikes on **Tuesday** from 7:00 to 9:00 and on **Wednesday** from 18:00 to 20:00. Tuesday's maximum price is 6.8 cents and Wednesday's is 7.1 cents. On **Thursday**, the price rises to 7.7 cents in the morning.
 
-Wind power production will drop very low on several days, explaining the higher maximum prices. On **Wednesday**, minimum wind power is 764 MW, and the day's maximum price rises to 7.4 cents. On **Thursday**, the minimum is 774 MW and the maximum price is 8.1 cents. On **Friday**, wind power dips to a minimum of 745 MW, pushing the maximum price to 8.2 cents. On **Saturday**, wind production is at its lowest, only 462 MW, and the maximum price for that day is the highest at 8.6 cents.
-
-Price spike risks are timed for **Sunday** between 7–9, **Tuesday** 7–9, and **Wednesday** 8–10. There are also risks in the evenings toward the end of the week: **Thursday** 18–20, **Friday** 19–21 and next **Saturday** 19–21.
-
-*Sähkövatkain-gemma4-31b-mlx@8bit calculated the numbers.* 🌬️
+*Interpretations by sahkovatkain-gemma4-31b-mlx@8bit.* 🌬️
