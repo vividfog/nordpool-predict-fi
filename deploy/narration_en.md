@@ -1,21 +1,23 @@
-*Average electricity prices remain moderate at the beginning of the week but rise on Friday as wind power weakens. The risk of price spikes occurs during the morning hours on most days.*
+*Electricity prices remain affordable, but weakening wind power pushes up maximum prices and brings several local price spike risks toward the end of the week.*
 
-The forecast was updated on Saturday at 08:57.
+Forecast updated on Saturday at 11:58.
 
-| | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
+|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 2.5 | 0.2 - 4.8 | 696 - 2307 | 15.2 |
-| **Monday** | 3.0 | 0.9 - 6.3 | 1600 - 2702 | 14.8 |
-| **Tuesday** | 3.6 | 1.8 - 6.2 | 862 - 2737 | 15.0 |
-| **Wednesday** | 3.9 | 1.4 - 6.3 | 831 - 2984 | 15.0 |
-| **Thursday** | 5.0 | 1.6 - 7.7 | 860 - 2660 | 15.3 |
-| **Friday** | 5.7 | 4.1 - 8.3 | 640 - 1314 | 16.9 |
-| **Saturday** | 3.4 | 1.1 - 6.1 | 525 - 947 | 17.6 |
+| **Sunday** | 2.6 | 0.1 - 5.2 | 657 - 2631 | 15.2 |
+| **Monday** | 3.3 | 0.8 - 6.6 | 1493 - 2710 | 14.8 |
+| **Tuesday** | 3.5 | 1.7 - 6.4 | 825 - 2312 | 15.0 |
+| **Wednesday** | 4.5 | 1.9 - 7.4 | 764 - 2356 | 15.0 |
+| **Thursday** | 5.5 | 2.6 - 8.1 | 774 - 1762 | 15.3 |
+| **Friday** | 5.5 | 4.3 - 8.2 | 745 - 1497 | 16.9 |
+| **Saturday** | 4.7 | 1.5 - 8.6 | 462 - 930 | 18.1 |
 
-Average spot electricity prices will stay below four cents at the start of the forecast period. **Sunday** will be the cheapest day, with the price dropping to just 0.2 cents at 14:00. On **Monday**, the average price will be 3.0 ¢/kWh, rising to 3.6 cents on **Tuesday**. The average price on Wednesday will be 3.9 ¢/kWh. Intraday volatility is high, and prices on Tuesday and Wednesday mornings will rise to around 6 cents.
+The average electricity price will remain at an affordable level throughout the forecast period. The cheapest day is **Sunday**, with an average price of 2.6 ¢/kWh. The most affordable hour of the day occurs at 13:00, when the price drops to 0.1 cents. **Monday's** average price is also moderate at 3.3 ¢/kWh.
 
-On **Thursday**, the average price will be 5.0 ¢/kWh, reaching a maximum of 7.7 cents. **Friday** will be the most expensive day: an average price of 5.7 cents and maximum prices exceeding 8 cents in the morning and evening. Friday's low wind power production, averaging 934 MW and dipping to 640 MW at its lowest, explains the higher price level. On **Saturday**, the average price will drop back to 3.4 cents, although wind power remains weak.
+Prices will rise toward the end of the week, and **Thursday** and **Friday** are expected to have the highest average prices at 5.5 ¢/kWh. On **Thursday**, the price rises to 8.0 cents in the morning and reaches 8.1 cents at 20:00. On **Friday**, the maximum price of 8.2 ¢ is reached in the evening. The average price for **Saturday** is 4.7 ¢/kWh, but the day's maximum price climbs to 8.6 cents around 20:00.
 
-Price spike risks exist on Sunday from 7–9, Tuesday from 8–10, Wednesday from 8–10, Friday from 7–9, and Saturday from 6–8.
+Wind power production will drop very low on several days, explaining the higher maximum prices. On **Wednesday**, minimum wind power is 764 MW, and the day's maximum price rises to 7.4 cents. On **Thursday**, the minimum is 774 MW and the maximum price is 8.1 cents. On **Friday**, wind power dips to a minimum of 745 MW, pushing the maximum price to 8.2 cents. On **Saturday**, wind production is at its lowest, only 462 MW, and the maximum price for that day is the highest at 8.6 cents.
 
-*Interpreted today by sahkovatkain-gemma4-31b-mlx@8bit.* 🌬️
+Price spike risks are timed for **Sunday** between 7–9, **Tuesday** 7–9, and **Wednesday** 8–10. There are also risks in the evenings toward the end of the week: **Thursday** 18–20, **Friday** 19–21 and next **Saturday** 19–21.
+
+*Sähkövatkain-gemma4-31b-mlx@8bit calculated the numbers.* 🌬️
