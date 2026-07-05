@@ -76,9 +76,11 @@ describe('deploy/js/prediction.js', () => {
   it('uses the responsive grid offset from the chart shell', () => {
     const shell = document.createElement('div');
     shell.id = 'predictionChartShell';
-    shell.style.setProperty('--np-prediction-grid-top', '80px');
+    shell.style.setProperty('--np-prediction-grid-top', '72px');
+    shell.style.setProperty('--np-prediction-grid-bottom', '64px');
     document.body.append(shell);
-    expect(getPredictionGridTop()).toBe(80);
+    expect(getPredictionGridTop()).toBe(72);
+    expect(getPredictionGridBottom()).toBe(64);
     shell.remove();
   });
 
@@ -195,7 +197,9 @@ describe('deploy/js/prediction.js', () => {
     const daily = option.series.find(series => series.id === 'daily-average-line');
     expect(forecast.data.length).toBeGreaterThan(0);
     expect(daily.data.length).toBeGreaterThan(0);
-    expect(option.grid.top).toBe(120);
+    expect(option.grid.top).toBe(56);
+    expect(option.grid.bottom).toBe(96);
+    expect(option.legend.top).toBe(8);
     expect(option.legend.selected[getLocalizedText('daily_avg')]).toBe(false);
   });
 

@@ -229,6 +229,7 @@ describe('deploy/js/config.js', () => {
       isHistoryChart: true
     });
     expect(options.legend.show).toBe(true);
+    expect(options.legend.inactiveColor).toBe('rgba(51, 51, 51, 0.52)');
     expect(options.xAxis.splitLine.interval(0, Date.UTC(2025, 0, 6))).toBe(true);
 
     const chart = {

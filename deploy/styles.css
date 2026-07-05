@@ -218,8 +218,9 @@ td {
 }
 
 .prediction-chart-shell {
-    --np-prediction-grid-top: 120px;
-    --np-weather-top: 56px;
+    --np-prediction-grid-top: 56px;
+    --np-prediction-grid-bottom: 96px;
+    --np-weather-bottom: 12px;
     position: relative;
     width: 100%;
     padding-top: 24px;
@@ -228,7 +229,8 @@ td {
 .prediction-weather {
     position: absolute;
     z-index: 2;
-    top: var(--np-weather-top);
+    top: auto;
+    bottom: var(--np-weather-bottom);
     left: 0;
     width: 100%;
     height: 64px;
@@ -237,8 +239,44 @@ td {
 }
 
 .prediction-weather[hidden],
-.np-weather-mark[hidden] {
+.np-weather-mark[hidden],
+.np-weather-separator[hidden] {
     display: none;
+}
+
+.np-weather-separator {
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    width: 0;
+    border-left: 1px dashed var(--np-weather-separator-color, silver);
+    pointer-events: none;
+}
+
+.np-weather-tooltip {
+    position: fixed;
+    z-index: 10000;
+    display: none;
+    max-width: min(280px, calc(100vw - 16px));
+    padding: 10px;
+    border: 1px solid var(--np-weather-tooltip-border, rgba(31, 35, 40, 0.12));
+    border-radius: 4px;
+    background: var(--np-weather-tooltip-bg, #ffffff);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    color: var(--np-weather-tooltip-text, rgba(51, 51, 51, 0.9));
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    pointer-events: none;
+}
+
+.np-weather-tooltip.is-visible {
+    display: grid;
+    gap: 2px;
+}
+
+.np-weather-tooltip strong {
+    font-weight: 600;
 }
 
 .np-weather-mark {
@@ -255,10 +293,11 @@ td {
     width: 100%;
     height: 100%;
     overflow: visible;
+    transform: translateX(-10%);
 }
 
 .np-weather-condition {
-    transform: scale(0.92);
+    transform: scale(0.736);
     transform-box: view-box;
     transform-origin: 48px 50px;
 }
@@ -316,6 +355,11 @@ td {
     stroke-width: 2.4;
     stroke-linecap: round;
 }
+.np-windsock-fabric-scale {
+    transform: scale(1.21);
+    transform-box: view-box;
+    transform-origin: 80px 9px;
+}
 .np-windsock-body { fill: #f97316; stroke: #c2410c; stroke-width: 1.2; stroke-linejoin: round; }
 .np-windsock-stripe { fill: #fff7ed; opacity: 0.95; }
 .np-windsock-fabric {
@@ -323,8 +367,8 @@ td {
     transform-origin: 80px 9px;
 }
 
-.np-weather-mark[data-wind="calm"] .np-windsock-fabric { transform: rotate(68deg) scaleX(0.58); }
-.np-weather-mark[data-wind="weak"] .np-windsock-fabric { transform: rotate(34deg) scaleX(0.72); }
+.np-weather-mark[data-wind="calm"] .np-windsock-fabric { transform: rotate(72deg) scaleX(0.58); }
+.np-weather-mark[data-wind="weak"] .np-windsock-fabric { transform: rotate(40deg) scaleX(0.72); }
 .np-weather-mark[data-wind="normal"] .np-windsock-fabric { transform: rotate(14deg) scaleX(0.88); }
 .np-weather-mark[data-wind="strong"] .np-windsock-fabric { transform: rotate(3deg) scaleX(1); }
 .np-icon-motion-active .np-weather-mark[data-wind="weak"] .np-windsock-fabric {
@@ -338,8 +382,8 @@ td {
 }
 
 @keyframes npWindsockWeak {
-    0%, 100% { transform: rotate(34deg) scaleX(0.72); }
-    50% { transform: rotate(25deg) scaleX(0.78); }
+    0%, 100% { transform: rotate(40deg) scaleX(0.72); }
+    50% { transform: rotate(31deg) scaleX(0.78); }
 }
 
 @keyframes npWindsockNormal {
@@ -867,6 +911,10 @@ td {
         height: 380px;
     }
 
+    .prediction-chart-shell {
+        --np-prediction-grid-top: 64px;
+    }
+
     .prediction-weather {
         height: 56px;
     }
@@ -895,13 +943,19 @@ td {
 
 @media (max-width: 480px) {
     .prediction-chart-shell {
-        --np-prediction-grid-top: 80px;
-        --np-weather-top: 20px;
+        --np-prediction-grid-top: 72px;
+        --np-prediction-grid-bottom: 64px;
+        --np-weather-bottom: 8px;
         padding-top: 0;
     }
 
     .prediction-weather {
         height: 36px;
+    }
+
+    .np-weather-separator {
+        top: 4px;
+        bottom: 4px;
     }
 
     .np-weather-mark {

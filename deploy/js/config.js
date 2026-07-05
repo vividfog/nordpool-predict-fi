@@ -130,6 +130,7 @@ const DEFAULT_CHART_PALETTE = Object.freeze({
     tooltipText: 'rgba(51, 51, 51, 0.9)',
     tooltipBorder: 'rgba(31, 35, 40, 0.12)',
     legendText: '#666666',
+    legendInactive: 'rgba(51, 51, 51, 0.52)',
     markLineLabel: 'Black',
     markLineLine: 'rgba(51, 51, 51, 0.9)',
     chartBackground: 'transparent'
@@ -763,10 +764,12 @@ function createBaseChartOptions(config) {
     if (baseOptions.legend) {
         if (Array.isArray(baseOptions.legend)) {
             baseOptions.legend = baseOptions.legend.map(entry => Object.assign({}, entry, {
+                inactiveColor: palette.legendInactive,
                 textStyle: Object.assign({}, entry.textStyle, { color: palette.legendText })
             }));
         } else {
             baseOptions.legend = Object.assign({}, baseOptions.legend, {
+                inactiveColor: palette.legendInactive,
                 textStyle: Object.assign({}, baseOptions.legend.textStyle, { color: palette.legendText })
             });
         }
@@ -830,6 +833,7 @@ function applyChartTheme(chart, palette) {
             textStyle: { color: resolved.tooltipText }
         },
         legend: {
+            inactiveColor: resolved.legendInactive,
             textStyle: { color: resolved.legendText }
         }
     }, false, true);

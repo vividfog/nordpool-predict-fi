@@ -4,6 +4,18 @@
     const endpoint = window.DATA_ENDPOINTS?.weather || `${window.location.origin}/weather.json`;
     const rail = document.getElementById('predictionWeather');
     const chart = window.nfpChart;
+    const resolveWeatherPalette = typeof window.resolveChartPalette === 'function'
+        ? window.resolveChartPalette
+        : () => null;
+    const subscribeWeatherPalette = typeof window.subscribeThemePalette === 'function'
+        ? window.subscribeThemePalette
+        : () => () => {};
+    const tooltip = document.createElement('div');
+    tooltip.id = 'npWeatherTooltip';
+    tooltip.className = 'np-weather-tooltip';
+    tooltip.setAttribute('role', 'tooltip');
+    tooltip.setAttribute('aria-hidden', 'true');
+    document.body.append(tooltip);
     const labels = {
         fi: {
             conditions: {
@@ -14,7 +26,12 @@
                 snow: 'lumisadetta',
                 'thunderstorms-day': 'ukkosta'
             },
-            wind: { calm: 'erittäin vähän tuulivoimaa', weak: 'vähän tuulivoimaa', normal: 'tavanomaisesti tuulivoimaa', strong: 'paljon tuulivoimaa' }
+            wind: { calm: 'erittäin vähän tuulivoimaa', weak: 'vähän tuulivoimaa', normal: 'tavanomaisesti tuulivoimaa', strong: 'paljon tuulivoimaa' },
+            tooltip: {
+                weather: 'Yleissää',
+                wind: 'Tuulivoimaennuste',
+                windLevels: { calm: 'erittäin vähäinen', weak: 'vähäinen', normal: 'tavanomainen', strong: 'suuri' }
+            }
         },
         en: {
             conditions: {
@@ -25,12 +42,19 @@
                 snow: 'snow',
                 'thunderstorms-day': 'thunderstorms'
             },
-            wind: { calm: 'very low wind-power outlook', weak: 'low wind-power outlook', normal: 'normal wind-power outlook', strong: 'high wind-power outlook' }
+            wind: { calm: 'very low wind-power outlook', weak: 'low wind-power outlook', normal: 'normal wind-power outlook', strong: 'high wind-power outlook' },
+            tooltip: {
+                weather: 'General weather',
+                wind: 'Wind-power outlook',
+                windLevels: { calm: 'very low', weak: 'low', normal: 'normal', strong: 'high' }
+            }
         }
     };
     let layoutFrame = null;
     let motionVisible = false;
     let motionObserver = null;
+    let activeTooltipMark = null;
+    let tooltipPinned = false;
     const motionQuery = typeof window.matchMedia === 'function'
         ? window.matchMedia('(prefers-reduced-motion: reduce)')
         : null;
@@ -73,10 +97,12 @@
             <g class="np-weather-condition">${conditions[condition] || overcast}</g>
             <g class="np-windsock">
                 <path class="np-windsock-pole" d="M80 9 V33"/>
-                <g class="np-windsock-fabric">
-                    <path class="np-windsock-body" d="M80 1 C92 1 106 4 120 7 L120 11 C106 11 92 15 80 17 Z"/>
-                    <path class="np-windsock-stripe" d="M91 2.1 C93 2.4 95 2.7 97 3.2 L96.5 13 C94.5 13.4 92.5 13.8 90.5 14.2 Z"/>
-                    <path class="np-windsock-stripe" d="M108 4.4 C110 4.9 112 5.4 114 5.9 L113.5 11.2 C111.5 11.3 109.5 11.5 107.5 11.7 Z"/>
+                <g class="np-windsock-fabric-scale">
+                    <g class="np-windsock-fabric">
+                        <path class="np-windsock-body" d="M80 1 C92 1 106 4 120 7 L120 11 C106 11 92 15 80 17 Z"/>
+                        <path class="np-windsock-stripe" d="M91 2.1 C93 2.4 95 2.7 97 3.2 L96.5 13 C94.5 13.4 92.5 13.8 90.5 14.2 Z"/>
+                        <path class="np-windsock-stripe" d="M108 4.4 C110 4.9 112 5.4 114 5.9 L113.5 11.2 C111.5 11.3 109.5 11.5 107.5 11.7 Z"/>
+                    </g>
                 </g>
             </g>`;
         return svg;
@@ -91,6 +117,69 @@
         return `${date}: ${copy.conditions[item.condition]}, ${copy.wind[item.windLevel]}`;
     }
 
+    function tooltipDate(item) {
+        const language = locale();
+        return new Intl.DateTimeFormat(language === 'fi' ? 'fi-FI' : 'en-GB', {
+            weekday: 'long', day: 'numeric', month: 'long', timeZone: 'Europe/Helsinki'
+        }).format(new Date(item.timestamp));
+    }
+
+    function positionTooltip(mark) {
+        const markRect = mark.getBoundingClientRect();
+        const tooltipRect = tooltip.getBoundingClientRect();
+        const viewportMargin = 8;
+        const gap = 8;
+        const maxLeft = Math.max(viewportMargin, window.innerWidth - tooltipRect.width - viewportMargin);
+        const centeredLeft = markRect.left + (markRect.width - tooltipRect.width) / 2;
+        let top = markRect.top - tooltipRect.height - gap;
+        if (top < viewportMargin) top = markRect.bottom + gap;
+        tooltip.style.left = `${Math.min(Math.max(centeredLeft, viewportMargin), maxLeft)}px`;
+        tooltip.style.top = `${top}px`;
+    }
+
+    function showTooltip(mark, item, pinned = false) {
+        const language = locale();
+        const copy = labels[language];
+        const heading = document.createElement('strong');
+        heading.textContent = tooltipDate(item);
+        const weatherLine = document.createElement('span');
+        weatherLine.textContent = `${copy.tooltip.weather}: ${copy.conditions[item.condition]}`;
+        const windLine = document.createElement('span');
+        windLine.textContent = `${copy.tooltip.wind}: ${copy.tooltip.windLevels[item.windLevel]}`;
+        tooltip.replaceChildren(heading, weatherLine, windLine);
+        tooltip.classList.add('is-visible');
+        tooltip.setAttribute('aria-hidden', 'false');
+        activeTooltipMark?.removeAttribute('aria-describedby');
+        activeTooltipMark = mark;
+        tooltipPinned = pinned;
+        mark.setAttribute('aria-describedby', tooltip.id);
+        positionTooltip(mark);
+    }
+
+    function hideTooltip(force = false) {
+        if (tooltipPinned && !force) return;
+        activeTooltipMark?.removeAttribute('aria-describedby');
+        activeTooltipMark = null;
+        tooltipPinned = false;
+        tooltip.classList.remove('is-visible');
+        tooltip.setAttribute('aria-hidden', 'true');
+    }
+
+    function attachTooltip(mark, item) {
+        mark.addEventListener('mouseenter', () => showTooltip(mark, item));
+        mark.addEventListener('mouseleave', () => hideTooltip());
+        mark.addEventListener('focus', () => showTooltip(mark, item));
+        mark.addEventListener('blur', () => hideTooltip());
+        mark.addEventListener('click', event => {
+            event.stopPropagation();
+            if (activeTooltipMark === mark && tooltipPinned) {
+                hideTooltip(true);
+            } else {
+                showTooltip(mark, item, true);
+            }
+        });
+    }
+
     function createMark(item) {
         const mark = document.createElement('span');
         const label = accessibleLabel(item);
@@ -98,10 +187,33 @@
         mark.dataset.timestamp = String(item.timestamp);
         mark.dataset.wind = item.windLevel;
         mark.setAttribute('role', 'img');
+        mark.tabIndex = 0;
         mark.setAttribute('aria-label', label);
-        mark.title = label;
         mark.append(createWeatherSvg(item.condition));
+        attachTooltip(mark, item);
         return mark;
+    }
+
+    function createSeparator(timestamp) {
+        const separator = document.createElement('span');
+        separator.className = 'np-weather-separator';
+        separator.dataset.timestamp = String(timestamp);
+        separator.setAttribute('aria-hidden', 'true');
+        return separator;
+    }
+
+    function createRailChildren(items) {
+        const children = [];
+        items.forEach((item, index) => {
+            children.push(createMark(item));
+            const nextItem = items[index + 1];
+            if (!nextItem || typeof window.getHelsinkiMidnightTimestamp !== 'function') return;
+            const boundary = window.getHelsinkiMidnightTimestamp(1, new Date(item.timestamp));
+            if (boundary > item.timestamp && boundary < nextItem.timestamp) {
+                children.push(createSeparator(boundary));
+            }
+        });
+        return children;
     }
 
     function positionMarks() {
@@ -110,11 +222,11 @@
             return;
         }
         const width = chart.getDom?.().clientWidth || rail.clientWidth;
-        rail.querySelectorAll('.np-weather-mark').forEach(mark => {
-            const x = chart.convertToPixel({ xAxisIndex: 0 }, Number(mark.dataset.timestamp));
+        rail.querySelectorAll('.np-weather-mark, .np-weather-separator').forEach(item => {
+            const x = chart.convertToPixel({ xAxisIndex: 0 }, Number(item.dataset.timestamp));
             const visible = Number.isFinite(x) && x >= 0 && x <= width;
-            mark.hidden = !visible;
-            if (visible) mark.style.left = `${x}px`;
+            item.hidden = !visible;
+            if (visible) item.style.left = `${x}px`;
         });
     }
 
@@ -161,7 +273,8 @@
             && item?.windLevel in labels.fi.wind
         )) : [];
         if (!rail) return;
-        rail.replaceChildren(...validData.map(createMark));
+        hideTooltip(true);
+        rail.replaceChildren(...createRailChildren(validData));
         rail.hidden = validData.length === 0;
         scheduleLayout();
         syncIconMotion();
@@ -187,6 +300,24 @@
     window.predictionStore?.subscribe?.(scheduleLayout);
     document.addEventListener('visibilitychange', syncIconMotion);
     motionQuery?.addEventListener?.('change', syncIconMotion);
+    const applyWeatherPalette = palette => {
+        rail?.style.setProperty('--np-weather-separator-color', palette?.grid || 'silver');
+        tooltip.style.setProperty('--np-weather-tooltip-bg', palette?.tooltipBg || '#ffffff');
+        tooltip.style.setProperty('--np-weather-tooltip-border', palette?.tooltipBorder || 'rgba(31, 35, 40, 0.12)');
+        tooltip.style.setProperty('--np-weather-tooltip-text', palette?.tooltipText || 'rgba(51, 51, 51, 0.9)');
+    };
+    applyWeatherPalette(resolveWeatherPalette('prediction'));
+    subscribeWeatherPalette('prediction', applyWeatherPalette);
+    document.addEventListener('click', event => {
+        if (!event.target.closest?.('.np-weather-mark')) hideTooltip(true);
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') hideTooltip(true);
+    });
+    window.addEventListener('scroll', () => hideTooltip(true), { passive: true });
+    window.addEventListener('resize', () => {
+        if (activeTooltipMark) positionTooltip(activeTooltipMark);
+    });
     observeIconMotion();
     window.weatherIcons = Object.freeze({
         createWeatherSvg,

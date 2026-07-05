@@ -16,13 +16,21 @@ const PREDICTION_THEME_UNSUB_KEY = '__np_prediction_theme_unsub__';
 let predictionPalette = resolvePalette('prediction') || window.__NP_THEME__?.getPalette('prediction') || {};
 let hasPredictionChartOptions = false;
 
-function getPredictionGridTop() {
+function getPredictionGridInset(propertyName, fallback) {
     const shell = document.getElementById('predictionChartShell');
     const rawValue = shell && typeof window.getComputedStyle === 'function'
-        ? window.getComputedStyle(shell).getPropertyValue('--np-prediction-grid-top')
+        ? window.getComputedStyle(shell).getPropertyValue(propertyName)
         : '';
     const parsedValue = Number.parseFloat(rawValue);
-    return Number.isFinite(parsedValue) ? parsedValue : 120;
+    return Number.isFinite(parsedValue) ? parsedValue : fallback;
+}
+
+function getPredictionGridTop() {
+    return getPredictionGridInset('--np-prediction-grid-top', 56);
+}
+
+function getPredictionGridBottom() {
+    return getPredictionGridInset('--np-prediction-grid-bottom', 96);
 }
 
 function refreshPredictionTheme() {
@@ -416,7 +424,10 @@ function renderPredictionChart() {
         ? window.createBaseChartOptions
         : createBaseChartOptions)({
         palette: predictionPalette,
-        grid: { top: getPredictionGridTop() },
+        grid: {
+            top: getPredictionGridTop(),
+            bottom: getPredictionGridBottom()
+        },
         legend: {
             data: [
                 {
@@ -448,6 +459,7 @@ function renderPredictionChart() {
                     }
                 }
             ],
+            top: 8,
             right: 16,
             selected: legendSelected
         },
