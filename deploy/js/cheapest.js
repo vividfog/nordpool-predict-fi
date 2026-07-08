@@ -341,7 +341,11 @@ const hasOwn = Object.hasOwn ? Object.hasOwn.bind(Object) : (obj, prop) => Objec
             const start = Number(windowInfo.start);
             const end = Number(windowInfo.end);
 
-            const averageDisplay = Number.isFinite(average) ? average.toFixed(1) : '--';
+            const averageDisplay = formatLocalizedNumber(average, {
+                minimumFractionDigits: 1,
+                maximumFractionDigits: 1,
+                fallback: '--'
+            });
             const countdown = formatCountdown(start, end);
             const startDisplay = Number.isFinite(start) ? formatStart(start) : '--';
 

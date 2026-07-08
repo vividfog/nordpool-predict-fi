@@ -133,6 +133,32 @@ describe('deploy/js/config.js', () => {
     expect(nextSummerMidnight - currentSummerMidnight).toBe(24 * 60 * 60 * 1000);
   });
 
+  it('uses the shared 01:00 Helsinki electricity-day boundary across DST', () => {
+    const beforeBoundary = getHelsinkiElectricityDayBoundary(Date.parse('2025-01-01T22:30:00Z'));
+    const atBoundary = getHelsinkiElectricityDayBoundary(Date.parse('2025-01-01T23:00:00Z'));
+    expect(beforeBoundary.key).toBe('2025-01-01');
+    expect(atBoundary.key).toBe('2025-01-02');
+
+    const spring = getHelsinkiElectricityDayBoundary(Date.parse('2025-03-30T12:00:00Z'));
+    const autumn = getHelsinkiElectricityDayBoundary(Date.parse('2025-10-26T12:00:00Z'));
+    expect(spring.end - spring.start).toBe(23 * 60 * 60 * 1000);
+    expect(autumn.end - autumn.start).toBe(25 * 60 * 60 * 1000);
+  });
+
+  it('formats numbers with the active page locale', () => {
+    expect(formatLocalizedNumber(1234.5, {
+      minimumFractionDigits: 1,
+      maximumFractionDigits: 1
+    })).toBe('1 234,5');
+    expect(formatLocalizedNumber(null, { fallback: '--' })).toBe('--');
+
+    setPathname('/index_en.html');
+    expect(formatLocalizedNumber(1234.5, {
+      minimumFractionDigits: 1,
+      maximumFractionDigits: 1
+    })).toBe('1,234.5');
+  });
+
   it('returns past date strings', () => {
     vi.useFakeTimers();
     vi.setSystemTime(new Date('2025-03-18T09:00:00Z'));
@@ -216,7 +242,16 @@ describe('deploy/js/config.js', () => {
       value: [Date.UTC(2025, 0, 1, 12), 13.4],
       marker: '*'
     }]);
-    expect(result).toContain('13.4 ¢/kWh');
+    expect(result).toContain('13,4 ¢/kWh');
+
+    setPathname('/index_en.html');
+    expect(formatter([{
+      axisValue: Date.UTC(2025, 0, 1, 12),
+      seriesName: 'Nordpool',
+      seriesType: 'line',
+      value: [Date.UTC(2025, 0, 1, 12), 13.4],
+      marker: '*'
+    }])).toContain('13.4 ¢/kWh');
 
     const axisFormatter = createXAxisFormatter(true);
     expect(axisFormatter(Date.UTC(2025, 0, 2))).toBe('2.1.');

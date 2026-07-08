@@ -78,6 +78,7 @@ describe('deploy/js/cheapest.js', () => {
     const rows = document.querySelectorAll('#cheapestWindows tbody tr');
     expect(rows.length).toBe(1);
     expect(rows[0].textContent).toContain('3 h');
+    expect(rows[0].textContent).toContain('8,5');
     expect(buildPayload).toHaveBeenCalled();
     vi.useRealTimers();
   });

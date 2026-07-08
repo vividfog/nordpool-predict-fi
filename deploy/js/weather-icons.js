@@ -2,6 +2,7 @@
 
 (() => {
     const endpoint = window.DATA_ENDPOINTS?.weather || `${window.location.origin}/weather.json`;
+    const predictionFullEndpoint = window.DATA_ENDPOINTS?.predictionFull || `${window.location.origin}/prediction_full.json`;
     const rail = document.getElementById('predictionWeather');
     const chart = window.nfpChart;
     const resolveWeatherPalette = typeof window.resolveChartPalette === 'function'
@@ -30,6 +31,11 @@
             tooltip: {
                 weather: 'Yleissää',
                 wind: 'Tuulivoimaennuste',
+                temperatureAverage: 'Lämpötila, keskiarvo',
+                price: 'Hinta',
+                windPower: 'Tuulivoima',
+                average: 'keskiarvo',
+                range: 'min–max',
                 windLevels: { calm: 'erittäin vähäinen', weak: 'vähäinen', normal: 'tavanomainen', strong: 'suuri' }
             }
         },
@@ -46,6 +52,11 @@
             tooltip: {
                 weather: 'General weather',
                 wind: 'Wind-power outlook',
+                temperatureAverage: 'Temperature, average',
+                price: 'Price',
+                windPower: 'Wind power',
+                average: 'average',
+                range: 'min–max',
                 windLevels: { calm: 'very low', weak: 'low', normal: 'normal', strong: 'high' }
             }
         }
@@ -54,7 +65,9 @@
     let motionVisible = false;
     let motionObserver = null;
     let activeTooltipMark = null;
+    let activeTooltipItem = null;
     let tooltipPinned = false;
+    let dailySummaries = new Map();
     const motionQuery = typeof window.matchMedia === 'function'
         ? window.matchMedia('(prefers-reduced-motion: reduce)')
         : null;
@@ -137,20 +150,142 @@
         tooltip.style.top = `${top}px`;
     }
 
+    function finiteNumber(value) {
+        if (value === null || value === undefined || value === '') return null;
+        const numeric = Number(value);
+        return Number.isFinite(numeric) ? numeric : null;
+    }
+
+    function addMetric(bin, metric, value) {
+        if (!Number.isFinite(value)) return;
+        const current = bin[metric] || { sum: 0, count: 0, min: value, max: value };
+        current.sum += value;
+        current.count += 1;
+        current.min = Math.min(current.min, value);
+        current.max = Math.max(current.max, value);
+        bin[metric] = current;
+    }
+
+    function finishMetric(metric) {
+        if (!metric?.count) return null;
+        return {
+            average: metric.sum / metric.count,
+            min: metric.min,
+            max: metric.max
+        };
+    }
+
+    function buildDailySummaries(data) {
+        if (!Array.isArray(data) || typeof window.getHelsinkiElectricityDayBoundary !== 'function') {
+            return new Map();
+        }
+        const temperatureColumns = [...new Set(data.flatMap(row => (
+            row && typeof row === 'object'
+                ? Object.keys(row).filter(key => key.startsWith('t_'))
+                : []
+        )))];
+        const bins = new Map();
+
+        data.forEach(row => {
+            const timestamp = new Date(row?.timestamp).getTime();
+            const day = window.getHelsinkiElectricityDayBoundary(timestamp);
+            if (!day) return;
+            const bin = bins.get(day.key) || { key: day.key, start: day.start, end: day.end };
+            const actualPrice = finiteNumber(row.Price_cpkWh);
+            const predictedPrice = finiteNumber(row.PricePredict_cpkWh);
+            addMetric(bin, 'price', actualPrice ?? predictedPrice);
+            addMetric(bin, 'windPower', finiteNumber(row.WindPowerMW));
+
+            const temperatures = temperatureColumns
+                .map(column => finiteNumber(row[column]))
+                .filter(Number.isFinite);
+            if (temperatures.length) {
+                addMetric(
+                    bin,
+                    'temperature',
+                    temperatures.reduce((sum, value) => sum + value, 0) / temperatures.length
+                );
+            }
+            bins.set(day.key, bin);
+        });
+
+        return new Map([...bins].map(([key, bin]) => [key, {
+            key,
+            start: bin.start,
+            end: bin.end,
+            price: finishMetric(bin.price),
+            windPower: finishMetric(bin.windPower),
+            temperature: finishMetric(bin.temperature)
+        }]));
+    }
+
+    function formatNumber(value, fractionDigits) {
+        return window.formatLocalizedNumber(value, {
+            minimumFractionDigits: fractionDigits,
+            maximumFractionDigits: fractionDigits
+        });
+    }
+
+    function createDescriptionList(rows) {
+        const list = document.createElement('dl');
+        list.className = 'np-weather-tooltip-list';
+        rows.forEach(([label, value]) => {
+            const term = document.createElement('dt');
+            term.textContent = label;
+            const description = document.createElement('dd');
+            description.textContent = value;
+            list.append(term, description);
+        });
+        return list;
+    }
+
+    function createMetricSection(title, rows) {
+        const section = document.createElement('section');
+        section.className = 'np-weather-tooltip-section';
+        const heading = document.createElement('strong');
+        heading.textContent = title;
+        section.append(heading, createDescriptionList(rows));
+        return section;
+    }
+
+    function summaryFor(item) {
+        const day = window.getHelsinkiElectricityDayBoundary?.(Number(item.timestamp));
+        return day ? dailySummaries.get(day.key) : null;
+    }
+
     function showTooltip(mark, item, pinned = false) {
         const language = locale();
         const copy = labels[language];
         const heading = document.createElement('strong');
         heading.textContent = tooltipDate(item);
-        const weatherLine = document.createElement('span');
-        weatherLine.textContent = `${copy.tooltip.weather}: ${copy.conditions[item.condition]}`;
-        const windLine = document.createElement('span');
-        windLine.textContent = `${copy.tooltip.wind}: ${copy.tooltip.windLevels[item.windLevel]}`;
-        tooltip.replaceChildren(heading, weatherLine, windLine);
+        const summary = summaryFor(item);
+        const contextRows = [[copy.tooltip.weather, copy.conditions[item.condition]]];
+        if (summary?.temperature) {
+            contextRows.push([
+                copy.tooltip.temperatureAverage,
+                `${formatNumber(summary.temperature.average, 1)} °C`
+            ]);
+        }
+        contextRows.push([copy.tooltip.wind, copy.tooltip.windLevels[item.windLevel]]);
+        const children = [heading, createDescriptionList(contextRows)];
+        if (summary?.price) {
+            children.push(createMetricSection(copy.tooltip.price, [
+                [copy.tooltip.average, `${formatNumber(summary.price.average, 1)} ¢/kWh`],
+                [copy.tooltip.range, `${formatNumber(summary.price.min, 1)}–${formatNumber(summary.price.max, 1)} ¢/kWh`]
+            ]));
+        }
+        if (summary?.windPower) {
+            children.push(createMetricSection(copy.tooltip.windPower, [
+                [copy.tooltip.average, `${formatNumber(summary.windPower.average, 0)} MW`],
+                [copy.tooltip.range, `${formatNumber(summary.windPower.min, 0)}–${formatNumber(summary.windPower.max, 0)} MW`]
+            ]));
+        }
+        tooltip.replaceChildren(...children);
         tooltip.classList.add('is-visible');
         tooltip.setAttribute('aria-hidden', 'false');
         activeTooltipMark?.removeAttribute('aria-describedby');
         activeTooltipMark = mark;
+        activeTooltipItem = item;
         tooltipPinned = pinned;
         mark.setAttribute('aria-describedby', tooltip.id);
         positionTooltip(mark);
@@ -160,6 +295,7 @@
         if (tooltipPinned && !force) return;
         activeTooltipMark?.removeAttribute('aria-describedby');
         activeTooltipMark = null;
+        activeTooltipItem = null;
         tooltipPinned = false;
         tooltip.classList.remove('is-visible');
         tooltip.setAttribute('aria-hidden', 'true');
@@ -295,6 +431,24 @@
         }
     }
 
+    async function loadDailySummaries() {
+        try {
+            const data = window.dataClient?.fetchJson
+                ? await window.dataClient.fetchJson(predictionFullEndpoint)
+                : await fetch(predictionFullEndpoint, { cache: 'no-cache' }).then(response => {
+                    if (!response.ok) throw new Error(`Full prediction request failed (${response.status})`);
+                    return response.json();
+                });
+            dailySummaries = buildDailySummaries(data);
+            if (activeTooltipMark && activeTooltipItem) {
+                showTooltip(activeTooltipMark, activeTooltipItem, tooltipPinned);
+            }
+        } catch (error) {
+            console.warn('Daily forecast summary unavailable:', error);
+            dailySummaries = new Map();
+        }
+    }
+
     if (chart && typeof chart.on === 'function') chart.on('finished', scheduleLayout);
     window.addEventListener('resize', scheduleLayout);
     window.predictionStore?.subscribe?.(scheduleLayout);
@@ -321,6 +475,7 @@
     observeIconMotion();
     window.weatherIcons = Object.freeze({
         createWeatherSvg,
+        buildDailySummaries,
         positionMarks,
         render,
         load,
@@ -328,6 +483,7 @@
         stopIconMotion
     });
     load();
+    loadDailySummaries();
 })();
 
 //#endregion weather_icons

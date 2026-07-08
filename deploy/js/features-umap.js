@@ -391,10 +391,12 @@
             return isEnglish() ? '—' : '–';
         }
         const abs = Math.abs(value);
-        if (abs >= 1000) return value.toFixed(0);
-        if (abs >= 100) return value.toFixed(1);
-        if (abs >= 10) return value.toFixed(2);
-        return value.toFixed(3);
+        const fractionDigits = abs >= 1000 ? 0 : abs >= 100 ? 1 : abs >= 10 ? 2 : 3;
+        return formatLocalizedNumber(value, {
+            minimumFractionDigits: fractionDigits,
+            maximumFractionDigits: fractionDigits,
+            fallback: isEnglish() ? '—' : '–'
+        });
     }
 
     function toHoverText(feature, groups) {

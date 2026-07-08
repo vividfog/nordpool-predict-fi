@@ -352,7 +352,12 @@ function loadWindPowerData(token) {
                         params.forEach(function(item) {
                             if (item.seriesType !== 'line' && item.seriesType !== 'bar') return;
 
-                            const valueRounded = item.value[1] !== undefined ? item.value[1].toFixed(1) : '';
+                            const valueRounded = item.value[1] !== undefined
+                                ? formatLocalizedNumber(item.value[1], {
+                                    minimumFractionDigits: 1,
+                                    maximumFractionDigits: 1
+                                })
+                                : '';
                             result += item.marker + " " + item.seriesName + ': ' + valueRounded + '<br/>';
                         });
 
@@ -401,7 +406,10 @@ function loadWindPowerData(token) {
                         },
                         axisLabel: {
                             formatter: function(value) {
-                                return value.toFixed(0);
+                                return formatLocalizedNumber(value, {
+                                    minimumFractionDigits: 0,
+                                    maximumFractionDigits: 0
+                                });
                             }
                         }
                     },
@@ -417,7 +425,10 @@ function loadWindPowerData(token) {
                         },
                         axisLabel: {
                             formatter: function(value) {
-                                return value.toFixed(0);
+                                return formatLocalizedNumber(value, {
+                                    minimumFractionDigits: 0,
+                                    maximumFractionDigits: 0
+                                });
                             }
                         }
                     }

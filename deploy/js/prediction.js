@@ -766,62 +766,9 @@ function buildDailyAverageSeries(series) {
 }
 
 function getHelsinkiDayBoundary(timestampMs) {
-    const parts = getHelsinkiDatePartsFromTimestamp(timestampMs - HOUR_MS);
-    if (!parts) {
-        return null;
-    }
-    const key = `${parts.year}-${String(parts.month).padStart(2, '0')}-${String(parts.day).padStart(2, '0')}`;
-    const referenceDate = new Date(Date.UTC(parts.year, parts.month - 1, parts.day, 12));
-    const buildTimestamp = typeof window.getHelsinkiMidnightTimestamp === 'function'
-        ? window.getHelsinkiMidnightTimestamp
+    return typeof window.getHelsinkiElectricityDayBoundary === 'function'
+        ? window.getHelsinkiElectricityDayBoundary(timestampMs)
         : null;
-    const start = buildTimestamp
-        ? buildTimestamp(0, referenceDate)
-        : Date.UTC(parts.year, parts.month - 1, parts.day);
-    const end = buildTimestamp
-        ? buildTimestamp(1, referenceDate)
-        : start + 24 * HOUR_MS;
-    return {
-        key,
-        start: start + HOUR_MS,
-        end: end + HOUR_MS
-    };
-}
-
-function getHelsinkiDatePartsFromTimestamp(timestampMs) {
-    try {
-        const formatter = new Intl.DateTimeFormat('en-CA', {
-            timeZone: HELSINKI_TIMEZONE_ID,
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit'
-        });
-        const parts = formatter.formatToParts(new Date(timestampMs));
-        const values = {};
-        parts.forEach(part => {
-            if (part.type === 'year' || part.type === 'month' || part.type === 'day') {
-                values[part.type] = Number(part.value);
-            }
-        });
-        if (Number.isFinite(values.year) && Number.isFinite(values.month) && Number.isFinite(values.day)) {
-            return {
-                year: values.year,
-                month: values.month,
-                day: values.day
-            };
-        }
-    } catch (error) {
-        console.warn('Failed to resolve Helsinki day for prediction chart', error);
-    }
-    const fallback = new Date(timestampMs);
-    if (!Number.isFinite(fallback.getTime())) {
-        return null;
-    }
-    return {
-        year: fallback.getUTCFullYear(),
-        month: fallback.getUTCMonth() + 1,
-        day: fallback.getUTCDate()
-    };
 }
 
 function clampLookaheadDays(days) {

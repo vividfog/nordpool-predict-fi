@@ -294,7 +294,10 @@
             timeZone: HELSINKI_TZ
         });
         const stamp = formatWithColonSeparator(formatter, new Date(timestamp));
-        const rounded = Number(price).toFixed(1);
+        const rounded = formatLocalizedNumber(price, {
+            minimumFractionDigits: 1,
+            maximumFractionDigits: 1
+        });
         let tooltip = `${stamp}<br/>${rounded} ¢/kWh`;
 
         if (Array.isArray(detail) && detail.length > 1) {
@@ -320,7 +323,11 @@
                         tzNameFormatter,
                         new Date(entry.timestamp)
                     );
-                    tooltip += `<br/>${label}: ${Number(entry.price).toFixed(1)} ¢/kWh`;
+                    const localizedPrice = formatLocalizedNumber(entry.price, {
+                        minimumFractionDigits: 1,
+                        maximumFractionDigits: 1
+                    });
+                    tooltip += `<br/>${label}: ${localizedPrice} ¢/kWh`;
                 });
         }
 
@@ -331,10 +338,6 @@
         if (!band) {
             return '';
         }
-        const numberFormatter = new Intl.NumberFormat(locale, {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 1
-        });
         const minFinite = Number.isFinite(band.min) ? band.min : null;
         const maxFinite = Number.isFinite(band.max) ? band.max : null;
         const unit = '¢/kWh';
@@ -344,14 +347,14 @@
         }
 
         if (minFinite === null && maxFinite !== null) {
-            return `≤ ${numberFormatter.format(maxFinite)} ${unit}`;
+            return `≤ ${formatLocalizedNumber(maxFinite, { maximumFractionDigits: 1 })} ${unit}`;
         }
 
         if (minFinite !== null && maxFinite === null) {
-            return `> ${numberFormatter.format(minFinite)} ${unit}`;
+            return `> ${formatLocalizedNumber(minFinite, { maximumFractionDigits: 1 })} ${unit}`;
         }
 
-        return `${numberFormatter.format(minFinite)} – ${numberFormatter.format(maxFinite)} ${unit}`;
+        return `${formatLocalizedNumber(minFinite, { maximumFractionDigits: 1 })} – ${formatLocalizedNumber(maxFinite, { maximumFractionDigits: 1 })} ${unit}`;
     }
 
     function renderLegend(container, locale) {

@@ -65,6 +65,13 @@ describe('deploy/js/windpower.js', () => {
     expect(chart.setOption).toHaveBeenCalled();
     const option = chart.setOption.mock.calls[0][0];
     expect(option.series.some(series => series.name.includes('Tuulivoima'))).toBe(true);
+    expect(option.tooltip.formatter([{
+      axisValue: base,
+      seriesName: getLocalizedText('windPower'),
+      seriesType: 'line',
+      value: [base, 1.2],
+      marker: '*'
+    }])).toContain('1,2');
     vi.useRealTimers();
   });
 

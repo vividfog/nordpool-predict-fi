@@ -45,6 +45,9 @@ describe('deploy/js/calendar.js', () => {
     expect(chart.setOption).toHaveBeenCalledTimes(1);
     const option = chart.setOption.mock.calls[0][0];
     expect(option.series[0].data.some(cell => Number.isFinite(cell[2]))).toBe(true);
+    expect(option.tooltip.formatter({
+      data: [0, 0, 1234.5, base]
+    })).toContain('1 234,5 ¢/kWh');
 
     const status = document.getElementById('priceCalendarStatus');
     expect(status.style.display).toBe('none');

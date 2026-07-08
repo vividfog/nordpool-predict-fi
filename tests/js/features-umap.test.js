@@ -117,6 +117,7 @@ describe('deploy/js/features-umap.js', () => {
     const traces = newPlot.mock.calls[0][1];
     expect(traces).toHaveLength(1);
     expect(traces[0].name).toBe('Sää');
+    expect(traces[0].text[0]).toContain('0,400');
   });
 
   it('shows error message when fetch fails', async () => {

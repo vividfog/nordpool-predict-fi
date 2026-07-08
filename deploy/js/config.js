@@ -143,6 +143,7 @@ const DEFAULT_CHART_PALETTE = Object.freeze({
 
 const DATA_ENDPOINTS = Object.freeze({
     prediction: `${baseUrl}/prediction.json`,
+    predictionFull: `${baseUrl}/prediction_full.json`,
     predictionScaled: `${baseUrl}/prediction_scaled.json`,
     windpower: `${baseUrl}/windpower.json`,
     weather: `${baseUrl}/weather.json`
@@ -161,6 +162,7 @@ const HELSINKI_OFFSET_FORMATTER = new Intl.DateTimeFormat('en-US', {
     timeZoneName: 'shortOffset'
 });
 const MS_PER_MINUTE = 60 * 1000;
+const ELECTRICITY_DAY_OFFSET_MS = 60 * 60 * 1000;
 
 function getHelsinkiDateParts(referenceDate = new Date()) {
     const parts = HELSINKI_DATE_FORMATTER.formatToParts(referenceDate);
@@ -214,6 +216,24 @@ function getHelsinkiMidnightTimestamp(daysOffset = 0, referenceDate = new Date()
     return getHelsinkiMidnightDate(daysOffset, referenceDate).getTime();
 }
 
+function getHelsinkiElectricityDayBoundary(timestampMs) {
+    const timestamp = Number(timestampMs);
+    if (!Number.isFinite(timestamp)) {
+        return null;
+    }
+    const parts = getHelsinkiDateParts(new Date(timestamp - ELECTRICITY_DAY_OFFSET_MS));
+    const key = `${parts.year}-${String(parts.month).padStart(2, '0')}-${String(parts.day).padStart(2, '0')}`;
+    const referenceDate = new Date(Date.UTC(parts.year, parts.month - 1, parts.day, 12));
+    const buildTimestamp = typeof window.getHelsinkiMidnightTimestamp === 'function'
+        ? window.getHelsinkiMidnightTimestamp
+        : getHelsinkiMidnightTimestamp;
+    return {
+        key,
+        start: buildTimestamp(0, referenceDate) + ELECTRICITY_DAY_OFFSET_MS,
+        end: buildTimestamp(1, referenceDate) + ELECTRICITY_DAY_OFFSET_MS
+    };
+}
+
 function createSahkotinParams(startIso, endIso) {
     return new URLSearchParams({
         fix: 'true',
@@ -228,6 +248,7 @@ window.SAHKOTIN_CSV_URL = SAHKOTIN_CSV_URL;
 window.HELSINKI_TIMEZONE = HELSINKI_TIMEZONE;
 window.getHelsinkiMidnightISOString = getHelsinkiMidnightISOString;
 window.getHelsinkiMidnightTimestamp = getHelsinkiMidnightTimestamp;
+window.getHelsinkiElectricityDayBoundary = getHelsinkiElectricityDayBoundary;
 window.createSahkotinParams = createSahkotinParams;
 
 // Lightweight localStorage adapter with graceful fallback
@@ -742,7 +763,10 @@ function createBaseChartOptions(config) {
             },
             axisLabel: {
                 formatter: function(value) {
-                    return value.toFixed(0);
+                    return formatLocalizedNumber(value, {
+                        minimumFractionDigits: 0,
+                        maximumFractionDigits: 0
+                    });
                 },
                 color: palette.axis
             },

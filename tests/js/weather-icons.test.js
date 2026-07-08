@@ -19,11 +19,37 @@ describe('deploy/js/weather-icons.js', () => {
     window.getHelsinkiMidnightTimestamp = vi.fn((_offset, referenceDate) => (
       referenceDate.getTime() + 60000
     ));
+    window.getHelsinkiElectricityDayBoundary = vi.fn(() => ({
+      key: 'test-day',
+      start: 0,
+      end: 24 * 60 * 60 * 1000
+    }));
+    const weatherData = [
+      { timestamp: 100000, condition: 'clear-day', windLevel: 'calm' },
+      { timestamp: 200000, condition: 'rain', windLevel: 'strong' }
+    ];
+    const fullData = [
+      {
+        timestamp: '2025-01-01T00:00:00Z',
+        Price_cpkWh: 1234.5,
+        PricePredict_cpkWh: 9999,
+        WindPowerMW: 1000,
+        t_1: 10,
+        t_2: 12
+      },
+      {
+        timestamp: '2025-01-01T01:00:00Z',
+        Price_cpkWh: null,
+        PricePredict_cpkWh: 1300,
+        WindPowerMW: 1500,
+        t_1: 13,
+        t_2: 15
+      }
+    ];
     window.dataClient = {
-      fetchJson: vi.fn().mockResolvedValue([
-        { timestamp: 100000, condition: 'clear-day', windLevel: 'calm' },
-        { timestamp: 200000, condition: 'rain', windLevel: 'strong' }
-      ])
+      fetchJson: vi.fn(url => Promise.resolve(
+        String(url).includes('prediction_full') ? fullData : weatherData
+      ))
     };
     vi.stubGlobal('requestAnimationFrame', callback => {
       callback();
@@ -116,8 +142,12 @@ describe('deploy/js/weather-icons.js', () => {
     mark.dispatchEvent(new MouseEvent('mouseenter'));
 
     expect(tooltip.classList.contains('is-visible')).toBe(true);
-    expect(tooltip.textContent).toContain('Yleissää: selkeää');
-    expect(tooltip.textContent).toContain('Tuulivoimaennuste: erittäin vähäinen');
+    expect(tooltip.textContent).toContain('Yleissääselkeää');
+    expect(tooltip.textContent).toContain('Lämpötila, keskiarvo12,5 °C');
+    expect(tooltip.textContent).toContain('Tuulivoimaennusteerittäin vähäinen');
+    expect(tooltip.textContent).toContain('keskiarvo1 267,3 ¢/kWh');
+    expect(tooltip.textContent).toContain('min–max1 234,5–1 300,0 ¢/kWh');
+    expect(tooltip.textContent).toContain('keskiarvo1 250 MW');
     expect(mark.getAttribute('aria-describedby')).toBe('npWeatherTooltip');
 
     mark.dispatchEvent(new MouseEvent('mouseleave'));
@@ -133,7 +163,35 @@ describe('deploy/js/weather-icons.js', () => {
     const tooltip = document.getElementById('npWeatherTooltip');
     mark.dispatchEvent(new MouseEvent('mouseenter'));
 
-    expect(tooltip.textContent).toContain('General weather: rain');
-    expect(tooltip.textContent).toContain('Wind-power outlook: high');
+    expect(tooltip.textContent).toContain('General weatherrain');
+    expect(tooltip.textContent).toContain('Temperature, average12.5 °C');
+    expect(tooltip.textContent).toContain('Wind-power outlookhigh');
+    expect(tooltip.textContent).toContain('average1,267.3 ¢/kWh');
+  });
+
+  it('aggregates actual-first price, wind power, and station temperatures by electricity day', () => {
+    const summaries = window.weatherIcons.buildDailySummaries([
+      {
+        timestamp: '2025-01-01T00:00:00Z',
+        Price_cpkWh: 5,
+        PricePredict_cpkWh: 50,
+        WindPowerMW: 1000,
+        t_1: 2,
+        t_2: 4
+      },
+      {
+        timestamp: '2025-01-01T01:00:00Z',
+        Price_cpkWh: null,
+        PricePredict_cpkWh: 9,
+        WindPowerMW: 2000,
+        t_1: 6,
+        t_2: 8
+      }
+    ]);
+    expect(summaries.get('test-day')).toMatchObject({
+      price: { average: 7, min: 5, max: 9 },
+      windPower: { average: 1500, min: 1000, max: 2000 },
+      temperature: { average: 5, min: 3, max: 7 }
+    });
   });
 });

@@ -257,7 +257,8 @@ td {
     position: fixed;
     z-index: 10000;
     display: none;
-    max-width: min(280px, calc(100vw - 16px));
+    width: max-content;
+    max-width: min(360px, calc(100vw - 16px));
     padding: 10px;
     border: 1px solid var(--np-weather-tooltip-border, rgba(31, 35, 40, 0.12));
     border-radius: 4px;
@@ -272,11 +273,35 @@ td {
 
 .np-weather-tooltip.is-visible {
     display: grid;
-    gap: 2px;
+    gap: 8px;
 }
 
 .np-weather-tooltip strong {
     font-weight: 600;
+}
+
+.np-weather-tooltip-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2px 16px;
+    margin: 0;
+}
+
+.np-weather-tooltip-list dt,
+.np-weather-tooltip-list dd {
+    margin: 0;
+}
+
+.np-weather-tooltip-list dd {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.np-weather-tooltip-section {
+    display: grid;
+    gap: 2px;
+    padding-top: 6px;
+    border-top: 1px solid var(--np-weather-tooltip-border, rgba(31, 35, 40, 0.12));
 }
 
 .np-weather-mark {
