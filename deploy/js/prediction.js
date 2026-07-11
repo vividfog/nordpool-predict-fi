@@ -403,6 +403,9 @@ function renderPredictionChart() {
     const sahkotinVisualPieces = typeof getSahkotinVisualMapPieces === 'function'
         ? getSahkotinVisualMapPieces()
         : [];
+    const sahkotinLegendColor = sahkotinVisualPieces[0]?.color
+        || predictionPalette?.sahkotinLine
+        || predictionPalette?.sahkotinBar;
     const forecastLegendColor = predictionPalette?.forecastLegend;
     const forecastVisualPieces = Array.isArray(predictionPalette?.forecastVisualPieces)
         ? predictionPalette.forecastVisualPieces
@@ -434,7 +437,7 @@ function renderPredictionChart() {
                     name: 'Nordpool',
                     icon: 'circle',
                     itemStyle: {
-                        color: predictionPalette?.sahkotinBar
+                        color: sahkotinLegendColor
                     }
                 },
                 {

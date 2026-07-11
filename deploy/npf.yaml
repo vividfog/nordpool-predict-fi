@@ -51,12 +51,12 @@ series:
       return entity.attributes.raw_today.map((start, index) => {
         return [new Date(start["start"]).getTime(), entity.attributes.raw_today[index]["value"]*125.5];
       });
-    color: '#aaaaaa'
+    color: limegreen
     color_threshold:
       - value: 0
-        color: lime
+        color: limegreen
       - value: 5
-        color: green
+        color: lime
       - value: 10
         color: orange
       - value: 15
@@ -76,11 +76,12 @@ series:
       return entity.attributes.raw_tomorrow.map((entry) => {
         return [new Date(entry.start), entry.value*125.5];
       });
+    color: limegreen
     color_threshold:
       - value: 0
-        color: lime
+        color: limegreen
       - value: 5
-        color: green
+        color: lime
       - value: 10
         color: orange
       - value: 15
@@ -104,11 +105,12 @@ series:
       in_header: false
       legend_value: false
       extremas: false
+    color: limegreen
     color_threshold:
       - value: 0
-        color: lime
+        color: limegreen
       - value: 5
-        color: green
+        color: lime
       - value: 10
         color: orange
       - value: 15

@@ -200,6 +200,9 @@ describe('deploy/js/prediction.js', () => {
     expect(option.grid.top).toBe(56);
     expect(option.grid.bottom).toBe(96);
     expect(option.legend.top).toBe(8);
+    const nordpoolLegend = option.legend.data.find(item => item.name === 'Nordpool');
+    expect(nordpoolLegend.itemStyle.color).toBe(option.visualMap[0].pieces[0].color);
+    expect(nordpoolLegend.itemStyle.color).toBe('limegreen');
     expect(option.legend.selected[getLocalizedText('daily_avg')]).toBe(false);
   });
 

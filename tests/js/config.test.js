@@ -205,11 +205,14 @@ describe('deploy/js/config.js', () => {
   });
 
   it('maps price bands and colors', () => {
+    expect(getSahkotinPriceColor(4)).toBe('limegreen');
+    expect(getSahkotinPriceColor(8)).toBe('lime');
     expect(getSahkotinPriceColor(12)).toBe('gold');
     expect(getSahkotinPriceColor(50)).toBe('darkred');
     expect(getSahkotinPriceColor(null, '#111')).toBe('#111');
     const pieces = getSahkotinVisualMapPieces();
-    expect(pieces[0]).toMatchObject({ lte: 5 });
+    expect(pieces[0]).toMatchObject({ lte: 5, color: 'limegreen' });
+    expect(pieces[1]).toMatchObject({ gt: 5, lte: 10, color: 'lime' });
     expect(pieces[pieces.length - 1]).toMatchObject({ gt: 30 });
   });
 

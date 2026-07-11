@@ -66,12 +66,12 @@ series:
                  endOfDayAfterTomorrow.setHours(0, 0, 0, 0); // Set to the beginning of two days after today
                  return timestamp < endOfDayAfterTomorrow.getTime();
              });
-    color: '#aaaaaa'
+    color: limegreen
     color_threshold:
       - value: 0
-        color: lime
+        color: limegreen
       - value: 5
-        color: green
+        color: lime
       - value: 10
         color: orange
       - value: 15

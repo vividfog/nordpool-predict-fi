@@ -520,8 +520,8 @@ function getLocalizedText(key) {
 }
 
 const SAHKOTIN_PRICE_BANDS = [
-    { min: -Infinity, max: 5, color: 'lime' },
-    { min: 5, max: 10, color: 'limegreen' },
+    { min: -Infinity, max: 5, color: 'limegreen' },
+    { min: 5, max: 10, color: 'lime' },
     { min: 10, max: 15, color: 'gold' },
     { min: 15, max: 20, color: 'darkorange' },
     { min: 20, max: 30, color: 'red' },
