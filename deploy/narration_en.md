@@ -1,19 +1,19 @@
-*Upcoming spot electricity prices will remain affordable, with average daily prices varying between 1.7 and 2.9 cents.*
+*Electricity spot prices remain moderate for most of the period, but weak wind power raises Monday's average price significantly higher than other days.*
 
-Forecast updated on Sunday at 20:54.
+The forecast was updated on Monday at 02:54.
 
-|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
+|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 2.3 | 0.4 – 2.7 | 526 – 3774 | 17.6 |
-| **Tuesday** | 2.9 | 1.4 – 5.7 | 1131 – 2286 | 17.7 |
-| **Wednesday** | 2.7 | 1.1 – 4.9 | 1400 – 2924 | 17.0 |
-| **Thursday** | 2.7 | 1.8 – 4.0 | 1338 – 2643 | 17.1 |
-| **Friday** | 1.7 | 0.3 – 4.4 | 1900 – 2788 | 17.2 |
-| **Saturday** | 2.0 | 0.6 – 4.1 | 1361 – 2755 | 16.9 |
-| **Sunday** | 2.9 | 1.5 – 5.3 | 1102 – 2385 | 16.8 |
+| **Tuesday** | 2.4 | 0.9 – 4.7 | 1623 – 3306 | 17.7 |
+| **Wednesday** | 2.6 | 1.0 – 4.3 | 1525 – 3411 | 17.0 |
+| **Thursday** | 2.7 | 1.6 – 4.6 | 1351 – 2524 | 17.1 |
+| **Friday** | 2.2 | 0.4 – 4.1 | 1711 – 2349 | 17.2 |
+| **Saturday** | 2.0 | 1.1 – 3.5 | 1350 – 2613 | 16.9 |
+| **Sunday** | 2.3 | 1.6 – 3.3 | 1056 – 2757 | 16.8 |
+| **Monday** | 3.7 | 2.4 – 5.7 | 1210 – 1957 | 16.2 |
 
-Average spot electricity prices for the coming week will remain affordable, ranging between 1.7 and 2.9 cents. **Monday** is expected to have the most stable pricing, while **Tuesday** and **Sunday** will be slightly more expensive days. On Tuesday, the price rises to 5.7 cents in the morning, and on Sunday it reaches up to 5.3 cents towards the evening.
+Average spot prices for electricity will remain largely affordable, but on **Monday**, the price will rise significantly. For next Monday, the average price is expected to be 3.7 cents per kilowatt-hour. The day's maximum price will reach 5.7 cents in the morning. Average wind power production on Monday is 1603 MW, which is a weak level and partly explains the price increase. Also, the minimum wind power production drops to 1210 MW, which is reflected in the morning's hourly prices.
 
-**Friday** will be the most affordable day of the week with an average price of 1.7 cents. Electricity will be cheapest in the evening, when the price drops to 0.3 cents. On **Saturday**, prices will stay moderate for most of the day but rise to 4.1 cents in the evening. Average prices for **Wednesday** and **Thursday** will settle at 2.7 cents. Variations in wind power are reflected in the prices particularly on Tuesday, when the lowest production of 1131 MW coincides with the day's highest hourly price.
+On **Friday**, electricity will be at its cheapest, with an average daily price of 2.2 cents. Friday's lowest hours occur in the afternoon, when the price drops to 0.4 cents at 15:00. On **Tuesday** and **Wednesday**, wind power exceeds 3000 MW during individual hours, keeping prices moderate. Otherwise, the days of the forecast period are quite similar, with prices mostly fluctuating between 1 and 4 cents.
 
-*Interpreted by gemma-4-lora-mlx.* ⚡
+*Interpreted by Sähkövatkain gemma-4-lora-mlx.* 🌬️
