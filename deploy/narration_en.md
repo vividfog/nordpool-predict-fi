@@ -1,19 +1,19 @@
-*Average electricity prices remain affordable, although Monday is expected to have a higher maximum price and potential price spikes in the evening.*
+*Electricity prices are expected to remain mostly affordable during the forecast period, although strong price fluctuations and occasional spikes are anticipated on Monday.*
 
-Forecast updated on Sunday at 08:54.
+Forecast updated Sunday at 11:54.
 
 |  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 4.7 | 0.4 - 11.2 | 462 - 3792 | 17.6 |
-| **Tuesday** | 3.4 | 1.9 - 6.4 | 1165 - 2450 | 17.7 |
-| **Wednesday** | 3.6 | 1.4 - 7.0 | 1186 - 2653 | 17.0 |
-| **Thursday** | 3.7 | 2.2 - 5.2 | 1119 - 1762 | 17.1 |
-| **Friday** | 3.6 | 1.9 - 5.6 | 1225 - 2352 | 17.2 |
-| **Saturday** | 1.9 | 0.8 - 4.6 | 1509 - 2570 | 16.9 |
-| **Sunday** | 3.2 | 1.9 - 5.0 | 1001 - 2245 | 16.5 |
+| **Monday** | 5.7 | 0.4 - 12.4 | 677 - 3675 | 17.6 |
+| **Tuesday** | 3.9 | 1.7 - 7.4 | 1124 - 3252 | 17.7 |
+| **Wednesday** | 4.0 | 1.1 - 7.2 | 1127 - 3362 | 17.0 |
+| **Thursday** | 4.5 | 3.5 - 5.6 | 1140 - 1730 | 17.1 |
+| **Friday** | 3.3 | 1.1 - 5.6 | 1705 - 2401 | 17.2 |
+| **Saturday** | 2.4 | 0.8 - 5.0 | 1650 - 2783 | 16.9 |
+| **Sunday** | 3.9 | 2.3 - 6.5 | 1089 - 2461 | 16.8 |
 
-Average electricity prices will remain affordable throughout the forecast period. **Monday** stands out with the highest average price of 4.7 cents and a daily maximum of 11.2 cents. A price spike risk occurs on Monday from 6 PM to 8 PM. The internal daily price difference is explained by fluctuations in wind power, as minimum production drops to 462 megawatts. On **Sunday**, the average wind power production also remains at a weak level, 1284 megawatts.
+Electricity price forecasts remain mostly at an affordable level, although **Monday** will see the highest average price of the period at 5.7 cents. Within the day, prices will vary strongly from 0.4 cents up to 12.4 cents. The high maximum price is partly explained by wind power fluctuations; the day's minimum production drops to 677 megawatts, which is below 2000 MW. There is a risk of price spikes on Monday between 18:00 and 20:00.
 
-The most affordable day is **Saturday**, with an average price of 1.9 cents and the cheapest hours falling below one cent. Average prices for **Tuesday**, **Wednesday**, and **Friday** will settle between 3.4 and 3.6 cents. The average price for **Thursday** is expected to be 3.7 cents. Temperatures remain steady throughout the week and do not affect prices.
+From **Tuesday** to Sunday, average prices will settle between 2.4 and 4.5 cents. The most affordable day is **Saturday**, with an average price of 2.4 cents and the cheapest hours at 0.8 cents. On **Friday** afternoon, prices will dip very low for a while, remaining between 1.1 and 1.4 cents from 14:00 to 16:00. On **Sunday**, the price will rise in the evening to 6.5 cents, which is the day's maximum.
 
-*Sähkövatkain and gemma-4-lora-mlx calculated.* 🌬️
+*Sähkövatkain gemma-4-lora-mlx verified.* ⚡
