@@ -7,6 +7,7 @@ import pytz
 os.environ.setdefault("LLM_API_BASE", "https://example.invalid/v1")
 os.environ.setdefault("LLM_API_KEY", "test-key")
 os.environ.setdefault("LLM_MODEL", "test-model")
+os.environ.setdefault("LLM_DISPLAY_NAME", "Test Model")
 
 from util import llm
 
@@ -71,6 +72,14 @@ def test_narration_prompt_uses_forecast_period_wording():
     assert "Kirjoita yleiskuvaus ennustejakson hintakehityksestä, futuurissa." in llm.narration_prompt
     assert "Ennustejakson edullisimmat ja kalleimmat ajankohdat ovat kiinnostavia tietoja" in llm.narration_prompt
     assert "Suosi viikonpäivien nimiä, kun kuvaat tulevien päivien kehitystä." in llm.narration_prompt
+
+
+def test_narration_instructions_use_display_name_in_signature():
+    instructions = llm.format_narration_instructions()
+
+    assert instructions.count("Test Model") == 2
+    assert "test-model" not in instructions
+    assert "{LLM_DISPLAY_NAME}" not in instructions
 
 
 def test_format_spike_risk_block_uses_shared_hourly_mask():

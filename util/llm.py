@@ -25,6 +25,7 @@ load_dotenv(".env.local")
 LLM_API_BASE = os.getenv("LLM_API_BASE", None)
 LLM_API_KEY = os.getenv("LLM_API_KEY", None)
 LLM_MODEL = os.getenv("LLM_MODEL", None)
+LLM_DISPLAY_NAME = os.getenv("LLM_DISPLAY_NAME") or LLM_MODEL
 
 if None in (LLM_API_BASE, LLM_API_KEY, LLM_MODEL):
     logger.error(
@@ -32,7 +33,9 @@ if None in (LLM_API_BASE, LLM_API_KEY, LLM_MODEL):
     )
     sys.exit(1)
 
-logger.debug(f"LLM conf: '{LLM_API_BASE}': '{LLM_MODEL}'")
+logger.debug(
+    f"LLM conf: '{LLM_API_BASE}': model '{LLM_MODEL}', display name '{LLM_DISPLAY_NAME}'"
+)
 
 FINNISH_MONTHS_PARTITIVE = {
     1: "tammikuuta",
@@ -83,6 +86,12 @@ def build_narration_prompt(df_daily, df_intraday, helsinki_tz, nuclear_outage_da
         f"{forecast_end_weekday}. Tämä aineisto kuvaa ennustejaksoa, ei välttämättä kalenteriviikkoa.\n\n"
     )
     return prompt
+
+
+def format_narration_instructions():
+    """Insert the public-facing model name into the narration instructions."""
+    return narration_prompt.format(LLM_DISPLAY_NAME=LLM_DISPLAY_NAME)
+
 
 # region spike risk
 def format_spike_risk_block(df_daily, df_intraday, helsinki_tz, now=None):
@@ -337,7 +346,7 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
 
     prompt += "</data>\n"
 
-    prompt += narration_prompt.format(LLM_MODEL=LLM_MODEL)
+    prompt += format_narration_instructions()
 
     logger.info(prompt)
 

@@ -75,7 +75,9 @@ pip install -r requirements.txt
 
 Note that `uv venv` does not seed a `pip` binary by default. If you specifically want one inside `.venv`, use `uv venv --seed` or install `pip` explicitly afterward.
 
-The repo uses environment variables for configuration. These can be set in a file called `.env.local`. Check  `.env.local.template` [and the comments](.env.local.template) on what the variables are. Most of the defaults should be OK.
+The repo uses environment variables for configuration. These can be set in a file called `.env.local`. Check `.env.local.template` [and the comments](.env.local.template) on what the variables are. Most of the defaults should be OK.
+
+For LLM narration, `LLM_MODEL` is the model identifier sent to the OpenAI-compatible API. Set `LLM_DISPLAY_NAME` to the friendlier, public-facing name that should appear in the generated article signature. If `LLM_DISPLAY_NAME` is omitted or empty, it defaults to `LLM_MODEL`.
 
 ## Usage
 
