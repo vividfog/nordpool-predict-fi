@@ -1,19 +1,19 @@
-*Electricity prices remain affordable over the weekend but rise early in the week as wind power weakens. The situation stabilizes on Thursday, with prices dropping again.*
+*Electricity prices remain moderate during the forecast period, but mid-week spikes will give way to very affordable wind-driven prices on Friday.*
 
-The forecast was updated on Thursday at 20:54.
+Forecast updated on Friday at 08:54.
 
-| | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
+|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday** | 1.0 | 0.5 – 2.3 | 3091 – 4719 | 17.2 |
-| **Saturday** | 2.1 | 1.0 – 4.4 | 886 – 3109 | 16.9 |
-| **Sunday** | 2.0 | 0.7 – 3.3 | 881 – 2035 | 16.8 |
-| **Monday** | 3.4 | 2.2 – 6.1 | 1328 – 2388 | 16.1 |
-| **Tuesday** | 4.5 | 1.9 – 7.6 | 929 – 1987 | 16.2 |
-| **Wednesday** | 4.4 | 2.8 – 7.9 | 993 – 1972 | 16.5 |
-| **Thursday** | 1.3 | 0.6 – 1.8 | 2215 – 3809 | 15.4 |
+| **Saturday** | 2.4 | 1.1 - 4.2 | 492 - 2554 | 16.9 |
+| **Sunday** | 2.1 | 0.6 - 3.4 | 856 - 2131 | 16.8 |
+| **Monday** | 3.5 | 2.4 - 6.3 | 1283 - 2347 | 16.1 |
+| **Tuesday** | 3.6 | 1.0 - 6.8 | 1234 - 2362 | 16.2 |
+| **Wednesday** | 4.7 | 2.9 - 6.8 | 1107 - 1829 | 16.5 |
+| **Thursday** | 2.6 | 0.7 - 4.7 | 1399 - 3642 | 15.4 |
+| **Friday** | 0.8 | 0.4 - 1.6 | 2738 - 4226 | 14.9 |
 
-Electricity prices will stay affordable over the weekend, but rise significantly at the beginning of the week. On **Friday**, the average price will be 1.0 ¢/kWh and there is plenty of wind power. On **Saturday**, the average price will rise to 2.1 cents and the daily maximum is 4.4 ¢. A price spike risk occurs on Saturday from 8:00 to 10:00, which is explained by wind power dipping below 1000 MW. On **Sunday**, the average price will be 2.0 cents and wind power remains weak. There is also a price spike risk on Sunday from 8:00 to 10:00, when wind power reaches the daily minimum of 881 MW.
+Average prices for the forecast period remain below five cents, though daily variation is moderate. Electricity will be inexpensive on **Saturday** and **Sunday**. Saturday's hourly prices rise toward the evening to 4.2 cents, while Sunday's lowest prices drop as far as 0.6 cents. Price spike risks exist on both days: Saturday between 7–9 AM and Sunday from 8–10 AM.
 
-Prices will push higher on **Monday**, with an average price of 3.4 ¢/kWh. On **Tuesday** and **Wednesday**, the average prices will rise to 4.5 cents and 4.4 cents, respectively. Tuesday's maximum price is 7.6 ¢ and Wednesday's highest price reaches 7.9 cents. The price spike risk on Tuesday is timed for 9:00–11:00 and Wednesday's risk from 7:00 to 9:00. On both days, the minimum wind power falls below 1000 MW, which drives prices up. The situation will level out on **Thursday**, when the average price drops to 1.3 cents and wind power is abundant once again.
+**Monday**, **Tuesday**, and **Wednesday** stand out as the most expensive days of the period. Wednesday's average price rises to 4.7 cents, and maximum prices on Tuesday and Wednesday reach 6.8 cents. The higher maximums on these days are partly explained by low minimum wind power production, which remains below 2000 MW. Prices will decrease on **Thursday** as wind power strengthens, and **Friday** is clearly the most affordable day. Friday's average price stays at 0.8 cents, and prices remain under two cents throughout the day due to strong wind power production.
 
-*Electric numbers interpreted by gemma-4-lora-mlx.* 💨
+*Numbers interpreted today by Sähkövatkain-Gemma 4 31B.* 🌬️
