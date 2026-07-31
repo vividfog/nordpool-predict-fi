@@ -359,7 +359,11 @@ if args.commit:
 
         # Archive a snapshot of the predictions
         archive_db_path = os.path.join(data_folder_path, "archive.db")
-        run_id = insert_snapshot(archive_db_path, df_recent_to_commit)
+        run_id = insert_snapshot(
+            archive_db_path,
+            df_recent_to_commit,
+            source_db_path=db_path,
+        )
         if not run_id:
             logger.error("Failed to archive prediction snapshot")
     else:
