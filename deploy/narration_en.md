@@ -1,19 +1,19 @@
-*Electricity average prices remain moderate next week, but weak wind power on Wednesday will push prices up and bring a slight risk of price spikes.*
+*Electricity prices will remain moderate starting early in the week, but weak wind power on Wednesday and a price spike risk on Sunday morning will drive up individual hourly rates.*
 
-The forecast was updated on Monday at 15:18.
+Ennuste on päivitetty maanantaina klo 20:55.
 
-|  | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
+| | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday** | 3.1 | 2.2 – 4.3 | 1618 – 3155 | 16.2 |
-| **Wednesday** | 5.2 | 3.0 – 7.8 | 866 – 2520 | 16.5 |
-| **Thursday** | 2.8 | 1.4 – 4.4 | 1427 – 4113 | 15.4 |
-| **Friday** | 2.6 | 1.4 – 5.4 | 1817 – 3751 | 14.8 |
-| **Saturday** | 3.5 | 1.8 – 7.0 | 1114 – 2077 | 14.7 |
-| **Sunday** | 2.9 | 1.7 – 4.6 | 1077 – 2563 | 14.3 |
-| **Monday** | 2.4 | 1.2 – 3.7 | 2238 – 3659 | 15.2 |
+| **Tuesday** | 3,1 | 2,2 – 4,3 | 1621 – 3069 | 16,2 |
+| **Wednesday** | 4,5 | 2,7 – 6,6 | 896 – 2775 | 16,5 |
+| **Thursday** | 2,4 | 1,3 – 3,9 | 1409 – 3491 | 15,4 |
+| **Friday** | 2,6 | 1,5 – 4,7 | 1537 – 3496 | 14,8 |
+| **Saturday** | 3,3 | 1,8 – 6,6 | 1148 – 2303 | 14,7 |
+| **Sunday** | 2,8 | 1,3 – 5,0 | 897 – 2622 | 14,3 |
+| **Monday** | 2,3 | 1,1 – 3,7 | 2222 – 3687 | 15,2 |
 
-Average prices for the forecast period will remain affordable, although on **Wednesday** the price will rise to a daily average of 5.2 cents. Wednesday's maximum price reaches 7.8 cents in the morning and evening. There is a risk of price spikes between 08:00 and 10:00. The higher maximum price is explained by weak wind power, as the day's minimum production drops to 866 megawatts.
+Average spot electricity prices will remain moderate in the coming days, staying under 5 cents. The most expensive day is **Wednesday**, with an average price of 4.5 cents. Wind power production is weak on Wednesday, dropping as low as 896 MW during the day, which explains the higher price level and an evening peak of 6.6 cents. There is a risk of price spikes on Wednesday morning between 9:00 and 11:00.
 
-On **Saturday**, the average price will be 3.5 cents and the maximum price rises to 7.0 cents in the evening. Wind power is weak, averaging 1451 megawatts, with a daily minimum production of only 1114 megawatts. On **Monday**, the average electricity price will be the lowest of the period at 2.4 cents. At its lowest, the price reaches 1.2 cents in the afternoon. There is abundant wind power averaging 2930 megawatts, with maximum production rising above 3600 megawatts.
+On **Thursday** and **Friday**, wind power is abundant, reaching over 3400 MW. This pushes prices down; the average price for Thursday is expected to be 2.4 cents and Friday 2.6 cents. **Saturday's** average price is 3.3 cents, with the daily maximum rising to 6.6 cents in the evening. **Sunday's** average is 2.8 cents, but there is a price spike risk during the morning hours from 7:00 to 9:00. Next **Monday** is the cheapest day of the forecast period with an average price of 2.3 cents and wind power at its strongest.
 
-*Interpreted today by Sähkövatkain-Gemma 4 31B.* 🌬️
+*Sähkövatkain-Gemma 4 31B interpreted the figures.* 🌬️
