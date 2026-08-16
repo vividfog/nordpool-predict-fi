@@ -1,23 +1,24 @@
-*Lähiviikon pörssisähkön hinnat pysyvät maltillisina, ja maanantai asettuu edullisimmaksi päiväksi tuulivoiman ollessa runsasta.*
+*Tulevan viikon pörssisähkön hinnat vaihtelevat maanantain edullisuudesta keskiviikon ja torstain korkeisiin iltapiikkeihin, tasaantuen loppuviikosta ja viikonloppua kohden.*
 
-Pörssisähkön hintatiedot on päivitetty sunnuntaina klo 14:59.
+Tässä on pörssisähkön hintaennuste tulevalle viikolle.
 
-Tulevan viikon pörssisähkön hinta liikkuu Maltillisesti, ja keskihinnat pysyttelevät alle 5 sentissä. Maanantai on jakson edullisin päivä, jolloin keskihinta on 2,0 ¢/kWh ja halvimmat tunnit painuvat jopa 0,3 senttiin. Tiistaina hinta nousee keskimäärin 3,9 senttiin, ja torstai on viikon kallein päivä 4,6 sentin keskihinnalla.
+**Yleiskatsaus**
+Tulevaan viikkoon kohdistuu vaihtelevaa hintakehitystä. Alkuviikosta hinnat pysyttelevät maltillisina, mutta keskiviikkoa kohti mennään kohti korkeampia huippuja. Loppuviikosta hintataso tasaantuu, ja viikonloppu tuo mukanaan selkeää laskua.
 
-Keskiviikon ja perjantain keskihinnat ovat 4,0 ¢/kWh. Lauantaina hinta tasaantuu 3,2 senttiin ja sunnuntaina 2,5 senttiin.
+**Päivittäiset ennusteet**
 
-Tuulivoiman määrä vaihtelee merkittävästi. Maanantaina tuulivoimaa on runsaasti, keskimäärin 2536 MW, mikä pitää hinnat matalalla. Tiistaista torstaihin tuulivoiman keskimääräinen tuotanto laskee alle 2000 MW:n, mikä näkyy päivittäisten maksimihintojen nousuna. Keskiviikon korkein hinta on 6,6 senttiä ja torstaina se nousee 7,0 senttiin. Lauantain tuulivoiman keskituotanto on heikoin, vain 1121 MW. Lauantaille on merkitty hintapiikkiriski klo 6–8, vaikka päivän maksimihinta on ennusteessa 6,0 senttiä.
+| Päivä | Alin hinta (c/kWh) | Korkein hinta (c/나kWh) | Keskihinta (c/kWh) | Huomioita |
+| :--- | :---: | :---: |B/kWh | :--- |
+| Maanantai | 0.3 | 4.4 | 2.0 | Edullinen päivä, matalat hinnat aamulla. |
+| Tiistai | 1.6 | 9도0 | 4.3 | Hinnan nousu iltaa kohden, huippu illalla. |
+| Keskiviikko | 2.2 | 7.7 | 4.8 | Korkea hintataso, painottuen aamuun ja iltaan. |
+| Torstai | 3.5 | 8.6 | 4.9 | Jatketaan korkealla, piikki illalla. |
+| Perjantai | 3.0 | 6.6 | 4.1도 | Hintojen lasku alkaa iltapäivällä. |
+| Lauantai | 1.6 | 6.4 | 3.2 | Alhaisemmat hinnat päivällä, nosto illalla. |
+| Sunnuntai도 | 1.3 | 4.8 | 2.7 | Rauhallinen päivä, alhaisimmat hinnat iltapäivällä. |
 
-Lämpötilat pysyttelevät noin 14–15 asteessa, mikä ei vaikuta sähkön hintaan. Ydinvoimasta ei ole raportoitu tuotantovajauksia tai huoltokatkoja.
+**Huomioita hintapiikeistä**
+Tiistai- ja keskiviikon ilto로 (klo 20–22) on olemassa merkittävä riski hintapiikeistä, joiden vaikutus voi nostaaan hintoja paikallisesti. Muina päivinä tilanne pysyy vakaampana, eikä merkittäviä poikkeamia ole ennustettu.
 
-| Päivä | Keskihinta (¢/kWh) | Alin–ylin hinta (¢/kWh) | Tuulivoima MW (keskiarvo) |
-| :--- | :---: | :---: | :---: |
-| **Maanantai** | 2,0 | 0,3–4,4 | 2536 |
-| **Tiistai** | 3,9 | 1,6–5,9 | 1725 |
-| **Keskiviikko** | 4,0 | 2,5–6,6 | 1647 |
-| **Torstai** | 4,6 | 2,7–7,0 | 1533 |
-| **Perjantai** | 4,0 | 2,1–6,4 | 1774 |
-| **Lauantai** | 3,2 | 0,9–6,0 | 1121 |
-| **Sunnuntai** | 2,5 | 0,6–4,5 | 1432 |
-
-_Sähkövatkain-ennuste on koottu tuulivoiman ja lämpötilojen perusteella. – Sähkövatkain 31B_ ⚡
+**Suositus**
+Sähkön kulutusta kannattaa ajoittaa maanantaille sekä viikonlopulle, jolloin keskihinnat ovat alhaisimmillaan. Tiistain ja torstain iltapiikejä kannattaa välttää siirtämällä energiaintensiiviset toiminnot aamutunneille tai myöhäisillaksi.
