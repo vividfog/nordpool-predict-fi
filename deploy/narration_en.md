@@ -1,19 +1,19 @@
-*The middle of the forecast period brings the week's highest average prices, while Monday and the weekend remain significantly cheaper.*
+*Electricity spot prices will remain affordable next week, although decreasing wind power increases prices towards Thursday. There is a slight risk of price spikes on Saturday morning.*
 
-The forecast was last updated on Sunday at 08:54.
+Forecast updated Sunday at 11:54.
 
-|  | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temp.<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **Monday** | 2.1 | 0.6 - 3.7 | 2020 - 2685 | 15.3 |
-| **Tuesday** | 4.4 | 1.7 - 8.5 | 972 - 2557 | 14.2 |
-| **Wednesday** | 4.9 | 2.6 - 8.6 | 861 - 1558 | 14.1 |
-| **Thursday** | 5.2 | 3.5 - 8.1 | 1056 - 1947 | 14.6 |
-| **Friday** | 3.9 | 2.5 - 6.2 | 1140 - 2251 | 14.9 |
-| **Saturday** | 2.7 | 0.7 - 4.6 | 919 - 1374 | 14.9 |
-| **Sunday** | 2.0 | 0.1 - 5.4 | 1161 - 1699 | 14.6 |
+| | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temp<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Monday** | 2.1 | 0.6 - 4.4 | 2194 - 2963 | 15.3 |
+| **Tuesday** | 4.0 | 1.7 - 6.2 | 1188 - 2613 | 14.2 |
+| **Wednesday** | 3.9 | 2.4 - 6.3 | 1054 - 2436 | 14.1 |
+| **Thursday** | 4.6 | 3.2 - 6.6 | 1212 - 2077 | 14.6 |
+| **Friday** | 3.9 | 2.2 - 6.0 | 1379 - 2408 | 14.9 |
+| **Saturday** | 3.1 | 0.9 - 6.0 | 925 - 1611 | 14.9 |
+| **Sunday** | 2.5 | 0.8 - 4.3 | 1068 - 1841 | 14.8 |
 
-The forecast period shows a clear price peak in the middle of the week. **On Monday**, the average price is among the lowest in the period at 2.1 ¢/kWh, and **on Thursday** it rises to the highest level at 5.2 ¢/kWh. The highest single-hour price of 8.6 cents is expected **on Wednesday** morning at 08:00. At the same time, wind power output drops to the period's lowest value of 861 MW, which explains the morning price increase. There is a risk of price spikes **on Tuesday** evening between 20:00 and 22:00 and on Wednesday morning between 07:00 and 09:00.
+Electricity spot prices will stay at an affordable level throughout the forecast period, with average prices ranging between 2–5 cents. **Monday** is the cheapest day, with an average price of 2.1 ¢/kWh and hourly prices dipping below one cent at night. Starting Wednesday, average prices rise slightly, and **Thursday** is the most expensive day of the period with an average price of 4.6 cents.
 
-The cheapest hours fall on **Sunday afternoon**, when the price drops to 0.1 cents, and during **Monday's** night hours, with a minimum of 0.6 cents. The second half of the week begins with a clear drop **on Friday**: the average price falls from Thursday's 5.2 cents to 3.9 cents and continues declining **on Saturday** (2.7 ¢) and Sunday (2.0 ¢). Prices remain mostly below five cents over the weekend, making the latter part of the period significantly cheaper than the Wednesday–Thursday stretch.
+Price fluctuations are partly explained by changes in wind power production. On **Tuesday**, **Wednesday**, and **Thursday**, the average wind power production is below 2000 MW, which pushes up the daily maximum prices. For instance, on Thursday, wind power hits a minimum of 1212 MW and the maximum price reaches 6.6 cents. On **Saturday**, wind power averages 1130 MW, which may explain the risk of price spikes in the morning between 6:00 and 8:00. On Sunday, prices decline again, with the price dropping to 0.8 cents at 13:00.
 
-*Prices interpreted by Sähkövatkain-Qwen 3.8 27B.* 📉
+*Interpreted today by Sähkövatkain-Gemma 4 31B* 🌬️
