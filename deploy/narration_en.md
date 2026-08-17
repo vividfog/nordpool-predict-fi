@@ -1,25 +1,19 @@
-*The coming week's spot electricity prices fluctuate from affordable Monday to high evening peaks on Wednesday and Thursday, stabilizing towards the end of the week and into the weekend.*
+*The forecast highlights high electricity prices on Wednesday and lower levels during the weekend as wind power varies.*
 
-***
+The forecast was updated on Monday at 03:10.
 
-*The coming week's spot electricity prices fluctuate from affordable Monday to high evening peaks on Wednesday and Thursday, stabilizing towards the end of the week and into the weekend.*
+| | avg<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Tuesday** | 4.4 | 1.6 – 8.7 | 915 – 2434 | 14.2 |
+| **Wednesday** | 6.3 | 3.8 – 10.9 | 536 – 955 | 14.1 |
+| **Thursday** | 5.4 | 3.9 – 7.9 | 718 – 1685 | 14.6 |
+| **Friday** | 4.1 | 2.5 – 6.1 | 1420 – 1916 | 14.9 |
+| **Saturday** | 2.6 | 1.0 – 4.9 | 874 – 1978 | 14.9 |
+| **Sunday** | 2.1 | 1.0 – 3.8 | 1278 – 2127 | 14.8 |
+| **Monday** | 4.4 | 1.9 – 7.9 | 1479 – 2451 | 14.4 |
 
-**Weekly Overview**
-The coming week's spot electricity prices are variable, with low prices on Monday and high evening peaks on Wednesday and Thursday. Prices stabilize towards the end of the week and decrease during the weekend.
+Electricity price expectations vary during the forecast period. The most expensive day is **Wednesday**, when the average price rises to 6.3 cents and the maximum reaches 10.9 cents. A price spike risk is noted for Wednesday morning between 7:00 and 9:00. There is also a price spike risk on **Tuesday** from 20:00 to 22:00, when the maximum price reaches 8.7 cents. Both days see minimum wind power production drop below 1,000 MW, which explains the higher maximum prices and overall more expensive average on Wednesday.
 
-**Daily Forecasts**
-| Day | Low Price (c/kWh) | High Price (c/kWh) | Average Price (c/kWh) | Notes |
-| :--- | :---: | :---: | :---: | :--- |
-| Monday | 0.3 | 1.2 | 0.8 | Affordable day, low prices in the morning. |
-| Tuesday | 1.3 | 4.5 | 2.7 | Price rise in the evening, peak at night. |
-| Wednesday | 2.2 | 7.7 | 4.8 | High price level, peaking morning and evening. |
-| Thursday | 3.5 | 8.6 | 5.9 | Continuing high, evening peak. |
-| Friday | 3.0 | 6.4 | 4.1 | Prices begin to drop in the afternoon. |
-| Saturday | 1.6 | 5.2 | 3.2 | Lower prices during the day, evening rise. |
-| Sunday | 1.3 | 4.8 | 2.7 | Calm day, lowest prices in the afternoon. |
+The weekend is significantly cheaper. The average price on **Saturday** is 2.6 cents, and on **Sunday**, it drops to the lowest of the period at 2.1 cents. Sunday's cheapest hours dip to one cent around midday. **Friday's** average price is 4.1 cents and on **Thursday**, it is 5.4 cents. Next **Monday**, prices level out again to an average of 4.4 cents.
 
-**Notes on Price Peaks**
-There is a significant risk of price peaks on Tuesday and Wednesday evenings (between 8 PM and 10 PM), which may cause local price surges. On other days, the situation remains stable with no significant anomalies predicted.
-
-**Recommendation**
-It is advisable to schedule energy-intensive consumption for Monday and the weekend, when average prices are at their lowest. Avoid Tuesday and Thursday evening peaks by shifting usage to mornings or late nights.
+*Sähkövatkain-Gemma 4 31B interpreted the numbers.* 🌬️
