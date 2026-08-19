@@ -1,27 +1,27 @@
 {
     "import_capacity_daily_average": [
         {
-            "average_import_capacity_mw": 4089.5,
+            "average_import_capacity_mw": 4083.3,
             "date": "2026-08-19"
         },
         {
-            "average_import_capacity_mw": 4114.0,
+            "average_import_capacity_mw": 4054.5,
             "date": "2026-08-20"
         },
         {
-            "average_import_capacity_mw": 4114.0,
+            "average_import_capacity_mw": 4040.0,
             "date": "2026-08-21"
         },
         {
-            "average_import_capacity_mw": 4114.0,
+            "average_import_capacity_mw": 4040.0,
             "date": "2026-08-22"
         },
         {
-            "average_import_capacity_mw": 4114.0,
+            "average_import_capacity_mw": 4040.0,
             "date": "2026-08-23"
         },
         {
-            "average_import_capacity_mw": 4114.0,
+            "average_import_capacity_mw": 4040.0,
             "date": "2026-08-24"
         }
     ]
