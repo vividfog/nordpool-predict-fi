@@ -1,21 +1,19 @@
-*The forecast period begins on Friday with an average price above 13 cents, but Sunday and Monday dip below eight cents before rising again on Wednesday.*
+*The forecast period starts with elevated prices on Friday and Saturday, but Sunday's strong winds bring a clear drop before a gradual rise from Monday onward.*
 
-The forecast was updated on Thursday at 14:54.
+The forecast was updated on Thursday at 21:51.
 
-|           | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
-|:----------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday**   | 13.6            | 5.7 – 22.6       | 749 – 1924    | 14.9          |
-| **Saturday** | 9.7             | 5.8 – 16.2       | 122 – 2060    | 14.9          |
-| **Sunday**   | 7.1             | 3.1 – 11.0       | 1135 – 3082   | 14.8          |
-| **Monday**   | 7.9             | 3.2 – 12.0       | 1526 – 2750   | 14.5          |
-| **Tuesday**  | 10.3            | 4.8 – 15.3       | 1059 – 2600   | 14.0          |
-| **Wednesday**| 11.2            | 6.2 – 20.2       | 724 – 1860    | 13.9          |
-| **Thursday** | 9.9             | 6.8 – 12.3       | 763 – 2196    | 14.7          |
+|             | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
+|:------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Friday**  | 13.6            | 5.7 – 22.6       | 926 – 1922    | 14.9          |
+| **Saturday**   | 9.5             | 6.0 – 14.7       | 115 – 1932    | 14.9          |
+| **Sunday**  | 5.5             | 2.5 – 8.4        | 2179 – 3876   | 14.8          |
+| **Monday**  | 7.8             | 2.9 – 11.6       | 1838 – 2821   | 14.5          |
+| **Tuesday**    | 10.0            | 4.9 – 15.3       | 1078 – 2227   | 14.0          |
+| **Wednesday**| 10.8            | 6.0 – 17.8       | 688 – 1952    | 13.9          |
+| **Thursday**    | 9.9             | 6.1 – 12.7       | 844 – 1887    | 14.7          |
 
-The forecast period begins on **Friday**, when the average spot market price rises above 13 cents per kilowatt-hour. Within the day, price differences are significant: at its cheapest, electricity costs less than six cents, but in the evening between 7 and 8 p.m., the price climbs above 22 cents. Behind this is a weak level of wind power – the daily minimum output stays at only around 750 megawatts, which explains the high maximum price.
+The forecast period begins on **Friday** with clearly elevated prices. The daily average rises to 13.6 cents per kilowatt-hour, and the price climbs above 22 cents in the evening. Behind this is weak wind power minimum output, which stays below one thousand megawatts and explains the high maximum price. **Saturday** continues to be expensive with an average of 9.5 cents. Wind power is exceptionally low, averaging only 692 megawatts, and the day carries a price spike risk between 18:00 and 20:00.
 
-On **Saturday**, the average price drops below ten cents, but calm weather keeps wind power averaging under 600 megawatts. The price spike risk falls in the evening between 6 and 8 p.m., when prices may rise above 15 cents. **Sunday** and **Monday** are the most affordable days of the period: the average price stays around seven cents, and wind power output strengthens significantly. On the night leading into Sunday, electricity is at times below three cents.
+**Sunday** brings a significant change. Strong winds push wind power average output above 3,000 megawatts, bringing the average price down to 5.5 cents and keeping all-day prices below 8.4 cents. The cheapest hours fall in the early morning, when the price drops to around 2.5 cents. **Monday** sees a slight rise but remains moderate. **Tuesday** and **Wednesday** average around 10 cents, due to wind power staying at a low level. Wednesday also carries a price spike risk between 19:00 and 21:00. **Thursday** settles at an average of 9.9 cents with little intra-day variation.
 
-On **Tuesday**, the price rises again above ten cents, and on **Wednesday** the average price climbs to 11.2 cents. Wednesday's wind power minimum output is only around 720 megawatts, which partly explains the day's high maximum price – over 20 cents in the evening between 7 and 9 p.m. The price spike risk applies precisely to this time window. **Thursday** settles at an average of about ten cents, with no major price fluctuations within the day.
-
-*Sähkövatkain-Qwen 3.8 27B interpreted the numbers.* ⚡
+*An electric glance by Sähkövatkain-Qwen 3.8 27B.* ⚡
