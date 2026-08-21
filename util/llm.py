@@ -1,6 +1,7 @@
 import sys
 import os
 import json
+import math
 import time
 import locale
 import datetime
@@ -22,10 +23,41 @@ except locale.Error:
 
 load_dotenv(".env.local")
 
+
+def _optional_env(name):
+    value = os.getenv(name)
+    if value is None:
+        return None
+    return value.strip() or None
+
+
 LLM_API_BASE = os.getenv("LLM_API_BASE", None)
 LLM_API_KEY = os.getenv("LLM_API_KEY", None)
 LLM_MODEL = os.getenv("LLM_MODEL", None)
 LLM_DISPLAY_NAME = os.getenv("LLM_DISPLAY_NAME") or LLM_MODEL
+LLM_TIMEOUT_SECONDS = 45 * 60
+LLM_MAX_TOKENS = int(os.getenv("LLM_MAX_TOKENS", "16384").strip() or "16384")
+LLM_TEMPERATURE = (
+    float(t) if (t := _optional_env("LLM_TEMPERATURE")) is not None else None
+)
+LLM_MAX_RETRIES = int(os.getenv("LLM_MAX_RETRIES", "0").strip() or "0")
+LLM_MAX_OUTPUT_CHARS = int(os.getenv("LLM_MAX_OUTPUT_CHARS", "8192").strip() or "8192")
+
+if LLM_MAX_TOKENS < 1:
+    raise ValueError("LLM_MAX_TOKENS must be an integer >= 1")
+if LLM_TEMPERATURE is not None and (
+    not math.isfinite(LLM_TEMPERATURE) or not 0 <= LLM_TEMPERATURE <= 2
+):
+    raise ValueError("LLM_TEMPERATURE must be a finite number in [0, 2]")
+if LLM_MAX_RETRIES < 0:
+    raise ValueError("LLM_MAX_RETRIES must be an integer >= 0")
+if LLM_MAX_OUTPUT_CHARS < 1:
+    raise ValueError("LLM_MAX_OUTPUT_CHARS must be an integer >= 1")
+
+_extra_body = _optional_env("LLM_EXTRA_BODY")
+LLM_EXTRA_BODY = json.loads(_extra_body) if _extra_body is not None else None
+if _extra_body is not None and not isinstance(LLM_EXTRA_BODY, dict):
+    raise ValueError("LLM_EXTRA_BODY must be a JSON object")
 
 if None in (LLM_API_BASE, LLM_API_KEY, LLM_MODEL):
     logger.error(
@@ -36,6 +68,33 @@ if None in (LLM_API_BASE, LLM_API_KEY, LLM_MODEL):
 logger.debug(
     f"LLM conf: '{LLM_API_BASE}': model '{LLM_MODEL}', display name '{LLM_DISPLAY_NAME}'"
 )
+
+
+def _build_request_params(messages):
+    request_params = {
+        "model": LLM_MODEL,
+        "messages": messages,
+        "stream": False,
+        "max_tokens": LLM_MAX_TOKENS,
+    }
+    if "gpt-5" in LLM_MODEL.lower():
+        # GPT-5 models allocate their own completion budget; avoid capping max tokens to prevent early cutoffs.
+        request_params.pop("max_tokens", None)
+    if LLM_TEMPERATURE is not None:
+        request_params["temperature"] = LLM_TEMPERATURE
+    if LLM_EXTRA_BODY is not None:
+        request_params["extra_body"] = LLM_EXTRA_BODY
+    return request_params
+
+
+def _require_content(content, stage):
+    if not isinstance(content, str) or not content.strip():
+        raise RuntimeError(f"LLM {stage} response is empty")
+    if len(content) > LLM_MAX_OUTPUT_CHARS:
+        raise RuntimeError(
+            f"LLM {stage} response is {len(content)} chars, over the {LLM_MAX_OUTPUT_CHARS} char limit"
+        )
+    return content
 
 FINNISH_MONTHS_PARTITIVE = {
     1: "tammikuuta",
@@ -247,6 +306,8 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
     client = OpenAI(
         api_key=LLM_API_KEY,
         base_url=LLM_API_BASE,
+        timeout=LLM_TIMEOUT_SECONDS,
+        max_retries=LLM_MAX_RETRIES,
     )
 
     today = datetime.date.today()
@@ -353,7 +414,7 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
     messages = [{"role": "user", "content": prompt}]
 
     # region _llm()
-    def llm_call(messages):
+    def llm_call(messages, stage):
 
         # Avoid rate limits on free APIs
         time.sleep(5)
@@ -362,28 +423,19 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
             logger.debug(
                 f"llm_call(): '{LLM_API_BASE}': '{LLM_MODEL}': payload: {len(messages)} messages"
             )
-            request_params = {
-                "model": LLM_MODEL,
-                "messages": messages,
-                "stream": False,
-            }
-
-            if "gpt-5" in LLM_MODEL.lower():
-                # GPT-5 models allocate their own completion budget; avoid capping max tokens to prevent early cutoffs.
-                pass
-            else:
-                request_params["max_tokens"] = 1536
-                request_params["temperature"] = 0.7
-
-            response = client.chat.completions.create(**request_params)
-            return response.choices[0].message.content
+            response = client.chat.completions.create(**_build_request_params(messages))
         except Exception as e:
             logger.error(f"LLM API call failed: {e}", exc_info=True)
             logger.info(f"LLM API call failed: {e}")
-            raise e
+            raise
+        try:
+            return _require_content(response.choices[0].message.content, stage)
+        except Exception as e:
+            logger.error(f"LLM {stage} response rejected: {e}", exc_info=True)
+            raise
 
     # Generate a narration
-    narration = llm_call(messages)
+    narration = llm_call(messages, "narration")
     messages.append({"role": "assistant", "content": narration})
 
     # region _ingress
@@ -394,7 +446,7 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
         }
     )
 
-    ingress = llm_call(messages)
+    ingress = llm_call(messages, "ingress")
     
     # Strip off any quotes from around the ingress
     ingress = ingress.strip("\"'")
@@ -411,7 +463,7 @@ def llm_generate(df_daily, df_intraday, helsinki_tz, deploy=False, commit=False)
             "content": "Finally, translate the entire ingress + article to English, using the same formatting as above. Do not write anything else. Thank you!",
         }
     )
-    narration_en = llm_call(messages)
+    narration_en = llm_call(messages, "translation")
     messages.append({"role": "assistant", "content": narration_en})
 
     # region _commit

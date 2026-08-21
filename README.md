@@ -79,6 +79,8 @@ The repo uses environment variables for configuration. These can be set in a fil
 
 For LLM narration, `LLM_MODEL` is the model identifier sent to the OpenAI-compatible API. Set `LLM_DISPLAY_NAME` to the friendlier, public-facing name that should appear in the generated article signature. If `LLM_DISPLAY_NAME` is omitted or empty, it defaults to `LLM_MODEL`.
 
+`LLM_MAX_TOKENS` defaults to `16384`. Optional `LLM_TEMPERATURE` and `LLM_EXTRA_BODY` values are omitted from the API request when empty; `LLM_EXTRA_BODY` accepts a JSON object for OpenAI-compatible provider options. See `.env.local.template` for an example.
+
 ## Usage
 
 ```shell
