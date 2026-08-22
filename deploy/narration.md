@@ -1,19 +1,19 @@
-*Alkaviikon sähkön hinta nousee tuulivoiman hiipuessa – tiistain ja keskiviikon maksimit kohoavat yli 14 senttiin, kun sunnuntai ja lauantai pysyttelevät edullisina.*
+*Ennustejaksolla hinnat vaihtelevat jyrkästi: edullisimmillaan sunnuntaina ja lauantaina, kalleimmillaan tiistaina ja keskiviikkona, kun tuulivoiman tuotanto hiipuu.*
 
-Ennuste on päivitetty lauantaina klo 11:54.
+Ennuste on päivitetty lauantaina klo 14:54.
 
-|  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **sunnuntai** | 2.0 | 0.2 - 4.2 | 2978 - 4407 | 14.8 |
-| **maanantai** | 4.2 | 0.8 - 7.5 | 2242 - 4217 | 14.5 |
-| **tiistai** | 8.0 | 4.1 - 14.7 | 412 - 2125 | 14.0 |
-| **keskiviikko** | 7.3 | 2.5 - 14.9 | 655 - 2365 | 13.9 |
-| **torstai** | 6.8 | 3.4 - 9.5 | 1021 - 1831 | 14.7 |
-| **perjantai** | 7.4 | 3.0 - 10.5 | 924 - 1605 | 15.6 |
-| **lauantai** | 3.9 | 1.8 - 7.5 | 1383 - 1978 | 14.8 |
+|           | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
+|:----------|:----------------------:|:------------------:|:----------------------------:|:-------------------------:|
+| **sunnuntai**  | 0,6                    | 0,2 – 2,0          | 2966 – 4420                  | 14,8                      |
+| **maanantai**  | 3,9                    | 0,4 – 7,6          | 2218 – 4210                  | 14,5                      |
+| **tiistai**    | 7,7                    | 4,9 – 15,0         | 408 – 2106                   | 14,0                      |
+| **keskiviikko**| 7,3                    | 3,0 – 14,1         | 758 – 2306                   | 13,9                      |
+| **torstai**    | 6,5                    | 3,9 – 9,2          | 1097 – 1849                  | 14,7                      |
+| **perjantai**  | 7,1                    | 2,9 – 10,3         | 984 – 1649                   | 15,6                      |
+| **lauantai**   | 3,8                    | 1,5 – 7,4          | 1439 – 1918                  | 14,8                      |
 
-Ennustejakso käynnistyy edullisissa merkeissä. **Sunnuntaina** keskihinta jää noin kahteen senttiin runsaan tuulivoiman ansiosta. **Maanantaina** hinta kohoaa hieman, mutta pysyttelee vielä maltillisena. **Tiistaina** tuulivoima romahtaa, ja tuotanto painuu minimissään vain 412 megawattiin. Tämä nostaa päivän maksimihinnan 14,7 senttiin. Samana päivänä on hintapiikkiriski aamupäivällä kello 8–10. **Keskiviikkona** tuulivoiman minimi on edelleen matala, 655 megawattia, ja maksimihinta nousee 14,9 senttiin. Hintapiikkiriski ajoittuu iltaan kello 19–21.
+**Sunnuntai** on ennustejakson edullisin päivä. Keskihinta jää 0,6 senttiin, ja tuulivoimaa on keskimäärin 3 950 megawattia, mikä pitää hinnat matalina koko vuorokauden. **Maanantaina** keskihinta nousee 3,9 senttiin, mutta pysyy vielä kohtuullisena. **Tiistaina** tuulivoiman tuotanto putoaa jyrkästi, ja keskihinta kohoaa 7,7 senttiin. Päivän maksimihinta on 15,0 senttiä aamulla kello 8–10, jolloin tuulivoiman minimi on vain 408 megawattia. Alhainen tuulivoiman minimituotanto selittää korkeaa maksimihintaa. Hintapiikkiriski ajoittuu juuri tälle aamujaksolle. **Keskiviikkona** hinta on yhä koholla, keskimäärin 7,3 senttiä, ja iltaa kohti kello 19–21 odotetaan hintapiikkiä, jolloin maksimihinta saattaa nousta 14,1 senttiin. Tuulivoiman minimi on tällöin 758 megawattia, mikä selittää kireää hintatasoa.
 
-**Torstaina** ja **perjantaina** tuulivoima pysyy heikkona, mutta hinnat tasaantuvat noin kuuteen ja kahdeksaan senttiin. **Lauantaina** keskihinta painuu alle neljään senttiin, mikä tekee siitä jakson edullisimman arkipäivän. Lämpötilat pysyttelevät koko jaksolla noin 14–16 asteessa, eikä niillä ole vaikutusta hintatasoon.
+**Torstai** ja **perjantai** jatkavat kohonneella hintatasolla. Torstain keskihinta on 6,5 senttiä ja perjantain 7,1 senttiä, mutta maksimit jäävät alle 10 sentin. **Lauantai** tuo helpotusta, kun tuulivoima voimistuu uudelleen. Keskihinta laskee 3,8 senttiin, ja päivän aikana hinta liikkuu 1,5–7,4 sentin välillä. Ennustejaksolla hinnat ovat siis selvimmillään tiistaina ja keskiviikkona, ja edullisimmillaan sunnuntaina ja lauantaina.
 
-*Numerot tarkisti Sähkövatkain-Qwen3.8-27B.* ⚡
+*Sähkövatkain-Qwen3.8-27B luki luvut.* 🌬️

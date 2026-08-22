@@ -1,19 +1,19 @@
-*The early-week electricity price rises as wind power fades – Tuesday and Wednesday maximums climb above 14 cents, while Sunday and Saturday remain affordable.*
+*During the forecast period, prices fluctuate sharply: cheapest on Sunday and Saturday, most expensive on Tuesday and Wednesday as wind power production wanes.*
 
-The forecast was updated on Saturday at 11:54.
+The forecast was updated on Saturday at 14:54.
 
-|  | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temp.<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **Sunday** | 2.0 | 0.2 - 4.2 | 2978 - 4407 | 14.8 |
-| **Monday** | 4.2 | 0.8 - 7.5 | 2242 - 4217 | 14.5 |
-| **Tuesday** | 8.0 | 4.1 - 14.7 | 412 - 2125 | 14.0 |
-| **Wednesday** | 7.3 | 2.5 - 14.9 | 655 - 2365 | 13.9 |
-| **Thursday** | 6.8 | 3.4 - 9.5 | 1021 - 1831 | 14.7 |
-| **Friday** | 7.4 | 3.0 - 10.5 | 924 - 1605 | 15.6 |
-| **Saturday** | 3.9 | 1.8 - 7.5 | 1383 - 1978 | 14.8 |
+|           | avg. price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg. temp.<br>°C |
+|:----------|:----------------------:|:------------------:|:----------------------------:|:-------------------------:|
+| **Sunday**  | 0.6                    | 0.2 – 2.0          | 2966 – 4420                  | 14.8                      |
+| **Monday**  | 3.9                    | 0.4 – 7.6          | 2218 – 4210                  | 14.5                      |
+| **Tuesday**    | 7.7                    | 4.9 – 15.0         | 408 – 2106                   | 14.0                      |
+| **Wednesday**| 7.3                    | 3.0 – 14.1         | 758 – 2306                   | 13.9                      |
+| **Thursday**    | 6.5                    | 3.9 – 9.2          | 1097 – 1849                  | 14.7                      |
+| **Friday**  | 7.1                    | 2.9 – 10.3         | 984 – 1649                   | 15.6                      |
+| **Saturday**   | 3.8                    | 1.5 – 7.4          | 1439 – 1918                  | 14.8                      |
 
-The forecast period starts on affordable terms. **Sunday's** average price stays at about two cents thanks to abundant wind power. **Monday's** price rises slightly but remains moderate. **Tuesday** sees wind power collapse, with output dropping to a minimum of just 412 megawatts. This pushes the day's maximum price to 14.7 cents. There is a price spike risk that morning between 8 and 10. **Wednesday's** wind power minimum is still low at 655 megawatts, and the maximum price rises to 14.9 cents. The price spike risk falls in the evening between 7 and 9 PM.
+**Sunday** is the most affordable day of the forecast period. The average price stays at 0.6 cents, and wind power averages 3,950 megawatts, keeping prices low throughout the day. On **Monday**, the average price rises to 3.9 cents but remains moderate. On **Tuesday**, wind power production drops sharply, and the average price climbs to 7.7 cents. The day's maximum price is 15.0 cents in the morning between 8 and 10, when wind power hits a minimum of only 408 megawatts. The low minimum wind power output explains the high maximum price. The price spike risk falls exactly on this morning period. On **Wednesday**, prices remain elevated, averaging 7.3 cents, and a price spike is expected in the evening between 19 and 21, when the maximum price could reach 14.1 cents. Wind power minimum is then 758 megawatts, which explains the tight pricing.
 
-**Thursday** and **Friday** see wind power remaining weak, but prices level out to around six and eight cents. **Saturday's** average price drops below four cents, making it the cheapest weekday of the period. Temperatures stay around 14–16 degrees throughout the period, with no impact on price levels.
+**Thursday** and **Friday** continue with elevated pricing. Thursday's average price is 6.5 cents and Friday's 7.1 cents, but maximums stay below 10 cents. **Saturday** brings relief as wind power strengthens again. The average price drops to 3.8 cents, and during the day the price ranges between 1.5 and 7.4 cents. In the forecast period, prices are thus most pronounced on Tuesday and Wednesday, and most affordable on Sunday and Saturday.
 
-*Numbers checked by Sähkövatkain-Qwen3.8-27B.* ⚡
+*Sähkövatkain-Qwen3.8-27B read the numbers.* 🌬️
