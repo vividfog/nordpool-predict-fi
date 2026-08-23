@@ -1,21 +1,19 @@
-*Wind power scarcity raises Tuesday and Wednesday prices, but electricity costs drop significantly toward the weekend.*
+*Early-week price spikes stay below 15 cents, but on **Saturday** the average electricity price drops below two cents as wind power strengthens.*
 
-The forecast was updated on Sunday at 20:54.
+The forecast was updated on Monday at 02:54.
 
-|  | avg. price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg. temp. °C |
-|:---|:---:|:---:|:---:|:---:|
-| **Monday** | 3.5 | 0.4 – 7.8 | 2286 – 4269 | 14.5 |
-| **Tuesday** | 7.2 | 2.9 – 13.7 | 536 – 2134 | 14.0 |
-| **Wednesday** | 7.5 | 3.6 – 14.7 | 418 – 1300 | 13.9 |
-| **Thursday** | 7.2 | 3.8 – 9.9 | 905 – 1580 | 14.7 |
-| **Friday** | 5.3 | 2.8 – 7.4 | 1019 – 2588 | 15.6 |
-| **Saturday** | 2.1 | 1.2 – 4.0 | 1529 – 2344 | 14.8 |
-| **Sunday** | 2.7 | 1.5 – 5.0 | 1271 – 2177 | 14.6 |
+|             | avg<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg<br>temperature<br>°C |
+|:------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Tuesday**   | 7.1             | 3.3 – 14.2       | 371 – 2049     | 14.0          |
+| **Wednesday** | 7.3             | 3.2 – 12.6       | 484 – 1580     | 13.9          |
+| **Thursday**  | 6.2             | 3.5 – 8.7        | 607 – 1968     | 14.7          |
+| **Friday**    | 5.4             | 3.5 – 7.4        | 1331 – 2631    | 15.6          |
+| **Saturday**  | 1.9             | 0.6 – 3.8        | 2079 – 2709    | 14.8          |
+| **Sunday**    | 3.8             | 2.8 – 5.9        | 1103 – 2578    | 14.6          |
+| **Monday**    | 5.3             | 2.8 – 8.4        | 996 – 2274     | 14.9          |
 
-The forecast period begins on **Monday** with affordable prices, as wind power is abundant and the average price stays at 3.5 cents per kilowatt-hour. Except for the afternoon, prices remain quite moderate throughout the day, and overnight rates fall below one cent.
+The forecast period begins with slightly higher price levels on **Tuesday** and **Wednesday**. The average price on both days rises above seven cents, with the maximum reaching 14.2 cents on Tuesday and 12.6 cents on Wednesday. The risk of price spikes is concentrated in the morning hours between 8:00 and 10:00 on both days. This is driven by exceptionally low wind power output, which drops to 371 megawatts on Tuesday and 484 megawatts on Wednesday. Wind power production remains noticeably weak in the early part of the week, contributing to above-average price expectations.
 
-On **Tuesday**, the situation changes as wind power production drops sharply. The average output falls to 1,280 megawatts, and at its lowest point only 536 megawatts are generated. This is immediately reflected in the maximum price, which climbs to 13.7 cents during the morning. The spike risk is scheduled for 8:00–10:00. **Wednesday** is the most expensive day of the forecast period, with an average price of 7.5 cents. Wind power's average output is just 823 megawatts, and the minimum drops to 418 megawatts. The highest single hourly price, 14.7 cents, falls in the evening, with a spike risk from 19:00 to 21:00. **Thursday** maintains an average of 7.2 cents, but wind power recovers slightly.
+Prices begin to fall on **Thursday** as wind power strengthens. The average price on **Friday** drops to 5.4 cents. The most affordable day of the period is **Saturday**, when the average price stays below two cents and at its lowest point, the price falls to 0.6 cents per kilowatt-hour. Prices rise slightly on **Sunday**, and on **Monday next week**, the average price returns to 5.3 cents. Wind power is expected to decline further on Monday, which may explain the somewhat firmer price pace towards the end of the period.
 
-**Friday** sees wind power strengthen further, and the average price drops to 5.3 cents. Over the weekend, prices fall clearly to more affordable levels. **Saturday** is the cheapest day of the period at 2.1 cents on average, and **Sunday** averages 2.7 cents. On both days, prices stay below five cents at peak, and wind power output remains generous.
-
-*Sähkövatkain-Qwen3.8-27B analyzed wind forecasts and prices.* 🌬️
+*Forecast powered by Sähkövatkain-Qwen3.8-27B.* 🌬️
