@@ -1,19 +1,21 @@
-_The forecast period begins with high prices, but electricity becomes notably cheaper by the weekend. Sunday is the most affordable day, averaging 3.4 cents._
+*Thursday and Tuesday stand out as the most expensive days of the forecast period due to limited wind power, but over the weekend prices drop to below three cents.*
 
-The forecast was updated on Tuesday at 20:54.
+The forecast was updated on Wednesday at 02:54.
 
-| | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
+|  | avg. price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg. temperature<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **Wednesday** | 13.6 | 7.1 – 22.7 | 317 – 1654 | 13.9 |
-| **Thursday** | 11.0 | 8.1 – 16.8 | 86 – 1524 | 14.7 |
-| **Friday** | 9.8 | 6.8 – 14.8 | 646 – 2487 | 15.6 |
-| **Saturday** | 4.1 | 2.7 – 6.3 | 1800 – 3059 | 14.8 |
-| **Sunday** | 3.4 | 2.2 – 5.0 | 2235 – 3210 | 14.6 |
-| **Monday** | 6.5 | 3.7 – 9.6 | 1179 – 2412 | 15.2 |
-| **Tuesday** | 7.4 | 6.3 – 8.5 | 1242 – 1769 | 15.5 |
+| **Thursday** | 10.4 | 7.2 – 15.6 | 166 – 1588 | 14.7 |
+| **Friday** | 8.6 | 5.6 – 11.6 | 617 – 3156 | 15.6 |
+| **Saturday** | 2.9 | 1.5 – 5.3 | 1984 – 3627 | 14.8 |
+| **Sunday** | 3.2 | 1.9 – 5.6 | 2280 – 3351 | 14.6 |
+| **Monday** | 7.3 | 3.8 – 10.6 | 1044 – 2745 | 15.2 |
+| **Tuesday** | 9.8 | 7.6 – 12.6 | 971 – 1253 | 15.5 |
+| **Wednesday** | 8.3 | 6.4 – 10.9 | 1067 – 2346 | 15.1 |
 
-At the start of the forecast period, electricity prices are noticeably higher, but expectations decline towards the end of the period. **Wednesday** stands out as the most expensive day, with an expected average price of 13.6 cents per kilowatt-hour. Within the day, the price rises to 22.7 cents in the morning, the highest hourly price across the entire forecast period. This is backed by weak wind power minimum output, which drops to only about 317 megawatts on Wednesday.
+The forecast period begins on **Thursday** at its most expensive. The day's expected average price rises above 10 cents per kilowatt-hour, and a single hour's price may climb to 15.6 cents during the evening peak. Behind this is exceptionally low wind power production, with the minimum dropping to just 166 megawatts. The scarcity of wind power partly explains Thursday's high maximum price. The risk of a price spike is concentrated in the time slot from 6 to 8 p.m. on Thursday.
 
-**Thursday** sees the weakest wind power of the period, with average output falling to just 600 megawatts. The day carries an elevated price spike risk between 19:00 and 21:00. **Friday** brings a slight decrease, but the daily average of 9.8 cents remains relatively high. Friday also carries a price spike risk in the morning between 09:00 and 11:00. **Saturday** sees prices drop to an affordable level, and **Sunday** is the cheapest day of the period with an average of 3.4 cents. Sunday's hourly prices range between 2.2 and 5.0 cents, with no price spikes expected. On **Monday** and **Tuesday**, prices rise slightly but remain at a moderate level.
+**Friday** is slightly more affordable than Thursday, but the risk of a price spike persists from 5 to 7 p.m. **Saturday** and **Sunday** are the cheapest days of the forecast period. Average prices remain below four cents, and the cheapest hours drop to as low as 1.5 cents. On both days, wind power production is at a normal level, and wind power has no significant impact on prices.
 
-*Sähkövatkain-Qwen3.8-27B, interpreter of winds.* 🌬️
+**On Monday**, the price rises again close to ten cents in the afternoon. **Tuesday** is the most expensive day of the latter part of the week, and its average price climbs to 9.8 cents. Wind power production is relatively weak throughout the day, with the minimum falling below one thousand megawatts, which partly raises the price level. The risk of a price spike on Tuesday is concentrated in the morning hours from 8 to 10 a.m. **Wednesday** settles at a moderate average price of 8.3 cents, and the price drops to below seven cents in the evening.
+
+*Sähkövatkain-Qwen3.8-27B screened the price trends.* 🌬️
