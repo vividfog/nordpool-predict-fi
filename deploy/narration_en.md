@@ -1,21 +1,19 @@
-*Thursday and Tuesday stand out as the most expensive days of the forecast period due to limited wind power, but over the weekend prices drop to below three cents.*
+_The forecast period begins with higher prices on Thursday and Friday, but strong wind power on Saturday and Sunday pushes prices unusually low before next week's rise._
 
-The forecast was updated on Wednesday at 02:54.
+The forecast was updated on Wednesday at 09:58.
 
-|  | avg. price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg. temperature<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **Thursday** | 10.4 | 7.2 – 15.6 | 166 – 1588 | 14.7 |
-| **Friday** | 8.6 | 5.6 – 11.6 | 617 – 3156 | 15.6 |
-| **Saturday** | 2.9 | 1.5 – 5.3 | 1984 – 3627 | 14.8 |
-| **Sunday** | 3.2 | 1.9 – 5.6 | 2280 – 3351 | 14.6 |
-| **Monday** | 7.3 | 3.8 – 10.6 | 1044 – 2745 | 15.2 |
-| **Tuesday** | 9.8 | 7.6 – 12.6 | 971 – 1253 | 15.5 |
-| **Wednesday** | 8.3 | 6.4 – 10.9 | 1067 – 2346 | 15.1 |
+|  | avg<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Thursday** | 9.0 | 6.4 – 14.1 | 141 – 1704 | 14.7 |
+| **Friday** | 8.0 | 5.3 – 11.4 | 968 – 2414 | 15.6 |
+| **Saturday** | 2.6 | 1.7 – 4.2 | 2199 – 3147 | 14.8 |
+| **Sunday** | 3.2 | 1.8 – 4.8 | 1984 – 3105 | 14.6 |
+| **Monday** | 6.3 | 3.0 – 8.9 | 989 – 2234 | 15.2 |
+| **Tuesday** | 4.8 | 3.6 – 6.2 | 1643 – 2879 | 15.5 |
+| **Wednesday** | 6.5 | 4.3 – 8.9 | 1561 – 2449 | 15.1 |
 
-The forecast period begins on **Thursday** at its most expensive. The day's expected average price rises above 10 cents per kilowatt-hour, and a single hour's price may climb to 15.6 cents during the evening peak. Behind this is exceptionally low wind power production, with the minimum dropping to just 166 megawatts. The scarcity of wind power partly explains Thursday's high maximum price. The risk of a price spike is concentrated in the time slot from 6 to 8 p.m. on Thursday.
+The forecast period starts with elevated prices, and **Thursday** stands out as the most expensive day. Thursday's average price climbs to around nine cents per kilowatt-hour, and during the day the price may rise to 14.1 cents between 8 and 10 in the morning, when there is an elevated risk of a price spike. The high price level is explained by very scarce wind power, as Thursday's production averages only 739 megawatts and drops to just 141 megawatts at its lowest. The lack of wind power pushes the maximum price up significantly.
 
-**Friday** is slightly more affordable than Thursday, but the risk of a price spike persists from 5 to 7 p.m. **Saturday** and **Sunday** are the cheapest days of the forecast period. Average prices remain below four cents, and the cheapest hours drop to as low as 1.5 cents. On both days, wind power production is at a normal level, and wind power has no significant impact on prices.
+On **Friday**, the wind remains weak, and the day's average price is 8.0 cents. The risk of a price spike is between 9 and 11, when the price may climb to 11.4 cents. On **Saturday** and **Sunday**, the situation changes dramatically: average wind power production rises above 2,700 megawatts, and prices fall to very low levels. Saturday is the most affordable day of the period, with an average price of 2.6 cents and prices remaining between 1.7 and 4.2 cents. On Sunday, the average price is 3.2 cents. On next **Monday**, wind power weakens again, and the average price rises to 6.3 cents. **Tuesday** is slightly more affordable, but on **Wednesday** the price returns to 6.5 cents.
 
-**On Monday**, the price rises again close to ten cents in the afternoon. **Tuesday** is the most expensive day of the latter part of the week, and its average price climbs to 9.8 cents. Wind power production is relatively weak throughout the day, with the minimum falling below one thousand megawatts, which partly raises the price level. The risk of a price spike on Tuesday is concentrated in the morning hours from 8 to 10 a.m. **Wednesday** settles at a moderate average price of 8.3 cents, and the price drops to below seven cents in the evening.
-
-*Sähkövatkain-Qwen3.8-27B screened the price trends.* 🌬️
+*Sähkövatkain-Qwen3.8-27B read the wind forecast today.* 🌬️
