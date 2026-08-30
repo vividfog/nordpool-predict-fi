@@ -1,19 +1,19 @@
-*The average prices over the forecast period stay between 3 and 6 cents per kilowatt-hour. Individual hourly prices may climb close to ten cents on Wednesday and Thursday, but over the weekend prices drop noticeably.*
+*The forecast period begins with a pricey Monday, after which prices fall clearly toward the more affordable end of the week.*
 
-The forecast was updated on Sunday at 11:55.
+The forecast was updated on Sunday at 14:55.
 
-|  | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 5.6 | 3.9 – 8.7 | 845 – 2754 | 15.2 |
-| **Tuesday** | 4.9 | 3.6 – 7.5 | 1142 – 1765 | 15.5 |
-| **Wednesday** | 5.2 | 2.9 – 9.9 | 492 – 2768 | 14.9 |
-| **Thursday** | 5.2 | 3.9 – 9.3 | 1252 – 2020 | 14.2 |
-| **Friday** | 4.9 | 3.7 – 7.2 | 1067 – 2446 | 13.4 |
-| **Saturday** | 3.4 | 1.6 – 5.9 | 902 – 2626 | 13.6 |
-| **Sunday** | 3.0 | 1.7 – 5.4 | 1724 – 2638 | 12.9 |
+|   | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temp.<br>°C |
+|:---|:---:|:---:|:---:|:---:|
+| **Monday** | 9.0 | 3.4 - 16.0 | 844 - 2748 | 15.2 |
+| **Tuesday** | 4.9 | 3.6 - 7.8 | 1130 - 1762 | 15.5 |
+| **Wednesday** | 5.3 | 3.1 - 10.1 | 453 - 2764 | 14.9 |
+| **Thursday** | 5.2 | 3.8 - 9.0 | 1261 - 2094 | 14.2 |
+| **Friday** | 4.8 | 3.7 - 7.0 | 1077 - 2467 | 13.4 |
+| **Saturday** | 3.4 | 1.7 - 5.7 | 866 - 2627 | 13.6 |
+| **Sunday** | 3.0 | 1.7 - 5.4 | 1752 - 2613 | 12.9 |
 
-Average prices over the forecast period vary fairly modestly, but individual hourly prices show clear swings. The average prices on **Monday**, **Tuesday**, and **Friday** settle at around five cents, while **Saturday** and **Sunday** are noticeably more affordable – Sunday's average price drops to just three cents.
+**Monday** stands out with the highest average price of the forecast period at 9.0 cents. The price rises in the afternoon and evening, peaking at 16.0 cents between 6 and 7 p.m. The reason is a temporary dip in wind power output: production drops to a low of 844 megawatts, which pushes hourly prices clearly higher.
 
-The highest hourly prices of the period fall on **Wednesday** and **Thursday**. A price-spike risk is noted for Wednesday morning, between 8 and 10, when prices may climb close to ten cents. Behind this is a temporary lull in wind power: Wednesday's wind power minimum drops to just 492 megawatts, which explains the high maximum price. Thursday also sees patchy wind power, and the maximum price rises to 9.3 cents during the afternoon hours. Prices drop on Saturday, and the most affordable hours fall in the afternoon, when the price may dip below two cents.
+**Wednesday** carries a price-spike risk between 8 and 10 a.m. At that time, the price may rise to around 10 cents, and wind power's minimum is very low at just 453 megawatts. Toward the end of the week, prices decline. **Tuesday**, **Thursday**, and **Friday** settle at an average price level of 4.8–5.3 cents. **Saturday** and **Sunday** are the most affordable, with the average price staying at around three cents. On Sunday, wind power's average output rises above 2,200 megawatts, which contributes to keeping prices at a low level.
 
-*Sähkövatkain-Qwen3.8-27B today.* ⚡
+*Sähkövatkain-Qwen3.8-27B reports.* 🌬️
