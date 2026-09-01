@@ -219,8 +219,15 @@ if args.predict:
         # Refresh the previously inferred nuclear power numbers with the ENTSO-E data
         df_recent = update_df_from_df(df_recent, df_entso_e, cols=["NuclearPowerMW"])
     else:
-        logger.error("ENTSO-E data is unavailable. Will exit.", exc_info=True)
-        exit(1)
+        # Transient ENTSO-E outage: continue with Fingrid-derived nuclear power
+        # (ffilled with the last known value). Future planned outages are NOT
+        # reflected, so predictions during the fallback are less accurate.
+        # Note: deploy/nuclear_outages.json is left at its last successful state
+        # and narration may reference a stale outage list.
+        logger.warning(
+            "ENTSO-E data is unavailable. Continuing with Fingrid nuclear data "
+            "and forward-fill; future nuclear outage information is missing."
+        )
 
     # Get the latest spot prices for the data frame, past and future if any
     df_recent = update_spot(df_recent)

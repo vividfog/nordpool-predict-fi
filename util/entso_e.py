@@ -11,6 +11,10 @@ from entsoe.parsers import parse_unavailabilities
 from .logger import logger
 
 # Total nuclear capacity in Finland is 4372 MW (2 x 890 MW, 1 x 1600 MW and 2 x 496 MW)
+class EntsoeAnomalyError(RuntimeError):
+    """Raised when nuclear outage data shows a >6-month zero-production anomaly.
+    Deliberately fatal: human in the loop required before trusting the data."""
+
 TOTAL_CAPACITY = 4372
 
 # Define a threshold for a "long outage" which can be considered an anomaly (such as 6 months of zero production) 
@@ -159,8 +163,8 @@ def entso_e_nuclear(entso_e_api_key, DEBUG=False):
             # Check for anomalies in outage duration
             if row['outage_length_hours'] > LONG_OUTAGE_THRESHOLD:
                 if row['avail_qty'] == 0:
-                    logger.warning(f"Outage for {row['production_resource_name']} is longer than 6 months with zero production. Human in the loop required. Returning None.")
-                    return None
+                    logger.error(f"Outage for {row['production_resource_name']} is longer than 6 months with zero production. Human in the loop required.")
+                    raise EntsoeAnomalyError(row['production_resource_name'])
                 else:
                     logger.info(f"[WARNING] Anomaly detected: Outage for {row['production_resource_name']} is longer than 6 months ({row['outage_length_hours']} hours). Expected?")
 
@@ -216,6 +220,8 @@ def entso_e_nuclear(entso_e_api_key, DEBUG=False):
                 
         return nuclear_forecast
 
+    except EntsoeAnomalyError:
+        raise
     except Exception as e:
         logger.warning(f"ENTSO-E update: {e} - returning None")
         return None
