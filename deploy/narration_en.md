@@ -1,19 +1,19 @@
-*Prices remain affordable early in the week but rise toward the weekend as wind power weakens. Friday is the most expensive day, with a peak of 11.6 cents per kilowatt-hour.*
+*The forecast period's electricity prices remain affordable but rise towards the end of the week; wind power fluctuations explain the price differences and Friday is the most expensive day of the period.*
 
-The forecast was updated on Friday at 11:55.
+The forecast was updated on Friday at 14:54.
 
-| | avg.<br>price<br>c/kWh | min – max<br>c/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
+| | avg. price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg. temp<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **Saturday** | 2.6 | 1.4 – 4.6 | 917 – 3689 | 13.6 |
-| **Sunday** | 2.5 | 1.6 – 4.3 | 2045 – 3975 | 12.9 |
-| **Monday** | 3.6 | 1.7 – 7.6 | 561 – 2828 | 10.8 |
-| **Tuesday** | 2.3 | 1.1 – 3.9 | 2206 – 2941 | 10.9 |
-| **Wednesday** | 3.6 | 1.8 – 6.5 | 1706 – 2339 | 11.5 |
-| **Thursday** | 4.7 | 3.3 – 6.8 | 1037 – 2174 | 11.8 |
-| **Friday** | 5.1 | 2.6 – 11.6 | 1206 – 3426 | 11.4 |
+| **Saturday** | 1.8 | 0.5 – 3.3 | 915 – 3,683 | 13.6 |
+| **Sunday** | 2.5 | 1.1 – 4.4 | 2,022 – 3,958 | 12.9 |
+| **Monday** | 3.8 | 1.9 – 7.6 | 503 – 2,791 | 10.8 |
+| **Tuesday** | 2.3 | 1.4 – 4.0 | 2,122 – 2,921 | 10.9 |
+| **Wednesday** | 3.6 | 1.8 – 6.5 | 1,678 – 2,459 | 11.5 |
+| **Thursday** | 4.7 | 3.3 – 6.6 | 1,204 – 2,226 | 11.8 |
+| **Friday** | 5.1 | 2.6 – 11.5 | 1,270 – 3,346 | 11.4 |
 
-The forecast period begins on a budget-friendly note. **Sunday** is expected to be the cheapest day of the week, with an average price of 2.5 cents per kilowatt-hour. Abundant wind power keeps price expectations low, and there is no significant hourly price variation throughout the day. **Saturday** is similar, with an average of 2.6 cents.
+The electricity prices in the coming days remain mostly affordable. **Saturday's** average price is just 1.8 cents and **Sunday's** is 2.5 cents. Sunday has abundant wind power, averaging over 3,400 megawatts, which pushes prices down. On Saturday the price drops to as low as 0.5 cents per kilowatt-hour, which is the lowest hourly price of the period. The forecast period is very affordable overall, and no day comes close to the expensive threshold in terms of average price.
 
-**Monday** brings a shift. The minimum wind power output drops to 561 megawatts, which is well below 2,000 megawatts. This is reflected in the day's maximum price, which rises to 7.6 cents. **Tuesday** sees wind power return to a more typical level, and the average price falls to 2.3 cents. From **Wednesday** onward, prices turn upward again. **Thursday**'s average price is 4.7 cents, with average wind power at 1,563 megawatts. The most expensive day of the week is **Friday**, when the average price climbs to 5.1 cents and the maximum price reaches 11.6 cents. Friday's minimum wind output is 1,206 megawatts, which partly explains the day's high peak price. The highest hourly prices fall in the evening, when electricity may cost close to 12 cents per kilowatt-hour.
+On **Monday**, wind power weakens significantly; the minimum production drops to 503 megawatts and the maximum price rises to 7.6 cents. On **Tuesday**, wind power recovers and prices return to a more affordable level, with an average of 2.3 cents. From **Wednesday** onwards, prices continue to climb. Wednesday's average price is 3.6 cents. **Thursday's** average price is 4.7 cents and the maximum price is 6.6 cents. The most expensive day of the period is **Friday**, when the average price is 5.1 cents and the maximum price soars to 11.5 cents. Friday's high maximum price is explained by the low minimum wind power production, which stays at 1,270 megawatts. Wind power's average production is also low on Friday, at 2,227 megawatts, which raises the average price. The cheapest hours of the entire period fall on Saturday evening and Sunday night, while the most expensive hours are concentrated on Friday afternoon and early evening. Prices rise towards the end of the week but remain moderate; even Friday's average price stays below six cents.
 
-*Forecast compiled by Sähkövatkain-Qwen3.8-27B.* 🌬️
+*Sähkövatkain-Qwen3.8-27B interpreted the numbers.* 💨
