@@ -1,21 +1,19 @@
-_The most expensive day of the forecast period is Wednesday, but strengthening wind power toward the end of the week pushes price expectations clearly down._
+*Prices remain affordable early in the week but rise toward the weekend as wind power weakens. Friday is the most expensive day, with a peak of 11.6 cents per kilowatt-hour.*
 
-The forecast was updated on Friday at 08:54.
+The forecast was updated on Friday at 11:55.
 
-|           | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temp<br>°C |
-|:----------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday**  | 2.7 | 0.7 – 5.8 | 741 – 3779 | 13.6 |
-| **Sunday**    | 2.3 | 1.4 – 4.1 | 2344 – 4541 | 12.9 |
-| **Monday**    | 4.0 | 2.5 – 7.5 | 1089 – 2961 | 10.8 |
-| **Tuesday**   | 3.4 | 1.8 – 5.0 | 1642 – 2890 | 10.9 |
-| **Wednesday** | 5.1 | 2.9 – 9.7 | 1009 – 1772 | 11.5 |
-| **Thursday**  | 2.9 | 1.7 – 4.5 | 1491 – 3726 | 11.8 |
-| **Friday**    | 2.1 | 1.3 – 3.1 | 3832 – 4506 | 11.2 |
+| | avg.<br>price<br>c/kWh | min – max<br>c/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
+|:---|:---:|:---:|:---:|:---:|
+| **Saturday** | 2.6 | 1.4 – 4.6 | 917 – 3689 | 13.6 |
+| **Sunday** | 2.5 | 1.6 – 4.3 | 2045 – 3975 | 12.9 |
+| **Monday** | 3.6 | 1.7 – 7.6 | 561 – 2828 | 10.8 |
+| **Tuesday** | 2.3 | 1.1 – 3.9 | 2206 – 2941 | 10.9 |
+| **Wednesday** | 3.6 | 1.8 – 6.5 | 1706 – 2339 | 11.5 |
+| **Thursday** | 4.7 | 3.3 – 6.8 | 1037 – 2174 | 11.8 |
+| **Friday** | 5.1 | 2.6 – 11.6 | 1206 – 3426 | 11.4 |
 
-The forecast period starts on **Saturday** with moderate prices, but there is a price spike risk during the morning hours from 8 to 10. The day's minimum wind power output drops to just 741 megawatts, coinciding with that time window. **Sunday** is affordable in terms of average price, and wind power remains abundant throughout the day.
+The forecast period begins on a budget-friendly note. **Sunday** is expected to be the cheapest day of the week, with an average price of 2.5 cents per kilowatt-hour. Abundant wind power keeps price expectations low, and there is no significant hourly price variation throughout the day. **Saturday** is similar, with an average of 2.6 cents.
 
-**Monday** and **Wednesday** stand out as the most expensive days of the period. On Monday, the average price rises to four cents and the maximum price reaches 7.5 cents. The minimum wind power output is 1,089 MW, which explains the higher maximum price. Wednesday is the most expensive day of the forecast period: the average price climbs to 5.1 cents and the maximum price reaches 9.7 cents. Wind power's average output drops to 1,456 megawatts, with a minimum of just 1,009 MW, pushing prices up especially in the afternoon and evening. Tuesday falls in between.
+**Monday** brings a shift. The minimum wind power output drops to 561 megawatts, which is well below 2,000 megawatts. This is reflected in the day's maximum price, which rises to 7.6 cents. **Tuesday** sees wind power return to a more typical level, and the average price falls to 2.3 cents. From **Wednesday** onward, prices turn upward again. **Thursday**'s average price is 4.7 cents, with average wind power at 1,563 megawatts. The most expensive day of the week is **Friday**, when the average price climbs to 5.1 cents and the maximum price reaches 11.6 cents. Friday's minimum wind output is 1,206 megawatts, which partly explains the day's high peak price. The highest hourly prices fall in the evening, when electricity may cost close to 12 cents per kilowatt-hour.
 
-On **Thursday** and **Friday**, the situation changes markedly. Wind power strengthens significantly, with average output of 3,023 MW on Thursday and 4,383 MW on Friday. This pushes prices down. Friday is the most affordable day of the period, with the average price settling at 2.1 cents. The most expensive hours are concentrated in Wednesday evening and Monday morning.
-
-*Sähkövatkain-Qwen3.8-27B interpreted the numbers.* 🌬️
+*Forecast compiled by Sähkövatkain-Qwen3.8-27B.* 🌬️
