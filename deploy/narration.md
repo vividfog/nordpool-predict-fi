@@ -1,19 +1,21 @@
-*Jakson alku on edullinen, mutta keskiviikosta alkaen tuulivoiman väheneminen nostaa hintaodotukset selvästi ja iltapiikit kohoavat yli 12 senttiin.*
+*Ennustejakso käynnistyy edullisena, mutta tuulivoiman heikkeneminen nostaa keskihintoja loppuviikkoa kohden.*
 
-Ennuste on päivitetty lauantaina klo 02:54.
+Ennuste on päivitetty lauantaina klo 08:54.
 
-|            | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-----------|:----------------:|:-----------------:|:------------------:|:----------------:|
-| **sunnuntai**  | 2,6 | 1,1 – 4,1 | 2042 – 3950 | 12,9 |
-| **maanantai**  | 3,5 | 1,3 – 7,3 | 611 – 4911 | 10,8 |
-| **tiistai**    | 2,2 | 1,0 – 4,4 | 2045 – 5211 | 10,9 |
-| **keskiviikko**| 6,1 | 3,5 – 12,6 | 782 – 1737 | 11,5 |
-| **torstai**    | 4,6 | 3,0 – 6,2 | 1278 – 2777 | 11,8 |
-| **perjantai**  | 4,3 | 2,2 – 9,9 | 1422 – 3790 | 11,4 |
-| **lauantai**   | 5,3 | 3,7 – 10,5 | 762 – 1809 | 11,3 |
+|  | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
+|:---|:---:|:---:|:---:|:---:|
+| **sunnuntai** | 2,8 | 1,1 – 4,8 | 1970 – 4042 | 12,9 |
+| **maanantai** | 3,8 | 1,6 – 9,0 | 745 – 3831 | 10,8 |
+| **tiistai** | 2,6 | 0,9 – 5,7 | 1877 – 4067 | 10,9 |
+| **keskiviikko** | 5,8 | 3,9 – 9,7 | 987 – 2277 | 11,5 |
+| **torstai** | 4,2 | 2,9 – 5,7 | 1972 – 3068 | 11,8 |
+| **perjantai** | 4,2 | 2,2 – 9,1 | 1459 – 3821 | 11,4 |
+| **lauantai** | 5,1 | 3,5 – 10,3 | 804 – 1681 | 11,3 |
 
-Ennustejakso alkaa edullisissa merkeissä. **Sunnuntaina** ja **tiistaina** pörssisähkön keskihinta jää noin 2–2,6 senttiin kilowattitunnilta, ja päivien aikana liikutaan enimmilläänkin alle neljässä sentissä. Molempina päivinä tuulivoimaa on tarjolla runsaasti, mikä pitää hintaodotukset matalina. **Maanantaina** keskihinta nousee 3,5 senttiin, ja päivän sisällä hintaerot kasvavat tuulivoiman voimakkaan vaihtelun vuoksi. Aamupäivällä hinta kipuaa yli 7 senttiin, mutta iltapäivällä ja illalla se painuu taas alle kahteen senttiin.
+Ennustejakso käynnistyy **sunnuntaina** edullisissa merkeissä, ja päivän keskihinta jää alle kolmen sentin. Runsas tuulivoima, keskimäärin yli 3 300 megawattia, painaa hintaa alas. **Tiistai** on jakson edullisin päivä, kun keskihinta on vain 2,6 senttiä, vaikka tuulivoiman vaihtelu on melko suurta.
 
-**Keskiviikko** erottuu jakson kalleimpana päivänä. Keskihinnaksi odotetaan 6,1 senttiä, ja ilta kuumenee selvästi. Tuulivoiman minimituotanto jää alle 800 megawatin, mikä selittää päivän korkeaa maksimihintaa 12,6 senttiä. Hintapiikkiriski painottuu kello 18–20 välille, jolloin hinta voi kivuta yli 12 senttiin. **Torstaina** hinta laskee hieman, mutta pysyy vielä 4,6 sentin keskitasolla. **Perjantaina** keskihinta on 4,3 senttiä, mutta iltaa kohden hinta kohoaa 9,9 senttiin tuulivoiman hiipuessa alle 1500 megawatin. **Lauantaina** keskihinta on 5,3 senttiä, ja päivän korkein hinta on 10,5 senttiä. Hintapiikkiriski ajoittuu kello 19–21 tienoille, ja tuulivoiman minimi painuu alle 800 megawatin, mikä selittää kalleinta tuntihintaa. Jakson edullisimmat tunnit osuvat sunnuntain ja tiistain öihin, jolloin hinta painuu lähelle yhtä senttiä.
+**Keskiviikko** erottuu kalleimpana päivänä. Tuulivoiman keskituotanto putoaa noin 1 500 megawattiin, ja päivän minimi on alle 1 000 megawattia. Tämä nostaa keskihinnan 5,8 senttiin, ja maksimihinta kipuaa 9,7 senttiin. **Torstaina** hinta laskee, mutta **perjantaina** tuulivoiman minimituotanto painuu jälleen alle 1 500 megawatin, mikä selittää 9,1 sentin maksimihintaa. **Lauantaina** tuulivoima on hyvin heikkoa, keskimäärin vain 1 131 megawattia, ja päivän maksimihinta nousee 10,3 senttiin. Lauantaille on lisäksi kohonnut hintapiikkiriski iltatunneille kello 19–21.
 
-*Sähkövatkain-Qwen3.8-27B tulkitsi sähkön hintaennusteen.* ⚡
+**Maanantaina** tuulivoima heikkenee aamupäivällä, ja päivän minimi jää 745 megawattiin. Tämä selittää hintapiikkiriskin kello 8–10 välille, jolloin hinta voi nousta yli kahdeksaan senttiin.
+
+*Sähkövatkain-Qwen3.8-27B tulkitsi luvut tänään.* ⚡
