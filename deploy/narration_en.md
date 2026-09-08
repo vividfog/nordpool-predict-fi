@@ -1,19 +1,21 @@
-*The forecast period begins with an expensive Wednesday, but prices drop rapidly and **Sunday** is the cheapest day of the period.*
+*The forecast week starts with an expensive Wednesday, after which prices fall and Sunday is the cheapest day of the period.*
 
-The forecast was updated on Tuesday at 11:54.
+The forecast was updated on Tuesday at 14:54.
 
-|  | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **Wednesday** | 10.1 | 4.5 – 21.2 | 437 – 3098 | 11.5 |
-| **Thursday** | 6.6 | 4.7 – 9.7 | 444 – 3306 | 11.8 |
-| **Friday** | 6.8 | 3.8 – 13.2 | 1093 – 3316 | 11.4 |
-| **Saturday** | 5.7 | 2.5 – 9.5 | 1230 – 1693 | 11.6 |
-| **Sunday** | 3.4 | 1.2 – 8.1 | 1166 – 2828 | 12.2 |
-| **Monday** | 5.7 | 3.1 – 10.3 | 1588 – 2810 | 12.2 |
-| **Tuesday** | 5.4 | 2.8 – 10.0 | 783 – 2710 | 12.6 |
+|            | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
+|:-----------|:-----------------------:|:------------------:|:----------------------------:|:-------------------------:|
+| **Wednesday** | 12.5                  | 4.5 – 25.5         | 429 – 3007                   | 11.5                     |
+| **Thursday**    | 6.6                   | 4.5 – 9.9          | 436 – 3280                   | 11.8                     |
+| **Friday**   | 6.8                   | 3.8 – 13.4         | 1131 – 3297                  | 11.4                     |
+| **Saturday**   | 5.6                   | 2.5 – 9.3          | 1283 – 1647                  | 11.6                     |
+| **Sunday**     | 3.2                   | 1.2 – 7.0          | 1180 – 2863                  | 12.2                     |
+| **Monday**     | 5.7                   | 3.0 – 10.2         | 1661 – 2845                  | 12.2                     |
+| **Tuesday**    | 5.4                   | 2.9 – 10.0         | 775 – 2648                   | 12.6                     |
 
-The forecast period starts with **Wednesday**, which stands out as significantly more expensive than the other days. The expected average price is 10.1 cents per kilowatt-hour, and the maximum price climbs to 21.2 cents. The high price level is driven by very low minimum wind power output, which drops to just 437 megawatts. Prices rise sharply in the afternoon and evening, and there is a price spike risk between 7 and 9 p.m.
+The forecast period begins with **Wednesday**, when electricity price expectations rise well above those of other days. The average price is expected to settle at 12.5 cents, and in the evening prices may climb to as much as 25.5 cents per kilowatt-hour. The high price level is driven by exceptionally low wind power availability, as output drops below 500 megawatts throughout the day. Wednesday's peak prices fall in the evening, with the highest reading around 21:00.
 
-The cheapest day of the period is **Sunday**, with an average price of 3.4 cents. Prices remain low throughout the day, and the cheapest hour dips to 1.2 cents. **Thursday** and **Tuesday** also carry a price spike risk, but average prices stay moderate. **Friday's** minimum wind power output falls to 1093 megawatts, pushing the maximum price to 13.2 cents. Wind power is scarce across the entire forecast period, keeping prices above normal levels.
+Toward the end of the week, price forecasts level out. **Thursday** and **Friday** average prices remain between 6.6 and 6.8 cents, although Thursday carries a spike-price risk for the morning hours from 9 to 11. **Saturday** is more affordable, and **Sunday** stands out with the lowest average price in the forecast period at 3.2 cents. Sunday's price stays below 7 cents all day, with the cheapest hours falling in the afternoon when prices dip below 1.5 cents. Wind power is plentiful on Sunday.
 
-*Sähkövatkain-Qwen3.8-27B crunched the numbers today.* 🌬️
+**Monday** returns to a slightly higher level, but the average price remains at 5.7 cents. **Tuesday**'s average price is 5.4 cents, and within the day the price rises in the morning hours. Tuesday carries a spike-price risk, and the day's highest hourly readings fall precisely in that time window from 10 to 12.
+
+*Sähkövatkain-Qwen3.8-27B crunched the numbers.* 🌬️
