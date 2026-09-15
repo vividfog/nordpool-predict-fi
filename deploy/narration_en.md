@@ -1,21 +1,21 @@
-*An affordable early week turns costly on Tuesday, as evening prices rise above 16 cents.*
+*The electricity price forecast begins very affordably on Wednesday, but rises as the week progresses – Tuesday's hourly rates may climb above 15 cents.*
 
-Olkiluoto 3 nuclear power plant is undergoing a maintenance outage that began on 10 September 2026 at 01:00. The outage is estimated to end on 30 October 2026 at 00:00. The Loviisa 2 unit is experiencing a production deficit, which started on 1 August 2026 at 23:00 and is forecast to end on 28 September 2026 at 05:00. The unit's availability is 51 percent.
+Olkiluoto 3 is in a maintenance outage starting 10 September 2026 at 01:00. The outage is expected to end on 30 October 2026 at 00:00. Loviisa 2 has a production deficit, with availability at 51 percent. The deficit is expected to end on 28 September 2026 at 05:00.
 
-The forecast was updated on Tuesday at 11:54.
+The forecast was updated on Tuesday at 14:54.
 
-|  | avg. price ¢/kWh | min – max ¢/kWh | wind power min – max MW | avg. temp. °C |
+|  | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **Wednesday** | 2.7 | 0.6 – 4.3 | 4418 – 5906 | 12.7 |
-| **Thursday** | 4.6 | 2.7 – 6.2 | 3003 – 5251 | 11.6 |
-| **Friday** | 4.8 | 2.6 – 8.1 | 1508 – 3572 | 11.5 |
-| **Saturday** | 2.7 | 1.6 – 3.7 | 2760 – 3912 | 12.1 |
-| **Sunday** | 3.7 | 1.6 – 8.8 | 2087 – 3649 | 12.3 |
-| **Monday** | 4.0 | 2.3 – 7.4 | 2073 – 3545 | 11.5 |
-| **Tuesday** | 6.5 | 1.9 – 16.3 | 1331 – 4281 | 10.7 |
+| **Wednesday** | 1.1 | 0.3 – 3.0 | 4434 – 5905 | 12.7 |
+| **Thursday** | 4.5 | 1.1 – 6.3 | 2993 – 5277 | 11.6 |
+| **Friday** | 5.0 | 2.6 – 8.2 | 1449 – 3386 | 11.5 |
+| **Saturday** | 2.8 | 1.6 – 3.8 | 2684 – 3745 | 12.1 |
+| **Sunday** | 3.7 | 1.6 – 8.9 | 2146 – 3547 | 12.3 |
+| **Monday** | 4.0 | 2.3 – 7.4 | 2070 – 3563 | 11.5 |
+| **Tuesday** | 6.6 | 1.9 – 16.4 | 1297 – 4264 | 10.7 |
 
-The most affordable days of the forecast period are **Wednesday** and **Saturday**, both with an average price of 2.7 cents. On Wednesday, the early morning price drops to 0.6 cents, and Saturday's prices remain consistently low throughout the day. **Thursday** and **Friday** have average prices of 4.6–4.8 cents, with no significant fluctuations within those days. On **Sunday**, the average price is 3.7 cents, but prices rise to 8.8 cents in the evening. **Monday's** average price is 4.0 cents.
+The beginning of the forecast period is very affordable for electricity consumers. The expected average price for **Wednesday** is around 1.1 cents, and wind power averages over 5,400 megawatts. **Thursday** also benefits from abundant wind power, keeping price expectations modest.
 
-**Tuesday** stands out as the most expensive day of the period. The average price is expected to be 6.5 cents, and after 6 p.m. the price rises sharply – peaking at 16.3 cents at 8 p.m. The increase is explained by a temporary drop in wind power: Tuesday's wind power minimum is 1,331 megawatts, the lowest figure of the entire week. In the first half of the forecast period, wind power is abundant, which partly explains the low prices on Wednesday and Thursday.
+As the week progresses, prices rise. **Friday** sees wind power's minimum output drop below 1,500 megawatts, and the day's maximum price reaches 8.2 cents. **Tuesday** stands out with clearly higher prices. The average price climbs to 6.6 cents, and evening hourly rates accelerate sharply: between 19:00 and 23:00, prices range from 13 to 16 cents. Tuesday's wind power minimum stays at only around 1,300 megawatts, which partly explains the day's unusually high maximum price. Saturday and Sunday are moderate in average price, but on Sunday, prices rise toward the evening, reaching 8.9 cents.
 
-*Sähkövatkain-Qwen3.8-27B interpreted the numbers.* ⚡
+*The numbers were interpreted today by Sähkövatkain-Qwen3.8-27B.* 🌬️
