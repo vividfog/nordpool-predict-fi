@@ -1,21 +1,21 @@
-*The forecast period starts with a cheap Saturday average price of 3.1 cents, but prices rise sharply towards the end of the week, with Wednesday being the most expensive day at an average of 11.8 cents.*
+Olkiluoto 3 is undergoing a maintenance shutdown. The shutdown began on 10 September 2026 at 01:00 and is expected to end on 30 October 2026 at 00:00.
 
-The forecast was updated on Thursday at 11:54.
+The forecast was updated on Thursday at 14:54.
 
-**Olkiluoto 3** is under maintenance. The outage began on 10.9.2026 at 01:00 and is expected to end on 30.10.2026 at 00:00. **Loviisa 2**'s production deficit started on 1.8.2026 at 23:00 and is expected to end on 28.9.2026 at 05:00.
+|           | avg<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg<br>temp<br>°C |
+|:----------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Friday** | 5.2 | 2.4 – 11.3 | 1140 – 3314 | 11.5 |
+| **Saturday** | 3.0 | 1.9 – 4.2 | 3218 – 4305 | 12.1 |
+| **Sunday** | 4.3 | 1.4 – 11.7 | 1166 – 4726 | 12.3 |
+| **Monday** | 7.8 | 5.0 – 11.5 | 899 – 2554 | 11.5 |
+| **Tuesday** | 8.8 | 3.1 – 18.7 | 1283 – 3213 | 10.7 |
+| **Wednesday** | 11.8 | 7.7 – 16.6 | 1147 – 1997 | 10.7 |
+| **Thursday** | 9.6 | 6.3 – 15.5 | 1024 – 3010 | 10.8 |
 
-|  | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind<br>min - max<br>MW | avg.<br>temp<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday** | 6,3 | 4,1 - 10,4 | 1134 - 3312 | 11,5 |
-| **Saturday** | 3,1 | 2,1 - 4,1 | 3216 - 4320 | 12,1 |
-| **Sunday** | 4,5 | 1,1 - 11,7 | 1153 - 4722 | 12,3 |
-| **Monday** | 8,0 | 5,2 - 11,4 | 855 - 2501 | 11,5 |
-| **Tuesday** | 8,7 | 3,1 - 18,7 | 1303 - 3219 | 10,7 |
-| **Wednesday** | 11,8 | 7,9 - 16,7 | 1154 - 1956 | 10,7 |
-| **Thursday** | 9,6 | 6,2 - 15,6 | 996 - 3035 | 10,8 |
+The forecast period splits into two halves: **Saturday** and **Sunday** are clearly more affordable, while prices rise at the start of the week and remain elevated. **Friday** has an average price of 5.2 cents per kilowatt-hour. Wind power averages 2,135 megawatts, which is somewhat below normal. On Saturday, wind power is abundant, exceeding 3,000 megawatts, and the average price drops to 3.0 cents. On Sunday, production remains high, but the price climbs in the evening, peaking at 11.7 cents as wind power falls below 2,000 megawatts.
 
-The forecast period starts at moderate prices, but **Saturday** is clearly the cheapest day: the average price stays at 3.1 cents and wind power is plentiful, averaging over 3,500 MW. **Sunday** remains moderate, though within the day the price rises towards the evening to as much as 11.7 cents as wind power decreases.
+Next **Monday**, the price level rises to 7.8 cents, and wind power weakens further. On **Tuesday**, **Wednesday**, and **Thursday**, the minimum wind power output stays below 2,000 megawatts, which explains the high maximum prices. Tuesday's maximum is 18.7 cents, Wednesday's 16.6, and Thursday's 15.5 cents. Wednesday is the most expensive day of the period with an average price of 11.8 cents. Thursday sees a slight decrease, with the average settling at 9.6 cents. The cheapest hours fall between Saturday and Sunday overnight, when prices dip below two cents.
 
-**Monday's** average price rises to 8.0 cents as wind power drops to an average of only 1,480 megawatts. **Tuesday** sees significant price variation: morning prices remain low, but they rise sharply towards the evening – readings above 18 cents around 8 pm are explained by weakening wind power. **Wednesday** is the most expensive day of the period. The average price climbs to 11.8 cents and the maximum reaches 16.7 cents. Wind power's minimum production drops to 1,154 megawatts during the day, which partly pushes prices up. **Thursday's** average price is 9.6 cents, and wind power remains low for most of the day.
+*Sähkövatkain-Qwen3.8-27B cracked the numbers today.* 🌬️
 
-*Sähkövatkain-Qwen3.8-27B read the numbers this time.* 🌬️
+*Weekend prices are low, but they rise at the start of the week and remain elevated. Wednesday is the most expensive day of the forecast period.*
