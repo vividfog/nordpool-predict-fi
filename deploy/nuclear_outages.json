@@ -17,6 +17,14 @@
             "availability": 0.0
         },
         {
+            "start": "2026-09-25T22:00:00.000Z",
+            "end": "2026-10-17T22:00:00.000Z",
+            "avail_qty": 0,
+            "nominal_power": 496.0,
+            "production_resource_name": "Loviisa 1",
+            "availability": 0.0
+        },
+        {
             "start": "2026-08-01T20:30:00.000Z",
             "end": "2026-09-28T02:00:00.000Z",
             "avail_qty": 253,
