@@ -1,21 +1,22 @@
-*Sunnuntain edullisen startin jälkeen tuulivoiman vähyys nostaa hinnat selvästi alkuviikolle, mutta loppuviikolla tuulinen sää painaa hinnat jälleen alas.*
+Ennustejakso käynnistyy edullisissa merkeissä, mutta **maanantaina** hinnat nousevat selvästi, kun tuulivoima heikkenee.
 
-Olkiluoto 3 -ydinvoimala on huoltokatkolla. Katkos alkoi 10. syyskuuta klo 01 ja sen arvioidaan päättyvän 30. lokakuuta klo 00. Loviisa 2 -ydinvoimalassa on tuotantovajaus: käyttöaste on 51 prosenttia. Vajaus on alkanut 1. elokuuta klo 23 ja sen odotetaan päättyvän 28. syyskuuta klo 05.
 
-Ennuste on päivitetty lauantaina klo 08:54.
+Olkiluoto 3 on huoltokatkolla 10.9.2026 klo 01 alkaen. Arvioitu päättymisaika on 30.10.2026 klo 00. Loviisa 2:n tuotanto on vajaa 51 prosenttiin tuotantovajauksesta 1.8.2026 klo 23 alkaen. Arvioitu päättymisaika on 28.9.2026 klo 05.
+
+Ennuste on päivitetty lauantaina klo 11.55.
 
 | | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **sunnuntai** | 3,4 | 0,2 – 9,0 | 1487 – 6057 | 12,3 |
-| **maanantai** | 11,8 | 7,0 – 25,9 | 359 – 1898 | 11,5 |
-| **tiistai** | 11,5 | 5,5 – 19,3 | 1177 – 1878 | 10,7 |
-| **keskiviikko** | 13,7 | 8,9 – 17,7 | 1039 – 2076 | 10,7 |
-| **torstai** | 11,9 | 8,6 – 16,1 | 1170 – 1974 | 10,8 |
-| **perjantai** | 7,1 | 3,5 – 11,3 | 1692 – 3529 | 10,5 |
-| **lauantai** | 5,4 | 2,3 – 10,5 | 1340 – 3057 | 11,2 |
+| **sunnuntai** | 2,5 | 0,2 - 6,8 | 1773 - 6168 | 12,3 |
+| **maanantai** | 8,1 | 4,1 - 17,9 | 313 - 2202 | 11,5 |
+| **tiistai** | 9,5 | 3,7 - 18,8 | 586 - 2005 | 10,7 |
+| **keskiviikko** | 11,4 | 7,8 - 16,2 | 1001 - 1886 | 10,7 |
+| **torstai** | 9,5 | 6,6 - 12,5 | 1167 - 2272 | 10,8 |
+| **perjantai** | 9,4 | 4,7 - 16,2 | 606 - 3158 | 10,5 |
+| **lauantai** | 2,6 | 1,6 - 4,1 | 2827 - 4272 | 11,2 |
 
-Ennustejakso käynnistyy edullisissa merkeissä. **Sunnuntain** keskihinta jää 3,4 senttiin runsaan tuulivoiman ansiosta, ja yön tunneilla hinta painuu lähelle nollaa. **Maanantaina** tilanne muuttuu jyrkästi. Tuulivoiman keskituotanto jää alle tuhannen megawatin, ja päivän minimituotanto on vain 359 MW. Tämä nostaa keskihinnan 11,8 senttiin, ja aamupäivällä kello 8–10 on hintapiikin riski. Tuntihinnat kohoavat tuolloin jopa 25,9 senttiin, mikä on jakson korkein yksittäinen lukema.
+**Sunnuntai** ja **lauantai** ovat edullisia, keskihinta noin 2,5 senttiä. Taustalla on runsas tuulivoima, joka painaa hinnat alas. Lauantaina hinta pysyy alle 4,1 sentin koko päivän. **Maanantai** aloittaa kalliimman jakson 8,1 sentin keskihinnalla, ja päivän kalleimmilla tunneilla hinta voi nousta lähes 18 senttiin. **Tiistain** ja **keskiviikon** keskihinnat jatkavat nousua, keskiviikko on kallein 11,4 sentillä. **Torstai** ja **perjantai** asettuvat noin 9,4–9,5 sentin keskihintaan. Hintapiikkiriskiä on **maanantaina** klo 9–11, **tiistaina** klo 10–12 ja **perjantaina** klo 16–18. Päivien sisäiset hintavaihtelut johtuvat tuulivoiman hetkellisestä heikkenemisestä: useana päivänä tuotanto laskee alle 2 000 megawatin, mikä nostaa maksimihintoja. Esimerkiksi maanantain tuulivoiman minimi on 313 megawattia ja kallein tunti 17,9 senttiä.
 
-**Keskiviikko** on jakson kallein päivä 13,7 sentin keskihinnalla. Tuulivoima pysyttelee koko alkuviikon heikkona, ja **tiistain**, **keskiviikon** ja **torstain** minimituotannot jäävät alle 2 000 megawatin, mikä selittää korkeampia maksimihintoja. Loppuviikkoa kohden tuulivoima voimistuu selvästi, ja hinnat laskevat. **Perjantain** keskihinta on 7,1 senttiä ja **lauantain** 5,4 senttiä, kun tuulivoiman keskituotanto nousee yli 2 500 megawatin. Lauantaina päivän halvimmat tunnit painuvat alle 2,5 sentin.
+Jakson edullisimmat tunnit osuvat lauantaille (1,6–4,1 senttiä) ja sunnuntaihin, jolloin alin tuntihinta on 0,2 senttiä. Keskiviikkona ja tiistaina maksimihinnat ylittävät 16 senttiä, perjantaina 16,2 senttiä. Tuulivoiman vaihtelu on jakson selkeä hintaa selittävä tekijä.
 
-*Hintakäppyrät piirsi tänään Sähkövatkain-Qwen3.8-27B.* 🌬️
+*Sähkövatkain-Qwen3.8-27B tulkkasi.* 🌬️

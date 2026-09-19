@@ -1,21 +1,21 @@
-*After Sunday's affordable start, the lack of wind power pushes prices clearly higher over the early week, but windy weather brings prices back down towards the weekend.*
+*The forecast period begins with affordable prices, but **Monday** sees a clear rise as wind power weakens.*
 
-The Olkiluoto 3 nuclear power plant is undergoing a maintenance outage. The outage began on September 10 at 01:00 and is expected to end on October 30 at 00:00. The Loviisa 2 nuclear power plant is experiencing a production shortfall: its capacity factor is 51 percent. The shortfall began on August 1 at 23:00 and is expected to end on September 28 at 05:00.
+Olkiluoto 3 is in a maintenance outage that began on 10 September 2026 at 01:00. The estimated end date is 30 October 2026 at 00:00. Loviisa 2's production is reduced to 51 percent due to a production shortfall that started on 1 August 2026 at 23:00. The estimated end date is 28 September 2026 at 05:00.
 
-The forecast has been updated on Saturday at 08:54.
+The forecast was updated on Saturday at 11:55.
 
 | | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **Sunday** | 3.4 | 0.2 – 9.0 | 1487 – 6057 | 12.3 |
-| **Monday** | 11.8 | 7.0 – 25.9 | 359 – 1898 | 11.5 |
-| **Tuesday** | 11.5 | 5.5 – 19.3 | 1177 – 1878 | 10.7 |
-| **Wednesday** | 13.7 | 8.9 – 17.7 | 1039 – 2076 | 10.7 |
-| **Thursday** | 11.9 | 8.6 – 16.1 | 1170 – 1974 | 10.8 |
-| **Friday** | 7.1 | 3.5 – 11.3 | 1692 – 3529 | 10.5 |
-| **Saturday** | 5.4 | 2.3 – 10.5 | 1340 – 3057 | 11.2 |
+| **Sunday** | 2.5 | 0.2 - 6.8 | 1773 - 6168 | 12.3 |
+| **Monday** | 8.1 | 4.1 - 17.9 | 313 - 2202 | 11.5 |
+| **Tuesday** | 9.5 | 3.7 - 18.8 | 586 - 2005 | 10.7 |
+| **Wednesday** | 11.4 | 7.8 - 16.2 | 1001 - 1886 | 10.7 |
+| **Thursday** | 9.5 | 6.6 - 12.5 | 1167 - 2272 | 10.8 |
+| **Friday** | 9.4 | 4.7 - 16.2 | 606 - 3158 | 10.5 |
+| **Saturday** | 2.6 | 1.6 - 4.1 | 2827 - 4272 | 11.2 |
 
-The forecast period begins with affordable prices. **Sunday's** average price stays at 3.4 cents thanks to abundant wind power, and overnight rates dip close to zero. **Monday** sees a sharp turn. Wind power's average output falls below one thousand megawatts, with a daily minimum of just 359 MW. This pushes the average price to 11.8 cents, and there is a price spike risk between 8 and 10 a.m. Hourly prices climb as high as 25.9 cents during that window, the highest single figure of the entire period.
+**Sunday** and **Saturday** are affordable, with average prices around 2.5 cents. Abundant wind power is pushing prices down. On Saturday, the price stays below 4.1 cents throughout the day. **Monday** opens a more expensive stretch at 8.1 cents per kWh on average, with the most expensive hours reaching nearly 18 cents. **Tuesday** and **Wednesday** continue the upward trend, with Wednesday being the most expensive at 11.4 cents. **Thursday** and **Friday** settle around 9.4–9.5 cents. Price spike risks are present on **Monday** from 9–11, **Tuesday** from 10–12, and **Friday** from 16–18. The within-day price swings are driven by temporary dips in wind power: on several days, production falls below 2,000 MW, pushing peak prices up. For example, Monday's wind power minimum is 313 MW while the most expensive hour hits 17.9 cents.
 
-**Wednesday** is the most expensive day at an average of 13.7 cents. Wind power remains weak throughout the early week, and the minimum outputs for **Tuesday**, **Wednesday**, and **Thursday** all stay below 2,000 megawatts, which explains the higher maximum prices. Towards the end of the week, wind power strengthens significantly and prices fall. **Friday's** average price is 7.1 cents and **Saturday's** 5.4 cents, as wind power's average output rises above 2,500 megawatts. Saturday's cheapest hours dip below 2.5 cents.
+The cheapest hours fall on Saturday (1.6–4.1 cents) and Sunday, where the lowest hourly price is 0.2 cents. On Wednesday and Tuesday, maximum prices exceed 16 cents, and on Friday they reach 16.2 cents. Wind power variability is the clearest price driver across the period.
 
-*Price curves charted today by Sähkövatkain-Qwen3.8-27B.* 🌬️
+*Sähkövatkain-Qwen3.8-27B interpreted the numbers.* 🌬️
