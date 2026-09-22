@@ -1,21 +1,21 @@
-Ennustejakso alkaa kalliissa merkeissä tuulivoiman ollessa heikkoa, mutta hinnat laskevat nopeasti loppuviikkoa kohti – **ensi maanantai** on selvästi edullisin. 📉
+*Pörssisähkön hintaennuste laskee tuulivoiman vahvistuessa, ja maanantai on ennustejakson edullisin päivä 3,1 sentin keskihinnalla.*
 
-Olkiluoto 3 on huoltokatkossa 10.9.2026 klo 01 alkaen. Katkon arvioidaan päättyvän 30.10.2026 klo 00. Loviisa 2 on tuotantovajauksessa 1.8.2026 klo 23 alkaen. Vajauksen arvioidaan päättyvän 1.10.2026 klo 22.
+Olkiluoto 3 on huoltokatkossa. Katko alkoi 10. syyskuuta klo 01 ja sen arvioidaan päättyvän 30. lokakuuta klo 00. Loviisa 2:ssa on tuotantovajaus, jonka aikana käytettävissä on 253 megawattia (käytettävyys 51 %). Vajaus alkoi 1. elokuuta ja sen arvioidaan päättyvän 1. lokakuuta klo 22.
 
-Ennuste on päivitetty maanantaina klo 23:02.
+Ennuste on päivitetty tiistaina klo 02:54.
 
-|   | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
+|  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **tiistai** | 16,8 | 2,7 – 38,6 | 105 – 1837 | 10,7 |
-| **keskiviikko** | 12,0 | 7,1 – 16,6 | 505 – 2928 | 10,7 |
-| **torstai** | 9,2 | 6,1 – 14,2 | 536 – 3540 | 10,8 |
-| **perjantai** | 9,2 | 4,7 – 17,7 | 572 – 3211 | 10,5 |
-| **lauantai** | 8,6 | 4,4 – 15,2 | 907 – 2576 | 11,2 |
-| **sunnuntai** | 8,4 | 4,4 – 10,9 | 626 – 2450 | 11,5 |
-| **maanantai** | 3,1 | 2,1 – 4,9 | 2667 – 4322 | 11,8 |
+| **keskiviikko** | 12,0 | 7,3 - 16,4 | 574 - 2841 | 10,7 |
+| **torstai** | 9,2 | 5,1 - 15,1 | 579 - 3638 | 10,8 |
+| **perjantai** | 9,1 | 4,9 - 17,5 | 661 - 3780 | 10,5 |
+| **lauantai** | 8,5 | 4,4 - 14,7 | 919 - 2538 | 11,2 |
+| **sunnuntai** | 8,4 | 4,4 - 10,8 | 660 - 2358 | 11,5 |
+| **maanantai** | 3,1 | 2,1 - 4,9 | 2537 - 4243 | 11,8 |
+| **tiistai** | 5,6 | 2,7 - 10,7 | 2053 - 4139 | 12,3 |
 
-Ennustejakson alkupäivät ovat poikkeuksellisen kalliita. **Tiistain** odotettu keskihinta kohoaa 16,8 senttiin kilowattitunnilta, ja päivän sisällä hinta voi nousta jopa 38,6 senttiin iltakuuden jälkeen. Taustalla on erittäin heikko tuulivoima, jonka päivän keskituotanto jää vain 825 megawattiin ja minimi painuu 105 megawattiin. Alhainen tuulivoiman minimituotanto selittää korkeaa maksimihintaa. Myös **keskiviikko** on kallis, keskihinnan ollessa 12,0 senttiä, ja tuulivoima on edelleen matalalla tasolla. **Torstain** ja **perjantain** keskihinnat asettuvat 9,2 senttiin, ja tuulivoiman heikkous jatkuu. Perjantaille on lisäksi olemassa hintapiikkiriski iltakuuden ja kahdeksan välillä.
+Ennustejakso käynnistyy korkealla hintatasolla, mutta kääntyy loppua kohden selvästi edullisemmaksi. **Keskiviikko** on jakson kallein päivä 12,0 sentin keskihinnalla. Päivän sisällä hinta nousee iltaa kohti ja käy 16,4 sentissä kello 18. Heikko tuulivoima, keskimäärin 1 184 megawattia, selittää osaltaan korkeaa hintatasoa. **Torstain** ja **perjantain** keskihinnat liikkuvat 9–10 sentin tuntumassa. Perjantain maksimihinta kohoaa 17,5 senttiin, mikä on jakson korkein yksittäinen tuntihinta. Hintapiikkiriski ajoittuu perjantaina kello 18–20, mutta myös torstaina kello 9–11, lauantaina kello 18–20 ja sunnuntaina kello 10–12 on odotettavissa hintapiikkejä.
 
-**Lauantai** ja **sunnuntai** ovat jo selvästi edullisempia, keskihintojen painuessa alle yhdeksän sentin. Lauantaina hintapiikkiriski koskee iltapäivää ja alkuiltaa kello 18–20, sunnuntaina aamupäivää kello 10–12. Ennustejakson edullisinta aikaa on ensi **maanantai**, jolloin keskihinta laskee 3,1 senttiin ja tuulivoimaa on tarjolla runsaasti, keskimäärin 3550 megawattia.
+**Maanantai** on ennustejakson edullisin päivä. Keskihinta painuu 3,1 senttiin, ja koko päivän aikana hinta pysyttelee 2,1–4,9 sentin haarukassa. Voimakas tuulivoima, keskimäärin 3 547 megawattia, laskee hintoja tuntuvasti. **Tiistai** on edelleen kohtuullisen edullinen 5,6 sentin keskihinnalla, vaikka hinta nouseekin hieman maanantaista. Tuulivoima pysyy edelleen vahvana, mikä tukee maltillista hintatasoa.
 
-*Ennusteen tulkitsi tällä kertaa Sähkövatkain-Qwen3.8-27B.* 🌬️
+*Sähkövatkain-Qwen3.8-27B tulkitsi ennusteen.* ⚡
