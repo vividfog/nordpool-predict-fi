@@ -1,21 +1,21 @@
-*The forecast period begins with high prices, but strengthening wind power will turn the price outlook clearly more affordable toward the end.*
+Olkiluoto 3 is on maintenance from 10.9.2026 at 01:00. The maintenance is expected to end on 30.10.2026 at 00:00.
 
-Olkiluoto 3's maintenance outage began on 10 September at 01:00. The forecast indicates that maintenance will end on 30 October at 00:00. Loviisa 2 has a production deficit that started on 1 August at 23:00 and is expected to end on 1 October at 22:00. The unit's availability is 51 percent.
+The forecast has been updated on Wednesday at 14:54.
 
-The forecast was updated on Tuesday at 20:54.
+|  | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temp.<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Thursday** | 16.7 | 5.0 – 25.8 | 202 – 2057 | 10.8 |
+| **Friday** | 9.9 | 4.6 – 16.6 | 1029 – 3140 | 10.5 |
+| **Saturday** | 7.2 | 5.3 – 11.4 | 1121 – 2873 | 11.2 |
+| **Sunday** | 7.4 | 6.0 – 10.0 | 693 – 2419 | 11.5 |
+| **Monday** | 6.0 | 3.2 – 8.9 | 1878 – 2942 | 11.8 |
+| **Tuesday** | 5.0 | 2.9 – 7.5 | 2378 – 3402 | 12.3 |
+| **Wednesday** | 2.4 | 1.7 – 3.5 | 2761 – 4371 | 12.3 |
 
-|           | avg. price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg. temperature<br>°C |
-|:----------|:-------------------:|:------------------:|:----------------------------:|:----------------------:|
-| **Wednesday** | 16.2 | 5.0 – 23.0 | 538 – 2409 | 10.7 |
-| **Thursday** | 10.6 | 5.0 – 19.0 | 328 – 2669 | 10.8 |
-| **Friday** | 9.4 | 4.5 – 15.4 | 1151 – 2773 | 10.5 |
-| **Saturday** | 6.0 | 4.8 – 8.8 | 1884 – 3036 | 11.2 |
-| **Sunday** | 5.9 | 2.4 – 8.1 | 845 – 3372 | 11.5 |
-| **Monday** | 4.4 | 2.0 – 7.6 | 2827 – 4302 | 11.8 |
-| **Tuesday** | 3.9 | 2.2 – 5.7 | 2761 – 4358 | 12.3 |
+The forecast period begins with exceptionally expensive **Thursday**, with an average price of 16.7 cents per kilowatt-hour. Wind power is extremely low throughout the day — dropping to just 202 megawatts at its minimum — which explains the high peak price. The most expensive hour falls in the late morning around 9 a.m., when the price surges to 25.8 cents. **Friday** sees prices come down, but the average price remains at 9.9 cents. Saturday and **Sunday** settle at more moderate levels, 7.2 and 7.4 cents respectively. However, Sunday carries a price spike risk between 10 a.m. and 12 p.m.
 
-The forecast period begins on **Wednesday** with a very high price level, as the expected average price is 16.2 cents per kilowatt-hour. Wind power production is weak, with a daily minimum of only 538 MW, which partly explains the 23-cent maximum price. **Thursday** also sees low wind power, with the minimum dropping to 328 MW. The maximum price rises to 19 cents, and there is a spike risk between 10:00 and 12:00. **Friday** remains expensive, though wind power begins to strengthen slightly. The daily minimum is 1151 MW, which together with the 15.4-cent maximum price reflects the impact of weak wind conditions.
+Prices continue to fall into next week. **Monday** lands at 6.0 cents on average, and **Tuesday** dips to 5.0 cents. The cheapest day of the period is next **Wednesday**, when the average price is just 2.4 cents and the entire day's prices stay below 3.5 cents. Strong wind power, averaging 3,691 megawatts, pushes prices down.
 
-**Saturday** marks a clear price drop, with the average price settling around six cents. Wind power increases considerably, and price variation is moderate. **Sunday** is slightly more expensive than Saturday, but the average price stays below six cents. A spike risk exists on Sunday between 10:00 and 12:00. Wind power is at its lowest of 845 MW, which explains the intra-day price variation. **Monday** and **Tuesday** see strong wind power, averaging over 3,400 MW, and prices become affordable. Monday's average is 4.4 cents and Tuesday's 3.9 cents, the lowest level of the period.
+*Wind outlook by Sähkövatkain-Qwen3.8-27B* 🌬️
 
-*Sähkövatkain-Qwen3.8-27B's wind map interpreted the forecast.* 🍃
+*Thursday's expensive electricity (avg. 16.7 c) drops sharply toward the end of the week – Wednesday's price sinks to just 2.4 cents as wind power strengthens.* 🍃
