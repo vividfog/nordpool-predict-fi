@@ -1,21 +1,23 @@
-Olkiluoto 3 is on maintenance from 10.9.2026 at 01:00. The maintenance is expected to end on 30.10.2026 at 00:00.
+*In the electricity price forecast, Thursday stands out as the most expensive day, but with wind power strengthening, prices drop noticeably toward the end of the forecast period.*
 
-The forecast has been updated on Wednesday at 14:54.
+The forecast was updated on Wednesday at 20:54.
 
-|  | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temp.<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday** | 16.7 | 5.0 – 25.8 | 202 – 2057 | 10.8 |
-| **Friday** | 9.9 | 4.6 – 16.6 | 1029 – 3140 | 10.5 |
-| **Saturday** | 7.2 | 5.3 – 11.4 | 1121 – 2873 | 11.2 |
-| **Sunday** | 7.4 | 6.0 – 10.0 | 693 – 2419 | 11.5 |
-| **Monday** | 6.0 | 3.2 – 8.9 | 1878 – 2942 | 11.8 |
-| **Tuesday** | 5.0 | 2.9 – 7.5 | 2378 – 3402 | 12.3 |
-| **Wednesday** | 2.4 | 1.7 – 3.5 | 2761 – 4371 | 12.3 |
+Regarding nuclear power plants, Olkiluoto 3 is under maintenance from September 10 at 01:00, and the outage is expected to end on October 30 at 00:00. Loviisa 2 is operating at reduced output: at 253 MW of a nominal 496 MW, and the production deficit is expected to continue until October 1.
 
-The forecast period begins with exceptionally expensive **Thursday**, with an average price of 16.7 cents per kilowatt-hour. Wind power is extremely low throughout the day — dropping to just 202 megawatts at its minimum — which explains the high peak price. The most expensive hour falls in the late morning around 9 a.m., when the price surges to 25.8 cents. **Friday** sees prices come down, but the average price remains at 9.9 cents. Saturday and **Sunday** settle at more moderate levels, 7.2 and 7.4 cents respectively. However, Sunday carries a price spike risk between 10 a.m. and 12 p.m.
+| | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
+|:---|:---:|:---:|:---:|:---:|
+| **Thursday** | 16.7 | 5.0 – 25.8 | 184 – 2466 | 10.8 |
+| **Friday** | 9.3 | 4.6 – 16.3 | 1236 – 3753 | 10.5 |
+| **Saturday** | 8.1 | 6.3 – 11.2 | 1034 – 2137 | 11.2 |
+| **Sunday** | 8.0 | 6.9 – 10.3 | 639 – 1870 | 11.5 |
+| **Monday** | 5.7 | 3.6 – 8.7 | 1742 – 3150 | 11.8 |
+| **Tuesday** | 5.4 | 3.4 – 7.6 | 2414 – 3190 | 12.3 |
+| **Wednesday** | 2.4 | 1.6 – 3.6 | 2785 – 4425 | 12.3 |
 
-Prices continue to fall into next week. **Monday** lands at 6.0 cents on average, and **Tuesday** dips to 5.0 cents. The cheapest day of the period is next **Wednesday**, when the average price is just 2.4 cents and the entire day's prices stay below 3.5 cents. Strong wind power, averaging 3,691 megawatts, pushes prices down.
+The most expensive day of the forecast period is **Thursday**, when the average price is expected to rise to 16.7 cents per kilowatt-hour. Within the day, price differences are exceptionally large: at its cheapest, electricity costs 5.0 cents, but in the morning the price climbs to as much as 25.8 cents. This is driven by an extremely low minimum wind power output, which drops to just 184 megawatts.
 
-*Wind outlook by Sähkövatkain-Qwen3.8-27B* 🌬️
+**On Friday**, the price falls, but the average remains at 9.3 cents with a maximum of 16.3 cents. Wind power is still scarce, averaging 2,372 megawatts, which keeps the price level higher than usual. **Saturday** and **Sunday** see prices settling around 8 cents. Sunday, however, carries a spike risk between 10:00 and 12:00.
 
-*Thursday's expensive electricity (avg. 16.7 c) drops sharply toward the end of the week – Wednesday's price sinks to just 2.4 cents as wind power strengthens.* 🍃
+**Monday** and **Tuesday** bring stronger wind power and further price declines; average prices settle at 5.4–5.7 cents. The most affordable day of the period is **next Wednesday**, when abundant wind power—averaging 3,696 megawatts—pushes the average price down to 2.4 cents. Hourly prices range between 1.6 and 3.6 cents, and even the most expensive hours stay below four cents.
+
+*Sähkövatkain-Qwen3.8-27B sifted through the numbers today.* 🍃
