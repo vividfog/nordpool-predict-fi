@@ -17,20 +17,20 @@
             "availability": 0.0
         },
         {
-            "start": "2026-08-01T20:30:00.000Z",
-            "end": "2026-10-01T19:00:00.000Z",
-            "avail_qty": 253,
-            "nominal_power": 496.0,
-            "production_resource_name": "Loviisa 2",
-            "availability": 0.5100806452
-        },
-        {
             "start": "2026-09-26T07:00:00.000Z",
             "end": "2026-10-17T22:00:00.000Z",
             "avail_qty": 0,
             "nominal_power": 496.0,
             "production_resource_name": "Loviisa 1",
             "availability": 0.0
+        },
+        {
+            "start": "2026-08-01T20:30:00.000Z",
+            "end": "2026-10-03T19:00:00.000Z",
+            "avail_qty": 253,
+            "nominal_power": 496.0,
+            "production_resource_name": "Loviisa 2",
+            "availability": 0.5100806452
         }
     ]
 }
