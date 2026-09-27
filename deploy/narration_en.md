@@ -1,21 +1,21 @@
-*The forecast period opens with very low prices, but elevated price expectations on Wednesday and Sunday bring unusual variation to the week.*
+*The forecast period begins very cheaply on Monday, but prices rise towards the end as wind power weakens. Wednesday and Sunday stand out with the highest prices.*
 
-Olkiluoto 3 is under maintenance starting 10 September at 01:00, expected to end on 30 October at 00:00. Loviisa 1's maintenance started on 26 September at 10:00, with an expected end on 18 October at 01:00. Loviisa 2 has a production reduction, expected to end on 3 October at 22:00. The plant's availability is 51 percent.
+Olkiluoto 3 is under maintenance from 10.9.2026 at 01:00, and the outage is expected to end on 30.10.2026 at 00:00. Loviisa 1 is under maintenance from 26.9.2026 at 10:00, and the outage is expected to end on 18.10.2026 at 01:00. Loviisa 2 is experiencing a production shortfall, with availability at 51 percent from 1.8.2026 at 23:00 until 3.10.2026 at 22:00.
 
-The forecast was updated on Sunday at 14:54.
+The forecast has been updated on Sunday at 20:54.
 
-|   | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **Monday** | 1,0 | 0,4 – 2,2 | 2691 – 5832 | 11,8 |
-| **Tuesday** | 5,3 | 0,7 – 7,1 | 1812 – 5304 | 12,3 |
-| **Wednesday** | 7,1 | 2,8 – 15,4 | 147 – 3295 | 12,3 |
-| **Thursday** | 4,8 | 1,3 – 10,0 | 1257 – 3356 | 12,4 |
-| **Friday** | 3,5 | 1,3 – 6,4 | 1910 – 3445 | 12,1 |
-| **Saturday** | 4,0 | 1,5 – 9,1 | 1671 – 2878 | 11,7 |
-| **Sunday** | 7,7 | 4,3 – 13,9 | 936 – 2449 | 10,7 |
+|  | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Monday** | 1.0 | 0.4 – 2.2 | 2882 – 5805 | 11.8 |
+| **Tuesday** | 5.9 | 0.7 – 8.0 | 1439 – 5239 | 12.3 |
+| **Wednesday** | 8.3 | 3.4 – 13.2 | 462 – 3280 | 12.3 |
+| **Thursday** | 4.5 | 1.9 – 8.1 | 1813 – 3131 | 12.4 |
+| **Friday** | 6.0 | 1.5 – 12.5 | 1468 – 3334 | 12.1 |
+| **Saturday** | 4.9 | 2.3 – 9.3 | 1696 – 2646 | 11.7 |
+| **Sunday** | 7.7 | 4.2 – 14.3 | 989 – 2507 | 10.7 |
 
-The forecast period begins with very affordable prices on **Monday**. The average price stays at 1.0 cents, and the price remains below 2.3 cents throughout the entire day. Abundant wind power production is behind this, averaging over 4,200 megawatts. On **Tuesday**, the price rises to an average of 5.3 cents, with no major fluctuations within the day.
+The forecast period is two-pronged. **On Monday**, the electricity price remains low thanks to strong wind power, and the average price is expected to stay at just 1.0 cents. **On Tuesday**, the price rises, and **on Wednesday** a higher price level typical of the period is reached. Wednesday's expected average price is 8.3 cents and the maximum price is 13.2 cents. The minimum wind power output on Wednesday is only 462 megawatts, which partly explains the high maximum price. **Next Sunday**, the price rises again, and the maximum price is expected to be 14.3 cents. Sunday's minimum wind power output is also low, at 989 megawatts, which raises the day's price level.
 
-**Wednesday** stands out as the most expensive day of the week. The price expectation climbs sharply in the morning: between 10:00 and 12:00 there is an elevated risk of price spikes, and the maximum price reaches 15.4 cents. This is driven by a collapse in wind power — the day's minimum is just 147 megawatts, well below the 2,000 megawatt threshold, which explains the high maximum price. In the afternoon, the price drops below 10 cents. On **Thursday**, the price falls back to the moderate 4.8 cents. **Friday** is one of the most affordable days of the period, with an average price of 3.5 cents. On **Saturday**, the average price is 4.0 cents, but it rises to 9.1 cents towards the evening. On **Sunday**, wind power remains weak, averaging 1,774 megawatts with a minimum of 936 megawatts. This lifts the price level: the average price is 7.7 cents and the maximum climbs to 13.9 cents.
+**Thursday** is the second cheaper day of the period, and **Saturday** settles at an average price of 4.9 cents. There is a price spike risk on Wednesday between 7:00–9:00, during which the price may temporarily rise higher.
 
-*Sähkövatkain-Qwen3.8-27B at the edge of wind forecasting.* 🌬️
+*Sähkövatkain-Qwen3.8-27B interpreted the forecast.* 🍃
