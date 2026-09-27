@@ -1,25 +1,21 @@
-*Ennustejakson pörssisähkön hinta nousee loppua kohti, ja sunnuntai on kallein päivä heikon tuulivoiman ansiosta.*
+*Ennustejaksolla pörssisähkön hinta nousee edullisesta maanantaista kalliimpaan sunnuntaihin, jolloin keskihinta yltää yli kymmeneen senttiin.*
 
-Olkiluoto 3 on huoltokatkolla 10. syyskuuta klo 01 alkaen. Katkon arvioidaan päättyvän 30. lokakuuta klo 00.  
-Loviisa 1 on huoltokatkolla 26. syyskuuta klo 10 alkaen. Katkon arvioidaan päättyvän 18. lokakuuta klo 01.  
-Loviisa 2:n tuotanto on vajaissa: käytettävyys on 51 prosenttia. Vajaus alkoi 1. elokuuta ja päättyy 3. lokakuuta klo 22.
+Ennuste on päivitetty sunnuntaina klo 08:54.
 
-Ennuste on päivitetty sunnuntaina klo 02:54.
+**Olkiluoto 3** on huoltokatkossa 10. syyskuuta klo 01 alkaen. Katkon arvioidaan päättyvän 30. lokakuuta klo 00. **Loviisa 1** on huoltokatkossa 26. syyskuuta klo 10 alkaen, ja katkon odotetaan päättyvän 18. lokakuuta klo 01. **Loviisa 2**:n tuotanto on vajannut 51 prosenttiin, ja vajauksen arvioidaan päättyvän 3. lokakuuta klo 22.
 
-|  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **maanantai** | 3,5 | 2,2 – 6,1 | 2492 – 5757 | 11,8 |
-| **tiistai** | 5,7 | 3,0 – 8,4 | 1690 – 5590 | 12,3 |
-| **keskiviikko** | 5,8 | 3,0 – 9,6 | 1356 – 3177 | 12,3 |
-| **torstai** | 5,5 | 2,2 – 12,4 | 1642 – 3138 | 12,4 |
-| **perjantai** | 6,9 | 2,8 – 12,6 | 1356 – 2955 | 12,1 |
-| **lauantai** | 8,2 | 6,5 – 13,1 | 879 – 2021 | 11,7 |
-| **sunnuntai** | 9,6 | 6,6 – 17,7 | 560 – 1662 | 10,7 |
+|  | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **maanantai** | 3,4 | 1,6 – 6,7 | 2544 – 5752 | 11,8 |
+| **tiistai** | 6,2 | 4,1 – 9,1 | 2046 – 5351 | 12,3 |
+| **keskiviikko** | 6,6 | 3,5 – 13,2 | 849 – 3175 | 12,3 |
+| **torstai** | 5,6 | 2,0 – 11,0 | 1341 – 3351 | 12,4 |
+| **perjantai** | 6,9 | 2,0 – 14,3 | 1268 – 3226 | 12,1 |
+| **lauantai** | 8,5 | 7,1 – 13,1 | 891 – 2012 | 11,7 |
+| **sunnuntai** | 10,2 | 6,9 – 18,0 | 576 – 1699 | 10,7 |
 
-Ennustejakso käynnistyy edullisissa merkeissä, mutta hinnat kohoavat loppua kohti. **Maanantain** keskihinta on 3,5 senttiä, ja päivän hinta liikkuu 2,2 ja 6,1 sentin välillä. Tuulivoimaa on tarjolla runsaasti, keskimäärin yli 4 000 megawattia, mikä painaa hintaa alas.
+Ennustejakson edullisin päivä on **maanantai**, jolloin keskihinta jää 3,4 senttiin kilowattitunnilta. Tuulivoimaa on tuolloin runsaasti, keskimäärin yli 4 000 megawattia, mikä pitää hinnan matalana. **Tiistai** ja **keskiviikko** asettuvat 6,2–6,6 sentin keskihinnoille. Keskiviikkona tuulivoiman tuotanto painuu aamulla hetkellisesti alle 900 megawatin, mikä selittää päivän korkeampaa maksimihintaa 13,2 senttiä. Keskiviikolle on olemassa hintapiikkiriski kello 7–9.
 
-**Torstain** ja **perjantain** iltoina hinnat nousevat yli 12 senttiin. Tuulivoiman tuotanto hiipuu iltaa kohti, ja alhainen tuulivoiman minimituotanto selittää osaltaan ilta-aikaan osuvia korkeampia hintoja. **Lauantaina** keskihinta on 8,2 senttiä, ja hintapiikkiriski ajoittuu klo 10–12. Tuulivoiman keskituotanto jää alle 1 400 megawatin.
+**Torstai** on vielä maltillinen 5,6 sentin keskihinnalla, mutta **perjantaina** keskihinta nousee 6,9 senttiin ja maksimi kohoaa 14,3 senttiin tuulivoiman jatkettua heikkenemistä. **Lauantai** ja **sunnuntai** ovat jakson kalleimmat päivät: lauantain keskihinta on 8,5 senttiä ja sunnuntain 10,2 senttiä. Sunnuntaina tuulivoima on hyvin vähäistä, keskimäärin vain 1 154 megawattia, ja minimi painuu alle 600 megawatin, mikä nostaa maksimihinnan 18,0 senttiin. Sunnuntaille on hintapiikkiriski kello 18–20.
 
-**Sunnuntai** on ennustejakson kallein päivä. Keskihinta on 9,6 senttiä, ja maksimihinta kipuaa 17,7 senttiin kello 19 tienoilla. Tuulivoiman tuotanto on heikkoa koko päivän, ja minimissään se jää vain 560 megawattiin, mikä on jakson alhaisin lukema. Hintapiikkiriski ajoittuu iltaan klo 18–20.
-
-*Sähkövatkain-Qwen3.8-27B laski luvut tänään.* 💨
+*Sähkövatkain-Qwen3.8-27B tarkasti lukuja.* 🌬️
