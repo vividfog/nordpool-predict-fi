@@ -1,19 +1,21 @@
-*Ennustejakso käynnistyy kalliilla keskiviikolla ja perjantain hintapiikeillä, mutta loppuviikon tuulivoiman kasvu painaa hinnat edullisiksi.*
+*Ennustejakson alkupuolella pörssisähkön hinta on korkeahko, mutta loppua kohden se painuu tuulivoiman voimistuessa selvästi edullisemmaksi.*
 
-Olkiluoto 3 on huoltokatkossa 10.9.2026 klo 01 alkaen. Katkon arvioidaan päättyvän 30.10.2026 klo 00. Loviisa 1 on huoltokatkossa 26.9.2026 klo 10 alkaen, ja sen arvioidaan päättyvän 18.10.2026 klo 01. Loviisa 2:n tuotanto on vajannut 51 prosenttiin nimellistehosta. Tuotantovajauksen arvioidaan päättyvän 4.10.2026 klo 09.
+Ennuste on päivitetty tiistaina klo 11:54.
 
-Ennuste on päivitetty tiistaina klo 08:54.
+|  | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
+|:---|:---:|:---:|:---:|:---:|
+| **keskiviikko** | 10,9 | 4,8 – 19,7 | 120 – 2 980 | 12,3 |
+| **torstai** | 6,6 | 2,2 – 11,0 | 1 292 – 3 372 | 12,4 |
+| **perjantai** | 10,1 | 3,3 – 17,9 | 912 – 2 978 | 12,1 |
+| **lauantai** | 8,3 | 6,4 – 13,0 | 1 134 – 2 082 | 11,7 |
+| **sunnuntai** | 8,1 | 5,5 – 11,2 | 882 – 2 160 | 10,7 |
+| **maanantai** | 4,3 | 2,5 – 6,6 | 1 316 – 3 598 | 10,2 |
+| **tiistai** | 4,2 | 2,4 – 7,1 | 2 494 – 4 924 | 10,5 |
 
-| **keskiviikko** | 10,2 | 4,6 – 18,2 | 127 – 3053 | 12,3 |
-| **torstai** | 6,0 | 2,2 – 11,9 | 1696 – 2852 | 12,4 |
-| **perjantai** | 9,0 | 4,0 – 16,5 | 817 – 2386 | 12,1 |
-| **lauantai** | 8,2 | 6,3 – 11,3 | 1025 – 2021 | 11,7 |
-| **sunnuntai** | 7,8 | 3,5 – 11,4 | 985 – 2548 | 10,7 |
-| **maanantai** | 2,4 | 0,9 – 4,0 | 2812 – 4377 | 10,2 |
-| **tiistai** | 2,4 | 1,1 – 4,3 | 4197 – 4912 | 10,3 |
+Ydinvoimaloiden tuotannossa on käynnissä kaksi huoltokatkoa ja yksi tuotantovajaus. Olkiluoto 3 on huoltokatkolla 10.9.2026 klo 01 alkaen, ja katkon arvioidaan päättyvän 30.10.2026 klo 00. Loviisa 1 on huoltokatkolla 26.9.2026 klo 10 alkaen, ja sen odotetaan päättyvän 18.10.2026 klo 01. Loviisa 2:n tuotanto on vajaa, ja käytettävissä on 253 MW 496 MW:n nimellistehosta; vajaus on alkunsa 1.8.2026 klo 23 ja päättyy ennusteen mukaan 4.10.2026 klo 09.
 
-Ennustejakson hintataso jakautuu kahteen osaan. **Keskiviikko** on jakson kallein päivä, jolloin odotettu keskihinta kohoaa 10,2 senttiin ja maksimihinta nousee 18,2 senttiin. Hintapiikkiriski osuu kello 18–20 välille. Korkeaa hintaa selittää tuulivoiman heikko tuotanto: päivän minimi on vain 127 megawattia. **Perjantai** on toinen kallis päivä, keskihinta 9,0 senttiä ja maksimi 16,5 senttiä. Myös perjantaina tuulivoiman minimi on alle tuhannen megawatin, mikä nostaa hintatasoa.
+Ennustejakso jakautuu selvästi kahtia. Alkupuolen päivät **keskiviikko** ja **perjantai** erottuvat korkeilla keskihinnoillaan, noin 10–11 sentillä kilowattitunnilta. Molempina päivinä tuulivoiman minimituotanto jää hyvin matalalle, keskiviikkona vain 120 megawattiin ja perjantaina 912 megawattiin, mikä selittää päivien korkeita maksimihintoja. **Keskiviikkona** hinta kipuaa korkeimmillaan 19,7 senttiin, ja hintapiikkiriski on ilta-aikaan kello 18–20. **Perjantaina** maksimihinta on 17,9 senttiä ja hintapiikkiriski ajoittuu aamupäivään kello 10–12.
 
-**Lauantai** ja **sunnuntai** ovat tasaisempia, keskihintojen ollessa 8,2 ja 7,8 senttiä. Ensi **maanantaina** ja **tiistaina** hinnat painuvat hyvin edullisiksi. Molempien päivien keskihinta on 2,4 senttiä, ja päivät sisältyvät ennustejakson edullisimpiin. Taustalla on tuulivoiman voimakas lisääntyminen: maanantaina keskituotanto on 3 764 megawattia ja tiistaina 4 444 megawattia, mikä painaa hintoja selvästi.
+Viikonloppua kohti hintataso laskee. **Torstai** on keskihinnaltaan 6,6 senttiä, ja **lauantai** sekä **sunnuntai** asettuvat reilusti kahdeksaan senttiin. Sunnuntain hintapiikkiriski osuu aamupäivään kello 10–12, vaikka päivän maksimihinta jää maltillisemmaksi. Ennustejakson edullisimmat päivät ovat **maanantai** ja **tiistai**, joiden keskihinta painuu noin 4,2–4,3 senttiin. Molempina päivinä tuulivoima on runsasta: maanantaina keskimäärin 2 675 MW ja tiistaina jopa 3 508 MW, mikä osaltaan selittää matalaa hintatasoa. Hinnat pysyvät varsin tasaisina, eivätkä yksittäiset tunnit poikkea paljon päivän keskihintaa.
 
-*Numerot tarkisti tänään Sähkövatkain-Qwen3.8-27B.* ⚡
+*Sähkövatkain-Qwen3.8-27B pui luvut tällä kertaa.* 🌬️
