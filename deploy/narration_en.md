@@ -1,21 +1,21 @@
-*The forecast period begins with average prices of 6–8 cents, but as wind power picks up towards the end, prices drop to below three cents.*
+*Thursday's and Sunday's price expectations are the highest, but from Monday onwards, thanks to wind power, average prices drop clearly below four cents.*
 
-Olkiluoto 3 is in a maintenance outage starting from September 10, 2026 at 01:00, and the outage is expected to end on October 30, 2026 at 00:00. Loviisa 1 is in a maintenance outage starting from September 26, 2026 at 10:00, and the outage is expected to end on October 18, 2026 at 01:00. Loviisa 2's production shortfall began on August 1, 2026 at 23:00, and is expected to end on October 4, 2026 at 09:00. Loviisa 2's available capacity is 253 MW, corresponding to a 51 percent utilization rate of its nominal capacity of 496 MW.
+The forecast was updated on Wednesday at 14:54.
 
-The forecast was updated on Wednesday at 11:54.
+There are three production outages at the nuclear power plants. **Olkiluoto 3** is under maintenance from 1 September 2026 at 01:00, and the outage is estimated to end on 30 October 2026 at 00:00. **Loviisa 1** is under maintenance from 26 September 2026 at 10:00, and it is estimated to end on 18 October 2026 at 01:00. **Loviisa 2** is experiencing a production deficit with an availability of 51 percent, and the deficit is estimated to end on 4 October 2026 at 09:00.
 
-|            | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
-|:-----------|:----------------:|:------------------:|:---------------------:|:-------------:|
-| **Thursday**  |       6.0        |   2.1 – 10.0       |   1444 – 3738          |     12.4      |
-| **Friday**    |       7.5        |   2.6 – 11.8       |   1604 – 3595          |     12.1      |
-| **Saturday**  |       6.6        |   4.0 – 11.2       |   1193 – 3498          |     11.7      |
-| **Sunday**    |       7.7        |   4.9 – 12.0       |   1028 – 2251          |     10.7      |
-| **Monday**    |       6.0        |   2.7 – 7.7        |   1143 – 3758          |     10.2      |
-| **Tuesday**   |       2.8        |   1.3 – 4.8        |   3392 – 4272          |     10.5      |
-| **Wednesday** |       3.1        |   2.1 – 4.2        |   3420 – 4182          |     10.1      |
+|           | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temp.<br>°C |
+|:----------|:-------------------------:|:------------------:|:----------------------------:|:-------------------:|
+| **Thursday**   | 4.0                     | 1.7 – 6.8          | 1433 – 3738                  | 12.4                |
+| **Friday**    | 7.4                     | 1.5 – 11.9         | 1594 – 3598                  | 12.1                |
+| **Saturday**  | 6.4                     | 4.0 – 11.2         | 1175 – 3487                  | 11.7                |
+| **Sunday**    | 7.8                     | 5.3 – 11.9         | 1067 – 2308                  | 10.7                |
+| **Monday**    | 6.1                     | 2.7 – 7.9          | 1112 – 3782                  | 10.2                |
+| **Tuesday**   | 2.8                     | 1.3 – 4.8          | 3307 – 4286                  | 10.5                |
+| **Wednesday** | 3.1                     | 2.1 – 4.2          | 3382 – 4150                  | 10.1                |
 
-The forecast period is divided into two parts. From **Thursday** to **Monday**, the average daily price ranges between 6.0 and 7.7 cents, with **Sunday** expected to have the highest average at 7.7 cents. Sunday stands out as the most expensive day, with its maximum price expected to reach 12.0 cents. The day's minimum wind power output is only 1028 megawatts, which partly explains the high maximum price. **Friday**'s maximum price is 11.8 cents, with wind power minimum output at 1604 megawatts.
+The price outlook for the forecast period varies significantly. **Thursday** is the most affordable day, with an average price of around 4 cents. On **Friday** and **Sunday**, prices rise noticeably higher; Friday's average is 7.4 and Sunday's 7.8 cents per kilowatt-hour. **Saturday's** average settles at 6.4 cents and **Monday's** at 6.1 cents. The most affordable days of the period are **Tuesday** and **Wednesday**, when the average price drops below four cents – 2.8 cents on Tuesday and 3.1 cents on Wednesday.
 
-From **Tuesday** onwards, the price level drops noticeably as wind power strengthens. Tuesday's average price is 2.8 cents and **Wednesday**'s 3.1 cents, with both days' average wind power output approaching 4000 megawatts. On Tuesday, the lowest prices of the day occur in the early morning hours, when the price drops to 1.3 cents. The cheapest hours of the period therefore fall towards the end of the week, when wind power is abundantly available.
+On Sunday, wind power generation drops to a minimum of only 1,067 megawatts, explaining the day's high maximum price of 11.9 cents. On Friday as well, the wind power minimum is 1,594 megawatts and the maximum price reaches 11.9 cents. On Saturday, the wind power minimum is 1,175 megawatts and the maximum price is 11.2 cents. The low prices on Tuesday and Wednesday are explained by strong wind power, which averages nearly 3,900 megawatts on both days.
 
-*Numbers were decoded this time by Sähkövatkain-Qwen3.8-27B.* 🌬️
+*Sähkövatkain-Qwen3.8-27B read the numbers today.* 🌬️
