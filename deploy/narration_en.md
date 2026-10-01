@@ -1,23 +1,21 @@
-The forecast period is two-sided: the early days are cheap, but on Thursday a collapse in wind power pushes prices above 20 cents.
+*Prices remain affordable early in the week, but on Thursday low wind power drives the average price above 13 cents and evening hourly rates may exceed 20 cents.*
 
-Olkiluoto 3 is under maintenance from 10.9.2026 at 01:00. The maintenance period is estimated to end on 30.10.2026 at 00:00. Loviisa 1 is under maintenance from 26.9.2026 at 10:00. The end of the maintenance period is estimated to be 18.10.2026 at 01:00.
+The forecast was updated on Thursday at 20:54.
 
-The forecast was updated on Thursday at 15:58.
+**Olkiluoto 3** is on a maintenance break starting from 10 September at 01:00, and the break is estimated to end on 30 October at 00:00. **Loviisa 1** is on a maintenance break starting from 26 September at 10:00, and the break is estimated to end on 18 October at 01:00. **Loviisa 2** has a production shortfall starting from 1 August, and the shortfall is estimated to end on 4 October at 09:00.
 
-|  | avg.<br>price<br>c/kWh | min – max<br>c/kWh | wind<br>min – max<br>MW | avg.<br>temp.<br>°C |
+| | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday** | 6.1 | 1.5 – 11.2 | 1557 – 3769 | 12.1 |
-| **Saturday** | 4.5 | 3.1 – 6.4 | 2295 – 3789 | 11.7 |
-| **Sunday** | 6.0 | 2.8 – 9.1 | 1250 – 3463 | 10.7 |
-| **Monday** | 3.0 | 1.0 – 4.8 | 2397 – 4157 | 10.2 |
-| **Tuesday** | 2.4 | 1.2 – 3.8 | 4078 – 4796 | 10.5 |
-| **Wednesday** | 4.9 | 1.7 – 9.8 | 2529 – 4365 | 10.1 |
-| **Thursday** | 13.4 | 6.0 – 22.2 | 607 – 2424 | 8.3 |
+| **Friday** | 6.1 | 1.5 – 11.2 | 1479 – 3686 | 12.1 |
+| **Saturday** | 4.3 | 3.0 – 5.8 | 2620 – 3639 | 11.7 |
+| **Sunday** | 6.7 | 3.2 – 10.2 | 1349 – 3224 | 10.7 |
+| **Monday** | 3.2 | 1.5 – 5.0 | 2317 – 4132 | 10.2 |
+| **Tuesday** | 2.4 | 1.1 – 4.0 | 4106 – 4800 | 10.5 |
+| **Wednesday** | 4.8 | 1.8 – 9.2 | 2563 – 4334 | 10.1 |
+| **Thursday** | 13.2 | 5.7 – 21.2 | 686 – 2446 | 8.3 |
 
-At the beginning of the forecast period, **Friday's** average price settles at around 6.1 cents, but within the day the price fluctuates considerably: overnight the price is below two cents, while in the afternoon it climbs above 11 cents. **Saturday** is slightly cheaper with an average of 4.5 cents, and there is little variation within the day. **Sunday** sees the price return to around six cents.
+The forecast period is two-fold. **Friday**, **Saturday** and **Sunday** are fairly typical in terms of price level, with average prices ranging between 4.3 and 6.7 cents. On **Monday** and **Tuesday**, electricity prices drop clearly to more affordable levels – Tuesday's average price is only 2.4 cents and all of the day's prices stay below four cents. This is explained by exceptionally strong wind power, which reaches an average of over 4,300 megawatts on Tuesday.
 
-**Monday** and **Tuesday** are the cheapest days of the period. Monday's average price is 3.0 cents and Tuesday's only 2.4 cents. On both days the price stays below five cents throughout the day, and no price spikes are visible. **Wednesday's** average price rises to 4.9 cents, and the price briefly approaches ten cents toward the evening.
+The clearly most expensive day of the period is **Thursday**, whose average price is expected to rise to 13.2 cents. Wind power production then collapses to an average of just 1,249 megawatts, and the day's lowest output is only 686 megawatts. Combined with demand, this raises hourly prices especially in the evening. On **Thursday** between 19:00 and 21:00 there is a risk of a price spike, and the maximum price may climb to as much as 21.2 cents per kilowatt-hour.
 
-**Thursday** stands out as a clearly expensive day. The average price is expected to be 13.4 cents, with the maximum price climbing to 22.2 cents. The risk of a price spike is concentrated between 18:00 and 20:00. Thursday's high maximum price is explained by a collapse in wind power production: the day's minimum output drops to just 607 megawatts, which is the lowest figure in the entire forecast period. The weakness of wind power combined with rising demand toward the evening drives prices to exceptionally high levels.
-
-*Sähkövatkain-Qwen3.8-27B reports.* ⚡
+*Background check for the forecast: Sähkövatkain-Qwen3.8-27B* 🌬️
