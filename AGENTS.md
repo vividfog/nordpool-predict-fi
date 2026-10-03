@@ -15,6 +15,7 @@
    - Train volatility model (`util/volatility_xgb.py`), annotate data.
    - Train price model (`util/train_xgb.py`, XGBoost regressor with cyclic features).
    - Compute spike-risk hours (`util/spike_risk.py`), scale them for the frontend (`util/scaler.py`), emit debug summaries.
+   - Split the scaled hourly predictions into 15-min prices (`util/quarter_xgb.py`).
    - Optional commit ⇒ `db_update` + snapshot archive; deploy ⇒ JSON dumps in `deploy/`.
    - Narration via `util/llm.py` (LLM API required; uses `util/llm_prompts.py`; spike-risk prompt data comes from `<hintapiikkiriskit>`).
 
@@ -32,11 +33,12 @@
 - Wind-power gap filler also retrains in-memory before inference; persisting models is handled only by experimental scripts under `data/create/`.
 - Pricing feature engineering + feature column selection is centralized in `util/features_pricing.py` and reused by training, prediction, and feature embedding exports.
 - Feature sets include weather station temps (`t_*`), wind speeds (`ws_*`), irradiance summary stats, transmission caps, wind power, holiday flags.
+- 15-min predictions (`util/quarter_xgb.py`) are a second stage on top of the hourly model: an in-memory XGB regressor predicts each quarter's offset from its hourly mean (quarter index, Helsinki calendar, hourly level + neighbour-hour gradients, wind/nuclear/import/solar and their ramps), trained on actual 15-min prices since `QUARTER_START` (2025-10-01 CET) from the `prediction_quarter` table. Offsets are re-centred per hour, so quarters always average to the hourly prediction. Sähkötin without `&quarter` returns hourly means, which remain the hourly model's target.
 - Volatility classifier (XGB) aggregates daily stats; outputs `volatile_likelihood` (currently optional in feature set, always present in DF).
 - Spike-risk detection is centralized in `util/spike_risk.py`: future Helsinki hours, top daily morning/evening price hours, and low wind (`wind_multiplier > 1.0`). `util/scaler.py` uses it for `prediction_scaled.json`; `util/llm.py` aggregates it into `<hintapiikkiriskit>`. The old daily `Spike_Risk` score heuristic is no longer used.
 
 ## Deploy & Frontend
-- `deploy/` hosts Firebase-ready static site; predictions published as `prediction.json`, `prediction_full.json`, `averages.json`, `windpower.json`.
+- `deploy/` hosts Firebase-ready static site; predictions published as `prediction.json` (hourly), `prediction_15min.json` (15-min), `prediction_full.json`, `averages.json`, `windpower.json`.
 - Modular JS under `deploy/js/` selects data sources, renders charts, and offers Home Assistant configs in YAML.
 - Historical snapshots rotated via `util.eval.rotate_snapshots`; evaluation tooling in `nordpool_eval_fi.py` writes reports to `deploy/evals/`.
 

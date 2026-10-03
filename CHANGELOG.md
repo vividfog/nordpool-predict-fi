@@ -2,6 +2,15 @@
 
 All notable changes will be documented in this file.
 
+## [2026-10-03] - 15-Minute Price Predictions
+### Added
+- 15-min price predictions for the Nordic 15-min day-ahead market (`util/quarter_xgb.py`): a small XGBoost "intra-hour shape" model, retrained in memory each run on actual 15-min prices since 2025-10-01, splits each (scaled) hourly prediction into four quarters that average back to the hourly value.
+- Sähkötin 15-min price fetch (`fetch_quarter_prices`, `&quarter`) and a `prediction_quarter` SQLite table (actuals + predictions), backfilled automatically on the first `--commit` run.
+- `deploy/prediction_15min.json` (`[ms, c/kWh]`, same layout as `prediction.json`).
+
+### Unchanged
+- The hourly model, `prediction.json`, `averages.json`, and Home Assistant configs stay hourly.
+
 ## [2026-05-03] - Spike Risk Consistency
 ### Added
 - Shared hourly spike-risk calculation for frontend markers and LLM narration.

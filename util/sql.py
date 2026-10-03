@@ -114,4 +114,57 @@ def db_query_all(db_path):
     conn.close()
     return data
     
+# region quarter
+QUARTER_TABLE = "prediction_quarter"
+QUARTER_COLUMNS = ("Price_cpkWh", "PricePredict_cpkWh")
+
+
+def _db_quarter_ensure(conn):
+    conn.execute(
+        f"CREATE TABLE IF NOT EXISTS {QUARTER_TABLE} ("
+        "timestamp TIMESTAMP PRIMARY KEY, Price_cpkWh FLOAT, PricePredict_cpkWh FLOAT)"
+    )
+
+
+def db_quarter_update(db_path, df, col):
+    '''
+    Upsert one column of 15-min rows into the 'prediction_quarter' table (created if missing).
+    Other columns of existing rows are left untouched; NaN values are skipped.
+    '''
+    if col not in QUARTER_COLUMNS:
+        raise ValueError(f"Unknown quarter column '{col}'")
+
+    rows = df[["timestamp", col]].dropna()
+    # Same ISO8601 UTC format as normalize_timestamp, vectorised for ~35k quarters/year
+    stamps = pd.to_datetime(rows["timestamp"], utc=True).map(lambda ts: ts.isoformat())
+    records = list(zip(stamps, rows[col].astype(float)))
+
+    conn = sqlite3.connect(db_path)
+    try:
+        _db_quarter_ensure(conn)
+        conn.executemany(
+            f"INSERT INTO {QUARTER_TABLE} (timestamp, \"{col}\") VALUES (?, ?) "
+            f"ON CONFLICT(timestamp) DO UPDATE SET \"{col}\"=excluded.\"{col}\"",
+            records,
+        )
+        conn.commit()
+    finally:
+        conn.close()
+    return len(records)
+
+
+def db_quarter_query_all(db_path):
+    '''
+    Query all rows from the 'prediction_quarter' table, sorted, with UTC timestamps.
+    '''
+    conn = sqlite3.connect(db_path)
+    try:
+        _db_quarter_ensure(conn)
+        data = pd.read_sql_query(f"SELECT * FROM {QUARTER_TABLE} ORDER BY timestamp", conn)
+    finally:
+        conn.close()
+    data["timestamp"] = pd.to_datetime(data["timestamp"], utc=True)
+    return data
+# endregion quarter
+
 "This script is not meant to be executed directly."

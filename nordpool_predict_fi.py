@@ -14,7 +14,7 @@ from util.llm import narrate_prediction
 from util.entso_e import entso_e_nuclear
 from util.archive import insert_snapshot
 from util.holidays import update_holidays
-from util.sql import db_update, db_query_all
+from util.sql import db_update, db_query_all, db_quarter_update, db_quarter_query_all
 from util.dataframes import update_df_from_df
 from util import features_pricing as pricing
 from util.openmeteo_solar import update_solar
@@ -25,6 +25,7 @@ from util.jao_imports import update_import_capacity
 from util.fmi import update_wind_speed, update_temperature
 from util.eval import create_prediction_snapshot, rotate_snapshots
 from util.volatility_xgb import train_volatility_model, predict_daily_volatility
+from util.quarter_xgb import load_quarter_prices, train_quarter_model, predict_quarter_prices
 
 # from util.volatility_bayes import train_volatility_model, predict_daily_volatility
 from util.scaler import scale_predicted_prices
@@ -292,6 +293,11 @@ if args.predict:
     logger.debug("Training the model with updated data")
     model_trained = train_model(df_full, fmisid_ws=fmisid_ws, fmisid_t=fmisid_t)
 
+    # Train the 15-min shape model on actual quarter prices since the 15-min market go-live
+    quarter_prices = load_quarter_prices(db_path, commit=args.commit)
+    quarter_model = train_quarter_model(df_full, quarter_prices)
+    del quarter_prices
+
     # df_full is no longer required beyond this point; keep it deleted to avoid creeping GPU/CPU pressure.
     del df_full
     gc.collect()
@@ -329,6 +335,13 @@ if args.predict:
     else:
         logger.info("No scaled prices to apply (all NaN)")
 
+    # region [quarters]
+    # Split the final (scaled) hourly predictions into 15-min predictions
+    logger.info("Predicting 15-min prices from the hourly predictions")
+    df_quarter = predict_quarter_prices(quarter_model, df_recent)
+    del quarter_model
+    gc.collect()
+
     # Clean up all unnecessary columns before DB commit or display
     drop_cols = [col for col in pricing.feat if col in df_recent.columns]
     if drop_cols:
@@ -337,6 +350,7 @@ if args.predict:
     # Describe the predictions
     print(df_recent)
     print(df_recent.describe())
+    print(df_quarter.describe())
 
 # region commit
 # --commit: Update the database with the final data
@@ -373,6 +387,9 @@ if args.commit:
         )
         if not run_id:
             logger.error("Failed to archive prediction snapshot")
+
+        quarter_count = db_quarter_update(db_path, df_quarter, "PricePredict_cpkWh")
+        logger.info(f"→ Database updated with {quarter_count} 15-min predictions.")
     else:
         logger.error("Failed to update database with new predictions")
 
@@ -453,6 +470,21 @@ if args.deploy and args.commit:
     with open(json_path, "w") as f:
         f.write(json_data)
     logger.info(f"→ Hourly price predictions saved to '{json_path}'")
+
+    # 15-min price predictions, same [ms, price] layout as prediction.json
+    quarter_df = db_quarter_query_all(db_path)
+    quarter_df = quarter_df[quarter_df["timestamp"] >= start_of_yesterday_utc].dropna(
+        subset=["PricePredict_cpkWh"]
+    )
+    epoch = pd.Timestamp("1970-01-01", tz="UTC")
+    quarter_list = [
+        [int((ts - epoch) // pd.Timedelta("1ms")), float(price)]
+        for ts, price in zip(quarter_df["timestamp"], quarter_df["PricePredict_cpkWh"])
+    ]
+    json_path_quarter = os.path.join(deploy_folder_path, "prediction_15min.json")
+    with open(json_path_quarter, "w") as f:
+        f.write(json.dumps(quarter_list, ensure_ascii=False))
+    logger.info(f"→ 15-min price predictions saved to '{json_path_quarter}'")
 
     # Create/update the snapshot JSON file for today's predictions
     create_prediction_snapshot(
