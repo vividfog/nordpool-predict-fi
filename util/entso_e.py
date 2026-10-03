@@ -20,7 +20,8 @@ TOTAL_CAPACITY = 4372
 # Define a threshold for a "long outage" which can be considered an anomaly (such as 6 months of zero production) 
 LONG_OUTAGE_THRESHOLD = 6 * 30 * 24  # hours
 
-def entso_e_nuclear(entso_e_api_key, DEBUG=False):
+def entso_e_nuclear(entso_e_api_key, DEBUG=False, freq='h'):
+    """Nuclear capacity forecast from ENTSO-E outages; `freq='15min'` for the quarter grid."""
     try:
         logger.info("ENTSO-E: Fetching nuclear downtime messages...")
         client = EntsoePandasClient(api_key=entso_e_api_key)
@@ -193,7 +194,7 @@ def entso_e_nuclear(entso_e_api_key, DEBUG=False):
         unavailable_capacity['end'] = pd.to_datetime(unavailable_capacity['end'])
 
         # Initialize a forecast DataFrame with the total capacity
-        date_range = pd.date_range(start=start, end=end, freq='h')
+        date_range = pd.date_range(start=start, end=end, freq=freq)
         nuclear_forecast = pd.DataFrame(index=date_range, columns=["available_capacity"])
         nuclear_forecast['available_capacity'] = TOTAL_CAPACITY
 

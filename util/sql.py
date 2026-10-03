@@ -115,36 +115,42 @@ def db_query_all(db_path):
     return data
     
 # region quarter
-QUARTER_TABLE = "prediction_quarter"
-QUARTER_COLUMNS = ("Price_cpkWh", "PricePredict_cpkWh")
+QUARTER_TABLE = "prediction_15min"
 
 
-def _db_quarter_ensure(conn):
-    conn.execute(
-        f"CREATE TABLE IF NOT EXISTS {QUARTER_TABLE} ("
-        "timestamp TIMESTAMP PRIMARY KEY, Price_cpkWh FLOAT, PricePredict_cpkWh FLOAT)"
-    )
+def _db_quarter_ensure(conn, cols=()):
+    conn.execute(f"CREATE TABLE IF NOT EXISTS {QUARTER_TABLE} (timestamp TIMESTAMP PRIMARY KEY)")
+    existing = {row[1] for row in conn.execute(f"PRAGMA table_info({QUARTER_TABLE})")}
+    for col in cols:
+        if col not in existing:
+            conn.execute(f"ALTER TABLE {QUARTER_TABLE} ADD COLUMN \"{col}\" FLOAT")
 
 
-def db_quarter_update(db_path, df, col):
+def db_quarter_update(db_path, df, cols=None):
     '''
-    Upsert one column of 15-min rows into the 'prediction_quarter' table (created if missing).
-    Other columns of existing rows are left untouched; NaN values are skipped.
+    Upsert 15-min rows into the 'prediction_15min' table, adding columns as needed.
+    NaN values never overwrite stored values; columns not given are left untouched.
+    Returns the number of rows written.
     '''
-    if col not in QUARTER_COLUMNS:
-        raise ValueError(f"Unknown quarter column '{col}'")
+    cols = [c for c in (cols or df.columns) if c != "timestamp"]
+    rows = df[["timestamp", *cols]].dropna(subset=cols, how="all")
+    if rows.empty:
+        return 0
 
-    rows = df[["timestamp", col]].dropna()
-    # Same ISO8601 UTC format as normalize_timestamp, vectorised for ~35k quarters/year
+    # Same ISO8601 UTC format as normalize_timestamp, vectorised for large backfills
     stamps = pd.to_datetime(rows["timestamp"], utc=True).map(lambda ts: ts.isoformat())
-    records = list(zip(stamps, rows[col].astype(float)))
+    values = rows[cols].astype(float).astype(object).where(rows[cols].notna(), None)
+    records = [(ts, *vals) for ts, vals in zip(stamps, values.itertuples(index=False, name=None))]
 
+    quoted = [f'"{c}"' for c in cols]
+    updates = ", ".join(f"{q}=COALESCE(excluded.{q}, {q})" for q in quoted)
     conn = sqlite3.connect(db_path)
     try:
-        _db_quarter_ensure(conn)
+        _db_quarter_ensure(conn, cols)
         conn.executemany(
-            f"INSERT INTO {QUARTER_TABLE} (timestamp, \"{col}\") VALUES (?, ?) "
-            f"ON CONFLICT(timestamp) DO UPDATE SET \"{col}\"=excluded.\"{col}\"",
+            f"INSERT INTO {QUARTER_TABLE} (timestamp, {', '.join(quoted)}) "
+            f"VALUES ({', '.join('?' * (len(cols) + 1))}) "
+            f"ON CONFLICT(timestamp) DO UPDATE SET {updates}",
             records,
         )
         conn.commit()
@@ -155,7 +161,7 @@ def db_quarter_update(db_path, df, col):
 
 def db_quarter_query_all(db_path):
     '''
-    Query all rows from the 'prediction_quarter' table, sorted, with UTC timestamps.
+    Query all rows from the 'prediction_15min' table, sorted, with UTC timestamps.
     '''
     conn = sqlite3.connect(db_path)
     try:

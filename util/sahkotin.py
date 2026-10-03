@@ -5,9 +5,7 @@ import pytz
 import sys
 from .logger import logger
 from .dataframes import coalesce_merged_columns
-
-# First delivery quarter of the Nordic 15-min day-ahead market (2025-10-01 00:00 CET)
-QUARTER_START = pd.Timestamp("2025-09-30T22:00:00", tz="UTC")
+from .quarter_grid import QUARTER_START
 
 def fetch_electricity_price_data(start_date, end_date, quarter=False):
     """
