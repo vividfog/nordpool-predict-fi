@@ -1,21 +1,21 @@
-Ennustejaksolla hinnat vaihtelevat tuulivoiman mukaan: edullisinta maanantai–tiistaina, torstai erottuu selvästi kalleimpana yli 9 sentin keskihinnalla.
+Viikko käynnistyy edullisesti runsaan tuulivoiman ansiosta, mutta torstaina heikompi tuuli nostaa keskihinnan 8,7 senttiin, ennen viikonlopun edullista loppua.
 
-Olkiluoto 3 -ydinvoimala on huoltokatkolla 10.9.2026 klo 01 alkaen. Katkon arvioidaan päättyvän 30.10.2026 klo 00. Loviisa 1 -ydinvoimala on huoltokatkolla 26.9.2026 klo 10 alkaen. Katkon arvioidaan päättyvän 18.10.2026 klo 01. Loviisa 2 -ydinvoimalassa on tuotantovajaus 1.8.2026 klo 23 alkaen. Vajauksen arvioidaan päättyvän 5.10.2026 klo 09.
+Ennuste on päivitetty sunnuntaina klo 02:54.
 
-Ennuste on päivitetty lauantaina klo 20:54.
+**Olkiluoto 3** on huoltokatkolla 10.9. klo 01 alkaen, ja katkon arvioidaan päättyvän 30.10. klo 00. **Loviisa 1** on huoltokatkolla 26.9. klo 10 alkaen, ja katkon ennustetaan päättyvän 18.10. klo 01. **Loviisa 2** on tuotantovajauksessa (253 MW, käytettävyys 51 %), ja vajauksen arvioidaan päättyvän maanantaina klo 09.
 
-|  | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **sunnuntai** | 3,4 | 0,5 – 8,4 | 1281 – 3894 | 10,7 |
-| **maanantai** | 1,3 | 0,1 – 2,5 | 3939 – 6207 | 10,2 |
-| **tiistai** | 1,6 | 0,7 – 3,0 | 4120 – 6531 | 10,5 |
-| **keskiviikko** | 4,6 | 1,6 – 7,6 | 2537 – 4067 | 10,1 |
-| **torstai** | 9,2 | 4,3 – 15,7 | 1009 – 2695 | 8,3 |
-| **perjantai** | 5,1 | 1,6 – 8,9 | 1398 – 4326 | 6,6 |
-| **lauantai** | 2,6 | 1,5 – 3,6 | 2592 – 3852 | 6,8 |
+|  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **maanantai** | 1,4 | 0,1–3,2 | 3585–6352 | 10,2 |
+| **tiistai** | 1,6 | 0,5–2,8 | 5718–7052 | 10,5 |
+| **keskiviikko** | 5,0 | 1,1–8,3 | 2357–6651 | 10,1 |
+| **torstai** | 8,7 | 3,5–13,9 | 916–2830 | 8,3 |
+| **perjantai** | 4,9 | 1,8–7,2 | 1416–4379 | 6,6 |
+| **lauantai** | 2,7 | 1,4–3,6 | 2349–4288 | 6,8 |
+| **sunnuntai** | 2,6 | 1,2–4,2 | 2163–5223 | 8,3 |
 
-Ennustejakson edullisinta sähköä nähdään **maanantaina** ja **tiistaina**, jolloin keskihinta jää noin 1,3–1,6 senttiin. Molempina päivinä tuulivoimaa on tarjolla runsaasti, yli 4 800 megawatin keskituotannolla. Maanantain tuntihinnat pysyttelevät koko vuorokauden 2,5 sentissä tai alempana, ja yöllä hinta käy jopa 0,1 sentissä.
+Ennustejakso käynnistyy edullisissa tunnelmissa. **Maanantain** ja **tiistain** odotetut keskihinnat jäävät noin 1,4–1,6 senttiin, ja molempina päivinä tuulivoimaa on runsaasti, keskimäärin yli 4 500 megawattia. **Keskiviikkona** hintataso nousee ja keskihinta asettuu 5,0 senttiin. Päivän sisällä hinta liikkuu 1,1 sentistä 8,3 senttiin, mikä johtuu tuulivoiman voimakkaasta vaihtelusta.
 
-**Torstai** erottuu selvästi kalleimpana päivänä. Keskihinta kohoaa 9,2 senttiin, ja päivän korkein tuntihinta nousee 15,7 senttiin kello 19 aikaan. Tuulivoiman tuotanto romahtaa heikoksi: keskituotanto jää noin 1 550 megawattiin ja minimituotanto vain 1 009 megawattiin. Juuri tämä alhainen tuulivoiman minimituotanto selittää torstain korkeaa maksimihintaa. Hintataso laskee **perjantaina**, jolloin keskihinta on 5,1 senttiä, ja **lauantaina** palataan jälleen edulliselle tasolle, 2,6 sentin keskihinnalla.
+**Torstai** erottuu jakson kalleimpana päivänä. Keskihinnan odotetaan kipuavan 8,7 senttiin, ja maksimihinta voi kohota 13,9 senttiin. Tuulivoiman keskituotanto jää torstaina vain 1 576 megawattiin, ja päivän minimi on 916 megawattia. Alhainen tuulivoiman minimituotanto selittää osaltaan päivän korkeaa maksimihintaa. Hintapiikkiriski ajoittuu torstai-illalle kello 19–21. **Perjantaina** hinta laskee ja keskihinta asettuu 4,9 senttiin. Viikonloppua kohden hinnat painuvat jälleen mataliksi: **lauantain** keskihinnaksi ennustetaan 2,7 senttiä ja **sunnuntain** 2,6 senttiä, ja tuulivoimaa on viikonloppuna tarjolla yli 3 000 megawatin keskimääräisellä tasolla.
 
-*Laskelmat laati Sähkövatkain-Qwen3.8-27B.* 🌬️
+*Sähkövatkain-Qwen3.8-27B ennusti tulevaa.* 🍃
