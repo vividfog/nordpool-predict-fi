@@ -1,21 +1,23 @@
-*Olkiluoto 3 is on a maintenance outage that began on 10 September 2026 at 01:00 and is forecast to end on 30 October 2026 at 00:00. Loviisa 1 is on a maintenance outage that began on 26 September 2026 at 10:00 and is forecast to end on 18 October 2026 at 01:00. Loviisa 2 has a production reduction that began on 1 August 2026 at 23:00 and is forecast to end on 8 October 2026 at 09:00. The plant's availability is at 51 per cent, meaning its output is 253 MW.*
+*Over the forecast period, electricity prices vary sharply: Thursday is clearly the most expensive, while the early week is nearly free.*
 
-The forecast was updated on Sunday at 11:54.
+The Olkiluoto 3 unit is undergoing a maintenance break that began on September 10, 2026 at 01:00 and is expected to end on October 30, 2026 at 00:00. Loviisa 1 is on a maintenance break starting September 26, 2026 at 10:00, expected to end on October 18, 2026 at 01:00. Loviisa 2 has a production shortfall at 51 percent of capacity; it began on August 1, 2026 at 23:00 and is expected to end on October 8, 2026 at 09:00.
+
+The forecast was updated on Sunday at 14:54.
 
 |  | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **Monday** | 1.5 | 0.3 – 2.7 | 3515 – 6515 | 10.2 |
-| **Tuesday** | 1.6 | 0.7 – 2.7 | 5849 – 7040 | 10.5 |
-| **Wednesday** | 4.4 | 0.7 – 9.3 | 2356 – 6715 | 10.1 |
-| **Thursday** | 8.7 | 6.6 – 12.0 | 1113 – 2351 | 8.3 |
-| **Friday** | 3.9 | 1.6 – 6.0 | 1545 – 4390 | 6.6 |
-| **Saturday** | 2.1 | 0.9 – 3.1 | 2674 – 4813 | 6.8 |
-| **Sunday** | 4.9 | 2.3 – 10.4 | 1668 – 4209 | 8.1 |
+| **Monday** | 0.8 | 0.0 – 2.5 | 3507 – 6510 | 10.2 |
+| **Tuesday** | 0.9 | 0.0 – 2.0 | 5869 – 7030 | 10.5 |
+| **Wednesday** | 3.8 | 0.2 – 8.6 | 2439 – 6715 | 10.1 |
+| **Thursday** | 8.7 | 6.0 – 12.4 | 1050 – 2328 | 8.3 |
+| **Friday** | 3.5 | 0.7 – 5.6 | 1576 – 4622 | 6.6 |
+| **Saturday** | 1.7 | 0.4 – 3.0 | 2638 – 4776 | 6.8 |
+| **Sunday** | 4.7 | 2.3 – 10.5 | 1651 – 4156 | 8.1 |
 
-The forecast period begins with low prices. **Monday's** and **Tuesday's** expected average prices are around 1.5–1.6 cents per kilowatt-hour. Wind power is abundant on both days, averaging over 4,500 megawatts, which explains the low price level.
+The beginning of the forecast period is very affordable. **Monday** and **Tuesday** average prices stay below one cent, and both days feature exceptionally abundant wind power – averaging over 4,500 megawatts. **Wednesday** sees the price level rise, with the daily maximum reaching 8.6 cents in the evening.
 
-**Wednesday** sees prices rise, with the average settling at 4.4 cents. Wind power weakens towards the evening, and the maximum price climbs to 9.3 cents. **Thursday** is the most expensive day of the period. Its average price is 8.7 cents and the maximum is 12.0 cents. Wind power is very low at that time: only 1,524 megawatts on average, with the daily minimum output at just 1,113 megawatts. This explains the higher prices.
+**Thursday** stands out as the most expensive day of the period. The average price is 8.7 cents and the maximum hits 12.4 cents between 19:00 and 20:00. Behind this is a sharp decline in wind power: the daily average production is only 1,466 megawatts and the minimum drops to 1,050 megawatts, which partially explains the high maximum price. **Friday** and **Saturday** see the wind pick up again and prices settle to moderate levels. Saturday's average price is 1.7 cents. **Sunday** wind power weakens once more, and the maximum price rises to 10.5 cents in the evening.
 
-**Friday** brings a recovery in wind power, and the average price drops to 3.9 cents. **Saturday** is affordable again, with an average of 2.1 cents. **Sunday** sees wind power weaken once more, and the maximum price rises to 10.4 cents during the evening hours.
+The cheapest hours fall on Monday and Tuesday nights, when the price drops to zero. The most expensive moments occur on Thursday evening and Sunday, when production is at its lowest.
 
-*Electricity prices were crunched today by Sähkövatkain-Qwen3.8-27B.* 🌬️
+*Sähkövatkain-Qwen3.8-27B sifted through the wind forecasts.* 🌬️
