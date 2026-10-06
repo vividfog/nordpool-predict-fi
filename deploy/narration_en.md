@@ -1,21 +1,23 @@
-*A volatile forecast week ahead, with prices swinging from near-free to nearly 18 cents as wind power fluctuates dramatically.*
+*In Sähkövatkain's forecast, prices vary significantly: Monday's price climbs above 20 cents, while Wednesday and Friday stay below four cents.*
 
-Olkiluoto 3 is under maintenance, having started on 10 September at 01:00. The outage is estimated to end on 30 October at 00:00. Loviisa 1 is under maintenance, having started on 26 September at 10:00. The outage is estimated to end on 18 October at 01:00.
+Olkiluoto 3 is under a maintenance outage that began on September 10 at 01:00. The outage is expected to end on October 30 at 00:00.  
+Loviisa 1 has been under a maintenance outage since September 26 at 10:00. It is expected to end on October 18 at 01:00.  
+Loviisa 2 has a production shortfall, with only 253 MW (51 %) available. The shortfall is expected to end on October 8 at 09:00.
 
-The forecast was updated on Tuesday at 11:54.
+The forecast was updated on Tuesday at 14:55.
 
-|  | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 2.7 | -0.4 – 5.0 | 3474 – 6434 | 10.1 |
-| **Thursday** | 8.1 | 3.7 – 14.8 | 597 – 3194 | 8.3 |
-| **Friday** | 2.0 | 0.3 – 4.2 | 3426 – 5769 | 6.6 |
-| **Saturday** | 4.6 | 1.3 – 9.4 | 1279 – 4812 | 6.8 |
-| **Sunday** | 4.8 | 2.9 – 10.0 | 1306 – 2793 | 8.1 |
-| **Monday** | 10.8 | 5.1 – 17.9 | 803 – 1975 | 7.4 |
-| **Tuesday** | 2.7 | 0.1 – 9.2 | 878 – 5240 | 6.9 |
+|           | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
+|:----------|:----------------:|:-----------------:|:-------------------:|:---------------:|
+| **Wednesday** | 1,8 | -0,0 – 4,4 | 3473 – 6418 | 10,1 |
+| **Thursday** | 8,3 | 4,1 – 15,0 | 598 – 3209 | 8,3 |
+| **Friday** | 2,4 | 0,7 – 4,7 | 3439 – 5927 | 6,6 |
+| **Saturday** | 5,2 | 2,1 – 10,6 | 1211 – 4848 | 6,8 |
+| **Sunday** | 5,2 | 3,6 – 10,4 | 1293 – 2797 | 8,1 |
+| **Monday** | 11,8 | 5,8 – 20,1 | 734 – 2045 | 7,4 |
+| **Tuesday** | 3,3 | 0,4 – 11,4 | 807 – 5267 | 6,9 |
 
-The forecast period is unusually two-sided in terms of price variation. **On Wednesday**, wind power is abundant, and the daily average price remains around 2.7 cents. Overnight, the price briefly dips into negative territory. **Thursday** is the second clearly more expensive day of the period. Wind power production collapses, with the daily minimum falling below 600 megawatts. This explains Thursday's high maximum price, which rises to 14.8 cents. There is also a price spike risk expected for the day between 10:00 and 12:00. **Friday** returns to affordable levels with an average price of 2.0 cents as wind power strengthens again.
+Prices vary considerably over the forecast period. On **Wednesday** and **Friday**, electricity is affordable, with average prices staying below four cents. Abundant wind power keeps prices low. **Thursday** sees the average price rise to 8.3 cents, with a maximum of 15.0 cents. There is a price spike risk between 10:00 and 12:00, and weak wind power explains the increase.
 
-The weekend is unremarkable in terms of price, with **Saturday**'s average at 4.6 cents and **Sunday**'s at 4.8 cents. Wind power is weak or moderate on both days, but prices remain moderate. Next **Monday** turns into the most expensive day of the period. Wind power averages around 1,274 megawatts, and the daily average price climbs to 10.8 cents. The maximum price rises to 17.9 cents in the afternoon and evening. **On Tuesday**, wind power strengthens again, and the average price drops to 2.7 cents. Within the day, prices fall very low in the afternoon, and overnight they hover near zero.
+**Saturday** and **Sunday** settle at an average of 5.2 cents. **Monday** is the most expensive day of the period, with the average climbing to 11.8 cents. The maximum price reaches 20.1 cents between 18:00 and 20:00, and wind power drops to a minimum of 734 megawatts, pushing prices higher. On **Tuesday**, the wind strengthens and the average price falls to 3.3 cents.
 
-*Sähkövatkain-Qwen3.8-27B blew the wind into prices.* 🌬️
+*Sähkövatkain-Qwen3.8-27B weighed the wind.* 💨
