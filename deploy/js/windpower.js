@@ -329,6 +329,7 @@ function loadWindPowerData(token) {
                 },
                 tooltip: {
                     trigger: 'axis',
+                    confine: true,
                     formatter: function(params) {
                         const weekdays = getLocalizedText('weekdays');
                         const date = new Date(params[0].axisValue);

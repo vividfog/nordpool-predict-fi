@@ -712,6 +712,7 @@ function createBaseChartOptions(config) {
         legend: config.legend || { show: false },
         tooltip: {
             trigger: 'axis',
+            confine: true,
             formatter: config.tooltipFormatter || createTooltipFormatter(),
             backgroundColor: palette.tooltipBg,
             borderColor: palette.tooltipBorder,

@@ -523,6 +523,7 @@
             },
             tooltip: {
                 trigger: 'item',
+                confine: true,
                 backgroundColor: tooltipBg,
                 borderColor: tooltipBorder,
                 textStyle: { color: tooltipText },
