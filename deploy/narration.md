@@ -1,21 +1,21 @@
-*Perjantai on edullinen, mutta maanantaina hinta kipuaa ennustejaksolle korkeimmilleen 23,4 senttiin heikon tuulivoiman vuoksi.*
+*Tuulivoiman vaihtelut heilahtelevat sähköhintoja tulevalla viikolla. Maanantai erottuu kalleimpana päivänä 22,5 sentin tuntihinnalla, kun tuulivoima jää vähäiseksi.*
 
-Olkiluoto 3 on huoltokatkolla 10.9.2026 klo 01 alkaen, ja sen arvioidaan päättyvän 30.10.2026 klo 00. Loviisa 1 on huoltokatkolla 26.9.2026 klo 10 alkaen, ja sen arvioidaan päättyvän 18.10.2026 klo 01. Loviisa 2:ssa on tuotantovajaus, ja sen käytettävyys on 51 prosenttia. Vajauksen arvioidaan päättyvän 9.10.2026 klo 04.
+Ydinvoimaloissa on käynnissä useita huoltokatkoja ja tuotantovajauksia. Olkiluoto 3 on huoltokatkossa 10.9.2026 klo 01 alkaen, ja katkon on ennustettu päättyvän 30.10.2026 klo 00. Loviisa 1 on huoltokatkossa 26.9.2026 klo 10 alkaen, ja sen on odotettu päättyvän 18.10.2026 klo 01. Loviisa 2:ssa on tuotantovajaus, joka päättyy ennusteen mukaan 9.10.2026 klo 04.
 
-Ennuste on päivitetty torstaina klo 02:54.
+Ennuste on päivitetty torstaina klo 08:54.
 
-|  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|   | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **perjantai** | 2,6 | 0,9 – 3,8 | 3020 – 6572 | 6,6 |
-| **lauantai** | 4,3 | 0,7 – 9,5 | 1517 – 6195 | 6,8 |
-| **sunnuntai** | 6,1 | 2,4 – 10,5 | 1019 – 2823 | 8,1 |
-| **maanantai** | 12,3 | 4,0 – 23,4 | 797 – 2240 | 7,4 |
-| **tiistai** | 6,1 | 1,9 – 12,1 | 1176 – 4831 | 6,9 |
-| **keskiviikko** | 3,2 | 1,3 – 4,7 | 2806 – 4785 | 7,7 |
-| **torstai** | 6,7 | 1,7 – 12,7 | 1643 – 4303 | 8,9 |
+| **perjantai** | 3,0 | 0,8 – 4,7 | 2118 – 6365 | 6,6 |
+| **lauantai** | 4,2 | 1,2 – 8,5 | 2050 – 5762 | 6,8 |
+| **sunnuntai** | 5,6 | 3,4 – 9,7 | 1516 – 2556 | 8,1 |
+| **maanantai** | 11,5 | 3,4 – 22,5 | 836 – 2488 | 7,4 |
+| **tiistai** | 5,7 | 1,5 – 12,3 | 1201 – 4778 | 6,9 |
+| **keskiviikko** | 3,2 | 1,6 – 5,3 | 2993 – 4747 | 7,7 |
+| **torstai** | 7,0 | 2,0 – 13,1 | 1697 – 4251 | 8,9 |
 
-Ennustejakso alkaa edullisissa merkeissä, mutta hintataso kääntyy nopeasti nousuun. **Perjantai** on jakson halvin päivä, ja keskihinta jää 2,6 senttiin. Tuulivoimaa on tarjolla keskimäärin yli 5600 megawattia, mikä painaa hintoja alas.
+Ennustejakso on tuulivoiman vaihtelujen hallitsema. **Perjantai** ja **keskiviikko** ovat jakson edullisimmat päivät, jolloin runsas tuulivoima painaa keskihinnan noin kolmeen senttiin. **Lauantain** ja **sunnuntain** hintataso nousee hieman, kun tuulivoima heikkenee. Eniten hintaeroja selittää **maanantai**: tuulivoiman keskituotanto jää vain 1562 megawattiin, ja päivän sisäinen vaihtelu on suurta – tuulivoiman minimi painuu 836 megawattiin, mikä nostaa maksimihinnan 22,5 senttiin. Maanantaille on ilmoitettu hintapiikkiriski kello 18–20. Myös **sunnuntaina**, **tiistaina** ja **torstaina** tuulivoiman minimituotanto jää alle 2000 megawatin, ja samanaikaiset maksimihinnat nousevat selvästi muihin päiviin verrattuna.
 
-**Lauantaina** hinta nousee iltaa kohti, ja maksimi kipuaa 9,5 senttiin. **Sunnuntain** keskihinta on 6,1 senttiä, ja tuulivoiman minimi painuu 1019 megawattiin. Tämä selittää päivän korkeampaa maksimihintaa. **Maanantai** on ennustejakson selvästi kallein päivä: keskihinta kohoaa 12,3 senttiin ja maksimi 23,4 senttiin. Syynä on poikkeuksellisen heikko tuulivoima, joka jää keskimäärin 1341 megawattiin ja käy alimmillaan vain 797 megawatissa. Hintapiikkiriski on maanantaina kello 18–20. **Tiistaina** tuulivoima elpyy ja hinta laskee; keskihinta on 6,1 senttiä. **Keskiviikko** on jälleen edullinen, keskihinta 3,2 senttiä, ja tuulivoimaa on runsaasti. **Torstaina** hinta nousee illalla 12,7 senttiin, mutta keskihinta on 6,7 senttiä.
+Edullisimmat tunnit osuvat **perjantain** ja **keskiviikon** alkuun, jolloin hinta painuu alle yhden sentin. Korkeimmat tuntihinnat keskittyvät maanantai-iltapäivään ja -iltaan. Tuulivoiman vaihtelu on ennustejakson keskeisin hintaan vaikuttava tekijä: voimakas tuuli laskee hintoja, kun taas tyyntyvät jakson tuulivoiman vähyydestä johtuvat hinnannousut.
 
-*Luvut tulkitsi Sähkövatkain-Qwen3.8-27B.* 🌬️
+*Ennusteen tulkitsi tänään Sähkövatkain-Qwen3.8-27B.* 🌬️
