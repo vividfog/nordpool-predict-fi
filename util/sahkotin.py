@@ -5,19 +5,23 @@ import pytz
 import sys
 from .logger import logger
 from .dataframes import coalesce_merged_columns
+from .quarter_grid import QUARTER_START
 
-def fetch_electricity_price_data(start_date, end_date):
+def fetch_electricity_price_data(start_date, end_date, quarter=False):
     """
     Fetches electricity price data from sahkotin.fi for a specified date range.
 
     Parameters:
     - start_date (str): The start datetime in ISO format.
     - end_date (str): The end datetime in ISO format.
+    - quarter (bool): Request 15-min prices (`&quarter`). Without it Sähkötin returns
+      hourly means of the quarters, which is what the hourly model trains on.
+      Before the 15-min day-ahead go-live (QUARTER_START) quarters repeat the hourly price.
 
     Returns:
     - pd.DataFrame: A DataFrame with two columns ['timestamp', 'Price_cpkWh'] where 'timestamp' is the datetime and 'Price_cpkWh' is the electricity price.
     """
-    api_url = "https://sahkotin.fi/prices?vat"
+    api_url = "https://sahkotin.fi/prices?vat&quarter" if quarter else "https://sahkotin.fi/prices?vat"
     params = {
         'start': start_date,
         'end': end_date
@@ -87,6 +91,23 @@ def update_spot(df):
     else:
         logger.warning("No electricity price data fetched; unable to update DataFrame.")
         return df
+
+def fetch_quarter_prices(start, end):
+    """
+    Fetch 15-min spot prices between two timestamps (clipped to QUARTER_START).
+
+    Returns a DataFrame ['timestamp', 'Price_cpkWh'] on the quarter grid, UTC.
+    """
+    start = max(pd.Timestamp(start), QUARTER_START)
+    end = pd.Timestamp(end)
+    if start >= end:
+        return pd.DataFrame(columns=["timestamp", "Price_cpkWh"])
+
+    fmt = "%Y-%m-%dT%H:%M:%S.000Z"
+    logger.info(f"Sähkötin: Fetching 15-min prices between {start:%Y-%m-%d} and {end:%Y-%m-%d}")
+    df = fetch_electricity_price_data(start.strftime(fmt), end.strftime(fmt), quarter=True)
+    return df.drop_duplicates(subset="timestamp").sort_values("timestamp").reset_index(drop=True)
+
 
 def sahkotin_tomorrow():
     tz = pytz.timezone("Europe/Helsinki")
