@@ -1,21 +1,21 @@
-_Ennustejakso on erittäin kaksijakoinen: torstai ja maanantai kohoavat kalliiksi, mutta perjantai ja keskiviikko painuvat poikkeuksellisen edullisiksi._
+*Perjantai on edullinen, mutta maanantaina hinta kipuaa ennustejaksolle korkeimmilleen 23,4 senttiin heikon tuulivoiman vuoksi.*
 
-Olkiluoto 3 on huoltokatkossa 10. syyskuuta klo 01 alkaen. Katkon arvioidaan päättyvän 30. lokakuuta klo 00. Loviisa 1 on huoltokatkossa 26. syyskuuta klo 10 alkaen, ja sen arvioidaan päättyvän 18. lokakuuta klo 01. Loviisa 2:n tuotantovajaus päättyy perjantain aamuyöllä 9. lokakuuta klo 04.
+Olkiluoto 3 on huoltokatkolla 10.9.2026 klo 01 alkaen, ja sen arvioidaan päättyvän 30.10.2026 klo 00. Loviisa 1 on huoltokatkolla 26.9.2026 klo 10 alkaen, ja sen arvioidaan päättyvän 18.10.2026 klo 01. Loviisa 2:ssa on tuotantovajaus, ja sen käytettävyys on 51 prosenttia. Vajauksen arvioidaan päättyvän 9.10.2026 klo 04.
 
-Ennuste on päivitetty keskiviikkona klo 20:55.
+Ennuste on päivitetty torstaina klo 02:54.
 
 |  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **torstai** | 12,6 | 4,3 – 22,8 | 664 – 3800 | 8,3 |
-| **perjantai** | 2,7 | 0,9 – 4,3 | 2548 – 6390 | 6,6 |
-| **lauantai** | 3,7 | 1,2 – 7,2 | 2162 – 5270 | 6,8 |
-| **sunnuntai** | 5,7 | 2,4 – 11,3 | 1555 – 3494 | 8,1 |
-| **maanantai** | 11,1 | 3,6 – 21,2 | 1210 – 2354 | 7,4 |
-| **tiistai** | 5,9 | 1,3 – 11,2 | 1111 – 4997 | 6,9 |
-| **keskiviikko** | 2,3 | 0,6 – 5,1 | 3226 – 5101 | 7,7 |
+| **perjantai** | 2,6 | 0,9 – 3,8 | 3020 – 6572 | 6,6 |
+| **lauantai** | 4,3 | 0,7 – 9,5 | 1517 – 6195 | 6,8 |
+| **sunnuntai** | 6,1 | 2,4 – 10,5 | 1019 – 2823 | 8,1 |
+| **maanantai** | 12,3 | 4,0 – 23,4 | 797 – 2240 | 7,4 |
+| **tiistai** | 6,1 | 1,9 – 12,1 | 1176 – 4831 | 6,9 |
+| **keskiviikko** | 3,2 | 1,3 – 4,7 | 2806 – 4785 | 7,7 |
+| **torstai** | 6,7 | 1,7 – 12,7 | 1643 – 4303 | 8,9 |
 
-Ennustejakson hintavaihtelu on huomattavaa. **Torstai** ja **maanantai** erottuvat kalliina päivinä, kun taas **perjantai** ja **keskiviikko** ovat poikkeuksellisen edullisia. Torstain odotettu keskihinta nousee 12,6 senttiin, ja maksimihinta kohoaa 22,8 senttiin. Maanantain keskihinta on 11,1 senttiä ja maksimihinta 21,2 senttiä. Molempina päivinä tuulivoiman minimituotanto jää alle 2 000 megawatin, mikä selittää osaltaan korkeita maksimihintoja. Torstain heikoin tuulivoima on vain 664 megawattia, mikä nostaa hintaa tuntuvasti iltapäivällä ja illalla.
+Ennustejakso alkaa edullisissa merkeissä, mutta hintataso kääntyy nopeasti nousuun. **Perjantai** on jakson halvin päivä, ja keskihinta jää 2,6 senttiin. Tuulivoimaa on tarjolla keskimäärin yli 5600 megawattia, mikä painaa hintoja alas.
 
-Perjantaina ja keskiviikkona tuulivoimaa on tarjolla runsaasti, keskimäärin yli 4 000 megawattia, ja keskihinnat painuvat alle kolmen sentin. **Sunnuntai** ja **tiistai** asettuvat hinnaltaan välille: sunnuntain keskihinta on 5,7 senttiä ja tiistain 5,9 senttiä. Tiistain hinnat laskevat iltaa kohti, kun tuulivoima vahvistuu ja painuu päivän edullisimmalle tasolle. Lauantaina hinta pysyttelee maltillisena, keskimäärin 3,7 sentissä. Ennustejakson halvimmat tunnit osuvat keskiviikon vastaiselle yölle, jolloin hinta jää alle sentin.
+**Lauantaina** hinta nousee iltaa kohti, ja maksimi kipuaa 9,5 senttiin. **Sunnuntain** keskihinta on 6,1 senttiä, ja tuulivoiman minimi painuu 1019 megawattiin. Tämä selittää päivän korkeampaa maksimihintaa. **Maanantai** on ennustejakson selvästi kallein päivä: keskihinta kohoaa 12,3 senttiin ja maksimi 23,4 senttiin. Syynä on poikkeuksellisen heikko tuulivoima, joka jää keskimäärin 1341 megawattiin ja käy alimmillaan vain 797 megawatissa. Hintapiikkiriski on maanantaina kello 18–20. **Tiistaina** tuulivoima elpyy ja hinta laskee; keskihinta on 6,1 senttiä. **Keskiviikko** on jälleen edullinen, keskihinta 3,2 senttiä, ja tuulivoimaa on runsaasti. **Torstaina** hinta nousee illalla 12,7 senttiin, mutta keskihinta on 6,7 senttiä.
 
-*Sähkövatkain-Qwen3.8-27B luki luvut.* ⚡
+*Luvut tulkitsi Sähkövatkain-Qwen3.8-27B.* 🌬️
