@@ -1,21 +1,21 @@
-*Monday stands out as the clearly most expensive day, when electricity can cost over 20 cents. By the end of the period, prices drop to very affordable levels.*
+*During the forecast period, electricity prices fluctuate sharply: on Monday, low wind power drives prices high, but by the end of the week, windy weather pushes prices down to very low levels.*
 
-Olkiluoto 3 is undergoing a maintenance shutdown that began on 10 September at 01:00. The shutdown is expected to end on 30 October at 00:00. Loviisa 1 has been on maintenance since 26 September at 10:00, and is estimated to finish on 18 October at 01:00. Loviisa 2 is experiencing a production shortfall that started on 1 August at 23:00 and is set to end today, 9 October, at 22:00.
+The forecast was updated on Friday at 08:54.
 
-The forecast was updated on Friday at 02:54.
+**Olkiluoto 3** is in a maintenance outage that began on 10.9.2026 at 01:00. The outage is expected to end on 30.10.2026 at 00:00. **Loviisa 1** is in a maintenance outage that began on 26.9.2026 at 10:00. The outage is expected to end on 18.10.2026 at 01:00. **Loviisa 2** is experiencing a production shortfall that began on 1.8.2026 at 23:00. The shortfall is expected to end on 9.10.2026 at 22:00.
 
-|  | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
+|  | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday** | 2.7 | 0.8 – 6.4 | 2407 – 6591 | 6.8 |
-| **Sunday** | 4.5 | 1.6 – 8.2 | 1589 – 3196 | 8.1 |
-| **Monday** | 11.0 | 3.1 – 21.1 | 952 – 3401 | 7.4 |
-| **Tuesday** | 6.9 | 0.9 – 15.0 | 1021 – 4984 | 6.9 |
-| **Wednesday** | 1.9 | 0.5 – 4.3 | 3144 – 5263 | 7.7 |
-| **Thursday** | 1.6 | 0.5 – 3.1 | 4063 – 5011 | 8.9 |
-| **Friday** | 1.5 | 0.8 – 2.0 | 3828 – 4787 | 8.1 |
+| **Saturday** | 2.5 | 0.5 – 5.9 | 2427 – 6437 | 6.8 |
+| **Sunday** | 4.7 | 1.8 – 8.2 | 2074 – 2762 | 8.1 |
+| **Monday** | 11.7 | 2.2 – 22.4 | 796 – 2885 | 7.4 |
+| **Tuesday** | 6.0 | 0.7 – 12.8 | 1077 – 5088 | 6.9 |
+| **Wednesday** | 1.4 | 0.4 – 2.2 | 3662 – 5510 | 7.7 |
+| **Thursday** | 1.4 | 0.4 – 3.0 | 4133 – 5020 | 8.9 |
+| **Friday** | 1.4 | 0.7 – 1.8 | 3965 – 4858 | 8.1 |
 
-The forecast period begins with **Saturday** at moderate prices, but **Monday** stands out as the clearly most expensive day. Monday's average price climbs to 11.0 cents per kilowatt-hour, and at its peak electricity will cost 21.1 cents. Prices rise significantly in the morning and in the afternoon, with the most expensive hours falling around 19:00. Behind the high price is weak wind power production: the day's average wind power is only around 1,700 megawatts and the minimum output is just 952 megawatts, which partly explains the high peak price.
+The forecast period is split into two distinct halves. **Saturday** and **Sunday** still see relatively moderate price expectations, but **Monday** stands out as the most expensive day of the period. Monday's average price is expected to reach 11.7 cents, with individual hours forecast at over 20 cents. The most expensive hours fall in the evening: at 19:00–20:00, the price rises to 22.2–22.4 cents. Wind power output remains very low on Monday, with a minimum of only 796 MW, which explains the high peak prices.
 
-**Tuesday** marks the beginning of the decline, but the day still averages 6.9 cents. **From Wednesday** onward the price level drops sharply, and **Thursday** and **Friday** are extremely affordable. Thursday's average price is 1.6 cents and Friday's is 1.5 cents. Numerous very cheap hours are seen: on Thursday the price falls to 0.5 cents at night, and on Friday prices remain between 0.8 and 2.0 cents all day. The most affordable hours of the forecast period fall between Thursday and Friday.
+**On Tuesday**, wind power begins to strengthen as the day progresses, and prices drop towards the evening. **From Wednesday** onwards, abundant wind power pushes price forecasts well below the norm. The average prices for Wednesday, **Thursday**, and **Friday** all stay around 1.4 cents, with no exceptional hourly fluctuations. The cheapest hours of the forecast period fall on the night between Wednesday and Thursday, when prices dip below half a cent.
 
-*Wind-powered analysis by Sähkövatkain-Qwen3.8-27B.* 🌬️
+*Price trends analysed by Sähkövatkain-Qwen3.8-27B.* 🌬️

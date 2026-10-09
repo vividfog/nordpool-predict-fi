@@ -1,21 +1,21 @@
-*Ennustejakson maanantai on selvästi kallein, jolloin sähkö maksaa jopa yli 20 senttiä. Loppuviikolla hinnat painuvat edullisiksi.*
+Ennustejaksolla sähkön hinta vaihtelee voimakkaasti: maanantaina tuulivoiman vähäisyys nostaa hinnan korkeaksi, mutta loppuviikolla tuulinen sää painaa hinnan hyvin edulliseksi.
 
-Olkiluoto 3 on huoltokatkossa 10. syyskuuta klo 01 alkaen. Katkon odotetaan päättyvän 30. lokakuuta klo 00. Loviisa 1 on huoltokatkossa 26. syyskuuta klo 10 alkaen, ja sen arvioidaan päättyvän 18. lokakuuta klo 01. Loviisa 2:ssa on tuotantovajaus, joka alkoi 1. elokuuta klo 23 ja päättyy tänään 9. lokakuuta klo 22.
+Ennuste on päivitetty perjantaina klo 08:54.
 
-Ennuste on päivitetty perjantaina klo 02:54.
+**Olkiluoto 3** on huoltokatkossa 10.9.2026 klo 01 alkaen. Katkon arvioidaan päättyvän 30.10.2026 klo 00. **Loviisa 1** on huoltokatkossa 26.9.2026 klo 10 alkaen. Katkon arvioidaan päättyvän 18.10.2026 klo 01. **Loviisa 2** on tuotantovajauksessa 1.8.2026 klo 23 alkaen. Vajauksen arvioidaan päättyvän 9.10.2026 klo 22.
 
 |  | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **lauantai** | 2,7 | 0,8 – 6,4 | 2407 – 6591 | 6,8 |
-| **sunnuntai** | 4,5 | 1,6 – 8,2 | 1589 – 3196 | 8,1 |
-| **maanantai** | 11,0 | 3,1 – 21,1 | 952 – 3401 | 7,4 |
-| **tiistai** | 6,9 | 0,9 – 15,0 | 1021 – 4984 | 6,9 |
-| **keskiviikko** | 1,9 | 0,5 – 4,3 | 3144 – 5263 | 7,7 |
-| **torstai** | 1,6 | 0,5 – 3,1 | 4063 – 5011 | 8,9 |
-| **perjantai** | 1,5 | 0,8 – 2,0 | 3828 – 4787 | 8,1 |
+| **lauantai** | 2,5 | 0,5 – 5,9 | 2427 – 6437 | 6,8 |
+| **sunnuntai** | 4,7 | 1,8 – 8,2 | 2074 – 2762 | 8,1 |
+| **maanantai** | 11,7 | 2,2 – 22,4 | 796 – 2885 | 7,4 |
+| **tiistai** | 6,0 | 0,7 – 12,8 | 1077 – 5088 | 6,9 |
+| **keskiviikko** | 1,4 | 0,4 – 2,2 | 3662 – 5510 | 7,7 |
+| **torstai** | 1,4 | 0,4 – 3,0 | 4133 – 5020 | 8,9 |
+| **perjantai** | 1,4 | 0,7 – 1,8 | 3965 – 4858 | 8,1 |
 
-Ennustejakso käynnistyy **lauantaina** maltillisilla hinnoilla, mutta **maanantai** erottuu selvästi kalliimpana päivänä. Maanantain keskihinta kohoaa 11,0 senttiin kilowattitunnilta, ja kalleimmillaan sähkö maksaa 21,1 senttiä. Hinta nousee tuntuvasti aamulla ja iltapäivällä, ja kalleimmat tunnit osuvat kello 19:n tienoille. Korkean hinnan taustalla on heikko tuulivoiman tuotanto: päivän keskimääräinen tuulivoima jää noin 1 700 megawattiin ja minimituotanto on vain 952 megawattia, mikä selittää osaltaan korkeaa maksimihintaa.
+Ennustejakso on kaksijakoinen. **Lauantain** ja **sunnuntain** hintaodotukset ovat vielä melko maltillisia, mutta **ensi maanantai** erottuu selvästi jakson kalleimpana päivänä. Maanantain keskihinnan odotetaan nousevan 11,7 senttiin, ja yksittäisille tunneille ennustetaan jopa yli 20 sentin hintoja. Kalleimmat tunnit osuvat iltaan: kello 19–20 hinta kipuaa 22,2–22,4 senttiin. Tuulivoiman tuotanto jää maanantaina hyvin matalaksi, ja päivän minimituotanto on vain 796 MW, mikä selittää korkeita maksimihintoja.
 
-**Tiistaina** hinta alkaa laskea, mutta päivä on vielä keskihinnaltaan 6,9 senttiä. **Keskiviikosta** alkaen hintataso putoaa jyrkästi, ja **torstai** sekä **perjantai** ovat erittäin edullisia. Torstain keskihinta on 1,6 senttiä ja perjantain 1,5 senttiä. Yksittäisiä halpoja tunteja nähdään runsaasti: torstaina yöllä hinta painuu 0,5 senttiin ja perjantaina hinnat pysyttelevät koko päivän 0,8–2,0 sentin välillä. Ennustejakson edullisimmat tunnit osuvat torstain ja perjantain väliselle ajalle.
+**Ensi tiistaina** tuulivoima alkaa voimistua päivän edetessä, ja hinta laskee iltaa kohden. **Keskiviikosta** alkaen tuulivoimaa on tarjolla runsaasti, mikä painaa hintaennusteen selvästi edulliseksi. Keskiviikon, **torstain** ja **perjantain** keskihinta pysyy noin 1,4 sentissä, eikä yksittäisillä tunneilla nähdä poikkeuksellista hintavaihtelua. Ennustejakson edullisimmat tunnit ajoittuvat keskiviikon ja torstain väliselle yöajalle, jolloin hinta painuu alle puoleen senttiin.
 
-*Sähkövatkain-Qwen3.8-27B:n tuulinen tulkinta.* 🌬️
+*Hintatrendit analysoi Sähkövatkain-Qwen3.8-27B.* 🌬️
