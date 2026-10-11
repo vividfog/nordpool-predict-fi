@@ -1,21 +1,19 @@
-_Early in the week prices are high, but towards the end of the week wind power pushes prices down – Sunday is clearly the most affordable day of the period._
+Olkiluoto 3 nuclear power plant is in a maintenance outage starting 10.9.2026 at 01:00. The outage is expected to end on 30.10.2026 at 00:00. Loviisa 1 nuclear power plant is in a maintenance outage starting 26.9.2026 at 10:00. The outage is expected to end on 18.10.2026 at 01:00.
 
-During the forecast period, there are two significant nuclear maintenance outages. **Olkiluoto 3** has been out of operation since September 10 at 01:00. The outage is expected to end on October 30 at 00:00. **Loviisa 1** has been under maintenance since September 26 at 10:00, and the outage is expected to end on October 18 at 01:00.
-
-The forecast was updated on Sunday at 11:54.
+The forecast was updated on Sunday at 15:58.
 
 |  | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **Monday** | 9.0 | 1.9 – 15.4 | 1,273 – 2,817 | 7.4 |
-| **Tuesday** | 9.3 | 2.2 – 15.6 | 499 – 3,215 | 6.9 |
-| **Wednesday** | 4.2 | 1.4 – 8.8 | 1,843 – 4,691 | 7.7 |
-| **Thursday** | 3.2 | 1.5 – 8.7 | 1,671 – 4,373 | 8.9 |
-| **Friday** | 3.1 | 1.3 – 5.4 | 3,422 – 4,577 | 7.7 |
-| **Saturday** | 5.7 | 0.7 – 14.0 | 978 – 3,980 | 6.5 |
-| **Sunday** | 1.5 | −0.7 – 7.0 | 1,894 – 5,378 | 5.4 |
+| **Monday** | 12.8 | 4.2 – 26.1 | 1263 – 2801 | 7.4 |
+| **Tuesday** | 9.3 | 1.8 – 15.3 | 481 – 3200 | 6.9 |
+| **Wednesday** | 3.6 | 1.2 – 6.2 | 2758 – 4712 | 7.7 |
+| **Thursday** | 2.0 | 0.8 – 3.5 | 3607 – 4623 | 8.9 |
+| **Friday** | 4.1 | 0.6 – 8.1 | 2141 – 4717 | 7.7 |
+| **Saturday** | 8.0 | 2.5 – 15.9 | 983 – 3001 | 6.5 |
+| **Sunday** | 1.6 | -1.0 – 6.6 | 1890 – 5423 | 5.4 |
 
-The forecast period's price expectations are clearly divided in two. **Monday** and **Tuesday** stand out as the most expensive days. Tuesday's average price is expected to be 9.3 cents and the maximum price 15.6 cents. Tuesday's high maximum price is explained by wind power dropping to just 499 megawatts – electricity is at its most expensive in the afternoon between 10:00 and 12:00. On Monday as well, the maximum price rises to 15.4 cents, even though the average price remains at 9.0 cents.
+Electricity prices during the forecast period will fluctuate significantly. On **Monday**, the average price is expected to rise to 12.8 cents per kilowatt-hour, with large intraday variation: the highest price will reach 26.1 cents in the late afternoon and early evening. The high peak is driven by weak wind power, whose minimum output drops below 1,300 megawatts. On **Tuesday**, there is a price spike risk between 10:00 and 12:00, and the average price will settle at 9.3 cents. On **Saturday**, the price spike risk is between 17:00 and 19:00, with the average price climbing to 8.0 cents as wind power diminishes.
 
-From **Wednesday** onwards, prices drop sharply. **Thursday** and **Friday** average prices settle at around three cents, and wind power production is strong. **Saturday** brings another price spike: the average price rises to 5.7 cents and the maximum price reaches 14.0 cents in the afternoon between 17:00 and 19:00. Wind power minimum drops below 1,000 megawatts on Saturday, pushing prices up towards the evening. **Sunday** is the most affordable day of the period – the average price remains at 1.5 cents and hourly prices dip slightly negative in the afternoon. Exceptionally abundant wind power explains Sunday's low price level.
+From **Wednesday** through Friday, wind power will be abundant and prices will remain low. **Thursday's** average price will drop to just 2.0 cents, making it the most affordable day of the period. On **Sunday**, prices will fall further, dipping into negative territory overnight (–1.0 cent). Sunday's average price is only 1.6 cents. The beginning of the period is noticeably more expensive, while from Wednesday onward electricity becomes very affordable.
 
-*Sähkövatkain-Qwen3.8-27B sifted through the cents today.* 🍃
+*Electric Whisker-Qwen3.8-27B read the wind this time.* 🌬️
