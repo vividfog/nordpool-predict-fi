@@ -114,3 +114,16 @@ def update_nuclear(df, fingrid_api_key):
 
 
 "This script is meant to be used as a module, not independently"
+
+
+# region quarters
+def fetch_nuclear_quarters(fingrid_api_key, start, end):
+    """Nuclear production (Fingrid 188, 3-min) averaged per quarter."""
+    from .quarter_grid import to_quarters
+
+    start_date = pd.Timestamp(start).strftime("%Y-%m-%d")
+    end_date = pd.Timestamp(end).strftime("%Y-%m-%d")
+    logger.info(f"Fingrid: Fetching nuclear power (188) at native resolution between {start_date} and {end_date}")
+    raw = fetch_nuclear_power_data(fingrid_api_key, start_date, end_date)
+    return to_quarters(raw.rename(columns={"startTime": "timestamp"}), ["NuclearPowerMW"])
+# endregion quarters
