@@ -1,21 +1,21 @@
-*Ennustejakson tiistai erottuu poikkeuksellisen kalliina, mutta loppuviikolla hinnat laskevat tuntuvasti tuulivoiman vahvistuessa.*
+*Ennustejakso käynnistyy tiistaina hyvin kalliilla hinnalla, mutta keskiviikosta alkaen pörssisähkön hinta laskee selvästi ja pysyttelee enimmilläänkin alle kymmensenteisessä.*
 
-Olkiluoto 3 on huoltokatkossa 10.9.2026 klo 01 alkaen, ja katkon on määrä päättyä 30.10.2026 klo 00. Loviisa 1:n huoltokatko alkoi 26.9.2026 klo 10 ja sen odotetaan päättyvän 18.10.2026 klo 01.
+Olkiluoto 3 -ydinvoimalaitoksella on käynnissä huoltokatko, joka alkoi 10.9.2026 klo 01 ja päättyy ennusteen mukaan 30.10.2026 klo 00. Myös Loviisa 1 -ydinvoimalaitoksella on huoltokatko, joka alkoi 26.9.2026 klo 10 ja päättyy 18.10.2026 klo 01.
 
-Ennuste on päivitetty maanantaina klo 14:55.
+Ennuste on päivitetty maanantaina klo 20:55.
 
 | | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **tiistai** | 14,5 | 1,3–27,9 | 542–4157 | 6,9 |
-| **keskiviikko** | 5,0 | 0,8–10,6 | 2275–4512 | 7,7 |
-| **torstai** | 4,7 | 2,1–9,9 | 2090–5840 | 8,9 |
-| **perjantai** | 2,8 | 1,0–5,0 | 3599–5131 | 7,7 |
-| **lauantai** | 5,5 | 1,8–11,4 | 1387–4254 | 6,5 |
-| **sunnuntai** | 2,5 | 0,8–5,7 | 2644–4735 | 5,4 |
-| **maanantai** | 4,5 | 2,0–7,4 | 2273–4671 | 5,5 |
+| **tiistai** | 14,5 | 1,3 – 27,9 | 658 – 3940 | 6,9 |
+| **keskiviikko** | 6,0 | 0,8 – 13,1 | 1745 – 4513 | 7,7 |
+| **torstai** | 4,8 | 2,5 – 11,3 | 1720 – 6222 | 8,9 |
+| **perjantai** | 2,9 | 1,4 – 4,9 | 3520 – 5050 | 7,7 |
+| **lauantai** | 6,0 | 1,9 – 11,0 | 1132 – 4021 | 6,5 |
+| **sunnuntai** | 3,0 | 0,8 – 5,9 | 2557 – 4447 | 5,4 |
+| **maanantai** | 4,3 | 1,5 – 7,3 | 2271 – 5107 | 5,5 |
 
-**Tiistai** erottuu ennustejaksosta selvästi kalleimpana päivänä. Pörssisähkön keskihinta nousee 14,5 senttiin kilowattitunnilta, ja korkeimmillaan hinta kohoaa 27,9 senttiin keskipäivän tunteina. Taustalla on poikkeuksellisen heikko tuulivoiman tuotanto, jonka minimi jää vain 542 megawattiin. Tuulivoiman keskituotanto on **tiistaina** 1 936 megawattia, mikä on selvästi matalampi kuin loppuviikolla.
+Ennustejakso käynnistyy **tiistaina** poikkeuksellisen kalliilla sähkön hinnalla. Tiistain keskihinnaksi odotetaan 14,5 senttiä kilowattitunnilta, ja päivän ylin tuntihinta kipuaa 27,9 senttiin iltapäivällä kello 13:n aikoihin. Hintaa selittää tuulivoiman heikko tuotanto: keskituotanto jää noin 2 090 megawattiin, ja tuulivoiman minimi painuu vain 658 megawattiin. Vähäinen tuulivoima nostaa hinnat selvästi.
 
-**Keskiviikosta** alkaen hinnat laskevat jyrkästi, kun tuulivoimaa on tarjolla runsaasti. **Keskiviikko** ja **torstai** ovat hinnaltaan varsin samankaltaisia, keskihintojen ollessa 5,0 ja 4,7 senttiä. Edullisimmat päivät ovat **perjantai** ja **sunnuntai**, joiden keskihinta on noin 2,5–2,8 senttiä. Perjantaina hinta pysyttelee koko päivän 1–5 sentin välillä, ja sunnuntaina minimihinta painuu 0,8 senttiin. **Lauantaina** tuulivoiman minimi laskee 1 387 megawattiin, mikä nostaa päivän maksimihinnan 11,4 senttiin iltapäivän ja alkuillan aikana. Muutoin viikonloppuna hinnat pysyvät maltillisina. Ennustejakson päättävä **maanantai** on keskihinnaltaan 4,5 senttiä, ja hinnat liikkuvat 2,0–7,4 sentin välillä. Ennustejakson edullisimmat tunnit ajoittuvat öihin ja alkuviikolle. Molemmat ydinvoimaloiden huoltokatkot jatkuvat koko ennustejakson ajan.
+**Keskiviikosta** alkaen sähkön hinta laskee huomattavasti. Keskiviikon keskihinta on 6,0 senttiä, ja hinnat pysyvät enimmäkseen maltillisina. **Torstai** ja **perjantai** ovat ennustejakson edullisimmat päivät – perjantain keskihinta jää 2,9 senttiin, ja **sunnuntain** keskihinta on 3,0 senttiä. Tuulivoiman tuotanto vahvistuu keskiviikosta alkaen, mikä pitää hinnat alhaisina. **Lauantaina** tuulivoima heikkenee hieman, ja keskihinta nousee 6,0 senttiin, mutta päivä on silti kohtuullinen. **Ensi maanantain** hintaodotukset pysyvät maltillisina, keskihinnaksi arvioidaan 4,3 senttiä.
 
-*Sähkövatkain-Qwen3.8-27B seuloi hinnat.* 🔍
+*Hintaennusteen kokosi Sähkövatkain-Qwen3.8-27B.* ⚡
