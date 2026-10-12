@@ -1,21 +1,21 @@
-*Olkiluoto 3's maintenance outage began on 10 September at 01:00 and is expected to end on 30 October at 00:00. Loviisa 1's maintenance outage began on 26 September at 10:00 and is expected to end on 18 October at 01:00.*
+*The forecast period begins with an expensive Tuesday, after which prices fall as wind power strengthens and remain moderate through the end of the week. Sunday is the most affordable day.*
 
-The forecast was updated on Monday at 09:03.
+At the start of the forecast period, maintenance outages at Olkiluoto 3 and Loviisa 1 keep nuclear production limited. Olkiluoto 3 has been under maintenance since 10.9.2026 at 01:00 and is expected to return to operation on 30.10.2026 at 00:00. Loviisa 1's maintenance is scheduled to end on 18.10.2026 at 01:00, meaning it will remain offline until Sunday.
 
-|  | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+The forecast was updated on Monday at 11:55.
+
+|  | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **Tuesday** | 9.2 | 1.5 - 15.4 | 584 - 4143 | 6.9 |
-| **Wednesday** | 5.6 | 1.0 - 10.6 | 2086 - 4531 | 7.7 |
-| **Thursday** | 2.3 | 0.6 - 4.0 | 2531 - 5376 | 8.9 |
-| **Friday** | 3.7 | 1.1 - 6.2 | 3440 - 4695 | 7.7 |
-| **Saturday** | 6.0 | 1.7 - 12.0 | 1052 - 4377 | 6.5 |
-| **Sunday** | 3.0 | 0.9 - 6.5 | 2562 - 4410 | 5.4 |
-| **Monday** | 4.5 | 2.6 - 7.1 | 2584 - 4005 | 5.5 |
+| **Tuesday** | 8.9 | 1.4 – 14.4 | 548 – 4154 | 6.9 |
+| **Wednesday** | 4.4 | 1.1 – 9.3 | 2304 – 4491 | 7.7 |
+| **Thursday** | 3.6 | 1.9 – 8.5 | 2126 – 4924 | 8.9 |
+| **Friday** | 2.5 | 1.1 – 4.8 | 3540 – 5064 | 7.7 |
+| **Saturday** | 4.6 | 1.6 – 10.1 | 1411 – 4215 | 6.5 |
+| **Sunday** | 2.3 | 0.7 – 5.6 | 2509 – 4724 | 5.4 |
+| **Monday** | 4.5 | 2.0 – 7.3 | 2256 – 4776 | 5.5 |
 
-The forecast period starts with **Tuesday** at a clearly higher price level than the rest of the days. An average price of 9.2 cents is expected, and the highest hourly price could reach 15.4 cents. A price spike risk is forecast for the period between 10:00 and 12:00. The forecast is driven by a temporary dip in wind power, as output drops to just 584 megawatts during the day.
+The clearly highest average price in the forecast period is **Tuesday** at 8.9 cents per kilowatt-hour. Within the day, price differences are large: a price spike between 10:00 and 12:00 could push the price up to 14.4 cents, after which it drops rapidly in the evening. The elevated price level is explained by a temporary lull in wind power – the daily minimum output falls to just 548 megawatts, which is exceptionally low. **Wednesday** sees wind power strengthen considerably, and the average price drops to 4.4 cents. **Thursday** and **Friday** continue the downward trend, with Friday reaching the period's lowest average at 2.5 cents.
 
-**Thursday** is the most affordable day of the period. The average price drops to 2.3 cents, and the lowest hourly price dips to 0.6 cents. Abundant wind power, averaging over 4,000 megawatts, keeps prices below four cents throughout the entire day.
+**Saturday** brings a renewed weakening of wind power, and the daily maximum price rises to 10.1 cents. Wind power's minimum output is 1,411 megawatts at that point, which partly explains the elevated price spike. **Sunday** is the most affordable day of the period: the average price stays at 2.3 cents, and overnight electricity is occasionally under one cent. **Monday** returns to just over four cents but remains moderate. Throughout the period, the ongoing nuclear maintenance outages reduce production, but wind variability is the key driver of price fluctuations.
 
-**Saturday** sees wind power weaken, with output falling to a minimum of 1,052 megawatts. This explains the day's maximum price of 12.0 cents. **Wednesday**, **Friday**, **Sunday**, and next **Monday** settle into a moderate price range, with average prices varying between 3.0 and 5.6 cents.
-
-*Sähkövatkain-Qwen3.8-27B turned wind numbers into cents.* 🌬️
+*Wind paths checked by Sähkövatkain-Qwen3.8-27B.* 🌬️
