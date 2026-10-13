@@ -1,21 +1,21 @@
-*The forecast period is mostly affordable for electricity prices, but Monday will see a clear price increase as wind power production declines.*
+*After affordable hours in the early part of the week, the electricity price forecast turns upward: on Saturday and Monday, low wind power pushes prices noticeably higher.*
 
-Olkiluoto 3 is on a maintenance break that began on 10 September at 01:00. The break is expected to end on 30 October at 00:00. Loviisa 1 is on a maintenance break that began on 26 September at 10:00. The break is expected to end on 22 October at 12:00.
+The maintenance shutdown at Olkiluoto 3 began on 10 September 2026 at 01:00 and is expected to end on 30 October 2026 at 00:00. The maintenance shutdown at Loviisa 1 began on 26 September 2026 at 10:00 and is expected to end on 22 October 2026 at 12:00.
 
-The forecast was updated on Tuesday at 14:56.
+The forecast was updated on Tuesday at 20:55.
 
-|  | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
+|   | avg<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 3.5 | 0.7 – 5.2 | 2 338 – 4 523 | 7.7 |
-| **Thursday** | 3.1 | 1.6 – 7.3 | 2 218 – 7 160 | 8.9 |
-| **Friday** | 2.9 | 0.9 – 4.3 | 3 695 – 7 009 | 7.7 |
-| **Saturday** | 4.0 | 1.5 – 6.9 | 2 095 – 4 277 | 6.5 |
-| **Sunday** | 3.6 | 2.2 – 7.7 | 2 253 – 4 254 | 5.4 |
-| **Monday** | 8.1 | 4.7 – 10.9 | 1 677 – 4 694 | 5.5 |
-| **Tuesday** | 3.3 | 1.0 – 5.6 | 4 208 – 4 936 | 7.2 |
+| **Wednesday** | 3.5 | 0.7 – 5.2 | 2293 – 4533 | 7.7 |
+| **Thursday** | 3.1 | 2.0 – 5.7 | 2366 – 7070 | 8.9 |
+| **Friday** | 2.6 | 0.6 – 4.8 | 3110 – 6991 | 7.7 |
+| **Saturday** | 6.0 | 1.9 – 12.0 | 1071 – 3880 | 6.5 |
+| **Sunday** | 3.4 | 1.4 – 9.6 | 1841 – 4823 | 5.4 |
+| **Monday** | 8.3 | 4.3 – 11.0 | 1628 – 4744 | 5.5 |
+| **Tuesday** | 3.2 | 1.3 – 5.9 | 4389 – 5037 | 7.2 |
 
-Prices remain mostly affordable throughout the forecast period. From **Wednesday** to **Friday**, the average price ranges between 2.9 and 3.5 cents per kilowatt-hour. **Saturday** and **Sunday** stay moderate, with a slight rise in price level. **Monday** stands out as noticeably more expensive. Its average price is expected to be 8.1 cents, and the maximum price will climb to 10.9 cents. On **Tuesday**, the price returns to normal at an average of 3.3 cents.
+The forecast period begins on **Wednesday** with fairly moderate price expectations, and **Friday** sees the average price dip to 2.6 cents. The cheapest hours fall on the night heading into Friday, when the price drops to 0.6 cents. **Saturday** marks a clear shift upward, with the day's maximum price climbing to 12.0 cents. This is driven by a sharp decline in wind power: the day's minimum output falls to just 1,071 megawatts, which explains the high peak price. **Sunday** sees prices return closer to a normal level, though evening hours still show 9.6-cent prices.
 
-Behind Monday's elevated prices is a decline in wind power production. The day's average output is 2,813 megawatts, but the minimum wind power production drops to 1,677 megawatts, which explains the higher maximum price. Earlier in the week, strong wind power keeps prices low. On **Wednesday**, wind power averages 3,647 megawatts, and on **Friday** it reaches up to 5,492 megawatts. Strong wind power output pushes electricity prices down over several days.
+Next **Monday** is the most expensive day of the period, with an average of 8.3 cents. Wind power on Monday is also intermittently scarce – a minimum output of 1,628 megawatts pushes the peak price to 11.0 cents. The most expensive hours fall on the night before Monday. **Tuesday** brings relief, as wind power strengthens and the average price returns to 3.2 cents. The most expensive moments of the period are concentrated in the Saturday afternoon and the night before Monday, while the cheapest hours are found on the early morning of Friday.
 
-*Numbers crunched by Sähkövatkain-Qwen3.8-27B.* 🌬️
+*Reported by Sähkövatkain-Qwen3.8-27B.* 🌬️
