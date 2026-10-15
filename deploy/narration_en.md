@@ -1,21 +1,23 @@
-*The forecast period brings significant price swings. Wednesday's average price rises to 12.7 cents as wind power weakens, but Thursday is very affordable at an average of 2.2 cents.*
+*The start of the period is affordable, but on Wednesday the decline in wind power lifts the average price above 12 cents; on Thursday the price drops again.*
 
-Olkiluoto 3 is under maintenance from 10 September 2026 at 01:00. The maintenance is estimated to end on 30 October 2026 at 00:00. Loviisa 1 has been under maintenance since 26 September 2026 at 10:00, and is expected to resume operations on 22 October 2026 at 12:00.
+The forecast was updated on Thursday at 14:55.
 
-The forecast was updated on Thursday at 12:17.
+Olkiluoto 3 is under a maintenance shutdown that began on 10 September at 01:00 and is expected to end on 30 October at 00:00. Loviisa 1 has been under a maintenance shutdown since 26 September at 10:00, with the shutdown expected to end on 22 October at 12:00.
 
-|  | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **Friday** | 2.7 | 0.1 – 4.4 | 2561 – 7245 | 7.7 |
-| **Saturday** | 4.1 | 1.8 – 8.0 | 1522 – 3944 | 6.5 |
-| **Sunday** | 3.2 | 1.0 – 6.8 | 1226 – 4430 | 5.4 |
-| **Monday** | 5.9 | 3.1 – 11.0 | 2743 – 4913 | 5.5 |
-| **Tuesday** | 6.1 | 1.1 – 12.0 | 1593 – 5119 | 7.2 |
-| **Wednesday** | 12.7 | 2.3 – 18.6 | 817 – 3800 | 7.2 |
-| **Thursday** | 2.2 | 1.2 – 3.8 | 3250 – 4443 | 6.5 |
+|           | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
+|:----------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Friday**    | 2.1 | 0.0 – 4.2 | 2566 – 7317 | 7.7 |
+| **Saturday**  | 4.3 | 2.1 – 8.8 | 1523 – 3938 | 6.5 |
+| **Sunday**    | 3.7 | 1.6 – 7.4 | 1229 – 4433 | 5.4 |
+| **Monday**    | 5.8 | 3.2 – 10.3 | 2722 – 4819 | 5.5 |
+| **Tuesday**   | 6.1 | 1.2 – 12.0 | 1548 – 5013 | 7.2 |
+| **Wednesday** | 12.5 | 2.8 – 18.4 | 917 – 3720 | 7.2 |
+| **Thursday**  | 2.5 | 1.2 – 3.9 | 3252 – 4504 | 6.5 |
 
-The forecast period brings major price differences. **Friday** is affordable, with an average price of 2.7 cents. Abundant wind power, averaging 4,691 megawatts, keeps the price low. The cheapest hour costs just 0.1 cents, and the price does not rise above 4.4 cents. **Saturday** and **Sunday** have moderate prices, with averages of 4.1 and 3.2 cents respectively. **Monday** sees the average rise to 5.9 cents, and **Tuesday** to 6.1 cents, with Tuesday's maximum reaching 12 cents.
+**Friday**, **Saturday** and **Sunday** will stay below five cents in average price, which is affordable for consumers. Wind power will be abundant on Friday, averaging close to 4,700 megawatts, keeping prices low.
 
-The most expensive day in the period is **Wednesday**. The average price climbs to 12.7 cents and the maximum to 18.6 cents. There is a risk of price spikes between 15:00 and 17:00. The high price is explained by the drop in wind power: average wind production falls to 1,702 megawatts, with a daily minimum of only 817 megawatts. **Thursday** sees prices fall sharply, with an average of just 2.2 cents, making it the cheapest day in the period.
+**On Wednesday**, the price will rise to the highest level of the period, with an average of 12.5 cents. Within the day, the price will reach 18.4 cents around 10:00, and the lowest will be 2.8 cents. The high peak price is driven by a collapse in wind power: the daily minimum is only 917 megawatts, and average production drops to 1,715 megawatts, clearly weaker than on other days. The most expensive hours on Wednesday fall in the morning and afternoon, when wind power output is at its lowest.
 
-*Market prices interpreted by Sähkövatkain-Qwen3.8-27B.* 🌬️
+**On Thursday**, the price will fall back to an affordable level, with an average of just 2.5 cents. Wind power will return to a strong level, averaging over 3,700 megawatts, pushing price expectations down.
+
+*Sähkövatkain-Qwen3.8-27B pondered the numbers today.* 🌬️
