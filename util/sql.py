@@ -114,4 +114,63 @@ def db_query_all(db_path):
     conn.close()
     return data
     
+# region quarter
+QUARTER_TABLE = "prediction_15min"
+
+
+def _db_quarter_ensure(conn, cols=()):
+    conn.execute(f"CREATE TABLE IF NOT EXISTS {QUARTER_TABLE} (timestamp TIMESTAMP PRIMARY KEY)")
+    existing = {row[1] for row in conn.execute(f"PRAGMA table_info({QUARTER_TABLE})")}
+    for col in cols:
+        if col not in existing:
+            conn.execute(f"ALTER TABLE {QUARTER_TABLE} ADD COLUMN \"{col}\" FLOAT")
+
+
+def db_quarter_update(db_path, df, cols=None):
+    '''
+    Upsert 15-min rows into the 'prediction_15min' table, adding columns as needed.
+    NaN values never overwrite stored values; columns not given are left untouched.
+    Returns the number of rows written.
+    '''
+    cols = [c for c in (cols or df.columns) if c != "timestamp"]
+    rows = df[["timestamp", *cols]].dropna(subset=cols, how="all")
+    if rows.empty:
+        return 0
+
+    # Same ISO8601 UTC format as normalize_timestamp, vectorised for large backfills
+    stamps = pd.to_datetime(rows["timestamp"], utc=True).map(lambda ts: ts.isoformat())
+    values = rows[cols].astype(float).astype(object).where(rows[cols].notna(), None)
+    records = [(ts, *vals) for ts, vals in zip(stamps, values.itertuples(index=False, name=None))]
+
+    quoted = [f'"{c}"' for c in cols]
+    updates = ", ".join(f"{q}=COALESCE(excluded.{q}, {q})" for q in quoted)
+    conn = sqlite3.connect(db_path)
+    try:
+        _db_quarter_ensure(conn, cols)
+        conn.executemany(
+            f"INSERT INTO {QUARTER_TABLE} (timestamp, {', '.join(quoted)}) "
+            f"VALUES ({', '.join('?' * (len(cols) + 1))}) "
+            f"ON CONFLICT(timestamp) DO UPDATE SET {updates}",
+            records,
+        )
+        conn.commit()
+    finally:
+        conn.close()
+    return len(records)
+
+
+def db_quarter_query_all(db_path):
+    '''
+    Query all rows from the 'prediction_15min' table, sorted, with UTC timestamps.
+    '''
+    conn = sqlite3.connect(db_path)
+    try:
+        _db_quarter_ensure(conn)
+        data = pd.read_sql_query(f"SELECT * FROM {QUARTER_TABLE} ORDER BY timestamp", conn)
+    finally:
+        conn.close()
+    data["timestamp"] = pd.to_datetime(data["timestamp"], utc=True)
+    return data
+# endregion quarter
+
 "This script is not meant to be executed directly."

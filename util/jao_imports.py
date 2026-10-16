@@ -2,6 +2,7 @@ import os
 import time
 import json
 import argparse
+import numpy as np
 import pandas as pd
 import requests
 import pytz
@@ -216,6 +217,27 @@ def update_import_capacity(df, *, write_daily_average=False, output_path='deploy
     logger.info(f"JAO imports: Avg: {avg_capacity:.1f} MW, Max: {max_capacity:.1f} MW, Min: {min_capacity:.1f} MW")
     
     return final_df
+
+# region quarters
+def fetch_import_capacity_quarters(start, end):
+    """
+    Import capacities at JAO's native MTU: 15 min since the 15-min market go-live,
+    hourly before (held for the hour). Columns match the hourly features.
+    """
+    from .quarter_grid import to_quarters
+
+    start_date = pd.Timestamp(start).strftime("%Y-%m-%d")
+    end_date = pd.Timestamp(end).strftime("%Y-%m-%d")
+    logger.info(f"JAO: Fetching 15-min import capacities between {start_date} and {end_date}")
+    sums = calculate_capacity_sums(fetch_transfer_capacity_data(start_date, end_date))
+    sums = sums.rename(columns={"startTime": "timestamp", "TotalCapacityMW": "ImportCapacityMW"})
+    cols = ["SE1_FI", "SE3_FI", "EE_FI", "ImportCapacityMW"]
+    for col in cols:
+        if col not in sums.columns:
+            sums[col] = np.nan
+    return to_quarters(sums, cols, how="step")
+# endregion quarters
+
 
 # Main function, for testing purposes only
 def main():
