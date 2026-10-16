@@ -1,21 +1,21 @@
-*Keskiviikon keskihinta kipuaa yli yhdeksään senttiin tuulivoiman niukkuuden vuoksi, mutta loppuviikosta hinnat romahtavat runsaan tuotannon ansiosta.*
+Ennustejakso on kaksijakoinen: keskiviikkona hinta kipuaa yli 15 senttiin, mutta loppuviikolla sähkö on hyvin edullista.
 
-Olkiluoto 3 on huoltokatkossa 10. syyskuuta klo 01 alkaen, ja katkon arvioidaan päättyvän 30. lokakuuta klo 00. Loviisa 1 on huoltokatkossa 26. syyskuuta klo 10 alkaen, ja sen arvioidaan päättyvän 22. lokakuuta klo 12.
+Ennuste on päivitetty perjantaina klo 14:55.
 
-Ennuste on päivitetty perjantaina klo 11:55.
+**Olkiluoto 3** on huoltokatkolla 10. syyskuuta klo 01 alkaen, ja katkon odotetaan päättyvän 30. lokakuuta klo 00. **Loviisa 1** on huoltokatkolla 26. syyskuuta klo 10 alkaen, ja sen odotetaan päättyvän 22. lokakuuta klo 12.
 
 |  | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **lauantai** | 5,0 | 2,1 – 8,8 | 1282 – 3411 | 6,5 |
-| **sunnuntai** | 6,4 | 2,3 – 10,5 | 496 – 3723 | 5,4 |
-| **maanantai** | 5,2 | 2,0 – 7,3 | 2727 – 4860 | 5,5 |
-| **tiistai** | 5,2 | 1,5 – 8,3 | 2157 – 5102 | 7,2 |
-| **keskiviikko** | 9,6 | 2,4 – 16,7 | 964 – 3525 | 7,2 |
-| **torstai** | 2,4 | 0,8 – 5,3 | 2909 – 4393 | 6,5 |
-| **perjantai** | 1,7 | 0,5 – 3,1 | 4130 – 4546 | 7,1 |
+| **lauantai** | 3,2 | 1,1 – 4,9 | 1268 – 3412 | 6,5 |
+| **sunnuntai** | 5,8 | 1,9 – 9,0 | 487 – 3726 | 5,4 |
+| **maanantai** | 4,8 | 2,0 – 6,8 | 2721 – 4806 | 5,5 |
+| **tiistai** | 5,2 | 1,4 – 8,3 | 2257 – 5055 | 7,2 |
+| **keskiviikko** | 9,4 | 2,3 – 15,6 | 881 – 3391 | 7,2 |
+| **torstai** | 2,1 | 0,8 – 4,9 | 2935 – 4364 | 6,5 |
+| **perjantai** | 1,4 | 0,2 – 2,6 | 4051 – 4560 | 7,1 |
 
-Ennustejakso käynnistyy **lauantaina** kohtuullisilla hinnoilla, mutta **keskiviikko** erottuu selvästi kalleimpana päivänä. Keskiviikon keskihinta kohoaa 9,6 senttiin ja päivän maksimihinta jopa 16,7 senttiin. Hintatason nostaa tuulivoiman niukkuus: päivän minimituotanto jää 964 megawattiin, mikä selittää korkeaa maksimihintaa. **Sunnuntaina** on lisäksi hintapiikkiriski kello 10–12, jolloin tuulivoiman tuotanto painuu päivän matalimmillaan 496 megawattiin. **Maanantain** ja **tiistain** hinnat asettuvat noin 5,2 senttiin keskimäärin ilman suuria piikkejä.
+Ennustejakso on kaksijakoinen. **Keskiviikko** erottuu selvästi kalleimpana päivänä, kun odotettu keskihinta nousee 9,4 senttiin kilowattitunnilta. Päivän sisällä hinta kipuaa korkeimmillaan 15,6 senttiin, mikä selittyy tuulivoiman hetkellisesti hyvin matalalla minimituotannolla (881 MW). **Sunnuntaina** keskihinta on 5,8 senttiä, ja päivään liittyy hintapiikkiriski kello 10–12. Tuolloin tuulivoiman tuotanto käy alimmillaan vain 487 megawatissa, mikä osaltaan nostaa tuntihintoja.
 
-Loppuviikolla tilanne muuttuu selvästi edullisemmaksi. **Torstain** keskihinta laskee 2,4 senttiin ja **perjantaina** vain 1,7 senttiin. Syynä on tuulivoiman voimakas kasvu: torstaina tuotanto yltää yli 4 300 megawatin, ja perjantaina tuulivoima pysyttelee 4 100–4 550 megawatin välillä koko vuorokauden. Perjantain vastaisena yönä tuntihinta painuu hetkellisesti 0,5 senttiin, ja torstainakin nähdään 0,8 sentin tuntilukemia.
+Loppuviikkoa kohden hintaennusteet laskevat jyrkästi. **Torstai** on jo edullinen 2,1 sentin keskihinnalla, ja **perjantai** on jakson halvin päivä 1,4 sentin keskihinnalla. Perjantain hinnat liikkuvat kapeassa haarukassa, alimmillaan vain 0,2 senttiä kilowattitunnilta. **Maanantain** ja **tiistain** hinnat asettuvat 4,8–5,2 sentin tuntumaan, ja molempina päivinä tuulivoimaa on runsaasti tarjolla. **Lauantain** keskihinta on 3,2 senttiä, eikä päivään liity hintapiikkiriskiä.
 
-*Ennusteen takana Sähkövatkain-Qwen3.8-27B.* 💨
+*Numerot tarkisti Sähkövatkain-Qwen3.8-27B.* 🌬️
