@@ -1,21 +1,19 @@
-*Ennustejakson hinnat vaihtelevat voimakkaasti: keskiviikon korkeita hintoja seuraa torstain ja perjantain poikkeuksellisen matalat hinnat tuulivoiman voimistuessa.*
+_Ennustejakso käynnistyy vaihtelevissa hinnoissa, mutta loppuviikolla hinta painuu alas, kun tuulivoimaa on tarjolla runsaasti._
 
-Olkiluoto 3 -yksikkö on huoltokatkossa. Katkos alkoi 10. syyskuuta klo 01.00 ja sen arvioidaan päättyvän 30. lokakuuta klo 00.00. Loviisa 1 on myös huoltokatkossa; se alkoi 26. syyskuuta klo 10.00 ja päättyy ennusteen mukaan 22. lokakuuta klo 12.00.
+Olkiluoto 3 on huoltokatkossa 10.9.2026 klo 01 alkaen, päättyminen ennustetaan 30.10.2026 klo 00. Loviisa 1 on huoltokatkossa 26.9.2026 klo 10 alkaen, päättyminen 22.10.2026 klo 12.
 
-Ennuste on päivitetty perjantaina klo 20:55.
+Ennuste on päivitetty lauantaina klo 02:55.
 
-|           | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
-|:----------|:-----------------------:|:------------------:|:----------------------------:|:-------------------------:|
-| **lauantai**   | 3,2 | 1,1 – 4,9 | 1275 – 3375 | 6,5 |
-| **sunnuntai**  | 6,6 | 2,3 – 10,2 | 471 – 3464 | 5,4 |
-| **maanantai**  | 4,9 | 2,3 – 7,0 | 2084 – 4876 | 5,5 |
-| **tiistai**    | 4,7 | 1,8 – 8,8 | 1937 – 4787 | 7,2 |
-| **keskiviikko**| 7,1 | 0,5 – 13,0 | 1418 – 3733 | 7,2 |
-| **torstai**    | 1,8 | 0,4 – 3,4 | 3439 – 4247 | 6,5 |
-| **perjantai**  | 1,5 | 0,4 – 2,8 | 4069 – 4479 | 7,1 |
+| | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **sunnuntai** | 6,8 | 1,6 – 13,1 | 343 – 3647 | 5,4 |
+| **maanantai** | 4,2 | 2,0 – 7,1 | 2512 – 6346 | 5,5 |
+| **tiistai** | 5,7 | 1,5 – 9,1 | 1926 – 6053 | 7,2 |
+| **keskiviikko** | 9,4 | 3,5 – 16,0 | 1025 – 3022 | 7,2 |
+| **torstai** | 4,3 | 2,1 – 6,0 | 2693 – 3756 | 6,5 |
+| **perjantai** | 2,2 | 0,7 – 4,1 | 3735 – 4407 | 7,1 |
+| **lauantai** | 1,0 | 0,4 – 1,9 | 3776 – 4647 | 8,3 |
 
-Ennustejakson hintaodotukset vaihtelevat huomattavasti. **Keskiviikko** on kallein päivä: keskihinta nousee 7,1 senttiin ja maksimihinta kohoaa 13,0 senttiin kilowattitunnilta. Keskiviikon korkeaa maksimihintaa selittää tuulivoiman hetkellinen hiipuminen – minimituotanto jää 1 418 megawattiin, mikä on selvästi alle 2 000 megawatin. **Sunnuntai** on toinen hintapiikkipäivä, sillä tuulivoiman minimi on vain 471 megawattia. Sunnuntaille on olemassa hintapiikkiriski kello 10–12, jolloin hinta voi kohota reilusti yli 9 sentin. **Lauantain** keskihinta pysyy 3,2 sentissä, ja **maanantai** sekä **tiistai** liikkuvat 4,7–4,9 sentin tuntumassa.
+**Sunnuntaina** on hintapiikkiriski klo 10–12, jolloin hinta voi kohota yli 13 senttiin. Päivän maksimihinta on 13,1 ¢, mikä johtuu osin hyvin vähäisestä tuulivoimasta (minimi 343 MW). **Maanantaina** tuulivoima nousee reilusti yli 4900 megawatin, ja keskihinta laskee 4,2 senttiin. **Tiistaina** hinta on hieman korkeampi, mutta pysyy kohtuullisena. **Keskiviikkona** hinta kohoaa jakson korkeimmalle tasolle: keskihinta on 9,4 ¢ ja maksimi 16,0 ¢. Tuulivoima on heikkoa, keskimäärin vain 2209 MW ja minimissään 1025 MW, mikä selittää korkeaa maksimihintaa. **Torstaina** hinnat laskevat jälleen. Jakson edullisimmat päivät osuvat **perjantaille** ja **lauantaille**: perjantain keskihinta painuu 2,2 senttiin, ja lauantaina hinta pysyttelee koko päivän alle kahdessa sentissä – keskihinta on ainoastaan 1,0 ¢.
 
-**Torstai** ja **perjantai** ovat jakson edullisimmat päivät. Torstain keskihinta on 1,8 ja perjantain 1,5 senttiä, eikä kumpikaan päivä yllä yli 3,4 sentin. Taustalla on voimakas tuulivoimatuotanto: torstain keskimääräinen tuulivoima on 3 960 megawattia ja perjantain 4 304 megawattia. Yksittäiset tunnit painuvat lähelle nollaa, joten alhaiset tuntihinnat ovat yleisiä. Hintakehitys kääntyy jyrkkään laskuun keskiviikon jälkeen, ja loppuviikko tarjoaa poikkeuksellisen matalaa hintatasoa.
-
-*Sähkövatkain-Qwen3.8-27B tänään.* 🌬️
+*Sähkövatkain-Qwen3.8-27B tulkitsi pörssiluvut.* ⚡
