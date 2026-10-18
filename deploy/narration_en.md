@@ -1,21 +1,21 @@
-*During the forecast period, price differences are large: Sunday and Wednesday stand out clearly as more expensive days, while prices remain moderate on the other days.*
+*During the forecast period, electricity prices vary with wind power: Wednesday is clearly the most expensive, Friday the cheapest, and price differences are explained by fluctuations in production.*
 
-Olkiluoto 3's maintenance outage began on 10.9.2026 at 01:00 and is expected to end on 30.10.2026 at 00:00. Loviisa 1's maintenance outage began on 26.9.2026 at 10:00 and is expected to end on 22.10.2026 at 12:00.
+Olkiluoto 3 is in a maintenance outage starting 10 September 2026 at 01:00. The outage is expected to end on 30 October 2026 at 00:00. Loviisa 1 has been in a maintenance outage since 26 September 2026 at 10:00, and is expected to end on 22 October 2026 at 12:00.
 
-The forecast was updated on Saturday at 20:55.
+The forecast was updated on Sunday at 04:00.
 
-|  | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Sunday** | 9.7 | 3.0 – 26.9 | 562 – 3255 | 5.4 |
-| **Monday** | 5.0 | 3.8 – 7.2 | 2029 – 5758 | 5.5 |
-| **Tuesday** | 6.4 | 3.2 – 9.9 | 2354 – 4825 | 7.2 |
-| **Wednesday** | 11.9 | 2.0 – 22.3 | 839 – 3768 | 7.2 |
-| **Thursday** | 5.8 | 1.6 – 10.7 | 1719 – 4338 | 6.5 |
-| **Friday** | 6.2 | 1.0 – 11.9 | 1369 – 4310 | 7.1 |
-| **Saturday** | 4.6 | 2.9 – 9.5 | 1254 – 3340 | 8.4 |
+|           | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
+|:----------|:----------------:|:----------------:|:------------------:|:-------------------:|
+| **Monday**    | 4.8 | 3.0 – 7.0 | 1928 – 6236 | 5.5 |
+| **Tuesday**   | 6.2 | 2.8 – 10.1 | 1772 – 5959 | 7.2 |
+| **Wednesday** | 11.1 | 2.1 – 18.5 | 866 – 3352 | 7.2 |
+| **Thursday**  | 4.3 | 0.8 – 7.6 | 2465 – 4586 | 6.5 |
+| **Friday**    | 1.9 | 0.1 – 3.7 | 3459 – 4940 | 7.1 |
+| **Saturday**  | 3.0 | 1.6 – 4.3 | 2316 – 4419 | 8.4 |
+| **Sunday**    | 6.5 | 2.7 – 12.7 | 1366 – 3460 | 8.2 |
 
-The forecast period begins in an expensive mood. **Sunday's** expected average price is 9.7 cents per kilowatt-hour, and the intraday price differences are exceptionally large. The most expensive hours fall in the evening, when the price climbs to as much as 26.9 cents. The reason is the collapse in wind power: the day's minimum output drops to just 562 megawatts.
+Average prices during the forecast period vary significantly. **Wednesday** stands out as the most expensive day, with an expected average price of 11.1 cents per kilowatt-hour. Within the day, the price rises to over 18 cents in the afternoon, making it the highest single hourly price of the week. The high price level is explained by scarce wind power: Wednesday's wind power minimum is only 866 megawatts, and production remains low throughout the day.
 
-**Wednesday** also stands out with a high average price of 11.9 cents. The day's price range is 2.0–22.3 cents, and the most expensive moment falls in the afternoon. Wind power's minimum output is also scarce on that day, at 839 megawatts, which explains the higher maximum price. The other days remain more affordable. **Monday's** average price stays at 5.0 cents, and wind power is plentiful, averaging 4,426 megawatts. **Thursday** and **Saturday** are close to the five-cent level in average price, and Saturday is the period's cheapest day with an average price of 4.6 cents.
+The cheapest prices of the period fall on **Friday**, when the average price drops to 1.9 cents and the lowest hourly price is 0.1 cents in the early morning. Friday's low price level is explained by strong wind power production, with an average of over 4,200 megawatts. **Saturday** prices remain moderate, but on **Sunday** they rise again as wind power production decreases. Sunday's maximum price is 12.7 cents, and in the afternoon the price can climb above 12 cents.
 
-*Price outlook drawn by Sähkövatkain-Qwen3.8-27B.* 🌬️
+*Numbers interpreted by Sähkövatkain-Qwen3.8-27B.* ⚡
