@@ -1,21 +1,21 @@
-*Ennustejaksolla keskiviikko on kallein päivä 11,0 sentin keskihinnalla ja 18,2 sentin tuntihinnoilla, mutta perjantaina hinta painuu nollan tuntumaan.*
+*Pörssisähkön hintaennusteen mukaan keskiviikko on selvästi kallein päivä, mutta loppuviikolla hinnat laskevat ja sunnuntaina painuvat jopa negatiivisiksi.*
 
-Olkiluoto 3 on huoltokatkossa 10.9.2026 klo 01 alkaen. Katkon arvioidaan päättyvän 30.10.2026 klo 00. Loviisa 1 on huoltokatkossa 26.9.2026 klo 10 alkaen, ja sen arvioidaan päättyvän 22.10.2026 klo 12.
+Olkiluoto 3:n huoltokatko alkoi 10. syyskuuta 2026 klo 01 ja päättyy ennusteen mukaan 30. lokakuuta 2026 klo 00. Loviisa 1:n huoltokatko alkoi 26. syyskuuta 2026 klo 10 ja päättyy ennusteen mukaan 22. lokakuuta 2026 klo 12.
 
-Ennuste on päivitetty sunnuntaina klo 08:55.
+Ennuste on päivitetty sunnuntaina klo 11:55.
 
-|             | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:------------|:-----------------------:|:------------------:|:-----------------------------:|:-------------------------:|
-| **maanantai**   | 4,7                    | 2,9 – 6,8         | 1904 – 6239                   | 5,5                      |
-| **tiistai**     | 6,2                    | 2,8 – 10,4        | 2011 – 5897                   | 7,2                      |
-| **keskiviikko** | 11,0                   | 2,4 – 18,2        | 816 – 3009                    | 7,2                      |
-| **torstai**     | 4,2                    | 0,5 – 7,4         | 2377 – 4636                   | 6,5                      |
-| **perjantai**   | 1,9                    | −0,0 – 3,7        | 3208 – 4935                   | 7,1                      |
-| **lauantai**    | 3,2                    | 1,6 – 4,4         | 2028 – 4227                   | 8,4                      |
-| **sunnuntai**   | 6,8                    | 2,4 – 12,7        | 1280 – 3269                   | 8,2                      |
+|  | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
+|:---|:---:|:---:|:---:|:---:|
+| **maanantai** | 5,0 | 3,2 – 7,5 | 2248 – 6157 | 5,5 |
+| **tiistai** | 5,7 | 2,7 – 9,5 | 1604 – 5726 | 7,2 |
+| **keskiviikko** | 10,3 | 2,1 – 20,1 | 769 – 3724 | 7,2 |
+| **torstai** | 6,5 | 1,1 – 10,9 | 1441 – 4178 | 6,5 |
+| **perjantai** | 3,0 | 0,8 – 6,2 | 2032 – 3876 | 7,1 |
+| **lauantai** | 4,1 | 2,4 – 6,2 | 1997 – 3503 | 8,4 |
+| **sunnuntai** | 0,5 | −0,8 – 2,6 | 2868 – 4705 | 8,3 |
 
-Ennustejakso alkaa varsin maltillisilla hinnoilla, mutta **keskiviikko** erottuu selvästi kalleimpana päivänä. Keskihinta nousee 11,0 senttiin kilowattitunnilta, ja yksittäisten tuntien hinta kipuaa jopa 18,2 senttiin. Taustalla on tuulivoiman vähäisyys: päivän keskimääräinen tuotanto jää alle 2 000 megawatin, ja minimissään tuotanto on vain 816 megawattia, mikä selittää korkeaa maksimihintaa.
+Ennustejakson hintataso vaihtelee huomattavasti. **Keskiviikko** erottuu selvästi kalleimpana päivänä, ja sen keskihinta nousee 10,3 senttiin kilowattitunnilta. Päivän maksimihinta kohoaa 20,1 senttiin, ja hintapiikkiriski ajoittuu iltapäivään kello 16–18. Tuulivoima jää keskiviikkona keskimäärin 2412 megawattiin, ja minimituotanto on vain 769 megawattia, mikä selittää poikkeuksellisen korkeaa hintaa.
 
-**Torstaina** ja **perjantaina** tuulivoima voimistuu huomattavasti, ja hinnat painuvat erittäin mataliksi. Perjantain keskihinta on vain 1,9 senttiä, ja öisin hinta käy hetkellisesti negatiivisena. **Lauantaina** hinta pysyy edullisena, mutta **sunnuntaina** tuulivoima heikkenee uudelleen ja keskihinta nousee 6,8 senttiin. Myös sunnuntaina tuulivoiman minimituotanto jää alle 2 000 megawatin, mikä nostaa maksimihinnan 12,7 senttiin.
+Loppuviikkoa kohden hinnat painuvat edullisemmiksi. **Perjantain** keskihinta on 3,0 senttiä ja **sunnuntai** on ennustejakson edullisin päivä keskihinnan ollessa 0,5 senttiä. Sunnuntaina hinta painuu ajoittain jopa negatiiviseksi, alimmillaan −0,8 senttiin aamupäivän tunteina. Tuulivoima voimistuu loppuviikolla, mikä osaltaan laskee hintatasoa erityisesti perjantaina ja sunnuntaina.
 
-*Sähkövatkain-Qwen3.8-27B puhalsi.* 🌬️
+*Sähkövatkain-Qwen3.8-27B tulkkasi ennusteen.* ⚡
