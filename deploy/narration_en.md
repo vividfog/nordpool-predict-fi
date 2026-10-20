@@ -1,22 +1,21 @@
-*Wednesday is the most expensive day of the forecast period, with an average price of 6.0 cents. In the latter part of the week, electricity is very affordable, and Sunday's prices even dip negative.*
+*The average price over the forecast period is around 2.6 c/kWh. Wednesday is the most expensive at 6.5 cents, Sunday the cheapest at 0.2 cents. Wind power keeps prices low over the weekend.*
 
-Olkiluoto 3 is on a maintenance break from 10 September 2026 at 01:00. The break is estimated to end on 7 November 2026 at 18:00.  
-Loviisa 1 is on a maintenance break from 26 September 2026 at 10:00. The break is estimated to end on 23 October 2026 at 12:00.
+Two nuclear power plant maintenance outages have been recorded for the forecast period. The maintenance outage at Olkiluoto 3 began on 10 September 2026 at 01:00 and is expected to end on 7 November 2026 at 18:00. The maintenance outage at Loviisa 1 began on 26 September 2026 at 10:00 and ends on 23 October 2026 at 12:00. In addition, Olkiluoto 1 has a production deficit from 20 October 2026 at 09:00 to 11:00.
 
-The forecast was updated on Tuesday at 02:55.
+The forecast was updated on Tuesday at 08:54.
 
-|  | avg. price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg. temp.<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 6.0 | 2.4 – 10.5 | 1504 – 5435 | 7.2 |
-| **Thursday** | 2.2 | 0.4 – 3.6 | 2619 – 5367 | 6.5 |
-| **Friday** | 3.2 | 1.3 – 6.3 | 3241 – 4869 | 7.1 |
-| **Saturday** | 1.6 | 0.5 – 2.6 | 2811 – 4936 | 8.4 |
-| **Sunday** | 0.4 | −0.5 – 1.4 | 4057 – 4995 | 8.2 |
-| **Monday** | 1.5 | 0.3 – 3.1 | 4343 – 4886 | 8.4 |
-| **Tuesday** | 1.5 | 0.7 – 3.1 | 4455 – 5027 | 8.2 |
+|  | avg.<br>price<br>c/kWh | min – max<br>c/kWh | wind power<br>min – max<br>MW | avg.<br>temp.<br>°C |
+|:---|:---:|:---:|:---:|:---:|
+| **Wednesday** | 6.5 | 2.9 – 10.8 | 1362 – 5414 | 7.2 |
+| **Thursday** | 2.4 | 0.4 – 5.2 | 2979 – 5379 | 6.5 |
+| **Friday** | 2.8 | 1.0 – 6.7 | 2545 – 4043 | 7.1 |
+| **Saturday** | 2.0 | 0.3 – 3.9 | 2454 – 4954 | 8.4 |
+| **Sunday** | 0.2 | −0.8 – 1.2 | 4187 – 4974 | 8.2 |
+| **Monday** | 1.3 | −0.1 – 2.8 | 4332 – 4763 | 8.4 |
+| **Tuesday** | 1.5 | 0.6 – 3.1 | 4478 – 4987 | 8.2 |
 
-The only clearly more expensive day of the forecast period is **Wednesday**, when the average price rises to 6.0 cents per kilowatt-hour and the maximum price climbs to 10.5 cents. The higher maximum price is explained by a temporary drop in wind power to 1,504 megawatts, despite the day's average production being strong. On other days, electricity prices remain low. The average prices on **Thursday** and **Friday** are 2.2 and 3.2 cents, respectively.
+**Wednesday** stands out as the most expensive day of the forecast period, although its average price of 6.5 cents does not reach the expensive threshold. The day's maximum price rises to 10.8 cents, which is explained by wind power's temporarily very low minimum output, only 1,362 megawatts. On Thursday, the price level drops significantly, with an average price of 2.4 cents. Wind power increases towards the end of the day, keeping prices low.
 
-The cheapest days of the period begin from **Saturday** onwards. **Sunday's** average price falls to just 0.4 cents, and during the day the price dips below zero for several hours. **Monday** and **Tuesday** continue at a steadily affordable level, with the average price staying at 1.5 cents. On Sunday, there is an abundance of wind power, which keeps prices unusually low.
+Towards the weekend, prices shift to very affordable levels. **Saturday's** average price is 2.0 cents, and on **Sunday** the average price drops to 0.2 cents. On the night before Sunday and in the morning, the price even goes negative, reaching as low as −0.8 cents per kilowatt-hour. On **Monday** and **Tuesday**, prices remain low, with average prices of 1.3 and 1.5 cents. Wind power is abundantly available throughout the rest of the period, supporting the low price level.
 
-*Sähkövatkain-Qwen3.8-27B sifted the numbers.* 🌬️
+*Sähkövatkain-Qwen3.8-27B blew some wind into the prices.* 🌬️
