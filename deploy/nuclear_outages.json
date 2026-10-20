@@ -17,14 +17,6 @@
             "availability": 0.0
         },
         {
-            "start": "2026-10-20T06:15:00.000Z",
-            "end": "2026-10-20T08:15:00.000Z",
-            "avail_qty": 460,
-            "nominal_power": 890.0,
-            "production_resource_name": "Olkiluoto 1",
-            "availability": 0.5168539326
-        },
-        {
             "start": "2026-09-26T07:00:00.000Z",
             "end": "2026-10-23T09:00:00.000Z",
             "avail_qty": 0,
