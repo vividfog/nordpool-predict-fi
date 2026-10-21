@@ -1,21 +1,21 @@
-*The electricity price forecast for the coming days is unusually volatile. Sunday's average price drops to 0.7 cents, while Friday's peak reaches 7.6 cents.*
+*In the electricity price forecast, Friday emerges as the most expensive day, while on Sunday and towards the end of the week the price drops to a very low level thanks to abundant wind power.*
 
-Olkiluoto 3 is under maintenance from 10 September at 01:00. The outage is expected to end on 7 November at 18:00. Loviisa 1 has been under maintenance since 26 September at 10:00. The outage is expected to end on 25 October at 18:00.
+The forecast has been updated on Wednesday at 02:55.
 
-The forecast was updated on Tuesday at 20:54.
+Olkiluoto 3 is under maintenance from 10.9 at 01:00, and is expected to end on 7.11 at 18:00. Loviisa 1 has been under maintenance since 26.9 at 10:00, and is expected to end on 25.10 at 18:00.
 
-|  | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
+|  | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg. temp<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Wednesday** | 4.6 | 2.9 – 7.2 | 1523 – 4573 | 7.2 |
-| **Thursday** | 2.4 | 0.5 – 4.6 | 2604 – 4593 | 6.5 |
-| **Friday** | 4.3 | 2.6 – 7.6 | 2754 – 3797 | 7.1 |
-| **Saturday** | 2.7 | 1.5 – 3.6 | 2609 – 4812 | 8.4 |
-| **Sunday** | 0.7 | 0.2 – 1.1 | 4074 – 5218 | 8.2 |
-| **Monday** | 2.2 | −0.4 – 4.8 | 3315 – 5227 | 8.4 |
-| **Tuesday** | 4.1 | 2.5 – 6.1 | 2418 – 3817 | 8.3 |
+| **Thursday** | 2.2 | 0.5 – 3.4 | 2687 – 4749 | 6.5 |
+| **Friday** | 3.8 | 1.6 – 8.2 | 1838 – 4471 | 7.1 |
+| **Saturday** | 2.9 | 1.4 – 4.2 | 2155 – 4255 | 8.4 |
+| **Sunday** | 0.5 | -0.2 – 1.4 | 3791 – 5197 | 8.2 |
+| **Monday** | 0.6 | -0.3 – 1.4 | 4733 – 5215 | 8.4 |
+| **Tuesday** | 0.7 | 0.3 – 1.5 | 4112 – 5285 | 8.3 |
+| **Wednesday** | 0.5 | -0.3 – 1.0 | 4591 – 5210 | 8.2 |
 
-Electricity prices will vary exceptionally throughout the forecast period. The cheapest period is **Sunday**, when the average price drops to just 0.7 cents per kilowatt-hour. Prices stay between 0.2 and 1.1 cents all day. **Thursday** and **Monday** also feature affordable average prices at 2.4 and 2.2 cents respectively. During the night into Monday, prices briefly turn negative. The highest average prices fall on **Wednesday** (4.6 ¢), **Friday** (4.3 ¢) and **Tuesday** (4.1 ¢). On Friday the peak price rises to 7.6 cents, the highest single-hour price in the period.
+There is notable variation in the expected prices over the forecast period. **Friday** stands out as the most expensive day, with an expected average price of 3.8 cents per kilowatt-hour and a maximum price rising to 8.2 cents. The price peak on Friday is explained by a temporary weakening of wind power: the day's lowest wind power output drops to 1838 megawatts, which is below 2000 megawatts. On other days, wind power is available in abundance.
 
-Abundant wind power keeps Sunday and Monday prices low, with wind power averaging over 4,000 megawatts on those days. **Wednesday's** wind power minimum is 1,523 megawatts, which partly explains the day's higher peak price. Tuesday's wind power is also on the lower side, visible in the average price. Nuclear maintenance outages reduce output, but their price impact is not assessed.
+**Sunday** is the most affordable day in the forecast period. The average price stays at 0.5 cents, and during individual hours the price even drops below zero. On **Monday** and **Wednesday** as well, the average price is around 0.5–0.6 cents, and both days see negative hourly prices at night. **Tuesday** is slightly higher, with an average price of 0.7 cents, but remains very affordable. Towards the end of the week, wind power averages 4700–4900 megawatts, which explains the low prices. **Thursday** and **Saturday** fall in the middle, with average prices between 2.2 and 2.9 cents.
 
-*Interpreting the numbers today: Sähkövatkain-Qwen3.8-27B.* 🌬️
+*Sähkövatkain-Qwen3.8-27B reports.* 🌬️
