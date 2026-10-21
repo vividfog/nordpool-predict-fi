@@ -1,23 +1,21 @@
-_Sähkövatkaimen ennustejakso käynnistyy hieman korkeammilla hinnoilla, mutta loppuviikolla sähkön hinta painuu hyvin edulliseksi, jopa negatiiviseksi, kun tuulivoima vahvistuu._
+Ennustejakso on poikkeuksellisen edullinen, ja hinnat painuvat paikoin jopa negatiivisiksi runsaan tuulivoiman ansiosta.
 
-Ennuste on päivitetty keskiviikkona klo 08:54.
+Olkiluoto 3 on huoltokatkossa 10.9.2026 klo 01:00 alkaen, ja sen arvioidaan päättyvän 7.11.2026 klo 18:00. Loviisa 1:n huoltokatko alkoi 26.9.2026 klo 10:00 ja sen on määrä päättyä 25.10.2026 klo 18:00. Ennustejakson aikana Loviisa 1 on siis huoltokatkossa vielä sunnuntai-iltaan asti.
 
-**Olkiluoto 3** on huoltokatkolla 10. syyskuuta klo 01 alkaen, ja sen on ennustettu päättyvän 7. marraskuuta klo 18. **Loviisa 1** on huoltokatkolla 26. syyskuuta klo 10 alkaen, ja sen on ennustettu päättyvän 25. lokakuuta klo 18.
+Ennuste on päivitetty keskiviikkona klo 11:55.
 
-|  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **torstai** | 2,3 | 0,9 – 3,2 | 2688 – 4760 | 6,5 |
-| **perjantai** | 3,7 | 1,5 – 7,8 | 2724 – 4420 | 7,1 |
-| **lauantai** | 2,1 | 0,9 – 3,7 | 2511 – 4827 | 8,4 |
-| **sunnuntai** | 0,6 | −0,3 – 1,2 | 3831 – 5209 | 8,2 |
-| **maanantai** | 0,8 | −0,2 – 1,9 | 4667 – 5189 | 8,4 |
-| **tiistai** | 0,9 | 0,2 – 1,7 | 4267 – 5301 | 8,3 |
-| **keskiviikko** | 0,5 | −0,3 – 1,1 | 4698 – 5211 | 8,2 |
+|             | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
+|:------------|:----------------:|:------------------:|:----------------:|:-------------:|
+| **torstai**  |       2,2        |  0,5 – 3,5        |  3028 – 5186    |      6,5      |
+| **perjantai**|       3,6        |  1,0 – 6,8        |  2160 – 5022    |      7,1      |
+| **lauantai** |       1,9        |  0,6 – 3,5        |  2318 – 4769    |      8,4      |
+| **sunnuntai**|       0,7        |  0,0 – 1,4        |  4190 – 5204    |      8,2      |
+| **maanantai**|       1,2        | −0,1 – 2,8        |  4225 – 5056    |      8,4      |
+| **tiistai**  |       1,4        |  0,0 – 3,1        |  3376 – 5298    |      8,3      |
+| **keskiviikko**|      1,0        | −0,5 – 2,7        |  3960 – 5253    |      8,2      |
 
-Ennustejakson hintataso on alkavaan viikonpäivään verrattuna matala. **Torstain** keskihinta asettuu 2,3 senttiin, mutta päivän sisäinen vaihtelu on varsin tavanomaista. **Perjantai** erottuu joukosta korkeammalla keskihinnallaan, 3,7 sentillä. Päivän maksimihinta nousee aamupäivällä 7,8 senttiin, ja samalla tuulivoiman tuotanto laskee hetkellisesti 3 000 megawatin alle.
+Ennustejakso on sähkönkäyttäjille poikkeuksellisen edullinen. Runsas tuulivoima painaa hinnat mataliksi koko viikon ajan, eikä hintapiikkiriskiä esiinny. Tuulivoiman keskituotanto pysyy yli 3 000 megawatin, mikä selittää matalaa hintatasoa.
 
-Jakson loppupuolella hintaodotukset painuvat hyvin alas. **Lauantaina** keskihinta on 2,1 senttiä, ja **sunnuntaista** alkaen liikutaan selvästi edullisella tasolla. Sunnuntaina keskihinta on vain 0,6 senttiä, ja **keskiviikkona** se on 0,5 senttiä. Molemmilta päiviltä löytyy myös tuntikohtaisesti nollan alapuolelle jääviä hintoja. **Maanantain** ja **tiistain** keskihinnat liikkuvat 0,8–0,9 sentin tuntumassa, eikä päivien sisäisiä merkittäviä piikkejä odoteta.
+Kallein päivä on **perjantai**, jolloin keskihinta nousee 3,6 senttiin ja maksimihinta 6,8 senttiin. Tuulivoima on perjantaina hieman matalammalla kuin muina päivinä, mikä näkyy hinnassa. **Lauantaina** keskihinta laskee 1,9 senttiin ja **sunnuntaina** vain 0,7 senttiin. Sunnuntaina hinta käy nollassa aamupäivällä, ja **maanantain** sekä **keskiviikon** vastaisina öinä pörssisähkön hinta kääntyy hetkellisesti negatiiviseksi. **Tiistaina** keskihinta on 1,4 senttiä. Lämpötilat pysyvät viileinä, eikä niillä ole vaikutusta hintoihin.
 
-Kokonaisuutena ennustejakso on sähkönkäyttäjälle varsin edullinen, eikä hintapiikkiriskejä ole.
-
-*Pörssisähköä vatkaa Sähkövatkain-Qwen3.8-27B.* 🌬️
+*Sähkövatkain-Qwen3.8-27B puhalsi tuulen suunnaksi.* 🌬️
