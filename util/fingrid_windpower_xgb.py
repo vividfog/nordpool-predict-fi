@@ -316,6 +316,42 @@ def update_windpower(df, fingrid_api_key):
     return final_df
 
 
+# region quarters
+def fetch_windpower_quarters(fingrid_api_key, start, end, now=None):
+    """
+    Wind power on the 15-min grid from Fingrid's native data: measured (181, 3-min)
+    averaged per quarter up to now, the Fingrid forecast (245) after that and where
+    measurements are missing. Hours beyond the Fingrid forecast are left out; the
+    15-min model falls back to the hourly (inferred) series there.
+    """
+    from .quarter_grid import to_quarters
+
+    now = pd.Timestamp.utcnow() if now is None else pd.Timestamp(now)
+    start_date = pd.Timestamp(start).strftime("%Y-%m-%d")
+    end_date = pd.Timestamp(end).strftime("%Y-%m-%d")
+    logger.info(f"Fingrid: Fetching wind power (181, 245) at native resolution between {start_date} and {end_date}")
+
+    frames = {}
+    for name, dataset_id in [("real", WIND_POWER_REAL_DATASET_ID), ("forecast", WIND_POWER_FORECAST_DATASET_ID)]:
+        try:
+            raw = fetch_fingrid_data(fingrid_api_key, dataset_id, start_date, end_date)
+        except Exception as exc:
+            logger.warning(f"Fingrid: no {name} wind power data ({dataset_id}) for 15-min grid: {exc}")
+            raw = None
+        if raw is None or raw.empty:
+            frames[name] = pd.DataFrame(columns=["timestamp", "WindPowerMW"])
+            continue
+        raw = raw.rename(columns={"startTime": "timestamp", "value": "WindPowerMW"})
+        frames[name] = to_quarters(raw, ["WindPowerMW"])
+
+    real = frames["real"]
+    real = real[real["timestamp"] + pd.Timedelta(minutes=15) <= now]  # complete quarters only
+    forecast = frames["forecast"]
+    out = pd.concat([forecast[~forecast["timestamp"].isin(real["timestamp"])], real], ignore_index=True)
+    return out.sort_values("timestamp").reset_index(drop=True)
+# endregion quarters
+
+
 def cols_cleanup(original_df, merged_df):
     """
     Keep only:
