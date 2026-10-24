@@ -1,21 +1,21 @@
-*The electricity price forecast is quite affordable in the coming days, but wind power weakens towards Friday evening and the price briefly rises above 11 cents.*
+*Electricity prices remain low in the beginning but rise toward the end of the period as wind power weakens. Friday's average price climbs to around 10 cents, with a maximum exceeding 18 cents.*
 
-The Olkiluoto 3 nuclear power plant is undergoing a maintenance outage that began on September 10 at 1:00 and is expected to end on November 7 at 18:00, according to the forecast. Loviisa 1's maintenance outage started on September 26 at 10:00 and will end on **Sunday** October 25 at 18:00.
+Olkiluoto 3 is on a maintenance break that began on September 10, 2026 at 01:00. The break is expected to end on November 7, 2026 at 18:00. Loviisa 1 is on a maintenance break that began on September 26, 2026 at 10:00. The break is expected to end on October 25, 2026 at 18:00.
 
-The forecast was updated on Friday at 20:54.
+The forecast was updated on Saturday at 02:56.
 
-|  | Average<br>price<br>¢/kWh | Min – Max<br>¢/kWh | Wind power<br>Min – Max<br>MW | Average<br>temperature<br>°C |
+|  | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
 |:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Saturday** | 3,0 | 0,8 – 4,8 | 1632 – 5104 | 8,4 |
-| **Sunday** | 0,5 | −0,4 – 1,2 | 4303 – 6254 | 8,2 |
-| **Monday** | 1,2 | −0,3 – 3,2 | 4431 – 6036 | 8,4 |
-| **Tuesday** | 2,2 | 0,5 – 5,0 | 3400 – 5039 | 8,3 |
-| **Wednesday** | 1,1 | −0,0 – 2,8 | 3957 – 4971 | 8,2 |
-| **Thursday** | 2,1 | 0,2 – 5,4 | 3033 – 4877 | 7,3 |
-| **Friday** | 4,3 | −0,1 – 11,6 | 1838 – 4998 | 6,7 |
+| **Sunday** | 0.4 | −0.4 – 1.2 | 4447 – 6407 | 8.2 |
+| **Monday** | 1.0 | −0.5 – 2.9 | 6134 – 6667 | 8.4 |
+| **Tuesday** | 1.4 | −0.0 – 3.7 | 3965 – 6016 | 8.3 |
+| **Wednesday** | 0.8 | −0.1 – 1.5 | 4254 – 5297 | 8.2 |
+| **Thursday** | 1.8 | −0.4 – 4.4 | 3845 – 5214 | 7.3 |
+| **Friday** | 9.9 | 2.4 – 18.1 | 1096 – 3900 | 6.7 |
+| **Saturday** | 8.3 | 5.8 – 11.2 | 971 – 1857 | 5.8 |
 
-The electricity during the forecast period is overall affordable, but there are clear differences between days. The average prices on **Sunday** and **Monday** remain at about half and one and a half cents per kilowatt-hour, while **Friday** rises to an average of 4,3 cents. **Wednesday**'s price level is also very low, at around 1,1 cents.
+The forecast period begins at an affordable level. From **Sunday** through **Thursday**, the expected daily average price stays between 0.4 and 1.8 cents. Wind power is abundant in the early days, which contributes to keeping prices low. During individual hours, the price even dips slightly below zero, for example on Sunday morning and during the night on Wednesday.
 
-The cheapest hours fall on the night between Sunday and Monday, when the price briefly drops below zero. On Sunday and Monday, wind power is abundant, averaging over 5 600 megawatts, which pushes price expectations down. **Friday** sees a change towards the evening: wind power production falls below 1 900 megawatts, explaining the steep price increase in the evening. The most expensive hours are between 18:00 and 22:00, when the price rises above 10 cents and peaks at 11,6 cents per kilowatt-hour.
+Toward the end of the period, the situation changes. On **Friday**, the price forecast rises significantly. The expected daily average price is 9.9 cents, and the maximum price climbs to 18.1 cents. Wind power is expected to drop to an average of 2,280 megawatts, with the minimum production falling to 1,096 megawatts, which explains the high price peak on that day. **Saturday** is a public holiday, and electricity demand may be lower than usual. However, the average price still remains at 8.3 cents, and wind power stays weak – averaging only 1,313 megawatts with a minimum of 971 megawatts – which keeps the price level elevated.
 
-*Sähkövatkain-Qwen3.8-27B with a wind filter.* 🌬️
+*The numbers were sifted by Sähkövatkain-Qwen3.8-27B.* 💨
