@@ -1,23 +1,21 @@
-*At the start of the week, spot electricity prices are very affordable thanks to abundant wind power, but toward the end of the week, weakening winds push price expectations significantly higher.*
+*An initially affordable forecast period turns markedly more expensive towards the end of the week as wind power weakens – Sunday's maximum price may exceed 20 cents.*
 
-**Olkiluoto 3** is in a maintenance outage from 10 September 2026 at 01:00, and is expected to end on 7 November 2026 at 18:00. **Loviisa 1** is in a maintenance outage from 26 September 2026 at 10:00, and is expected to end on 30 October 2026 at 12:00.
+Olkiluoto 3 is in maintenance from 10.9.2026 at 01:00. The maintenance is expected to end on 7.11.2026 at 18:00. Loviisa 1 has been in maintenance since 26.9.2026 at 10:00, and the maintenance is expected to end on 30.10.2026 at 12:00.
 
-The forecast was updated on Sunday at 08:55.
+The forecast was updated on Sunday at 12:59.
 
-|  | avg<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg<br>temp<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **Monday**  | 1.1 | −0.3 – 3.3 | 5652 – 7013 | 8.4 |
-| **Tuesday**    | 1.7 | 0.5 – 2.8  | 5395 – 6666 | 8.3 |
-| **Wednesday** | 1.1 | −0.3 – 2.1 | 3783 – 6747 | 8.2 |
-| **Thursday**    | 2.6 | 1.3 – 3.5  | 3444 – 4876 | 7.3 |
-| **Friday**  | 6.7 | 0.8 – 13.9 | 1919 – 4434 | 6.7 |
-| **Saturday**   | 9.2 | 6.0 – 15.2 | 956 – 2060  | 5.7 |
-| **Sunday**  | 7.9 | 6.3 – 10.7 | 1209 – 2617 | 5.6 |
+|   | avg.<br>price<br>c/kWh | min – max<br>c/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Monday** | 0.8 | −0.5 – 1.8 | 5629 – 6883 | 8.4 |
+| **Tuesday** | 1.4 | 0.3 – 2.7 | 5953 – 7237 | 8.3 |
+| **Wednesday** | 1.0 | −0.3 – 2.3 | 3887 – 7196 | 8.2 |
+| **Thursday** | 3.5 | 0.9 – 5.4 | 3871 – 5004 | 7.3 |
+| **Friday** | 7.9 | 1.7 – 16.2 | 1364 – 4496 | 6.7 |
+| **Saturday** | 10.6 | 7.6 – 16.3 | 789 – 1532 | 5.7 |
+| **Sunday** | 12.6 | 9.2 – 22.2 | 592 – 1479 | 5.4 |
 
-On **Monday** and **Tuesday**, wind power is abundant, keeping price expectations low. The average price stays below two cents, and at night electricity is even briefly free. On **Wednesday** and **Thursday**, the wind remains strong, so prices stay affordable, averaging 1.1–2.6 cents.
+The forecast period splits in two. **Monday**, **Tuesday**, and **Wednesday** are affordable in average price, with prices hovering around or slightly below zero. Wind power is abundant, pushing prices down. On **Thursday**, the average price rises to 3.5 cents but remains moderate.
 
-**Friday** turns the tide. Wind power weakens significantly, and the daily wind minimum drops below 2,000 megawatts, which explains the peak hourly price of 13.9 cents. The average price rises to 6.7 cents. **Saturday** is a public holiday, but very low wind power – averaging only about 1,400 megawatts and dipping below 1,000 megawatts at its lowest – keeps the price level high. The average price is 9.2 cents, and the maximum climbs to 15.2 cents. On **Sunday**, wind power recovers somewhat, but the price remains elevated at an average of 7.9 cents.
+From **Friday** onwards, the situation changes markedly. Wind power output weakens and prices turn upward. Friday's average price is 7.9 cents with a maximum of 16.2 cents. The day's wind power minimum is 1,364 megawatts, partly explaining the higher maximum price. **Saturday** is a public holiday, and the average price climbs to 10.6 cents. **Sunday** is the most expensive day of the forecast period: average price 12.6 cents and maximum 22.2 cents. Sunday's average wind power output falls below one thousand megawatts, contributing to the higher price level. There is a price spike risk on **Saturday** and **Sunday** between 16:00 and 18:00.
 
-The forecast period is clearly divided: the early part of the week is very affordable, but toward the end of the week prices rise as wind power wanes. The most expensive hours fall on Saturday, despite it being a public holiday.
-
-*The numbers were crunched today by Sähkövatkain-Qwen3.8-27B.* ⚡
+*Forecast compiled by Sähkövatkain-Qwen3.8-27B.* 🌪️
