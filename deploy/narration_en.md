@@ -1,21 +1,21 @@
-*The forecast period begins with low prices, but by the end of the week, a collapse in wind power will push electricity prices sharply above 20 cents.*
+*From Monday to Wednesday, spot electricity prices stay below 1.5 cents, but as wind power collapses, the Sunday average price rises to 12 cents.*
 
-Forecast updated on Sunday at 14:54.
+Olkiluoto 3 is under maintenance from 10.9.2026 at 01:00. The estimated end time is 7.11.2026 at 18:00. Loviisa 1 has been under maintenance since 26.9.2026 at 10:00, and is expected to resume by 30.10.2026 at 12:00.
 
-**Nuclear maintenance outages**
+The forecast was updated on Sunday at 20:55.
 
-Olkiluoto 3 is under maintenance from 10.9.2026 at 01:00. According to the forecast, the outage will end on 7.11.2026 at 18:00. Loviisa 1 is under maintenance from 26.9.2026 at 10:00. According to the forecast, the outage will end on 30.10.2026 at 12:00.
+|           | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
+|:----------|:----------------------:|:------------------:|:----------------------------:|:-------------------------:|
+| **Monday**   |         0.6           |   0.0 – 1.3   |     5559 – 6565     |          8.4           |
+| **Tuesday**  |         1.3           |   0.1 – 2.5   |     5644 – 6858     |          8.3           |
+| **Wednesday**|         0.7           |  −0.3 – 1.6   |     3910 – 6847     |          8.2           |
+| **Thursday** |         4.0           |   0.9 – 7.1   |     2892 – 4991     |          7.3           |
+| **Friday**   |         6.2           |   2.5 – 12.4  |     1696 – 4501     |          6.7           |
+| **Saturday** |         9.7           |   7.0 – 15.1  |      744 – 1692     |          5.7           |
+| **Sunday**   |        12.0           |   9.0 – 18.4  |      623 – 1468     |          5.4           |
 
-|  | average<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | average<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Monday** | 0.6 | 0.0 - 1.3 | 5623 - 6880 | 8.4 |
-| **Tuesday** | 1.2 | 0.2 - 2.3 | 5960 - 7232 | 8.3 |
-| **Wednesday** | 0.9 | -0.1 - 2.4 | 3864 - 7207 | 8.2 |
-| **Thursday** | 4.0 | 0.9 - 6.9 | 2662 - 5045 | 7.3 |
-| **Friday** | 6.5 | 2.2 - 14.8 | 1687 - 4574 | 6.7 |
-| **Saturday** | 9.7 | 6.9 - 15.5 | 803 - 1612 | 5.7 |
-| **Sunday** | 12.4 | 9.3 - 20.4 | 649 - 1477 | 5.4 |
+The forecast period begins with very affordable prices. **Monday**, **Tuesday**, and **Wednesday** all have average prices below 1.5 cents, and prices briefly dip into negative territory on the night before Wednesday. Abundant wind power, averaging over 6,000 megawatts, keeps prices low. Wind generation, however, drops rapidly, and **Thursday's** average price already rises to four cents. **Friday** sees wind power weaken further, with the daily minimum falling below 2,000 megawatts. This partly explains Friday's maximum price of 12.4 cents.
 
-At the start of the week, the price of electricity on the exchange market turns to a steep upward trend. **Monday**, **Tuesday** and **Wednesday** are affordable, with average prices staying below 1.5 cents. In the early part of the week, wind power is plentiful, which keeps prices low. On Wednesday night, the price dips slightly negative. **Thursday** sees prices rise to four cents. From **Friday** onwards, prices climb sharply. Friday's maximum price reaches 14.8 cents, and wind power's minimum output drops to 1,687 megawatts. **Saturday** and **Sunday** are expensive. Sunday's average price is 12.4 cents and the maximum rises to 20.4 cents. The reason is the collapse of wind power: starting from Wednesday, wind power weakens, and by the end of the week its average output falls below 1,000 megawatts. The low minimum wind output explains the high peak prices. On Sunday, there is a price spike risk between 17:00 and 19:00. Saturday is a public holiday, which may slightly reduce demand, but it does not compensate for weak wind power. The cheapest hours fall on the early part of the week at night, while the most expensive ones fall on the end of the week in the evenings.
+The weekend is the most expensive. **Saturday** is a public holiday, which may reduce demand, but very calm conditions — averaging only about 1,000 megawatts — push the average price to nearly 10 cents. **Sunday** is the most expensive day of the period, with an average of 12.0 cents, and individual hours may exceed 18 cents. Wind power is extremely scarce at that time. A spike risk exists on Saturday between 16:00–18:00 and on Sunday between 17:00–19:00.
 
-*Sähkövatkain-Qwen3.8-27B interpreted the numbers today.* 🌬️
+*Sähkövatkain-Qwen3.8-27B interpreted the numbers.* 💨
