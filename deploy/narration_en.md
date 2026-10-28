@@ -1,23 +1,21 @@
-*The coming period starts off at an affordable price, but prices rise toward the end of the week as wind power weakens – the most expensive day is Sunday.*
+*Thursday is affordable, but from Friday onward, electricity prices rise and fluctuate with wind power. Sunday is expected to be the most expensive day of the forecast period.*
 
-Two nuclear power plant maintenance outages are currently underway. The maintenance outage at Olkiluoto 3 began on 10 September 2026 at 01:00 and is expected to end on 7 November 2026 at 18:00. The maintenance outage at Loviisa 1 began on 26 September 2026 at 10:00 and is expected to end on 27 October 2026 at 23:00.
+Olkiluoto 3 is under a maintenance outage that began on 10 September at 01:00. The outage is estimated to end on 7 November at 18:00. Loviisa 1's maintenance outage began on 26 September at 10:00 and is forecast to end on 28 October at 09:00.
 
-The forecast has been updated on Tuesday at 20:55.
+The forecast was last updated on Wednesday at 02:57.
 
-|  | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
+| | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temp.<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **Wednesday** | 1.1 | 0.0 – 2.6 | 4435 – 6585 | 8.2 |
-| **Thursday** | 3.2 | 0.8 – 5.0 | 3681 – 4394 | 7.3 |
-| **Friday** | 5.2 | 1.5 – 8.0 | 2323 – 3550 | 6.7 |
-| **Saturday** | 9.8 | 6.3 – 14.2 | 904 – 1993 | 5.7 |
-| **Sunday** | 10.1 | 3.1 – 15.9 | 735 – 4006 | 5.4 |
-| **Monday** | 7.8 | 2.0 – 13.3 | 2078 – 4715 | 5.0 |
-| **Tuesday** | 5.2 | 3.4 – 7.6 | 1897 – 4058 | 4.9 |
+| **Thursday** | 3.2 | 0.8 – 5.0 | 3687 – 4579 | 7.3 |
+| **Friday** | 7.2 | 1.9 – 11.7 | 1547 – 3530 | 6.7 |
+| **Saturday** | 8.2 | 5.6 – 10.7 | 1041 – 1999 | 5.7 |
+| **Sunday** | 11.2 | 6.0 – 18.2 | 463 – 2160 | 5.4 |
+| **Monday** | 10.9 | 4.9 – 16.3 | 1594 – 2606 | 5.0 |
+| **Tuesday** | 4.8 | 3.2 – 7.5 | 1839 – 4146 | 4.9 |
+| **Wednesday** | 10.5 | 2.2 – 17.2 | 1392 – 4267 | 3.5 |
 
-The forecast period begins on **Wednesday** with very affordable prices, as wind power is plentiful and the average price remains just 1.1 cents per kilowatt-hour. **Thursday** and **Friday** rise gradually, with Friday's average price settling at 5.2 cents.
+The forecast period begins at affordable levels, with **Thursday** averaging around 3.2 cents per kilowatt-hour. Wind power is abundant, averaging over 4,300 megawatts, keeping prices low throughout the day.
 
-Over the weekend, prices turn to a clear increase. **Saturday** is a public holiday, but electricity is still expected to be on the expensive side: the average price is forecast to rise to 9.8 cents, with the maximum price at 14.2 cents. **Sunday** is the most expensive day of the forecast period with an average price of 10.1 cents, and the price for individual hours can climb to as much as 15.9 cents. On both days, average wind power production remains low, and a price spike risk has also been forecast for Sunday between 15:00 and 17:00.
+From **Friday** onward, wind power weakens and prices rise. **Saturday** is a public holiday, but with wind power remaining at an average of around 1,500 megawatts, the average price climbs to 8.2 cents. On **Sunday**, wind power production drops to a minimum of just 463 megawatts, while the day's maximum price surges to 18.2 cents. A price spike risk is forecast for the hours between 16:00 and 18:00. **Monday** stays expensive at an average of about 11 cents, but **Tuesday** sees wind power recover to well over 3,300 megawatts and the average price falls to 4.8 cents. **Next Wednesday** wind power weakens again and prices rise to around 10.5 cents, even though the day's lowest price remains at 2.2 cents.
 
-On **Monday**, prices drop but still remain at an average of 7.8 cents, with hourly prices above 13 cents still visible during the day. **Tuesday** returns to an average price of 5.2 cents, and wind power production strengthens significantly.
-
-*Price analysis by Sähkövatkain-Qwen3.8-27B.* 🌬️
+*Sähkövatkain-Qwen3.8-27B ran the numbers today.* 🌬️
