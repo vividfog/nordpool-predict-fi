@@ -1,21 +1,24 @@
-*Ennustejakso käynnistyy perjantaina kalliilla hinnalla, mutta tuulivoiman kasvu painaa hintaodotukset alas torstain alle neljään senttiin.*
+Ennustejaksolla sähkön hinta laskee perjantain kalliista lukemista torstain selvästi edullisempiin, tuulivoiman voimistuessa loppua kohden.
+</think>
 
-Olkiluoto 3 -ydinvoimalaitos on huoltokatkossa 10. syyskuuta 2026 kello 01 alkaen. Katkon arvioidaan päättyvän 7. marraskuuta 2026 kello 18.
+*Perjantain kireä hinta laskee loppua kohden tuulivoiman voimistuessa, ja torstai on ennustejakson edullisin päivä.*
 
-Ennuste on päivitetty torstaina klo 14:55.
+Olkiluoto 3 -ydinvoimala on huoltokatkossa. Katkos alkoi 10.9.2026 kello 01, ja sen arvioidaan päättyvän 7.11.2026 kello 18.
 
-|  | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **perjantai** | 18,6 | 2,2 – 33,7 | 876 – 3124 | 6,7 |
-| **lauantai** | 11,0 | 4,5 – 19,8 | 334 – 3653 | 5,7 |
-| **sunnuntai** | 7,0 | 4,4 – 12,7 | 1266 – 4536 | 5,4 |
-| **maanantai** | 11,8 | 4,2 – 17,7 | 1380 – 2879 | 5,0 |
-| **tiistai** | 5,4 | 1,1 – 8,2 | 2400 – 4466 | 4,9 |
-| **keskiviikko** | 6,1 | 2,2 – 9,0 | 2008 – 4762 | 3,6 |
-| **torstai** | 3,1 | 1,6 – 4,4 | 3562 – 4608 | 5,3 |
+Ennuste on päivitetty torstaina klo 20:56.
 
-**Perjantai** erottuu ennustejakson kalleimpana päivänä, ja sen keskihinta kipuaa 18,6 senttiin. Tuulivoima jää heikoksi, keskimäärin vain 1 642 megawattiin, ja päivän minimi painuu 876 megawattiin, mikä selittää jopa 33,7 sentin tuntihintoja aamupäivällä. **Lauantai** on pyhäpäivä, mutta heikko tuulitilanne (keskimäärin 1 384 MW) pitää keskihinnan 11,0 sentissä. Lauantaille ennustetaan hintapiikkiriskiä kello 8–10 välille.
+|   | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|---|---|---|---|---|
+| **perjantai** | 18,6 | 2,2 - 33,7 | 817 - 2963 | 6,7 |
+| **lauantai** | 11,2 | 4,8 - 18,8 | 375 - 3367 | 5,7 |
+| **sunnuntai** | 6,1 | 4,2 - 9,7 | 2385 - 4353 | 5,4 |
+| **maanantai** | 11,4 | 4,4 - 16,7 | 1385 - 2925 | 5,0 |
+| **tiistai** | 5,5 | 0,8 - 8,3 | 2463 - 4654 | 4,9 |
+| **keskiviikko** | 6,1 | 2,1 - 9,1 | 1927 - 4851 | 3,6 |
+| **torstai** | 2,9 | 1,6 - 4,1 | 3757 - 4690 | 5,3 |
 
-**Sunnuntaista** alkaen tuulivoima voimistuu tuntuvasti, ja hintaodotukset laskevat. Sunnuntain keskihinta on 7,0 senttiä, ja **tiistai** painuu 5,4 senttiin. **Torstai** on jakson edullisin päivä 3,1 sentin keskihinnalla, ja tuulivoima nousee keskimäärin yli 4 100 megawatin. Maanantai asettuu näiden väliin 11,8 sentin keskihinnalla, kun tuulivoima on vielä keskimääräistä matalampaa (2 121 MW) ja päivän sisäinen vaihtelu nostaa maksimihinnan 17,7 senttiin. Torstaina hinnat pysyttelevät koko vuorokauden alle 5 sentissä.
+**Perjantai** on ennustejakson kallein päivä. Keskihinta nousee 18,6 senttiin ja maksimihinta 33,7 senttiin kilowattitunnilta. Heikko tuulivoima, keskimäärin 1546 megawattia, selittää osaltaan korkeaa hintatasoa. Päivän tuulivoiman minimi on vain 817 megawattia, mikä osaltaan nostaa maksimihintaa. **Lauantaina** keskihinta on 11,2 senttiä, mutta aamupäivälle kello 8–10 on olemassa hintapiikkiriski. Tuulivoima on edelleen niukkaa, keskimäärin 1325 megawattia.
 
-*Ennusteen luki tänään Sähkövatkain-Qwen3.8-27B.* 🌬️
+**Sunnuntai** on huomattavasti edullisempi, keskihinta 6,1 senttiä. Tuulivoima voimistuu keskimäärin 3611 megawattiin, mikä painaa hintaa alas. **Maanantaina** hinta nousee jälleen, keskihinta 11,4 senttiä. Tuulivoima laskee 2113 megawattiin, mutta pysyy kohtuullisena. **Tiistai** ja sen jälkeen hinnat painuvat edullisiksi. Tiistain keskihinta on 5,5 senttiä ja tuulivoima keskimäärin 3797 megawattia. **Keskiviikkona** keskihinta on 6,1 senttiä ja tuulivoima 3380 megawattia. **Torstai** on ennustejakson edullisin päivä, keskihinta vain 2,9 senttiä ja tuulivoima keskimäärin 4270 megawattia. Hinta pysyttelee koko päivän alle neljässä sentissä.
+
+*Sähkövatkain-Qwen3.8-27B tulkitsi luvut tänään.* 🌬️
