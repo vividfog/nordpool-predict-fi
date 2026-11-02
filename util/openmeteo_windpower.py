@@ -8,6 +8,7 @@ TODO: Clean up unnecessary debug code once verified stable.
 
 """
 
+import time
 import requests
 import pandas as pd
 import numpy as np
@@ -289,6 +290,85 @@ def update_eu_ws(df):
     # logger.info(merged_df[existing_codes].describe())
     
     return merged_df
+
+# region quarters
+FORECAST_URL = "https://api.open-meteo.com/v1/forecast"
+HISTORICAL_FORECAST_URL = "https://historical-forecast-api.open-meteo.com/v1/forecast"
+
+
+def fetch_minutely_15(lat, lon, variable, start, end, **extra):
+    """
+    Fetch one Open-Meteo `minutely_15` variable between two UTC timestamps.
+
+    Archived forecasts (historical-forecast API, back to 2022) are used for anything
+    older than 3 days, the live forecast API for the rest, so training history and
+    predictions come from the same kind of source at the same resolution. Open-Meteo
+    only has native 15-min model output for some regions; elsewhere it interpolates.
+
+    Returns:
+        pd.DataFrame ['timestamp', variable] on the 15-min grid (UTC).
+    """
+    start = pd.Timestamp(start).tz_convert("UTC")
+    end = pd.Timestamp(end).tz_convert("UTC")
+    split = pd.Timestamp.utcnow().normalize() - pd.Timedelta(days=3)
+
+    windows = []
+    cursor = start
+    while cursor < min(end, split):
+        window_end = min(cursor + pd.DateOffset(years=1) - pd.Timedelta(days=1), end, split)
+        windows.append((HISTORICAL_FORECAST_URL, cursor, window_end))
+        cursor = window_end + pd.Timedelta(days=1)
+    if end >= split:
+        windows.append((FORECAST_URL, max(cursor, split), end))
+
+    frames = []
+    for url, window_start, window_end in windows:
+        response = requests.get(
+            url,
+            params={
+                "latitude": lat,
+                "longitude": lon,
+                "minutely_15": variable,
+                "start_date": window_start.strftime("%Y-%m-%d"),
+                "end_date": window_end.strftime("%Y-%m-%d"),
+                "timezone": "UTC",
+                **extra,
+            },
+            timeout=60,
+        )
+        response.raise_for_status()
+        block = response.json().get("minutely_15", {})
+        frames.append(
+            pd.DataFrame(
+                {
+                    "timestamp": pd.to_datetime(block.get("time", [])).tz_localize("UTC"),
+                    variable: pd.to_numeric(pd.Series(block.get(variable, []), dtype="object"), errors="coerce"),
+                }
+            )
+        )
+        time.sleep(0.5)
+
+    if not frames:
+        return pd.DataFrame(columns=["timestamp", variable])
+    df = pd.concat(frames, ignore_index=True).dropna(subset=[variable])
+    df = df.drop_duplicates(subset="timestamp", keep="last").sort_values("timestamp")
+    return df[(df["timestamp"] >= start.floor("15min")) & (df["timestamp"] <= end)].reset_index(drop=True)
+
+
+def fetch_eu_ws_quarters(start, end):
+    """
+    15-min wind speed (120 m) for every LOCATIONS site, columns named like the hourly
+    `eu_ws_*` features.
+    """
+    logger.info(f"Open-Meteo: Fetching 15-min wind speeds between {pd.Timestamp(start):%Y-%m-%d} and {pd.Timestamp(end):%Y-%m-%d}")
+    out = None
+    for code, lat, lon in LOCATIONS:
+        df = fetch_minutely_15(lat, lon, "wind_speed_120m", start, end, wind_speed_unit="ms")
+        df = df.rename(columns={"wind_speed_120m": code})
+        out = df if out is None else out.merge(df, on="timestamp", how="outer")
+    return out.sort_values("timestamp").reset_index(drop=True)
+# endregion quarters
+
 
 def main():
     """

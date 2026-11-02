@@ -263,7 +263,90 @@ def update_temperature(df):
         extra_forecast_prefixes={'WeatherSymbol3': 'weather_symbol_'},
     )
 
-# Main function for testing the FMI API functions
+# region quarters
+OBS_10MIN_PARAMS = {"t2m": "t_", "ws_10min": "ws_"}
+OBS_MAX_SPAN = timedelta(hours=168)  # FMI limit for raw observation queries
+
+
+def get_observations_10min(fmisid, start, end):
+    """
+    Raw 10-min station observations (temperature, 10-min mean wind speed) between two
+    UTC timestamps, chunked to FMI's 168 h query limit.
+
+    Returns:
+        pd.DataFrame ['timestamp', 't2m', 'ws_10min'] (UTC); empty if the station
+        returns nothing.
+    """
+    start = pd.Timestamp(start).tz_convert("UTC").floor("10min")
+    end = pd.Timestamp(end).tz_convert("UTC")
+    rows = []
+    cursor = start
+    while cursor < end:
+        window_end = min(cursor + OBS_MAX_SPAN, end)
+        params = {
+            "service": "WFS",
+            "version": "2.0.0",
+            "request": "getFeature",
+            "storedquery_id": "fmi::observations::weather::simple",
+            "fmisid": fmisid,
+            "starttime": cursor.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "endtime": window_end.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "parameters": ",".join(OBS_10MIN_PARAMS),
+            "timestep": "10",
+        }
+        try:
+            response = requests.get("https://opendata.fmi.fi/wfs", params=params, timeout=60)
+            root = etree.fromstring(response.content)
+            for member in root.findall(".//BsWfs:BsWfsElement", namespaces=root.nsmap):
+                rows.append(
+                    {
+                        "timestamp": member.find(".//BsWfs:Time", namespaces=root.nsmap).text,
+                        "Parameter": member.find(".//BsWfs:ParameterName", namespaces=root.nsmap).text,
+                        "Value": member.find(".//BsWfs:ParameterValue", namespaces=root.nsmap).text,
+                    }
+                )
+        except (requests.RequestException, etree.XMLSyntaxError) as e:
+            logger.warning(f"FMI: 10-min observations failed for FMISID {fmisid} ({cursor} → {window_end}): {e}")
+        time.sleep(0.1)
+        cursor = window_end
+
+    if not rows:
+        return pd.DataFrame(columns=["timestamp", *OBS_10MIN_PARAMS])
+    df = pd.DataFrame(rows)
+    df["Value"] = pd.to_numeric(df["Value"], errors="coerce")
+    df = df.pivot_table(index="timestamp", columns="Parameter", values="Value", aggfunc="last").reset_index()
+    df.columns.name = None
+    df["timestamp"] = pd.to_datetime(df["timestamp"], utc=True)
+    return df
+
+
+def fetch_station_quarters(fmisids, start, end):
+    """
+    Station temperatures and wind speeds on the 15-min grid from 10-min observations
+    (quarter means), columns named like the hourly features (t_<id>, ws_<id>).
+
+    Observations only exist for the past. FMI forecasts are hourly (a 15-min timestep
+    is FMI's own linear interpolation), so future quarters come from the hourly base.
+    """
+    from .quarter_grid import to_quarters
+
+    end = min(pd.Timestamp(end).tz_convert("UTC"), pd.Timestamp.utcnow())
+    logger.info(f"FMI: Fetching 10-min observations for {len(fmisids)} stations")
+    out = None
+    for fmisid in fmisids:
+        obs = get_observations_10min(fmisid, start, end)
+        renamed = {param: f"{prefix}{fmisid}" for param, prefix in OBS_10MIN_PARAMS.items() if param in obs.columns}
+        if not renamed:
+            continue
+        quarters = to_quarters(obs.rename(columns=renamed), list(renamed.values()))
+        out = quarters if out is None else out.merge(quarters, on="timestamp", how="outer")
+    if out is None:
+        return pd.DataFrame(columns=["timestamp"])
+    return out.sort_values("timestamp").reset_index(drop=True)
+# endregion quarters
+
+
+
 if __name__ == "__main__":
     import os
     from dotenv import load_dotenv

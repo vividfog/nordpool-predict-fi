@@ -2,6 +2,21 @@
 
 All notable changes will be documented in this file.
 
+## [2026-10-03] - 15-Minute Price Model
+### Added
+- 15-min price model next to the hourly one (`util/train_xgb_15min.py`), so the hourly model can be deprecated later: same XGBoost estimator and hyperparameters, trained in memory each run on a 15-min grid covering the full history (actual quarter prices since 2025-10-01, hourly settlement prices before, flagged with `mtu15`).
+- Intra-hour shape stage (`util/quarter_shape.py`) that re-splits each hour of the 15-min model around its own hourly mean using neighbour-hour price gradients (held-out Aug–Sep 2026: intra-hour MAE 0.701 → 0.630 c/kWh).
+- 15-min input layer (`util/quarter_data.py`, `util/quarter_grid.py`) using each source at its finest resolution: Sähkötin and JAO 15-min, Open-Meteo `minutely_15` wind and irradiance, Fingrid 3-min wind/nuclear averaged per quarter, FMI 10-min observations, ENTSO-E outages at 15-min; hourly data interpolated (or held) to quarters where nothing finer exists.
+- `prediction_15min` SQLite table for native 15-min inputs and 15-min predictions, plus a one-off history backfill (`data/create/80_quarter/quarter_backfill.py`).
+- `deploy/prediction_15min.json` (`[ms, c/kWh]`, same layout as `prediction.json`).
+
+### Changed
+- Hourly price model hyperparameters moved to `util.train_xgb.PARAMS` (shared, values unchanged).
+- ENTSO-E nuclear forecast is fetched once on the 15-min grid; the hourly pipeline uses its :00 rows (identical values).
+
+### Unchanged
+- The hourly model, `prediction.json`, `prediction_scaled.json`, `averages.json`, and Home Assistant configs stay hourly.
+
 ## [2026-05-03] - Spike Risk Consistency
 ### Added
 - Shared hourly spike-risk calculation for frontend markers and LLM narration.

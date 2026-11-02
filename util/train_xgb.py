@@ -8,6 +8,23 @@ from .logger import logger
 from .xgb_utils import configure_cuda, booster_predict
 from . import features_pricing as pricing
 
+# See train_xgb.txt for history of hyperparameter tuning
+# Last update: 2025-01-19; shared with the 15-min model (util/train_xgb_15min.py)
+PARAMS = {
+    "early_stopping_rounds": 50,
+    "objective": "reg:squarederror",
+    "eval_metric": "rmse",
+    "n_estimators": 11655,
+    "max_depth": 6,
+    "learning_rate": 0.012158906047644169,
+    "subsample": 0.6717186457667352,
+    "colsample_bytree": 0.5938032371628845,
+    "gamma": 0.02297259369577767,
+    "reg_alpha": 1.4624622196040324,
+    "reg_lambda": 0.09870580997491653,
+    "random_state": 42,
+}
+
 
 def train_model(df, fmisid_ws, fmisid_t):
     logger.info("Training a pricing model")
@@ -40,23 +57,7 @@ def train_model(df, fmisid_ws, fmisid_t):
     logger.info("Pricing model feature columns:")
     logger.info(", ".join(X_train.columns))
 
-    # See train_xgb.txt for history of hyperparameter tuning
-    # Last update: 2025-01-19
-    params = {
-        "early_stopping_rounds": 50,
-        "objective": "reg:squarederror",
-        "eval_metric": "rmse",
-        "n_estimators": 11655,
-        "max_depth": 6,
-        "learning_rate": 0.012158906047644169,
-        "subsample": 0.6717186457667352,
-        "colsample_bytree": 0.5938032371628845,
-        "gamma": 0.02297259369577767,
-        "reg_alpha": 1.4624622196040324,
-        "reg_lambda": 0.09870580997491653,
-        "random_state": 42,
-    }
-    params = configure_cuda(params, logger)
+    params = configure_cuda(dict(PARAMS), logger)
 
     # Train the model
     logger.info("XGBoost for price prediction: ")
