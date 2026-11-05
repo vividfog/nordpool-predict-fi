@@ -1,21 +1,21 @@
-_The forecast period begins affordably, but on Tuesday the spot price of electricity rises sharply due to a collapse in wind power. On Thursday, prices fall again._
+*The forecast period begins at low prices, but Tuesday and Wednesday stand out as clearly more expensive, as wind power output weakens and prices rise above 15 cents.*
 
-The forecast has been updated on Thursday at 08:56.
+A maintenance outage at the Olkiluoto 3 nuclear power plant began on 10 September 2026 at 01:00 and is expected to end on 11 November 2026 at 12:00.
 
-Olkiluoto 3 is undergoing a maintenance outage. The outage began on September 10 at 01:00 and is expected to end on November 11 at 12:00.
+The forecast was updated on Thursday at 11:57.
 
-| | avg. price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg. temp.<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **Friday** | 6.9 | 0.6 – 12.8 | 1816 – 5416 | 4.6 |
-| **Saturday** | 1.9 | 0.3 – 3.6 | 2966 – 4792 | 4.5 |
-| **Sunday** | 2.0 | 0.5 – 4.6 | 3746 – 4747 | 3.8 |
-| **Monday** | 5.2 | 0.2 – 10.6 | 2527 – 5477 | 3.7 |
-| **Tuesday** | 15.4 | 4.2 – 31.3 | 1035 – 3719 | 3.9 |
-| **Wednesday** | 10.9 | 3.1 – 16.6 | 1534 – 4025 | 4.0 |
-| **Thursday** | 7.1 | 1.2 – 14.4 | 1218 – 4902 | 2.9 |
+|           | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temp.<br>°C |
+|:----------|:----------------:|:------------------:|:----------------------------:|:--------------------------:|
+| **Friday**  | 7.9             | 0.7 – 16.5        | 1511 – 5327                 | 4.6                       |
+| **Saturday**  | 0.9             | -0.2 – 3.9        | 3402 – 5734                 | 4.5                       |
+| **Sunday**  | 1.5             | -0.0 – 5.1        | 3690 – 5564                 | 3.8                       |
+| **Monday**  | 4.1             | 0.7 – 8.6         | 3206 – 5281                 | 3.7                       |
+| **Tuesday**   | 16.1            | 5.5 – 25.4        | 1403 – 2963                 | 3.9                       |
+| **Wednesday**| 15.6            | 8.1 – 24.4        | 1119 – 2407                 | 4.0                       |
+| **Thursday**  | 4.9             | 0.5 – 11.9        | 1732 – 5351                 | 2.9                       |
 
-The forecast period divides clearly in two. From **Friday** to **Monday**, the average spot price remains quite affordable, and Saturday and Sunday price expectations are below two cents. Sunday is noted as a public holiday, which may help to lower prices.
+Electricity prices over the forecast period split into two distinct phases. **Friday's** average price is 7.9 cents, but on **Saturday** and **Sunday** prices fall to very low levels. Sunday is a public holiday, which combined with abundant wind power brings the average price down to about 1.5 cents. Saturday's average price stays below one cent, with individual hours even dipping slightly negative.
 
-**Tuesday** is clearly the most expensive day of the period. The average price rises to 15.4 cents and the maximum price climbs to 31.3 cents. Behind this is a collapse in wind power: production falls to just 1,035 megawatts during the day, which is a very low level and partly explains the high price spike. On **Wednesday** the average price is still above 10 cents, but on **Thursday** prices begin to fall and the average settles at 7.1 cents.
+**Monday** remains affordable, but **Tuesday** and **Wednesday** stand out as clearly more expensive. Tuesday's average price is 16.1 cents, with the peak reaching 25.4 cents. On Wednesday the average is 15.6 cents and the maximum 24.4 cents. On both days, wind power output is weak — Tuesday's average wind power stays below 1,900 megawatts and Wednesday's below 1,600 megawatts. The low wind power minimum helps explain the high peak prices. **Thursday** sees wind power pick up again and the average price drops to around 4.9 cents, bringing prices back close to the end-of-week level.
 
-_This time the analysis was made by Sähkövatkain-Qwen3.8-27B._ 🌬️
+*This time Sähkövatkain-Qwen3.8-27B blew the winds both ways.* 🌬️
