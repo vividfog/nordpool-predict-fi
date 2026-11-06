@@ -1,21 +1,23 @@
-*The period starts with expensive Friday, but the weekend brings affordable electricity before Tuesday's and Wednesday's price spikes, after which Thursday eases the pressure.*
+*The forecast period starts and ends at affordable prices, but Tuesday and Wednesday spike high as wind power drops.*
 
-Olkiluoto 3 nuclear power plant is undergoing a maintenance outage, which began on 10 September 2026 at 01:00 and is expected to end on 18 November 2026 at 12:00. The plant's output is 0 MW during the outage.
+Olkiluoto 3 is under maintenance from 10 September at 01:00. The maintenance is expected to end on 18 November at 12:00.
 
-The forecast was updated on Thursday at 20:56.
+The forecast was updated on Friday at 02:55.
 
-|  | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Friday** | 11.2 | 1.0 – 22.7 | 1557 – 5516 | 4.6 |
-| **Saturday** | 1.8 | 0.5 – 3.2 | 3331 – 5359 | 4.5 |
-| **Sunday** | 2.1 | 0.6 – 4.2 | 3835 – 4670 | 3.8 |
-| **Monday** | 4.0 | 1.2 – 9.0 | 3528 – 5281 | 3.7 |
-| **Tuesday** | 18.7 | 6.2 – 31.1 | 1256 – 3040 | 3.9 |
-| **Wednesday** | 20.3 | 11.0 – 26.8 | 1157 – 2294 | 4.0 |
-| **Thursday** | 7.4 | 0.8 – 15.6 | 1812 – 5545 | 2.9 |
+| | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
+|:---|:---:|:---:|:---:|:---:|
+| **Saturday** | 1.3 | −0.2 – 2.7 | 3 309 – 5 910 | 4.5 |
+| **Sunday** | 1.6 | −0.4 – 3.8 | 4 601 – 5 786 | 3.8 |
+| **Monday** | 3.3 | 0.4 – 5.5 | 3 811 – 5 396 | 3.7 |
+| **Tuesday** | 15.7 | 2.1 – 25.1 | 1 623 – 4 301 | 3.9 |
+| **Wednesday** | 20.1 | 6.8 – 38.3 | 667 – 3 118 | 4.0 |
+| **Thursday** | 2.7 | 0.9 – 6.5 | 3 063 – 5 394 | 2.9 |
+| **Friday** | 1.7 | 0.4 – 3.3 | 4 309 – 5 540 | 2.8 |
 
-The forecast period begins with an expensive **Friday**, but quickly turns affordable. The day's average price is 11.2 cents per kilowatt-hour, with the highest hourly prices reaching 22.7 cents. The minimum wind power output drops to 1,557 MW, which partly explains the elevated peak prices of the day. **Saturday** and **Sunday** are very affordable. Sunday is a public holiday, which may push prices below normal levels. Both days see an average price below 2.2 cents, with little variation within the day. **Monday** remains moderate at an average of 4.0 cents.
+The forecast period begins at affordable levels. **Saturday's** and **Sunday's** average prices remain at 1.3 and 1.6 cents, respectively. Sunday is a public holiday, which keeps electricity demand lower than usual. **Monday's** average price rises to 3.3 cents but stays well within the affordable range.
 
-**Tuesday** and **Wednesday** form the clearly most expensive days of the period. Tuesday's average price climbs to 18.7 cents and the maximum reaches 31.1 cents. Wind power drops sharply: average output is only 1,833 MW and the minimum is 1,256 MW, driving prices up significantly. On Wednesday the average price is 20.3 cents and average wind output falls to 1,501 MW. **Thursday** brings relief: the average price drops to 7.4 cents and wind power strengthens markedly, rising above 5,000 MW towards the evening. The cheapest hours of the day fall in the evening, when the price falls below one cent.
+**Tuesday** and **Wednesday** stand out as very expensive days. Tuesday's average price is 15.7 cents and Wednesday's 20.1 cents per kilowatt-hour. Wednesday's maximum price climbs to 38.3 cents, and a price spike risk is expected between 7:00 and 9:00. The high prices are driven by a sharp drop in wind power. Tuesday's wind power minimum is 1 623 megawatts and Wednesday's just 667 megawatts, which explains the elevated peak prices on both days.
 
-*Sähkövatkain-Qwen3.8-27B interpreted the numbers this time.* 🌬️
+On **Thursday** and **Friday**, prices return to low levels. Average prices settle at 2.7 and 1.7 cents. Wind power strengthens significantly above 4 000 megawatts, keeping price expectations low for the remainder of the period.
+
+*Sähkövatkain-Qwen3.8-27B analysed.* ⚡
