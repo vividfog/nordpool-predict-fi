@@ -1,19 +1,21 @@
-Olkiluoto 3 nuclear power plant is undergoing a maintenance outage that began on September 10, 2026 at 01:00. The plant is expected to return to production on November 18, 2026 at 12:00.
+*The forecast period starts affordably, but Tuesday and Wednesday average prices rise above 10 cents due to weak wind power.*
 
-The forecast was updated on Friday at 08:56.
+The Olkiluoto 3 nuclear power plant is undergoing a maintenance outage. The outage began on 10.9.2026 at 01:00 and is expected to end on 18.11.2026 at 12:00 according to the forecast.
 
-|           | avg<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg<br>temp<br>°C |
-|:----------|:----------------:|:----------------:|:----------------:|:-------------:|
-| **Saturday**   | 1.5             | -0.1 – 2.9       | 3507 – 6123       | 4.5           |
-| **Sunday**     | 2.5             | -0.4 – 5.3       | 3710 – 6014       | 3.8           |
-| **Monday**     | 3.8             | 1.7 – 6.4        | 3882 – 5112       | 3.7           |
-| **Tuesday**    | 15.8            | 2.5 – 25.5       | 1554 – 4417       | 3.9           |
-| **Wednesday**  | 19.8            | 6.8 – 37.1       | 643 – 3049        | 4.0           |
-| **Thursday**   | 2.9             | 0.8 – 7.2        | 3052 – 5487       | 2.9           |
-| **Friday**     | 1.8             | 0.2 – 3.6        | 4274 – 5734       | 2.8           |
+The forecast was updated on Friday at 11:55.
 
-The forecast period splits in two. **Saturday**, **Sunday**, and **Monday** are quite affordable, with average prices staying below four cents. Saturday's expected average price is only 1.5 cents, and during the night hours the price dips briefly into negative territory. Sunday is a public holiday, which may reduce demand and help keep prices in check. Wind power is abundant on these days, averaging over 4,400 megawatts, which supports the low price level.
+|       | avg<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg<br>temp<br>°C |
+|:------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Saturday** | 1.3 | -0.0 – 3.1 | 3467 – 6125 | 4.5 |
+| **Sunday** | 0.4 | -0.7 – 2.0 | 4828 – 5936 | 3.8 |
+| **Monday** | 2.6 | 0.2 – 4.6 | 3439 – 5760 | 3.7 |
+| **Tuesday** | 13.5 | 3.7 – 21.6 | 1268 – 3080 | 3.9 |
+| **Wednesday** | 10.0 | 2.8 – 16.9 | 1392 – 3255 | 4.0 |
+| **Thursday** | 2.3 | 0.9 – 4.1 | 3484 – 5265 | 2.9 |
+| **Friday** | 1.6 | -0.4 – 3.5 | 4445 – 5597 | 3.0 |
 
-On **Tuesday**, the situation changes sharply. Average wind power drops to around 2,365 megawatts and falls as low as 1,554 megawatts, explaining the day's peak price of 25.5 cents. The average price rises to 15.8 cents. **Wednesday** is the clearly most expensive day of the period: wind power remains weak, averaging only 1,652 megawatts, and the minimum drops to 643 megawatts. The peak price reaches 37.1 cents in the morning, and a price spike risk is expected between 7 and 9 a.m. The average price settles at 19.8 cents. On **Thursday**, wind power strengthens again to well over 3,000 megawatts, and the average price drops to 2.9 cents. **Friday** continues affordably, with an average price of 1.8 cents and wind power staying above 4,200 megawatts.
+The forecast period begins with low prices. **Saturday**, **Sunday**, **Thursday**, and **Friday** average prices remain below three cents. Sunday is a public holiday, which partly keeps prices low. At individual hours, the price drops even below zero: on Sunday as low as -0.7 cents and on Friday -0.4 cents per kilowatt-hour.
 
-*Sähkövatkain-Qwen3.8-27B read the winds and the numbers.* 🌬️
+**Tuesday** and **Wednesday** stand out with clearly higher prices than the other days. Tuesday's average price rises to 13.5 cents, and the most expensive hour reaches 21.6 cents. Wednesday's average price is also 10.0 cents. Wind power production is weak on both days, averaging below 2,300 megawatts. In particular, the minimum wind power output drops below 2,000 megawatts, which explains the high peak prices. From Thursday onwards, wind power recovers and prices return to affordable levels.
+
+*Numbers interpreted by Sähkövatkain-Qwen3.8-27B.* 🌬️
