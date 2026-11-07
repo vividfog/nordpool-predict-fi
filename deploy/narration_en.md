@@ -1,23 +1,21 @@
-*The upcoming electricity forecast starts off affordably, but Tuesday's and Wednesday's prices will spike sharply as wind power wanes, before turning to decline on Thursday.*
+Olkiluoto 3 is undergoing a maintenance outage. The outage began on 10.9.2026 at 01:00 and is expected to end on 18.11.2026 at 12:00.
 
-A maintenance outage is currently underway at the Olkiluoto 3 nuclear power plant, which began on 10 September at 01:00 and is expected to end on 18 November at 12:00.
+The forecast was updated on Saturday at 11:55.
 
-The forecast was updated on Saturday at 08:55.
+|  | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Sunday** | 0.9 | −0.1 – 2.5 | 4929 – 5984 | 3.8 |
+| **Monday** | 2.4 | 0.6 – 4.4 | 5248 – 6151 | 3.7 |
+| **Tuesday** | 12.2 | 2.0 – 19.5 | 1243 – 5036 | 3.9 |
+| **Wednesday** | 12.8 | 6.6 – 18.7 | 1505 – 2749 | 4.0 |
+| **Thursday** | 5.9 | 1.6 – 10.6 | 2453 – 5046 | 2.9 |
+| **Friday** | 0.6 | −0.2 – 1.4 | 4671 – 5479 | 3.0 |
+| **Saturday** | 2.1 | −0.2 – 3.8 | 3352 – 4539 | 2.6 |
 
-|           | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
-|:----------|:----------------:|:------------------:|:----------------:|:----------------:|
-| **Sunday**  | 0.8 | −0.3 – 2.3 | 4854 – 5932 | 3.8 |
-| **Monday**  | 2.3 | 0.5 – 3.9 | 4786 – 5580 | 3.7 |
-| **Tuesday**    | 12.9 | 1.8 – 20.1 | 1313 – 4658 | 3.9 |
-| **Wednesday**| 10.9 | 6.1 – 16.8 | 1261 – 3348 | 4.0 |
-| **Thursday**    | 5.7 | 1.8 – 14.4 | 2246 – 4945 | 2.9 |
-| **Friday**  | 3.8 | 1.4 – 6.8 | 2736 – 5001 | 3.0 |
-| **Saturday**   | 1.2 | 0.0 – 2.4 | 3052 – 4764 | 2.6 |
+The forecast period begins at affordable levels. **Sunday** is a public holiday, and its average price remains at 0.9 cents. Strong wind power keeps prices low on **Monday** as well, with an average of 2.4 cents.
 
-The forecast period begins on very affordable terms. **Sunday** is a public holiday, and the electricity price will at times dip into negative territory. The average price will remain below one cent, and wind power is abundant, with average production exceeding 5,400 megawatts. **Monday** will follow a similar path, although the average price will rise to a solid two cents.
+**Tuesday** marks a turning point. Wind power output weakens, and the day's average price rises to 12.2 cents. Wind power drops to a minimum of 1,243 megawatts, which explains the 19.5-cent peak price for the day. **Wednesday** sees wind power staying at a low level, with an average price of 12.8 cents. The peak price reaches 18.7 cents. On **Thursday**, wind power strengthens and prices fall to 5.9 cents.
 
-The focus of the period, however, is **Tuesday**, when the price will surge sharply. The expected average price for the day is 12.9 cents, with the maximum climbing to 20.1 cents. Behind this is a collapse in wind power production: the minimum wind output drops to only around 1,300 megawatts, which explains the day's high peak price. **Wednesday** will also be expensive – with an average price of 10.9 cents – and wind power will remain at a low level throughout the day, averaging below 2,400 megawatts. The price increase, however, is not solely due to wind power, as the temperature remains fairly ordinary throughout the period and does not explain the price spikes.
+**Friday** is the cheapest day of the period: the average price is 0.6 cents, and prices dip briefly into negative territory during the night hours. **Saturday's** average price is 2.1 cents. The affordability toward the end of the week is explained by the recovery of wind power. Tuesday's and Wednesday's most expensive hours fall in the morning and early evening.
 
-From **Thursday** onwards, wind power will strengthen significantly, and prices will turn to decline. **Friday's** average price will drop to below four cents, and **Saturday** will be among the most affordable days of the period – with an average price of around 1.2 cents and the price remaining modest throughout the entire day.
-
-*Numbers interpreted today by Sähkövatkain-Qwen3.8-27B.* 🌬️
+*The forecast was interpreted by Sähkövatkain-Qwen3.8-27B.* 🍃
