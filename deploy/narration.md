@@ -1,21 +1,21 @@
-*Ennustejakso käynnistyy kalliina keskiviikkona, mutta tuulivoiman voimistuessa hinnat painuvat edullisiksi torstaina ja pysyttelevät matalina aina maanantaihin asti.*
+*Keskiviikko on ennustejaksolla poikkeuksellisen kallis, mutta torstain jälkeen tuulivoiman voimistuminen painaa hinnat lähelle nollaa aina ensi tiistaita asti.*
 
-Olkiluoto 3 -ydinvoimalassa on huoltokatko, joka alkoi 10. syyskuuta klo 01 ja päättyy ennusteen mukaan 18. marraskuuta klo 12.
+Olkiluoto 3:n huoltokatko on käynnissä. Se alkoi 10.9.2026 klo 01 ja päättyy ennusteen mukaan 18.11.2026 klo 12.
 
-Ennuste on päivitetty tiistaina klo 11:56.
+Ennuste on päivitetty tiistaina klo 14:56.
 
-|           | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:----------|:-----------------------:|:------------------:|:----------------------------:|:-------------------------:|
-| **keskiviikko** | 19,8 | 9,4 – 29,5 | 567 – 2035 | 4,0 |
-| **torstai**     | 4,9  | 1,3 – 8,9  | 2253 – 5354 | 2,9 |
-| **perjantai**   | 1,3  | 0,2 – 2,5  | 5043 – 5519 | 3,0 |
-| **lauantai**    | 1,4  | -0,4 – 3,2 | 3448 – 5847 | 2,6 |
-| **sunnuntai**   | 0,7  | -0,0 – 1,9 | 3433 – 5299 | 2,1 |
-| **maanantai**   | 2,0  | -0,0 – 4,8 | 4951 – 5637 | 3,2 |
-| **tiistai**     | 14,1 | 1,7 – 20,3 | 1069 – 5822 | 3,1 |
+|  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **keskiviikko** | 28,1 | 9,8 – 42,3 | 571 – 2078 | 4,0 |
+| **torstai** | 4,9 | 1,0 – 9,1 | 2301 – 5401 | 2,9 |
+| **perjantai** | 1,1 | 0,0 – 2,5 | 4799 – 5580 | 3,0 |
+| **lauantai** | 1,5 | −0,4 – 3,3 | 3512 – 5776 | 2,6 |
+| **sunnuntai** | 0,8 | 0,1 – 1,5 | 3572 – 5356 | 2,1 |
+| **maanantai** | 1,9 | −0,1 – 4,7 | 4959 – 5658 | 3,2 |
+| **tiistai** | 14,3 | 1,6 – 20,5 | 1117 – 5603 | 3,1 |
 
-Ennustejakso käynnistyy **keskiviikkona** hyvin kalliina päivänä. Keskihinta nousee lähes 20 senttiin, ja maksimihinta kipuaa 29,5 senttiin. Hintapiikkiriski on olemassa aamupäivällä kello 8–10. Korkeaa hintatasoa selittää poikkeuksellisen heikko tuulivoiman minimituotanto, joka jää päivällä alle 600 megawatin. Tuulivoiman keskimääräinen tuotanto on koko päivän vain noin 960 megawattia, mikä on selvästi tavanomaista matalampi.
+Ennustejakso on kaksijakoinen. **Keskiviikko** erottuu hyvin kalliina, ja sen keskihinta kohoaa yli 28 senttiin kilowattitunnilta. Hintaa nostaa tuulivoiman jääminen keskimäärin alle tuhannen megawatin, mikä on selvästi alle tavanomaisen tason. Päivän sisällä tuulivoiman minimi painuu vain 571 megawattiin, ja samaan aikaan maksimihinta nousee 42,3 senttiin. Tämä alhainen tuulivoiman hetkellinen tuotanto selittää korkeaa maksimihintaa.
 
-**Torstaina** tilanne muuttuu jyrkästi. Tuulivoima voimistuu ja keskihinta laskee alle viiden sentin. **Perjantai** ja **lauantai** ovat jakson edullisimpia päiviä, ja hinnat liikkuvat nollan tuntumassa. Lauantain vastaisena yönä hinta painuu hetkellisesti hieman negatiiviseksi. **Sunnuntai** jatkuu edullisena, ja keskihinta on ainoastaan 0,7 senttiä. **Maanantaina** hinnat pysyvät matalina, mutta nousevat hieman iltaa kohti. **Tiistaina** sähkön hinta kääntyy jälleen selvään nousuun, ja keskihinta kipuaa 14,1 senttiin. Tuulivoiman tuotanto romahtaa päivän mittaan – minimissään tuotanto on vain noin 1 070 megawattia, mikä nostaa maksimihinnan yli 20 sentin.
+Torstaista alkaen tilanne kääntyy. Tuulivoima voimistuu nopeasti, ja **torstain** keskihinta laskee alle viiden sentin. **Perjantaina** hinta painuu vielä matalammalle, keskimäärin 1,1 senttiin, ja **lauantain** sekä **maanantain** vastaisina öinä nähdään hetkittäin negatiivisia tuntihintoja. Jakson edullisimmillaan sähkö on **sunnuntaina**, jolloin keskihinta jää alle sentin. **Tiistai** tuo mukanaan jälleen kalliimpaa hintaa. Tuulivoima heikkenee, ja sen minimituotanto putoaa 1117 megawattiin. Tämä nostaa päivän keskihinnan 14,3 senttiin ja maksimihinnan yli 20 senttiin. Loppuviikon tasaiset lämpötilat eivät vaikuta hintoihin.
 
-*Ennusteen purki tänään Sähkövatkain-Qwen3.8-27B.* 🌬️
+*Sähkövatkain-Qwen3.8-27B:n lukemat kääntyivät tänään.* 🌬️

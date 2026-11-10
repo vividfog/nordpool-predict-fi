@@ -1,19 +1,21 @@
-A maintenance shutdown at the Olkiluoto 3 nuclear power plant began on 10 September at 01:00 and is expected to end on 18 November at 12:00.
+*Wednesday is exceptionally expensive in the forecast period, but from Thursday onwards, strengthening wind power pushes prices close to zero until next Tuesday.*
 
-The forecast was updated on Tuesday at 11:56.
+Olkiluoto 3 is under a maintenance shutdown. It began on 10.9.2026 at 01:00 and is expected to end on 18.11.2026 at 12:00.
 
-|           | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
-|:----------|:-----------------------:|:------------------:|:----------------------------:|:-------------------------:|
-| **Wednesday** | 19.8 | 9.4 – 29.5 | 567 – 2035 | 4.0 |
-| **Thursday**  | 4.9  | 1.3 – 8.9  | 2253 – 5354 | 2.9 |
-| **Friday**    | 1.3  | 0.2 – 2.5  | 5043 – 5519 | 3.0 |
-| **Saturday**  | 1.4  | -0.4 – 3.2 | 3448 – 5847 | 2.6 |
-| **Sunday**    | 0.7  | -0.0 – 1.9 | 3433 – 5299 | 2.1 |
-| **Monday**    | 2.0  | -0.0 – 4.8 | 4951 – 5637 | 3.2 |
-| **Tuesday**   | 14.1 | 1.7 – 20.3 | 1069 – 5822 | 3.1 |
+The forecast was updated on Tuesday at 14:56.
 
-The forecast period starts with a very expensive **Wednesday**. The average price climbs to nearly 20 cents, and the maximum price reaches 29.5 cents. A risk of price spikes exists in the morning between 8:00 and 10:00. The high price level is explained by exceptionally weak wind power output, which drops below 600 megawatts at its lowest. The average wind production for the entire day is only about 960 megawatts, well below the usual level.
+|  | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Wednesday** | 28.1 | 9.8 – 42.3 | 571 – 2078 | 4.0 |
+| **Thursday** | 4.9 | 1.0 – 9.1 | 2301 – 5401 | 2.9 |
+| **Friday** | 1.1 | 0.0 – 2.5 | 4799 – 5580 | 3.0 |
+| **Saturday** | 1.5 | −0.4 – 3.3 | 3512 – 5776 | 2.6 |
+| **Sunday** | 0.8 | 0.1 – 1.5 | 3572 – 5356 | 2.1 |
+| **Monday** | 1.9 | −0.1 – 4.7 | 4959 – 5658 | 3.2 |
+| **Tuesday** | 14.3 | 1.6 – 20.5 | 1117 – 5603 | 3.1 |
 
-**Thursday** marks a sharp turnaround. Wind power picks up significantly and the average price falls below five cents. **Friday** and **Saturday** are the cheapest days of the period, with prices hovering around zero. Prices dip briefly into negative territory during the night before Saturday. **Sunday** remains very affordable, with an average of just 0.7 cents. **Monday** stays cheap but rises slightly toward the evening. **Tuesday** sees prices climb again, with the average reaching 14.1 cents. Wind power output collapses over the course of the day, dropping to a minimum of only about 1,070 megawatts, which pushes the maximum price above 20 cents.
+The forecast period is split in two. **Wednesday** stands out as very expensive, with its average price rising to over 28 cents per kilowatt-hour. The price is pushed up by wind power remaining on average below 1,000 megawatts, which is clearly below the normal level. Within the day, the wind power minimum drops to just 571 megawatts, and at the same time the maximum price climbs to 42.3 cents. This low momentary wind power output explains the high maximum price.
 
-*Forecast decoded today by Sähkövatkain-Qwen3.8-27B.* 🌬️
+From **Thursday** onwards, the situation reverses. Wind power strengthens rapidly, and **Thursday's** average price drops below five cents. **On Friday** the price falls even lower, to an average of 1.1 cents, and during the nights of **Saturday** and **Monday** hourly prices occasionally turn negative. The cheapest day of the period is **Sunday**, when the average price stays below one cent. **Tuesday** brings higher prices again. Wind power weakens, and its minimum output drops to 1,117 megawatts. This lifts the day's average price to 14.3 cents and the maximum price above 20 cents. The steady temperatures towards the end of the period have no effect on prices.
+
+*Sähkövatkain-Qwen3.8-27B spun the numbers today.* 🌬️
