@@ -1,21 +1,21 @@
-_Ennustejakso käynnistyy tavanomaisella hintatasolla, mutta kääntyy nopeasti edulliseksi viikonloppua kohden. Tiistaina ja keskiviikkona hinnat nousevat tuulivoiman heikentyessä._
+_Ennustejakso alkaa edullisilla hinnoilla, mutta tiistain odotetaan nousevan selvästi korkeammaksi tuulivoiman heikentyessä ja maksimihinnan kipuaessa yli 13 senttiin._
 
-Ennuste on päivitetty keskiviikkona klo 20:55.
+Olkiluoto 3 on huoltokatkossa. Katkos alkoi 10. syyskuuta 2026 kello 01 ja sen arvioidaan päättyvän 18. marraskuuta 2026 kello 12.
 
-Olkiluoto 3 -ydinvoimalayksikössä on käynnissä huoltokatko, joka on alkanut 10. syyskuuta 2026 kello 01. Katkon on ennustettu päättyvän 18. marraskuuta 2026 kello 12. Yksikön käytettävyys on 0,0 prosenttia.
+Ennuste on päivitetty torstaina klo 02:55.
 
-| | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **torstai** | 4,3 | 2,1 – 6,8 | 2012 – 5119 | 2,9 |
-| **perjantai** | 2,2 | 0,0 – 4,9 | 2892 – 4985 | 3,0 |
-| **lauantai** | 2,0 | 0,4 – 3,1 | 3120 – 4489 | 2,6 |
-| **sunnuntai** | 1,6 | 0,7 – 2,4 | 3044 – 4723 | 2,1 |
-| **maanantai** | 2,7 | 0,5 – 5,7 | 3752 – 5823 | 3,2 |
-| **tiistai** | 4,4 | 1,1 – 12,2 | 1823 – 6024 | 3,1 |
-| **keskiviikko** | 5,8 | 1,5 – 9,6 | 2018 – 5125 | 3,0 |
+|  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **perjantai** | 2,1 | 0,2 - 4,5 | 2842 - 5237 | 3,0 |
+| **lauantai** | 1,4 | 0,3 - 2,4 | 3025 - 5662 | 2,6 |
+| **sunnuntai** | 2,0 | -0,1 - 4,2 | 3537 - 5594 | 2,1 |
+| **maanantai** | 3,5 | 0,5 - 7,0 | 4007 - 5874 | 3,2 |
+| **tiistai** | 7,9 | 1,3 - 13,6 | 1667 - 5969 | 3,1 |
+| **keskiviikko** | 3,6 | 1,2 - 6,7 | 2978 - 5309 | 3,0 |
+| **torstai** | 6,9 | 3,5 - 10,5 | 2312 - 3328 | 2,2 |
 
-Ennustejakson alussa **torstai** on keskihinnaltaan 4,3 senttiä kilowattitunnilta, mutta jo **perjantaina** hinta laskee selvästi, kun tuulivoiman tuotanto nousee keskimäärin yli 4 000 megawatin. Viikonloppua kohden hinnat pysyttelevät matalina. **Lauantain** ja **sunnuntain** keskihinnat ovat 2,0 ja 1,6 senttiä. Sunnuntai on jakson edullisin päivä, eikä sen aikana hinta nouse yli 2,4 senttiin.
+Ennustejakso alkaa edullisissa merkeissä. **Perjantain** ja **lauantain** keskihinnat jäävät noin kahteen senttiin, ja lauantai on jakson halvin päivä 1,4 sentin keskihinnalla. **Sunnuntaina** yöllä hinta käy hetkellisesti jopa hieman negatiivisena, ja päivän keskihinta asettuu 2,0 senttiin.
 
-**Maanantai** on vielä edullinen, vaikka hintahaarukka laajenee hieman. Tuulivoiman odotetaan nousevan ennustejakson korkeimmalle tasolle, keskimäärin 4 765 megawattiin, mikä pitää keskihinnan 2,7 sentissä. **Tiistaina** tuotanto putoaa nopeasti ja maksimihinta kipuaa 12,2 senttiin. **Keskiviikkona** tuulivoima jää minimissään 2 018 megawattiin, mikä selittää päivän 9,6 sentin maksimihintaa. Jakson keskihinta kohoaa 5,8 senttiin, mikä tekee keskiviikosta ennustejakson kalleimman päivän.
+**Tiistai** erottuu joukosta selvästi korkeammalla hintatasolla. Keskihinnan odotetaan kohoavan 7,9 senttiin, ja päivän maksimihinta nousee 13,6 senttiin. Hintaa nostaa osaltaan tuulivoiman minimituotannon painuminen vain 1 667 megawattiin, mikä on jakson alhaisimmillaan. **Keskiviikkona** hinta palautuu 3,6 sentin keskitasolle, mutta **torstaina** odotettu keskihinta nousee jälleen 6,9 senttiin. Torstain hintaodotus on kohonnut, vaikka tuulivoiman keskimääräinen taso pysyykin tavanomaisena.
 
-*Numerot puntaroi tänään Sähkövatkain-Qwen3.8-27B.* 🌬️
+*Luvut seuloi Sähkövatkain-Qwen3.8-27B.* 🌬️
