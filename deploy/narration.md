@@ -1,23 +1,21 @@
-*Tuulivoiman heikkeneminen nostaa hintoja alkuviikolla, erityisesti tiistaina ja torstaina, jolloin maksimihinta kohoaa yli 20 senttiin. Loppuviikolla tuotanto elpyy ja hinnat painuvat edullisiksi.*
+*Ennustejakso alkaa edullisesti, mutta tiistain, torstain ja perjantain keskihinnat nousevat yli yhdeksään senttiin tuulivoiman heikentyessä. Viikonloppuna hinnat laskevat tuulen voimistuessa.*
 
-Olkiluoto 3:n huoltokatko alkoi 10. syyskuuta 2026 klo 01 ja sen arvioidaan päättyvän 18. marraskuuta 2026 klo 12. Voimalan käytettävyys on 0,0 prosenttia.
+Olkiluoto 3 on huoltokatkolla. Katkos alkoi 10.9.2026 klo 01 ja sen on määrä päättyä 18.11.2026 klo 12 (ennuste).
 
-Ennuste on päivitetty sunnuntaina klo 02:55.
+Ennuste on päivitetty sunnuntaina klo 08:55.
 
-|  | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
+|   | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **maanantai** | 4,8 | 0,7 – 11,4 | 1212 – 7307 | 3,2 |
-| **tiistai** | 9,9 | 2,8 – 17,9 | 913 – 4262 | 3,1 |
-| **keskiviikko** | 4,1 | 0,8 – 9,5 | 2360 – 5315 | 3,0 |
-| **torstai** | 10,1 | 4,4 – 20,4 | 710 – 2513 | 2,3 |
-| **perjantai** | 8,6 | 4,0 – 13,9 | 971 – 3607 | 2,0 |
-| **lauantai** | 3,9 | 2,9 – 5,3 | 2140 – 3982 | 0,8 |
-| **sunnuntai** | 3,8 | 2,5 – 4,9 | 3151 – 4428 | 0,1 |
+| **maanantai** | 4,1 | 0,4 - 9,5 | 1522 - 7085 | 3,2 |
+| **tiistai** | 12,2 | 4,7 - 19,6 | 1028 - 3336 | 3,1 |
+| **keskiviikko** | 5,7 | 2,1 - 10,8 | 2260 - 4900 | 3,0 |
+| **torstai** | 9,9 | 3,4 - 15,4 | 1173 - 2924 | 2,3 |
+| **perjantai** | 9,8 | 4,0 - 15,8 | 938 - 2457 | 2,0 |
+| **lauantai** | 3,7 | 1,8 - 5,0 | 1567 - 4509 | 0,8 |
+| **sunnuntai** | 4,3 | 1,1 - 7,0 | 2710 - 4588 | 0,1 |
 
-Ennustejakso jakaantuu kahteen osaan. Alkuviikosta hinnat nousevat tuntuvasti, kun tuulivoiman tuotanto heikkenee, ja loppuviikolla hinnat laskevat tuulivoiman vahvistuessa.
+Ennustejakso käynnistyy tuulisissa merkeissä. **Maanantain** keskihinta jää 4,1 senttiin, ja tuulivoimaa on tarjolla keskimäärin lähes 5000 megawattia. Hinnat pysyttelevät matalina koko alkuviikon, mutta **tiistai** kääntää suunnan. Päivän keskihinta nousee 12,2 senttiin, ja yksittäiset tunnit kipuavat jopa 19,6 senttiin. Syynä on tuulivoiman heikkeneminen: päivän minimituotanto painuu vain 1028 megawattiin, mikä selittää korkeaa maksimihintaa. **Keskiviikkona** tuuli voimistuu ja hinta palaa 5,7 sentin tuntumaan.
 
-**Tiistain** ja **torstain** odotetut keskihinnat kipuavat 9,9 ja 10,1 senttiin. **Torstai** on jakson kallein päivä, ja sen maksimihinta kohoaa 20,4 senttiin. Tuulivoiman minimituotanto jää torstaina vain 710 megawattiin, mikä osuu iltaan ja selittää korkean maksimihinnan. **Torstaille** kello 16–18 on lisäksi kohonnut hintapiikkiriski. **Tiistaina** tuulivoima on niin ikään matalalla, keskimäärin 2319 megawattia, ja maksimihinta nousee 17,9 senttiin. **Maanantain** keskihinta on vielä maltillinen, mutta iltaa kohden hinnat kohoavat 11,4 senttiin tuulivoiman hetkellisen vähenemisen vuoksi.
+**Torstaina** ja **perjantaina** tuulivoiman minimituotanto on jälleen alle 2000 megawatin, ja maksimihinnat nousevat 15–16 senttiin. Keskihinnat asettuvat 9,8–9,9 senttiin. Viikonloppuna säätyyppi muuttuu jälleen tuuliseksi. **Lauantaina** keskihinta on 3,7 senttiä ja **sunnuntaina** 4,3 senttiä, kun tuulivoiman keskituotanto yltää yli 3000 megawatin. Edullisimmat tunnit ajoittuvat yöaikaan, ja lauantain vastaisena yönä hinta painuu jopa 1,8 senttiin.
 
-**Keskiviikkona** tuulivoima palautuu runsaaksi ja päivän keskihinta laskee 4,1 senttiin. **Perjantai** on vielä keskihinnaltaan 8,6 senttiä, mutta **lauantaina** ja **sunnuntaina** hinnat painuvat selvästi edullisemmiksi, keskihinnan jäädessä alle neljään senttiin. Sunnuntain vastainen yö on koko jakson edullisin, ja hinta pysyttelee 2,5–3,5 sentin tuntumassa.
-
-*Sähkövatkain-Qwen3.8-27B pyöritteli senttejä.* 🌬️
+Koko viikon hintavaihtelu kuvastaa tuulivoiman merkitystä: tuulinen alkuviikko painaa hintoja alas, mutta tyyntyessä hinta kohoaa selvästi. *Sähkövatkain-Qwen3.8-27B tarkasteli tuuliennusteita.* 💨
