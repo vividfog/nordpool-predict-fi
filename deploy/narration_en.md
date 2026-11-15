@@ -1,21 +1,23 @@
-Olkiluoto 3 is under a maintenance outage. The outage began on September 10 at 01:00 and is expected to end on November 18 at 12:00.
+*Weakening wind power pushes prices up early in the week, especially on Tuesday and Thursday, when the maximum price exceeds 20 cents. By the end of the week, production recovers and prices fall back to affordable levels.*
 
-The forecast was updated on Saturday at 20:56.
+The maintenance outage at Olkiluoto 3 began on September 10, 2026 at 01:00 and is expected to end on November 18, 2026 at 12:00. The plant's availability is 0.0 percent.
 
-| | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
+The forecast was updated on Sunday at 02:55.
+
+|  | avg. <br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg. <br>temp<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **Sunday** | 1.2 | 0.6 – 1.6 | 5549 – 7490 | 2.1 |
-| **Monday** | 4.6 | 0.8 – 10.2 | 1800 – 7346 | 3.2 |
-| **Tuesday** | 7.3 | 3.8 – 12.3 | 1745 – 4307 | 3.1 |
-| **Wednesday** | 4.1 | 1.0 – 7.4 | 2545 – 5167 | 3.0 |
-| **Thursday** | 7.6 | 3.7 – 12.4 | 1361 – 2919 | 2.3 |
-| **Friday** | 9.3 | 4.1 – 15.3 | 848 – 2613 | 2.0 |
-| **Saturday** | 3.7 | 2.7 – 4.9 | 2084 – 3923 | 0.8 |
+| **Monday** | 4.8 | 0.7 – 11.4 | 1212 – 7307 | 3.2 |
+| **Tuesday** | 9.9 | 2.8 – 17.9 | 913 – 4262 | 3.1 |
+| **Wednesday** | 4.1 | 0.8 – 9.5 | 2360 – 5315 | 3.0 |
+| **Thursday** | 10.1 | 4.4 – 20.4 | 710 – 2513 | 2.3 |
+| **Friday** | 8.6 | 4.0 – 13.9 | 971 – 3607 | 2.0 |
+| **Saturday** | 3.9 | 2.9 – 5.3 | 2140 – 3982 | 0.8 |
+| **Sunday** | 3.8 | 2.5 – 4.9 | 3151 – 4428 | 0.1 |
 
-Electricity prices are expected to fluctuate significantly during the forecast period. Prices start low but are anticipated to rise toward the end of the week before dropping again. The highest average price is expected on **Friday**, at 9.3 cents, with the maximum price reaching 15.3 cents. The most affordable days are **Sunday** and **Saturday**, with average prices of 1.2 and 3.7 cents respectively.
+The forecast period splits into two parts. Early in the week, prices rise significantly as wind power production weakens, and later in the week, prices fall as wind picks up.
 
-The variation in prices is primarily driven by expected changes in wind power production. On **Sunday** and **Saturday**, wind power is plentiful, keeping prices low. On **Monday**, **Tuesday**, and **Thursday**, wind power minimums are expected to fall below 2,000 megawatts, pushing the daily maximum price above 10 cents. **Friday** stands out as exceptional: wind power is expected to dip to just 848 megawatts, while the maximum price climbs to 15.3 cents. The weakening of wind power is thus the main driver behind the higher price forecasts for the latter part of the week.
+The expected average prices for **Tuesday** and **Thursday** climb to 9.9 and 10.1 cents, respectively. **Thursday** is the most expensive day of the period, with its maximum price reaching 20.4 cents. Wind power minimum production on Thursday drops to only 710 megawatts, falling in the evening and explaining the high maximum price. **Thursday** also carries an elevated price spike risk between 16:00 and 18:00. **Tuesday** also sees low wind power, averaging 2,319 megawatts, with the maximum price rising to 17.9 cents. **Monday**'s average price is still moderate, but heading into the evening, prices rise to 11.4 cents due to a temporary decrease in wind power.
 
-*Sähkövatkain-Qwen3.8-27B interpreted the numbers. 📊*
+On **Wednesday**, wind power returns in abundance, and the day's average price falls to 4.1 cents. **Friday** still has an average price of 8.6 cents, but **Saturday** and **Sunday** see prices drop noticeably to more affordable levels, with the average staying under four cents. The night heading into Sunday is the cheapest of the entire period, with prices hovering around 2.5–3.5 cents.
 
-*Electricity price forecast varies considerably – from early-week affordable hours to a late-week peak of over 15 cents as wind power weakens.*
+*Sähkövatkain-Qwen3.8-27B spun the cents.* 🌬️
