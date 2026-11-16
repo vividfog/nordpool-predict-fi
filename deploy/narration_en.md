@@ -1,21 +1,21 @@
-*Electricity price expectations fluctuate during the forecast period alongside wind power, peaking on Tuesday and Thursday, with the lowest prices on the weekend.*
+*Tuesday stands out as exceptionally expensive in the forecast period, but from Wednesday onwards prices fall and reach an affordable level by the weekend.*
 
-Olkiluoto 3 is on a maintenance outage starting from September 10 at 01:00. The outage is expected to end on Tuesday, November 17, at 18:00.
+Olkiluoto 3 nuclear plant is undergoing a maintenance outage, which began on 10 September 2026 at 01:00. The outage is expected to end on 17 November 2026 at 18:00.
 
-The forecast was updated on Monday at 11:56.
+The forecast was updated on Monday at 14:57.
 
-|   | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temp<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **Tuesday** | 12.6 | 3.4 – 20.8 | 749 – 3064 | 3.1 |
-| **Wednesday** | 4.0 | 1.3 – 6.1 | 3069 – 3880 | 3.0 |
-| **Thursday** | 10.6 | 3.6 – 21.6 | 743 – 3283 | 2.3 |
-| **Friday** | 9.1 | 2.6 – 14.0 | 931 – 3276 | 2.0 |
-| **Saturday** | 3.9 | 1.4 – 6.0 | 2488 – 3343 | 0.8 |
-| **Sunday** | 4.0 | 1.9 – 7.4 | 3251 – 4077 | -0.2 |
-| **Monday** | 5.0 | 3.4 – 7.0 | 3389 – 4280 | -0.6 |
+|  | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Tuesday** | 22.2 | 4.9 – 32.9 | 719 – 2995 | 3.1 |
+| **Wednesday** | 4.9 | 2.3 – 6.9 | 3059 – 3913 | 3.0 |
+| **Thursday** | 11.5 | 4.3 – 22.0 | 700 – 3284 | 2.3 |
+| **Friday** | 10.8 | 3.2 – 16.5 | 829 – 3276 | 2.0 |
+| **Saturday** | 4.8 | 1.9 – 6.8 | 2446 – 3335 | 0.8 |
+| **Sunday** | 4.4 | 2.4 – 7.3 | 3261 – 4061 | -0.2 |
+| **Monday** | 6.0 | 4.0 – 8.3 | 3361 – 4280 | -0.6 |
 
-The forecast period begins on **Tuesday** with a high price level, as the daily average price rises to 12.6 cents. The driver behind this is a temporary dip in wind power output, with the wind minimum dropping to just 749 megawatts. The daily maximum price reaches 20.8 cents. **On Wednesday**, wind power strengthens significantly to over 3,000 megawatts, pushing the average price down to an affordable 4.0 cents.
+The most expensive day of the forecast period is **Tuesday**, with an expected average price of 22.2 cents per kilowatt-hour. The hourly price range is unusually wide: the lowest hourly price drops to 4.9 cents, while the highest climbs to 32.9 cents. The driver is weak wind power – the day's minimum production is just 719 megawatts, which explains the high hourly prices. Average wind power settles at 1,757 megawatts, keeping prices well above the normal level.
 
-**On Thursday**, the price level climbs again to an average of 10.6 cents, and the daily maximum of 21.6 cents is the highest across the entire period. The wind minimum at that time is 743 megawatts, which explains the spike. There is a risk of price spikes on Thursday between 16:00 and 18:00. **On Friday**, the average price is 9.1 cents, and wind power remains weak. **Saturday** is the cheapest day of the period with an average of 3.9 cents, and the usual level of wind power keeps prices in check. **On Sunday**, wind power is plentiful again, and the average price settles at 4.0 cents. **Next Monday** is slightly more expensive with an average of 5.0 cents.
+After Tuesday, prices fall sharply. On **Wednesday**, the average price drops to 4.9 cents and wind power is abundant, averaging 3,375 megawatts. On **Thursday**, prices rise again: the average is 11.5 cents and the maximum reaches 22.0 cents in the afternoon, when wind power production hits its lowest point. A price spike risk exists between 15:00 and 17:00. **Friday's** average price is 10.8 cents; although the price falls below five cents in the evening, the day remains relatively expensive. Over the weekend, prices return to an affordable level: **Saturday's** average is 4.8 cents and **Sunday's** 4.4 cents. On **Monday** next week, the price settles at 6.0 cents, a moderate level.
 
-*Sähkövatkain-Qwen3.8-27B's wind vane calculated the prices.* 🍃
+*Forecast interpreted by Sähkövatkain-Qwen3.8-27B.* 💨
