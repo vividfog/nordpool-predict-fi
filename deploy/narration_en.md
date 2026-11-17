@@ -1,21 +1,21 @@
-*Thursday's and Friday's average prices rise above 10 cents, but the weekend and Monday stay below four cents. Next Tuesday, the price climbs again.*
+*The forecast period begins with high prices, but growing wind power towards the weekend pushes average prices below five cents.*
 
-Olkiluoto 3 is undergoing a maintenance shutdown that began on 10 September at 01:00. The shutdown is expected to end on Tuesday, 17 November at 18:00.
+A maintenance outage is underway at the Olkiluoto 3 nuclear power plant, which began on 10 September 2026 at 01:00 and is expected to end on 17 November 2026 at 18:00.
 
-The forecast was updated on Tuesday at 11:57.
+The forecast has been updated on Tuesday at 14:56.
 
-|   | avg. price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg. temperature<br>°C |
-|:--|:--:|:--:|:--:|:--:|
-| **Wednesday** | 4.9 | 2.1 – 7.0 | 2608 – 3608 | 3.0 |
-| **Thursday** | 10.6 | 4.4 – 15.1 | 1013 – 2885 | 2.3 |
-| **Friday** | 12.0 | 7.3 – 16.6 | 551 – 1664 | 2.0 |
-| **Saturday** | 4.0 | 3.0 – 6.1 | 2193 – 4545 | 0.8 |
-| **Sunday** | 3.1 | 1.9 – 5.5 | 4077 – 4721 | −0.2 |
-| **Monday** | 3.8 | 2.0 – 5.0 | 3983 – 5061 | −0.6 |
-| **Tuesday** | 9.4 | 3.3 – 14.7 | 2288 – 4244 | −0.8 |
+|           | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Wednesday** | 14.8 | 3.6 - 24.6 | 2627 - 3642 | 3.0 |
+| **Thursday** | 12.2 | 6.0 - 16.2 | 979 - 2915 | 2.3 |
+| **Friday** | 12.4 | 3.9 - 18.7 | 757 - 3830 | 2.0 |
+| **Saturday** | 4.6 | 3.1 - 6.1 | 3489 - 4462 | 0.8 |
+| **Sunday** | 4.7 | 3.6 - 6.8 | 3153 - 4782 | -0.2 |
+| **Monday** | 5.1 | 3.6 - 6.4 | 3992 - 5012 | -0.6 |
+| **Tuesday** | 10.3 | 4.1 - 15.1 | 2285 - 4167 | -0.8 |
 
-The forecast period begins on **Wednesday** with a moderate average price of about five cents, but **Thursday** sees a sharp rise. Thursday's expected average price is 10.6 cents, with a maximum of 15.1 cents. Wind power is weak on Thursday, with the daily minimum production falling to just 1,013 megawatts, which explains the high hourly prices. **Friday** is the most expensive day of the period: an average price of 12.0 cents and a maximum of 16.6 cents are expected. Wind power is very low on Friday, averaging 1,056 megawatts, with a minimum of 551 megawatts. The price spike risk is concentrated on Friday between 9 and 11.
+The forecast period begins with high prices. **On Wednesday**, the average price is expected to rise to 14.8 cents per kilowatt-hour, and within the day the price may climb to as much as 24.6 cents. Wind power is plentiful on Wednesday, averaging 3,091 megawatts, yet the price level remains clearly elevated. **On Thursday** and **Friday**, wind power weakens; Thursday's average output falls to 1,926 megawatts and Friday's to 1,489 megawatts. Light winds keep prices high: Thursday's average price is 12.2 cents and Friday's 12.4 cents. Friday also carries an elevated price-spike risk from 8:00 to 10:00.
 
-From **Saturday** onwards, prices drop sharply as wind power strengthens. Saturday's average price is 4.0 cents, **Sunday**'s 3.1 cents, and **next Monday**'s 3.8 cents. Sunday is the cheapest day of the period, with prices staying below six cents all day. Next Monday will offer abundant wind power, averaging 4,555 megawatts. **Next Tuesday** sees prices climb again to an average of 9.4 cents, even though wind power remains above 3,000 megawatts.
+**On Saturday**, the weather turns windy, and average wind power rises to 3,933 megawatts. Prices fall: Saturday's average price is just 4.6 cents and Sunday's 4.7 cents. The cheapest hours fall on the weekend, when electricity occasionally costs less than four cents. **On Monday**, wind power is at its highest during the forecast period, averaging 4,537 megawatts, and the average price holds at 5.1 cents. **On Tuesday**, prices turn upward again, with an average of 10.3 cents, even though wind power remains above 3,000 megawatts. The most expensive hours of the forecast period fall on Wednesday morning, and the weekend brings clearly cheaper prices.
 
-*Sähkövatkain-Qwen3.8-27B read the wind chart.* 🌬️
+*Sähkövatkain-Qwen3.8-27B reports the price fluctuations.* 💨
