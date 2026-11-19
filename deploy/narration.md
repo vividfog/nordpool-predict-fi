@@ -1,19 +1,19 @@
-*Alkupuoli on edullinen, mutta loppuviikkoa kohti hinnat nousevat jyrkästi. Torstaina keskihinta ylittää 15 senttiä ja hintapiikkiriski on kohonnut.*
+*Alkavalla viikolla pörssisähkön hinnat pysyvät aluksi maltillisina, mutta loppuviikkoa kohden ne nousevat selvästi tuulivoiman heikentyessä.*
 
-Ennuste on päivitetty torstaina klo 14:57.
+Ennuste on päivitetty torstaina klo 20:55.
 
-|             | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
-|:------------|:------------------------:|:------------------:|:----------------------------:|:-------------------------:|
-| **perjantai**  | 6,9                     | 4,0 – 12,6         | 1561 – 3123                  | 2,0                       |
-| **lauantai**   | 4,7                     | 3,0 – 6,2          | 2839 – 5422                  | 0,8                       |
-| **sunnuntai**  | 4,0                     | 2,6 – 6,3          | 4162 – 6065                  | -0,2                      |
-| **maanantai**  | 6,0                     | 3,4 – 8,7          | 3279 – 4774                  | -0,6                      |
-| **tiistai**    | 11,4                    | 7,1 – 17,7         | 2621 – 3630                  | -0,8                      |
-| **keskiviikko**| 10,1                    | 5,9 – 17,4         | 1649 – 4245                  | -0,3                      |
-| **torstai**    | 15,6                    | 11,3 – 20,4        | 862 – 1510                   | -0,4                      |
+|  | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
+|:---|:---:|:---:|:---:|:---:|
+| **perjantai** | 6,9 | 4,0 – 12,6 | 1 812 – 3 096 | 2,0 |
+| **lauantai** | 4,9 | 2,9 – 6,9 | 3 139 – 3 884 | 0,8 |
+| **sunnuntai** | 3,7 | 2,7 – 4,8 | 4 134 – 5 755 | –0,2 |
+| **maanantai** | 5,8 | 2,6 – 8,2 | 3 084 – 4 802 | –0,6 |
+| **tiistai** | 12,5 | 6,7 – 17,5 | 2 320 – 3 231 | –0,8 |
+| **keskiviikko** | 10,5 | 7,1 – 17,6 | 1 559 – 4 168 | –0,3 |
+| **torstai** | 15,1 | 11,3 – 20,1 | 832 – 1 447 | –0,4 |
 
-Ennustejakso jakautuu kahteen osaan. **Perjantaista** **maanantaihin** pörssisähkön hinta pysyttelee varsin maltillisella tasolla. Edullisinta on **sunnuntaina**, jolloin keskihinta jää noin neljään senttiin kilowattitunnilta. Sunnuntain vastaisena yönä hinta laskee jopa alle kolmen sentin. **Lauantain** ja **maanantain** keskihinnat liikkuvat 4,7 ja 6,0 sentin tuntumassa. Tuulivoimaa on alkuviikosta runsaasti, mikä osaltaan pitää hintoja kurissa.
+Ennustejakso alkaa **perjantaina** ja jatkuu ensi **torstaihin**. Hinnat pysyttelevät aluksi maltillisina. **Sunnuntai** on edullisin päivä 3,7 sentin keskihinnalla, ja myös **lauantai** sekä **maanantai** jäävät alle kuuden sentin. **Tiistai** kääntää kehityksen, kun keskihinta nousee 12,5 senttiin, ja **keskiviikkona** se on 10,5 senttiä. **Torstai** on selvästi kallein päivä 15,1 sentin keskihinnalla, ja maksimihinta kipuaa 20,1 senttiin.
 
-**Tiistaista** alkaen tilanne muuttuu, ja hintaodotukset nousevat selvästi. **Tiistain** keskihinta kipuaa 11,4 senttiin ja maksimihinta nousee 17,7 senttiin. **Keskiviikkona** keskihinta on 10,1 senttiä, mutta päivän sisällä hintaerot ovat suuria – alimmillaan 5,9 senttiä ja korkeimmillaan 17,4 senttiä. **Torstai** on ennustejakson kallein päivä. Keskihinta on 15,6 senttiä, ja hinta nousee päivän mittaan tasaisesti. Tuulivoiman tuotanto romahtaa torstaina keskimäärin noin 1 150 megawattiin, ja minimissään tuotantoa on vain 862 megawattia. Heikko tuulivoima selittää torstain korkeita hintoja. **Torstaille** on lisäksi kohonnut hintapiikkiriski kello 18–20, jolloin hinta saattaa nousta yli 20 senttiin.
+Matalia hintoja selittää voimakas tuulivoima, erityisesti sunnuntaina, jolloin tuotanto nousee yli 5 700 megawattiin. Torstaina tuulivoima on heikkoa, keskimäärin vain 1 153 megawattia, ja minimissään 832 megawattia. Alhainen tuulivoiman minimituotanto selittää osaltaan päivän korkeaa maksimihintaa. Torstaille on merkitty hintapiikkiriski kello 18–20.
 
-*Sähkövatkain-Qwen3.8-27B tulkitsi luvut tänään.* 🌬️
+*Sähkövatkain-Qwen3.8-27B seuloi sentit.* 💨

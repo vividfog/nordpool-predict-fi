@@ -1,19 +1,19 @@
-*The first half of the period is affordable, but prices rise sharply toward the end of the week. On Thursday, the average price exceeds 15 cents and the price-spike risk is elevated.*
+*Prices remain moderate early in the upcoming week, but rise clearly towards the end as wind power weakens.*
 
-The forecast was updated on Thursday at 14:57.
+Forecast updated on Thursday at 20:55.
 
-|             | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temp.<br>°C |
-|:------------|:----------------------:|:------------------:|:----------------------------:|:-------------------:|
-| **Friday**   | 6.9                   | 4.0 – 12.6         | 1561 – 3123                  | 2.0                 |
-| **Saturday** | 4.7                   | 3.0 – 6.2          | 2839 – 5422                  | 0.8                 |
-| **Sunday**   | 4.0                   | 2.6 – 6.3          | 4162 – 6065                  | -0.2                |
-| **Monday**   | 6.0                   | 3.4 – 8.7          | 3279 – 4774                  | -0.6                |
-| **Tuesday**  | 11.4                  | 7.1 – 17.7         | 2621 – 3630                  | -0.8                |
-| **Wednesday**| 10.1                  | 5.9 – 17.4         | 1649 – 4245                  | -0.3                |
-| **Thursday** | 15.6                  | 11.3 – 20.4        | 862 – 1510                   | -0.4                |
+|  | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temp.<br>°C |
+|:---|:---:|:---:|:---:|:---:|
+| **Friday** | 6.9 | 4.0 – 12.6 | 1 812 – 3 096 | 2.0 |
+| **Saturday** | 4.9 | 2.9 – 6.9 | 3 139 – 3 884 | 0.8 |
+| **Sunday** | 3.7 | 2.7 – 4.8 | 4 134 – 5 755 | –0.2 |
+| **Monday** | 5.8 | 2.6 – 8.2 | 3 084 – 4 802 | –0.6 |
+| **Tuesday** | 12.5 | 6.7 – 17.5 | 2 320 – 3 231 | –0.8 |
+| **Wednesday** | 10.5 | 7.1 – 17.6 | 1 559 – 4 168 | –0.3 |
+| **Thursday** | 15.1 | 11.3 – 20.1 | 832 – 1 447 | –0.4 |
 
-The forecast period splits into two distinct parts. From **Friday** to **Monday**, the spot electricity price remains fairly moderate. It is cheapest on **Sunday**, when the average price stays around four cents per kilowatt-hour. During the night before Sunday, the price drops below three cents. The average prices on **Saturday** and **Monday** hover around 4.7 and 6.0 cents, respectively. Wind power is abundant over the first few days, which helps keep prices in check.
+The forecast period begins on **Friday** and continues through next **Thursday**. Prices remain moderate at first. **Sunday** is the cheapest day with an average price of 3.7 cents, and both **Saturday** and **Monday** stay below six cents. **Tuesday** turns the trend as the average price rises to 12.5 cents, and on **Wednesday** it is 10.5 cents. **Thursday** is clearly the most expensive day with an average price of 15.1 cents, and the maximum price climbs to 20.1 cents.
 
-From **Tuesday** onward, the situation changes and price expectations rise sharply. Tuesday's average price climbs to 11.4 cents, with the peak reaching 17.7 cents. On **Wednesday**, the average is 10.1 cents, but intra-day price differences are large – from a low of 5.9 cents to a high of 17.4 cents. **Thursday** is the most expensive day of the forecast period. The average price is 15.6 cents, and prices climb steadily throughout the day. Wind power production collapses on Thursday, averaging around 1,150 megawatts, with a minimum of just 862 megawatts. The weak wind power explains Thursday's high prices. In addition, there is an elevated price-spike risk on **Thursday** between 18:00 and 20:00, when the price could exceed 20 cents.
+Low prices are explained by strong wind power, especially on Sunday, when production rises to over 5,700 megawatts. On Thursday, wind power is weak, averaging only 1,153 megawatts, with a minimum of 832 megawatts. The low minimum wind power production partly explains the day's high maximum price. A price spike risk has been flagged for Thursday between 18:00 and 20:00.
 
-*Sähkövatkain-Qwen3.8-27B crunched the numbers today.* 🌬️
+*Sähkövatkain-Qwen3.8-27B sifted through the cents.* 💨
