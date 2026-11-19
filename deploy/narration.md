@@ -1,19 +1,19 @@
-_Viikon alku on edullinen, mutta loppuviikolla sähkön hinta nousee jyrkästi tuulivoiman vähenemisen takia – kallein päivä on torstai._
+*Alkupuoli on edullinen, mutta loppuviikkoa kohti hinnat nousevat jyrkästi. Torstaina keskihinta ylittää 15 senttiä ja hintapiikkiriski on kohonnut.*
 
-Ennuste on päivitetty torstaina klo 11:55.
+Ennuste on päivitetty torstaina klo 14:57.
 
-|   | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **perjantai** | 9,3 | 3,6 – 15,9 | 1533 – 3103 | 2,0 |
-| **lauantai** | 5,5 | 3,3 – 7,4 | 2835 – 5354 | 0,8 |
-| **sunnuntai** | 4,8 | 2,8 – 7,5 | 4187 – 5983 | −0,2 |
-| **maanantai** | 6,3 | 3,2 – 9,4 | 3258 – 4819 | −0,6 |
-| **tiistai** | 11,8 | 6,5 – 18,5 | 2600 – 3655 | −0,8 |
-| **keskiviikko** | 10,9 | 6,3 – 18,6 | 1652 – 4270 | −0,3 |
-| **torstai** | 16,5 | 11,4 – 21,2 | 828 – 1532 | −0,4 |
+|             | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
+|:------------|:------------------------:|:------------------:|:----------------------------:|:-------------------------:|
+| **perjantai**  | 6,9                     | 4,0 – 12,6         | 1561 – 3123                  | 2,0                       |
+| **lauantai**   | 4,7                     | 3,0 – 6,2          | 2839 – 5422                  | 0,8                       |
+| **sunnuntai**  | 4,0                     | 2,6 – 6,3          | 4162 – 6065                  | -0,2                      |
+| **maanantai**  | 6,0                     | 3,4 – 8,7          | 3279 – 4774                  | -0,6                      |
+| **tiistai**    | 11,4                    | 7,1 – 17,7         | 2621 – 3630                  | -0,8                      |
+| **keskiviikko**| 10,1                    | 5,9 – 17,4         | 1649 – 4245                  | -0,3                      |
+| **torstai**    | 15,6                    | 11,3 – 20,4        | 862 – 1510                   | -0,4                      |
 
-Ennustejakso on kaksijakoinen. **Perjantaista** **maanantaihin** sähkön hinta pysyttelee melko maltillisena, ja edullisinta on **sunnuntaina**, jolloin keskihinta jää 4,8 senttiin. Tuolloin tuulivoimaa on tarjolla runsaasti, mikä painaa hintoja alas. **Lauantain** keskihinta on 5,5 senttiä, eikä yksittäisiä kalliita tunteja esiinny.
+Ennustejakso jakautuu kahteen osaan. **Perjantaista** **maanantaihin** pörssisähkön hinta pysyttelee varsin maltillisella tasolla. Edullisinta on **sunnuntaina**, jolloin keskihinta jää noin neljään senttiin kilowattitunnilta. Sunnuntain vastaisena yönä hinta laskee jopa alle kolmen sentin. **Lauantain** ja **maanantain** keskihinnat liikkuvat 4,7 ja 6,0 sentin tuntumassa. Tuulivoimaa on alkuviikosta runsaasti, mikä osaltaan pitää hintoja kurissa.
 
-**Tiistaista** alkaen hintataso nousee selvästi. **Tiistain** keskihinta kipuaa 11,8 senttiin ja **keskiviikkona** 10,9 senttiin. Molempina päivinä maksimihinnat ylittävät 18 senttiä, ja tuulivoiman minimi painuu alle 2000 megawatin. Ennustejakson kallein päivä on **torstai**, jonka keskihinta on 16,5 senttiä ja maksimi 21,2 senttiä. Hintojen nousu selittyy tuulivoiman romahtamisella: torstain keskimääräinen tuotanto jää noin 1150 megawattiin ja minimissään se on vain 828 megawattia. Torstaille on annettu hintapiikkiriski kello 17–19.
+**Tiistaista** alkaen tilanne muuttuu, ja hintaodotukset nousevat selvästi. **Tiistain** keskihinta kipuaa 11,4 senttiin ja maksimihinta nousee 17,7 senttiin. **Keskiviikkona** keskihinta on 10,1 senttiä, mutta päivän sisällä hintaerot ovat suuria – alimmillaan 5,9 senttiä ja korkeimmillaan 17,4 senttiä. **Torstai** on ennustejakson kallein päivä. Keskihinta on 15,6 senttiä, ja hinta nousee päivän mittaan tasaisesti. Tuulivoiman tuotanto romahtaa torstaina keskimäärin noin 1 150 megawattiin, ja minimissään tuotantoa on vain 862 megawattia. Heikko tuulivoima selittää torstain korkeita hintoja. **Torstaille** on lisäksi kohonnut hintapiikkiriski kello 18–20, jolloin hinta saattaa nousta yli 20 senttiin.
 
-*Sähkövatkain-Qwen3.8-27B tulkitsi tuulen käänteet.* 🌬️
+*Sähkövatkain-Qwen3.8-27B tulkitsi luvut tänään.* 🌬️
