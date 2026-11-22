@@ -1,19 +1,19 @@
-*Alkuviikosta hinnat ovat edullisia, mutta tuulivoiman heikkeneminen nostaa loppuviikon hintoja jyrkästi – perjantaina keskihinta kohoaa yli 15 senttiin.*
+*Ennustejakso käynnistyy edullisena maanantaina, mutta hinnat kohoavat jyrkästi tiistaista alkaen ja saavuttavat korkeimmansa loppuviikolla tuulivoiman hiipuessa.*
 
-Ennuste on päivitetty lauantaina klo 21:37.
+Ennuste on päivitetty sunnuntaina klo 02:55.
 
-|           | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:----------|:-----------------------:|:------------------:|:----------------------------:|:-------------------------:|
-| **sunnuntai**  |          1,1          |     0,5 – 1,6      |       5413 – 6640           |          -0,2             |
-| **maanantai**  |          2,3          |     0,5 – 3,4      |       5348 – 6966           |          -0,6             |
-| **tiistai**    |         10,2          |     2,4 – 16,8     |       2008 – 5186           |          -0,8             |
-| **keskiviikko**|          9,8          |     6,3 – 12,8     |       2327 – 3390           |          -0,3             |
-| **torstai**    |         13,9          |     8,9 – 17,8     |        983 – 2322           |          -0,4             |
-| **perjantai**  |         15,3          |    11,1 – 22,4     |        783 – 1301           |          -1,9             |
-| **lauantai**   |         11,7          |     8,0 – 15,9     |        758 – 2096           |          -2,1             |
+|  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **maanantai** | 2,2 | 0,4 - 3,3 | 5556 - 7025 | -0,6 |
+| **tiistai** | 9,7 | 2,5 - 17,0 | 1862 - 5396 | -0,8 |
+| **keskiviikko** | 10,0 | 8,4 - 13,2 | 1868 - 3429 | -0,3 |
+| **torstai** | 13,4 | 9,0 - 17,0 | 1007 - 2252 | -0,4 |
+| **perjantai** | 15,1 | 11,1 - 20,8 | 811 - 1388 | -1,9 |
+| **lauantai** | 11,6 | 8,6 - 15,0 | 873 - 2103 | -2,1 |
+| **sunnuntai** | 9,8 | 7,6 - 12,0 | 1274 - 2345 | -2,1 |
 
-Ennustejakso käynnistyy hyvin edullisissa merkeissä. **Sunnuntaina** ja **maanantaina** keskihinta jää alle 2,5 senttiin, ja yksittäiset tunnit voivat painua 0,5 senttiin. Voimakas tuulivoima pitää hinnat matalina.
+Ennustejakso alkaa edullisesti. **Maanantaina** pörssisähkön keskihinta jää noin 2,2 senttiin, ja päivän aikana hinta liikkuu 0,4 sentin ja 3,3 sentin välillä. Taustalla on runsas tuulivoimatuotanto, joka pysyttelee yli 5 500 megawatissa koko päivän. Tiistaista alkaen tilanne muuttuu. Tuulivoiman tuotanto vähenee nopeasti, ja samalla hinnat nousevat selvästi. Tiistain keskihinta kipuaa 9,7 senttiin, ja iltaa kohden hinta voi kohota 17 senttiin asti. Tuulivoiman hetkellinen lasku alle 2 000 megawatin selittää osaltaan päivän korkeampaa maksimihintaa.
 
-Tiistaista alkaen tilanne muuttuu, kun tuulivoima heikkenee ja hinnat kohoavat. **Tiistain** keskihinta nousee yli 10 senttiin, ja päivän sisällä hinta vaihtelee 2,4 sentistä 16,8 senttiin. **Torstain** tuulivoiman minimituotanto jää alle 1 000 megawatin, mikä selittää päivän korkeaa 17,8 sentin maksimihintaa. **Perjantai** on jakson kallein päivä: keskihinta on 15,3 senttiä ja tuulivoima jää keskimäärin vain noin 970 megawattiin. Perjantaille on olemassa hintapiikkiriski aamupäivällä kello 8–10. **Lauantaina** tuulivoima elpyy hieman, mutta keskihinta pysyttelee yhä 11,7 sentissä.
+**Keskiviikkona** hinnat pysyvät kalliina noin 10 sentin keskihinnalla. **Torstai** ja **perjantai** ovat ennustejakson kalleimpia päiviä. Torstain keskihinta on 13,4 senttiä ja maksimi 17,0 senttiä. Perjantaina keskihinta nousee 15,1 senttiin ja maksimi 20,8 senttiin. Tuulivoiman keskituotanto jää torstaina noin 1 600 megawattiin ja perjantaina vain 1 000 megawattiin. Matala tuulivoima selittää hintojen nousua. Perjantaille on lisäksi olemassa hintapiikkiriski kello 9–11 välisenä aikana. **Lauantai** ja **sunnuntai** tuovat hieman helpotusta, mutta keskihinta pysyy yhä yli 10 sentissä.
 
-*Käppyröitä tulkkasi Sähkövatkain-Qwen3.8-27B.* 🍃
+*Tuulikäyrää seurasi Sähkövatkain-Qwen3.8-27B.* 🌬️
