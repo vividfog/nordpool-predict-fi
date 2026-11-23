@@ -1,19 +1,23 @@
-*Declining wind power pushes electricity prices up from Thursday, with Friday standing out as the most expensive day. On Monday, prices drop to an affordable level.*
+*Electricity prices remain largely high, but a strengthening of wind power on Monday will bring the average price down to 5.5 cents.*
 
-The forecast was updated on Monday at 11:58.
+The forecast was updated on Monday at 15:34.
 
-|  | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temp<br>°C |
-|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Tuesday**   | 8.0 | 2.2 – 12.3 | 2123 – 5442 | –0.8 |
-| **Wednesday** | 8.6 | 5.7 – 13.5 | 2081 – 4235 | –0.3 |
-| **Thursday**   | 11.4 | 5.4 – 16.7 | 1192 – 4123 | –0.4 |
-| **Friday**     | 13.5 | 9.6 – 17.7 | 970 – 1734 | –1.9 |
-| **Saturday**   | 10.6 | 7.7 – 13.3 | 950 – 2172 | –2.1 |
-| **Sunday**     | 9.5 | 7.7 – 12.4 | 1037 – 2519 | –2.5 |
-| **Monday**     | 5.1 | 3.6 – 7.8 | 1941 – 4594 | –1.1 |
+| | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temperature<br>°C |
+|:---|:---:|:---:|:---:|:---:|
+| **Tuesday** | 11.4 | 2.0 - 18.2 | 2107 - 5514 | -0.8 |
+| **Wednesday** | 10.3 | 7.0 - 15.7 | 2096 - 4243 | -0.3 |
+| **Thursday** | 12.4 | 6.7 - 18.1 | 1413 - 4145 | -0.4 |
+| **Friday** | 14.2 | 10.2 - 18.6 | 991 - 2046 | -1.9 |
+| **Saturday** | 11.4 | 8.4 - 14.2 | 939 - 2065 | -2.1 |
+| **Sunday** | 10.1 | 8.5 - 12.8 | 1238 - 2464 | -2.5 |
+| **Monday** | 5.5 | 3.4 - 8.9 | 1802 - 4569 | -1.1 |
 
-The forecast period splits clearly in two. The average prices on **Tuesday** and **Wednesday** stay between 8–8.6 cents, at a normal level. From **Thursday** onwards, prices rise, with **Friday** being the most expensive day, with an expected average price of 13.5 ¢/kWh and a maximum reaching 17.7 cents. On **Saturday** and **Sunday**, average prices drop slightly but remain clearly above the usual level. The cheapest hours of the forecast period fall on **Monday**, when the average price falls to 5.1 cents and electricity costs as little as 3.6 ¢/kWh at its lowest.
+Most of the forecast period brings high price expectations, but **Monday's** average price will remain clearly lower. The highest average price of the period is **Friday's** 14.2 cents, and the most expensive individual hours also fall on Friday, when the price rises to 18.6 cents.
 
-The price variation is explained by a sharp decline in wind power. Tuesday and Wednesday's abundant wind generation (averaging over 3000 MW) keeps prices moderate. On Thursday, the average wind output drops to about 2440 megawatts, and on Friday it is at most only 1734 MW. The low minimum wind production – 970 MW on Friday – pushes the day's maximum price to 17.7 cents. A similar effect is seen on Thursday, when wind power falls to a low of 1192 megawatts and the maximum price rises to 16.7 cents. On Monday, wind power strengthens again to over 3800 megawatts, pushing prices clearly down to an affordable level.
+The price range for **Tuesday** and **Wednesday** is exceptionally wide, as Tuesday's hourly prices move between 2.0 cents and over 18 cents. Variation is smaller on Wednesday, with the price staying between 7.0 and 15.7 cents. Thursday's expected average price is 12.4 cents, with no major hourly spikes in the forecast.
 
-*Sähkövatkain-Qwen3.8-27B read the numbers.* ⚡️
+Wind power's average production on Friday remains at a low level, with the day's minimum production at only 991 megawatts. This partly explains the high maximum price. A price spike risk is forecast for **Saturday** between 9–11, even though the day's average price settles at 11.4 cents. Sunday is the second-lowest day of the forecast period with an average price of 10.1 cents.
+
+The forecast period ends on **Monday**, the clearly most affordable day. Wind power's average production rises to around 3,900 megawatts, pushing the expected average price down to 5.5 cents. Monday's price range is narrow and stays between 3.4 and 8.9 cents.
+
+*Sähkövatkain-Qwen3.8-27B interpreted the numbers.* 🌬️
