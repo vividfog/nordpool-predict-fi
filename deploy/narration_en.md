@@ -1,19 +1,19 @@
-_The forecast period starts with an affordable Monday, but by the end of the week, weakening wind power pushes the average price up to 10–15 cents._
+*The price forecast for the coming days is divided into two parts: weak wind power in the first days raises prices, while strengthening wind power towards the end of the week brings prices clearly down.*
 
-The forecast was updated on Sunday at 20:56.
+Forecast updated on Monday at 03:17.
 
-|           | avg. <br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg. <br>temp.<br>°C |
-|:----------|:-----------------------:|:------------------:|:----------------------------:|:-------------------------:|
-| **Monday**  | 1.7 | 0.4 – 2.5 | 5578 – 6965 | -0.6 |
-| **Tuesday**   | 8.4 | 1.6 – 15.5 | 1775 – 5468 | -0.8 |
-| **Wednesday** | 10.2 | 7.2 – 15.2 | 1781 – 3686 | -0.3 |
-| **Thursday**  | 12.9 | 6.6 – 17.7 | 1521 – 2875 | -0.4 |
-| **Friday**   | 13.5 | 9.0 – 19.5 | 946 – 2510 | -1.9 |
-| **Saturday**  | 10.8 | 7.3 – 14.8 | 1031 – 2478 | -2.1 |
-| **Sunday**   | 10.6 | 8.4 – 13.8 | 979 – 1599 | -2.5 |
+|             | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temp.<br>°C |
+|:------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Tuesday**   | 8.6             | 2.1 – 15.0       | 1858 – 5417   | −0.8          |
+| **Wednesday** | 9.1             | 6.4 – 13.3       | 1912 – 4083   | −0.3          |
+| **Thursday**  | 12.1            | 5.4 – 16.4       | 1557 – 3947   | −0.4          |
+| **Friday**    | 14.0            | 9.9 – 18.5       | 1060 – 1895   | −1.9          |
+| **Saturday**  | 11.1            | 8.6 – 14.0       | 902 – 2191    | −2.1          |
+| **Sunday**    | 9.5             | 7.2 – 12.4       | 1129 – 2258   | −2.5          |
+| **Monday**    | 5.3             | 2.5 – 7.5        | 2488 – 5049   | −1.7          |
 
-The price level in the forecast period is divided into two parts. **Monday** is clearly the cheapest day, with the average price staying at around 1.7 cents per kilowatt-hour. This is backed by abundant wind power production, which averages over 6,500 megawatts. On the other days, wind power weakens significantly, and the average price rises to the range of 12–15 cents.
+The electricity price forecast for the coming days varies considerably. **Friday** is the most expensive day of the period, with an expected average price of 14.0 cents per kilowatt-hour. The highest hourly prices rise to 18.5 cents in the afternoon. Behind the price increase is wind power remaining at a very low level: the daily average of wind power drops to around 1,500 megawatts, and at its lowest the output is just 1,060 megawatts. Scarce wind power pushes prices up especially during the afternoon demand peak.
 
-The most expensive day is **Friday**, with an average price of 13.5 cents and a maximum price of 19.5 cents. The average wind power production is only 1,586 megawatts at that time, which partly explains the higher price level. Friday also carries an elevated risk of price spikes in the morning between 8 and 10. **On Tuesday**, the price jumps sharply from Monday, and the intraday variation is large: the price starts below two cents at night but rises to over 15 cents towards the evening. Wind power's minimum production on Tuesday stays at 1,775 megawatts, which partly explains the day's high maximum price. In the latter half of the week, the price level remains elevated, and **Sunday's** average price is around 10.6 cents.
+**Thursday** also sees elevated prices, with an average of 12.1 cents. Wind power remains weak, which partly explains the high maximum prices. **Saturday** and **Sunday** bring a slight decline, but prices stay above 9 cents. The cheapest period of the forecast is **Monday**, when wind power strengthens significantly – on average to over 4,300 megawatts – and prices drop below five cents. The lowest hours of Monday fall in the early morning, when the price is around 2.5 cents.
 
-_The forecast was interpreted by Sähkövatkain-Qwen3.8-27B._ 🌬️
+*Sähkövatkain-Qwen3.8-27B interpreted the numbers.* 🌬️
