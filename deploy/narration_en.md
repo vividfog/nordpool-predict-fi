@@ -1,19 +1,19 @@
-*Price forecasts for the forecast period vary: Friday's average price is over 14 cents, while Monday's is only 5.5 cents. Wind power fluctuations affect prices.*
+*The forecast period is led by **Friday** as the most expensive day, but strengthening wind power **on Monday** brings prices down to a clearly more affordable level.*
 
-The forecast was updated on Tuesday at 02:55.
+The forecast was updated on Tuesday at 08:55.
 
-|             | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
-|:------------|:----------------:|:------------------:|:-----------------------------:|:--------------------------:|
-| **Wednesday**   |       9.2        |     5.4 – 12.9     |        2183 – 4922           |          –0.3             |
-| **Thursday**    |       9.0        |     4.6 – 13.1     |        2794 – 4787           |          –0.4             |
-| **Friday**      |      14.4        |     9.8 – 19.9     |         1100 – 2642          |          –1.9             |
-| **Saturday**    |      10.6        |     7.3 – 13.7     |         1269 – 2126          |          –2.1             |
-| **Sunday**      |       9.9        |     6.9 – 13.5     |         1346 – 2497          |          –2.5             |
-| **Monday**      |       5.5        |     3.1 – 8.5      |         2301 – 4974          |          –1.1             |
-| **Tuesday**     |       8.5        |     4.9 – 11.0     |         2028 – 4252          |           0.1             |
+|  | avg. price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg. temp.<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Wednesday** | 9.8 | 5.5 – 14.2 | 1882 – 4767 | −0.3 |
+| **Thursday** | 10.4 | 4.2 – 15.0 | 2678 – 4762 | −0.4 |
+| **Friday** | 13.9 | 9.5 – 20.0 | 1082 – 2675 | −1.9 |
+| **Saturday** | 10.7 | 7.3 – 13.7 | 1338 – 2146 | −2.1 |
+| **Sunday** | 9.8 | 6.5 – 13.6 | 1467 – 2729 | −2.5 |
+| **Monday** | 5.5 | 3.1 – 8.3 | 2563 – 4838 | −1.1 |
+| **Tuesday** | 8.7 | 5.4 – 12.1 | 2186 – 4547 | 0.1 |
 
-The price outlook for the forecast period is twofold. **Friday** stands out as clearly the most expensive day. The expected average price rises to 14.4 cents per kilowatt-hour, and the most expensive hours climb close to 20 cents. Behind this is a weak wind power situation, as Friday's average wind production is only 1,691 megawatts and at its lowest the output drops to 1,100 megawatts. This low minimum wind output partly explains the day's high peak price.
+The forecast period begins on **Wednesday** and continues through Tuesday. Early in the period, prices remain relatively high until **Friday** rises to become the most expensive day. Friday's average price is 13.9 cents, and the maximum climbs to 20.0 cents. The high price is explained by wind power remaining weak: the day's minimum output is only 1,082 MW, which pushes the maximum price up. **On Saturday** and **Sunday**, wind power stays at a low level, and prices do not drop significantly below the 10-cent average.
 
-**Monday** is the most affordable day of the forecast period, with an average price of just 5.5 cents. Wind power production jumps on Monday to an average of 4,080 megawatts, which pushes prices down. The other days move at a fairly normal level. **Wednesday's** and **Thursday's** average prices stay around nine cents thanks to abundant wind power. **Saturday's** wind power is still weaker, which lifts the average price to 10.6 cents, but the price level remains more moderate than Friday's. **Sunday's** and **Tuesday's** prices settle around nine and 8.5 cents. During the forecast period, price expectations may still change if the wind forecast is refined.
+**Monday** brings a clear shift. Wind power strengthens considerably, averaging 3,996 megawatts, and prices fall to the lowest of the period. Monday's average price drops to 5.5 cents, and during the cheapest hours it dips to 3.1 cents. **On Tuesday**, wind power is still plentiful, and the average price settles at 8.7 cents. The price variation during the period is exceptionally large: there is a gap of over 16 cents between Friday's maximum and Monday's minimum.
 
-*Sähkövatkain-Qwen3.8-27B interpreted the numbers today.* 💨
+*Numbers weighed by Sähkövatkain-Qwen3.8-27B.* 🌬️
