@@ -1,19 +1,23 @@
-*The forecast period starts with high prices; on Friday, the average price rises above 16 cents, but by the end of the week, strengthening wind power brings prices down to around 6.5 cents.*
+*Friday is the most expensive day of the forecast period, with a spike risk. Low wind power pushes prices up until increased wind generation brings them down by the end of the week.*
 
-The forecast was updated on Wednesday at 02:55.
+The forecast was updated on Wednesday at 08:55.
 
-|             | avg. <br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg. <br>temp<br>°C |
-|:------------|:----------------:|:----------------:|:-------------:|:-------------:|
-| **Thursday**   | 12.1 | 7.4 – 15.2 | 2970 – 4622 | -0.4 |
-| **Friday** | 16.1 | 11.3 – 24.6 | 481 – 2824 | -1.9 |
-| **Saturday**  | 11.5 | 8.1 – 14.5 | 1127 – 2052 | -2.1 |
-| **Sunday** | 10.9 | 8.7 – 14.1 | 1548 – 2752 | -2.5 |
-| **Monday** | 11.2 | 6.3 – 16.4 | 1957 – 3726 | -1.1 |
-| **Tuesday**   | 6.7 | 4.8 – 9.7 | 2829 – 4352 | 0.4 |
-| **Wednesday** | 6.4 | 2.9 – 8.9 | 2397 – 4587 | 0.1 |
+There is a production shortfall at the Olkiluoto 3 nuclear plant. The shortfall started on 25.11.2026 at 01:00 and is expected to end on 26.11.2026 at 01:00. The available output is 910 megawatts.
 
-In the beginning of the period, the price level remains fairly high. **Friday** stands out as the most expensive day: the average price is expected to rise to 16.1 cents per kilowatt-hour and the maximum price could reach 24.6 cents. The price spike risk is expected on Friday afternoon between 16:00 and 18:00. Friday's low minimum wind power output, only 481 megawatts, partly explains the exceptionally high maximum price. **Thursday** and **Saturday** also stay above 11 cents in average price, but on **Sunday** and **Monday** the price drops somewhat.
+|  | avg.<br>price<br>¢/kWh | min - max<br>¢/kWh | wind power<br>min - max<br>MW | avg.<br>temp.<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Thursday** | 11.9 | 7.0 - 14.9 | 3062 - 4752 | -0.4 |
+| **Friday** | 15.4 | 10.7 - 23.5 | 603 - 2899 | -1.9 |
+| **Saturday** | 10.8 | 6.7 - 14.6 | 1115 - 3803 | -2.1 |
+| **Sunday** | 11.2 | 8.3 - 13.9 | 1410 - 2711 | -2.5 |
+| **Monday** | 11.1 | 5.2 - 16.9 | 1864 - 3873 | -1.1 |
+| **Tuesday** | 5.8 | 3.9 - 8.6 | 2940 - 4762 | 0.4 |
+| **Wednesday** | 6.7 | 2.5 - 9.5 | 2492 - 4644 | 0.1 |
 
-Toward the end of the period, wind power strengthens significantly, and prices drop to lower levels. On **Tuesday** and **Wednesday**, the daily average of wind power exceeds 3,000 megawatts, which brings the average price down to around 6.5 cents. The night before Wednesday is particularly affordable, when the hourly price can fall below three cents. The strengthening of wind power is thus directly reflected in the lower spot prices toward the end of the week.
+**Friday** stands out as the most expensive day of the forecast period. The average price is expected to rise to 15.4 cents per kilowatt-hour, with the highest price reaching 23.5 cents. This is driven by scarce wind power: production averages only 1436 megawatts and drops as low as 603 megawatts. The spike risk is scheduled for Friday between 15:00 and 17:00.
 
-*Numbers interpreted by Sähkövatkain-Qwen3.8-27B.* ⚡
+Over the weekend, price levels remain expensive but somewhat milder than Friday. **Saturday's** average price is 10.8 cents and **Sunday's** 11.2 cents, with both days' maximums staying below 15 cents. **Monday's** average price settles at 11.1 cents, but intraday variation is significant: the cheapest hours drop to 5.2 cents, while prices may climb to 16.9 cents in the afternoon. The low wind power minimum of 1864 megawatts partly explains the higher maximum price.
+
+Next **Tuesday** and **Wednesday** see a marked drop in prices. Tuesday's average price is expected to be 5.8 cents and Wednesday's 6.7 cents. Both days benefit from abundant wind power, with average production exceeding 3000 megawatts, which pushes prices down. The cheapest hours fall on the night of Wednesday, when prices may drop below three cents.
+
+*Sähkövatkain-Qwen3.8-27B's numbers danced today.* 🌬️
