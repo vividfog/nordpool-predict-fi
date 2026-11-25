@@ -1,21 +1,19 @@
-*A maintenance shutdown at Olkiluoto 3 is underway. The shutdown began on 25.11.2026 at 01:00 and is forecast to end on 26.11.2026 at 01:00.*
+_Thursday's price forecast is the highest in the forecast period, but as the week progresses, growing wind power pushes electricity prices clearly lower. Tuesday is the cheapest day of the period._
 
-The forecast was updated on Wednesday at 14:56.
+The forecast was updated on Wednesday at 20:55.
 
-| | avg. price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg. temperature<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **Thursday** | 32.6 | 9.1 – 42.7 | 3038 – 4908 | −0.4 |
-| **Friday** | 25.1 | 17.7 – 35.0 | 443 – 2900 | −1.9 |
-| **Saturday** | 14.5 | 10.1 – 19.7 | 1287 – 4966 | −2.1 |
-| **Sunday** | 10.1 | 8.2 – 13.5 | 1413 – 2524 | −2.5 |
-| **Monday** | 7.6 | 1.1 – 13.2 | 2235 – 4972 | −1.1 |
-| **Tuesday** | 5.3 | 0.5 – 8.8 | 2744 – 5102 | 0.4 |
-| **Wednesday** | 7.7 | 4.9 – 9.9 | 2877 – 3412 | 0.6 |
+|             | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temp.<br>°C |
+|:------------|:-----------------------:|:------------------:|:----------------------------:|:-------------------:|
+| **Thursday**  |          32.6           |    9.1 – 42.7      |      3116 – 4635      |           –0.4          |
+| **Friday**    |          25.1           |    17.5 – 37.2     |       371 – 2974       |           –1.9          |
+| **Saturday**  |          15.8           |    10.6 – 20.4     |      1338 – 4271      |           –2.1          |
+| **Sunday**    |          10.7           |     8.8 – 14.0     |      1468 – 2603      |           –2.5          |
+| **Monday**    |           8.3           |     1.1 – 14.6     |      2273 – 4952      |           –1.1          |
+| **Tuesday**   |           5.7           |     0.6 – 10.1     |      2709 – 4995      |            0.4          |
+| **Wednesday** |           7.5           |     4.8 – 9.8      |      2767 – 3259      |            0.6          |
 
-The forecast period begins exceptionally expensive. **Thursday**'s average price rises to 32.6 cents per kilowatt-hour, with the maximum price climbing to 42.7 cents. **Friday** is also expensive, with an average of 25.1 cents. On Friday, wind power production momentarily drops to just 443 megawatts, which partly explains the day's high maximum price of 35.0 cents. A price spike risk exists on Friday between 16:00 and 18:00.
+The forecast period begins on an expensive note. **Thursday** is clearly the most expensive day: the average price rises to 32.6 cents and the maximum price to 42.7 cents per kilowatt-hour. On **Friday**, the average price is 25.1 cents, and the day carries a price spike risk from 16:00 to 18:00. Wind power minimum production drops to only 371 megawatts on Friday, which explains the high 37.2-cent maximum price.
 
-Prices drop significantly toward the end of the week. **Saturday**'s average price is 14.5 cents and **Sunday**'s is 10.1 cents. Next **Monday** the price falls to 7.6 cents, and on **Tuesday** the average is only 5.3 cents. Tuesday's minimum price is just 0.5 cents per kilowatt-hour. Behind this is a strong increase in wind power: Monday's average wind power rises to 3,668 megawatts and on Tuesday to as much as 4,123 megawatts, which pushes prices down. On **Wednesday** the price rises slightly but remains moderate at an average of 7.7 cents.
+Prices fall sharply toward the end of the week. The average price on **Saturday** is 15.8 cents and on **Sunday** 10.7 cents. On **Monday** next, the average price drops to 8.3 cents and the lowest hourly price to 1.1 cents. **Tuesday** is the cheapest day of the period – the average price stays at 5.7 cents and the hourly price dips as low as 0.6 cents. Wind power production grows as the week progresses and remains plentiful, which partly keeps prices low. On **Wednesday**, the average price settles at 7.5 cents.
 
-*Sähkövatkain-Qwen3.8-27B interpreted the forecast today.* 💨
-
-*Sharp price differences ahead: Thursday's average price exceeds 30 cents, while Tuesday's is just over 5 cents. Growing wind power reverses the price trend toward the end of the week.*
+*Sähkövatkain-Qwen3.8-27B analyzed the numbers today.* 📉

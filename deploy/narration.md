@@ -1,21 +1,19 @@
-*Sähkön hintaerot jyrkkiä: torstaina keskihinta yli 30 senttiä, tiistaina vain reilu 5 senttiä. Tuulivoiman kasvu kääntää hintakäyrän loppuviikolla.*
+_Torstain hintaennuste on ennustejakson korkein, mutta loppuviikkoa kohden tuulivoiman kasvu painaa sähkön hinnat selvästi edullisemmiksi. Tiistai on jakson edullisin päivä._
 
-Olkiluoto 3:n huoltokatko on käynnissä. Katko alkoi 25.11.2026 kello 01 ja päättyy ennusteen mukaan 26.11.2026 kello 01.
+Ennuste on päivitetty keskiviikkona klo 20:55.
 
-Ennuste on päivitetty keskiviikkona klo 14:56.
+|             | keski-<br>hinta<br>¢/kWh | min – max<br>¢/kWh | tuulivoima<br>min – max<br>MW | keski-<br>lämpötila<br>°C |
+|:------------|:-----------------------:|:------------------:|:----------------------------:|:-------------------------:|
+| **torstai**   |          32,6           |    9,1 – 42,7      |      3116 – 4635      |           –0,4           |
+| **perjantai** |          25,1           |    17,5 – 37,2     |       371 – 2974       |           –1,9           |
+| **lauantai**  |          15,8           |    10,6 – 20,4     |      1338 – 4271      |           –2,1           |
+| **sunnuntai** |          10,7           |     8,8 – 14,0     |      1468 – 2603      |           –2,5           |
+| **maanantai** |           8,3           |     1,1 – 14,6     |      2273 – 4952      |           –1,1           |
+| **tiistai**   |           5,7           |     0,6 – 10,1     |      2709 – 4995      |            0,4           |
+| **keskiviikko** |          7,5           |     4,8 – 9,8      |      2767 – 3259      |            0,6           |
 
-|  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **torstai** | 32,6 | 9,1 – 42,7 | 3038 – 4908 | −0,4 |
-| **perjantai** | 25,1 | 17,7 – 35,0 | 443 – 2900 | −1,9 |
-| **lauantai** | 14,5 | 10,1 – 19,7 | 1287 – 4966 | −2,1 |
-| **sunnuntai** | 10,1 | 8,2 – 13,5 | 1413 – 2524 | −2,5 |
-| **maanantai** | 7,6 | 1,1 – 13,2 | 2235 – 4972 | −1,1 |
-| **tiistai** | 5,3 | 0,5 – 8,8 | 2744 – 5102 | 0,4 |
-| **keskiviikko** | 7,7 | 4,9 – 9,9 | 2877 – 3412 | 0,6 |
+Ennustejakso käynnistyy kalliissa merkeissä. **Torstai** on selvästi kallein päivä: keskihinta kohoaa 32,6 senttiin ja maksimihinta 42,7 senttiin kilowattitunnilta. **Perjantaina** keskihinta on 25,1 senttiä, ja päivälle osuu hintapiikkiriski kello 16–18. Tuulivoiman minimituotanto jää perjantaina vain 371 megawattiin, mikä selittää korkeaa 37,2 sentin maksimihintaa.
 
-Ennustejakso alkaa poikkeuksellisen kalliina. **Torstain** keskihinta nousee 32,6 senttiin kilowattitunnilta ja maksimihinta kipuaa 42,7 senttiin. Myös **perjantai** on kallis, keskihinnan ollessa 25,1 senttiä. Perjantaina tuulivoiman tuotanto painuu hetkellisesti vain 443 megawattiin, mikä selittää osaltaan päivän korkeaa maksimihintaa 35,0 senttiä. Hintapiikkiriski on olemassa perjantaina kello 16–18.
+Loppuviikkoa kohden hinnat painuvat jyrkästi alas. **Lauantain** keskihinta on 15,8 senttiä ja **sunnuntaina** 10,7 senttiä. Ensi **maanantaina** keskihinta laskee 8,3 senttiin ja alin tuntihinta 1,1 senttiin. **Tiistai** on jakson edullisin päivä – keskihinta jää 5,7 senttiin ja tuntihinta käy alimmillaan 0,6 sentissä. Tuulivoiman tuotanto kasvaa viikon edetessä ja pysyttelee runsaana, mikä osaltaan pitää hinnat matalina. **Keskiviikkona** keskihinta asettuu 7,5 senttiin.
 
-Loppuviikolla hinnat laskevat selvästi. **Lauantain** keskihinta on 14,5 senttiä ja **sunnuntain** 10,1 senttiä. Ensi **maanantaina** hinta painuu 7,6 senttiin ja **tiistaina** keskihinta on vain 5,3 senttiä. Tiistain minimihinta on jopa 0,5 senttiä kilowattitunnilta. Taustalla on voimakas tuulivoiman kasvu: maanantain keskimääräinen tuulivoima nousee 3 668 megawattiin ja tiistaina peräti 4 123 megawattiin, mikä painaa hinnat alas. **Keskiviikkona** hinta nousee hieman, mutta pysyy maltillisena 7,7 sentin keskihinnalla.
-
-*Sähkövatkaimen ennusteen tulkitsi tänään Sähkövatkain-Qwen3.8-27B.* 💨
+*Sähkövatkain-Qwen3.8-27B tulkitsi luvut tänään.* 📉
