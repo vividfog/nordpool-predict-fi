@@ -1,21 +1,21 @@
-*Perjantai on ennustejakson kallein päivä 25,4 sentin keskihinnalla, mutta hinnat laskevat nopeasti maanantain 4,1 senttiin. Perjantaille on olemassa hintapiikkiriski iltapäivälle.*
+*Perjantaina sähkön keskihinta kipuaa 25 senttiin heikon tuulivoiman takia, mutta loppuviikolla tuuli voimistuu ja hinnat painuvat selvästi alas.*
 
-Olkiluoto 3 -ydinvoimalassa on torstain vastaisena yönä tuotantovajaus klo 00–04 (käytettävyys 56,9 %). Sen jälkeen alkaa huoltokatko klo 04, joka päättyy lauantaina klo 18.
+Olkiluoto 3 -ydinvoimalassa on käynnissä huoltokatko, joka alkoi 26.11. klo 04 ja päättyy ennusteen mukaan 28.11. klo 18.
 
-Ennuste on päivitetty torstaina klo 02:55.
+Ennuste on päivitetty torstaina klo 08:55.
 
-|  | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **perjantai** | 25,4 | 17,1 – 38,4 | 354 – 2966 | −1,9 |
-| **lauantai** | 14,1 | 9,9 – 18,7 | 1479 – 4676 | −2,1 |
-| **sunnuntai** | 10,1 | 5,9 – 13,1 | 1390 – 4809 | −2,5 |
-| **maanantai** | 4,1 | 1,6 – 7,8 | 3111 – 5126 | −1,1 |
-| **tiistai** | 5,8 | 1,5 – 8,7 | 2505 – 4719 | 0,4 |
-| **keskiviikko** | 7,3 | 4,7 – 9,3 | 2117 – 3834 | 0,6 |
-| **torstai** | 8,2 | 3,6 – 11,8 | 2302 – 4268 | 0,9 |
+|             | keski-<br>hinta<br>¢/kWh | min - max<br>¢/kWh | tuulivoima<br>min - max<br>MW | keski-<br>lämpötila<br>°C |
+|:------------|:----------------------:|:------------------:|:---------------------------:|:-----------------------:|
+| **perjantai** | 25,3                  | 17,3 – 36,2        | 420 – 3 102                 | −1,9                    |
+| **lauantai**  | 13,8                  | 10,7 – 19,2        | 1 748 – 4 353               | −2,1                    |
+| **sunnuntai** | 9,4                   | 5,6 – 13,1         | 1 395 – 4 662               | −2,5                    |
+| **maanantai** | 8,0                   | 4,0 – 12,6         | 2 486 – 4 437               | −1,1                    |
+| **tiistai**   | 6,4                   | 3,0 – 9,5          | 2 269 – 4 496               | 0,4                     |
+| **keskiviikko**| 7,2                   | 5,1 – 9,1          | 1 933 – 3 861               | 0,6                     |
+| **torstai**   | 7,7                   | 3,5 – 11,3         | 2 435 – 4 145               | 0,9                     |
 
-Ennustejakso käynnistyy **perjantaina** kalliina. Päivän keskihinta on 25,4 ¢/kWh, ja tuulivoiman vähyys nostaa maksimihinnan 38,4 senttiin iltapäivällä. Perjantaille on olemassa hintapiikkiriski klo 15–17. Tuulivoiman minimituotanto on vain 354 megawattia, mikä selittää osaltaan korkeaa hintapiikkiä. **Lauantaina** tuulivoima voimistuu keskimäärin 3 956 megawattiin, ja hinta laskee 14,1 sentin keskitasolle. **Sunnuntaina** tuulivoima hieman heikkenee, mutta hinta jatkaa laskuaan 10,1 senttiin.
+Ennustejakso käynnistyy **perjantaina** poikkeuksellisen korkeilla hinnoilla. Päivän keskihinnaksi odotetaan 25,3 senttiä kilowattitunnilta, ja maksimi kohoaa 36,2 senttiin. Taustalla on erittäin heikko tuulivoima: päivän tuulivoiman minimi jää vain 420 megawattiin, mikä selittää korkeaa maksimihintaa. Hintapiikin riski ajoittuu klo 15–17 välille.
 
-**Maanantai** on ennustejakson edullisin päivä, jolloin keskihinta jää 4,1 senttiin ja tuulivoimaa on runsaasti, keskimäärin 4 650 megawattia. **Tiistaina** ja **keskiviikkona** hinnat pysyttelevät maltillisina, 5,8 ja 7,3 sentissä. **Torstaina** hinta nousee 8,2 senttiin, mutta tuulivoima pysyy edelleen korkeana.
+**Lauantaina** tuulivoima voimistuu selvästi, ja hinnat laskevat. Lauantain keskihinta on 13,8 senttiä, ja **sunnuntaina** edullisempi 9,4 senttiä. **Maanantai** jatkaa laskua 8,0 sentin keskihinnalla. **Tiistai** on jakson edullisin päivä 6,4 sentin keskihinnalla. **Keskiviikon** ja **torstain** hinnat pysyttelevät 7,2–7,7 sentissä, eikä hintapiikkiriskiä ole odotettavissa. Kokonaisuutena jakso kääntyy perjantain kalliista hinnoista selvästi maltillisemmaksi tuulivoiman voimistuessa.
 
-*Sähkövatkain-Qwen3.8-27B luki luvut.* 🌬️
+*Sähkövatkain-Qwen3.8-27B tuulilukemat tarkkana.* 💨
