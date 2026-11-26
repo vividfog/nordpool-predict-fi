@@ -1,17 +1,19 @@
-*The forecast period begins with high prices on Friday, but average prices drop significantly later in the week as wind power increases.*
+*The forecast week's most expensive day is Friday, when wind power is weak. As wind power strengthens from Saturday, prices drop significantly and remain much more affordable through the rest of the week.*
 
-|  | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
+The forecast was updated on Thursday at 14:56.
+
+|  | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temp<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **Friday** | 18.3 | 12.8 – 26.7 | 420 – 3364 | -1.9 |
-| **Saturday** | 13.5 | 10.1 – 17.3 | 1893 – 4895 | -2.1 |
-| **Sunday** | 10.2 | 6.6 – 14.4 | 1240 – 5235 | -2.5 |
-| **Monday** | 8.2 | 3.8 – 14.1 | 2281 – 4193 | -1.1 |
-| **Tuesday** | 6.3 | 3.3 – 8.5 | 3126 – 4718 | 0.4 |
-| **Wednesday** | 10.6 | 5.7 – 15.8 | 2060 – 3443 | 0.6 |
-| **Thursday** | 8.5 | 2.3 – 12.0 | 2430 – 4794 | 1.5 |
+| **Friday** | 25.6 | 14.6 – 35.2 | 434 – 3433 | -1.9 |
+| **Saturday** | 14.1 | 12.8 – 17.7 | 1912 – 4987 | -2.1 |
+| **Sunday** | 11.0 | 7.1 – 15.4 | 1851 – 5314 | -2.5 |
+| **Monday** | 9.6 | 4.7 – 13.6 | 1888 – 4020 | -1.1 |
+| **Tuesday** | 7.3 | 2.7 – 11.0 | 2699 – 4828 | 0.4 |
+| **Wednesday** | 9.9 | 5.2 – 15.1 | 2114 – 3552 | 0.6 |
+| **Thursday** | 8.2 | 2.3 – 12.1 | 2387 – 4685 | 1.5 |
 
-**Friday** stands out from the forecast period with clearly the highest prices. An average price of 18.3 cents per kilowatt-hour is expected, and the highest hourly price may rise to 26.7 cents. The risk of a price spike falls between 3 and 5 PM. Behind this is extremely weak wind power, whose minimum production is only 420 megawatts. This low wind power minimum explains Friday's exceptionally high maximum price.
+**Friday** stands out from the forecast period as exceptionally expensive. The expected average price rises to 25.6 cents, with the maximum reaching 35.2 cents. The backdrop is weak wind power: the average production is only 1,474 megawatts, and the minimum drops to 434 megawatts. The low minimum wind power output partly explains the day's high peak price.
 
-**Saturday** and **Sunday** remain expensive despite wind power increasing significantly. Saturday's average price is 13.5 cents and Sunday's 10.2 cents. The most affordable days of the period are **Monday**, **Tuesday** and **Thursday**, whose average prices settle between 6.3 and 8.5 cents. On Tuesday, prices remain low throughout the day, and on Thursday night the price drops to as low as 2.3 cents. **Wednesday** sees the price rise again above 10 cents, with an average price of 10.6 cents.
+From **Saturday** onward, the price level falls sharply as wind power strengthens. **Saturday's** average price is 14.1 cents, and on **Sunday** the price drops further to 11.0 cents thanks to abundant wind power. **Monday**, **Tuesday**, and **Thursday** are more affordable, with average prices ranging between 8.2 and 9.6 cents. **Tuesday's** average price is the lowest in the period at 7.3 cents, and **Thursday's** minimum price falls to 2.3 cents. **Wednesday's** average price rises to 9.9 cents, which is the highest of the latter half, but the day remains considerably more moderate than Friday.
 
-*Sähkövatkain-Qwen3.8-27B blew the wind this time.* 🌬️
+*Sähkövatkain-Qwen3.8-27B blew the forecast through.* 🌬️
