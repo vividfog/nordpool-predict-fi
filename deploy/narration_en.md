@@ -1,21 +1,21 @@
-*The forecast period starts with Saturday's high average price of 17.8 cents, but prices decline toward the end of the week – Friday's average price is just 2.2 cents.*
+*The forecast period starts with an expensive Saturday, but prices drop toward the end of the week, and on Friday they are already under three cents.*
 
-A production reduction is underway at the Olkiluoto 3 nuclear plant. The plant's available output is approximately 440 megawatts out of a nominal capacity of 1,600 megawatts, corresponding to a 27.5 percent availability rate. The reduction began on 26 November at 16:00 and is expected to end on 29 November at 01:00.
+Olkiluoto 3 nuclear power plant has a production shortage. The plant's availability is 27.5 percent, and the shortage began on 26.11. at 16:00. It is expected to end on 29.11. at 01:00.
 
-The forecast was updated on Friday at 11:56.
+The forecast was updated on Friday at 15:34.
 
-| | average<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | average<br>temperature<br>°C |
-|:---|:---:|:---:|:---:|:---:|
-| **Saturday** | 17.8 | 12.9 – 22.7 | 2240 – 4728 | −2.1 |
-| **Sunday** | 9.4 | 7.1 – 16.6 | 4044 – 5048 | −2.5 |
-| **Monday** | 8.7 | 5.5 – 13.3 | 2119 – 5372 | −1.1 |
-| **Tuesday** | 5.7 | 2.6 – 9.9 | 2849 – 4182 | 0.4 |
-| **Wednesday** | 7.6 | 3.5 – 9.8 | 2499 – 3490 | 0.6 |
-| **Thursday** | 4.6 | 1.6 – 7.1 | 2319 – 4500 | 1.5 |
-| **Friday** | 2.2 | 1.2 – 3.0 | 3813 – 5859 | 1.5 |
+|   | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
+|:-------------|:----------------:|:----------------:|:-------------:|:-------------:|
+| **Saturday** | 12.7 | 9.5 – 15.6 | 2237 – 4740 | −2.1 |
+| **Sunday** | 8.5 | 7.1 – 9.8 | 4030 – 5020 | −2.5 |
+| **Monday** | 7.7 | 4.8 – 10.9 | 2977 – 5368 | −1.1 |
+| **Tuesday** | 5.3 | 1.8 – 8.2 | 2798 – 4171 | 0.4 |
+| **Wednesday** | 6.0 | 2.2 – 8.3 | 2802 – 3624 | 0.6 |
+| **Thursday** | 4.4 | 1.9 – 5.8 | 3040 – 4548 | 1.5 |
+| **Friday** | 2.3 | 1.2 – 3.1 | 3816 – 5788 | 1.5 |
 
-The forecast period opens with an unusually high price level on **Saturday**. The expected average price rises to 17.8 cents, with individual hourly prices reaching up to 22.7 cents in the afternoon. **Sunday** sees a significant price drop, with an average of 9.4 cents.
+The electricity price forecast for the coming days shows a clear decline. The most expensive day of the period is **Saturday**, when the average price is expected to rise to 12.7 cents per kilowatt-hour. The highest hourly price climbs to 15.6 cents, which is the single maximum of the forecast period. The elevated prices of **Saturday** and **Sunday** are partly explained by the production shortage at Olkiluoto 3, which limits electricity production for over two days.
 
-**Monday's** average price settles at 8.7 cents, and **Tuesday** is the second-cheapest day of the period at 5.7 cents. **Wednesday** briefly rises to 7.6 cents, but **Thursday** returns to a more affordable level at 4.6 cents. The closing **Friday** is the cheapest day of the forecast period, with an average price of just 2.2 cents. Prices remain between 1.2 and 3.0 cents throughout the entire day. Friday's exceptionally low price level is explained by abundant wind power generation, which averages nearly 5,000 megawatts.
+The production shortage ends on the night before **Monday**, after which prices begin to fall. Wind power is available in abundance throughout the week, keeping price pressure in check especially towards the end of the week. On **Thursday**, the average price drops below five cents, and **Friday** is the cheapest day of the forecast period. On Friday, the price stays between 1.2 and 3.1 cents throughout the day, with no expensive hours occurring. Wind power is expected to rise on Friday to an average of over 4,900 megawatts, which is the highest production of the period.
 
-*Numbers churned up today by Sähkövatkain-Qwen3.8-27B.* 🌬️
+*Sähkövatkain-Qwen3.8-27B interpreted the numbers.* 💨
