@@ -14,7 +14,7 @@ from util.llm import narrate_prediction
 from util.entso_e import entso_e_nuclear
 from util.archive import insert_snapshot
 from util.holidays import update_holidays
-from util.sql import db_update, db_query_all
+from util.sql import db_update, db_query_all, db_quarter_update, db_quarter_query_all
 from util.dataframes import update_df_from_df
 from util import features_pricing as pricing
 from util.openmeteo_solar import update_solar
@@ -25,6 +25,10 @@ from util.jao_imports import update_import_capacity
 from util.fmi import update_wind_speed, update_temperature
 from util.eval import create_prediction_snapshot, rotate_snapshots
 from util.volatility_xgb import train_volatility_model, predict_daily_volatility
+from util.quarter_grid import QUARTER_START, combine_fine
+from util.quarter_data import fetch_quarter_sources, build_quarter_frame, add_quarter_features, coverage
+from util.train_xgb_15min import train_model_15min
+from util.quarter_shape import FUND as SHAPE_FUND, train_shape_model, apply_shape
 
 # from util.volatility_bayes import train_volatility_model, predict_daily_volatility
 from util.scaler import scale_predicted_prices
@@ -214,7 +218,12 @@ if args.predict:
     df_recent = update_windpower(df_recent, fingrid_api_key=fingrid_api_key)
 
     # Fetch future nuclear downtime information from ENTSO-E unavailability data
-    df_entso_e = entso_e_nuclear(entso_e_api_key)
+    # Fetched on the 15-min grid for the 15-min model; the hourly rows are the :00 quarters,
+    # identical to an hourly fetch
+    df_entso_e_q = entso_e_nuclear(entso_e_api_key, freq="15min")
+    df_entso_e = None
+    if df_entso_e_q is not None:
+        df_entso_e = df_entso_e_q[pd.to_datetime(df_entso_e_q["timestamp"]).dt.minute == 0]
     if df_entso_e is not None:
         # Refresh the previously inferred nuclear power numbers with the ENTSO-E data
         df_recent = update_df_from_df(df_recent, df_entso_e, cols=["NuclearPowerMW"])
@@ -246,6 +255,32 @@ if args.predict:
 
     # Update df_full with df_recent
     df_full.update(df_recent)
+
+    # region [quarter_data]
+    # Native 15-min inputs for the recent window (the hourly frames are the base layer).
+    # Quarter price history is filled from Sähkötin when the 15-min table lacks it.
+    df_fine_stored = db_quarter_query_all(db_path)
+    stored_prices = (
+        df_fine_stored.dropna(subset=["Price_cpkWh"])
+        if "Price_cpkWh" in df_fine_stored.columns
+        else df_fine_stored.iloc[0:0]
+    )
+    price_since = (
+        QUARTER_START
+        if stored_prices.empty
+        else min(stored_prices["timestamp"].max() - pd.Timedelta(days=2), start_recent)
+    )
+    fmisids = sorted({col.split("_", 1)[1] for col in fmisid_ws + fmisid_t})
+    df_fine_recent = fetch_quarter_sources(
+        start_recent,
+        end_time,
+        fingrid_api_key=fingrid_api_key,
+        fmisids=fmisids,
+        entso_e=df_entso_e_q,
+        price_since=price_since,
+    )
+    df_fine = combine_fine(df_fine_stored, df_fine_recent)
+    del df_fine_stored, stored_prices
 
     # Train volatility prediction model
     volatility_model = train_volatility_model(df_full)
@@ -292,6 +327,29 @@ if args.predict:
     logger.debug("Training the model with updated data")
     model_trained = train_model(df_full, fmisid_ws=fmisid_ws, fmisid_t=fmisid_t)
 
+    # Train the 15-min pricing model on the same history at the finest available resolution
+    df_full_q = add_quarter_features(build_quarter_frame(df_full, df_fine), fmisid_t)
+    df_full_q = df_full_q.dropna(subset=required_columns)
+    native_share = coverage(
+        df_full_q,
+        df_fine,
+        ["Price_cpkWh", "WindPowerMW", "NuclearPowerMW", "ImportCapacityMW", "sum_irradiance"]
+        + pricing.eu_wind[:1]
+        + fmisid_t[:1],
+    )
+    logger.info(
+        "15-min training rows from native 15-min data: "
+        + ", ".join(f"{col} {share:.0%}" for col, share in native_share.items())
+    )
+    model_15min = train_model_15min(df_full_q, fmisid_ws=fmisid_ws, fmisid_t=fmisid_t)
+    del df_full_q
+
+    # Intra-hour shape stage for the 15-min model, trained on actual quarter prices
+    shape_model = train_shape_model(
+        df_full,
+        df_fine[["timestamp", "Price_cpkWh"]] if "Price_cpkWh" in df_fine.columns else df_fine.iloc[0:0],
+    )
+
     # df_full is no longer required beyond this point; keep it deleted to avoid creeping GPU/CPU pressure.
     del df_full
     gc.collect()
@@ -329,6 +387,42 @@ if args.predict:
     else:
         logger.info("No scaled prices to apply (all NaN)")
 
+    # region [quarters]
+    # 15-min predictions from the 15-min model, independent of the hourly predictions
+    logger.info("Predicting 15-min prices with the 15-min model")
+    df_recent_q = build_quarter_frame(
+        df_recent.drop(columns=["PricePredict_cpkWh", "PricePredict_cpkWh_scaled"], errors="ignore"),
+        df_fine,
+    )
+    df_recent_q = add_quarter_features(df_recent_q, fmisid_t)
+    df_recent_q["PricePredict_cpkWh"] = booster_predict(
+        model_15min, df_recent_q[pricing.cols_quarter(fmisid_ws, fmisid_t)]
+    )
+    del model_15min, df_fine
+
+    # Shape stage: re-split each hour around the 15-min model's own hourly mean
+    levels = (
+        df_recent_q.groupby(df_recent_q["timestamp"].dt.floor("h"))["PricePredict_cpkWh"]
+        .mean()
+        .rename_axis("timestamp")
+        .reset_index()
+        .merge(df_recent[["timestamp", *[c for c in SHAPE_FUND if c in df_recent.columns]]], on="timestamp", how="left")
+    )
+    shaped = apply_shape(shape_model, levels).set_index("timestamp")["PricePredict_cpkWh"]
+    df_recent_q["PricePredict_cpkWh"] = (
+        df_recent_q["timestamp"].map(shaped).fillna(df_recent_q["PricePredict_cpkWh"]).to_numpy()
+    )
+    del shape_model, levels, shaped
+    gc.collect()
+
+    # Same spike-risk scaling as hourly, ranked over quarters (no JSON output)
+    df_recent_q = scale_predicted_prices(df_recent_q)
+    mask_q = df_recent_q["PricePredict_cpkWh_scaled"].notna()
+    df_recent_q.loc[mask_q, "PricePredict_cpkWh"] = df_recent_q.loc[mask_q, "PricePredict_cpkWh_scaled"]
+    logger.info(f"Applied scaled prices to {mask_q.sum()} 15-min predictions")
+    df_quarter = df_recent_q[["timestamp", "PricePredict_cpkWh"]].copy()
+    del df_recent_q
+
     # Clean up all unnecessary columns before DB commit or display
     drop_cols = [col for col in pricing.feat if col in df_recent.columns]
     if drop_cols:
@@ -337,6 +431,7 @@ if args.predict:
     # Describe the predictions
     print(df_recent)
     print(df_recent.describe())
+    print(df_quarter.describe())
 
 # region commit
 # --commit: Update the database with the final data
@@ -373,6 +468,14 @@ if args.commit:
         )
         if not run_id:
             logger.error("Failed to archive prediction snapshot")
+
+        # Native 15-min inputs (incl. actual quarter prices) and the 15-min predictions
+        fine_count = db_quarter_update(db_path, df_fine_recent)
+        quarter_count = db_quarter_update(db_path, df_quarter, ["PricePredict_cpkWh"])
+        logger.info(
+            f"→ 15-min table updated: {fine_count} quarters of native inputs, "
+            f"{quarter_count} 15-min predictions."
+        )
     else:
         logger.error("Failed to update database with new predictions")
 
@@ -453,6 +556,21 @@ if args.deploy and args.commit:
     with open(json_path, "w") as f:
         f.write(json_data)
     logger.info(f"→ Hourly price predictions saved to '{json_path}'")
+
+    # 15-min price predictions, same [ms, price] layout as prediction.json
+    quarter_df = db_quarter_query_all(db_path)
+    quarter_df = quarter_df[quarter_df["timestamp"] >= start_of_yesterday_utc].dropna(
+        subset=["PricePredict_cpkWh"]
+    )
+    epoch = pd.Timestamp("1970-01-01", tz="UTC")
+    quarter_list = [
+        [int((ts - epoch) // pd.Timedelta("1ms")), float(price)]
+        for ts, price in zip(quarter_df["timestamp"], quarter_df["PricePredict_cpkWh"])
+    ]
+    json_path_quarter = os.path.join(deploy_folder_path, "prediction_15min.json")
+    with open(json_path_quarter, "w") as f:
+        f.write(json.dumps(quarter_list, ensure_ascii=False))
+    logger.info(f"→ 15-min price predictions saved to '{json_path_quarter}'")
 
     # Create/update the snapshot JSON file for today's predictions
     create_prediction_snapshot(

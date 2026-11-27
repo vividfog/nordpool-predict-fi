@@ -4,6 +4,9 @@ import numpy as np
 from datetime import datetime, timedelta
 import pytz
 from .logger import logger
+from .openmeteo_windpower import fetch_minutely_15
+
+IRRADIANCE_COLUMNS = ["sum_irradiance", "mean_irradiance", "std_irradiance", "min_irradiance", "max_irradiance"]
 
 # FMI's solar irradiation monitoring stations, supposedly well-distributed across Finland
 # Helsinki Kumpula, Jokioinen Ilmala, Jyväskylä lentoasema, Kuopio Savilahti, Parainen Utö, Sodankylä Tähtelä, Sotkamo Kuolaniemi
@@ -281,6 +284,27 @@ def update_solar(df):
     logger.info(f"Irradiance stats: Avg: {avg_irradiance:.0f} W/m², Max: {max_irradiance:.0f} W/m², Min: {min_irradiance:.0f} W/m²")
 
     return merged_df
+
+# region quarters
+def fetch_irradiance_quarters(start, end):
+    """
+    15-min global tilted irradiance across the FMI solar sites, aggregated per quarter
+    into the same sum/mean/std/min/max columns as the hourly features.
+    """
+    logger.info(f"Open-Meteo: Fetching 15-min irradiance between {pd.Timestamp(start):%Y-%m-%d} and {pd.Timestamp(end):%Y-%m-%d}")
+    frames = [
+        fetch_minutely_15(lat, lon, "global_tilted_irradiance", start, end)
+        for lat, lon in zip(LATITUDES, LONGITUDES)
+    ]
+    df = pd.concat(frames, ignore_index=True)
+    if df.empty:
+        return pd.DataFrame(columns=["timestamp", *IRRADIANCE_COLUMNS])
+    df["global_tilted_irradiance"] = df["global_tilted_irradiance"].clip(lower=0)
+    out = df.groupby("timestamp")["global_tilted_irradiance"].agg(["sum", "mean", "std", "min", "max"])
+    out.columns = IRRADIANCE_COLUMNS
+    return out.reset_index()
+# endregion quarters
+
 
 def main():
     """

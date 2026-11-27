@@ -15,6 +15,7 @@
    - Train volatility model (`util/volatility_xgb.py`), annotate data.
    - Train price model (`util/train_xgb.py`, XGBoost regressor with cyclic features).
    - Compute spike-risk hours (`util/spike_risk.py`), scale them for the frontend (`util/scaler.py`), emit debug summaries.
+   - Train the 15-min price model (`util/train_xgb_15min.py`) on the same history at the finest available input resolution (`util/quarter_data.py`), predict quarters, re-split each hour with the intra-hour shape stage (`util/quarter_shape.py`), apply the same spike-risk scaling.
    - Optional commit ⇒ `db_update` + snapshot archive; deploy ⇒ JSON dumps in `deploy/`.
    - Narration via `util/llm.py` (LLM API required; uses `util/llm_prompts.py`; spike-risk prompt data comes from `<hintapiikkiriskit>`).
 
@@ -32,11 +33,15 @@
 - Wind-power gap filler also retrains in-memory before inference; persisting models is handled only by experimental scripts under `data/create/`.
 - Pricing feature engineering + feature column selection is centralized in `util/features_pricing.py` and reused by training, prediction, and feature embedding exports.
 - Feature sets include weather station temps (`t_*`), wind speeds (`ws_*`), irradiance summary stats, transmission caps, wind power, holiday flags.
+- 15-min price model (`util/train_xgb_15min.py`) runs next to the hourly model so the hourly one can be deprecated later. Same XGB estimator and `PARAMS` (shared from `util/train_xgb.py`), one row per quarter since the start of the DB history. Target: actual quarter prices since `QUARTER_START` (2025-10-01 CET); before that the hourly settlement price on all four quarters, flagged by `mtu15`=0. Validation holds out whole Helsinki days (the four quarters of an hour must not straddle train/test). Features: `pricing.cols_quarter` = hourly set without `hour_sin/cos`, plus `qidx`, `quarter_of_day_sin/cos` (Helsinki time), `mtu15`, and one-hour ramps of wind/solar/imports/nuclear.
+- Shape stage (`util/quarter_shape.py`): small XGB regressor predicting each quarter's offset from its hourly mean from neighbour-hour gradients of the 15-min model's own hourly means (plus quarter index, calendar, fundamentals and ramps), trained on actual quarter prices; offsets re-centred per hour so hourly means are preserved. The standalone 15-min model sets levels well but captures little intra-hour shape (it never sees the price curve), so this stage carries most of the within-hour skill.
+- 15-min inputs (`util/quarter_data.py`, `util/quarter_grid.py`): base layer = enriched hourly frame upsampled to quarters (linear for continuous series, step for prices/capacities/flags/daily aggregates); overlay = native data wherever it exists, from the `prediction_15min` table and the run's own fetch: Sähkötin `&quarter` prices, JAO 15-min capacities, Open-Meteo `minutely_15` wind (120 m) and irradiance (historical-forecast API for history), Fingrid 181/245 wind and 188 nuclear (3-min → quarter means), FMI 10-min observations (past only; FMI forecasts are hourly), ENTSO-E outages at 15-min. Every source is optional; failures fall back to the hourly base. Only native values (never upsampled ones) are written to `prediction_15min`. History backfill: `python -m data.create.80_quarter.quarter_backfill`.
+- Sähkötin without `&quarter` returns hourly means of the quarters, which remain the hourly model's target.
 - Volatility classifier (XGB) aggregates daily stats; outputs `volatile_likelihood` (currently optional in feature set, always present in DF).
 - Spike-risk detection is centralized in `util/spike_risk.py`: future Helsinki hours, top daily morning/evening price hours, and low wind (`wind_multiplier > 1.0`). `util/scaler.py` uses it for `prediction_scaled.json`; `util/llm.py` aggregates it into `<hintapiikkiriskit>`. The old daily `Spike_Risk` score heuristic is no longer used.
 
 ## Deploy & Frontend
-- `deploy/` hosts Firebase-ready static site; predictions published as `prediction.json`, `prediction_full.json`, `averages.json`, `windpower.json`.
+- `deploy/` hosts Firebase-ready static site; predictions published as `prediction.json` (hourly), `prediction_15min.json` (15-min), `prediction_full.json`, `averages.json`, `windpower.json`.
 - Modular JS under `deploy/js/` selects data sources, renders charts, and offers Home Assistant configs in YAML.
 - Historical snapshots rotated via `util.eval.rotate_snapshots`; evaluation tooling in `nordpool_eval_fi.py` writes reports to `deploy/evals/`.
 
