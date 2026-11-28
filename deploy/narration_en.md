@@ -1,21 +1,21 @@
-*The forecast period begins with an expensive Sunday, but prices drop toward the end — Saturday is clearly the cheapest day on average.* 🌬️
+*On Sunday, the spot electricity price is expected to reach the peak of the forecast period. Friday is the cheapest day, but a drop in wind power will push prices back up on Saturday.*
 
-A production shortfall is ongoing at the Olkiluoto 3 nuclear power plant. The available output is 440 megawatts, which is 27.5 percent of its rated capacity (1,600 MW). The shortfall began on 26 November at 16:00 and is expected to end on 30 November at 01:00.
+A production deficit at Olkiluoto 3 is ongoing. The plant's available output is approximately 440 megawatts, while its nameplate capacity is 1,600 megawatts. The deficit began on November 26 at 16:00, and output is expected to be restored on the morning of November 30 at 01:00.
 
-The forecast was updated on Saturday at 08:55.
+The forecast was updated on Saturday at 11:55.
 
-| | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind<br>min – max<br>MW | avg.<br>temperature<br>°C |
+|  | avg.<br>price<br>¢/kWh | min – max<br>¢/kWh | wind power<br>min – max<br>MW | avg.<br>temperature<br>°C |
 |:---|:---:|:---:|:---:|:---:|
-| **Sunday** | 9.9 | 8.4 – 11.5 | 4254 – 5030 | -2.5 |
-| **Monday** | 6.8 | 3.7 – 9.5 | 3064 – 5266 | -1.1 |
-| **Tuesday** | 5.7 | 2.0 – 9.6 | 2707 – 4204 | 0.4 |
-| **Wednesday** | 7.3 | 2.0 – 12.1 | 1379 – 3875 | 0.6 |
-| **Thursday** | 5.2 | 2.8 – 7.8 | 1402 – 4075 | 1.5 |
-| **Friday** | 4.8 | 1.9 – 9.7 | 3040 – 4521 | 1.5 |
-| **Saturday** | 3.2 | 1.4 – 5.6 | 3362 – 5201 | 1.2 |
+| **Sunday** | 10.2 | 8.4 – 12.0 | 4,352 – 5,107 | −2.5 |
+| **Monday** | 6.8 | 3.1 – 10.8 | 3,563 – 5,454 | −1.1 |
+| **Tuesday** | 5.6 | 2.6 – 8.6 | 2,579 – 5,195 | 0.4 |
+| **Wednesday** | 4.7 | 3.0 – 8.1 | 2,683 – 4,662 | 0.6 |
+| **Thursday** | 4.7 | 1.5 – 6.9 | 2,981 – 4,887 | 1.5 |
+| **Friday** | 2.8 | 0.9 – 4.4 | 4,613 – 5,698 | 1.5 |
+| **Saturday** | 7.2 | 0.9 – 10.8 | 1,614 – 5,270 | 1.2 |
 
-The price forecasts for the period vary. **Sunday** stands out with the highest average price at 9.9 cents per kilowatt-hour. **Wednesday** sees the period's highest single maximum price at 12.1 cents. This is driven by a temporary dip in wind power: the wind minimum drops to 1,379 megawatts, well below 2,000 megawatts. The most expensive evening hours fall between 18:00 and 20:00, when prices hover around 11–12 cents. As the week progresses, prices decline, and **Saturday** is the cheapest day of the forecast period. The average price stays at 3.2 cents, and the maximum does not exceed 5.6 cents. Wind power's average output rises above 4,200 megawatts on Saturday, pushing prices down.
+**Sunday** is the most expensive day of the forecast period. The price remains above eight cents throughout the day and reaches a peak of 12.0 cents. On **Monday**, the average price falls to 6.8 cents, but morning hours still approach nearly 11 cents. From **Tuesday** onwards, prices level out: Tuesday's average is 5.6 cents, and the averages for **Wednesday** and **Thursday** settle at 4.7 cents. The most affordable period of the forecast is **Friday**, whose average price drops to 2.8 cents. Wind power is plentiful at that time, averaging over 5,000 megawatts, which pushes prices down. Individual hours go below one cent.
 
-**Monday** and **Tuesday** settle at average prices of 6.8 and 5.7 cents, and **Thursday** comes in at 5.2 cents. **Friday** is already quite affordable with an average price of 4.8 cents. The cheapest hours of the period fall on Saturday, when wind power is abundant. The production shortfall at Olkiluoto 3 is expected to end on the night of Wednesday.
+**Saturday** sees wind power weaken significantly, and output drops to around 1,600 megawatts by midday. The price rises again to a 7.2-cent average, and the daily maximum climbs to 10.8 cents. Temperatures during the forecast period hover around zero and do not explain the price fluctuations.
 
-*Sähkövatkain-Qwen3.8-27B read the wind.* 🍃
+*Sähkövatkain-Qwen3.8-27B interpreted the numbers.* 🌬️
